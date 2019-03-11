@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<?xml version="1.0" encoding="UTF-8"?><Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <version>41.0</version>
     <types>
         <members>BotController</members>
         <members>BotField</members>
@@ -61,19 +61,9 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>AppSwitcher</members>
-        <members>Salesforce1</members>
-        <name>AppMenu</name>
-    </types>
-    <types>
         <members>Case.Standard</members>
         <members>Lead.Standard</members>
         <name>AssignmentRule</name>
-    </types>
-    <types>
-        <members>Case</members>
-        <members>Lead</members>
-        <name>AssignmentRules</name>
     </types>
     <types>
         <members>Bot</members>
@@ -112,11 +102,6 @@
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
-        <members>Case</members>
-        <members>Lead</members>
-        <name>AutoResponseRules</name>
-    </types>
-    <types>
         <members>DataCloudGeoLocation</members>
         <name>CleanDataService</name>
     </types>
@@ -135,22 +120,6 @@
     </types>
     <types>
         <members>DreamHouse</members>
-        <members>standard__AppLauncher</members>
-        <members>standard__Chatter</members>
-        <members>standard__Community</members>
-        <members>standard__Content</members>
-        <members>standard__Insights</members>
-        <members>standard__LightningBolt</members>
-        <members>standard__LightningInstrumentation</members>
-        <members>standard__LightningSales</members>
-        <members>standard__LightningSalesConsole</members>
-        <members>standard__LightningService</members>
-        <members>standard__Marketing</members>
-        <members>standard__Platform</members>
-        <members>standard__Sales</members>
-        <members>standard__Service</members>
-        <members>standard__ServiceConsole</members>
-        <members>standard__Sites</members>
         <name>CustomApplication</name>
     </types>
     <types>
@@ -227,90 +196,12 @@
         <name>CustomField</name>
     </types>
     <types>
-        <members>CustomLabels</members>
-        <name>CustomLabels</name>
-    </types>
-    <types>
-        <members>Account</members>
-        <members>AccountCleanInfo</members>
-        <members>AccountContactRole</members>
-        <members>Activity</members>
-        <members>Asset</members>
-        <members>AssetRelationship</members>
-        <members>AssistantProgress</members>
         <members>Bot_Command__c</members>
         <members>Broker__c</members>
-        <members>Campaign</members>
-        <members>CampaignMember</members>
-        <members>Case</members>
-        <members>CaseContactRole</members>
-        <members>ChatterActivity</members>
-        <members>CollaborationGroup</members>
-        <members>CollaborationGroupMember</members>
-        <members>ConsumptionRate</members>
-        <members>ConsumptionSchedule</members>
-        <members>Contact</members>
-        <members>ContactCleanInfo</members>
-        <members>ContactRequest</members>
-        <members>ContentVersion</members>
-        <members>Contract</members>
-        <members>ContractContactRole</members>
-        <members>DandBCompany</members>
         <members>Dreamhouse_Settings__c</members>
-        <members>DuplicateRecordItem</members>
-        <members>DuplicateRecordSet</members>
-        <members>EmailMessage</members>
-        <members>Event</members>
-        <members>ExchangeUserMapping</members>
         <members>Favorite__c</members>
-        <members>FeedItem</members>
-        <members>ForecastingCategoryMapping</members>
-        <members>Idea</members>
-        <members>Image</members>
-        <members>Lead</members>
-        <members>LeadCleanInfo</members>
-        <members>Macro</members>
-        <members>MacroAction</members>
-        <members>MacroInstruction</members>
-        <members>Opportunity</members>
-        <members>OpportunityCompetitor</members>
-        <members>OpportunityContactRole</members>
-        <members>OpportunityLineItem</members>
-        <members>Order</members>
-        <members>OrderItem</members>
-        <members>OrgDeleteRequest</members>
-        <members>PartnerRole</members>
-        <members>Pricebook2</members>
-        <members>PricebookEntry</members>
-        <members>Product2</members>
-        <members>ProductConsumptionSchedule</members>
         <members>Property__c</members>
-        <members>QuickText</members>
-        <members>Recommendation</members>
-        <members>RecordAction</members>
-        <members>RequestsForAccessSIQ</members>
-        <members>Scorecard</members>
-        <members>ScorecardAssociation</members>
-        <members>ScorecardMetric</members>
-        <members>Site</members>
-        <members>SocialPersona</members>
-        <members>Solution</members>
-        <members>StreamActivityAccess</members>
-        <members>StreamingChannel</members>
-        <members>Task</members>
-        <members>Topic</members>
-        <members>TopicAssignment</members>
-        <members>User</members>
-        <members>UserProvisioningRequest</members>
         <name>CustomObject</name>
-    </types>
-    <types>
-        <members>Bot_Command__c-en_US</members>
-        <members>Broker__c-en_US</members>
-        <members>Dreamhouse_Settings__c-en_US</members>
-        <members>Favorite__c-en_US</members>
-        <members>Property__c-en_US</members>
-        <name>CustomObjectTranslation</name>
     </types>
     <types>
         <members>Bot_Command__c</members>
@@ -337,7 +228,6 @@
         <name>DuplicateRule</name>
     </types>
     <types>
-        <members>unfiled$public</members>
         <members>unfiled$public/MarketingProductInquiryResponse</members>
         <members>unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE</members>
         <members>unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE</members>
@@ -358,10 +248,6 @@
         <name>EscalationRule</name>
     </types>
     <types>
-        <members>Case</members>
-        <name>EscalationRules</name>
-    </types>
-    <types>
         <members>Command_Center</members>
         <members>Einstein_Vision</members>
         <members>House_Explorer1</members>
@@ -371,20 +257,6 @@
         <members>Property_Record_Page</members>
         <members>dreamhouseApplicationUtilityBar</members>
         <name>FlexiPage</name>
-    </types>
-    <types>
-        <members>Advertise_New_Property-2</members>
-        <members>Opportunity_Status_Change-1</members>
-        <members>Post_Price_Changes_to_Slack-1</members>
-        <members>Price_Change_Push_Notification-1</members>
-        <name>Flow</name>
-    </types>
-    <types>
-        <members>Advertise_New_Property</members>
-        <members>Opportunity_Status_Change</members>
-        <members>Post_Price_Changes_to_Slack</members>
-        <members>Price_Change_Push_Notification</members>
-        <name>FlowDefinition</name>
     </types>
     <types>
         <members>DE Default</members>
@@ -444,8 +316,6 @@
         <members>Scorecard-Scorecard Layout</members>
         <members>ScorecardAssociation-Scorecard Association Layout</members>
         <members>ScorecardMetric-Scorecard Metric Layout</members>
-        <members>SocialPersona-Social Persona Layout</members>
-        <members>SocialPost-Social Post Layout</members>
         <members>Solution-Solution Layout</members>
         <members>Task-Task Layout</members>
         <members>User-User Layout</members>
@@ -473,15 +343,11 @@
         <members>Case.AllOpenCases</members>
         <members>Case.MyCases</members>
         <members>Case.MyOpenCases</members>
-        <members>CollaborationGroup.All_ChatterGroups</members>
-        <members>ConsumptionSchedule.All_ConsumptionSchedules</members>
-        <members>ConsumptionSchedule.My_ConsumptionSchedules</members>
         <members>Contact.AllContacts</members>
         <members>Contact.BirthdaysThisMonth</members>
         <members>Contact.MyContacts</members>
         <members>Contact.NewLastWeek</members>
         <members>Contact.NewThisWeek</members>
-        <members>ContactRequest.My_ContactRequests</members>
         <members>Contract.AllActivatedContracts</members>
         <members>Contract.AllContracts</members>
         <members>Contract.AllDraftContracts</members>
@@ -490,7 +356,6 @@
         <members>Contract.MyDraftContracts</members>
         <members>Contract.MyInApprovalContracts</members>
         <members>Favorite__c.All</members>
-        <members>Idea.Ideas_Last_7_Days</members>
         <members>Lead.AllOpenLeads</members>
         <members>Lead.MyUnreadLeads</members>
         <members>Lead.TodaysLeads</members>
@@ -510,38 +375,12 @@
         <members>Order.AllOrders</members>
         <members>Product2.AllProducts</members>
         <members>Property__c.All</members>
-        <members>Recommendation.All_Recommendations</members>
-        <members>Scorecard.AllScorecards</members>
-        <members>Scorecard.MyScorecards</members>
-        <members>SocialPersona.AllSocialPersonas</members>
         <members>Solution.AllReviewedSolutions</members>
         <members>Solution.AllUnreviewedSolutions</members>
-        <members>Task.CompletedTasks</members>
-        <members>Task.DelegatedTasks</members>
-        <members>Task.OpenTasks</members>
-        <members>Task.OverdueTasks</members>
-        <members>Task.RecurringTasks</members>
-        <members>Task.TodaysTasks</members>
-        <members>Task.UnscheduledTasks</members>
         <members>User.ActiveUsers</members>
         <members>User.AdminUsers</members>
         <members>User.AllUsers</members>
-        <members>WorkFeedbackRequest.AboutTopics</members>
-        <members>WorkFeedbackRequest.All</members>
-        <members>WorkFeedbackTemplate.All</members>
         <name>ListView</name>
-    </types>
-    <types>
-        <members>Account.Standard_Account_Match_Rule_v1_0</members>
-        <members>Contact.Standard_Contact_Match_Rule_v1_1</members>
-        <members>Lead.Standard_Lead_Match_Rule_v1_0</members>
-        <name>MatchingRule</name>
-    </types>
-    <types>
-        <members>Account</members>
-        <members>Contact</members>
-        <members>Lead</members>
-        <name>MatchingRules</name>
     </types>
     <types>
         <members>Admin</members>
@@ -628,7 +467,6 @@
         <members>DreamHouse_Reports/Days_on_Market</members>
         <members>DreamHouse_Reports/Portfolio_Health</members>
         <members>DreamHouse_Reports/Properties_by_Broker</members>
-        <members>unfiled$public</members>
         <name>Report</name>
     </types>
     <types>
@@ -653,22 +491,11 @@
         <name>Role</name>
     </types>
     <types>
-        <members>Account</members>
-        <members>Asset</members>
         <members>Bot_Command__c</members>
         <members>Broker__c</members>
-        <members>Campaign</members>
-        <members>Case</members>
-        <members>Contact</members>
         <members>Dreamhouse_Settings__c</members>
         <members>Favorite__c</members>
-        <members>FlowInterview</members>
-        <members>Lead</members>
-        <members>ListEmail</members>
-        <members>Opportunity</members>
-        <members>Order</members>
         <members>Property__c</members>
-        <members>User</members>
         <name>SharingRules</name>
     </types>
     <types>
@@ -681,59 +508,10 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>Account</members>
-        <members>Asset</members>
-        <members>Bot_Command__c</members>
-        <members>Broker__c</members>
-        <members>Campaign</members>
-        <members>Case</members>
-        <members>Contact</members>
-        <members>ContentDocument</members>
-        <members>Contract</members>
-        <members>Event</members>
-        <members>Favorite__c</members>
-        <members>Lead</members>
-        <members>Opportunity</members>
-        <members>Order</members>
-        <members>Property__c</members>
-        <members>Solution</members>
-        <members>Task</members>
-        <name>TopicsForObjects</name>
-    </types>
-    <types>
         <members>Account.Billing</members>
         <members>Campaign.ViewCampaignInfluenceReport</members>
         <members>Case.UpsellCrosssellOpportunity</members>
         <members>Opportunity.DeliveryStatus</members>
         <name>WebLink</name>
     </types>
-    <types>
-        <members>Account</members>
-        <members>Activities</members>
-        <members>Address</members>
-        <members>BusinessHours</members>
-        <members>Case</members>
-        <members>Company</members>
-        <members>Contract</members>
-        <members>Entitlement</members>
-        <members>FieldService</members>
-        <members>FileUploadAndDownloadSecurity</members>
-        <members>Forecasting</members>
-        <members>Ideas</members>
-        <members>Knowledge</members>
-        <members>LiveAgent</members>
-        <members>Macro</members>
-        <members>Mobile</members>
-        <members>Name</members>
-        <members>Opportunity</members>
-        <members>Order</members>
-        <members>OrgPreference</members>
-        <members>PathAssistant</members>
-        <members>Product</members>
-        <members>Quote</members>
-        <members>Search</members>
-        <members>Security</members>
-        <name>Settings</name>
-    </types>
-    <version>39.0</version>
 </Package>
