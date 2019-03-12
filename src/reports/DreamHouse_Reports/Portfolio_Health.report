@@ -84,8 +84,6 @@
     <reportType>CustomEntity$Property__c</reportType>
     <scope>user</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
     <sortColumn>Property__c.Days_On_Market__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>

@@ -3,5 +3,4 @@
     <enableNegativeQuantity>false</enableNegativeQuantity>
     <enableOrders>true</enableOrders>
     <enableReductionOrders>false</enableReductionOrders>
-    <enableZeroQuantity>false</enableZeroQuantity>
 </OrderSettings>

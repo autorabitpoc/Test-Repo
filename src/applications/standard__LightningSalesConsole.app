@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <formFactors>Large</formFactors>
-    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
-    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>Sales Console</label>
     <navType>Console</navType>
-    <tabs>standard-home</tabs>
-    <tabs>standard-Lead</tabs>
-    <tabs>standard-Account</tabs>
-    <tabs>standard-Contact</tabs>
-    <tabs>standard-Opportunity</tabs>
-    <tabs>standard-Campaign</tabs>
-    <tabs>standard-Task</tabs>
-    <tabs>standard-Event</tabs>
-    <tabs>standard-report</tabs>
-    <tabs>standard-Dashboard</tabs>
-    <tabs>standard-Feed</tabs>
-    <tabs>standard-CollaborationGroup</tabs>
-    <tabs>standard-File</tabs>
+    <tab>standard-home</tab>
+    <tab>standard-Lead</tab>
+    <tab>standard-Account</tab>
+    <tab>standard-Contact</tab>
+    <tab>standard-Opportunity</tab>
+    <tab>standard-Campaign</tab>
+    <tab>standard-Task</tab>
+    <tab>standard-Event</tab>
+    <tab>standard-report</tab>
+    <tab>standard-Dashboard</tab>
+    <tab>standard-Feed</tab>
+    <tab>standard-CollaborationGroup</tab>
+    <tab>standard-File</tab>
     <uiType>Lightning</uiType>
     <utilityBar>LightningSalesConsole_UtilityBar</utilityBar>
-    <workspaceConfig>
-        <mappings>
+    <workspaceMappings>
+        <mapping>
             <tab>standard-Account</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Campaign</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-CollaborationGroup</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Contact</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Dashboard</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Event</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Feed</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-File</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Lead</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Opportunity</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-Task</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-home</tab>
-        </mappings>
-        <mappings>
+        </mapping>
+        <mapping>
             <tab>standard-report</tab>
-        </mappings>
-    </workspaceConfig>
+        </mapping>
+    </workspaceMappings>
 </CustomApplication>
