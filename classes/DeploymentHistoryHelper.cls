@@ -4,6 +4,6 @@ public class DeploymentHistoryHelper{
 		Deployment_History__c newRec = new Deployment_History__c();
 		newRec.Build_Name__c = buildName;
 		insert newRec;
-		System.debug('newRec inserted = + ' newRec);
+		System.debug('newRec inserted = ' + newRec);
 	}
 }
