@@ -3,6 +3,7 @@ public class DeploymentHistoryHelperTest{
     
 	@IsTest
 	static void testCreateRecordEntry(){
+		System.debug('Enter test method');
 		Test.startTest();
 		DeploymentHistoryHelper.createRecordEntry('dummyRec');
 		Test.stopTest();
