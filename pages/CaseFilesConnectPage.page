@@ -1,0 +1,83 @@
+<apex:page showHeader="false" standardController="Case" extensions="CaseFilesConnectController" sidebar="false" action="{!getInitialDocumentSet}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <apex:form >
+    
+        <style>
+            .space{
+                height:7px;
+            }
+            
+            .errorStyling{
+                line-height: 20px;
+                border-color: #ececec;
+                border-style: solid;
+                border-width: .5px;
+            }            
+                       
+        </style>
+        <apex:actionFunction action="{!verifySharePointButton}" name="verifyButton" reRender="pageMessages,sharepointLink"/>
+        <script>
+            $( document ).ready(function() {
+                verifyButton();
+            });
+        </script>
+        <apex:outputPanel id="pageMessages">
+            <apex:pageMessages id="messages" />
+        </apex:outputPanel>
+        <apex:pageBlock id="sharepointPage" title="SharePoint Files" >   
+            <apex:pageBlockButtons >
+                <apex:outputPanel id="sharepointLink">
+                    <apex:outputLink target="_blank" value="{!folderLink}" disabled="{!isDisabled}" styleClass="btn">Link to Sharepoint</apex:outputLink>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>        
+            <apex:outputPanel rendered="{!totalNoOfRecs = 0}">
+                    <p class="errorStyling">&nbsp;No records to display</p>        
+            </apex:outputPanel>
+            <apex:outputPanel layout="block" style="height:200px;" rendered="{!totalNoOfRecs > 0}">   
+              <div class="space">           
+              </div>
+                <apex:pageBlockTable value="{!sharepointFiles}" var="file" id="thetable">                 
+                    <apex:column >
+                        <apex:facet name="header">Name</apex:facet>
+                        <apex:outputText value="{!file.name}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">View File</apex:facet>
+                        <apex:commandLink value="Link To File" target="_blank" action="{!linkFile}">
+                            <apex:param name="fileName" value="{!file.name}" assignTo="{!fileName}"/>
+                            <apex:param name="fileType" value="{!file.type}" assignTo="{!fileType}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Download File</apex:facet>
+                        <apex:commandLink value="Download" target="_blank" action="{!downloadURL}">
+                            <apex:param name="fileName" value="{!file.name}" assignTo="{!fileName}"/>
+                            <apex:param name="fileType" value="{!file.type}" assignTo="{!fileType}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">File Type</apex:facet>
+                        <apex:outputText value="{!file.type}"/>                          
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Author</apex:facet>
+                        <apex:outputText value="{!file.author}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Creation Date</apex:facet>
+                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                            <apex:param value="{!file.createdDate}" /> 
+                        </apex:outputText>                     
+                    </apex:column>              
+                </apex:pageBlockTable>
+                <div class="space">           
+                </div>
+                <apex:outputPanel style="text-align:center;horizontal-align:center;">
+                    <apex:commandButton disabled="{!(pageNumber == 0 || totalNoOfRecs == 0)}" reRender="sharepointPage" value="Prev" action="{!previous}"  title="Previous Page"/>
+                    <apex:commandButton disabled="{!(pageNumber == noOfPages -1 || totalNoOfRecs == 0)}" reRender="sharepointPage" value="Next" action="{!next}"  title="Next Page"/>
+                    <apex:outputText value="">{!IF(totalNoOfRecs < 1, totalNoOfRecs, ((pageNumber+1) * pageSize)+1-pageSize)}-{!IF(totalNoOfRecs < 1, totalNoOfRecs, IF(((pageNumber+1) * pageSize)>totalNoOfRecs, totalNoOfRecs,((pageNumber+1) * pageSize)))} of {!totalNoOfRecs}</apex:outputText>
+                </apex:outputPanel>     
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

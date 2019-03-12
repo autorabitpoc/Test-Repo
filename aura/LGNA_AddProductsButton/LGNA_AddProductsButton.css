@@ -1,0 +1,9 @@
+.THIS .slds-button__icon{
+    visibility :none;
+}
+.THIS .slds-th__action{
+    background-color : #e8e9ea;
+}
+.THIS .slds-th__action .slds-checkbox{
+ display:none;
+}

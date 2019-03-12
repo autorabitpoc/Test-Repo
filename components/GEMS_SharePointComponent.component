@@ -1,0 +1,246 @@
+<apex:component controller="GEMS_SharePointUtilityController" allowDML="true">
+    <apex:attribute name="oppId" assignTo="{!opportunityId}" type="Id" description="Opportunity Id"/>
+    <apex:attribute name="casId" assignTo="{!CaseId}" type="Id" description="case Id"/>
+    <apex:attribute name="recdId" assignTo="{!recordId}" type="Id" description="record ID"/>
+    <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>  
+    <apex:stylesheet value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/CSS/bootstrap.min.css')}"/> 
+    <apex:stylesheet value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/CSS/jquery-ui.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/CSS/main.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/JS/jquery-1.12.4.js')}" loadOnReady="false"/> 
+    <apex:includeScript value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/JS/jquery-ui.js')}" loadOnReady="false"/> 
+    <apex:includeScript value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/JS/main.js')}" loadOnReady="false"/>
+    </head>
+    <body>
+        <div class="row">
+        <div class="col-xs-12 col-lg-12 col-md-12">
+        <div class="loading">Loading&#8230;</div>
+            <div id="tabs"> 
+                <apex:outputPanel id="tabpan" rendered="{!NOT(ISNULL(opportunityId)) && NOT(ISNULL(caseId))}">
+                <ul>
+                    <li><a href="#tabs-1" onclick="loadoppfiles();">Opportunity</a></li>
+                    <li><a href="#tabs-2" onclick="loadcasefiles();">Submission Case</a></li>
+                </ul>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!NOT(ISNULL(opportunityId))}">
+                <div id="tabs-1">
+                     <apex:form id="tab-1-form">
+                        <apex:actionfunction action="{!fetchOpportunityInitialDocumentSet}" name="getoppInitdoc" oncomplete="oppverifyButton();"/>
+                        <apex:actionFunction action="{!oppverifySharePointButton}" name="oppverifyButton" reRender="oppfiles" oncomplete="$('.loading').hide();"/>
+                        <apex:actionFunction action="{!opplinkfile}" name="opplinkfile" reRender="pageMessages1" oncomplete="window.open('{!oppLinkURL}','_blank')">
+                              <apex:param assignTo="{!oppfileName}" name="fileName" value=""/>
+                              <apex:param assignTo="{!oppfileType}" name="fileType" value=""/> 
+                        </apex:actionFunction>
+                        <apex:actionFunction action="{!oppdownloadURL}" name="oppdownloadURL" reRender="pageMessages1" oncomplete="window.open('{!oppDwnURL}','_blank')">
+                              <apex:param assignTo="{!oppfileName}" name="fileName" value=""/>
+                              <apex:param assignTo="{!oppfileType}" name="fileType" value=""/> 
+                        </apex:actionFunction>
+                                                    
+                            <apex:outputPanel id="oppfiles">                                         
+                            <apex:outputPanel id="pageMessages1" rendered="{!opptotalNoOfRecs > 0}">
+                                <apex:pageMessages id="messages1"/>
+                            </apex:outputPanel>
+                            <div class="space"/>
+                            <div align="center" draggable="false" id="oppTopbut">            
+                                    <apex:outputPanel id="opplinkpan">
+                                        <apex:outputLink id="opplinkbut" target="_blank" value="{!OppfolderLink}" styleClass="btn btn-primary" style="color:white;font-weight:bold;" disabled="{!oppisDisabled}" rendered="{!NOT(ISNULL(opportunityId))}">Link to Sharepoint</apex:outputLink>
+                                    </apex:outputPanel>
+                            </div>      
+                            <div class="space"/> 
+                            <apex:outputPanel rendered="{!opptotalNoOfRecs = 0}">
+                            <table class="table table-condensed table-hover" id="oppfiletab">
+                                    <thead style="background-color: #337ab7;border-color: #2e6da4;color:white;font-weight:bold;">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>View File</th>
+                                            <th>Download File</th>
+                                            <th>File Type</th>
+                                            <th>Author</th>
+                                            <th>Creation Date</th>
+                                        </tr>
+                                    </thead>
+                            <tbody>
+                            <tr>
+                              <td colspan="6">
+                                <p class="errorStyling">&nbsp;No records to display</p>
+                              </td>  
+                            </tr>       
+                            </tbody>
+                            </table>          
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" style="height:200px;" rendered="{!opptotalNoOfRecs > 0}">   
+                                <div class="space"/>  
+                                <div class="table-responsive">         
+                                <table class="table table-condensed table-hover" id="oppfiletab">
+                                    <thead style="background-color: #337ab7;border-color: #2e6da4;color:white;font-weight:bold;">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>View File</th>
+                                            <th>Download File</th>
+                                            <th>File Type</th>
+                                            <th>Author</th>
+                                            <th>Creation Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!OppSharepointFiles}" var="file">
+                                            <tr>
+                                                <td>
+                                                    <apex:outputText value="{!file.Name}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:commandLink value="Link To File" reRender="pageMessages1" onclick="opplinkfile('{!file.Name}','{!file.Type}');" style="color: #337ab7;font-weight:bold;"/>
+                                                </td>
+                                                <td>
+                                                    <apex:commandLink value="Download File" reRender="pageMessages1" onclick="oppdownloadURL('{!file.Name}','{!file.Type}');" style="color: #337ab7;font-weight:bold;"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.type}"/> 
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.author}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                        <apex:param value="{!file.createdDate}" /> 
+                                                    </apex:outputText>   
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                                </div>
+                                <div class="space"/>                           
+                                <apex:pageBlock id="oppPagButblk">
+                                    <div align="center" id="oppBotbut">
+                                        <apex:commandButton disabled="{!(opppageNumber == 0 || opptotalNoOfRecs == 0)}" value="Prev" action="{!oppprevious}"  title="Previous Page" styleClass="btn btn-primary" id="oppPagButprev" onclick="$('.loading').show();" reRender="oppfiles" oncomplete="$('.loading').hide();" immediate="true"/>
+                                        &nbsp;&nbsp;
+                                        <apex:commandButton disabled="{!(opppageNumber == oppnoOfPages -1 || opptotalNoOfRecs == 0)}" value="Next" action="{!oppnext}" title="Next Page" styleClass="btn btn-primary" id="oppPagButnext" onclick="$('.loading').show();" reRender="oppfiles" oncomplete="$('.loading').hide();" immediate="true"/>
+                                        &nbsp;&nbsp;
+                                        <apex:outputText value="">{!IF(opptotalNoOfRecs < 1, opptotalNoOfRecs, ((opppageNumber+1) * opppageSize)+1-opppageSize)}-{!IF(opptotalNoOfRecs < 1, opptotalNoOfRecs, IF(((opppageNumber+1) * opppageSize)>opptotalNoOfRecs, opptotalNoOfRecs,((opppageNumber+1) * opppageSize)))} of {!opptotalNoOfRecs}</apex:outputText>                   
+                                    </div>
+                                </apex:pageBlock>                             
+                              <div class="space"/>
+                              </apex:outputpanel>                        
+                            </apex:outputPanel>    
+                </apex:form>
+                </div>
+               </apex:outputPanel> 
+               <apex:outputPanel id="tab-2-panel" rendered="{!NOT(ISNULL(caseId))}">
+                <div id="tabs-2">
+                   <apex:form id="tab-2-form">
+                        <apex:actionfunction action="{!fetchCaseInitialDocumentSet}" name="getcaseInitdoc"  oncomplete="caseverifyButton();"/>
+                        <apex:actionFunction action="{!caseverifySharePointButton}" name="caseverifyButton" reRender="casefiles" oncomplete="$('.loading').hide();"/>
+                         <apex:actionFunction action="{!caselinkfile}" name="caselinkfile" reRender="pageMessages2" oncomplete="window.open('{!caseLinkURL}','_blank')">
+                              <apex:param assignTo="{!casefileName}" name="fileName" value=""/>
+                              <apex:param assignTo="{!casefileType}" name="fileType" value=""/> 
+                        </apex:actionFunction>
+                        <apex:actionFunction action="{!casedownloadURL}" name="casedownloadURL" reRender="pageMessages2" oncomplete="window.open('{!caseDwnURL}','_blank')">
+                              <apex:param assignTo="{!casefileName}" name="fileName" value=""/>
+                              <apex:param assignTo="{!casefileType}" name="fileType" value=""/> 
+                        </apex:actionFunction>   
+                               
+                            <apex:outputPanel id="casefiles">   
+                            <apex:outputPanel id="pageMessages2" rendered="{!casetotalNoOfRecs > 0}">
+                                <apex:pageMessages id="messages2" />
+                            </apex:outputPanel>
+                            <div class="space"/>  
+                            <div align="center" draggable="false" id="castopbut">
+                                <apex:outputPanel id="caslinkpan">
+                                    <apex:outputLink id="caslinkbut" target="_blank" value="{!CasefolderLink}" disabled="{!caseIsDisabled}" styleClass="btn btn-primary" style="color:white;font-weight:bold;" rendered="{!NOT(ISNULL(caseId))}">Link to Sharepoint</apex:outputLink>
+                                </apex:outputPanel>
+                            </div>
+                            <div class="space"/> 
+                                <apex:outputPanel rendered="{!casetotalNoOfRecs = 0}">
+                                  <table class="table table-condensed table-hover" id="casfiletab">
+                                    <thead style="background-color: #337ab7;border-color: #2e6da4;color:white;font-weight:bold;">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>View File</th>
+                                            <th>Download File</th>
+                                            <th>File Type</th>
+                                            <th>Author</th>
+                                            <th>Creation Date</th>
+                                        </tr>
+                                    </thead>
+                            <tbody>
+                            <tr>
+                              <td colspan="6">
+                                <p class="errorStyling">&nbsp;No records to display</p>
+                              </td>  
+                            </tr>       
+                            </tbody>
+                            </table>     
+                                </apex:outputPanel>   
+                            <apex:outputPanel layout="block" style="height:200px;" rendered="{!casetotalNoOfRecs > 0}">   
+                                <div class="space"/> 
+                                <div class="table-responsive">          
+                                <table class="table table-striped table-condensed table-hover" id="casfiletab">
+                                    <thead style="background-color: #337ab7;border-color: #2e6da4;color:white;font-weight:bold;">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>View File</th>
+                                            <th>Download File</th>
+                                            <th>Document Type</th>
+                                            <th>Level</th>
+                                            <th>BA Info</th>
+                                            <th>Author</th>
+                                            <th>Creation Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!casesharepointFiles}" var="file">
+                                            <tr>
+                                                <td>
+                                                    <apex:outputText value="{!file.Name}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:commandLink value="Link To File" reRender="pageMessages2" onclick="caselinkfile('{!file.Name}','{!file.Type}');" style="color:#337ab7;font-weight:bold;"/>
+                                                </td>
+                                                <td>
+                                                    <apex:commandLink value="Download File" reRender="pageMessages2" onclick="casedownloadURL('{!file.Name}','{!file.Type}');" style="color: #337ab7;font-weight:bold;"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.DocumentType}"/> 
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.level}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.baInfo}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{!file.Author}"/>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                        <apex:param value="{!file.CreatedDate}" /> 
+                                                    </apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                                </div>
+                                <div class="space"/>  
+                                <apex:pageBlock id="casPagButblk">        
+                                    <div align="center" id="casBotbut">
+                                        <apex:commandButton disabled="{!(casepageNumber == 0 || casetotalNoOfRecs == 0)}" value="Prev" action="{!caseprevious}"  title="Previous Page" styleClass="btn btn-primary" id="casPagButprev" onclick="$('.loading').show();" reRender="casefiles" oncomplete="$('.loading').hide();" immediate="true"/>
+                                        &nbsp;&nbsp;
+                                        <apex:commandButton disabled="{!(casepageNumber == casenoOfPages -1 || casetotalNoOfRecs == 0)}" value="Next" action="{!casenext}"  title="Next Page" styleClass="btn btn-primary" id="casPagButnex" onclick="$('.loading').show();" reRender="casefiles" oncomplete="$('.loading').hide();" immediate="true"/>
+                                        &nbsp;&nbsp;
+                                        <apex:outputText value="">{!IF(casetotalNoOfRecs < 1, casetotalNoOfRecs, ((casepageNumber+1) * casepageSize)+1-casepageSize)}-{!IF(casetotalNoOfRecs < 1, casetotalNoOfRecs, IF(((casepageNumber+1) * casepageSize)>casetotalNoOfRecs, casetotalNoOfRecs,((casepageNumber+1) * casepageSize)))} of {!casetotalNoOfRecs}</apex:outputText>
+                                    </div>
+                                </apex:pageBlock> 
+                                </apex:outputPanel>  
+                                <div class="space"/> 
+                      </apex:outputPanel>                  
+                   </apex:form>          
+                </div> 
+               </apex:outPutPanel>            
+            </div>
+        </div>
+        </div> 
+      </body>   
+</apex:component>

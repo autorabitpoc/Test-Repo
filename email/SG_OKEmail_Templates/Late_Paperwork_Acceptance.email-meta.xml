@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>To be used when relaying the good news about processing what should be considered late and should be administered as an off-cycle benefit change.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Late Paperwork Acceptance</name>
+    <style>none</style>
+    <subject>Good news - Late Paperwork Exception</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

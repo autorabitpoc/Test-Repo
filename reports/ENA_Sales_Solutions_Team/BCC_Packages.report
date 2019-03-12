@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Package__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Product__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Descriptor__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Category__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Vendor__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Effective_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Active_Contracts__c</field>
+    </columns>
+    <columns>
+        <field>Account_Products__c.Active_Members__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Effective_Date__c</field>
+    </columns>
+    <description>All accounts with BCC Products</description>
+    <filter>
+        <criteriaItems>
+            <column>Account_Products__c.Package__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>standard,hmo illinois,enhanced,selective i/o,unique design,stand alone,elite std comm,unbundled</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>BCC Packages</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Account_Products__c@Account_Products__c.Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account_Products__c.Effective_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

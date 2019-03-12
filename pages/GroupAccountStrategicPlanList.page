@@ -1,0 +1,150 @@
+<apex:page showHeader="false" sidebar="false"  readOnly="false" standardStylesheets="true" standardController="Account" extensions="GroupAccount360Controller">
+ <apex:includeScript value="/support/console/28.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, 'jquery-1.9.1.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, 'ui/jquery-ui.js')}"/>
+ 
+    <apex:includeScript value="/support/console/28.0/integration.js"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, 'themes/jquery-ui.css')}"/>
+    
+    <!-- EXPERIAN Starts -->
+    
+    <apex:includeScript value="/soap/ajax/25.0/connection.js" />
+    <apex:includeScript value="/soap/ajax/25.0/apex.js" />
+
+    <script src="https://online.qas.com/SalesForceV4/Scripts/console.js"> </script>
+    <script src="https://online.qas.com/SalesForceV4/Scripts/system.js"> </script>
+    <script src="https://online.qas.com/SalesForceV4/Scripts/xd.js"> </script>
+    <script src="https://online.qas.com/SalesForceV4/Scripts/typedownClient.js"> </script>
+    <script src="https://online.qas.com/SalesForceV4/Scripts/typedownClientSFDC.js"> </script>
+    
+    <style>
+        .headerClassContacts {
+        text-align: center;
+        font-size: 5px;
+        }
+        
+        .rowsClass {
+        font-size: 11px;
+        }
+        .rowsClassBold {
+        font-size: 11px;
+        font-weight:bold
+        }
+        .link-color{
+                color:#005589 !important;
+                /*text-decoration:underline !important;*/
+        }        
+    </style>
+    
+    <script>
+     var accId=null;
+     var producerAcc=null;
+     var producerId=null;
+     function openNewStrategicPlanPage(accountId,accountName) {
+      accId=accountId;
+      producerName='{!producerName}';
+      producerId='{!producerId}';
+  
+      var url='/a0x/e?Account_Name__c='+accountId+'&saveURL=/apex/GroupAccountStrategicPlanList?id='+accountId;//'/setup/ui/recordtypeselect.jsp?ent=Strategic_Plan__c&retURL=%2F0011900000SLeQa&save_new_url=%2Fa0x%2Fe%3FCF00N33000002yl0L%3DNP%2BTest1%26CF00N33000002yl0L_lkid%3D0011900000SLeQa%26retURL%3D%252F0011900000SLeQa';
+      var url2='/a0x/e?CF00N33000002yl0L='+accountName+'&CF00N33000002yl0L_lkid='+accountId+'&CF00N330000038wWN='+producerName+'&CF00N330000038wWN_lkid='+producerId+'&saveURL=/apex/GroupAccountStrategicPlanList?id='+accountId+'&retURL='+accountId;
+
+     
+        //Opening subtab.
+     //   sforce.console.getEnclosingPrimaryTabId(openSubtab);
+        
+        // Check if user is in the Console, otherwise open as a regular URL
+        if (sforce.console.isInConsole()) 
+            {
+        
+                sforce.console.getEnclosingPrimaryTabId(function(result)
+                {
+                    sforce.console.openSubtab(result.id, url2, true, '', null);              
+                });
+            } 
+           else 
+            {
+                window.open(url2,'_self');
+            }
+  };
+    
+    
+  
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            console.log('New Strategic Plan tab launched.');
+        } else {
+            alert('subtab cannot be opened');
+          }
+        
+    };
+    
+    
+    </script>
+<!--  
+<div style='text-align:center;padding-bottom:3px;'>
+    <form action="{!URLFOR($Action.Strategic_Plan__c.New)}" method="get" target="_parent">
+    <input type="hidden" name="ent" value="01I33000000MOrI" />
+   <input type="hidden" name="save_new_url" value="/a0x/e?" />
+    <input type="hidden" name="saveURL" value="/{!accountId}"/>
+    <input type="submit" value="New Strategic Plan"/>
+    </form>
+</div>
+ -->
+<div id='pageDiv' style="height:300px;overflow:scroll;" >
+
+ <apex:form id="StrategicPlanId">
+ 
+ <apex:pageBlock >
+
+ <apex:pageBlockButtons >
+ 
+   <apex:commandButton id="newPlan" value="New Strategic Plan" action="{!URLFOR($Action.Strategic_Plan__c.New)}"   onclick="openNewStrategicPlanPage('{!accountId}', '{!accountObj.Name}'); return false;">
+   </apex:commandButton>
+ </apex:pageBlockButtons>
+
+ <apex:outputPanel id="yesPlanPanel" layout="block" style="overflow:auto;" rendered="{!IF(ISBLANK(allStrateticPlanList),false,true) && IF(allStrateticPlanList.size==0, false,true)}">
+  <apex:pageBlockSection id="pgsection" columns="1">
+  
+    <apex:pageBlockTable value="{!allStrateticPlanList}" var="row" style="width:100%" id="pagePanel" styleClass="contactsTable">
+      <apex:column headerValue="Action">
+       
+       <apex:outPutLink value="/{!row.Id}/e?retURL=/apex/GroupAccountStrategicPlanList?id={!accountId}" styleclass="link-color"   target="_parent"> Edit |
+       </apex:outPutLink>
+       
+       <apex:commandlink styleclass="link-color" value=" Delete" onclick="return confirm('Are you sure want to delete Strategic Plan '+'{!row.name}?');" action="{!URLFOR($Action.Strategic_Plan__c.delete, row.id,[retURL='/apex/GroupAccountStrategicPlanList?id='+row.account_name__c])}" target="_parent">
+       <apex:param name="strategicPlanId" value="{!row.id}"/> 
+       <apex:param name="retURL" value="/apex/GroupAccountStrategicPlanList?id={!accountId}" />
+       </apex:commandlink> 
+    </apex:column>         
+                         
+   <apex:column headerValue="Strategic Plan">
+    <apex:outputText value="*" rendered="{!IF((row.id==strategyPlanId),true,false)}"  styleClass="rowsClassBold"/>
+    
+    <apex:outPutLink styleClass="rowsClassBold" value="#" onclick="window.open('/apex/NewStrategicPlanLayout?id={!row.Id}');" target="_parent" >
+       <apex:outputText value="{!row.name}" ></apex:outputText>
+    </apex:outPutLink>
+   </apex:column>
+   <apex:Column headerValue="Record Type" value="{!row.Account_name__r.RecordType.Name }" styleClass="rowsClassBold" />
+     <!--<apex:column headerValue="Active" value="{!row.Active__c}"  styleClass="rowsClassBold" /> -->
+    <apex:column headerValue="Renewal Date" value="{!row.Effective_Date__c}" styleClass="rowsClassBold" />
+    <apex:column headerValue="Created Date" value="{!row.CreatedDate}" styleClass="rowsClassBold"  />
+    <apex:column headerValue="Created By" value="{!row.CreatedBy.name}" styleClass="rowsClassBold"  />
+    <apex:column headerValue="LastModifiedBy" value="{!row.lastModifiedBy.name}"  styleClass="rowsClassBold"/>
+      
+  </apex:pageBlockTable>
+  </apex:pageBlockSection>
+
+ </apex:outputPanel>
+ 
+ <apex:outputPanel id="noPlanPanel"  rendered="{!IF(ISBLANK(allStrateticPlanList),true,false) || IF(allStrateticPlanList.size==0, true,false)}">
+    <b>No Strategic Plan Available</b>
+  </apex:outputPanel>
+    
+ </apex:pageBlock>
+  
+</apex:form>
+</div>
+
+<!-- End Default Content REMOVE THIS -->
+
+</apex:page>

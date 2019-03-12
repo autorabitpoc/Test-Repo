@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_33365447</developerName>
+        <masterLabel>Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STATUS</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Shared Accum Approval Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shared Accum Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FEAK Approval Receivd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FEAK Approval Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DTU Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Return</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Progress</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>No GCPS Action Required</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Coding Complete</sourceValue>
+            </sourceValues>
+            <value>In Progress</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Completed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Benefits Production Ready</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Routed In Error</sourceValue>
+            </sourceValues>
+            <value>Completed</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case.GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.OWNER</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Case.Opportunity_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Medical_Benefit_Coding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.HCSC_Division__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Cluster__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>159,043,042,145,310,308,144,039,294,163,251,253,256,259,301,306,387</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_33365447</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS SETX Medical Benefit Coding</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Case.Account_Number__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

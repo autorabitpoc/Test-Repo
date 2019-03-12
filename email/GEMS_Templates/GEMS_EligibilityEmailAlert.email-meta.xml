@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template used for sending Email alert to Owner(EEE) of a GEMS Eligibility case.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS_EligibilityEmailAlert</name>
+    <style>none</style>
+    <subject>{!Case.Account} - {!Case.GEMS_Effective_Date__c} - Eligibility Process</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

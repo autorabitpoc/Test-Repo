@@ -1,0 +1,409 @@
+<apex:page standardcontroller="Account" extensions="AccountCancellationClass" title="{!accountName}-Cancellation" doctype="html-5.0" action="{!getCategoryWrapperList}">
+    <!-- <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'bootstrap-3.3.4-dist/css/bootstrap.min.css')}"/> -->
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/jquery.dataTables.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/jquery.jquery.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:includescript value="{!$Resource.jquery_1_11_1}" />
+    <apex:includescript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}" />
+    <style>
+        .accordion div.accordion-label label h4 {
+        white-space: nowrap;
+        }
+        
+        .media-holder {
+        width: 100% !important;
+        }
+        
+        .dataTables_length {
+        display: none !important;
+        }
+        
+        .data-table thead th {
+        background-color: #1797C0 !important;
+        color: #fff;
+        font-weight: bold;
+        }
+        
+        .accountTab .tertiaryPalette, .individualPalette .accountBlock .tertiaryPalette, .layoutEdit .individualPalette .accountBlock .tertiaryPalette {
+        background-color: #1797C0 !important;
+        border-color: #1797C0 !important;
+        }
+        
+        .popup {
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 60%;
+        padding: 10px;
+        position: absolute;
+        width: 500px;
+        margin-left: -250px;
+        top: 20%;
+        color: #1797c0 !important;
+        border: 1px solid #1797c0 !important;
+        border-radius: 3px !important;
+        font-size: 14px !important;
+        text-align: center !important;
+        font-weight: bold !important;
+        }
+        
+        .popupBg {
+        background-color: black;
+        opacity: 0.20;
+        filter: alpha(opacity = 70);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        color: #1797c0 !important;
+        border: 1px solid #1797c0 !important;
+        border-radius: 3px !important;
+        }
+        
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+        position:absolute;
+        top:1.25em;
+        padding:2px 5px;
+        left:-15em; width:15em;
+        z-index:100;
+        border:1px solid orange;
+        background-color:#FEFDB9;
+        color:black;
+        }
+    </style>
+    
+    <apex:form id="frm">
+        <script type="text/javascript">
+        var j$ = jQuery.noConflict();
+        j$(document).ready(function(){
+            j$('.openTab').find("a").attr("target","_blank");
+            
+            var gsTable = j$('[id$=gsDataTable]').dataTable( {
+                "order": [[ 1, "desc" ]],
+                "pageLength": 100,
+                "paging": false,
+                sPaginationType: "full_numbers",
+                "order": [[ 1, "asc" ]],
+                columnDefs: [
+                    { orderable: false, targets: 0}
+                ],
+                "oLanguage": {
+                    "sSearch": "Search..."
+                }
+            });
+            
+            var reasonValue = j$('.reason').val();
+            /**if(reasonValue.length == 0){
+                 j$('.carrierSection').hide();
+			} else {
+                 j$('.carrierSection').show();
+			}*/
+        });
+        
+        function selectRecordForMassUpdate(){
+            var check = false;
+            var inputCheckBox = document.getElementsByTagName("input");
+            for(var i=0; i<inputCheckBox.length; i++){
+                var show = inputCheckBox[i].getAttribute("data-Child");
+                if(show != null && show != '' && inputCheckBox[i].checked == true ){
+                    check= true;
+                }
+            }
+            if(check== false){
+                alert('Please select at least one record');
+            }
+            else {
+                MoveCategoryNextPage();
+            }
+        }
+        
+        function selectCurrentRecord(obj){
+            var inputCheckBox = document.getElementsByTagName("input");
+            var parentVar = obj.getAttribute("data-ChildData");
+            for(var i=0; i<inputCheckBox.length; i++){
+                var show = inputCheckBox[i].getAttribute("data-Child");
+                if(show != null){
+                    if(parentVar == show){
+                        inputCheckBox[i].checked = true;
+                    }
+                }
+            }
+        }
+        
+        function ChangeAllCheckBoxes(){
+            var parentCheckBox = document.getElementsByClassName("selectAllChk");
+            var childCheckboxList = document.getElementsByClassName("CheckBoxClass");
+            for(var i=0; i < childCheckboxList.length; i++){
+                childCheckboxList[i].checked = parentCheckBox[0].checked;
+            }
+        }
+        
+        function checkActiveMembersAndFinish(){
+            
+            //return finishGroupSection();
+            return finishCategory();
+        }
+        
+        function displayCarrierSection(value){
+            if(value.length == 0){
+                j$('.carrierSection').hide();
+            } else {
+                j$('.carrierSection').show();
+            }
+        }
+        
+        function closeWindow(caseId) {
+            
+            window.open('/'+caseId,'_self');
+            
+        }
+        
+        </script>
+        <br />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    
+                    <apex:sectionheader title="Category Section" subtitle="Cancellation" />
+                    <br />
+                    <br />
+                    <apex:actionfunction name="MoveCategoryNextPage" action="{!MoveCategoryNextPage}" rerender="frm" />
+                    <apex:actionfunction name="backToCategorySection" action="{!backToCategorySection}" />
+                    <apex:outputpanel rendered="{!CategoryToggle}">
+                        <apex:pageblock >
+                            <apex:outputpanel >
+                                
+                                <br />Underwriter: <apex:outputfield value="{!AccountRecord[0].Underwriter__c}"></apex:outputfield><br />
+                                
+                                <!--  
+<br /><br />Small Group Cancellation: <apex:inputCheckbox value="{!AccountRecord[0].Small_Group_Cancellation__c}">
+<apex:actionSupport event="onchange" rerender="MsgPanel" action="{!click}"/>                                
+</apex:inputCheckbox>
+<br /> 
+<apex:outputPanel id="MsgPanel">
+<apex:pageBlockSection >
+<apex:pageBlockSectionItem rendered="{!displayInputputText}">
+<apex:outputText style="color: red;font-weight: bold;" value="Please verify Underwriting retro cancellation approval has been associated to the Small Group case.">
+</apex:outputText>		
+</apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+</apex:outputPanel>
+-->
+                            </apex:outputpanel> 
+                            
+                            
+                            
+                            <apex:pagemessages />
+                            <h2><br />Category</h2><br />
+                            
+                            <apex:outputpanel id="Massupdatepanel" rendered="{!if(categoryWrapperList.size > 0,true,false)}">
+                                <apex:pageblocksection collapsible="false" columns="1" title="Mass Update Group Section fields">
+                                    <apex:outputpanel styleclass="requiredPanel">
+                                        <apex:outputlabel value="Requested Cancellation Date" style="width:15%;float:left;margin-right: 2%;" />
+                                        <div class="requiredInput" style="width:80%;float:left;">
+                                            <div class="requiredBlock"></div>			
+                                            <apex:input value="{!CancelDate}" type="date" ></apex:input>
+                                        </div>
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel styleclass="requiredPanel">
+                                        <apex:outputlabel value="Cancellation Code" style="width:15%;float:left;margin-right: 2%;" />
+                                        <div class="requiredInput" style="width:80%;float:left;">
+                                            <div class="requiredBlock"></div>
+                                            <apex:selectlist style="width:25%;" label="Cancellation rCode" value="{!CancelCode}" size="1">
+                                                <apex:selectoptions value="{!CancellationCodePicklist}" />
+                                            </apex:selectlist>
+                                        </div>
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel styleclass="requiredPanel">
+                                        <apex:outputlabel value="Cancellation Explanation" style="width:15%;float:left;margin-right: 2%;" />
+                                        <div class="requiredInput" style="width:80%;float:left;">
+                                            <div class="requiredBlock"></div>
+                                            <apex:inputtextarea style="width:25%;" label="Cancellation Explanation" value="{!CancelExplanation}" />
+                                        </div>
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel styleclass="requiredPanel">
+                                        <apex:outputlabel value="Cancellation Reason" style="width:15%;float:left;margin-right: 2%;" />
+                                        <div class="requiredInput" style="width:80%;float:left;">
+                                            <div class="requiredBlock"></div>
+                                            <apex:selectlist style="width:25%;" label="Cancellation Reason" value="{!CancelReason}" size="1" styleClass="reason" onchange="displayCarrierSection(this.value);">
+                                                <apex:selectoptions value="{!CancellationReasonPicklist}" />
+                                            </apex:selectlist>
+                                        </div>
+                                    </apex:outputpanel>
+                                    
+                                    <div class="carrierSection">
+                                        
+                                        <apex:pageBlockSection collapsible="false" rendered="False" columns="1">
+                                            <apex:pageblockSectionItem >
+                                                <apex:outputLabel >New Carrier for Medical:</apex:outputLabel>
+                                                <apex:inputField value="{!AccountRecord[0].New_Carrier_For_Medical_G__c}" />
+                                            </apex:pageblockSectionItem>
+                                            <apex:pageblockSectionItem >
+                                                <apex:outputLabel >New Carrier for Dental:</apex:outputLabel>                       
+                                                <apex:inputField value="{!AccountRecord[0].New_Carrier_For_Dental_G__c}" />    
+                                            </apex:pageblockSectionItem>
+                                        </apex:pageBlockSection>
+                                        
+                                    </div>
+                                    
+                                    <apex:commandbutton value="Apply To Selected" action="{!CategoryMassUpdate}" status="Massstatus" />
+                                    
+                                    <apex:actionstatus starttext="Please Wait...." id="Massstatus" />
+                                </apex:pageblocksection>
+                            </apex:outputpanel>
+                            <apex:outputpanel id="catsectionpanel" rendered="{!if(categoryWrapperList!=null && categoryWrapperList.size > 0,true,false)}" style="width:60%">
+                                <table id="gsDataTable" class="My-Group-Section data-table" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th><apex:inputcheckbox id="idPLchk" html-selectclass="pliCls" styleclass="selectAllChk" onchange="ChangeAllCheckBoxes();" />Select</th>
+                                            <th>Name</th>
+                                            <th>Category Number</th>
+                                            <th>Category Description</th>
+                                            <th>Category Cobra Code </th>
+                                            <th>Requested Cancellation Date</th>
+                                            <th>Cancellation Code</th>
+                                            <th>Cancellation Explanation</th>
+                                            <th>Cancellation Reason </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!categoryList}" var="catSecList">
+                                            <apex:repeat value="{!catSecList}" var="catsec">
+                                                <tr>
+                                                    <td><apex:inputcheckbox id="selectgs"
+                                                                            value="{!catsec.entrySelected}"
+                                                                            styleclass="CheckBoxClass"
+                                                                            html-data-child="{!catsec.entry.id}" />
+                                                    </td>
+                                                    <td><a href="/{!catsec.entry.Id}" target="_blank">
+                                                        
+                                                        <apex:outputfield value="{!catsec.entry.Name}" /> <!-- end SFDC-7455 - Zachary Campbell - 12/08/2017 -->
+                                                        </a></td>
+                                                    <td><apex:outputfield value="{!catsec.entry.name}" /></td>
+                                                    <td><apex:outputfield value="{!catsec.entry.Category_Description__c}" /></td>
+                                                    <td><apex:outputfield value="{!catsec.entry.Category_Cobra_Code__c}" /></td>
+                                                    <td><apex:Outputfield value="{!catsec.entry.Requested_Cancellation_Date__c}"
+                                                                          html-data-childdata="{catsec.entry.id}" />
+                                                    </td>
+                                                    <td><apex:Outputfield value="{!catsec.entry.Cancellation_Code__c}"
+                                                                          html-data-childdata="{!catsec.entry.id}" />
+                                                    </td>
+                                                    <td><apex:Outputfield value="{!catsec.entry.Cancellation_Explanation__c}"
+                                                                          html-data-childdata="{catsec.entry.id}" />
+                                                    </td>
+                                                    
+                                                    <td><apex:Outputfield value="{!catsec.entry.Cancellation_Reason__c}"
+                                                                          html-data-childdata="{catsec.entry.id}" />
+                                                    </td>
+                                                </tr>
+                                            </apex:repeat>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                                
+                            </apex:outputpanel>
+                            <apex:outputpanel rendered="{!if(categoryWrapperList.size == 0,true,false)}">
+                                <apex:outputlabel >{!$Label.AccountCancellationCategoryPageLabel1}</apex:outputlabel>
+                            </apex:outputpanel>
+                            <br /> <br />
+                            <apex:pageblockbuttons location="bottom">
+                                
+                                <apex:commandButton value="Cancel"  onclick="closeWindow('{!caseId}');return false;"/>
+                                <apex:commandbutton value="Next" id="nextBtn" action="{!MoveCategoryNextPage}" rendered="{!ShowNextButton}" disabled="{!if(categoryWrapperList.size == 0,true,false)}" status="status" rerender="frm" />
+                                
+                                <apex:actionstatus starttext="Please Wait...." id="status" />
+                            </apex:pageblockbuttons>
+                        </apex:pageblock>
+                    </apex:outputpanel>
+                    
+                    
+                    <apex:outputpanel rendered="{!!CategoryToggle}">
+                        <apex:pageblock >
+                            <p style="font-size: 18px;"><b><i>Cancellation Review</i></b></p>
+                            <br />
+                            <apex:outputpanel id="catsectionpanel" rendered="{!if(selectedCategoryWrapperList.size > 0,true,false)}" style="width:60%">
+                                
+                                <p style="font-size: 14px;"><b><i>Selected Category</i></b></p>
+                                <table class="My-Group-Section data-table" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Category Number</th>
+                                            <th>Category Cobra Code</th>
+                                            <th>Category Description </th>
+                                            <th>Requested Cancellation Date</th>
+                                            <th>Cancellation Code</th>
+                                            <th>Cancellation Explanation</th>
+                                            <th>Cancellation Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!selectedCategoryWrapperList}" var="catsec">
+                                            <tr>
+                                                <td>
+                                                    <a href="/{!catsec.entry.Id}" target="_blank">
+                                                        <apex:outputfield value="{!catsec.entry.Name}" />
+                                                        
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.name}" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Category_Cobra_Code__c}" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Category_Description__c}" />
+                                                </td>
+                                                
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Requested_Cancellation_Date__c}" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Cancellation_Code__c }" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Cancellation_Explanation__c}" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputfield value="{!catsec.entry.Cancellation_Reason__c}" />
+                                                </td>
+                                                
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </apex:outputpanel>
+                            <br /><br />
+                            
+                            <br />
+                            <apex:pageblockbuttons location="bottom">
+                                <apex:commandbutton value="Back" action="{!backToCategorySection}" rerender="frm" />
+                                <apex:commandbutton value="Finish" action="{!finishCategory}"  />
+                            </apex:pageblockbuttons>
+                        </apex:pageblock>
+                    </apex:outputpanel>
+                </div>
+            </div>
+        </div>
+        <apex:outputpanel id="MessagePanel" rendered="{!showMessagepanel}">
+            <apex:outputpanel styleclass="popupBg" layout="block" />
+            <apex:outputpanel styleclass="popup" layout="block">
+                <div align="center">
+                    <span> {!DisplayMessage} </span> <br />
+                    <apex:commandButton value=" Cancel " action="{!CancelMessagePanel_Cat}" />
+                    <apex:commandbutton value=" Confirm " action="{!RetroConfirmation_Cat}" rendered="{!CatRetroFeatureFlag && UnderWriterActiveForRetro}" rerender="frm" />
+                </div>
+            </apex:outputpanel>
+        </apex:outputpanel>
+    </apex:form>
+</apex:page>

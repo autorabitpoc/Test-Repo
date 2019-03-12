@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Subscribers__c</field>
+    </columns>
+    <columns>
+        <field>Account.New_Complexity_Score__c</field>
+    </columns>
+    <columns>
+        <field>Account.Complexity_Score__c</field>
+    </columns>
+    <columns>
+        <field>Account.Weighted_Complexity_Score__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active,In Communication,Actively Engaged,Actively Purchasing,In Negotiations,Sold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Active_Health_Subscribers__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Line_of_business__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;ENA,&quot;,Major National,Major National GET,Mid Market,Municipal,SCP,Student Health</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.HCSC_Division__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Complexity Report ENA</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

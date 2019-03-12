@@ -1,0 +1,8 @@
+Hello {!Case.OwnerFullName},
+
+Inquiry (Case #: {!Case.CaseNumber} ) is still open and requires your attention.  Please follow the link below to access the Case.
+
+{!Case.Link}
+
+Thank you,
+Sales Solutions Team

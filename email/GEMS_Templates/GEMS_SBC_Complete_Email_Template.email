@@ -1,0 +1,7 @@
+The finalized SBC is ready. 
+
+Account Name: {!Case.Account} 
+Case Number: {!Case.CaseNumber} 
+Case Details: {!Case.Link}
+
+Thanks

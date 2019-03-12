@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>AR Cancellation Reason Code Maps to B* Reason Code</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>BP_BlueStar_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>BP_BlueStar_Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BlueStar_Cancel_Code__c</fullName>
+        <description>SFDC vs BlueStar Cancel Code Map</description>
+        <externalId>false</externalId>
+        <inlineHelpText>BlueStar Cancel Code IS required to Request for AR Account Cancelllation</inlineHelpText>
+        <label>BlueStar Cancel Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cat_BlueStar_Code__c</fullName>
+        <description>Category BlueStar Cancel Codes</description>
+        <externalId>false</externalId>
+        <label>Cat_BlueStar_Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grp_Section_Bluestar_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Grp_Section_Bluestar_Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>AR Cancel Map Reason Code</label>
+    <listViews>
+        <fullName>Reason_Codes</fullName>
+        <columns>NAME</columns>
+        <columns>BlueStar_Cancel_Code__c</columns>
+        <columns>BP_BlueStar_Code__c</columns>
+        <columns>Cat_BlueStar_Code__c</columns>
+        <columns>Grp_Section_Bluestar_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Reason Codes</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

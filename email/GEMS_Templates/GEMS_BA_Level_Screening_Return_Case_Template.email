@@ -1,0 +1,7 @@
+The {!Case.Sub_Category__c} case has been returned  for clarification. Please provide a response. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

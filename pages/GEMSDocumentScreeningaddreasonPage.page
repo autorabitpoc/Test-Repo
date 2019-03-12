@@ -1,0 +1,96 @@
+<apex:page standardController="Case" extensions="GEMS_DocumentScreeningPageController" id="pageId">
+    
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    
+    <script>
+        function autoSave(data,id)
+        {
+            renderReturnPage();
+        }
+        
+        function fun(value)
+        {  
+            if(value=='true') 
+            {
+                window.open('/'+"{!caseRecord.id}",'_parent');
+            }
+        }
+        
+    </script>
+    
+    <style>
+        input[type=radio] { margin-left: 200px;}
+        .radioClass { margin-left: -100px;}
+    </style>
+    
+    <apex:form id="formId">
+        <apex:actionFunction name="renderReturnPage" action="{!displayReturnReasonCheck}" rerender="formId" />
+        <apex:pageBlock id="caseStatusPbId">
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Document completeness check</b>&nbsp;&nbsp;
+                <apex:actionRegion >
+                    <apex:inputfield value="{!caseRecord.GEMS_ReviewDocuments__c}" >
+                        <apex:actionSupport event="onchange" reRender="outputPanelId" status="statusId" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:actionStatus startText="Loading..." id="statusId"/>
+                    </apex:inputfield>
+                </apex:actionRegion>
+            </div>
+            <br/>
+            <apex:outputpanel id="outputPanelId">
+                <table>
+                    <tr>
+                        <td style="padding-left: 25px;vertical-align: middle;">
+                            <apex:outputText value="Disposition:" style="font-weight:bold;" rendered="{!caseRecord.GEMS_ReviewDocuments__c}" ></apex:outputText>
+                        </td>
+                        <td>
+                            <apex:selectRadio styleClass="radioClass" value="{!screeningStatus}" onchange="autoSave(this.value,id)" rendered="{!caseRecord.GEMS_ReviewDocuments__c}" disabled="{!caseRecord.GEMS_ReviewDocuments__c && (caseRecord.GEMS_Approve__c || caseRecord.GEMS_Routed_In_Error__c)}" id="radioBtns">  
+                                <apex:selectOptions value="{!items}" id="radioValue"/>
+                                <apex:actionSupport event="onchange" reRender="addReasonPbId" />
+                            </apex:selectRadio>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputpanel>
+        </apex:pageBlock>
+        
+        <apex:pageBlock rendered="{!displayReturnReason || caserecord.GEMS_Return_Check__c }" id="returnReasonPageBlockId">
+            
+            <apex:variable var="rowNumber" value="{!0}"/>
+            
+            <apex:pageblocktable value="{!returnReasonList}" var="returnReasonRecord" >
+                <apex:column headerValue="Returned Document Type">
+                    <apex:inputfield value="{!returnReasonRecord.GEMS_Type__c}" rendered="{!ISNULL(returnReasonRecord.name)}"/>
+                    <apex:outputfield value="{!returnReasonRecord.GEMS_Type__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+                <apex:column headerValue="ABS/Matrix Sub Document Type">
+                    <apex:inputfield value="{!returnReasonRecord.GEMS_Sub_Type__c}" rendered="{!ISNULL(returnReasonRecord.name)}"/>
+                    <apex:outputfield value="{!returnReasonRecord.GEMS_Sub_Type__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+                <apex:column headerValue="Return Reason">
+                    <apex:inputfield value="{!returnReasonRecord.Return_Reason__c}" rendered="{!ISNULL(returnReasonRecord.name)}"/>
+                    <apex:outputfield value="{!returnReasonRecord.Return_Reason__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+                <!--
+                <apex:column headerValue="Action" >
+                    <apex:commandButton value="Delete" action="{!deleteRow}" reRender="returnReasonPageBlockId">
+                        <apex:param name="rowIndex" value="{!rowNumber}"/>
+                    </apex:commandButton>
+                    <apex:variable var="rowNumber" value="{!rowNumber+1}"/>
+                </apex:column>
+                -->
+            </apex:pageblocktable>
+            <br/>
+            <apex:commandButton action="{!addRow}" value="Add Reason" reRender="returnReasonPageBlockId"/>
+            <br/><br/>
+            <apex:pageMessages ></apex:pageMessages>
+            
+        </apex:pageBlock>
+        <center>
+            <apex:commandButton value="Save" action="{!saveScreeningDetailsAndReturnReason}" reRender="returnReasonPageBlockId" oncomplete="fun('{!canUpdateCaseRecord}')"/>
+            &nbsp;&nbsp;&nbsp;
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>
+        </center>
+    </apex:form>
+</apex:page>

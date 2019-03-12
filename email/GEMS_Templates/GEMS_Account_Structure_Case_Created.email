@@ -1,0 +1,7 @@
+Account Structure Case has been created. Please proceed with account structure case.
+ 
+Account Name : {!Case.Account_Name__c}
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link} 
+
+Thanks

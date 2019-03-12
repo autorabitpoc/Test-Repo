@@ -1,0 +1,679 @@
+<aura:component implements="force:appHostable,force:lightningQuickAction,lightning:actionOverride,force:hasSObjectName,force:hasRecordId,flexipage:availableForAllPageTypes" controller="LGNA_NewOpportunityProducts" access="global" >
+    <aura:attribute name="oppdetailrec" type="opportunity"/>
+    <aura:attribute name="currentOppProductsMap" type="List"/><!--Map-->
+    <aura:attribute name="previouslyQuoted" type="List"/><!-- Map-->
+    <aura:attribute name="oppProdPicklistMap" type="List"/><!--Map -->
+    <aura:attribute name="currentRecordId" type="String"/>
+    <aura:attribute name="selectedSection" type="String"/>
+    <aura:attribute name="StatusUpSell_IL" type="String[]" />
+    <aura:attribute name="StatusDeclinedOptions" type="String[]" />
+    <aura:attribute name="StatusOptions" type="String[]" /> 
+    <aura:attribute name="fundingTypeOptions" type="String[]" />
+    <aura:attribute name="premiumTypeOptions" type="String[]" />
+    <aura:attribute name="PicklistOptionMap" type="Map"/>
+    <aura:attribute name="opportunityProductList" type="Opportunity_Product__c[]"/>
+    <aura:attribute name="showModal" type="boolean" default="false" />
+    
+    <!-- test to remove
+    <aura:attribute name="TypeOptions" type="Map" default="{New_Sale:['New Sale', 'Market Check','Product Term']}"/>                                                          
+    <aura:attribute name="testOption" type="String[]" />
+    <aura:attribute name="testMap"  type="Map" default="{}"/>
+    <aura:attribute name="isDependentDisable" type="Boolean" default="false" />
+    test end-->
+    
+    <aura:attribute name="StatusOptionMap" type="Map" default="{}"/>
+    <aura:attribute name="TypeOptionMap" type="MaP" default="{}"/>
+    
+    <aura:attribute name="FundingTypeOptionMap" type="Map" default="{}"/>
+    <aura:attribute name="PremiumTypeOptionMap" type="MaP" default="{}"/>
+    <aura:attribute name="hasData" type="Boolean" default="false" />
+    <aura:attribute name="oppRecord" type="Object" />
+    <aura:attribute name="oppRecordData" type="Object" />
+    <aura:attribute name="selectedOPRecord" type="Object" />
+    <aura:attribute name="selectedOPData" type="Object" />
+    <aura:attribute name="loadError" type="String" />
+    
+    <aura:attribute name="key" type="String" default="one" />    
+    
+    <aura:attribute name="errorMandatoryFlag" type="Boolean" default="false"/>
+    <aura:attribute name="errorIncumbentFlag" type="Boolean" default="false" />
+    <aura:attribute name="errorFlag" type="Boolean" default="false"/>
+    <aura:attribute name="errorPremTypeFlag" type="Boolean" default="false"/>
+    <aura:attribute name="errorAddOnLossFlag" type="Boolean" default="false"/>
+    
+    <!--attribute for editmodal -->
+    <aura:attribute name="loading" type="Boolean" default="false"/>
+    <aura:attribute name="popUpEdit" type="Boolean" default="false"/>
+    <aura:attribute name="currentSelectedId" type="String" />
+    <aura:attribute name="currentSelectedP2Id" type="String"/>
+    <aura:attribute name="currentSelectedWinId" type="String" />
+    <aura:attribute name="hoverComponent" type="Aura.Component" />
+    <aura:attribute name="showPopover" type="Boolean" default="false"/>    
+    <!--<aura:attribute name="typeList" type="List" default=""/>-->
+    
+    <!--KK Added for  Delete-->
+    <aura:attribute name="DeletePopUp" type="Boolean" default="false"/> 
+    <!--KK Added for Delete-->
+    
+    <!--KK Added for WonLost-->
+    <aura:attribute name="FundingType" type="string"/>
+    <aura:attribute name="oppProdStatus" type="string"/>
+    <aura:attribute name="WinLosePopup" type="Boolean" default="false" />
+    <aura:handler name ="WonLostModel" event="c:LGNA_OppProductWonLostEvent" action="{!c.WonLostRefresh}"/>
+    <aura:method name="Save" action="{!c.Save}"/>
+    <!--KK Added for WonLost-->    
+    
+    <aura:attribute name="recordTypeProductMap" type="map"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- <aura:handler name ="addProducts" event="c:LGNA_AddProductEvent" action="{!c.addSelectedProducts}"/>-->
+        
+    <ltng:require scripts="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+    <ltng:require scripts="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js" />
+    <!--<ltng:require scripts="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+     <ltng:require scripts="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js" />-->
+    
+    
+    <aura:method name="refresh" action="{!c.doInit}"/>
+    <lightning:overlayLibrary aura:id="popOverlayLib"/>
+    
+    <force:recordData aura:id="OppRecordData"
+                      recordId="{!v.recordId}"
+                      layoutType="{!v.layout}"
+                      fields="Id,Name,HCSC_Division__c,StageName,RecordType.DeveloperName,RecordType.Name"
+                      mode="VIEW"
+                      targetRecord="{!v.oppRecord}"
+                      targetFields="{!v.oppRecordData}"
+                      targetError="{!v.loadError}" />
+    
+    <!--test -->
+    <force:recordData aura:id="OneOppProdData"
+                      recordId="{!v.currentSelectedId}"
+                      layoutType="{!v.layout}"
+                      fields="Id,Name,
+                              RecordTypeId,
+                              RecordType.Name,
+                              RecordType.DeveloperName,
+                              Product__r.Name,
+                              Product__r.Product_Type__c,
+                              Product_Type__c,
+                              Status__c,
+                              Funding_Type__c,
+                              Premium_Type__c,
+                              Projected_Contracts__c,
+                              Projected_Members__c,
+                              Incumbent__c,
+                              Incumbent__r.Name,
+                              Win_Probability__c"
+                      mode="VIEW"
+                      targetRecord="{!v.selectedOPRecord}"
+                      targetFields="{!v.selectedOPData}"
+                      targetError="{!v.loadError}" />    
+    
+    <div class="mainWrap">
+        
+        <lightning:layout horizontalAlign="Stretch" >
+            
+            <lightning:layoutItem flexibility="auto" padding="around-small">
+                
+                <lightning:card class="no-border" title="Opportunity Product" iconName="standard:product">
+                    
+                    <aura:set attribute="actions">
+                        <lightning:button  aura:id="addproductbuton" label="Add Products" onclick="{!c.AddProduct}"/>
+                    </aura:set>                    
+                    
+                    <div class="slds-m-left_large">
+                        <a target="_self" href="{!'/'+v.recordId}">Opportunity --> {!v.oppRecordData.Name}</a> 
+                    </div>
+                    <br/>
+                    
+                    <aura:if isTrue="{!v.loading}">
+                        <div class="spinnerBGInverse">
+                            <lightning:spinner alternativeText="Loading" size="medium" />
+                        </div>
+                    </aura:if>
+                    <div align="center">
+                        <aura:if isTrue="{!v.errorFlag}">
+                            <div id="errormsg" class="globalError"><b>Error:If stage is Lost, enter the Winning Carrier field in Opportunity Product detail page except for RX products. (Validation Rule). (Related field: Winning Carrier / Vendor)</b></div>
+                        </aura:if> 
+                        <aura:if isTrue="{!v.errorMandatoryFlag}">
+                            <div id="errormsg" class="globalError"><b>Error:Required field can not be Zero or Blank.</b></div>
+                        </aura:if> 
+                        <aura:if isTrue="{!v.errorIncumbentFlag}">
+                            <div id="errormsg" class="globalError"><b>Error:Incumbent field is required for Type=New Sale, Upsell, Market Check.</b></div>
+                        </aura:if>               
+                        <aura:if isTrue="{!v.errorPremTypeFlag}">
+                            <div id="errormsg" class="globalError"><b>Error:Premium Type field is Required for Funding Type = PREM</b></div>
+                        </aura:if> 
+                        <aura:if isTrue="{!v.errorAddOnLossFlag}">
+                            <div id="errormsg" class="globalError"><b>For Type = Add On Loss, Expected Members and Expected Contracts must be negative.</b></div>
+                        </aura:if>
+                    </div>
+                    
+                    <aura:if isTrue="{!v.hasData}" >
+                        <div style="padding: 0.5rem; background: rgb(247, 248, 249);">
+                            <div class="slds-align_absolute-left,slds-text-color_inverse"><h1><b> <span class="slds-truncate" title="CURRENT SELECTED" >CURRENT SELECTED</span></b></h1></div>
+                        </div>
+                    </aura:if>
+                    <br/>
+                    <!--  <lightning:accordion aura:id="currentAccordion" title="CURRENT SELECTED"> -->
+                    
+                    <aura:iteration items="{!v.currentOppProductsMap}" var="cus" indexVar="index">
+                        <!-- <lightning:accordionSection  name="{!cus.key}" label="{!cus.key}"> -->
+                        
+                        <!-- <table style="margin-top:-16px;" class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                     -->
+                        <div class="slds-m-left_small" style="padding: 0.3rem; background: rgb(247, 248, 249);">
+                            <h3 class="slds-text-heading_small slds-accordion__summary-heading">
+                                <span class="slds-truncate" title="{!cus.key}">{!cus.key}</span>
+                            </h3>
+                        </div>
+                        
+                        <table role="grid" class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_resizable-cols fixedTable" >
+                            
+                            <thead >
+                                <tr class="slds-text-title_caps slds-is-selected ">
+                                    <th scope="col" style="width: 3.25rem;">
+                                        <div class="slds-th__action">
+                                            <span class="slds-assistive-text">Actions</span>
+                                        </div>
+                                    </th>
+                                    <!--      <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                        <span class="slds-truncate" title="Opportunity Product# ">Product# </span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                    </a>                 
+                                </th>-->
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Account Product Number" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset" tabindex="-1">                               
+                                            <span class="slds-truncate" title="Opportunity Product Name ">Product Name</span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                        </a>                 
+                                    </th>
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Product Type" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset" >
+                                            <span class="slds-truncate" title="Product Type"> Type </span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup><span style="width:70px">&nbsp;</span>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Status" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset">
+                                            <span class="slds-truncate" title="Status "> Status</span><sup style="font-size:13px;font-weight: bold; color:red;">*</sup><span style="width:60px">&nbsp;</span>
+                                        </a>
+                                        <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                    </th>
+                                    
+                                    <th aria-sort="none"  class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Funding type " scope="col">
+                                        <a class="slds-th__action slds-text-link_reset">
+                                            <span class="slds-truncate" title="Funding Type"> Funding Type </span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Premium Type" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset">
+                                            <span class="slds-truncate" title="Premium Type">Premium Type</span>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps" aria-label="Expected Contracts" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset" tabindex="-1">
+                                            <span class="slds-truncate" title="Expected Contracts">Expected Contracts</span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Expected Members" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset" tabindex="-1">
+                                            <span class="slds-truncate" title="Expected Members">Expected Members</span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Incumbent" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset ">
+                                            <span class="slds-truncate " title="INCUMBENT">Incumbent</span>
+                                        </a>
+                                    </th>
+                                    
+                                    <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu prob" aria-label="Win Probablity%" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset">
+                                            <span class="slds-truncate" title="Win Probability %">Win Probability %</span><sup style="font-size:13px; font-weight: bold; color:red;">*</sup>
+                                        </a>
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!cus.value}" var="item" indexVar="i">
+                                    <!--    <c:LNGA_OpportunityProductsCurrentlySelectedChild tempOpportunityProduct="{!item}" singleOpportunityProduct="{!item}"/>
+                           
+                             -->
+                                    
+                                    <tr>
+                                        <td>   <!-- role="gridcell"> -->
+                                            <!-- <c:LGNA_OppProductEditDelete/> -->
+                                            <lightning:buttonMenu aura:id="actionMenu" onselect="{! c.handleActionSelect}" alternativeText="Edit/Delete">
+                                                <lightning:menuItem disabled="{! item.Id==null || item.Id==''}" value="{!'Edit:'+item.Id+':'+item.Product__r.Id}" label="Edit" />
+                                                <lightning:menuItem disabled="{! item.Id==null || item.Id=='' || item.Status__c == 'Won' ||item.Status__c == 'Lost'}" value="{!'Delete:'+item.Id}" label="Delete" />
+                                            </lightning:buttonMenu>
+                                        </td>
+                                        <!--  <td>
+                                  <div class="slds-truncate" title="{!item.Product__r.Name}">	
+                                      <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                                            {!item.Name}
+                                       </a>
+                                  </div>
+                             </td>-->
+                                        
+                                        <td>
+                                            <aura:if isTrue="{!item.Product__r.Name!=null}" >
+                                                <div class="slds-truncate" title="{!item.Product__r.Name}">	
+                                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product__r.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                                                        {!item.Product__r.Name}
+                                                    </a>
+                                                </div>
+                                                <aura:set attribute ="else">
+                                                    <div class="slds-truncate" title="{!item.Account_Product_Name__c}">	
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                                                            {!item.Account_Product_Name__c}
+                                                        </a>
+                                                    </div>
+                                                    
+                                                </aura:set>
+                                            </aura:if>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="slds-truncate" title="{!item.Product_Type__c}">
+                                                
+                                                <lightning:select name="{!'Type'+i}" value="{!item.Product_Type__c}" required="true" onchange="{!c.updateSelectedStatus}"  class="slds-form_inline">
+                                                    
+                                                    <aura:if isTrue="{!item.RecordType.DeveloperName=='New_Sale' || item.Record_Type_Name__c=='New Sale' }">
+                                                        <aura:iteration items="{!v.TypeOptionMap.New_Sale}" var="option">
+                                                            <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                        </aura:iteration>
+                                                        
+                                                        
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!item.RecordType.DeveloperName=='Renewal' || item.Record_Type_Name__c=='Renewal'}" >
+                                                        <aura:iteration items="{!v.TypeOptionMap.Renewal}" var="option">
+                                                            <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                        </aura:iteration> 
+                                                    </aura:if>
+                                                    
+                                                    <aura:if isTrue="{!item.RecordType.DeveloperName=='Off_Cycle_Change' || item.Record_Type_Name__c=='Off-Cycle Change'}" >
+                                                        <aura:iteration items="{!v.TypeOptionMap.Off_Cycle_Change}" var="option">
+                                                            <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                        </aura:iteration> 
+                                                    </aura:if>                      
+                                                </lightning:select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title="{!item.Status__c}">
+                                                <!--KK Modified below line for Won/Lost Popup-->
+                                                <lightning:select name="{!'Status:'+item.Id+':'+item.Funding_Type__c+':'+item.Product__r.Id}" aura:id="dentalStatusList" value="{!item.Status__c}" required="true" onchange="{!c.updateSelectedStatus}" class="slds-form_inline">
+                                                    
+                                                    
+                                                    <aura:if isTrue="{!item.Product_Type__c=='Product Term'}" >
+                                                        
+                                                        <aura:iteration items="{!v.StatusOptionMap.Product_Term}" var="option"> <!-- items="{!v.StatusOptions}"-->
+                                                            <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                        </aura:iteration>
+                                                        <aura:set attribute ="else">
+                                                            <aura:if isTrue="{!item.Product_Type__c=='Upsell – IL'}">
+                                                                <aura:iteration items="{!v.StatusOptionMap.Upsell_IL}" var="option"> <!-- items="{!v.StatusOptions}"-->
+                                                                    <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                                </aura:iteration>
+                                                                <aura:set attribute="else">
+                                                                    <aura:iteration items="{!v.StatusOptionMap.OtherType}" var="option"> <!-- items="{!v.StatusOptions}"-->
+                                                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                                    </aura:iteration>
+                                                                </aura:set>
+                                                            </aura:if>
+                                                            
+                                                        </aura:set>
+                                                    </aura:if>
+                                                    
+                                                </lightning:select>
+                                                
+                                            </div>	                    
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="slds-truncate" title="{!item.Funding_Type__c}">
+                                                
+                                                <lightning:select name="{!'fundingType'+i}" value="{!item.Funding_Type__c}" required="true" class="slds-form_inline" onchange="{!c.updateSelectedStatus}"  >
+                                                    <aura:iteration items="{!v.fundingTypeOptions}" var="option">
+                                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </div>                                                
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="slds-truncate" title="{!item.Premium_Type__c}">
+                                                <!--  <ui:inputSelect required="true" aura:id="premiumType" disabled="false" multiple="false" class="slds-select" value="{!item.Premium_Type__c}" >
+                  
+                </ui:inputSelect>-->
+                                                <aura:if isTrue="{!item.Funding_Type__c=='PREM'}">
+                                                    <lightning:select name="{!'PremiumType'+i}" value="{!item.Premium_Type__c }" required="true" disabled="false" class="slds-form_inline" onchange="{!c.updateSelectedStatus}"  >
+                                                        <aura:iteration items="{!v.premiumTypeOptions}" var="option">
+                                                            <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                                        </aura:iteration>
+                                                    </lightning:select>
+                                                    
+                                                    <aura:set attribute="else">
+                                                        <lightning:select name="{!'PremiumType'+i}" value="{!item.Premium_Type__c}"  required="false" disabled="true"  class="slds-form_inline" onchange="{!c.updateSelectedStatus}" >
+                                                            <aura:iteration items="{!v.premiumTypeOptions}" var="option">
+                                                                <!--<option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>-->
+                                                                <option text="{!v.premiumTypeOptions[0].label}" value="{!v.premiumTypeOptions[0].id}" selected="{!v.premiumTypeOptions[0].selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                    </aura:set>
+                                                </aura:if>  
+                                                
+                                            </div>	                    
+                                        </td>
+                                        
+                                        <td >
+                                            <div class="slds-truncate slds-form_inline " title="{!item.Projected_Contracts__c}">
+                                                <!-- <ui:inputnumber required="true" class="slds-input slds-form-element__label" value="{!item.Projected_Contracts__c}" />-->
+                                                <lightning:input type="number"  required="true"   value="{!item.Projected_Contracts__c}" />
+                                            </div>	                    
+                                        </td>
+                                        
+                                        <td >
+                                            <div class="slds-truncate slds-form_inline" title="{!item.Projected_Members__c}">
+                                                <!--  <ui:inputnumber required="true" class="slds-input slds-form-element__label" value="{!item.Projected_Members__c}" />-->
+                                                <lightning:input type="number" required="true"   value="{!item.Projected_Members__c}" />
+                                            </div>	                    
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="in">
+                                                <c:LGNA_OppProductLookup objectAPIName="Account" IconName="standard:Account" selectedRecordId="{!item.Incumbent__r.Name}" selectedRecord="{!item.Incumbent__c}" label=""/>
+                                            </div>
+                                        </td>
+                                        
+                                        <td >
+                                            <div class="slds-truncate slds-form_inline" title="{!item.Win_Probability__c}">
+                                                <!-- <ui:inputnumber required="true" class="slds-input slds-form-element__label " value="{!item.Win_Probability__c}" /> -->
+                                                <lightning:input type="number" required="{!(item.Status__c =='Lost' || item.Status__c =='Won' || item.Product_Type__c =='Product Term' || item.Status__c =='Migrated')? false:true}" value="{!item.Win_Probability__c}" /> 
+                                            </div>	
+                                            
+                                        </td>    
+                                    </tr>
+                                    
+                                </aura:iteration>
+                            </tbody>
+                            
+                        </table>
+                        <br/>
+                        
+                        <!--    </lightning:accordionSection> -->
+                        
+                    </aura:iteration>
+                    
+                    <!-- </lightning:accordion>-->
+                    
+                    <aura:if isTrue="{!v.hasData}" >
+                        <div class="slds-x-small-buttons*-horizontal slds-align_absolute-center">
+                            <lightning:button variant="brand" label="Cancel" onclick="{! c.cancelUpdate }" />
+                            <lightning:button variant="brand" label="Save" onclick="{! c.Save }" />
+                        </div><br/>                         
+                        
+                        <div align="center">
+                            <aura:if isTrue="{!v.errorFlag}">
+                                <div id="errormsg" class="globalError"><b>Error:If stage is Lost, enter the Winning Carrier field in Opportunity Product detail page except for RX products. (Validation Rule). (Related field: Winning Carrier / Vendor)</b></div>
+                            </aura:if> 
+                            <aura:if isTrue="{!v.errorMandatoryFlag}">
+                                <div id="errormsg" class="globalError"><b>Error:Required field can not be Zero or Blank.</b></div>
+                            </aura:if> 
+                            <aura:if isTrue="{!v.errorIncumbentFlag}">
+                                <div id="errormsg" class="globalError"><b>Error:Incumbent field is required for Type=New Sale, Upsell, Market Check.</b></div>
+                            </aura:if> 
+                            
+                            <aura:if isTrue="{!v.errorPremTypeFlag}">
+                                <div id="errormsg" class="globalError"><b>Error:Premium Type field is Required for Funding Type = PREM</b></div>
+                            </aura:if> 
+                            <aura:if isTrue="{!v.errorAddOnLossFlag}">
+                                <div id="errormsg" class="globalError"><b>For Type = Add On Loss, Expected Members and Expected Contracts must be negative.</b></div>
+                            </aura:if>             
+                        </div>
+                        <br/><br/>
+                        
+                        <div style="padding: 0.5rem; background: rgb(247, 248, 249);">
+                            <div class="slds-align_absolute-left,slds-text-color_inverse"><h1><b><span class="slds-truncate" title="PREVIOUSLY QUOTED">PREVIOUSLY QUOTED</span></b></h1></div>
+                        </div>
+                    </aura:if>
+                    
+                    <lightning:accordion aura:id="previousAccordion" title="PREVIOUSLY QUOTED">
+                        
+                        <aura:iteration items="{!v.previouslyQuoted}" var="cus" indexVar="index">
+                            <lightning:accordionSection  name="{!cus.key}" label="{!cus.key}">
+                                
+                                <!--  <table style="margin-top:-16px;" class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+               -->
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                    
+                                    <thead >
+                                        <tr class="slds-text-title_caps slds-is-selected">
+                                            <th scope="col" style="width: 3.25rem;">
+                                                <div class="slds-th__action">
+                                                    <span class="slds-assistive-text">Actions</span>
+                                                </div>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                                    <span title="Opportunity Product# "> Product# </span>
+                                                </a>                 
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Effective Date ">Effective Date </span>
+                                                </a>
+                                                
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                                    <span class="slds-truncate" title="Opportunity Product Name ">Product Name </span>
+                                                </a>                 
+                                            </th>
+                                            
+                                            
+                                            <!--<th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                    <span class="slds-truncate" title="Opportunity Product# ">Opportunity Product# </span>
+                                </a>                 
+                            </th>-->
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Product Type" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Product Type"> Type </span>
+                                                </a>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Status "> Status </span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Funding type " scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Funding Type"> Funding Type </span>
+                                                </a>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Premium Type" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Premium Type">Premium Type</span>
+                                                </a>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Projected Contracts" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Expected Contracts">Expected Contracts</span>
+                                                </a>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Projected Members" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Expected Members">Expected Members</span>
+                                                </a>
+                                            </th>
+                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Win Probablity%" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" role="button" tabindex="-1">
+                                                    <span class="slds-truncate" title="Winning Carrier / Vendor">Winning Carrier / Vendor</span>
+                                                </a>
+                                            </th>
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <aura:iteration items="{!cus.value}" var="item" indexVar="i">
+                                            <tr>
+                                                <td role="gridcell">
+                                                    
+                                                    <lightning:buttonMenu aura:id="actionMenu" name="{!item.Id}" onselect="{!c.handleActionSelect}" alternativeText="Select to Add">
+                                                        
+                                                        <lightning:menuItem value="{!'Add:'+item.Id}" label="Add" />
+                                                        
+                                                    </lightning:buttonMenu>
+                                                </td>
+                                                
+                                                <td>
+                                                    
+                                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}"  class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Name}</a>
+                                                    
+                                                </td>
+                                                
+                                                <td>
+                                                    <!--   <ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Date__c}"/>
+                                                <lightning:input type="date" value="{!item.Effective_Date__c}"/>-->
+                                                    <div class="slds-truncate" title="Type ">{!item.Effective_Date__c}	</div>
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="slds-truncate" title="Product Name"><!--{!item.Product__r.Name}	-->
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product__}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product__r.Name}</a>
+                                                    </div>
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="slds-truncate" title="Type ">{!item.Product_Type__c}	
+                                                    </div>
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="slds-truncate" title="Status">{!item.Status__c}</div>	                    
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="slds-truncate" title="Funding Type">
+                                                        {!item.Funding_Type__c}	
+                                                        
+                                                    </div>                                                
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="slds-truncate" title="Premium Type">{!item.Premium_Type__c}</div>	                    
+                                                </td>
+                                                
+                                                <td >
+                                                    <div class="slds-truncate" title="Project Contracts">{!item.Projected_Contracts__c}</div>	                    
+                                                </td>
+                                                
+                                                <td >
+                                                    <div class="slds-truncate" title="Project Members">{!item.Projected_Members__c}</div>	                    
+                                                </td>
+                                                
+                                                <td >
+                                                    <!-- <div class="slds-truncate" title="Winning Probability">{!item.Win_Probability__c}</div>	-->
+                                                    <div class="slds-truncate" title="Winning Carrier / Vendor">{!item.Account__r.Name}</div>	
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </lightning:accordionSection>
+                            <br/>
+                        </aura:iteration>                        
+                    </lightning:accordion>
+                    
+                    <!--Previously Quoted -->
+                </lightning:card>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <!-- KK Modified below If condition for Won/Lost Popup added v.WinLosePopup-->
+    <aura:if isTrue="{!v.popUpEdit || v.WinLosePopup}" >
+        
+        <div class="slds customBackground" aura:id="editModal">
+            
+            <div role="dialog" style="height: 640px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                
+                <div class="slds-modal__container" ><!--style="width:50%; height:300px max-width:90rem;"  -->
+                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.CloseModal}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <!-- KK Modified below line for Won/Lost Popup -->
+                        <aura:if isTrue="{!v.WinLosePopup}">
+                            <c:WinLostPopup recordId="{!v.currentSelectedId}"  prod2Id="{!v.currentSelectedP2Id}"  objectName="Opportunity_Product__c" editMode="{!v.popUpEdit}" oppProdStatus="{!v.oppProdStatus}" FundingType="{!v.FundingType}" />
+                        </aura:if>
+                        <!-- KK added below if for Won/Lost Popup -->
+                        <aura:if isTrue="{!v.popUpEdit}">
+                            <c:LGNA_RecordEditFormModal recordId="{!v.currentSelectedId}"  prod2Id="{!v.currentSelectedP2Id}"  objectName="Opportunity_Product__c" editMode="{!v.popUpEdit}"/>
+                        </aura:if>  
+                    </div>                    
+                </div>                
+            </div>      
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+    <!--KK Added for Delete-->
+    <aura:if isTrue="{!v.DeletePopUp}">
+        <div class="slds customBackground" aura:id="DeleteModal">
+            <div role="dialog" style="height: 540px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header slds-theme_warning slds-notify_alert  slds-theme_alert-texture">				
+                        <h2 class="slds-text-heading--medium slds-truncate" title="Warning">Warning</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <b>If you have made any updates without saving, please 'Cancel' and Save the updates before proceeding with Delete.<br/>Otherwise, 'Continue' to remove the Opportunity Product.</b>
+                    </div>   
+                    <div class="slds-modal__footer mobileViewHeader">
+                        <lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.Deletecancel}" />
+                        <lightning:button class="slds-button" variant="brand" label="Continue" onclick="{!c.DeleteOptyProd}" />
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+    <div aura:id="addProductModal">
+        <aura:if isTrue="{!v.showModal}">
+            <c:LGNA_AddProductsButton currentOppProductsMapFinal="{!v.currentOppProductsMap}" Opportunityrecord ="{!v.oppRecordData}" showModal="{!v.showModal}" hasData="{!v.hasData}"/>        
+        </aura:if>
+    </div>
+    
+    <!-- pop up 
+    
+      <div aura:id="popover"  style="height: 640px;" tabindex="-1" class="slds-popover slds-popover_tooltip slds-nubbin_left-top ms-help-popup-in-header slds-hide" 
+               role="dialog" aria-labelledby="dialog-heading-id-1" aria-describedby="dialog-body-id-6">
+                 
+                <div class="slds-popover__body ms-help-popup-body" style="position: absolute; top: 1rem; left: 1rem; border: 1px solid red; background: rgb(244, 246, 249);" >
+                <p>Your card body</p>
+                </div>
+           
+           
+        </div>
+-->
+    
+    <!--<footer class="slds-card__footer" style="margin-bottom:-25px;margin"><a href="javascript:void(0);" onclick="{!c.navigatetab1}">View All <span class="slds-assistive-text">entity type</span></a></footer>-->
+</aura:component>

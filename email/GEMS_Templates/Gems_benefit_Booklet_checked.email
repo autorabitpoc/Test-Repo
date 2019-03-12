@@ -1,0 +1,7 @@
+Hi 
+Account Submission -{!Case.CaseNumber} has been completed and 
+Benefit Booklet is checked during submission
+
+during the submission. 
+Case Link : {!Case.Link} 
+Thanks,

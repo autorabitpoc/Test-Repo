@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="Confirmed" type="boolean" default="false"/>
+    <!--<aura:attribute Name="IsItForIncludeBA" type="Boolean" Default="false"/>
+    <aura:attribute Name="SelectedRecordId" type="ID"/> -->
+</aura:event>

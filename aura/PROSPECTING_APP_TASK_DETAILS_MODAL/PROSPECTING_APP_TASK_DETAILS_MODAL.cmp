@@ -1,0 +1,42 @@
+<aura:component controller="ProspectingAppTaskDetailsController">
+    <aura:attribute name="curTask" type="Task" default="{'sobjectType':'Task', 'Id':'', 'WhatId':'', 'Description':'', 'Subject':'', 'Type':'Call', 'Priority':'High'}"/>
+    <!-- The below attribute is a solution/workaround to the issue that some fields need to be defined in the attribute in order to be uploaded properly 
+         Not updating issues are encountered when fields are blank/null initially. Salesforce says they will fix this eventually. Hopefully but who knows. -->
+    <aura:attribute name="curTaskComplete" type="Task" default="{'sobjectType':'Task', 'Id':'', 'WhatId':'', 'Description':'', 'Subject':'', 'Type':'Call', 'Priority':'High'}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}"/>
+    <aura:registerEvent name="activityCreated" type="c:PROSPECTING_APP_REFRESH_NOTES_TASKS_LIST_EVT"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.close}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">Task Details</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <div class="slds-scrollable--y">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size--2-of-2">
+                                <lightning:input aura:id="taskSubject" class="slds-size--1-of-2" type="text" name="subject" label="Subject" value="{!v.curTaskComplete.Subject}"/>
+                                <lightning:textarea aura:id="taskDescription" name="description" label="Description" value="{!v.curTaskComplete.Description}"/>
+                                <lightning:select name="taskType" label="Type" aura:id="taskType"/>
+                                <lightning:select name="taskPriority" label="Priority" aura:id="taskPriority"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.close}">Close</button>
+                <button class="slds-button slds-button--brand" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="taskModalSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

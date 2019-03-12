@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>MT SAM 640</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>MT SAM 640</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>MT_SAM_Mgt_640</parentRole>
+</Role>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Number of prospects by Producer</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Prospects</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_11797605</developerName>
+        <masterLabel>Results</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Opportunities$StageName</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Won</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>No Further Action</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Id. Decision Makers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Prospecting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qualification</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Needs Analysis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Value Proposition</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Perception Analysis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal/Price Quote</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Negotiation/Review</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Expected In</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFI Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFI Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Negotiation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Expected In</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finalist Named</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Planning</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Initiated</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal In Negotiation</sourceValue>
+            </sourceValues>
+            <value>In Process</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Opportunities$Requested_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$StageName</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Health_Contracts__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Health_Members__c</field>
+    </columns>
+    <description>Listing of top producers open opportunities</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Opportunities$Owner</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Dena Pride</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities.Producer_Association_For_Opportunity__r$Producer_Consultant__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>ANDREINI &amp; CO OF OKLAHOMA INC,BAINS/WEST BENEFITS,INC.,ROBERT M BRAMLETT Jr.,BIGBIE,HENSLEY AND JANWAY INSURANCE AGENCY,C.L. FRATES AND COMPANY (OK),CAPITOL BENEFITS GROUP,CHER A. BUMPS &amp; ASSOC.,COLE PAINE &amp; CARLIN INS AGENCY INC,THE HOLMES ORGANISATION,INSERVICES INC,INSURICA,Employer Advocates,SUMMIT FINANCIAL GROUP INC,WILLIS OF OKLAHOMA INC,PLAN BENEFIT ANALYSTS OF TULSA,HUB</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Opportunities.Producer_Association_For_Opportunity__r$Producer_Consultant__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_11797605</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Dena Pride Producer Opportunities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Opportunities_with_Producer__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Opportunities$Requested_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

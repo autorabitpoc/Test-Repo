@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Requested_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account_Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Expected_Health_Contracts__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Expected_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Expected_Dental_Contracts__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Expected_Dental_Members__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Finalist__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Competitor_Relationships__r$Competitor_Account__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Closed_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Dan Kennedy,Rodrigo Castilleja,Rudy Sotelo,Stephen Schimmel,Nora Rodriguez,Gina Stidham,Nancy Donovan,Julie McAlister (Dieter)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed Won,Closed Lost,Expected In,RFP Expected In,RFI Received,RFI Delivered,RFP Received,RFP Delivered,In Negotiation,Finalist Named,Won,Lost,Declined,No Further Action</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>SW Prospects for 2016 as of 9/2/16</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Competitor_s_Opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Requested_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTY</interval>
+    </timeFrameFilter>
+</Report>

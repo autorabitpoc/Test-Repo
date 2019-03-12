@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$Parent</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$Status</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$GEMS_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$GEMS_End_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Setup Process</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Line_of_Business__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Major National,Large/Mid Market</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Activities$Subject</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Setup Tasks (Bill)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Cases_with_Tasks__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case.Activities$GEMS_End_Date__c</dateColumn>
+        <endDate>2017-04-21</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-04-17</startDate>
+    </timeFrameFilter>
+</Report>

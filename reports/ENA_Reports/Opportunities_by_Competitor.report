@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Opportunities$Owner</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities.Competitor_Relationships__r$Competitor_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$RecordType</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$StageName</field>
+    </columns>
+    <columns>
+        <field>Account$HCSC_Division_Full_State__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Probability</field>
+    </columns>
+    <columns>
+        <field>Account$Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Dental_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$CloseDate</field>
+    </columns>
+    <description>Current Client and Prospect opps. and renewals w/ competitor listing</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Enterprise_National_Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed Won,Closed Lost,Won,Lost,Declined,No Further Action</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>P.5.b New Opps &amp; Renewals w/Competitor</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_Producers_Comps_Oh_my__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Opportunities$CloseDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

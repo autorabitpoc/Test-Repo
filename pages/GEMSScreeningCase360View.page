@@ -1,0 +1,232 @@
+<apex:page showHeader="false" sidebar="false" standardController="Case" extensions="GEMS_ScreeningCase360ViewController">
+    <apex:stylesheet value="{!URLFOR($Resource.Customer360,'styles/main.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Customer360,'scripts/vendor/modernizr.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Customer360,'scripts/vendor/jquery-1.8.3.min.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.AdvancedNewsTicker,'jquery-advanced-news-ticker-master/assets/css/font-awesome.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.AdvancedNewsTicker,'jquery-advanced-news-ticker-master/assets/css/bootstrap.css')}" />
+
+    <style>
+        .link-color{
+        color:#005589 !important;
+        }
+        
+        .separator-div{
+        margin-top:15px;
+        }
+        
+        .line-separator-div{
+        padding:10px 0;
+        border-bottom:1px solid #FFFFFF;
+        width:100%;
+        }
+        
+        .line-separator-divBetween{
+        padding:10px 10px;
+        border-bottom:3.5px solid #FFFFFF;
+        width:100%;
+        }
+        
+        .Containertd{
+        width:25%;
+        background-color:#F5F5F5;
+        border:3px solid #FFFFFF;
+        padding:5px 20px;
+        vertical-align:top;
+        }
+        
+        .item-container, .item-container-2{
+        margin:10px 0;
+        width:98%
+        }
+        
+        .activity-circle{
+        width:85px;
+        height:85px;
+        border-radius:50%;
+        display: inline-block;
+        color:#fff; 
+        line-height: 100px;
+        text-align: center;
+        }
+        
+        .open-activity-circle{
+        background-color:#A5D151;
+        }
+        
+        .open-activity-circle:hover{
+        background-color:#A5D151;
+        }
+        
+        .pastdue-activity-circle{
+        background-color:#EAA92A;
+        }
+        
+        .pastdue-activity-circle:hover{
+        background-color:#EAA92A;
+        }
+        
+        .large-text{
+        font-size:24px;
+        border-right:1px solid #fff;
+        padding:5px;
+        }
+        
+        .small-text{
+        font-size:12px;
+        }
+        
+        .headerCell{
+        padding:5px !important;
+        background-color:#2B52A1;
+        color:#fff;
+        border:1px solid #d1d1d1;
+        }
+        
+        .headerCellHidden{
+        display:none;
+        }
+        
+        .tableCell{
+        padding:5px !important;
+        border:1px solid #d1d1d1;
+        }
+        
+        .tableCellNoBorder{
+        padding:5px !important;
+        background-color:#FAF9F8;
+        }
+        
+        .google-visualization-table-table {
+        margin:0 auto !important;
+        }
+        
+        .google-visualization-table-div-page{
+        float:right !important;
+        }
+        
+        .vertical-align-top{
+        
+        }
+        
+        .headerCSS{
+        color: #005589 !important;
+        padding: 5px !important;
+        }
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 5px;
+        text-align: left;
+        }
+        
+    </style>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <script type="text/javascript">
+    
+        var thisTab;
+        
+        google.load("visualization", "1", {packages:["table"]});
+        $(document).ready(function(){
+           
+            var data = new google.visualization.DataTable();
+            
+            data.addColumn('string', 'Category');
+            data.addColumn('string', 'Sub Category');
+            data.addColumn('string', 'Status');
+            data.addColumn('string', 'Case Number');
+            data.addColumn('string', 'Owner'); 
+            data.addColumn('string', 'Date Opened');
+            data.addColumn('string', 'Date Closed');
+            data.addColumn('string', 'Days Open');              
+              data.addColumn('string', 'Open'); 
+            data.addColumn('string', 'Closed');  
+            
+                    
+            
+            data.addRows([
+                <apex:repeat value="{!openChildCasesList}" var="opportunityProductObj">
+                
+                ['<apex:outputText style="font-weight:900;" ><apex:outputLink value="/{!opportunityProductObj.id}" target="_blank">{!opportunityProductObj.Type}</apex:outputLink></apex:outputText>',
+                    '{!opportunityProductObj.Sub_Category__c}',
+                    '{!opportunityProductObj.status}',
+                '<apex:outputLink value="/{!opportunityProductObj.id}" target="_blank">{!opportunityProductObj.casenumber}</apex:outputLink>',
+                '{!opportunityProductObj.Owner.Name}',
+                '<apex:outputText value=" {0,date,M/d/yyy}"><apex:param value="{!opportunityProductObj.createdDate + offset}"/></apex:outputText>',  // SFDC-9342
+                '<apex:outputText value=" {0,date,M/d/yyy}"><apex:param value="{!opportunityProductObj.closeddate + offset}"/></apex:outputText>',   // SFDC-9342
+
+
+                    '{!opportunityProductObj.Days_Open__c }',
+                    
+                    '<apex:image id="theImage1" value="{!If(opportunityProductObj.isclosed == false,$Resource.checkbox,$Resource.uncheckedcheckbox)}" width="12" height="12"/> ',
+                    '<apex:image id="theImage" value="{!If(opportunityProductObj.isclosed == true,$Resource.checkbox,$Resource.uncheckedcheckbox)}" width="12" height="12"/> '  
+               ],
+                </apex:repeat>
+            ]);
+            
+            var cssClassNames = {
+                headerCell: 'headerCell',
+                tableCell: 'tableCell'
+            };
+            
+            var options = {
+                'showRowNumber': true,
+                'cssClassNames': cssClassNames,
+                'page':'enable',
+                'allowHtml':true,
+                'pageSize':5,
+                'width':'100%'
+            };
+            
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw( data, options );
+            
+        });
+    </script>
+    
+    <apex:form >
+        <div class="entity360 container" style="height:auto;width:100%;" id="entity360">
+            <table class="360Container" style="width:100%">                             
+                <tr>
+                    <td class="Containertd">
+                        <div class="h4 headerCSS" style="font-weight:bold;">
+                            <apex:outputText value="{!caseObj.Subject}" />
+                        </div>
+                        <div class="separator-div h5">
+                            <b>Account Number:</b>&nbsp;<apex:outputField value="{!caseObj.Account_Number__c}" />
+                        </div>
+                        <div class="separator-div h5">
+                            <b>HCSC Division:</b>&nbsp;<apex:outputField value="{!caseObj.HCSC_Division__c}" />
+                        </div>
+                    
+                    </td>
+                
+                    <td class="Containertd" style="padding-top: 30px;">
+                        <div class="separator-div h5">
+                            <b>Market Segment:</b>&nbsp;<apex:outputField value="{!caseObj.Market_Segment__c}" />
+                        </div>
+                        <div class="separator-div h5">
+                            <b>Case Effective Date:</b>&nbsp;<apex:outputField value="{!caseObj.GEMS_Case_Effective_Date__c}" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                     <td class="Containertd" colspan="2">
+                        <div class="separator-div h5">
+                            <font color="#005589"><b>Cases:</b></font>
+                        </div>
+                        <div class="item-container h5">
+                            <div id="table_div" style="width:100%"/>
+                            <div class="item-container">
+                                <font color="#005589"><b>Count of Cases:</b></font> {!openChildCasesList.size}
+                            </div>
+                        </div>
+                     </td>   
+                </tr>                                
+            </table>
+        </div>
+    </apex:form> 
+</apex:page>

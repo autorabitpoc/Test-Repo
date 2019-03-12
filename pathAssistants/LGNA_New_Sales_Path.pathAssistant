@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>LGNA New Sales Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Status__c</fieldNames>
+        <fieldNames>Probability</fieldNames>
+        <fieldNames>Producer_Contact__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Schedule time to meet with the Broker/Consultant&lt;/li&gt;&lt;li&gt;Update the Probability percentage to reflect the chance of winning&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Adjust and Negotiate</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>StageName</fieldNames>
+        <fieldNames>Date_Closed__c</fieldNames>
+        <fieldNames>Primary_Closed_Reason__c</fieldNames>
+        <fieldNames>Closed_Comments__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Schedule a post mortem with the Broker/Consultant&lt;/li&gt;&lt;li&gt;if applicable, list the Winning Carrier on any lost products&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Lost</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Status__c</fieldNames>
+        <fieldNames>Probability</fieldNames>
+        <fieldNames>Requested_Effective_Date__c</fieldNames>
+        <fieldNames>CloseDate</fieldNames>
+        <fieldNames>Incumbent__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Use the Request Hub to submit Proposal, Network, PG, or other requests&lt;/li&gt;&lt;li&gt;Review and update the Opportunity Products&lt;/li&gt;&lt;li&gt;Schedule time to discuss with underwriting&lt;/li&gt;&lt;li&gt;Update the Probability percentage to reflect the chance of winning&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Qualify</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Status__c</fieldNames>
+        <fieldNames>Probability</fieldNames>
+        <fieldNames>CloseDate</fieldNames>
+        <fieldNames>Finalist_Meeting__c</fieldNames>
+        <fieldNames>Producer_Contact__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Request an initial quote, finalize, and deliver to the Broker/Client&lt;/li&gt;&lt;li&gt;Update the Probability percentage to reflect the chance of winning&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Quote</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>StageName</fieldNames>
+        <fieldNames>Date_Closed__c</fieldNames>
+        <fieldNames>Primary_Closed_Reason__c</fieldNames>
+        <fieldNames>Closed_Comments__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Schedule a post mortem with the Broker/Consultant&lt;/li&gt;&lt;li&gt;if applicable, list the Winning Carrier on any lost products&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Withdrawn</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>StageName</fieldNames>
+        <fieldNames>Date_Closed__c</fieldNames>
+        <fieldNames>Primary_Closed_Reason__c</fieldNames>
+        <fieldNames>Closed_Comments__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Schedule a post mortem with the Broker/Consultant&lt;/li&gt;&lt;li&gt;if applicable, list the Winning Carrier on any lost products&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Won</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>New_Sale</recordTypeName>
+</PathAssistant>

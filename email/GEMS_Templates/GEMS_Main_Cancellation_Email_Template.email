@@ -1,0 +1,9 @@
+{!Case.RecordType} case for {!Case.Account_Name__c} has been cancelled. Please take appropriate action.
+
+Account Name : {!Case.Account_Name__c} 
+
+{!Case.RecordType} Case Number : {!Case.CaseNumber} 
+
+{!Case.RecordType} Case Details : {!Case.Link} 
+
+Thank You.

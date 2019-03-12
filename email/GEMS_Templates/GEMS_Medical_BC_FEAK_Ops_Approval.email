@@ -1,0 +1,7 @@
+The Medical Benefit is ready for DTU review and approval. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification for Completion of Custom ID Request Form</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS_Custom_ID_Request_Form_Completion</name>
+    <style>none</style>
+    <subject>{!Case.Subject}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

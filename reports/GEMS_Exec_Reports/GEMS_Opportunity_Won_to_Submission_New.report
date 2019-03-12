@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_83312311</developerName>
+        <masterLabel>Submission Case Exists or Not</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Requests__r$GEMS_Submission_Type__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>New Account</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Off Cycle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cancellation</sourceValue>
+            </sourceValues>
+            <value>GEMS Case Exists</value>
+        </values>
+        <values>
+            <value>Not Exists</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Id</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$RecordType</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$Status</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Requests__r$RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.New_Sale</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_83312311</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS Opportunity Won to Submission - New</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Opportunity_with_Cases__c</reportType>
+    <roleHierarchyFilter>Executive_Management</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Opportunity$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Requested_Effective_Date__c</dateColumn>
+        <endDate>2017-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

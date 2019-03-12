@@ -1,0 +1,8 @@
+<aura:component controller ="CreateSBCBBFormsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="CARData" type="GEMS_Contract_Admin_Request__c"/>
+    <div class="slds-align_absolute-center">
+        <lightning:button aura:id="GEMS SBC Form" variant="Neutral" label="Add SBC Form" onclick="{!c.CreateForm}" />
+        <lightning:button aura:id="GEMS BB Form" variant="Neutral" label="Add BB Form" onclick="{!c.CreateForm}" />
+    </div>
+</aura:component>

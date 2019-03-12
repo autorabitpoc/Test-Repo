@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Case.GEMS_Days_this_Open_And_Release_Date__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>Case.GEMS_StdCust_Product__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average OpenedToReleased</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>Case.GEMS_Days_bw_Screening_and_Closed_date__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>Case.GEMS_StdCust_Product__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average ReleasedToCompleted</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>Case.GEMS_Released_to_Screening_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Days_this_Open_And_Release_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Days_bw_Screening_and_Closed_date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case.GEMS_StdCust_Product__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Flag__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Line_of_Business__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Large/Mid Market,Municipal,SCP,Student Health</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.GEMS_StdCust_Product__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS CycleTime by Product Type - NonGET</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Acccount_Number__c</fullName>
+        <description>Account Number related to the content</description>
+        <externalId>false</externalId>
+        <formula>Account__r.External_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Account Number related to the content</inlineHelpText>
+        <label>Acccount Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Executive__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account Executive working on the renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account Executive working on the renewal</inlineHelpText>
+        <label>Account Executive</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Content_Versions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account related to content</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account related to content</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Content Versions</relationshipLabel>
+        <relationshipName>Content_Versions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Actual_Renewal_Release_Date__c</fullName>
+        <description>Actual date in which content was shared</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual date in which content was shared</inlineHelpText>
+        <label>Actual Renewal Release Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ContentSize</fullName>
+    </fields>
+    <fields>
+        <fullName>Dental_Underwriter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Dental Underwriter working on the renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Dental Underwriter working on the renewal</inlineHelpText>
+        <label>Dental Underwriter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Content_Versions1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Dental__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicating content has a dental component</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicating content has a dental component</inlineHelpText>
+        <label>Dental</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>FileExtension</fullName>
+    </fields>
+    <fields>
+        <fullName>FileType</fullName>
+    </fields>
+    <fields>
+        <fullName>Funding_Arrangement__c</fullName>
+        <description>Funding arrangement on the renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Funding arrangement on the renewal</inlineHelpText>
+        <label>Funding Arrangement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>Cost Plus</fullName>
+                    <default>false</default>
+                    <label>Cost Plus</label>
+                </value>
+                <value>
+                    <fullName>MPP</fullName>
+                    <default>false</default>
+                    <label>MPP</label>
+                </value>
+                <value>
+                    <fullName>Premium Prospective</fullName>
+                    <default>false</default>
+                    <label>Premium Prospective</label>
+                </value>
+                <value>
+                    <fullName>Premium Retrospective</fullName>
+                    <default>false</default>
+                    <label>Premium Retrospective</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HCSC_Division__c</fullName>
+        <description>HCSC Division related to the content</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Account__r.HCSC_Division__c)</formula>
+        <inlineHelpText>HCSC Division related to the content</inlineHelpText>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsAssetEnabled</fullName>
+    </fields>
+    <fields>
+        <fullName>Language</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Past_Due__c</fullName>
+        <description>Indicating renewal was shared after the planned release date</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(Planned_Exhibit_Release_Date__c &lt;= TODAY(),OR(Actual_Renewal_Release_Date__c &gt; Planned_Exhibit_Release_Date__c, ISBLANK(Actual_Renewal_Release_Date__c))),True,False)</formula>
+        <inlineHelpText>Indicating renewal was shared after the planned release date</inlineHelpText>
+        <label>Past Due?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Planned_Exhibit_Release_Date__c</fullName>
+        <description>Date the Underwriter is planning to share renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date the Underwriter is planning to share renewal</inlineHelpText>
+        <label>Planned Renewal Release Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <description>Region related to the content</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Account__r.Region__c )</formula>
+        <inlineHelpText>Region related to the content</inlineHelpText>
+        <label>Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Effective_Date__c</fullName>
+        <description>Date Renewal will be Effective</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Renewal will be Effective</inlineHelpText>
+        <label>Renewal Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SharingOption</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SharingPrivacy</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>TagCsv</fullName>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Underwriter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Underwriter working on Renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Underwriter working on Renewal</inlineHelpText>
+        <label>Underwriter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Content_Versions2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <recordTypes>
+        <fullName>Renewals</fullName>
+        <active>true</active>
+        <description>This record type on Content will be used to store Renewals</description>
+        <label>Renewals</label>
+        <picklistValues>
+            <picklist>Funding_Arrangement__c</picklist>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cost Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Prospective</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Retrospective</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>VERSION.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.CONTENT_SIZE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.FILE_EXTENSION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.LAST_UPDATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.OWNER</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

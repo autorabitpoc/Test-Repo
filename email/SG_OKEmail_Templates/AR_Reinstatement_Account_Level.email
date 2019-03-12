@@ -1,0 +1,15 @@
+Hello,
+
+Below is a request for a Group Reinstatement - Account Level. The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Effective Date: [including month/day/year]
+- Tracking Number:
+- Check Number:
+- Check Amount:  $
+
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below. Below you will also find the routing information regarding the small group’s payment.
+
+Thank you for your help,

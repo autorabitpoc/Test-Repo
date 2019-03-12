@@ -1,0 +1,9 @@
+.THIS .buttonContainerClass {
+    width: 100%;
+}
+
+.THIS .buttonClass {
+    width: 100%;
+    min-height: 60px;
+    font-size: 125%;
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>User.Lan_ID__c</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>User.dsfs__DSProSFUsername__c</field>
+    </columns>
+    <columns>
+        <field>User.dsfs__DSProSFMembershipStatus__c</field>
+    </columns>
+    <description>LGNA - Acct Mgmt AE under 2K, Read Only + LGNA , LEX - System Administrator, LGNA - Acct Mgmt SAE over 2K,  LGNA - Acct Mgmt MSR under 2K, LGNA - Acct Mgmt Sr. AE over 2K</description>
+    <filter>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>docusign,idiqsforce,Integration,Chatter,Restricted,Security</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.dsfs__DSProSFUsername__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LGNA - Acct Mgmt AE under 2K,Read Only + LGNA,LEX - System Administrator,LGNA - Acct Mgmt SAE over 2K,LGNA - Acct Mgmt MSR under 2K,LGNA - Acct Mgmt Sr. AE over 2K</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PROFILE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>New Profile  With Docusign information</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

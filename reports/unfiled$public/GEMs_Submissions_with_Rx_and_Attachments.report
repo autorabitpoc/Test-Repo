@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Rx_Vendor__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Name</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Type__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Products__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>RX</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMs Submissions with Rx and Attachments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_With_Attachment__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Account_Setup_Opened_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

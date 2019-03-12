@@ -1,0 +1,5 @@
+Hi,
+Underwriting has approved the account - {!Case.Account}.
+ Account Name: {!Case.Account}
+
+Thanks

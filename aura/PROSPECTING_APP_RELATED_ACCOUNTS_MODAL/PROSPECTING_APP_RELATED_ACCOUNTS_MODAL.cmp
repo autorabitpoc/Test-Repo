@@ -1,0 +1,49 @@
+<aura:component >
+    <aura:attribute name="accountContactRelations" type="AccountContactRelation[]" default="[]"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.closeComp}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">Related Accounts</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <div class="slds-scrollable--y" style="max-height: 50vh;">
+                        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title--caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Account Name">Account Name</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Account Type">Account Type</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.accountContactRelations}" var="currentRelation" indexVar="idx"> 
+                                    <tr>
+                                        <td data-label="Contact Name">
+                                            <div class="slds-truncate" title="Contact Name">{!currentRelation.Account.Name}</div>
+                                        </td>
+                                        <td data-label="Title">
+                                            <div class="slds-truncate" title="Title">{!currentRelation.Account.RecordType.Name}</div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeComp}">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop--open"></div>
+</aura:component>

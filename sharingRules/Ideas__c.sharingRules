@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Idea_Managers</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Rule to share custom Idea object with the Idea Managers public group.</description>
+        <label>Idea Managers</label>
+        <sharedTo>
+            <group>Idea_Managers</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

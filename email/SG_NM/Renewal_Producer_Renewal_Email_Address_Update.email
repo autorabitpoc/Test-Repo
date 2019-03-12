@@ -1,0 +1,17 @@
+Send this to Adam Lawrence and he will follow up to make sure the master is updated.  
+
+Hello,
+
+The following New Mexico Producer Renewal Contact has been edited / updated effective for [Enter Date]. The following information can be used to process this request:
+
+- Producer BCBS Number: {!Case.Producer_Account_Number__c}
+
+- Producer Name: {!Case.Contact}
+
+- Date of requested change: [Enter Request Date]
+
+- Recent information to be replaced: [Enter full email address - what it was prior to update]
+
+- Replacement information: [Enter full email address of the new / replacement Information]
+
+Thank you for your help,

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>AR Cancellation Constant Fields required for BlueStar XML</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ARCancelRequiredField__c</fullName>
+        <description>Dummy Fields has been sent to B* AR Cancellation request as required fields in XML, Since  leveraging GEMS web service for AR Cancellation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required Organization ID used in ARCancelllationHelper Apex Class for Blue Star Integration.</inlineHelpText>
+        <label>ARCancelRequiredField</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>ARCancellationConstants</label>
+    <visibility>Public</visibility>
+</CustomObject>

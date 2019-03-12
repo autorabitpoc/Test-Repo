@@ -1,0 +1,16 @@
+Hello,
+
+Below is a request for Certificate(s).  Booklet Order Checklist below.
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Group Number(s): [Enter Group Number(s)]
+-Benefit Agreement Numbers): [Enter Benefit Agreement Numbers]
+-Benefit Year: [Benefit Year]
+- Date of Service: [Legal Request Only]
+- Cost Center: [833/876]
+- Ship to Address: [if applicable]
+
+Please respond within 3 business days with the resolution of this request. 
+
+Thank you for your help,

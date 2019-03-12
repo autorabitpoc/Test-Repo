@@ -1,0 +1,4382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Decline</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewEvent</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewSfdcEvent</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Today</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Event_Standard_Compact_Layout</fullName>
+        <fields>Subject</fields>
+        <fields>Location</fields>
+        <fields>Type</fields>
+        <label>Event Standard Compact Layout</label>
+    </compactLayouts>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ActivityDate</fullName>
+    </fields>
+    <fields>
+        <fullName>ActivityDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>Attendees</fullName>
+    </fields>
+    <fields>
+        <fullName>ClientGuid</fullName>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>DurationInMinutes</fullName>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+    </fields>
+    <fields>
+        <fullName>EndDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>EventSubtype</fullName>
+    </fields>
+    <fields>
+        <fullName>IsAllDayEvent</fullName>
+    </fields>
+    <fields>
+        <fullName>IsException</fullName>
+    </fields>
+    <fields>
+        <fullName>IsPrivate</fullName>
+    </fields>
+    <fields>
+        <fullName>IsRecurrence2</fullName>
+    </fields>
+    <fields>
+        <fullName>IsReminderSet</fullName>
+    </fields>
+    <fields>
+        <fullName>Location</fullName>
+    </fields>
+    <fields>
+        <fullName>OriginalInstanceDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+    </fields>
+    <fields>
+        <fullName>ShowAs</fullName>
+    </fields>
+    <fields>
+        <fullName>StartDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WhatId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>WhoId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <recordTypes>
+        <fullName>Blue_Directions_Discovery</fullName>
+        <active>true</active>
+        <description>This record type will be used by Blue Directions team members to create Blue Directions - Discovery related events</description>
+        <label>Blue Directions - Discovery</label>
+        <picklistValues>
+            <picklist>Assigned_Partner__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Account Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accounts Receivable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Actuarial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Directions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAS Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Analytic Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Administration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - ASO Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - Benefit Booklets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECE Enterprise Client Extracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Eligibility Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Pharmacy Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - CMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Membership Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fraud and Abuse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Fulfillment Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Medical Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Pre-Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentive Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installation Teams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networks Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Producer Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Business Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Treasury Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urgent Communications</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>Audits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CMS Demand Letters</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Exception</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Type</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Complexity__c</picklist>
+            <values>
+                <fullName>Level 1</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Disposition__c</picklist>
+            <values>
+                <fullName>Completed %E2%80%93 Implementation Ready</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interested %E2%80%93 Schedule Next Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Longer Interested</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on Additional Information</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Scope Code Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Global</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Source__c</picklist>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar Attendance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>60-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork initiated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>3rd Party Disease Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accums Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Additional Information Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alt Net Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAE Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAM PortaL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Booklet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Interpretation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Value Advisor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Care Connection%2FBlue Elite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Denial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Detail Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Paid Incorrectly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding Discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condition Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covered Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deductible Credit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOB Copy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSA Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Files Transfers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H%2ES%2EA%2E Custodians</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ID Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individual Claimant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Correction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integration%2FShared Accums</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees%2FRequests</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Precertification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Predetermination</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prior Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Base Pricing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reimbursement Issue %28BCBS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reinstate Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Step Therapy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary of Benefits %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tiering Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Claims Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Lock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness Portal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email sent to Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Task_Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Broker Contact %28Prospects %26 Opportunities 1 %2Fday %2Fconsulting house%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Blue_Directions_Implementation</fullName>
+        <active>true</active>
+        <description>This record type will be used by Blue Directions team members to create Blue Directions - Implementation related events</description>
+        <label>Blue Directions - Implementation</label>
+        <picklistValues>
+            <picklist>Assigned_Partner__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Account Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accounts Receivable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Actuarial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Directions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAS Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Analytic Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Administration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - ASO Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - Benefit Booklets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECE Enterprise Client Extracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Eligibility Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Pharmacy Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - CMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Membership Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fraud and Abuse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Fulfillment Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Medical Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Pre-Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentive Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installation Teams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networks Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Producer Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Business Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Treasury Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urgent Communications</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>Audits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CMS Demand Letters</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Exception</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Type</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Complexity__c</picklist>
+            <values>
+                <fullName>Level 1</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Disposition__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OE Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OE Started</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on Completed Paperwork</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Scope Code Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Global</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Source__c</picklist>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar Attendance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>60-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork initiated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>3rd Party Disease Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accums Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Additional Information Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alt Net Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAE Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAM PortaL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Booklet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Interpretation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Value Advisor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Care Connection%2FBlue Elite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Denial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Detail Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Paid Incorrectly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding Discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condition Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covered Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deductible Credit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOB Copy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSA Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Files Transfers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H%2ES%2EA%2E Custodians</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ID Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individual Claimant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Correction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integration%2FShared Accums</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees%2FRequests</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Precertification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Predetermination</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prior Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Base Pricing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reimbursement Issue %28BCBS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reinstate Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Step Therapy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary of Benefits %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tiering Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Claims Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Lock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness Portal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email sent to Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Task_Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Broker Contact %28Prospects %26 Opportunities 1 %2Fday %2Fconsulting house%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Blue_Directions_Qualification</fullName>
+        <active>true</active>
+        <description>This record type will be used by Blue Directions team members to create Blue Directions -  Qualification related events</description>
+        <label>Blue Directions - Qualification</label>
+        <picklistValues>
+            <picklist>Assigned_Partner__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Account Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accounts Receivable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Actuarial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Directions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAS Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Analytic Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Administration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - ASO Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - Benefit Booklets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECE Enterprise Client Extracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Eligibility Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Pharmacy Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - CMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Membership Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fraud and Abuse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Fulfillment Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Medical Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Pre-Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentive Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installation Teams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networks Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Producer Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Business Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Treasury Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urgent Communications</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>Audits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CMS Demand Letters</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Exception</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Type</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Complexity__c</picklist>
+            <values>
+                <fullName>Level 1</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Disposition__c</picklist>
+            <values>
+                <fullName>Future Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interested %E2%80%93 Schedule Next Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Interest%2C reason given</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Interest%2C reason not given</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Scope Code Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Global</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Source__c</picklist>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar Attendance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>60-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork initiated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>3rd Party Disease Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accums Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Additional Information Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alt Net Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAE Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAM PortaL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Booklet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Interpretation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Value Advisor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Care Connection%2FBlue Elite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Denial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Detail Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Paid Incorrectly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding Discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condition Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covered Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deductible Credit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOB Copy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSA Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Files Transfers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H%2ES%2EA%2E Custodians</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ID Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individual Claimant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Correction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integration%2FShared Accums</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees%2FRequests</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Precertification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Predetermination</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prior Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Base Pricing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reimbursement Issue %28BCBS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reinstate Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Step Therapy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary of Benefits %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tiering Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Claims Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Lock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness Portal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email sent to Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Task_Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Broker Contact %28Prospects %26 Opportunities 1 %2Fday %2Fconsulting house%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Blue_Directions_Renewal</fullName>
+        <active>true</active>
+        <description>This record type will be used by Blue Directions team members to create Blue Directions - Renewal related events</description>
+        <label>Blue Directions - Renewal</label>
+        <picklistValues>
+            <picklist>Assigned_Partner__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Account Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accounts Receivable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Actuarial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Directions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAS Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Analytic Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Administration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - ASO Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - Benefit Booklets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECE Enterprise Client Extracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Eligibility Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Pharmacy Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - CMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Membership Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fraud and Abuse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Fulfillment Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Medical Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Pre-Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentive Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installation Teams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networks Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Producer Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Business Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Treasury Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urgent Communications</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>Audits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CMS Demand Letters</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Exception</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Type</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Complexity__c</picklist>
+            <values>
+                <fullName>Level 1</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Disposition__c</picklist>
+            <values>
+                <fullName>60 day Renewal Reminder Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75 day Renewal Reminder Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OE Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OE Started</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on Completed Paperwork</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Scope Code Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Global</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Source__c</picklist>
+            <values>
+                <fullName>AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound Outreach</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar Attendance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>60-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90-day email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork initiated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paperwork submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>3rd Party Disease Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accums Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Additional Information Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alt Net Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAE Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAM PortaL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Booklet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Interpretation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Value Advisor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Care Connection%2FBlue Elite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Denial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Detail Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Paid Incorrectly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding Discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condition Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covered Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deductible Credit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOB Copy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSA Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Files Transfers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H%2ES%2EA%2E Custodians</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ID Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individual Claimant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Correction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integration%2FShared Accums</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees%2FRequests</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Precertification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Predetermination</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prior Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Base Pricing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reimbursement Issue %28BCBS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reinstate Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Step Therapy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary of Benefits %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tiering Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Claims Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Lock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness Portal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email sent to Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Task_Type__c</picklist>
+            <values>
+                <fullName>External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Broker Contact %28Prospects %26 Opportunities 1 %2Fday %2Fconsulting house%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>General_Event</fullName>
+        <active>true</active>
+        <description>This record type will be used by All Users to create events</description>
+        <label>General Event</label>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Annual Review Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appointment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Review Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Debrief with Director for broker%2Fconsultant formal meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Debrief with Director for finalist%2Fformal presentation or meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Face to Face Prospects Meetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Face to Face Finalist or Formal Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Face to Face Meeting-Non Annual Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health Fair</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Joint RSE%2FAE Participation Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lunch and Learn</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Enrollment Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rehearsal for Finalist Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Planning Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>HCM_Event</fullName>
+        <active>true</active>
+        <description>This record type will be used by HCM team members to created HCM related events</description>
+        <label>HCM Event</label>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Ad Hoc Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BCC Overview with Broker %28Brkr Brfng%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BCC Overview with Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Summary Inquiry %3C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employer Webinar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finalist Meeting Incumbent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finalist Meeting Prospective</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health Fair %2F Open Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthy Worksite Consultation w%2F Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthy Worksite Consultation w%2F Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implmnt %2F Client Call%2FMtg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implmnt %2F Consultant Call%2FMtg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implmnt %2F Internal Call%2FMtg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lunch %27n Learn with Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical Policy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onthemark On site Assessment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onthemark Report Delivery with Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prep Meeting Internal Staff</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly AE Touchbase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RFP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting Client Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting Client Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting Client Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting Meeting w Internal Staff</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unassigned Group %E2%80%93 CAC Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WalkingWorks Overview with Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Well on Target Overview with Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Well on Target Overview with Client</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>LGNA_Strategic_Plans_Event</fullName>
+        <active>true</active>
+        <label>LGNA - Strategic Plans Event</label>
+        <picklistValues>
+            <picklist>Assigned_Partner__c</picklist>
+            <values>
+                <fullName>Account Executive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Account Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accounts Receivable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Actuarial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Directions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAS Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Analytic Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Administration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - ASO Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contracting - Benefit Booklets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ECE Enterprise Client Extracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Eligibility Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Pharmacy Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - CMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU - Membership Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fraud and Abuse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Fulfillment Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Consultants</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Clinical Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Medical Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Healthcare Management - Pre-Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentive Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installation Teams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networks Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations Support Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Producer Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Business Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Treasury Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urgent Communications</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>Audits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CMS Demand Letters</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subrogation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Type</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Complexity__c</picklist>
+            <values>
+                <fullName>Level 1</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Scope Code Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Global</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>3rd Party Disease Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accums Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Add Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Additional Information Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Alt Net Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAE Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAM PortaL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Booklet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Interpretation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Value Advisor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Care Connection%2FBlue Elite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancel Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Case Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Denial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Detail Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claim Paid Incorrectly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Coding Discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Condition Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covered Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deductible Credit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied Rx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EOB Copy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSA Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Files Transfers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Group Benefit Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H%2ES%2EA%2E Custodians</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ID Cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individual Claimant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Correction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integration%2FShared Accums</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance Guarantees%2FRequests</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pharmacy Vendors</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Precertification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Predetermination</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prime Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prior Authorization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Base Pricing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reimbursement Issue %28BCBS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reinstate Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse Eligibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Step Therapy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summary of Benefits %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tiering Related Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition of Care</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Claims Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP Lock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wellness Portal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Task_Type__c</picklist>
+            <values>
+                <fullName>AE%2FAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Broker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GET Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Operational Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Client Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email sent to Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Plan</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Disposition_Description_Required</fullName>
+        <active>true</active>
+        <description>For Blue Direction events, Disposition Description (text box) Required if Disposition = No Interest, Reason Given or No Longer Interested</description>
+        <errorConditionFormula>AND(OR
+(RecordType.Id =&apos;0120b000000MJq5&apos;,
+RecordType.Id =&apos;0120b000000MJq6&apos;,
+RecordType.Id =&apos;0120b000000MJq7&apos;,
+RecordType.Id =&apos;0120b000000MJq8&apos;),
+ISBLANK( Disposition_Description__c ), 
+OR(
+ISPICKVAL( Disposition__c ,&apos;No Interest, reason given&apos;),
+ISPICKVAL( Disposition__c ,&apos;No Longer Interested&apos;)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Disposition_Description__c</errorDisplayField>
+        <errorMessage>Disposition Description Required if Disposition = No Interest Reason Given or No Longer Interested</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Disposition_req_if_Closed_Date_has_value</fullName>
+        <active>true</active>
+        <description>Disposition required when ‘Closed Date’ has a value</description>
+        <errorConditionFormula>AND(OR
+(RecordType.Id =&apos;0120b000000MJq5&apos;,
+RecordType.Id =&apos;0120b000000MJq6&apos;,
+RecordType.Id =&apos;0120b000000MJq7&apos;,
+RecordType.Id =&apos;0120b000000MJq8&apos;),
+ISPICKVAL( Disposition__c ,&quot;&quot;), 
+
+NOT(ISBLANK(Closed_Date__c ))
+)</errorConditionFormula>
+        <errorDisplayField>Disposition__c</errorDisplayField>
+        <errorMessage>Disposition required when ‘Closed Date’ has a value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Follow_Up_Date_required</fullName>
+        <active>true</active>
+        <description>For Blue Direction events, Follow Up Date required if Disposition = Future Follow-Up</description>
+        <errorConditionFormula>AND(OR
+(RecordType.Id =&apos;0120b000000MJq5&apos;,
+RecordType.Id =&apos;0120b000000MJq6&apos;,
+RecordType.Id =&apos;0120b000000MJq7&apos;,
+RecordType.Id =&apos;0120b000000MJq8&apos;),
+ISBLANK(Follow_Up_Date__c), 
+ISPICKVAL( Disposition__c ,&apos;Future Follow-Up&apos;)
+
+
+)</errorConditionFormula>
+        <errorDisplayField>Follow_Up_Date__c</errorDisplayField>
+        <errorMessage>Follow Up Date required if Disposition = Future Follow-Up</errorMessage>
+    </validationRules>
+</CustomObject>

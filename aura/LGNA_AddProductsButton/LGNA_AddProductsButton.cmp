@@ -1,0 +1,81 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" controller ="LGNA_NewOpportunityProducts" access="GLOBAL">
+    <aura:attribute name="Opportunityrecord" type="string"/>
+    <aura:attribute name="currentOppProductsMapFinal" type="List"/>
+    <aura:attribute name="text" type="string" /> 
+    <aura:attribute name="isChanged" type="Boolean" access="public" default="false" />
+    <aura:attribute name="MarkReqChanged" type="Boolean" access="public" default="false" />
+    <aura:attribute name="productData" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="showModal" type="Boolean" default="false"/>
+    <aura:attribute name="hasData" type="Boolean" default="false" />
+    <!--<aura:attribute name="productListTemp" type="Product2[]" access="public" />-->
+    <aura:attribute name="selectlist" type="Product2[]"/>
+   <!-- <aura:attribute name="newOppProdList" type="Opportunity_Product__c[]"/>-->
+    <aura:attribute name="customOrderMap" type="Map" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+  
+    <!--<aura:attribute name="insetedObj1" type="[]"/>
+    <aura:attribute name="recordObj2" type="Product2"/>-->
+    
+    <!-- SFDC- 9418 Search Starts From Here-->
+    <aura:attribute name="keyword" type="String"/>
+    <aura:method name="refresh" action="{!c.doInit}"/> 
+    <aura:attribute name="mydataTempList" type="Object"/>
+    <!-- SFDC- 9418 Search Ends Here-->
+
+        <!-- Rakesh:Register an Event-->
+   <!--<aura:registerEvent name="addProducts" type="c:LGNA_AddProductEvent"/>-->
+
+
+    
+    <div class="slds">
+        <!-- begin modals -->
+        <div id="registerInv" aria-hidden="false" role="dialog" class="slds-modal slds-fade-in-open register">
+            <div class="slds-modal__container" style="min-width:60%;height:525px; padding-top:35px;  padding-bottom:60px;">
+                <!-- begin App Markup as header -->
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading--medium" style="font-weight: bold;">Add Products</h2>
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelWindow}">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+                
+                <!-- begin main component -->
+                <div class="slds-modal__content slds-p-around--large">
+                <div aura:id="ModalDialogPlaceholder"></div>
+                    <lightning:input style="margin-right:20px"  aura:id="enter-search"
+                                     name="enter-search"
+                                     label="Find Product"
+                                     placeholder="Find Product"
+                                     type="search"
+                                     variant="label-hidden" 
+                                     value="{!v.keyword}"
+                                     onchange="{!c.handleKeyUp}"
+                                     />
+                    
+                    <div class="slds-m-top--large">
+                        <!--<lightning:buttonIcon  name="{!i}" iconClass="" iconName="utility:add" variant="border-filled" onclick="{! c.ChangeFavorite}" alternativeText="Select this product" />-->
+                        <lightning:datatable aura:id="slectlist" data="{! v.productData }" 
+                                             columns="{! v.mycolumns }" 
+                                             keyField="Id"
+                                             onrowselection="{! c.getSelectedName }"/></div>
+                    
+                    
+                </div>
+                <!-- end content   hideCheckboxColumn="true"-->       
+                <div class="slds-modal__footer">
+                    <div class="slds-x-small-buttons--horizontal">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.closeModelWindow}">Cancel</button>
+                        <button id="savebutton" class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.validateandAdd}">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="backdrop" class="slds-backdrop slds-backdrop--open"></div>
+    </div><!-- // end modals -->
+    <div aura:id="ModalConfirmPlaceholder">
+    </div>
+</aura:component>

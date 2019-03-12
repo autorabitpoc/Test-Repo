@@ -1,0 +1,9 @@
+This is a reminder.
+
+The account structure is pending client approval. Please follow up with the client to address any outstanding questions, and obtain approval.
+
+Account Name : {!Case.Account_Name__c}
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

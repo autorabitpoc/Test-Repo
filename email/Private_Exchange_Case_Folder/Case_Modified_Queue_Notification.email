@@ -1,0 +1,11 @@
+*** Case Notification *** 
+
+This email is to notify you that one or more of the following {!if (!Case.Exchange_Sub_Case__c=TRUE, "Parent", "Sub")} Case's fields has been modified. 
+
+Account: {!Case.Account_Name__c} 
+Case #: {!Case.CaseNumber} 
+Subject: {!Case.Subject} 
+Description: {!Case.Description} 
+{!if (!Case.Exchange_Sub_Case__c=TRUE, "", "Parent Case #:")} {!Case.Parent}
+
+Follow this link to access the Case: {!Case.Link}

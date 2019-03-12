@@ -1,0 +1,14 @@
+Hello,
+
+Below is a request for  an SBC effective for [Enter Date]. The following information can be used to process this request:
+
+Request from {!Case.Account}, Account Number: {!Case.Group_Account_Number__c}
+
+- Plan Number [example RO85], 
+- [With MHP or NO MHP]
+
+When responding please either reply to this original email or by including the entire reference number in the subject line when emailing.  The reference number can be located above in the subject line.  
+
+Note:  Including the reference number will ensure that the SBC will be routed to the original requester and cut down on duplication of efforts.  
+
+Thank you for your help,

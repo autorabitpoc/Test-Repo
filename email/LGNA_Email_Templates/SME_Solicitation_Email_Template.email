@@ -1,0 +1,10 @@
+Hello {!Contact.Name} –
+
+We received an exciting RFP opportunity from {!Case.BCBS Plan Name} for {!Account.Name} - a Client Size life prospect that we are proposing products here services for (!Case.Requested Effective Date}. Attached you will find questions I need your input and expertise to complete this response. I have pre-populated where I could; however, ask that you review to ensure they are still accurate and, if not, please either track your changes or highlight in a different color so I can easily identify the change. 
+
+In order to meet the proposal deadline, can you provide me with your input to the attached no later than noon on DAY, MONTH DATE? If when reviewing you realize you are not the appropriate Subject Matter Expert, can you let me know as soon as possible so I can identify another to assist in our response?
+
+If you have any questions or need additional information, please let me know. 
+
+Thanks in advance for your help,
+{!Case.Owner}

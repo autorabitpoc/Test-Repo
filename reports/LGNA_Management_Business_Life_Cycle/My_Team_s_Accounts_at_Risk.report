@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_15076054</developerName>
+        <masterLabel>Manager/Executive</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>MEMBER_ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Implementation Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manager Account Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Manager Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Manager Subscriber Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Account Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dearborn Sales Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategic Account Executive</sourceValue>
+            </sourceValues>
+            <value>Manager/Executive</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_38418411</developerName>
+        <masterLabel>Other Roles</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>MEMBER_ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Accountant</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Account Management Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Account Specialist</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Accounts Receivable</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>AEP Processor</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Analytics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Benefit Coder</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Billing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Electronic Eligibility Specialist</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Full Service Unit</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Group Benefit Specialist</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing Communications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing Service Rep</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Membership Specialist</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>New Business Coordinator</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal Writer</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Strategist</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Underwriter</sourceValue>
+            </sourceValues>
+            <value>Other Roles</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_77985780</developerName>
+        <masterLabel>Role</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>MEMBER_ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Director Account Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Director Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Director</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Director Subscriber Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DVP Account Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DVP Sales</sourceValue>
+            </sourceValues>
+            <value>Director/DVP</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.BCBS_Enrolled_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Risk_Reason__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Owner_s_Manager_Name__c</field>
+    </columns>
+    <description>This report shows My Team&apos;s Accounts with a Risk status of 4- High or 5- In Jeopardy</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Direct_Indirect_Manager_of_Owner__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Risk_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Current_Risk_Level__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.District__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>My Team&apos;s Accounts at Risk</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

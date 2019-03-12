@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Used for storing settings related to service console custom functionality.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Open_Contact_as_a_subtab_of_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Select this to open Contact as a subtab of Account on Case Queues functionality in service console.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select this to open Contact as a subtab of Account on Case Queues functionality in service console.</inlineHelpText>
+        <label>Open Contact as a subtab of Account</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Unread_Email_Refresh_Interval__c</fullName>
+        <description>This field is used to store the Refresh Interval for Unread Email count on Case Pinned List page</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to store the Refresh Interval for Unread Email count on Case Pinned List page</inlineHelpText>
+        <label>Unread Email Refresh Interval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unread_Email_Report_Name__c</fullName>
+        <description>This field is used to store Report DeveloperName to be displayed on Unread Email Count.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to store Report DeveloperName to be displayed on Unread Email Count.</inlineHelpText>
+        <label>Unread Email Report Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Service Console Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

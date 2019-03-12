@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="sobjectRecord" type="sObject" default="{}"/>
+    <aura:attribute name="textValue" type="String" default=""/>
+    <aura:attribute name="calledFrom" type="String" default=""/>
+    
+    <aura:registerEvent name="modalReturnValueEventFromLink" type="c:PROSPECTING_APP_SHOW_MODAL_EVT"/>
+    <aura:registerEvent name="modalReturnValueExistingContactFromLink" type="c:PROSPECTING_APP_SHOW_MODAL_EVT"/>
+    <aura:registerEvent name="modalReturnValueExistingCompetitorFromLink" type="c:PROSPECTING_APP_SHOW_MODAL_EVT"/>    
+        
+    <a onclick="{!c.returnValue}">{!v.textValue}</a>
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute Name="marketingPlanNumber" type="String"  Default=""/>
+    <aura:attribute Name="lineOfBusiness" type="String" Default=""/>
+    <aura:attribute Name="IsItForIncludeBA" type="Boolean" Default="false"/>
+</aura:event>

@@ -1,0 +1,189 @@
+<apex:page standardController="Account" recordSetVar="accounts" tabstyle="account" sidebar="false" extensions="ShowAccountDetails" >
+
+   
+  <apex:pageBlock title="Details" >
+    <apex:form >
+        <apex:inputText value="{!AccountNumber}" id="AccountNumber" label="Account Number" title="Account Number" html-placeholder="Account Number"/>
+        <apex:commandButton rerender="a1,a2,a3,a4,a5,a6,a11" value="Search" action="{!RefreshAccount}" >
+         <apex:param name="id" value="{!AccountNumber}"/>
+       </apex:commandButton>      
+    </apex:form>   
+  </apex:pageBlock>
+
+<apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel">
+    <apex:tab label="Account Details" name="Account Details" id="tabOne">
+
+      
+  <apex:pageBlock title="Account Details">
+   <apex:outputPanel id="a1" layout="block" style="overflow:auto;width:1250px;" >
+	
+     <apex:pageBlockTable value="{!acnt}" var="acntLst" id="acnt" title="Account">
+	<apex:Column value="{!acnt.Id}" />
+     <apex:column value="{!acnt.Name}"/>
+     <apex:column value="{!acnt.External_ID__c}"/>
+     <apex:column value="{!acnt.HCSC_Division__c}"/>
+     <apex:column value="{!acnt.Renewal_Date__c}"/>
+     <apex:column value="{!acnt.ACA_Indicator__c}"/>
+     <apex:column value="{!acnt.County_Code__c}"/>
+     <apex:column value="{!acnt.Email__c}"/>
+ 	 <apex:column value="{!acnt.ShippingCity__c}"/>
+	 <apex:column value="{!acnt.ShippingPostalCode__c}"/>
+	 <apex:column value="{!acnt.HCSC_Division__c}"/>
+	 <apex:column value="{!acnt.ShippingState__c}"/>
+ 	 <apex:column value="{!acnt.ShippingStreet__c}"/>   
+   	 </apex:pageBlockTable>
+   </apex:outputPanel>     
+  </apex:pageBlock>
+   
+  <apex:pageBlock title="Benefit Agreement">
+  <apex:outputPanel id="a2" layout="block" style="overflow:auto;width:1250px;height:100px;">
+     <apex:pageBlockTable value="{!ba}" var="var" title="Benefit Agreement">
+     <apex:Column value="{!var.Id}" />
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.ACA_Indicator__c}"/>
+     <apex:column value="{!var.Market_Plan_Number__c }"/>
+     <apex:column value="{!var.Effective_Date__c}"/>
+     <apex:column value="{!var.Cancellation_Date__c}"/>
+     <apex:column value="{!var.Status__c}"/>    
+      </apex:pageBlockTable>
+    </apex:outputPanel>     
+  </apex:pageBlock>
+  
+  <apex:pageBlock title="Account Census">
+  <apex:outputPanel id="a3" layout="block" style="overflow:auto;width:1250px;height:100px;">
+     <apex:pageBlockTable value="{!acntCensus}" var="var" title="Account Census">
+     <apex:Column value="{!var.Id}" />
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.First_Name__c}"/>     
+     <apex:column value="{!var.Last_Name__c}"/>
+     <apex:column value="{!var.Date_of_Birth__c}"/>
+     <apex:column value="{!var.Gender__c}"/>
+     <apex:column value="{!var.Tobacco_Use__c  }"/>
+     <apex:column value="{!var.Subscriber_Number__c}"/>
+     <apex:column value="{!var.Membership_Number__c}"/>
+     <apex:column value="{!var.Relationship__c}"/>
+     <apex:column value="{!var.Relationship_Code__c}"/>
+     <apex:column value="{!var.Member_Effective_Date__c}"/>
+     <apex:column value="{!var.Member_Cancel_Date__c}"/>         
+     </apex:pageBlockTable>
+        </apex:outputPanel>     
+  </apex:pageBlock>
+  
+  <apex:pageBlock title="Account Member Benefits">
+  <apex:outputPanel id="a4" layout="block" style="overflow:auto;width:1250px;height:100px;">
+     <apex:pageBlockTable value="{!acntMemBen}" var="var" title="Account Member Benefits">     
+     <apex:column value="{!var.Id}"/>
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.Marketing_Plan_Number__c}"/>
+     <apex:column value="{!var.Member_Benefit_Effective_Date__c}"/>
+     <apex:column value="{!var.Premium_Amount__c }"/>
+     <apex:column value="{!var.Insurance_Type_Code__c}"/>
+     <apex:column value="{!var.Supplemental_Insurance_type_Code__c}"/>
+     <apex:column value="{!var.Account_Census__c}"/>
+     <apex:column value="{!var.Account_Plan_Rate__c }"/>
+     </apex:pageBlockTable> 
+        </apex:outputPanel>        
+       </apex:pageBlock>
+    
+  <apex:pageBlock title="Account Plan Rate">
+  <apex:outputPanel id="a5" layout="block" style="overflow:auto;width:1250px;height:100px;">
+     <apex:pageBlockTable value="{!acntPlnRte}" var="var" title="Account Plan Rate">     
+     <apex:column value="{!var.Id}"/>
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.Type__c}"/>
+     <apex:column value="{!var.ACA_Indicator__c}"/>
+     <apex:column value="{!var.ACA_Fee__c}"/>
+     <apex:column value="{!var.Acc_Plan_Rate_External_Id__c}"/>
+     <apex:column value="{!var.Account_Member_Benefit__c}"/>
+     <apex:column value="{!var.Account_Number__c }"/>
+     </apex:pageBlockTable>  
+     </apex:outputPanel>
+    </apex:pageBlock>   
+   </apex:tab>
+   <apex:tab label="Opportunity Details" name="Opportunity Details" id="tabTwo" >
+    <apex:pageBlock title="Opportunity Details">
+  	<apex:outputPanel id="a11" layout="block" style="overflow:auto;width:1250px;height:100px;">
+     <apex:pageBlockTable value="{!oppLst}" var="var" title="Opportunity Details">     
+     <apex:column value="{!var.Id}"/>
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.CreatedBy.Name}"/>
+     <apex:column value="{!var.CreatedDate}"/>     
+     <apex:column value="{!var.Renewal_Date__c}"/>
+     <apex:column value="{!var.FIPS_Code__c}"/>
+     </apex:pageBlockTable>  
+     </apex:outputPanel>
+    </apex:pageBlock> 
+    
+
+  <apex:pageBlock title="Opportunity Census">
+  <apex:outputPanel id="a12" layout="block" style="overflow:auto;width:1250px;">
+     <apex:pageBlockTable value="{!oppCensus}" var="var" title="Opportunity Census">
+     <apex:Column value="{!var.Id}" />
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.First_Name__c}"/>     
+     <apex:column value="{!var.Last_Name__c}"/>
+     <apex:column value="{!var.Date_of_Birth__c}"/>
+     <apex:column value="{!var.Gender__c}"/>
+     <apex:column value="{!var.Tobacco_Use__c  }"/>
+     <apex:column value="{!var.Subscriber_Number__c}"/>
+     <apex:column value="{!var.Membership_Number__c}"/>
+     <apex:column value="{!var.Relationship__c}"/>
+     <apex:column value="{!var.Relationship_Code__c}"/>
+     <apex:column value="{!var.Member_Effective_Date__c}"/>
+     <apex:column value="{!var.Member_Cancel_Date__c}"/>         
+     </apex:pageBlockTable>
+        </apex:outputPanel>     
+  </apex:pageBlock>
+
+  <apex:pageBlock title="Opportunity Member Benefits">
+  <apex:outputPanel id="a12" layout="block" style="overflow:auto;width:1250px;">
+     <apex:pageBlockTable value="{!oppMemBen}" var="var" title="Opportunity Member Benefits">
+     <apex:Column value="{!var.Id}" />
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.Member_Benefit_Effective_Date__c}"/>     
+     <apex:column value="{!var.Insurance_Type_Code__c}"/>
+     <apex:column value="{!var.Opportunity_Census__c}"/>
+     <apex:column value="{!var.Opportunity_Plan_Rate__c }"/>
+     </apex:pageBlockTable>
+        </apex:outputPanel>     
+  </apex:pageBlock>
+
+  <apex:pageBlock title="Opportunity Plan Rate">
+  <apex:outputPanel id="a13" layout="block" style="overflow:auto;width:1250px;">
+     <apex:pageBlockTable value="{!oppPlnRte}" var="var" title="Opportunity Plan Rate">
+
+     <apex:Column value="{!var.Id}" />
+     <apex:column value="{!var.Name}"/>
+     <apex:column value="{!var.Type__c}"/>     
+     <apex:column value="{!var.ACA_Fee__c }"/>
+     
+     </apex:pageBlockTable>
+        </apex:outputPanel>     
+  </apex:pageBlock>
+  
+  
+  
+    </apex:tab>
+    
+    <apex:tab label="BEngage Details" name="BEngage Details" id="tabThree">
+    
+    
+    </apex:tab>
+    
+    </apex:tabPanel>
+
+  
+ <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        j$(document).ready(function () {
+            j$('[id$=theTable]').DataTable( {
+                "bSort" : false,
+                "bPaginate": false,
+                "bFilter": false,
+                "bInfo": false,
+                "scrollY": 200,
+                "scrollX": true
+            } );
+        });  
+    </script> 
+</apex:page>

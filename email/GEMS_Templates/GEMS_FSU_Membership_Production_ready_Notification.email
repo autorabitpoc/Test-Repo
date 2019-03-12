@@ -1,0 +1,9 @@
+Hi,
+
+The account is active in BlueSTAR. Please proceed with Membership process"
+  
+Case Number : {!Case.CaseNumber}
+Account Name : {!Case.Account}
+
+
+Thanks ,

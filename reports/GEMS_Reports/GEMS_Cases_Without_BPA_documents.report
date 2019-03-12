@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Name</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$CreatedDate</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>SIGNED BPA,BPA,BPA - ASO,BPA - DENTAL,BPA - HEALTH,BPA - HCA,BPA - ASO SIGNED,BPA - ASO UNSIGNED,BPA - DENTAL SIGNED,BPA - DENTAL UNSIGNED,BPA - HCA SIGNED,BPA - HCA UNSIGNED,BPA - HEALTH SIGNED,BPA - HEALTH UNSIGNED,BPA - SIGNED,BPA - UNSIGNED</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>Case$Id</primaryTableColumn>
+        <relatedTable>GEMS_Attachment__c</relatedTable>
+        <relatedTableJoinColumn>Case__c</relatedTableJoinColumn>
+    </crossFilters>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS Cases Without BPA documents</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_With_Attachment__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Account_Setup_Opened_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

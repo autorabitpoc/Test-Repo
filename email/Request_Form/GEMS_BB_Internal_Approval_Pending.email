@@ -1,0 +1,9 @@
+Please review and approve the Benefit Booklet 
+
+Account Name : {!GEMS_SBC_BB_Form__c.Account_Name_Text__c}
+Form Number :  {!GEMS_SBC_BB_Form__c.Form_Id__c}
+Form Details :  {!GEMS_SBC_BB_Form__c.Link}
+
+Booklet drafts should be reviewed and responded to within 60 days of first draft receipt. If no response is received after 60 days, the booklet drafts will be deemed acceptable, finalized and made available via BAM/BAE. Final Booklet PDFs will be sent to Sales and Account Management for distribution to the account.
+
+Thanks

@@ -1,0 +1,7 @@
+Hi 
+Account Structure has been returned . 
+
+Case Details: {!Case.Link}
+Account Name : {!Case.Account}
+
+Thanks

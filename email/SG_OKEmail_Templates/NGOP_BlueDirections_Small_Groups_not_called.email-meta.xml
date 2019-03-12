@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when reaching out to new groups with Blue Directions to welcome them to BCBS and give info on BAE.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Blue Directions - NGOP (not called)</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Welcome to Blue Cross and Blue Shield of Oklahoma</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

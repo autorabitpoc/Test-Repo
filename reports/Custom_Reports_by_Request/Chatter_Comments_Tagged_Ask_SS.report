@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User.FeedItems.Comments$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>User.FeedItems.Comments$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>User.FeedItems.Comments$CommentBody</field>
+    </columns>
+    <description>List of all posts that tag Chatter group Ask Sales Solutions. Shows all replies if tagged in initial post, but only actual replies if initial post was not tagged.</description>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>User.FeedItems$Body</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>0F9330000000Vi6</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.FeedItems.Comments$CommentBody</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>0F9330000000Vi6</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.FeedItems$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.FeedItems$Body</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Chatter Comments - Tagged Ask SS</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ch_dashboards__Chatter_User_Activity_1_0__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

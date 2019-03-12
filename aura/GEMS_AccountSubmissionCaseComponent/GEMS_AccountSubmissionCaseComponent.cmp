@@ -1,0 +1,161 @@
+<aura:component controller="GEMS_AccountSubmissionCaseReport" implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="returnedCases" type="Case[]" access="public"/>
+    <aura:attribute name="reportId" type="String" access="public" default=""/>
+    <aura:attribute name="caseOwner" type="Map" access="public" default="{ CaseId: 'IDValue', CaseOwner: 'CaseOwnerValue'}" />  
+    <aura:attribute name="caseEffDate" type="Map" access="public" default="{ CaseId: 'IDValue', CaseEffectiveDate: 'CaseEffectiveDateValue'}" />
+    <aura:attribute name="caseStatus" type="Map" access="public" default="{ CaseId: 'IDValue', CaseStatus: 'CaseStatusValue'}" />
+    <aura:attribute name="caseOpp" type="Map" access="public" default="{ CaseId: 'IDValue', CaseOpp: 'CaseOppValue'}" />
+    
+    <aura:attribute name="hoverComponent" type="Aura.Component" />
+    <aura:attribute name="showPopover" type="Boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:overlayLibrary aura:id="overlayLib1"/>
+  <!-- <div class="slds-scrollable" style="height:500px; width:100%">-->
+    <article class="slds-card">        
+        <div class="slds-p-around_x-small"> 
+         
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">                
+                    <div class="slds-media__body">
+                        <h1 class="slds-card__header-title">  
+                            <br/>
+                            <strong><span class="slds-text-heading_small" title="Account Submission Milestone">Account Submission Milestones</span></strong>                                                
+                        </h1>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-scrollable" style="height:350px; width:100%"> 
+            <table class="slds-table slds-table_bordered slds-table--header-fixed">
+                <thead>
+                    <tr class="slds-text-title_caps">                
+                        <th scope="col">
+                            <div class="slds-truncate" title="Account Name">Account<br/>Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Case Number">Case<br/>Number</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Installation Started">Installation<br/>Started</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Member Ready">Member<br/>Ready</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Id Cards">Id<br/>Cards</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Service Ready">Service<br/>Ready</div>
+                        </th>
+                    </tr>
+                </thead> 
+                <tbody>               
+                    <aura:iteration items="{!v.returnedCases}" var="row">                                   
+                        <tr>
+                            <td scope="row" data-label="Account Name" class="slds-cell-wrap">
+                                <a id="{!row.AccountId}" onclick="{!c.navigateToSObject}">{!row.Account_Name__c}</a>                            
+                            </td>
+                            <td scope="row" data-label="Case Number">
+                                <span>
+                                    <div class="{!'popoverA'+row.Id}" id="{!'popoverA'+row.Id+'+'+row.Id+'+'+row.CaseNumber}"  onmouseover="{!c.handleShowPopover}" style="display:inline-block;padding-right: 15px;" onmouseout="{!c.closePopover}" > 
+                                    <!--  <a class="{!'popoverA'+row.Id}" id="{!'popoverA'+row.Id+'+'+row.Id+'+'+row.CaseNumber}" style="display:inline-block;padding-right: 15px;"  
+                                   onmouseover="{!c.handleShowPopover}" onmouseleave="{!c.closePopover}"  onclick="{!c.navigateToSObject}">{!row.CaseNumber}</a>--> 
+                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ row.Id}">{!row.CaseNumber}</a>
+                                        </div> 
+                                </span>
+                                </td>
+                            <td scope="row" data-label="Installation Started">
+                                <aura:if isTrue="{!empty(row.Milestone__c)}">
+                                    <img src="{!$Resource.LEXBlueButton}"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!row.Milestone__c == 'Member Ready'}">
+                                            <img src="{!$Resource.LEXBlueButton}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!row.Milestone__c == 'Member Ready + ID Cards Mailed'}">
+                                                    <img src="{!$Resource.LEXBlueButton}"/>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!row.Milestone__c == 'Service Ready'}">
+                                                            <img src="{!$Resource.LEXGreenButton}"/> 
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>                              
+                            </td>                        
+                            <td scope="row" data-label="Member Ready">
+                                <aura:if isTrue="{!empty(row.Milestone__c)}">
+                                    <img src="{!$Resource.LEXWhiteButton}"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!row.Milestone__c == 'Member Ready'}">
+                                            <img src="{!$Resource.LEXBlueButton}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!row.Milestone__c == 'Member Ready + ID Cards Mailed'}">
+                                                    <img src="{!$Resource.LEXBlueButton}"/>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!row.Milestone__c == 'Service Ready'}">
+                                                            <img src="{!$Resource.LEXGreenButton}"/>
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>                              
+                            </td>                        
+                            <td scope="row" data-label="ID Cards">
+                                <aura:if isTrue="{!empty(row.Milestone__c)}">
+                                    <img src="{!$Resource.LEXWhiteButton}"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!row.Milestone__c == 'Member Ready'}">
+                                            <img src="{!$Resource.LEXWhiteButton}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!row.Milestone__c == 'Member Ready + ID Cards Mailed'}">
+                                                    <img src="{!$Resource.LEXBlueButton}"/>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!row.Milestone__c == 'Service Ready'}">
+                                                            <img src="{!$Resource.LEXGreenButton}"/> 
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>                              
+                            </td>                        
+                            <td scope="row" data-label="Service Ready">
+                                <aura:if isTrue="{!empty(row.Milestone__c)}">
+                                    <img src="{!$Resource.LEXWhiteButton}"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!row.Milestone__c == 'Member Ready'}">
+                                            <img src="{!$Resource.LEXWhiteButton}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!row.Milestone__c == 'Member Ready + ID Cards Mailed'}">
+                                                    <img src="{!$Resource.LEXWhiteButton}"/>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!row.Milestone__c == 'Service Ready'}">
+                                                            <img src="{!$Resource.LEXGreenButton}"/> 
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>                              
+                            </td>
+                        </tr>
+                    </aura:iteration>            
+                </tbody>
+            </table>
+          </div>
+       <!-- </div>  -->      
+        <footer class="slds-card__footer slds-text-align_left">
+            <a id="{!v.reportId}" onclick="{!c.getReportId}">View Report</a>
+        </footer>
+            </div>
+    </article> 
+  <!--  </div>-->
+</aura:component>

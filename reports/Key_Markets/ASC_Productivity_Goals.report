@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Case.Days_Open__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>AVG</masterLabel>
+        <scale>3</scale>
+    </aggregates>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Case$GEMS_Days_Business_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$Parent</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$Status</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$GEMS_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$GEMS_End_Date__c</field>
+    </columns>
+    <description>Task Level Reporting</description>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Setup Process</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Line_of_Business__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Major National,Large/Mid Market</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Quality_Reviewer__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jessica Stuart,Sandy Henderson,Alantis Gandy,Beatriz Wieckhorst,Luz Rodriguez,Melvin Amos,Antonia Merritt,Elizabeth Spitkovsky,Cameron O&apos;Connor,LaTonya Ferrell,Nicole Graham,Thomas Curry,Neslie Fudge,Ginger Rosales-DeRetana,Jasmine Jackson,Rizwan Ali,Lennox Adundo,Jonathan Guyton,Tierra Lucas,Kirsten Larson,Ashliegh Allen,Chris Atkins,Deafricka McDaniels</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Activities$Subject</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Quality Review,BlueSTAR Walkthrough,Release to Underwriting</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$GEMS_Quality_Reviewer__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Activities$Subject</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ASC Productivity Goals</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Cases_with_Tasks__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case.Activities$CreatedDate</dateColumn>
+        <endDate>2018-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object allows the ability to suggest Salesforce enhancements in a central location.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>As_a__c</fullName>
+        <description>Describe position or job</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field captures the User that would benefit from the change. E.g. As an [AE/SAE]</inlineHelpText>
+        <label>As a...</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is an open field that allows the User to enter in details of their request. e.g., When a case reaches Closed status, send a notification to Case Creator.</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Enhanc__c</fullName>
+        <externalId>false</externalId>
+        <label>Enhancement Request</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>I_want_to__c</fullName>
+        <description>Describe desired functionality</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field captures the key capability/feature that is being requested. e.g., I want to [receive a notification when my case is resolved]</inlineHelpText>
+        <label>I want to...</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Jira_Reference_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>false</externalId>
+        <label>Jira Reference ID</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Rejection_Reason__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is reserved for the Salesforce Administrators reviewing the Ideas. When they select Rejected in the Status field, they are prompted to provide a Rejection Reason.</inlineHelpText>
+        <label>Rejection Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This field indicates the status of the Idea record.</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Assigned</fullName>
+                    <default>false</default>
+                    <label>Assigned</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Summary__c</fullName>
+        <description>Short Summary of Idea</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field summarizes the change requested.</inlineHelpText>
+        <label>Summary</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Unique_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is an automatically assigned number that uniquely identifies the Idea entry.</inlineHelpText>
+        <label>Unique ID</label>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Vote_Points__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Total amount of points voted .</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field tallies the number of votes supporting the Idea.</inlineHelpText>
+        <label>Vote Points</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>so_that__c</fullName>
+        <description>Describe the benefits of this functionality</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field captures the key value or benefit of the requested change, e.g., so that [I can proceed to the next step of the process].</inlineHelpText>
+        <label>so that...</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Idea</label>
+    <listViews>
+        <fullName>All_Ideas</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Vote_Points__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Ideas</label>
+    </listViews>
+    <nameField>
+        <label>Ideas Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Ideas</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Rejected_Status</fullName>
+        <active>true</active>
+        <description>If Idea is rejected, make sure Rejected Reason is populated</description>
+        <errorConditionFormula>TEXT(Status__c) = &apos;Rejected&apos;  &amp;&amp;  Rejection_Reason__c = &apos;&apos;</errorConditionFormula>
+        <errorMessage>Enter Rejected Reason</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Down_Vote</fullName>
+        <availability>online</availability>
+        <description>Vote down on enhancement request</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Down Vote</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/apex.js&apos;)}
+
+
+var userId = &apos;{!$User.Id}&apos;; 
+var ideaId = &apos;{!Ideas__c.Id}&apos; ; 
+
+var query= sforce.connection.query(&quot;Select Id From Vote__c where Vote__c.Voted_by__c = &apos;{!$User.Id}&apos; and Vote__c.Voted_on__c = &apos;{!Ideas__c.Id}&apos; &quot;); 
+
+if(query.getArray(&quot;records&quot;).length == 0) { 
+     var ideas= new sforce.SObject(&apos;Ideas__c&apos;); 
+     ideas.id = &quot;{!Ideas__c.Id}&quot;; 
+     ideas.Vote_Points__c = {!Ideas__c.Vote_Points__c} - 1; 
+
+     var vote = new sforce.SObject(&apos;Vote__c&apos;); 
+     vote.Voted_by__c = sforce.connection.getUserInfo().userId; 
+     vote.Name = &quot;{!$User.FirstName} {!$User.LastName}&apos;s Vote On {!Ideas__c.Name}&quot;; 
+     vote.Voted_on__c = ideaId; 
+
+     var empty = sforce.apex.execute(&quot;IdeaClass&quot;, &quot;updateVoteNumber&quot;, {curIdea:ideas,        curVote:vote});
+
+     location.reload(true); 
+} 
+else { 
+    alert(&quot;You have already voted&quot;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Up_Vote</fullName>
+        <availability>online</availability>
+        <description>Vote for this enhancement request</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Up Vote</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/apex.js&apos;)}
+
+
+var userId = &apos;{!$User.Id}&apos;; 
+var ideaId = &apos;{!Ideas__c.Id}&apos; ; 
+
+var query= sforce.connection.query(&quot;Select Id From Vote__c where Vote__c.Voted_by__c = &apos;{!$User.Id}&apos; and Vote__c.Voted_on__c = &apos;{!Ideas__c.Id}&apos; &quot;); 
+
+if(query.getArray(&quot;records&quot;).length == 0) { 
+     var ideas= new sforce.SObject(&apos;Ideas__c&apos;); 
+     ideas.id = &quot;{!Ideas__c.Id}&quot;; 
+     ideas.Vote_Points__c = {!Ideas__c.Vote_Points__c} + 1; 
+
+     var vote = new sforce.SObject(&apos;Vote__c&apos;); 
+     vote.Voted_by__c = sforce.connection.getUserInfo().userId; 
+     vote.Name = &quot;{!$User.FirstName} {!$User.LastName}&apos;s Vote On {!Ideas__c.Name}&quot;; 
+     vote.Voted_on__c = ideaId; 
+
+     var empty = sforce.apex.execute(&quot;IdeaClass&quot;, &quot;updateVoteNumber&quot;, {curIdea:ideas,        curVote:vote});
+
+     location.reload(true); 
+} 
+else { 
+    alert(&quot;You have already voted&quot;);
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when groups send in paperwork unnecessarily since it&apos;s now being captured on the portal.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Education - Data Collection now on Portal</name>
+    <style>none</style>
+    <subject>Form Not Required with Renewal Paperwork (Groups 1-50) {!Case.Group_Account_Number__c} - {!Case.Account} Case #: {!Case.Id}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

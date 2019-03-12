@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Used to ignore the validation rule to be run for the profiles and users</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Ignore_Secure_Sharing_Validation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ignore Secure Sharing Validation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ignore_Validation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checked if the profile / user requires validation rule to be ignored across the apps usage</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checked if the profile / user requires validation rule to be ignored across the apps usage</inlineHelpText>
+        <label>Ignore Validation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Network_Case_Ignore_Lockdown__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Network Case Ignore Lockdown</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Ignore Validations</label>
+    <visibility>Protected</visibility>
+</CustomObject>

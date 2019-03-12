@@ -1,0 +1,9 @@
+{!GEMS_MBC_Testing__c.MBC_Testing_Type__c} testing for your case has failed. Please review the Medical Benefit Coding Case to resolve. 
+
+Account Name : {!GEMS_MBC_Testing__c.Account_Name__c} 
+
+Case Number : {!GEMS_MBC_Testing__c.MBC_BA_Level_Case_Shared_Accums__c} 
+
+MBC Testing Details : {!GEMS_MBC_Testing__c.Link}
+
+Thank you.

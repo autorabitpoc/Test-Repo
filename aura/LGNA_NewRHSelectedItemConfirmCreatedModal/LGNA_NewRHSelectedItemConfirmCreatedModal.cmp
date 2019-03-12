@@ -1,0 +1,60 @@
+<aura:component controller="LGNA_NewRequestHubItemController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+	<!-- Ranjit G- SFDC - 9626 - Start-->
+    <aura:attribute name="createdModelConfirm_Case" type="boolean" default="false"/>
+    <aura:attribute name="createdModelConfirm_ContractAdmin" type="boolean" default="false"/>
+    <!-- Ranjit G- SFDC - 9626 - End-->
+    
+     <aura:attribute name="caseId" type="String" />
+    <aura:attribute name="caseNum" type="String" />
+    <aura:registerEvent name="RemoveComponent" type="c:LGNA_NewRHSelectedItemCreatedEvent"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds customBackground">
+        <!-- Ranjit G- SFDC - 9626 - Start-->
+    <aura:if isTrue="{!v.createdModelConfirm_Case}">
+    <!-- Ranjit G- SFDC - 9626 - end-->
+        
+	<div role="dialog" style="padding-top:120px;" tabindex="-1" class="slds-modal slds-fade-in-open" aura:id="Modalbox">
+		<div class="slds-modal__container" style="width:50%;height:300px max-width:90rem;">
+			
+			<div class="slds-modal__header slds-theme--success">				
+				<h2 class="slds-text-heading--medium slds-truncate" title="success">Case was created.</h2>
+                <br></br>
+                To view the request,
+                click Case Number:<a href="javascript:void(0)" onclick="{!c.detailPage}">{!v.caseNum} </a>
+			</div>					
+			
+			<div class="slds-modal__footer mobileViewHeader">
+				<lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.closeCreatedModel}" />
+				
+			</div>
+			
+		</div>
+	</div>
+     <div class="slds-backdrop " aura:id="MB-Back"></div>
+        </aura:if>
+    </div>
+    <!-- Ranjit G- SFDC - 9626 - Start-->
+     <aura:if isTrue="{!v.createdModelConfirm_ContractAdmin}">
+    
+	<div role="dialog" style="padding-top:120px;" tabindex="-1" class="slds-modal slds-fade-in-open" aura:id="Modalbox">
+		<div class="slds-modal__container" style="width:50%;height:300px max-width:90rem;">
+			
+			<div class="slds-modal__header slds-theme--success">				
+                <h2 class="slds-text-heading--medium slds-truncate" title="success">Contract Admin is created</h2>
+                <br></br>
+                To view the request,
+                click Contract Admin Request Number:<a href="javascript:void(0)" onclick="{!c.detailPage}">{!v.caseNum} </a>
+			</div>					
+			
+			<div class="slds-modal__footer mobileViewHeader">
+				<lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.closeCreatedModel}" />
+				
+			</div>
+			
+		</div>
+	</div>
+     <div class="slds-backdrop " aura:id="MB-Back"></div>
+        </aura:if>
+    
+    <!-- Ranjit G- SFDC - 9626 - End-->
+</aura:component>

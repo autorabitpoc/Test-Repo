@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Group_Number__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Section_Number__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Requested_Cancellation_Date__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Cancellation_Date__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Certs_Cancelling__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Members_Cancelling__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Cancellation_Explanation__c</field>
+    </columns>
+    <description>Listing of Accounts with Group-Sections cancelling.</description>
+    <filter>
+        <criteriaItems>
+            <column>Group_Section__c.Cancellation_Code__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CBS - Cancel BlueSTAR Section</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Market_Segment__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LG,NAC,LGL,LGN,MGC,NAL,HA,AFG,LGC,STU,MGL,NPP,MAC,TAC,NAP,FEP,TRS,NPH,NPR,TCI,MA,National Account,JG</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Group-Section Cancellations</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Group_Section__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Group_Section__c.Cancellation_Date__c</dateColumn>
+        <interval>INTERVAL_THISNEXTMONTH</interval>
+    </timeFrameFilter>
+</Report>

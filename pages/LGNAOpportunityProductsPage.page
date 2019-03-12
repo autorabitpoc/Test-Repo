@@ -1,0 +1,36 @@
+<apex:page standardController="Opportunity_Product__c" showHeader="false" standardStylesheets="false" sidebar="false" recordsetvar="v">
+ <apex:slds />
+ <apex:includeLightning />
+     <div id="loading">        
+         <div id="LoadingvfDIV" class="slds-spinner_container" style="display:block;">
+            <div class="slds-spinner slds-spinner--large" aria-hidden="false" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>    
+    </div>
+ 
+
+ <div style="width:100%;height:100%;" id="FlipcardContainer" />
+
+ <script>
+    //alert("{!$CurrentPage.parameters.id}");
+    //alert("{!$CurrentPage.parameters.z}");
+ $Lightning.use("c:LGNA_OpportunityProductsApp", function() {
+ $Lightning.createComponent("c:LGNA_OpportunityProducts",
+ { 
+     "recordId" : "{!$CurrentPage.parameters.id}",
+  },
+ "FlipcardContainer",
+ function(cmp) {
+     var loadingDivElt = document.getElementById("LoadingvfDIV");
+     loadingDivElt.style.display = 'none' ;
+
+     var ltngDivElt = document.getElementById("FlipcardContainer");
+     ltngDivElt.style.display = 'block' ;
+     console.log('AppWebApp VF Page includer initialized');  
+    console.log('Component created, do something cool here');
+ });
+ });
+ </script>
+</apex:page>

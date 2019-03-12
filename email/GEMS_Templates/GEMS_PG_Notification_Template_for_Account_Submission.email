@@ -1,0 +1,8 @@
+An Account Submission case with Performance Guarantees has been initiated or modified for account {!Case.Account}{!IF(NOT(ISBLANK(Case.Account_Number__c)), " - "  + Case.Account_Number__c, "")}. Please access the case through the below link.
+
+Account Name : {!Case.Account} 
+Account Submission Case Number : {!Case.CaseNumber}
+
+{!Case.Link}
+
+Thank you.

@@ -1,0 +1,23 @@
+Dear {!Quote_Request_Summary__c.Assigned_Dental_Underwriter_Name__c},
+
+There is  a new quote request assigned to you {!Quote_Request_Summary__c.Link}. The detail are below:
+
+Account Name:   {!Quote_Request_Summary__c.Account_Name_tx__c}
+
+Account Number:  {!Quote_Request_Summary__c.Account_Number__c}
+
+Opportunity Name:  {!Quote_Request_Summary__c.Opportunity_Name__c}
+
+Opportunity Owner: 
+ {!Quote_Request_Summary__c.Opportunity_Owner_tx__c}
+
+HCSC Division:  {!Quote_Request_Summary__c.HCSC_Division__c}
+
+Underwriting Due Date:
+ {!Quote_Request_Summary__c.Underwriting_Due_Date__c}
+
+Requested Effective Date:
+ {!Quote_Request_Summary__c.Request_Effective_Date__c}
+
+Proposed Due Date:
+ {!Quote_Request_Summary__c.Proposed_Due_Date__c}

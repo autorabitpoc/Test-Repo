@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.ErrorCode__c</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.RequestBody__c</field>
+    </columns>
+    <columns>
+        <field>FW_Service_Status_Log__c.ResponseBody__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FW_Service_Status_Log__c.ErrorDescription__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>FW Service Status Log Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$FW_Service_Status_Log__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>FW_Service_Status_Log__c.StartTime__c</dateColumn>
+        <interval>INTERVAL_TODAY</interval>
+    </timeFrameFilter>
+</Report>

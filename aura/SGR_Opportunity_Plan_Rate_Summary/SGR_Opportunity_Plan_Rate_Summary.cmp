@@ -1,0 +1,165 @@
+<aura:component
+        implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+        controller='SGR_OppPlanRateSummary_Controller' access="global">
+
+    <aura:attribute name='TypesOfPlans' type='String'></aura:attribute>
+    <aura:attribute name="wrapperOppPlanRateSummary" type="object"/>
+    <aura:attribute name='hasValues' type='Boolean' default="false"></aura:attribute>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:card title="{!v.TypesOfPlans}">
+        <p class="slds-p-horizontal_small">
+
+            <aura:if isTrue="{!v.hasValues}">
+
+                <div class="slds-form slds-form_stacked" role="list">
+                    <div class="slds-grid slds-gutters_small">
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.TotalNbrOfSubcribers}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <strong>
+                                            <lightning:formattedNumber
+                                                    value="{!v.wrapperOppPlanRateSummary.sumEnrolledSubscriberCount}"
+                                                    maximumFractionDigits="0"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.TotalCurrMoPremium}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <aura:if isTrue="{!v.wrapperOppPlanRateSummary.theRateTypeCode == 'AGE'}">
+                                            <strong>
+                                                <ui:outputCurrency
+                                                        value="{!v.wrapperOppPlanRateSummary.sumCurrentAgeTotalMonthlyPremium}"/>
+                                            </strong>
+                                            <aura:set attribute="else">
+                                                <strong>
+                                                    <ui:outputCurrency
+                                                            value="{!v.wrapperOppPlanRateSummary.sumCurrentCompTotalMonthlyPremium}"/>
+                                                </strong>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.TotalProjMoPremium}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <aura:if isTrue="{!v.wrapperOppPlanRateSummary.theRateTypeCode == 'AGE'}">
+                                            <strong>
+                                                <ui:outputCurrency
+                                                        value="{!v.wrapperOppPlanRateSummary.sumRenwAgeTotalMonthlyPremium}"/>
+                                            </strong>
+                                            <aura:set attribute="else">
+                                                <strong>
+                                                    <ui:outputCurrency
+                                                            value="{!v.wrapperOppPlanRateSummary.sumRenwCompTotalMonthlyPremium}"/>
+                                                </strong>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters_small">
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.TotalNbrOfMembers}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <strong>
+                                            <lightning:formattedNumber
+                                                    value="{!v.wrapperOppPlanRateSummary.sumEnrolledMemberCount}"
+                                                    maximumFractionDigits="0"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.EstimatedCurrMoAllocated}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <aura:if isTrue="{!v.wrapperOppPlanRateSummary.theRateTypeCode == 'AGE'}">
+                                            <strong>
+                                                <ui:outputCurrency
+                                                        value="{!v.wrapperOppPlanRateSummary.sumCurrentAgeTotalEstTaxandFees}"/>
+                                            </strong>
+                                            <aura:set attribute="else">
+                                                <strong>
+                                                    <ui:outputCurrency
+                                                            value="{!v.wrapperOppPlanRateSummary.sumCurrentCompTotalEstTaxandFees}"/>
+                                                </strong>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.EstimatedProjMoAllocated}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <aura:if isTrue="{!v.wrapperOppPlanRateSummary.theRateTypeCode == 'AGE'}">
+                                            <strong>
+                                                <ui:outputCurrency
+                                                        value="{!v.wrapperOppPlanRateSummary.sumRenwAgeTotalEstTaxandFees}"/>
+                                            </strong>
+                                            <aura:set attribute="else">
+                                                <strong>
+                                                    <ui:outputCurrency
+                                                            value="{!v.wrapperOppPlanRateSummary.sumRenwCompTotalEstTaxandFees}"/>
+                                                </strong>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters_small">
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                                <span class="slds-form-element__label">{!$Label.c.NetAdjustment}</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        <aura:if isTrue="{!v.wrapperOppPlanRateSummary.theRateTypeCode == 'AGE'}">
+                                            <strong>
+                                                <ui:outputCurrency
+                                                        value="{!v.wrapperOppPlanRateSummary.theNetAdjustment}"/>
+                                            </strong>
+                                            <aura:set attribute="else">
+                                                <strong>
+                                                    <ui:outputCurrency
+                                                            value="{!v.wrapperOppPlanRateSummary.theNetAdjustment}"/>
+                                                </strong>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem"></div>
+                        <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem"></div>
+                    </div>
+                </div>
+
+
+            </aura:if>
+        </p>
+    </lightning:card>
+
+</aura:component>

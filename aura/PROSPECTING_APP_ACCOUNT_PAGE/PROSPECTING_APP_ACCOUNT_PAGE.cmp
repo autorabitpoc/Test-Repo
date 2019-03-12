@@ -1,0 +1,142 @@
+<aura:component controller="ProspectingAppAccountPageController">
+    <aura:attribute name="currentAccount" type="Account" default="{'sobjectType':'Account'}" />
+    <!--Attribute immediately below is used as a workaround for bugs when some fields are empty.
+        This is more of a Salesforce issue. Hopefully the fix it soon -->
+    <aura:attribute name="currentAccountComplete" type="Account" 
+                    default="{'sobjectType':'Account', 'Id':'', 'OwnerId':'', 'Name':'', 'BillingCity':'', 'BillingState':'', 'Industry':'', 'NumberOfEmployees':'', 
+                             'Total_Num_of_Potential_Subscribers__c':'', 'Group_Total_Eligible_Members__c':'', 'Client_Competitors__c':'', 'Owner.Name':'',
+                             'Website':'', 'Status__c':'', 'Client_Competitors__c':''}" />
+    <aura:attribute name="showButton" type="Boolean" default="false"/>
+    <aura:attribute name="showList" type="Boolean" default="false"/>
+    <aura:attribute name="emptyAccountContacts" type="Contact[]" default="[]"/>
+    <aura:attribute name="emptyAccountCompetitorsAndVendors" type="Competitor_Relationship__c[]" default="[]"/>
+    <aura:attribute name="emptyAccountProducers" type="Producer_Group_Association__c[]" default="[]"/>
+    <aura:attribute name="emptyNotes" type="Note[]" default="[]"/>
+    <aura:attribute name="emptyTasks" type="Task[]" default="[]"/>
+    <aura:attribute name="emptyAttachments" type="Attachment[]" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:registerEvent name="openLandingPage" type="c:PROSPECTING_APP_OPEN_LANDING_PAGE_EVT"/>
+    
+    <div class="slds-container--center slds-container--x-large" style="display: block; padding: 0 10px;}">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <div class="slds-media slds-no-space slds-grow">
+                        <div class="slds-media__figure">
+                            <lightning:icon iconName="action:new_person_account" size="large" alternativeText="Account Icon"/>
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-text-title--caps slds-line-height--reset">Account Name</p>
+                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="this should match the Record Title">{!v.currentAccountComplete.Name} &nbsp; <span class="slds-badge">{!v.currentAccountComplete.Status__c}</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                    <div class="slds-button-group" role="group">
+                        <aura:if isTrue="{!v.showButton}">
+                            <button class="slds-button slds-button--neutral" value="Account" onclick="{!c.addNewNoteOrTask}">Add Account Notes/Tasks</button>
+                        </aura:if>
+                        <button class="slds-button slds-button--brand" onclick="{!c.save}">Save</button>
+                    </div>
+                    &nbsp;
+                    <div class="slds-button-group" role="group">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.openLandingPage}">Back</button>
+                        <aura:if isTrue="{!v.showButton}">
+                            <ui:outputURL class="slds-button slds-button--brand" value="{!'/'+v.currentAccountComplete.Id}" label="Go To Salesforce"/>
+                        </aura:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-m-top--x-small" style="border-bottom: 1px solid LightGray;">
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Account Owner">Account Owner</p>
+                <p class="slds-text-body--regular slds-truncate" title="Name of the Account Owner">{!v.currentAccountComplete.Owner.Name}</p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="City, State">City, State
+                </p>
+                <p class="slds-text-body--regular">{!v.currentAccountComplete.BillingCity}, <span class="slds-text-title--caps">{!v.currentAccountComplete.BillingState}</span></p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Industry">Industry</p>
+                <p class="slds-text-body--regular">{!v.currentAccountComplete.Industry}</p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Employees">Employees</p>
+                <p>
+                    <span title="Number of Employees">{!v.currentAccountComplete.NumberOfEmployees}</span>
+                </p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Eligible Employees">Eligible Employees</p>
+                <p>
+                    <span title="Eligible Employees">{!v.currentAccountComplete.Total_Num_of_Potential_Subscribers__c}</span>
+                </p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Total Potential Members">Total Potential Members</p>
+                <p>
+                    <span title="Total Potential Members">{!v.currentAccountComplete.Group_Total_Eligible_Members__c}</span>
+                </p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Client Competitors">Client Competitors</p>
+                <p>
+                    <span title="Client Competitors">{!v.currentAccountComplete.Client_Competitors__c}</span>
+                </p>
+            </div>
+            <div class="slds-col slds-m-bottom--x-small slds-size--1-of-8">
+                <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Website">Website</p>
+                <p>
+                    <span title="Website">{!v.currentAccountComplete.Website}</span>
+                </p>
+            </div>
+        </div>
+        <div aura:id="notesAndActivitiesList" style="margin-top: 10px;"/>
+        <div aura:id="contactsList" style="margin-top: 10px;"/>
+        <div aura:id="competitorsAndThirdPartyVendorsList" style="margin-top: 10px;"/>
+        <div aura:id="producersAssociatedToGroupList" style="margin-top: 10px;"/>
+        <div aura:id="attachmentsList" style="margin-top: 10px;"/>
+        <div class="slds-grid" id="accountForm" style="margin-top: 25px">
+            <div class="slds-col slds-m-right--x-small">
+                <lightning:input name="accountOwner" label="Account Owner" disabled="true" value="{!v.currentAccountComplete.Owner.Name}" />
+                <lightning:input name="employeesEligible" value="{!v.currentAccountComplete.Total_Num_of_Potential_Subscribers__c}" label="Eligible Employees" />
+                <lightning:select aura:id="accountStatus" name="accountStatus" label="Status" value="{!v.currentAccountComplete.Status__c}"/>
+            </div>
+            <div class="slds-col slds-m-right--x-small">
+                <lightning:input name="accountName" label="Account Name" required="true" value="{!v.currentAccountComplete.Name}" />
+                <lightning:input name="potentialMembers" value="{!v.currentAccountComplete.Group_Total_Eligible_Members__c}" label="Total Potential Members" />
+                <lightning:input name="website" value="{!v.currentAccountComplete.Website}" label="Website" />
+            </div>
+            <div class="slds-col slds-m-right--x-small">
+                <lightning:select aura:id="accountIndustry" name="accountIndustry" label="Industry" value="{!v.currentAccountComplete.Industry}"/>
+                <lightning:input name="city" value="{!v.currentAccountComplete.BillingCity}" label="City" />
+                <lightning:textarea name="clientCompetitors" value="{!v.currentAccountComplete.Client_Competitors__c}" label="Client Competitors" maxlength="255" />
+            </div>
+            <div class="slds-col">
+                <lightning:input name="employeesNum" value="{!v.currentAccountComplete.NumberOfEmployees}" label="Number of Employees" />                
+                <lightning:select aura:id="accountBillingState" name="accountBillingState" label="State" value="{!v.currentAccountComplete.BillingState}" />
+            </div>
+        </div>
+        <div class="slds-grid slds-grid--align-center" style="margin-top: 30px; margin-bottom: 20px">
+            <div class="slds-button-group" role="group">
+                <aura:if isTrue="{!v.showButton}">
+                    <button class="slds-button slds-button--neutral" value="Account" onclick="{!c.addNewNoteOrTask}">Add Account Notes/Tasks</button>
+                </aura:if>
+                <button class="slds-button slds-button--brand" onclick="{!c.save}">Save</button>
+            </div>
+            &nbsp;
+            <div class="slds-button-group" role="group">
+                <button class="slds-button slds-button--neutral" onclick="{!c.openLandingPage}">Back</button>
+                <aura:if isTrue="{!v.showButton}">
+                    <ui:outputURL class="slds-button slds-button--brand" value="{!'/'+v.currentAccountComplete.Id}" label="Go To Salesforce"/> 
+                </aura:if>
+            </div>
+        </div>       
+    </div>
+    
+    <div aura:id="newNoteTaskModal"/>
+    <div><lightning:spinner aura:id="accountSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

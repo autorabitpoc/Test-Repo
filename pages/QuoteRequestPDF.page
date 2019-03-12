@@ -1,0 +1,121 @@
+<apex:page StandardController="Quote_Request_Summary__c" renderAs="pdf"  showHeader="false" standardStylesheets="false">
+<apex:stylesheet value="{!$Resource.pdfStyle}" />
+<html>
+<head>
+    <style>
+     .GrayBG{
+       background-color: silver !important;
+    }
+        @page {
+           size:letter;
+            margin: 1px 50px 225px 50px; 
+            size:A4;
+            Padding-top:30px;
+
+            @top-center { 
+                    content : element(header);
+                 }
+
+            @bottom-center {
+                    content : element(footer);
+                    height:200px;
+                    padding-top:10px;
+                 }
+        } 
+        
+        input {
+			visibility: hidden;
+
+        }
+
+           .mainTitle {
+             visibility: hidden;
+
+           }
+        
+        .body { font-family: 'Arial Unicode MS'; font-size='10pt' }
+        .companyName { font: bold 30px; color: red; }  
+        table {width:100%; border-spacing:0; border-collapse:collapse; border-width: 1px; border-color:#C0C0C0;border-style:solid;} 
+        .header-table-data { border-width: 1px; border-color:Black;border-style:solid;background-color:#FFFFFF;
+                             color:Black; font-size:14px; font-family:Verdana;
+                             text-align:center;}
+        .header-table-heading {border-width: 1px; border-color:Black;border-style:solid;background-color:#C0C0C0; 
+                               font-weight:bold;color:Black; font-size:14px; font-family:Verdana;
+                               text-align:center;}
+        .header-data { border-width: 0px; border-color:Black;border-style:solid;background-color:#FFFFFF;
+                       color:Black; font-size:12px; font-family:Verdana;text-align:left; padding-right: 10px;}
+
+        .header-heading {border-width: 0px; border-color:Black;border-style:solid; 
+                         font-weight:bold;color:Black; font-size:14px; font-family:Verdana;
+                         text-align:left;}
+
+    </style>
+
+</head>    
+<body>
+ <apex:pageblock >
+      <div id="detial" class="pdfBody">
+          <apex:detail relatedList="false" title="true" inlineEdit="false"/>
+          
+           <!--  
+            <apex:relatedList subject="{!Quote_Request_Summary__c}" list="Product_Line_Item_Marked_For_Future__r" />
+            <apex:relatedList subject="{!Quote_Request_Summary__c}" list="Product_Line_Item_delete__r" />
+            
+          -->
+      </div>  
+     
+        <table style="width:100%; border-size:1px" class="pdfBody">
+        
+         <tr ><td colspan="5"><font size="3"><b>Product Line Item(s) (Marked for Future):</b></font></td></tr>
+         
+          <tr><td colspan="5"><br/><br/></td></tr>
+          <tr class="GrayBG">
+           <th style="text-decoration: underline">Product Code</th>
+           <th style="text-decoration: underline">Product Name</th>
+           <th style="text-decoration: underline">Product Type</th>
+           <th style="text-decoration: underline">Pricing</th>
+           <th style="text-decoration: underline">Pricing Note</th>
+           <th style="text-decoration: underline">Billing</th>
+         </tr>
+         
+         <apex:repeat value="{!Quote_Request_Summary__c.Product_Line_Item_Marked_For_Future__r}" var="f">
+           <tr>
+          <td>xxxxxxxx</td>
+          <td>{!f.Product_Name__c}</td>
+          <td>{!f.Product_Type__c}</td>
+          <td>{!f.Pricing__c}</td>
+          <td>{!f.Pricing_Note__c}</td>
+          <td>{!f.Billing__c}</td>
+          </tr>
+         </apex:repeat>
+        
+         <tr><td colspan="5"><br/><br/></td></tr>
+       
+        <tr><td colspan="5"><font size="3"><b>Product Line Item(s) (Marked for Delete):</b></font></td></tr>
+        <tr><td colspan="5"><br/></td></tr>
+          <tr class="GrayBG">
+           <th style="text-decoration: underline">Product Code</th>
+           <th style="text-decoration: underline">Product Name</th>
+           <th style="text-decoration: underline">Product Type</th>
+           <th style="text-decoration: underline">Pricing</th>
+           <th style="text-decoration: underline">Pricing Note</th>
+           <th style="text-decoration: underline">Billing</th>
+         </tr>
+        <apex:repeat value="{!Quote_Request_Summary__c.Product_Line_Item_delete__r}" var="c">
+          <tr>
+          <td>xxxxxxxx</td>
+          <td>{!c.Product_Name__c}</td>
+          <td>{!c.Product_Type__c}</td>
+          <td>{!c.Pricing__c}</td>
+          <td>{!c.Pricing_Note__c}</td>
+          <td>{!c.Billing__c}</td>
+           </tr>
+         </apex:repeat>
+        </table>
+         
+     
+      </apex:pageblock>
+     
+ </body>
+ </html>
+</apex:page>

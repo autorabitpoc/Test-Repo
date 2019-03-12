@@ -1,0 +1,354 @@
+<aura:component controller="LGNA_OperationTabDataController" access="global" implements="force:appHostable,force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="msegmentList" type="List" default=""/>
+    <aura:attribute name="accDetails" type="Account"/>
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:attribute name="distributionlist" type="List" default=""/>
+    <aura:attribute name="gmplanList" type="List" default=""/>
+     <aura:attribute name="fsulocationplanList" type="List" default=""/>
+    <aura:attribute name="gmtypeList" type="List" default=""/>
+    <aura:attribute name="risktypeList" type="List" default=""/>
+    <aura:attribute name="risklevelList" type="List" default=""/>
+    <aura:attribute name="recordTypename" type="string"/>
+    <aura:attribute name="Lookupvalues" type="Contact" default="{sobjectType: 'Contact' }"/>
+  
+    <div class="slds">
+        
+        <div class="slds-form slds-form_compound">
+            <!--Starts Display account Information--> 
+            <div style="font-size:20px">Account Information
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">Eligibility Vendor EDI Analyst Name</label>
+                        <!--<input type="text" id="input-05" class="slds-input">--><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Eligibility_Vendor_EDI_Analyst_Name__c}"/><br/>      
+                        <!--<input type="text" id="input-04" class="slds-input">-->
+                        <label class="slds-form-element__label" for="input-04">Eligibility Vendor EDI Analyst Email</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Eligibility_Vendor_EDI_Analyst_Email__c}" /> <br/>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2" >
+                        
+                        <label class="slds-form-element__label" for="input-05">Eligibility Vendor EDI Analyst Phone</label>
+                        <!--<input type="text" id="input-05" class="slds-input">--><br/>
+                        <ui:outputNumber class="slds-form-element__label" value="{!v.accDetails.Eligibility_Vendor_EDI_Analyst_Phone__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Eligibility Vendor Name</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Eligibility_Vendor_Name__c}" /><br/> 
+                    </div>    
+                </div>
+            </div>
+            <!--Ends Display account Information--> 
+            <!--Starts Display Group Type --> 
+            <div style="font-size:20px">Group Type
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-04">Funding Type</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Funding_Type__c}" /><br/>
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Group Medicare</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Group_Medicare__c}"/> 	
+                        </div>
+                        <label class="slds-form-element__label" for="input-04">Group Medicare Plan</label>
+                        <!--<ui:inputselect class="slds-input slds-form-element__label" value="{!v.accDetails.Group_Medicare_Plan__c}"/>-->
+                        <ui:inputSelect multiple="false" class="slds-select slds-form-element__label" aura:id="gmp" value="{!v.accDetails.Group_Medicare_Plan__c}">
+                        </ui:inputSelect>
+                        
+                        <label class="slds-form-element__label" for="input-04">Group Medicare Type</label>
+                        <ui:inputselect multiple="false" aura:id="gmt" class="slds-input slds-form-element__label" value="{!v.accDetails.Group_Medicare_Type__c}"></ui:inputselect>	
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Cooperative</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Cooperative__c}"/> 	
+                        </div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Coalition</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Coalition__c}"/> 	
+                        </div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Labor</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Labor__c}"/> 	
+                        </div>
+                        
+                        <label class="slds-form-element__label" for="input-04">Labor fund ID</label>
+                        <ui:inputText class="slds-input slds-form-element__label"  value="{!v.accDetails.Labor_fund_ID__c}" />	
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-04">Premium Type</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Premium_Type__c}" /><br/>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Ceded?</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Ceded__c}" /> 	
+                        </div>
+                        
+                        <label class="slds-form-element__label" for="input-04">Ceded From (ICL)</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Ceded_From_ICL__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Ceded To (ACL)</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Ceded_To_ACL__c}" /><br/>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Grandfathered Account?</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Grandfathered_Account__c}" /> 	
+                        </div>
+                        
+                        <label class="slds-form-element__label" for="input-04">Grandfathered Date</label>
+                        <ui:inputDate class="slds-input slds-form-element__label" aura:id="gfDate" format="MMM dd, yyyy" displayDatePicker="true" value="{!v.accDetails.Grandfathered_Date__c}" />
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Hold Harmless Agreement</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Hold_Harmless_Agreement__c}" /> 	
+                        </div>
+                      
+                        <label class="slds-form-element__label" for="input-04">Account Persistency</label>
+                        <ui:inputText class="slds-input slds-form-element__label" value="{!v.accDetails.Account_Persistency__c}"/>
+                    </div>
+                </div>
+            </div>
+            <!--Ends Display Group Type --> 
+            <!-- Starts Display Renewal Informatiion --> 
+            <div style="font-size:20px">Renewal Informatiion
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">Original Effective Date</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Effective_Date__c}" /><br/>         
+                        
+                        <label class="slds-form-element__label" for="input-04">Anniversary Date</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Group_Anniversary_Date__c}" /> <br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Contract Recipient</label><br/>
+                       <ui:outputText class="slds-form-element__label"  value="{!v.accDetails.Contract_Signer__r.Name}" /><br/>
+ 						<!--<force:inputField aura:id="acct" value="{!v.Lookupvalues.Contract_Signer__c}"/> test-->
+                        
+                        <label class="slds-form-element__label" for="input-04">Distribution Method</label><br/>
+                         <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="dm" value="{!v.accDetails.Distribution_Method__c}"/>
+                    
+                        <label class="slds-form-element__label" for="input-04">Contract End</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label"  value="{!v.accDetails.Contract_End__c}"/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Open Enrollment Start Date</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Open_Enrollment_Date__c}"/>	
+                        
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-04">Open Enrollment end Date</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Open_Enrollment_End_Date__c}" />
+                        
+                        <label class="slds-form-element__label" for="input-04">Renewal Date</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Renewal_Date__c}" />
+                        
+                        <label class="slds-form-element__label" for="input-04">Renewal Notification (in days)</label>
+                        <ui:inputnumber class="slds-input slds-form-element__label" value="{!v.accDetails.Renewal_Notification_in_days__c}" />
+                        
+                        <label class="slds-form-element__label" for="input-04">Risk Type</label>
+                        <ui:inputselect multiple="false" aura:id="risktype" class="slds-input slds-form-element__label" value="{!v.accDetails.Risk_Type__c}"/>				
+                        
+                        <label class="slds-form-element__label" for="input-05">Risk Level</label>
+                        <!--<input type="text" id="input-05" class="slds-input">-->
+                        <ui:inputselect multiple="false" aura:id="risklevel" class="slds-input slds-form-element__label" value="{!v.accDetails.Current_Risk_Level__c}"/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Risk Reason</label>
+                        <ui:inputText class="slds-input slds-form-element__label" value="{!v.accDetails.Risk_Reason__c}"/> 
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Ends Display Renewal Informatiion --> 
+            <!-- Starts Display Address Informatiion --> 
+            <div style="font-size:20px">Address Information
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">BillingAddress</label><br/>
+                        <!--<input type="text" id="input-05" class="slds-input">-->
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.BillingAddress}" /><br/>      
+                        <!--<input type="text" id="input-04" class="slds-input">-->
+                        <label class="slds-form-element__label" for="input-04">Billing County</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Billing_County__c}" /><br/>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-04">Key Locations</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Key_Locations__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">HQ Address</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.ShippingStreet}" /><br/>
+						<ui:outputText class="slds-form-element__label" value="{!v.accDetails.ShippingCity}" /><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.ShippingState}" /><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.ShippingPostalCode}" /><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.ShippingCountry}" /><br/>
+                    </div>
+                </div>
+            </div>
+             <!-- Ends Display Address Informatiion --> 
+            <!-- Starts Display Additional Company Informatiion -->
+            
+            <div style="font-size:20px">Additional Company Information
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">HCSC Client Since</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.HCSC_Client_Since__c}"/>         
+   
+                        <label class="slds-form-element__label" for="input-04">Form Received Date</label>
+                        <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Form_Received_Date__c}"/> 
+                        
+                        <label class="slds-form-element__label" for="input-04">RFP Cycle</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.RFP_Cycle__c}" /><br/>   
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-04">EIN</label>
+                        <ui:inputText class="slds-input slds-form-element__label" value="{!v.accDetails.EIN__c}"/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Blue Clients in Similar Industry</label>
+                        <ui:inputText class="slds-input slds-form-element__label" value="{!v.accDetails.Blue_Clients_in_Similar_Industry__c}"/>  
+                    </div>
+                </div>
+            </div>
+             <!-- Ends Display Additional Company Informatiion -->
+            
+           <!--<aura:if isTrue="{!v.recordTypename == 'Prospect'}">
+            <div style="font-size:20px">Sales/service territory  information
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-04">FSU Location</label>
+                        <ui:inputselect multiple="false" aura:id="fsuloc" class="slds-input slds-form-element__label" value="{!v.accDetails.FSU_Location__c}"/>		 
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2"> 
+                        <label class="slds-form-element__label" for="input-04">Underwriter__c</label>
+                        <ui:outputtext class="slds-input slds-form-element__label" value="{!v.accDetails.Underwriter__c}"/>    
+                    </div>    
+                </div>
+			</div>
+            </aura:if>-->
+            
+             <!-- Starts Display BlueStar team information -->
+            <div style="font-size:20px">BlueStar team information
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">Account Cluster User Identification</label><br/>
+                        <!--<input type="text" id="input-05" class="slds-input">-->
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_User_Identification__c}" /> <br/>       
+                        <!--<input type="text" id="input-04" class="slds-input">-->
+                        <label class="slds-form-element__label" for="input-04">Account Executive 1</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_Name__c}" /> <br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Account Executive 2</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Executive_2__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Account Cluster Region</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_Region__c}" /><br/> 	
+                        
+                        <label class="slds-form-element__label" for="input-04">Account cluster number</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_Number__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">account cluster effective date</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_Effective_Date__c}" /><br/>	
+                        
+                        <label class="slds-form-element__label" for="input-04">account cluster end date</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_End_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Account cluster product type</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Account_Cluster_Product_Type__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Sales Executive</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Team__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">sales cluster region</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Cluster_Region__c}" /><br/>				
+                        
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-05">sales cluster number</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Cluster_Number__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">sales rep employee number</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Rep_Employee_Number__c}" /><br/> 
+                        
+                        <label class="slds-form-element__label" for="input-04">sales cluster effective date</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Cluster_Effective_Date__c}" /> <br/>	
+                        
+                        <label class="slds-form-element__label" for="input-04">sales cluster end date</label><br/>
+                        <ui:outputtext class="slds-form-element__label"  value="{!v.accDetails.Sales_Cluster_End_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">sales cluster product type</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Sales_Cluster_Product_Type__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Underwriter team code</label><br/>
+                        <ui:outputtext class="slds-form-element__label"  value="{!v.accDetails.Underwriter_Team_Code__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Underwriter name</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Underwriter_Name__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Underwriter user id</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Underwriter_User_ID__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">underwriter effective date</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Underwriter_Effective_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">underwriter end date</label><br/>
+                        <ui:outputtext class="slds-form-element__label" value="{!v.accDetails.Underwriter_End_Date__c}" /><br/>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Ends Display BlueStar team information -->
+            <!-- Starts Display Cancellation information -->
+            <div style="font-size:20px">Cancellation information 
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        <label class="slds-form-element__label" for="input-05">Requested Cancellation date</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Requested_Cancellation_Date__c}" /><br/>      
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/Reinstatement Code</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancellation_Code__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/reinstatement reason</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancellation_Reason__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/reinstatement explanation</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancellation_Explanation__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancelled health members</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancelled_Health_Members__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancelled Health Contracts</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancelled_Health_Contracts__c}" /><br/>
+                    </div>
+                    
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/reinstatement date</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancellation_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/Reinstatement Submitted Dt</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Cancellation_Submitted_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Willing to be used as a reference?</label><br/>
+                        <ui:outputCheckbox value="{!v.accDetails.Willing_to_be_used_as_a_reference__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Out of Business?</label><br/>
+                        <ui:outputCheckbox value="{!v.accDetails.Out_of_Business__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Claim stop date</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Claim_Stop_Date__c}" /><br/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Cancellation/reinstatement status</label><br/>
+                        <ui:outputText class="slds-form-element__label" value="{!v.accDetails.COBRA_Administration_Type__c}" /><br/>
+                    </div>
+                </div>
+            </div>
+            <!-- Ends Display Cancellation information -->
+        </div>
+        <!-- Display Save Button -->
+        <div class="slds-x-small-buttons--horizontal slds-align_absolute-center" >   
+            <lightning:button onclick="{!c.save}" >Save</lightning:button>
+        </div>
+        <!-- End Save Button -->
+    </div>
+</aura:component>

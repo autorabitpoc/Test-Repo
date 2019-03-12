@@ -1,0 +1,9 @@
+*** Opportunity Notification *** 
+
+The following {!Opportunity.Name} Opportunity has been auto created. 
+
+Account: {!Opportunity.Account} 
+Opportunity Name: {!Opportunity.Name} 
+
+
+Follow this link to access the Opportunity: {!Opportunity.Link}

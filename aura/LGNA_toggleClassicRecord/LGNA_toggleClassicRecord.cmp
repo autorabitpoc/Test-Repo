@@ -1,0 +1,5 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+    <div class="buttonContainerClass" style="text-align:center;">
+        <lightning:button class="buttonClass" variant="brand" label="View in GEMS" iconName="utility:new_window" iconPosition="left" onclick="{!c.redirectToClassicRecordPage}"/>
+    </div>
+</aura:component>

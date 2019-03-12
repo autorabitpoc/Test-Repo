@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to track the different Medical Benefit Coding BA Level Tests that may occur (DTU, FEAK, Shared Accums and CDHP)</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+MBC_BA_Level_Case_CDHP__r.Account_Name__c, 
+MBC_BA_Level_Case_FEAK_Testing__r.Account_Name__c), 
+MBC_BA_Level_Case_FEAK__r.Account_Name__c), 
+MBC_BA_Level_Case_Shared_Accums__r.Account_Name__c), 
+MBC_BA_Level_Case_DTU__r.Account_Name__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+MBC_BA_Level_Case_CDHP__r.Account_Number__c, 
+MBC_BA_Level_Case_FEAK_Testing__r.Account_Number__c), 
+MBC_BA_Level_Case_FEAK__r.Account_Number__c), 
+MBC_BA_Level_Case_Shared_Accums__r.Account_Number__c), 
+MBC_BA_Level_Case_DTU__r.Account_Number__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BA_No__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>BA No.</label>
+        <referenceTo>GEMS_Benefit_Agreement__c</referenceTo>
+        <relationshipLabel>GEMS MBC Testing</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Case_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ),  
+   IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+     IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+       IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) ,  
+MBC_BA_Level_Case_CDHP__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c , 
+MBC_BA_Level_Case_FEAK_Testing__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c), 
+MBC_BA_Level_Case_FEAK__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c),    MBC_BA_Level_Case_Shared_Accums__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c),  MBC_BA_Level_Case_DTU__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Case_Owner_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Case Owner Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DTU_Record_Id_Invisible__c</fullName>
+        <description>This field will hold the record ID of DTU testing record which was used to update the DTU sign-off date.</description>
+        <externalId>false</externalId>
+        <label>DTU Record Id Invisible</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DTU_Sign_Off_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>DTU Sign Off Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FEAK_Testing_Needed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If this box is checked - a new FEAK Testing object is created</description>
+        <externalId>false</externalId>
+        <label>FEAK Testing Needed?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FSU_Location__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+TEXT(MBC_BA_Level_Case_CDHP__r.GEMS_Account_Submission_Info__r.FSU_Location__c) , 
+TEXT(MBC_BA_Level_Case_FEAK_Testing__r.GEMS_Account_Submission_Info__r.FSU_Location__c)), 
+TEXT(MBC_BA_Level_Case_FEAK__r.GEMS_Account_Submission_Info__r.FSU_Location__c)), TEXT(MBC_BA_Level_Case_Shared_Accums__r.GEMS_Account_Submission_Info__r.FSU_Location__c)), 
+TEXT(MBC_BA_Level_Case_DTU__r.GEMS_Account_Submission_Info__r.FSU_Location__c) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Center Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HCSC_Division__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+TEXT(MBC_BA_Level_Case_CDHP__r.GEMS_Account_Submission_Info__r.HCSC_Division__c) , 
+TEXT(MBC_BA_Level_Case_FEAK_Testing__r.GEMS_Account_Submission_Info__r.HCSC_Division__c)), 
+TEXT(MBC_BA_Level_Case_FEAK__r.GEMS_Account_Submission_Info__r.HCSC_Division__c)), TEXT(MBC_BA_Level_Case_Shared_Accums__r.GEMS_Account_Submission_Info__r.HCSC_Division__c)), 
+TEXT(MBC_BA_Level_Case_DTU__r.GEMS_Account_Submission_Info__r.HCSC_Division__c) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_CDHP__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC BA Level Case - CDHP</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>CDHP Testing</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_DTU__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC BA Level Case - DTU</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>DTU Testing</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_FEAK_Testing__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC BA Level Case - FEAK Testing</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>FEAK Testing</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_FEAK__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC BA Level Case - FEAK</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>FEAK Analysis</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+MBC_BA_Level_Case_CDHP__r.Owner_Name__c , 
+MBC_BA_Level_Case_FEAK_Testing__r.Owner_Name__c), 
+MBC_BA_Level_Case_FEAK__r.Owner_Name__c), 
+MBC_BA_Level_Case_Shared_Accums__r.Owner_Name__c), 
+MBC_BA_Level_Case_DTU__r.Owner_Name__c )</formula>
+        <label>MBC BA Level Case Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MBC_BA_Level_Case_Shared_Accums__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC BA Level Case - Shared Accums</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Shared Accums Testing</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_Parent_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MBC Parent Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>GEMS MBC Testing (MBC Parent Case)</relationshipLabel>
+        <relationshipName>GEMS_MBC_Testing5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MBC_Testing_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( MBC_BA_Level_Case_DTU__c ), 
+IF( ISBLANK( MBC_BA_Level_Case_Shared_Accums__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK__c ) , 
+IF( ISBLANK( MBC_BA_Level_Case_FEAK_Testing__c ) , 
+&quot;CDHP&quot; , 
+&quot;FEAK Test&quot;), 
+&quot;FEAK Analysis&quot;), 
+&quot;Shared Accums&quot;), 
+&quot;DTU&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MBC Testing Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NOTE__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE(&quot;/img/samples/flag_red.gif&quot;, &quot;yelow&quot;, 12, 12)+&quot;Upon checking and saving FEAK Testing Needed? a testing record will be created. If later unchecked, pending testing records will not be canceled. Please communicate with assigned FEAK tester to cancel.&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOTE</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Passed</fullName>
+                    <default>false</default>
+                    <label>Passed</label>
+                </value>
+                <value>
+                    <fullName>FEAK Testing Required</fullName>
+                    <default>false</default>
+                    <label>FEAK Testing Required</label>
+                </value>
+                <value>
+                    <fullName>No FEAK Testing Needed</fullName>
+                    <default>false</default>
+                    <label>No FEAK Testing Needed</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>GEMS MBC Testing</label>
+    <listViews>
+        <fullName>DTU_Queue_GEMS_MBC_Testing</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GEMS DTU Queue</label>
+        <queue>DTU_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>GEMS_CDHP_Operations_Queue_GEMS_MBC_Testing</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GEMS CDHP Operations Queue</label>
+        <queue>GEMS_CDHP_Operations_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>GEMS_FEAK_Analysis_Queue_GEMS_MBC_Testing</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GEMS FEAK Analysis Queue</label>
+        <queue>GEMS_FEAK_Analysis_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>GEMS_FEAK_Testing_Queue_GEMS_MBC_Testing</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GEMS FEAK Testing Queue</label>
+        <queue>GEMS_FEAK_Testing_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>{0000000}</displayFormat>
+        <label>Request ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GEMS MBC Testing</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CDHP_Testing</fullName>
+        <active>true</active>
+        <description>This is the Record Type for MBC CDHP Testing</description>
+        <label>CDHP Testing</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Passed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>DTU_Testing</fullName>
+        <active>true</active>
+        <description>This is the Record Type for MBC DTU Testing</description>
+        <label>DTU Testing</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Passed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>FEAK_Analysis</fullName>
+        <active>true</active>
+        <description>This Record Type is used for FEAK Analysis on the Medical Benefit Coding BA Level Case</description>
+        <label>FEAK Analysis</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEAK Testing Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>No FEAK Testing Needed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>FEAK_Testing</fullName>
+        <active>true</active>
+        <description>This Record Type is used for FEAK Testing on the Medical Benefit Coding BA Level Case</description>
+        <label>FEAK Testing</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Passed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Shared_Accums_Testing</fullName>
+        <active>true</active>
+        <description>This is for the Shared Accums Testing for Medical Benefit Coding BA Level Cases</description>
+        <label>Shared Accums Testing</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Passed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>DTU_Sign_Off_Date_required_when_Passed</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(RecordType.Name== &apos;DTU Testing&apos; , ISBLANK(DTU_Sign_Off_Date__c),
+TEXT(Status__c) == &apos;Passed&apos;
+)</errorConditionFormula>
+        <errorMessage>DTU Sign Off Date is a required field on the DTU Record Type when changing the status to Passed.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>New_CDHP_Test</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New CDHP Test</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var mainCase = new sforce.SObject(&quot;Case&quot;); 
+var retStr;
+var cs = sforce.connection.query(&quot;select name from GEMS_MBC_Create_Profiles__c&quot;);
+var csValues = cs.getArray(&quot;records&quot;);
+var rightProfile = &apos;N&apos;;
+for(i = 0; i&lt;csValues.length; i++)
+{
+if(csValues[i].Name == &apos;{!$Profile.Name}&apos;){
+rightProfile = &apos;Y&apos;;
+}
+}
+if(&apos;{!Case.GEMS_Coding_Complete_Date__c}&apos; != &quot;&quot; 
+&amp;&amp; rightProfile == &apos;Y&apos;){
+retStr = sforce.apex.execute(&quot;GEMS_MBCTestingCreate&quot;, &quot;NewMBCTest&quot;, { MBCId : &apos;{!Case.Id}&apos;, TestType : &apos;CDHP&apos; });
+var resp = retStr.toString();
+window.location=resp;
+}
+/*else if (&apos;{Case.GEMS_Coding_Complete_Date__c}&apos; == &quot;&quot;){*/
+else if(rightProfile == &apos;Y&apos;){
+alert(&apos;Coding Complete Date must be populated before a testing record is created.&apos;);
+}
+else {
+alert(&apos;Your profile does not have access to create Testing records.&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_DTU_Test</fullName>
+        <availability>online</availability>
+        <description>Creates a new DTU Test - MBC Testing Object</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New DTU Test</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var mainCase = new sforce.SObject(&quot;Case&quot;); 
+var retStr;
+var cs = sforce.connection.query(&quot;select name from GEMS_MBC_Create_Profiles__c&quot;);
+var csValues = cs.getArray(&quot;records&quot;);
+var rightProfile = &apos;N&apos;;
+for(i = 0; i&lt;csValues.length; i++)
+{
+if(csValues[i].Name == &apos;{!$Profile.Name}&apos;){
+rightProfile = &apos;Y&apos;;
+}
+}
+if(&apos;{!Case.GEMS_Coding_Complete_Date__c}&apos; != &quot;&quot; 
+&amp;&amp; rightProfile == &apos;Y&apos;){
+retStr = sforce.apex.execute(&quot;GEMS_MBCTestingCreate&quot;, &quot;NewMBCTest&quot;, { MBCId : &apos;{!Case.Id}&apos;, TestType : &apos;DTU&apos; });
+var resp = retStr.toString();
+window.location=resp;
+}
+/*else if (&apos;{Case.GEMS_Coding_Complete_Date__c}&apos; == &quot;&quot;){*/
+else if(rightProfile == &apos;Y&apos;){
+alert(&apos;Coding Complete Date must be populated before a testing record is created.&apos;);
+}
+else {
+alert(&apos;Your profile does not have access to create Testing records.&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_FEAK_Analysis</fullName>
+        <availability>online</availability>
+        <description>Creates a new FEAK Analysis - MBC Testing Object</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New FEAK Analysis</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var mainCase = new sforce.SObject(&quot;Case&quot;); 
+var retStr;
+var cs = sforce.connection.query(&quot;select name from GEMS_MBC_Create_Profiles__c&quot;);
+var csValues = cs.getArray(&quot;records&quot;);
+var rightProfile = &apos;N&apos;;
+for(i = 0; i&lt;csValues.length; i++)
+{
+if(csValues[i].Name == &apos;{!$Profile.Name}&apos;){
+rightProfile = &apos;Y&apos;;
+}
+}
+if(&apos;{!Case.GEMS_Coding_Complete_Date__c}&apos; != &quot;&quot; 
+&amp;&amp; rightProfile == &apos;Y&apos;){
+retStr = sforce.apex.execute(&quot;GEMS_MBCTestingCreate&quot;, &quot;NewMBCTest&quot;, { MBCId : &apos;{!Case.Id}&apos;, TestType : &apos;FEAK&apos; });
+var resp = retStr.toString();
+window.location=resp;
+}
+/*else if (&apos;{Case.GEMS_Coding_Complete_Date__c}&apos; == &quot;&quot;){*/
+else if(rightProfile == &apos;Y&apos;){
+alert(&apos;Coding Complete Date must be populated before a testing record is created.&apos;);
+}
+else {
+alert(&apos;Your profile does not have access to create Testing records.&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Shared_Accums_Test</fullName>
+        <availability>online</availability>
+        <description>Creates a new Shared Accums Test - MBC Testing Object</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Shared Accums Test</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var mainCase = new sforce.SObject(&quot;Case&quot;); 
+var retStr;
+var cs = sforce.connection.query(&quot;select name from GEMS_MBC_Create_Profiles__c&quot;);
+var csValues = cs.getArray(&quot;records&quot;);
+var rightProfile = &apos;N&apos;;
+for(i = 0; i&lt;csValues.length; i++)
+{
+if(csValues[i].Name == &apos;{!$Profile.Name}&apos;){
+rightProfile = &apos;Y&apos;;
+}
+}
+if(&apos;{!Case.GEMS_Coding_Complete_Date__c}&apos; != &quot;&quot; 
+&amp;&amp; rightProfile == &apos;Y&apos;){
+retStr = sforce.apex.execute(&quot;GEMS_MBCTestingCreate&quot;, &quot;NewMBCTest&quot;, { MBCId : &apos;{!Case.Id}&apos;, TestType : &apos;SAT&apos; });
+var resp = retStr.toString();
+window.location=resp;
+}
+/*else if (&apos;{Case.GEMS_Coding_Complete_Date__c}&apos; == &quot;&quot;){*/
+else if(rightProfile == &apos;Y&apos;){
+alert(&apos;Coding Complete Date must be populated before a testing record is created.&apos;);
+}
+else {
+alert(&apos;Your profile does not have access to create Testing records.&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

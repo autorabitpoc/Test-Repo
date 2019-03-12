@@ -1,0 +1,123 @@
+<!--
+/**************************************************************************************
+  Visulaforce Page Name : GEMSIDCardSuppressionBAAssignment
+  Version               : 1.0
+  Function              : This Page is for associating ba and gs to suppression ID forms
+  Modification Log      :
+* Developer           Date                   Description
+* ----------------------------------------------------------------------------                 
+* Phani Kommareddy    06/12/2017             SFDC-3064 Change how BAs are associated to Custom ID Card, Prospective and Suppression requests
+* Phani Kommareddy    09/13/2017             SFDC-4483 GEMS - Ability to request ID Card Suppression/Unsuppression by Group Section
+* Phani Kommareddy    11/27/2017             SFDC-6369 GEMS - ID Card Maintenance: ID Card Case Page Layout & Functionality
+* Malathi.K           05/11/2017             SFDC-6975 GEMS - ID Cards - Show request form ID field on the ID Card Case forms.
+*************************************************************************************/
+-->
+
+
+<apex:page standardController="GEMS_ID_Card_Suppression__c" extensions="GEMS_IDCardSuppressionBAAssignCntlr" sidebar="false" showChat="false" showQuickActionVfHeader="false" id="pageId">
+    <apex:sectionHeader subtitle="ID Card Suppression/ Removal Suppression" title="ID Card to Child ID Card Case Assignment"/> 
+    <apex:includeScript value="{!$Resource.idCardsUtil}"/>
+    <script> 
+        function setFocusOnLoad(){} 
+    </script>
+    
+    <apex:form id="formId">
+        <apex:pageMessages id="pgMsgId"/>
+        <apex:actionFunction name="saveAndAssignBAToCustFormCtrl" action="{!saveAndAssignBAs}" rerender="formId" status="pageStatus">
+            <apex:param name="baString" value="" assignTo="{!baCaseNums}" />            
+            <apex:param name="gsString" value="" assignTo="{!gsCaseNums}" />            
+        </apex:actionFunction>
+        
+        <apex:pageBlock title="ID Card Case" id="thePageBlock" >
+            <apex:pageBlockSection id="pbs">
+                <apex:outputField value="{!parentIdCardCase.Account.Name}" />
+                <apex:outputField value="{!parentIdCardCase.Account.External_ID__c}"/>  
+                <apex:outputField value="{!parentIdCardCase.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!parentIdCardCase.HCSC_Division__c}"/>                
+                <apex:outputField value="{!parentIdCardCase.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!parentIdCardCase.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!parentIdCardCase.Market_Segment__c}"/>                               
+                <apex:outputField value="{!parentIdCardCase.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!idCardSuppressionRecord.Applicable_BAs__c}" rendered="{!parentIdCardCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}"/>
+                <apex:inputField id="applicableBAsId" value="{!idCardSuppressionRecord.Applicable_BAs__c}" rendered="{!parentIdCardCase.GEMS_Submission_Type__c == 'ID Card Maintenance'}"/>
+                <apex:outputField value="{!parentIdCardCase.Status}"/>
+                <apex:outputField value="{!idCardSuppressionRecord.Applicable_GSs__c}" rendered="{!parentIdCardCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}"/>
+                <apex:inputField id="applicableGSsId" value="{!idCardSuppressionRecord.Applicable_GSs__c}" rendered="{!parentIdCardCase.GEMS_Submission_Type__c == 'ID Card Maintenance'}"/>
+                <apex:outputField value="{!idCardSuppressionRecord.Name}"/>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:commandLink value="Back to Custom ID Card Case" action="{!gotoCase}"/>
+        <br/><br/>
+        <center><b style="font-size: 140%;">ID Card Suppression</b></center>
+        <br/>
+          <apex:pageBlock id="IDCardSuppressionId">
+          <center><b style="font-size: 140%;">ID Card Suppression/ Removal Suppression Fields</b></center>
+            <br/>
+            <apex:pageBlockSection id="idsId">
+                <apex:inputfield value="{!idCardSuppressionRecord.Status__c}" required="true"/>
+                <apex:inputfield value="{!idCardSuppressionRecord.Suppression_Removal_Requested_Date__c}"/>                       
+                <apex:inputfield value="{!idCardSuppressionRecord.ID_Card_Requested_date__c}"/>
+                <apex:inputfield value="{!idCardSuppressionRecord.Removal_of_ID_Card_Suppression_Date__c}"/>
+                <apex:inputfield value="{!idCardSuppressionRecord.ID_Card_Suppression_Date__c}"/>                
+            </apex:pageBlockSection>
+            <apex:pageblockbuttons location="bottom">
+                <apex:commandButton Value="Cancel" action="{!gotoCase}"/>
+                <apex:commandButton Value="Save & Assign" action="{!dummy}" oncomplete="saveAndAssignBAToCustForm(false,'{!parentIdCardCase.GEMS_Submission_Type__c}')"/>  
+                <apex:commandButton Value="Submit" action="{!submitIdCardSuppression}" disabled="{!disableSubmitButton}"/>
+                <apex:actionStatus id="pageStatus">
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <img src="/img/loading32.gif" width="20" height="20" />
+                            <apex:outputLabel value="Loading..."/>
+                        </apex:outputPanel>            
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageblockbuttons>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="assignmentTypePB" rendered="{!parentIdCardCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}">
+            <apex:outputLabel value="Assignment Type" style="font-weight: bold"/>
+            <apex:selectRadio value="{!assignmentType}" id="assignmentTypeId" onchange="checkValue('{!$Component.assignmentTypeId}')" layout="pageDirection"> 
+                <apex:selectOptions value="{!AssignmentItems}"  />
+            </apex:selectRadio> 
+            <apex:actionFunction name="updateAssignmentType"  action="{!dummy}" rerender="formId" immediate="true" status="status">
+                <apex:param name="selectedRadioButtonValue" value="" assignTo="{!assignmentType}" />
+            </apex:actionFunction>
+            <apex:actionStatus startStyle="color:red" startText="Loading..." id="status"/>
+        </apex:pageBlock>
+        
+        
+        <apex:pageBlock id="baPB" title="BA Records" rendered="{!assignmentType == 'Benefit Agreement' && parentIdCardCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}" >
+            <apex:variable value="{!0}" var="baIdIncr" />
+            <apex:pageBlockTable value="{!listOfBARecords}" var="baIdWrapper" id="newBATable">
+                <apex:column headerValue="Select" width="3%" id="selectCol">
+                    <apex:variable value="{!baIdIncr+1}" var="baIdIncr" />
+                    <input type="checkbox" id="{!baIdIncr}" onclick="setSelectedValues('{!baIdIncr}','{!baIdWrapper.ba.Name}','Benefit Agreement')"/>
+                </apex:column>
+                <apex:column headerValue="BA No." width="5%">
+                    <apex:outputField value="{!baIdWrapper.ba.Name}"/>
+                </apex:column>
+                <apex:column headerValue="BA Product Type" value="{!baIdWrapper.ba.product__r.Name}" width="3%"/>
+                <apex:column headerValue="BA Description" value="{!baIdWrapper.ba.BA_Description__c}" width="7%"/>
+                <apex:column headerValue="BA Fund Type" value="{!baIdWrapper.ba.BA_Fund_Type__c}" width="7%"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="gsPB" title="Group Section Records" rendered="{!assignmentType == 'Group Section' && parentIdCardCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}">
+            <apex:variable value="{!0}" var="gsIdIncr" />
+            <apex:pageBlockTable value="{!listOfGSRecords}" var="gsIdWrapper" id="newGSTable">
+                <apex:column headerValue="Select" width="3%" id="selectCol">
+                    <apex:variable value="{!gsIdIncr+1}" var="gsIdIncr" />
+                    <input type="checkbox" id="{!gsIdIncr}" onclick="setSelectedValues('{!gsIdIncr}','{!gsIdWrapper.gs.Name}','Group Section')" />
+                </apex:column>
+                <apex:column headerValue="Group Section No." width="5%">
+                    <apex:outputField value="{!gsIdWrapper.gs.name}"/>
+                </apex:column>
+                <apex:column headerValue="Group No." value="{!gsIdWrapper.gs.Group_No__c}" width="3%"/>
+                <apex:column headerValue="Section No." value="{!gsIdWrapper.gs.Section_No__c}" width="7%"/>
+                <apex:column headerValue="Section Description   " value="{!gsIdWrapper.gs.Section_Description__c}" width="7%"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

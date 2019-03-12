@@ -1,0 +1,7 @@
+Dental Underwriting has Approved the Account in GEMS.
+
+Account Name : {!Account.Name} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

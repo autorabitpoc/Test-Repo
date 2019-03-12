@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Case.GEMS_Days_Business_Open__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Avg Business Days Open</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Case Count</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>OPEN:SUM / (RowCount)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% OPEN</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_55634543</developerName>
+        <masterLabel>Grouped Business Days Open</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case.GEMS_Days_Business_Open__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>5</to>
+            </sourceValues>
+            <value>Less than 5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>5</from>
+                <to>10</to>
+            </sourceValues>
+            <value>5-10</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>10</from>
+                <to>15</to>
+            </sourceValues>
+            <value>10-15</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>15</from>
+                <to>20</to>
+            </sourceValues>
+            <value>15-20</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>20</from>
+            </sourceValues>
+            <value>More than 20 (Escalate)</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_14746665</developerName>
+        <masterLabel>Role</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Adam Richter</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Alia Sanchez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jason Lawrence</sourceValue>
+            </sourceValues>
+            <value>Account Specialist</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Allison Mayberry</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Andra Baker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jayme Eiker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lori A. Pell</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lori Hebblewhite</sourceValue>
+            </sourceValues>
+            <value>CIC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Owner_s_Manager_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Days_Business_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case.Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Case.HCSC_Division__c</field>
+    </columns>
+    <description>Staff Case Volume</description>
+    <filter>
+        <criteriaItems>
+            <column>Case.GEMS_Flag__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Owner_s_Manager_Name__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cody Simpson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>2/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPEN</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>TYPE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_14746665</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Staff Productivity #3</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

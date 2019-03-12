@@ -1,0 +1,1223 @@
+<apex:page id="pgId" lightningStylesheets="true" extensions="OpportunityQuoteRequestController" sidebar="false" standardController="Opportunity" cache="false" action="{!initialload}">
+   
+   <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+   <apex:includeScript value="/soap/ajax/29.0/apex.js" />
+   <apex:includeScript value="{!$Resource.jquery_1_11_1}" />
+   <apex:includeScript value="{!URLFOR($Resource.jQueryUI, 'ui/jquery-ui.js')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, 'themes/jquery-ui.css')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" /> 
+   <apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2,'/js/jquery.dataTables.min.js')}"/>
+   
+    <style>
+        .headerClassContacts {
+        text-align: center;
+        font-size: 5px;
+        }
+        
+        .rowsClass {
+        font-size: 11px;
+        }
+        .rowsClassBold {
+        font-size: 11px;
+        font-weight:bold
+        }
+        .link-color{
+                color:#005589 !important;
+                /*text-decoration:underline !important;*/
+        }        
+    
+        .starcolor{
+           color:#007789 !important;
+           font-size: 11px;
+        }
+      .pbTitle{
+        width: 100%;    
+        text-align: center;
+     }
+    
+      .GrayBG{
+       background-color: silver !important;
+    }
+    .pbTitle{
+        width: 100%;    
+        text-align: center;
+    }
+    .underline {
+      text-decoration: underline;
+   }
+   
+   .table { 
+         display: table; width:100%; border:1px solid black; margin-top:.25in;
+    }
+   .row { display: table-row; }
+  .cell { display: table-cell; border-top:1px solid black;}
+  
+  
+   </style>
+   
+   <script>
+ 
+        function autoPopulateValue(){
+                    var totalPayrollValue = (document.getElementById('pgId:frmId:pbId:pbsId:payRollId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:payRollId').value :0 );
+               //alert(totalPayrollValue);
+                    var cobraValue = (document.getElementById('pgId:frmId:pbId:pbsId:cobraId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:cobraId').value :0 );
+                    var retireesValue = (document.getElementById('pgId:frmId:pbId:pbsId:RetireesId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:RetireesId').value : 0);
+                    var partTimeValue = (document.getElementById('pgId:frmId:pbId:pbsId:PartTimeId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:PartTimeId').value : 0);
+                    var waitingPeriodValue = (document.getElementById('pgId:frmId:pbId:pbsId:WaitingPeriodId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:WaitingPeriodId').value : 0);
+                    var coveredElseWhereValue = (document.getElementById('pgId:frmId:pbId:pbsId:coveredElseWhereId').value != '' ?document.getElementById('pgId:frmId:pbId:pbsId:coveredElseWhereId').value : 0);
+                    var waivingCoveredElseWhereId = (document.getElementById('pgId:frmId:pbId:pbsId:WaivingCoveredElseWhereId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:WaivingCoveredElseWhereId').value : 0);
+                    
+                    var TotalEligibleHealth = parseInt(totalPayrollValue) +  parseInt(cobraValue) + parseInt( retireesValue) - parseInt(partTimeValue) - parseInt(waitingPeriodValue);
+                    //if( parseInt(TotalEligibleHealth) <0)
+                        //TotalEligibleHealth = 0;
+                  
+                        document.getElementById('pgId:frmId:pbId:pbsId:EligibleHealthId').innerHTML = parseInt(TotalEligibleHealth);
+                        document.getElementById('pgId:frmId:pbId:pbsId:EligibleHealthId2').value = parseInt(TotalEligibleHealth);
+                        
+                        document.getElementById('pgId:frmId:pbId:pbsId:EligibleDentalId').innerHTML = parseInt(TotalEligibleHealth);
+                        document.getElementById('pgId:frmId:pbId:pbsId:EligibleDentalId2').value = parseInt(TotalEligibleHealth);
+                        
+                    var coveredElseWhereValue = (document.getElementById('pgId:frmId:pbId:pbsId:coveredElseWhereId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:coveredElseWhereId').value :0 );
+                    
+                    var TotalEligible = parseInt(TotalEligibleHealth) - parseInt(coveredElseWhereValue);
+                    //if(parseInt(TotalEligible) < 0)
+                        //TotalEligible = 0;
+                    document.getElementById('pgId:frmId:pbId:pbsId:TotalEligibleId').innerHTML = parseInt(TotalEligible);
+                    document.getElementById('pgId:frmId:pbId:pbsId:TotalEligibleId2').value= parseInt(TotalEligible);
+                    
+                    
+                    var waivingNotCovered = (document.getElementById('pgId:frmId:pbId:pbsId:WaivingCoveredElseWhereId').value != '' ? document.getElementById('pgId:frmId:pbId:pbsId:WaivingCoveredElseWhereId').value :0 );
+                    
+                    var TotalCovered = parseInt(TotalEligible) - parseInt(waivingNotCovered);
+                    
+                    //if(parseInt(TotalCovered) < 0)
+                        //TotalCovered = 0;
+                    document.getElementById('pgId:frmId:pbId:pbsId:TotalCoveredId').innerHTML = parseInt(TotalCovered);
+                    document.getElementById('pgId:frmId:pbId:pbsId:TotalCoveredId2').value = parseInt(TotalCovered);
+                    
+                    var percentEligible = TotalCovered / TotalEligible * 100;
+                    document.getElementById("pgId:frmId:pbId:pbsId:percentEnrolled").innerHTML = parseInt(percentEligible)+'%';
+                    document.getElementById("pgId:frmId:pbId:pbsId:percentEnrolled2").value = parseInt(percentEligible);
+                }
+       
+       
+       function setCheckBox(thisBox, row){
+        
+         var futurecheckBox='pgId:frmId:pb4:prodList:pagePanel4:'+row+':futureChkbox';
+         var marketCheckBox='pgId:frmId:pb4:prodList:pagePanel4:'+row+':marketChkbox';
+         var pricingSelection='pgId:frmId:pb4:prodList:pagePanel4:'+row+':pricingOption';
+       
+         //pgId:frmId:pb4:prodList:pagePanel4:1:marketChkbox checked?
+         
+         if(thisBox.name==futurecheckBox && thisBox.checked==true){
+            document.getElementById(marketCheckBox).checked=false;
+         //   document.getElementById(pricingSelection).disabled=false;
+           
+         }else if(thisBox.name==marketCheckBox && thisBox.checked==true) {
+              
+            document.getElementById(futurecheckBox).checked=false;
+            
+       } 
+       
+     }
+       function cancel(oppId) {
+        
+            window.open('/'+oppId,'_self');
+ 
+        }
+       
+    </script>
+   
+   
+   
+   <apex:form id="frmId" >
+     <apex:actionfunction name="GoNextForSummary" action="{!getSummary}">
+           </apex:actionfunction>
+        
+   <apex:pageBlock tabStyle="{! IF(showSummary, 'Quote_Request_Summary__c','Opportunity')}" rendered="{!IsError}">
+          
+      <apex:outputPanel id="showErrorPanel">
+            <apex:pageMessages />
+     </apex:outputPanel>
+       
+       <apex:pageblockButtons location="bottom" id="summaryBtn" >
+    <!--       <apex:commandButton value="Back" id="backCancelleBtn" action="{!cancelAndBack}"></apex:commandButton> -->
+          <apex:commandButton value="Back" id="cancellBtn"  onclick="cancel('{!oppId}');return false;" > </apex:commandButton>
+       </apex:pageblockButtons>
+   </apex:pageBlock>
+   <apex:pageBlock id="pbId" tabStyle="{! IF(showSummary, 'Quote_Request_Summary__c','Opportunity')}" rendered="{!!IsError}">
+       
+          <apex:actionfunction name="checkTheRequired" action="{!dummyMethod}" immediate="true" status="ButtonStatus1"  rerender="carrierpb">
+                    <apex:param name="p1" value="" assignTo="{!notInsuredValue}"/>
+                    <apex:param name="p2" value="" assignTo="{!rowToRemove}"/>
+          </apex:actionfunction>
+                 
+      <apex:outputPanel id="ErrorPanel">
+            <apex:pageMessages />
+     </apex:outputPanel>
+      
+      
+      <div align="center">   
+    <h1><font size="3">{! IF(ShowSummary,'Quote Request Summary','')}</font></h1>
+    <br/><br/>
+    </div>
+  <apex:outputPanel styleClass="{! IF(showSummary, 'GrayBG','')}">
+      
+       <apex:pageblockSection Title="Account Opportunity Information" columns="2" rendered="{! helper.oppAcct!=null && !IsError}">
+         <apex:outputfield label="Account Name" value="{!helper.oppAcct.Name}" />
+           <apex:outputText label="Opportunity Type" value="{!helper.oppRecordTypeName}" />
+           <apex:outputfield label="Account Number" value="{!helper.oppAcct.External_ID__c}" />
+           <apex:outputfield label="Opportunity Name" value="{!helper.opp.name}"/>
+           <apex:outputfield label="Active Health Members" value="{!helper.oppAcct.Active_Health_Members__c}" rendered="{!!IsNewSale}"/>
+             
+           <apex:inputfield label="Expected Health Members" value="{!helper.quoteRequest.Expected_Health_Members__c}" rendered="{!IF(!ShowSummary && IsNewSale, true,false)}"/>
+           <apex:outputfield label="Expected Health Members" value="{!helper.quoteRequest.Expected_Health_Members__c}" rendered="{!IF(ShowSummary && IsNewSale, true,false)}"/>
+           <!--- start SFDC-6953 - Zac Campbell - 12-08-17 --->
+           <!--<apex:outputfield label="Sales Executive1" value="{!helper.quoteRequest.Account_Sales_Executive1__c}" />-->
+           <apex:outputfield label="Sales Executive1" value="{!helper.quoteRequest.Account_Sales_Executive1__c}" rendered="{!IF(ShowSummary && IsNewSale, true,false)}"/>
+           <apex:pageBlockSectionItem rendered="{!IF(!ShowSummary && IsNewSale, true,false)}">
+           <apex:outputLabel title="Sales Executive1" value="Sales Executive1" for="AT1" />   
+           <apex:inputfield value="{!helper.quoteRequest.Account_Sales_Executive1__c}" id="AT1" required="true"/>
+           </apex:pageBlockSectionItem>
+           <!--- end SFDC-6953 --->
+           <apex:outputfield label="Account Executive1" value="{!helper.quoteRequest.Account_Sales_Executive1__c}" rendered="{!!IsNewSale}"/>
+           
+           <apex:outputfield label="Active Health Contracts" value="{!helper.oppAcct.Active_Health_Subscribers__c}" rendered="{!!IsNewSale}"/>
+           <apex:inputfield label="Expected Health Contracts" value="{!helper.quoteRequest.Expected_Health_Contracts__c}" rendered="{!IF(!ShowSummary && IsNewSale, true,false)}"/>
+           <apex:outputfield label="Expected Health Contracts" value="{!helper.quoteRequest.Expected_Health_Contracts__c}" rendered="{!IF(ShowSummary && IsNewSale, true,false)}"   />
+           <!--- start SFDC-6953 - Zac Campbell - 12-08-17 --->
+           <!--<apex:outputfield label="Sales Executive2" value="{!helper.quoteRequest.Account_Sales_Executive2__c}" />-->
+           <apex:outputfield label="Sales Executive2" value="{!helper.quoteRequest.Account_Sales_Executive2__c}" rendered="{!IF(ShowSummary && IsNewSale, true,false)}"/>
+           <apex:inputfield label="Sales Executive2" value="{!helper.quoteRequest.Account_Sales_Executive2__c}" rendered="{!IF(!ShowSummary && IsNewSale, true,false)}"/>
+           <!--- end SFDC-6953 --->
+           <apex:outputfield label="Account Executive2"  value="{!helper.quoteRequest.Account_Sales_Executive2__c}" rendered="{!!IsNewSale}"/>
+           
+            
+           <apex:inputfield label="Expected Dental Contracts" value="{!helper.quoteRequest.Expected_Dental_Contracts__c}" rendered="{!IF(!ShowSummary && IsNewSale, true,false)}"/>
+           <apex:outputfield label="Expected Dental Contracts" value="{!helper.quoteRequest.Expected_Dental_Contracts__c}" rendered="{!IF(ShowSummary && IsNewSale, true,false)}"/>
+         <apex:outputfield label="HCSC Division " value="{!helper.oppAcct.HCSC_Division__c}" rendered="{!IsNewSale}"/> 
+           <apex:outputfield label="Current Funding Type" value="{!helper.oppAcct.Funding_Type__c}" /> <!--  rendered="{!!IsNewSale}"/> -->
+           <apex:outputText rendered="{!IsNewSale}"/>       
+          <apex:outputfield label="HCSC Division " value="{!helper.oppAcct.HCSC_Division__c}" rendered="{!!IsNewSale}"/> 
+
+           <!-- SFDC-6833 - 11/2017 - BEGIN -->
+           <!-- COMMENT THIS OUT <apex:inputfield label="Proposed Funding Type" value="{!helper.quoteRequest.Funding_Type__c}" rendered="{!IF(!showSummary && !IsNewSale, true, false)}"/><!-- renewal --> 
+           <!-- SFDC-6833 - 11/2017 - END -->
+           
+          <apex:outPutfield label="Proposed Funding Type" value="{!helper.quoteRequest.Funding_Type__c}"  rendered="{!IF(showSummary && !IsNewSale, true, false)}"/>        
+        
+         </apex:pageblockSection>
+         
+  
+   <apex:pageBlockSection id="comPB" title="Quote Request Information" columns="2" rendered="{!helper.quoteRequest!=null && !IsError}">
+     <apex:inputfield label="HCSC Division " value="{!helper.quoteRequest.HCSC_Division__c}" rendered="{!!showSummary}" required="true"/>
+      <apex:outPutfield label="HCSC Division " value="{!helper.quoteRequest.HCSC_Division__c}" rendered="{!showSummary}"/>
+    
+     <apex:inputfield label="Underwriting" value="{!helper.quoteRequest.ownerId}"  rendered="{!!showSummary}"/>
+     <apex:outputfield label="Underwriting" value="{!helper.quoteRequest.ownerId}"  rendered="{!showSummary}"/>
+   
+   
+     <apex:inputfield label="Department of Underwriting"  value="{!helper.quoteRequest.Department_for_Underwriting__c}" required="true" rendered="{!!showSummary}" />
+     <apex:outPutfield label="Department of Underwriting"  value="{!helper.quoteRequest.Department_for_Underwriting__c}" rendered="{!showSummary}" />
+    
+     <apex:inputfield label="Underwriting Due Date" required="true" value="{!helper.quoteRequest.Underwriting_Due_Date__c}" rendered="{!!showSummary}"/>
+     <apex:outputfield label="Underwriting Due Date" value="{!helper.quoteRequest.Underwriting_Due_Date__c}" rendered="{!showSummary}"/>
+   
+   <!-- <apex:outputText label="Dental Underwriter Queue" value="None" rendered="{!!showSummary}"/>-->
+     <apex:outputText rendered="{!!showSummary}"/>
+    
+    <apex:outputField label="Dental Underwriter Queue" value="{!helper.quoteRequest.Dental_Underwriter_Queue__c}" rendered="{!showSummary}"/>
+     
+     
+    <apex:inputfield label="Proposal Due Date" value="{!helper.quoteRequest.Proposed_Due_Date__c}" required="{!IsNewSale}" rendered="{!!showSummary}"/>
+     <apex:outputfield label="Proposal Due Date" value="{!helper.quoteRequest.Proposed_Due_Date__c}" rendered="{!showSummary}"/>
+   
+   <apex:inputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" required="true" rendered="{!helper.quoteRequest.Request_Effective_Date__c=null}"/>
+    <apex:outputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" rendered="{!helper.quoteRequest.Request_Effective_Date__c!=null}"/>
+     
+  <apex:inputField label="Request Description (16-53 char):"  required="true" value="{!helper.quoteRequest.Request_Description__c}" rendered="{!!showSummary}" />  
+    <apex:outputField label="Request Description (16-53 char):" value="{!helper.quoteRequest.Request_Description__c}" rendered="{!showSummary}"/>
+  
+<!--      <apex:inputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" required="true" rendered="{!helper.quoteRequest.Request_Effective_Date__c=null}"/>
+    <apex:outputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" rendered="{!helper.quoteRequest.Request_Effective_Date__c!=null}"/>
+  -->
+ 
+   </apex:pageBlockSection>
+
+      <!-- SFDC-6833 - 11/2017 - BEGIN -->
+      
+      <!-- old <apex:outputPanel rendered="{!IsNewSale}"> -->
+      <apex:outputPanel >
+          
+      <!-- SFDC-6833 - 11/2017 - END   -->
+      
+          <!-- SFDC-6833 - 11/2017 - BEGIN -->
+          
+          <!-- old <apex:pageBlockSection title="Carrier Information" columns="1" id="carrierpb"> -->
+   <apex:pageBlockSection title="Carrier Information" columns="1" id="carrierpb" rendered="{!IsNewSale && !IsError}" >
+              
+          <!-- SFDC-6833 - 11/2017 - END   -->
+                
+         <apex:pageBlockTable value="{!carrierHistoryList}" var="ch">
+               <apex:column headerValue="Action">
+                            <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold" reRender="frmId" immediate="true"  rendered="{!!showSummary}">
+                                <apex:param name="p1" value="{!ch.recordNumber}" assignTo="{!rowToRemove}"/>
+                                
+                            </apex:commandLink>
+                 </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Not_Insured__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" value="{!ch.carrierHistory.Not_Insured__c}" onchange="checkTheRequired(this.checked,{!ch.recordNumber});"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Not_Insured__c}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Dental__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" value="{!ch.carrierHistory.Dental__c}" />
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Dental__c}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Competitor_Account__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" required="{!!ch.carrierHistory.Not_Insured__c}" value="{!ch.carrierHistory.Competitor_Account__c}"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Competitor_Account__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Rate_Effective_Date__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" required="true" value="{!ch.carrierHistory.Rate_Effective_Date__c}"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Rate_Effective_Date__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Contract_End_Date__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" required="true" value="{!ch.carrierHistory.Contract_End_Date__c}"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Contract_End_Date__c}"/>
+                        </apex:column>
+                        
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.AFA__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" value="{!ch.carrierHistory.AFA__c}"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.AFA__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Reinsurer__c.label}">
+                            <apex:inputField rendered="{!!showSummary}" value="{!ch.carrierHistory.Reinsurer__c}"/>
+                            <apex:outputField rendered="{!showSummary}" value="{!ch.carrierHistory.Reinsurer__c}"/>
+                        </apex:column>
+            </apex:pageBlockTable>
+            <apex:outputPanel >
+               <apex:commandButton value="Add row" action="{!addRow}" immediate="true" rerender="frmId" rendered="{!!showSummary}"/>
+            </apex:outputPanel>
+            
+         </apex:pageBlockSection>         
+      
+          <!-- SFDC-6833 - 11/2017 - BEGIN -->
+          
+          <!-- old <apex:pageblockSection Title=" General Information" columns="2" rendered="{! helper.oppAcct!=null && helper.quoteRequest!=null && helper.oppRecordTypeName='New Sale'}"> -->
+          <apex:pageblockSection Title=" General Information" columns="2" rendered="{! helper.oppAcct!=null && helper.quoteRequest!=null && helper.oppRecordTypeName='New Sale' && IsNewSale}">
+          
+          <!-- SFDC-6833 - 11/2017 - END  -->
+              
+  
+         <apex:inputfield label="Release to Marketing " value="{!helper.quoteRequest.Release_To_Marketing__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Release to Marketing " value="{!helper.quoteRequest.Release_To_Marketing__c}" rendered="{!showSummary}"/>
+    
+           <apex:inputfield label="Received From Marketing" value="{!helper.quoteRequest.Received_From_Marketing__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Received From Marketing" value="{!helper.quoteRequest.Received_From_Marketing__c}" rendered="{!showSummary}"/>
+        
+       <!--  <apex:inputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" required="true" rendered="{!helper.quoteRequest.Request_Effective_Date__c=null}"/>
+         <apex:outputfield label="Requested Effective Date" value="{!helper.quoteRequest.Request_Effective_Date__c}" rendered="{!helper.quoteRequest.Request_Effective_Date__c!=null}"/>
+           -->
+           <apex:inputfield label="Waiting for Information Type" value="{!helper.quoteRequest.Waiting_For_Information_Type__c}" rendered="{!IF(showSummary, false, true)}" />
+         <apex:outPutfield label="Waiting for Information Type" value="{!helper.quoteRequest.Waiting_For_Information_Type__c}" rendered="{!IF(showSummary, true, false)}" />
+         
+        <!--  
+         <apex:inputfield label="Underwriting Due Date"  value="{!helper.quoteRequest.Underwriting_Due_Date__c}" required="true" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Underwriting Due Date"  value="{!helper.quoteRequest.Underwriting_Due_Date__c}"  rendered="{!showSummary}"/>
+     
+          <apex:inputfield label="Expected Health Contracts" value="{!helper.quoteRequest.Expected_Health_Contracts__c}" rendered="{!!showSummary}"/>
+          <apex:outputfield label="Expected Health Contracts" value="{!helper.quoteRequest.Expected_Health_Contracts__c}" rendered="{!showSummary}"/>
+        -->
+             
+         <apex:inputCheckbox label="Prior HCSC Coverage" value="{!helper.quoteRequest.Prior_HCSC_Coverage__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Prior HCSC Coverage" value="{!helper.quoteRequest.Prior_HCSC_Coverage__c}" rendered="{!showSummary}"/>
+       <!--  
+         <apex:inputfield label="Proposal Due Date" value="{!helper.quoteRequest.Proposed_Due_Date__c}" required="true" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Proposal Due Date" value="{!helper.quoteRequest.Proposed_Due_Date__c}" rendered="{!showSummary}"/>
+              
+          <apex:inputfield label="Expect Dental Contracts" value="{!helper.quoteRequest.Expected_Dental_Contracts__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Expect Dental Contracts" value="{!helper.quoteRequest.Expected_Dental_Contracts__c}" rendered="{!showSummary}"/>
+        -->
+           <apex:inputfield label="Prior HCSC Account Number" value="{!helper.quoteRequest.Prior_HCSC_Account_Number__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Prior HCSC Account Number" value="{!helper.quoteRequest.Prior_HCSC_Account_Number__c}" rendered="{!showSummary}"/>
+       
+          
+           <apex:inputfield label="Bull's Eye" value="{!helper.quoteRequest.Bull_s_Eye__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Bull's Eye" value="{!helper.quoteRequest.Bull_s_Eye__c}" rendered="{!showSummary}"/>
+           
+         <apex:inputfield label="How many current health plans?" value="{!helper.quoteRequest.How_many_current_health_plans__c}" required="true" rendered="{!!showSummary}"/>
+         <apex:outputfield label="How many current health plans?" value="{!helper.quoteRequest.How_many_current_health_plans__c}" rendered="{!showSummary}"/>
+         
+        
+         <apex:inputfield label="Medicare Retirees Eligible? " value="{!helper.quoteRequest.Medicare_Retirees_Eligible__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Medicare Retirees Eligible? " value="{!helper.quoteRequest.Medicare_Retirees_Eligible__c}" rendered="{!showSummary}"/>
+         <apex:inputfield label="How many HMO plans are there?" value="{!helper.quoteRequest.How_many_HMO_plans_are_there__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="How many HMO plans are there?" value="{!helper.quoteRequest.How_many_HMO_plans_are_there__c}" rendered="{!showSummary}"/>
+      
+         <apex:inputfield label="Is this a Duplicate Quote?"  value="{!helper.quoteRequest.Is_this_a_Duplicate_Quote__c}" rendered="{!!showSummary}" />
+         <apex:outputfield label="Is this a Duplicate Quote?"  value="{!helper.quoteRequest.Is_this_a_Duplicate_Quote__c}" rendered="{!showSummary}"/>
+        <apex:inputCheckbox label="Suject to ERISA?" value="{!helper.quoteRequest.Subject_to_ERISA__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="Suject to ERISA?" value="{!helper.quoteRequest.Subject_to_ERISA__c}" rendered="{!showSummary}"/>
+         
+         <apex:inputfield label="Is this a Formal Bid?" value="{!helper.quoteRequest.Is_this_a_Formal_Bid__c}" rendered="{!!showSummary}" />
+         <apex:outputfield label="Is this a Formal Bid?" value="{!helper.quoteRequest.Is_this_a_Formal_Bid__c}" rendered="{!showSummary}"/>
+       
+         <apex:inputfield label="ERISA Plan Year" value="{!helper.quoteRequest.ERISA_Plan_Year__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="ERISA Plan Year" value="{!helper.quoteRequest.ERISA_Plan_Year__c}" rendered="{!showSummary}"/>
+          
+       
+         <apex:inputfield label="PUG?" value="{!helper.quoteRequest.PUG__c}" rendered="{!!showSummary}"/>
+         <apex:outputfield label="PUG?" value="{!helper.quoteRequest.PUG__c}" rendered="{!showSummary}" />
+       
+       </apex:pageblockSection>
+      
+ 
+    <apex:pageblockSection title="Rating Information" id="psRate">
+    
+       <apex:actionRegion >
+       <apex:outputPanel id="ftPB" style="width:60%;float: left;  margin-left: 15px;  " layout="block">
+    
+        <div style="width:50%;text-align:right;float:left;font:San-serif;">            
+            <apex:outputLabel title="test" value="{!$ObjectType.Quote_Request_Summary__c.fields.Funding_Type__c.label}"/> 
+        </div>
+         
+         <div  style="width:40%;text-align:left;float: left;margin-left: 22px;">  
+         
+             <!-- SFDC-6833 - 11/2017 - BEGIN -->
+             
+             <!-- old <apex:inputfield label="Proposed Funding Type" required="true" id="fundField" value="{!helper.quoteRequest.Funding_Type__c}" rendered="{!!showSummary}"> -->
+             <apex:inputfield label="Proposed Funding Type" required="{!IF(contains(helper.oppRecordTypeName,'New Sale'),True,False)}" id="fundField" value="{!helper.quoteRequest.Funding_Type__c}" rendered="{!!showSummary}">
+                 
+             <!-- SFDC-6833 - 11/2017 - END   -->    
+                 
+                <apex:actionSupport event="onchange"  rerender="ftPB,premPB, sli,sla"/>
+          </apex:inputfield>
+        <apex:outputfield label="Proposed Funding Type" value="{!helper.quoteRequest.Funding_Type__c}" rendered="{!showSummary}" />   
+        </div>
+      </apex:outputPanel>
+     </apex:actionRegion>
+     
+     <apex:outputPanel id="premPB" style="width:50%;float:right; margin-right: 205px;" layout="block">
+     
+           <div style="width:35%;text-align:right;font:San-serif;float:left;margin-right:10px;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Premium_Type__c.label}" rendered="{!IF(contains(UPPER(helper.quoteRequest.Funding_Type__c),UPPER('Prem')), true, false)}" />
+          </div>
+      
+        <div style="width:35%;text-align:left;float:left;margin-right:5px;"> 
+       
+            <apex:inputfield label="Premium Type" value="{!helper.quoteRequest.Premium_Type__c}" required="{!IF(!showSummary && contains(UPPER(helper.quoteRequest.Funding_Type__c),UPPER('Prem')), true, false)}"  id="premField" rendered="{!IF(!showSummary && contains(UPPER(helper.quoteRequest.Funding_Type__c),UPPER('Prem')), true, false)}" />
+            <apex:outputfield label="Premium Type" value="{!helper.quoteRequest.Premium_Type__c}" rendered="{! IF(showSummary && contains(UPPER(helper.quoteRequest.Funding_Type__c),UPPER('Prem')), true,false)}"/>
+     
+       </div>
+       </apex:outputPanel>
+       
+    <apex:outputPanel id="sli"  style="width:100%;float: left;  margin-left: 1px; margin-bottom: 10px;  " layout="block" >
+     
+            <div style="width:35%;text-align:right;float:left;font:San-serif; margin-left: 0px;"> 
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Stoploss_Attachment_Points_Individual__c.label}" rendered="{!IF(helper.quoteRequest.Funding_Type__c !=null  && (helper.quoteRequest.Funding_Type__c=='Minimum Premium'|| helper.quoteRequest.Funding_Type__c=='PREM' || helper.quoteRequest.Funding_Type__c=='Prospective Premium' || helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM'||helper.quoteRequest.Funding_Type__c=='PREM;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM;Prospective Premium'),false,true)}"  />
+            </div>
+           <div style="width:50%;text-align:left;float: left;margin-left: 8px;">
+              <apex:inputfield value="{!helper.quoteRequest.Stoploss_Attachment_Points_Individual__c}"   rendered="{! IF(showSummary || (helper.quoteRequest.Funding_Type__c!=null && (helper.quoteRequest.Funding_Type__c=='Minimum Premium' || helper.quoteRequest.Funding_Type__c=='PREM' || helper.quoteRequest.Funding_Type__c=='Prospective Premium' || helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM'|| helper.quoteRequest.Funding_Type__c =='PREM;Prospective Premium' || helper.quoteRequest.Funding_Type__c=='Minimum Premium;Prospective Premium' || helper.quoteRequest.Funding_Type__c =='Minimum Premium;PREM;Prospective Premium')),false,true)}"/>
+              <apex:outputfield value="{!helper.quoteRequest.Stoploss_Attachment_Points_Individual__c}"  rendered="{! IF( showSummary && helper.quoteRequest.Funding_Type__c!=null && helper.quoteRequest.Funding_Type__c!='Minimum Premium' && helper.quoteRequest.Funding_Type__c!='PREM' && helper.quoteRequest.Funding_Type__c!='Prospective Premium' && helper.quoteRequest.Funding_Type__c!='Minimum Premium;PREM' && helper.quoteRequest.Funding_Type__c !='PREM;Prospective Premium' && helper.quoteRequest.Funding_Type__c!='Minimum Premium;Prospective Premium' && helper.quoteRequest.Funding_Type__c!='Minimum Premium;PREM;Prospective Premium',true,false)}"/>
+              
+           </div>
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="sla"  style="width:100%;float: right;  margin-left: 1px; margin-bottom: 10px;  " layout="block">
+           <div style="width:35%;text-align:right;float:left;font:San-serif; margin-left: 0px;" >
+               <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Stoploss_Attachment_Points_Aggregate__c.label}" rendered="{!IF(helper.quoteRequest.Funding_Type__c !=null  && (helper.quoteRequest.Funding_Type__c=='Minimum Premium'|| helper.quoteRequest.Funding_Type__c=='PREM' || helper.quoteRequest.Funding_Type__c=='Prospective Premium' || helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM'||helper.quoteRequest.Funding_Type__c=='PREM;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM;Prospective Premium'),false,true)}"  /> 
+            </div>
+            
+           <div style="width:50%;text-align:left;float: left;margin-left: 8px;" >
+                <apex:inputfield value="{!helper.quoteRequest.Stoploss_Attachment_Points_Aggregate__c}" rendered="{! IF(showSummary|| (helper.quoteRequest.Funding_Type__c !=null && (helper.quoteRequest.Funding_Type__c=='Minimum Premium' || helper.quoteRequest.Funding_Type__c=='PREM' || helper.quoteRequest.Funding_Type__c=='Prospective Premium' || helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM'||helper.quoteRequest.Funding_Type__c=='PREM;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;Prospective Premium'|| helper.quoteRequest.Funding_Type__c=='Minimum Premium;PREM;Prospective Premium')),false,true)}"/> <!-- if no prem selected, displayed -->
+              <!--   <apex:outputfield value="{!helper.quoteRequest.Stoploss_Attachment_Points_Aggregate__c}" rendered="{!IF(showSummary && !contains(UPPER(helper.quoteRequest.Funding_Type__c),UPPER('Prem')), true,false)}"/> -->
+               <apex:outputfield value="{!helper.quoteRequest.Stoploss_Attachment_Points_Aggregate__c}" rendered="{! IF(showSummary && helper.quoteRequest.Funding_Type__c!=null && helper.quoteRequest.Funding_Type__c!='Minimum Premium' && helper.quoteRequest.Funding_Type__c !='PREM' && helper.quoteRequest.Funding_Type__c!='Prospective Premium' && helper.quoteRequest.Funding_Type__c!='Minimum Premium;PREM' && helper.quoteRequest.Funding_Type__c!='PREM;Prospective Premium' && helper.quoteRequest.Funding_Type__c!='Minimum Premium;Prospective Premium' && helper.quoteRequest.Funding_Type__c !='Minimum Premium;PREM;Prospective Premium',true,false)}"/>
+               
+           </div>
+     
+   </apex:outputPanel>  
+
+
+        <!-- SFDC-6833 - 11/2017 - BEGIN -->
+        
+          
+        <apex:inputfield label="Contract Term-Aggregate" value="{!helper.quoteRequest.Contract_Term_Aggregate__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Contract Term-Aggregate" value="{!helper.quoteRequest.Contract_Term_Aggregate__c}" rendered="{!showSummary}"/>
+    
+        <!-- old <apex:inputfield label="Rates Effective for (Months)"  required="true" id="rateEff" value="{!helper.quoteRequest.Rates_Effective_for_Months__c}" rendered="{!!showSummary}"/> -->
+        <apex:inputfield label="Rates Effective for (Months)"  required="{!IsNewSale}"    id="rateEff" value="{!helper.quoteRequest.Rates_Effective_for_Months__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Rates Effective for (Months)" value="{!helper.quoteRequest.Rates_Effective_for_Months__c}" rendered="{!showSummary}"/>
+        <apex:inputfield label="Contract Term-Individual" value="{!helper.quoteRequest.Contract_Term_Individual__c}" rendered="{!!showSummary}"/> 
+        <apex:outputfield label="Contract Term-Individual" value="{!helper.quoteRequest.Contract_Term_Individual__c}" rendered="{!showSummary}"/> 
+              
+        <apex:inputfield label="Rate Structure"  required="{!isNewSale}" value="{!helper.quoteRequest.Rate_Structure__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Rate Structure" value="{!helper.quoteRequest.Rate_Structure__c}" rendered="{!showSummary}"/>
+       <!--   
+        <apex:inputfield label="Stoploss Attachment Points-Individual " value="{!helper.quoteRequest.Stoploss_Attachment_Points_Individual__c}" rendered="{!IF(showSummary || contains(helper.quoteRequest.Funding_Type__c,'Prem'), false,true)}"/>
+        <apex:outputfield label="Stoploss Attachment Points-Individual " value="{!helper.quoteRequest.Stoploss_Attachment_Points_Individual__c}" rendered="{!IF(showSummary && !contains(helper.quoteRequest.Funding_Type__c,'Prem'), true, false)}"/>
+       -->
+     
+       <!--  
+        <apex:inputfield label="Stoploss Attachment Points – Aggregate" value="{!helper.quoteRequest.Stoploss_Attachment_Points_Aggregate__c}" rendered="{!IF(showSummary || contains(helper.quoteRequest.Funding_Type__c,'Prem'), false, true)}"/>
+        <apex:outputfield label="Stoploss Attachment Points – Aggregate" value="{!helper.quoteRequest.Stoploss_Attachment_Points_Aggregate__c}"  rendered="{!IF(showSummary && !contains(helper.quoteRequest.Funding_Type__c,'Prem'), true, false)}"/>
+        -->
+      
+        <apex:inputfield label="Access Fee Type" required="{!IsNewSale}" value="{!helper.quoteRequest.Access_Fee_Type__c}" rendered="{!!showSummary}"/> 
+        <apex:outputfield label="Access Fee Type" value="{!helper.quoteRequest.Access_Fee_Type__c}" rendered="{!showSummary}"/> 
+           
+        <apex:inputfield label="Proposed Rx Formulary" value="{!helper.quoteRequest.Proposed_Rx_Formulary__c}"  rendered="{!!showSummary}"/>
+        <apex:outputfield label="Proposed Rx Formulary" value="{!helper.quoteRequest.Proposed_Rx_Formulary__c}" rendered="{!showSummary}"/>
+         <apex:inputfield label="Administrative Fee Type" required="{!IsNewSale}" value="{!helper.quoteRequest.Administrative_Fee_Type__c}" rendered="{!!showSummary}"/> 
+        <apex:outputfield label="Administrative Fee Type" value="{!helper.quoteRequest.Administrative_Fee_Type__c}" rendered="{!showSummary}"/> 
+     
+        
+        <apex:inputfield label="Proposed Rx Network" value="{!helper.quoteRequest.Proposed_Rx_Network__c}"  rendered="{!!showSummary}"/>
+        <apex:outputfield label="Proposed Rx Network" value="{!helper.quoteRequest.Proposed_Rx_Network__c}" rendered="{!showSummary}"/>
+      
+        <apex:inputfield label="ASL Fee Type" value="{!helper.quoteRequest.ASL_Fee_Type__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="ASL Fee Type" value="{!helper.quoteRequest.ASL_Fee_Type__c}" rendered="{!showSummary}"/> 
+         
+     
+   <apex:inputfield label="Proposed Rx Pricing" value="{!helper.quoteRequest.Proposed_Rx_Pricing__c}"  rendered="{!!showSummary}"/>
+   <apex:outputfield label="Proposed Rx Pricing" value="{!helper.quoteRequest.Proposed_Rx_Pricing__c}" rendered="{!showSummary}"/>
+ </apex:pageblockSection>
+      
+          <!-- SFDC-6833 - 11/2017 - BEGIN  -->
+          
+          <!-- old <apex:pageBlockSection id="pbsEmployer" columns="2" title="Employer Contribution"> -->
+          <apex:pageBlockSection id="pbsEmployer" columns="2" title="Employer Contribution" rendered="{!IsNewSale}" >
+          
+          <!-- SFDC-6833 - 11/2017 - END   -->
+
+        <apex:inputfield label="Current Contribution Type" value="{!helper.quoteRequest.Current_Contribution_Type__c}" required="true" rendered="{!!showSummary}"/>
+        <apex:outputfield value="{!helper.quoteRequest.Current_Contribution_Type__c}" rendered="{!showSummary}"/>
+
+    
+   
+        <apex:inputfield label="Proposed Contribution Type"  value="{!helper.quoteRequest.Proposed_Contribution_Type__c}" required="true" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Proposed Contribution Type"  value="{!helper.quoteRequest.Proposed_Contribution_Type__c}" rendered="{!showSummary}"/>
+  
+   
+
+        <apex:inputfield label="Current Employee Contribution"  value="{!helper.quoteRequest.Current_Employee_Contribution__c}" required="true" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Current Employee Contribution" value="{!helper.quoteRequest.Current_Employee_Contribution__c}" rendered="{!showSummary}"/>
+    
+       
+        <apex:inputfield label="Proposed Employee Contribution"  value="{!helper.quoteRequest.Proposed_Employee_Contribution__c}" required="true" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Proposed Employee Contribution" value="{!helper.quoteRequest.Proposed_Employee_Contribution__c}" rendered="{!showSummary}"/>
+
+        <apex:inputfield label="Current Dependent Contribution" value="{!helper.quoteRequest.Current_Dependent_Contribution__c}"  rendered="{!!showSummary}"/>
+        <apex:outputfield label="Current Dependent Contribution" value="{!helper.quoteRequest.Current_Dependent_Contribution__c}" rendered="{!showSummary}"/>
+  
+        <apex:inputfield label="Proposed Dependent Contribution" value="{!helper.quoteRequest.Proposed_Dependent_Contribution__c}"  rendered="{!!showSummary}"/>
+        <apex:outputfield label="Proposed Dependent Contribution"  value="{!helper.quoteRequest.Proposed_Dependent_Contribution__c}" rendered="{!showSummary}"/>
+  
+   <apex:actionRegion >
+    <apex:outputPanel id="eq"  style="width:100%;float: left;  margin-left: 1px; margin-bottom: 10px;  " layout="block">
+        
+        <div style="width:35%;text-align:right;float:left;font:San-serif; margin-left: 0px;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Proposed_contribution_same_as_current__c.label}"/>
+        </div>
+        
+        <div style="width:50%;text-align:left;float: left;margin-left: 8px;">
+            <apex:inputfield value="{!helper.quoteRequest.Proposed_contribution_same_as_current__c}"  rendered="{!!showSummary}">
+                <apex:actionSupport event="onchange" rerender="eq, eqNO"/>
+            </apex:inputfield>
+            
+            <apex:outputfield value="{!helper.quoteRequest.Proposed_contribution_same_as_current__c}" rendered="{!showSummary}"/>
+        
+        </div>
+    </apex:outputPanel>     
+    <br/>
+    <apex:outputPanel id="eqNO" style="width:100%;float: left; margin-left: 5px; margin-bottom: 10px;  " layout="block">
+       
+       <div  style="width:30%;text-align:right;font:San-serif;float:left;margin-left: 20px;">    
+        <apex:outputLabel value="Please Explain" rendered="{!IF(helper.quoteRequest.Proposed_contribution_same_as_current__c='Yes',true,false )}"/>
+        </div>
+        <div  style="width:55%;text-align:left;float: left;margin-left: 16px;">
+            <apex:inputField required="{!IF(helper.quoteRequest.Proposed_contribution_same_as_current__c='Yes',true,false)}" rendered="{!!showSummary && helper.quoteRequest.Proposed_contribution_same_as_current__c='Yes' }" style=" " value="{!helper.quoteRequest.Propose_Contribution_No_Explain_Box__c}"/>
+            <apex:outputfield value="{!helper.quoteRequest.Propose_Contribution_No_Explain_Box__c}" rendered="{!showSummary}"/>
+        </div>
+    </apex:outputPanel>
+    
+   </apex:actionRegion>
+   
+   
+     <apex:inputfield label="List Contributions that vary by product" value="{!helper.quoteRequest.List_contributions_that_vary_by_product__c}"  rendered="{!!showSummary}"/>
+     <apex:outputfield label="List Contributions that vary by product" value="{!helper.quoteRequest.List_contributions_that_vary_by_product__c}" rendered="{!showSummary}"/>
+    
+    
+    
+  
+ </apex:pageBlockSection>
+ 
+
+          <!-- SFDC-6833 - 11/2017 - BEGIN   -->
+          
+          <!-- old <apex:pageblockSection title="Agent and Commissions"> -->
+       <apex:pageblockSection title="Agent and Commissions">  <!--   rendered="{!IsNewSale}"> --> 
+          
+          <!-- SFDC-6833 - 11/2017 - END   -->
+       
+        <apex:inputfield label="Producer" required="true" value="{!helper.quoteRequest.Producer__c}" rendered="{!!showSummary}" />
+        <apex:outputfield label="Producer" value="{!helper.quoteRequest.Producer__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputfield label="Consultant" value="{!helper.quoteRequest.Consultant__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Consultant" value="{!helper.quoteRequest.Consultant__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputfield label="Current Agent" value="{!helper.quoteRequest.Current_Agent__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Current Agent" value="{!helper.quoteRequest.Current_Agent__c}" rendered="{!showSummary}" />
+        
+        <apex:inputfield label="General Agent" value="{!helper.quoteRequest.General_Agent__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="General Agent" value="{!helper.quoteRequest.General_Agent__c}" rendered="{!showSummary}"/>
+        
+        <apex:pageblockSectionItem rendered="{!!showSummary}">
+         <apex:outputLabel title="Health % field should be used for any and all accounts effective before 11/1/18" value="Health Commissions(%)" for="hcPec" rendered="{!!showSummary}"/>
+         <apex:inputfield label="Health Commissions(%)" id="hcPec" required="{!!isEffective11}" value="{!helper.quoteRequest.Health_Commissions__c}" rendered="{!!showSummary}"/>
+       </apex:pageblockSectionItem>
+       
+        <apex:outputfield label="Health Commissions(%)" value="{!helper.quoteRequest.Health_Commissions__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputfield label="GA Override (%)" value="{!helper.quoteRequest.GA_Override__c}"  rendered="{!!showSummary}"/>
+        <apex:outputfield label="GA Override (%)" value="{!helper.quoteRequest.GA_Override__c}" rendered="{!showSummary}"/>
+     
+      <apex:pageblockSectionItem rendered="{!!showSummary}">
+        <apex:outputLabel title="Health PCPM field should be used for any and all accounts effective after 11/1/18" value="Health Commissions PCPM" for="hcPcpm" rendered="{!!showSummary}"/>
+        <apex:inputfield label="Health Commissions PCPM" id="hcPcpm" required="{!isEffective11}" value="{!helper.quoteRequest.Health_Commissions_PCPM__c}" rendered="{!!showSummary}"/>
+       </apex:pageblockSectionItem>
+       
+        <apex:outputfield label="Health Commissions PCPM" value="{!helper.quoteRequest.Health_Commissions_PCPM__c}" rendered="{!showSummary}"/>
+      
+        <apex:inputfield label="Other Commissions" value="{!helper.quoteRequest.Other_Commisions__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Other Commissions" value="{!helper.quoteRequest.Other_Commisions__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputfield label="ASO Commissions(Annual)($)" value="{!helper.quoteRequest.ASO_Commissions_Annual__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="ASO Commissions(Annual)($)" value="{!helper.quoteRequest.ASO_Commissions_Annual__c}" rendered="{!showSummary}"/>
+       
+        <apex:inputfield label="Commissions billed separately?" value="{!helper.quoteRequest.Commissions_Billed_Separately__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Commissions billed separately?" value="{!helper.quoteRequest.Commissions_Billed_Separately__c}" rendered="{!showSummary}"/>
+       
+        <apex:inputfield label="ASO Commissions(PCPM)($)" value="{!helper.quoteRequest.ASO_Commissions_PCPM__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="ASO Commissions(PCPM)($)" value="{!helper.quoteRequest.ASO_Commissions_PCPM__c}" rendered="{!showSummary}"/>
+          
+        <apex:inputfield label="Are Commissions Included?" value="{!helper.quoteRequest.Are_commissions_included__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Are Commissions Included?" value="{!helper.quoteRequest.Are_commissions_included__c}" rendered="{!showSummary}"/>
+       
+       
+   </apex:pageblockSection>
+        
+          <!-- SFDC-6833 - 11/2017 - BEGIN   -->
+          
+          <!-- old <apex:pageBlockSection id="pbsId" columns="2" title="Health Eligibility And Risk Data"> -->
+          <apex:pageBlockSection id="pbsId" columns="2" title="Health Eligibility And Risk Data" rendered="{!IsNewSale}">
+              
+          <!-- SFDC-6833 - 11/2017 - END   -->
+              
+    <apex:outputPanel >                    
+      <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px; text-align: center;" layout="block">
+           <div style="width:50%;text-align:right;float:left;">
+                 <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Total_on_Payroll__c.label}"/>
+           </div>
+           <div style="width:40%;float:left;text-align:left;margin-left: 20px;">
+              <apex:inputField onkeyUp="autoPopulateValue();" id="payRollId" style=" " value="{!helper.quoteRequest.Total_on_Payroll__c}" rendered="{!!showSummary}"/>
+              <apex:outputField value="{!helper.quoteRequest.Total_on_Payroll__c}" rendered="{!showSummary}"/>
+           </div>
+      </apex:outputPanel>
+      <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+         <div style="width:50%;text-align:right;float:left;">
+              <apex:outputLabel value="+ {!$ObjectType.Quote_Request_Summary__c.fields.COBRA__c.label}"/>
+         </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+              <apex:inputField onkeyUp="autoPopulateValue();" id="cobraId" style=" " value="{!helper.quoteRequest.COBRA__c}" rendered="{!!showSummary}"/>
+              <apex:outputField value="{!helper.quoteRequest.COBRA__c}" rendered="{!showSummary}"/>
+       </div>
+       </apex:outputPanel>
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+          <div style="width:50%;text-align:right;float:left;">
+              <apex:outputLabel value="+ {!$ObjectType.Quote_Request_Summary__c.fields.Retirees__c.label}"/>
+          </div>
+          <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+              <apex:inputField onkeyUp="autoPopulateValue();" id="RetireesId" style="  " value="{!helper.quoteRequest.Retirees__c}" rendered="{!!showSummary}"/>
+              <apex:outputField value="{!helper.quoteRequest.Retirees__c}" rendered="{!showSummary}"/>
+          </div>
+       </apex:outputPanel>
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+           <div style="width:50%;text-align:right;float:left;">
+             <apex:outputLabel value="- {!$ObjectType.Quote_Request_Summary__c.fields.Part_Time__c.label}"/>
+           </div>
+           <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+             <apex:inputField onkeyUp="autoPopulateValue();" id="PartTimeId" style="  " value="{!helper.quoteRequest.Part_Time__c}" rendered="{!!showSummary}"/>
+             <apex:outputField value="{!helper.quoteRequest.Part_Time__c}" rendered="{!showSummary}" />
+           </div>
+       </apex:outputPanel>
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+          <div style="width:50%;text-align:right;float:left;">
+             <apex:outputLabel value="- {!$ObjectType.Quote_Request_Summary__c.fields.Waiting_Period__c.label}"/>
+          </div>
+          <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+             <apex:inputField onkeyUp="autoPopulateValue();" id="WaitingPeriodId" style="  " value="{!helper.quoteRequest.Waiting_Period__c}" rendered="{!!showSummary}" />
+             <apex:outputField value="{!helper.quoteRequest.Waiting_Period__c}" rendered="{!showSummary}" />
+          </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;float: left;padding-top: 5px;  padding-bottom: 5px;font-weight: bold;  margin-bottom: 10px;text-align: center;" layout="block">
+            <div style="width:50%;text-align:right;float:left;">
+               <apex:outputLabel value="= {!$ObjectType.Quote_Request_Summary__c.fields.Total_Eligible_for_Health__c.label}"/>
+            </div>
+            <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+               <apex:inputHidden id="EligibleHealthId2"  value="{!helper.quoteRequest.Total_Eligible_for_Health__c}" />
+               <apex:outputField id="EligibleHealthId"  style=" " value="{!helper.quoteRequest.Total_Eligible_for_Health__c}" />
+               
+            </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;float: left;padding-top: 5px;  padding-bottom: 5px;font-weight: bold;  margin-bottom: 10px;text-align: center;" layout="block">
+             <div style="width:50%;text-align:right;float:left;">
+                <apex:outputLabel value="= {!$ObjectType.Quote_Request_Summary__c.fields.Total_Eligible_for_Dental__c.label}"/>
+            </div>
+            <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                <apex:inputHidden id="EligibleDentalId2" value="{!helper.quoteRequest.Total_Eligible_for_Dental__c}"  /> 
+                <apex:outputField id="EligibleDentalId"  style=" " value="{!helper.quoteRequest.Total_Eligible_for_Dental__c}"  />
+                
+            </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+            <div style="width:50%;text-align:right;float:left;">
+               <apex:outputLabel value="- {!$ObjectType.Quote_Request_Summary__c.fields.Covered_ElseWhere__c.label}"/>
+            </div>
+             <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                <apex:inputField onkeyUp="autoPopulateValue();" id="coveredElseWhereId" style=" " value="{!helper.quoteRequest.Covered_ElseWhere__c}" rendered="{!!showSummary}" />
+                <apex:outputField id="coveredElseWhereId2" style=" " value="{!helper.quoteRequest.Covered_ElseWhere__c}" rendered="{!showSummary}" />
+                
+            </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;padding-top: 5px;  padding-bottom: 5px;float: left;font-weight: bold;  margin-bottom: 10px;text-align: center;" layout="block">
+             <div style="width:50%;text-align:right;float:left;">
+                 <apex:outputLabel value="= {!$ObjectType.Quote_Request_Summary__c.fields.Total_Eligible__c.label}"/>
+             </div>
+             <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                 <apex:inputHidden id="TotalEligibleId2" value="{!helper.quoteRequest.Total_Eligible__c}"/>
+                 <apex:outputField id="TotalEligibleId" style="  " value="{!helper.quoteRequest.Total_Eligible__c}"/>
+             </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+             <div style="width:50%;text-align:right;float:left;">
+                <apex:outputLabel value="- {!$ObjectType.Quote_Request_Summary__c.fields.Waiving_Not_Covered_ElseWhere__c.label}"/>
+             </div>
+             <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                <apex:inputField onkeyUp="autoPopulateValue();" id="WaivingCoveredElseWhereId" style=" " value="{!helper.quoteRequest.Waiving_Not_Covered_ElseWhere__c}" rendered="{!!ShowSummary}" />
+                <apex:outputField id="WaivingCoveredElseWhereId2" style=" " value="{!helper.quoteRequest.Waiving_Not_Covered_ElseWhere__c}" rendered="{!ShowSummary}" />
+                
+              </div>
+          </apex:outputPanel>
+          <apex:outputPanel style="width:100%;padding-top: 5px;  padding-bottom: 5px;float: left;font-weight: bold; margin-bottom: 10px;text-align: center;" layout="block">
+            <div style="width:50%;text-align:right;float:left;">
+                <apex:outputLabel value="= {!$ObjectType.Quote_Request_Summary__c.fields.Total_Covered__c.label}"/>
+            </div>
+            <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                <apex:inputHidden id="TotalCoveredId2" value="{!helper.quoteRequest.Total_Covered__c}"/>
+                <apex:outputField id="TotalCoveredId" style="  " value="{!helper.quoteRequest.Total_Covered__c}"/>
+            </div>
+           </apex:outputPanel>
+           <apex:outputPanel style="width:100%;padding-top: 5px;  padding-bottom: 5px;float: left;font-weight: bold;  margin-bottom: 10px;text-align: center;" layout="block">
+                <div style="width:50%;text-align:right;float:left;">
+                    <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Percent_Enrolled__c.label}"/>
+                </div>
+                <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                    <apex:inputHidden id="percentEnrolled2" value="{!helper.quoteRequest.Percent_Enrolled__c}" />
+                    <apex:outputField style="  " id="percentEnrolled" value="{!helper.quoteRequest.Percent_Enrolled__c}"/>
+                    
+                </div>
+            </apex:outputPanel>
+    </apex:outputPanel>
+                    
+                    
+    <apex:outputPanel >
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px; text-align: center;">
+        <apex:outputLabel value="   Eligibility Waiting Period Information"/>
+       </apex:outputPanel>
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Waive_on_Initial_Enrollment__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField style="  " value="{!helper.quoteRequest.Waive_on_Initial_Enrollment__c}" rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.Waive_on_Initial_Enrollment__c}" rendered="{!showSummary}"/>
+        </div>
+       </apex:outputPanel>
+       <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Health_days__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField style="  " value="{!helper.quoteRequest.Health_days__c}"  rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.Health_days__c}" rendered="{!showSummary}" />
+        </div>
+     </apex:outputPanel>
+    <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Life_days__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField style="  " value="{!helper.quoteRequest.Life_days__c}" rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.Life_days__c}" rendered="{!showSummary}"/>
+        </div>
+     </apex:outputPanel>
+     <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.STD_days__c.label}"/>
+        </div>
+      <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+        <apex:inputField style="  " value="{!helper.quoteRequest.STD_days__c}" rendered="{!!showSummary}"/>
+        <apex:outputField value="{!helper.quoteRequest.STD_days__c}" rendered="{!showSummary}"/>
+      </div>
+    </apex:outputPanel>
+    <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Dental_days__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField style="  " value="{!helper.quoteRequest.Dental_days__c}" rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.Dental_days__c}" rendered="{!showSummary}"/>
+        </div>
+    </apex:outputPanel>
+                            
+    <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;">
+        <apex:outputLabel value="Current Participation"/>
+    </apex:outputPanel>
+                            
+     <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+         <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Non_HMO_Current_Participation__c.label}"/>
+         </div>
+         <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+           <apex:inputField required="true" style="  " value="{!helper.quoteRequest.Non_HMO_Current_Participation__c}" rendered="{!!showSummary}"/>
+           <apex:outputField value="{!helper.quoteRequest.Non_HMO_Current_Participation__c}" rendered="{!showSummary}"/>
+         </div>
+     </apex:outputPanel>
+     <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+          <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.HMO_Current_Participation__c.label}"/>
+        </div>
+     <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+        <apex:inputField required="true" style="  " value="{!helper.quoteRequest.HMO_Current_Participation__c}" rendered="{!!showSummary}"/>
+        <apex:outputField value="{!helper.quoteRequest.HMO_Current_Participation__c}" rendered="{!showSummary}"/>
+     </div>
+    </apex:outputPanel>
+        <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+    <div style="width:30%;text-align:right;float:left;">
+        <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Life_Current_Participation__c.label}"/>
+    </div>
+    <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+        <apex:inputField style=" " value="{!helper.quoteRequest.Life_Current_Participation__c}" rendered="{!!showSummary}"/>
+        <apex:outputField value="{!helper.quoteRequest.Life_Current_Participation__c}" rendered="{!showSummary}"/>
+     </div>
+     </apex:outputPanel>
+     <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.STD_Current_Participation__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField style="  " value="{!helper.quoteRequest.STD_Current_Participation__c}" rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.STD_Current_Participation__c}" rendered="{!showSummary}"/>
+        </div>
+     </apex:outputPanel>
+    <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+            <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.Dental_Current_Participation__c.label}"/>
+        </div>
+     <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+        <apex:inputField style="  " value="{!helper.quoteRequest.Dental_Current_Participation__c}" rendered="{!!showSummary}"/>
+        <apex:outputField value="{!helper.quoteRequest.Dental_Current_Participation__c}" rendered="{!showSummary}"/>
+     </div>
+    </apex:outputPanel>
+    <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;text-align: center;" layout="block">
+        <div style="width:30%;text-align:right;float:left;">
+          <apex:outputLabel value="{!$ObjectType.Quote_Request_Summary__c.fields.DHMO_Current_Participation__c.label}"/>
+        </div>
+        <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+            <apex:inputField required="true"  style="  " value="{!helper.quoteRequest.DHMO_Current_Participation__c}" rendered="{!!showSummary}"/>
+            <apex:outputField value="{!helper.quoteRequest.DHMO_Current_Participation__c}" rendered="{!showSummary}"/>
+        </div>
+     </apex:outputPanel>
+  </apex:outputPanel>     
+                    
+  </apex:pageBlockSection>
+  
+          <!-- SFDC-6833 - 11/2017 - BEGIN   -->
+          
+          <!-- old <apex:pageBlockSection id="pbs1Id" columns="1" title="Risk Data" > -->
+  <apex:pageBlockSection id="pbs1Id" columns="1" title="Risk Data" rendered="{!IsNewSale}" >
+              
+          <!-- SFDC-6833 - 11/2017 - END   -->
+                    
+        <apex:outputPanel >
+              <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;">
+                                <apex:outputLabel value="For all participants, including Active, COBRA, Retirees, and Dependents"/>
+              </apex:outputPanel>
+                            <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;" layout="block">
+                                <div style="width:35%;text-align:left;float: left;">
+                                    <apex:outputLabel value="1. In the past 12 months, has a claim been submitted in excess of $10,000?"/>
+                                </div>
+                                <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                                    <apex:inputField id="claimExceededPast" rendered="{!!showSummary}" style="  " value="{!helper.quoteRequest.Claim_Exceeded_Amt_Past__c}"/>
+                                    
+                                    <apex:outputField value="{!helper.quoteRequest.Claim_Exceeded_Amt_Past__c}" rendered="{!showSummary}"/>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;" layout="block">
+                                <div style="width:35%;text-align:left;float: left;">
+                                    <apex:outputLabel value="2. Is any treatment expected in the next 12 months in excess of $10000 or more?"/>
+                                </div>
+                                <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                                    <apex:inputField id="claimExceededFuture" rendered="{!!showSummary}" style=" " value="{!helper.quoteRequest.Claim_Exceeded_Amt_Future__c}"/>
+                                    <apex:outputField value="{!helper.quoteRequest.Claim_Exceeded_Amt_Future__c}" rendered="{!showSummary}"/>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;" layout="block">
+                                <div style="width:35%;text-align:left;float: left;">
+                                    <apex:outputLabel value="3. Are any participants disabled or not actively at work?"/>
+                                </div>
+                                <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                                    <apex:inputField id="participantDisabled" rendered="{!!showSummary}" style="  " value="{!helper.quoteRequest.Participants_Disabled__c}"/>
+                                    <apex:outputField value="{!helper.quoteRequest.Participants_Disabled__c}" rendered="{!showSummary}"/>
+                                </div>
+                            </apex:outputPanel>
+                           <apex:actionRegion >
+                            <apex:outputPanel style="width:100%;float: left;  margin-bottom: 10px;  " layout="block" id="q4">
+                                <div style="width:35%;text-align:left;float:left;">
+                                    <apex:outputLabel value="4. Has any participant been diagonosed as having a risk condition?"/>
+                                </div>
+                                <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                                 
+                                    <apex:inputField id="participantsDiagonsed" rendered="{!!showSummary}" style=" " value="{!helper.quoteRequest.Participants_Diagonsed_Risk_Condition_Hi__c}">
+                                     <apex:actionSupport event="onchange" rerender="q4, q4Yes"/>
+                                    </apex:inputField>
+                                    <apex:outputField value="{!helper.quoteRequest.Participants_Diagonsed_Risk_Condition_Hi__c}" rendered="{!showSummary}"/>
+                                 
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="q4Yes" style="width:100%;float: left;  margin-bottom: 10px;  " layout="block">
+                                <div style="width:35%;text-align:left;float:left;">
+                                    <apex:outputLabel value="Please Explain" rendered="{!IF(helper.quoteRequest.Participants_Diagonsed_Risk_Condition_Hi__c='Yes',true,false )}"/>
+                                </div>
+                                 <div style="width:40%;text-align:left;float: left;margin-left: 20px;">
+                                    <apex:inputField required="{!IF(helper.quoteRequest.Participants_Diagonsed_Risk_Condition_Hi__c='Yes',true,false)}" rendered="{!!showSummary && helper.quoteRequest.Participants_Diagonsed_Risk_Condition_Hi__c='Yes' }" style=" " value="{!helper.quoteRequest.Risk_Data_Comment__c}"/>
+                                    
+                                    <apex:outputField value="{!helper.quoteRequest.Risk_Data_Comment__c}" rendered="{!showSummary}"/>
+                                </div>
+                            </apex:outputPanel>
+                           </apex:actionRegion>
+             </apex:outputPanel>
+                                    
+      </apex:pageBlockSection>
+ 
+          <!-- SFDC-6833 - 11/2017 - BEGIN  -->
+          
+          <!-- old <apex:pageblockSection title="ASO Guarantees"> -->
+    <apex:pageblockSection title="ASO Guarantees" rendered="{!IsNewSale}">
+              
+          <!-- SFDC-6833 - 11/2017 - END   -->
+   
+        <apex:inputCheckbox label="Performance Guarantees " value="{!helper.quoteRequest.Performance_Guarantee__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Performance Guarantees " value="{!helper.quoteRequest.Performance_Guarantee__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputCheckbox label="Network Discount Guarantee" value="{!helper.quoteRequest.Network_Discount_Guarantees__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Network Discount Guarantee" value="{!helper.quoteRequest.Network_Discount_Guarantees__c}" rendered="{!showSummary}"/>
+        
+        <apex:inputcheckbox label="In Network Utilization Guarantees" value="{!helper.quoteRequest.In_Network_Utilization_Guarantee__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="In Network Utilization Guarantees" value="{!helper.quoteRequest.In_Network_Utilization_Guarantee__c}" rendered="{!showSummary}"/>
+       
+        <apex:inputcheckbox label="Trend Guarantee" value="{!helper.quoteRequest.Trend_Guarantee__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Trend Guarantee" value="{!helper.quoteRequest.Trend_Guarantee__c}" rendered="{!showSummary}"/>
+       
+        <apex:inputcheckbox label="Claims Target Guarantee" value="{!helper.quoteRequest.Claims_Target_Guarantee__c}" rendered="{!!showSummary}" />
+        <apex:outputfield label="Claims Target Guarantee" value="{!helper.quoteRequest.Claims_Target_Guarantee__c}" rendered="{!showSummary}"/>
+       
+        <apex:inputfield label="Other services"  value="{!helper.quoteRequest.Other_Service__c}" rendered="{!!showSummary}"/>
+        <apex:outputfield label="Other services"  value="{!helper.quoteRequest.Other_Service__c}" rendered="{!showSummary}"/>
+        
+     </apex:pageblockSection>
+
+          <!-- SFDC-6833 - 11/2017 - BEGIN  -->
+          
+          <!-- old <apex:pageblockSection title="Additional Information" columns="1"> -->
+       <apex:pageblockSection title="Additional Information" columns="1" rendered="{!IsNewSale}">
+              
+          <!-- SFDC-6833 - 11/2017 - END   -->
+         
+       <apex:outputPanel >
+        <p>Once you’ve submitted the quote request, on the quote request summary, please add the following documents if available to the linked SharePoint site: claims information, proposal benefit plan, current benefit documentation, renewal data from current carrier, and current rates.</p>       
+        <br/>
+        </apex:outputPanel>
+        
+            <apex:inputfield label="Priority" value="{!helper.quoteRequest.Priority__c}" rendered="{!!showSummary}"/>
+            <apex:outputfield label="Priority" value="{!helper.quoteRequest.Priority__c}" rendered="{!showSummary}"/>
+         
+            
+          <apex:inputfield label="Contact Name" value="{!helper.quoteRequest.Contact__c}" rendered="{!!showSummary}"/>
+          <apex:outputfield label="Contact Name" value="{!helper.quoteRequest.Contact__c}" rendered="{!showSummary}"/>
+       
+       
+             <apex:inputTextArea cols="50" rows="4" label="Description" value="{!helper.quoteRequest.Description__c}" rendered="{!!showSummary}"/> 
+             <apex:outputfield label="Description" value="{!helper.quoteRequest.Description__c}" rendered="{!showSummary}"/>
+        
+    </apex:pageblockSection>
+  </apex:outputPanel> 
+  
+  </apex:outputPanel>
+     
+ </apex:pageBlock>
+  
+  
+   <apex:pageBlock id="pb3" rendered="{!if(showSummary || IsError,false, true)}">
+       <table style="width:100%;">
+        <tr >
+        
+        <td>
+               
+        </td>
+        
+        <td>
+       <apex:pageblockSection Title="Search Product" columns="1" rendered="{!if(showSummary,false, true)}">  
+              &nbsp;
+         <div align="center">
+           <apex:pageBlockSectionItem >  
+              <apex:outputText >Product Name:</apex:outputText> 
+                 <apex:outputPanel styleClass="requiredInput" layout="block">
+                <apex:outputPanel styleClass="requiredBlock" layout="block"/>   
+                 <apex:inputText value="{!prodNameInput}" title="Enter any part of product name."/>
+               </apex:outputPanel>
+             <!--   <apex:inputText value="{!prodNameInput}" title="Enter any part of product name."/> -->  
+          </apex:pageBlockSectionItem>
+          
+            <apex:pageBlockSectionItem >
+                <apex:outputText >Product Type:</apex:outputText>
+                <apex:selectList id="prodTypeInput" value="{!selectedProdType}" size="1"> 
+                <apex:selectOptions value="{!prodTypeOptions}"/> 
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+           
+            <apex:pageBlockSectionItem >
+                <apex:outputText >Product Family:</apex:outputText>
+                <apex:selectList id="prodFamilyInput" value="{!selectedProdFamily}" size="1"> 
+                <apex:selectOptions value="{!prodFamilyOptions}"/> 
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+           
+           <apex:pageBlockSectionItem >
+             <apex:outputText >Product Category:</apex:outputText>
+             <apex:selectList id="prodCateInput" value="{!selectedProdCategory}" size="1"> 
+                <apex:selectOptions value="{!ProdCategoryOptions}"/> 
+             </apex:selectList>
+             </apex:pageBlockSectionItem>
+         </div>
+             
+       </apex:pageblockSection>
+        
+        </td>
+        <td>&nbsp;</td>
+        </tr>
+        </table>
+      
+        <br/><br/>
+        
+       <div align="center">
+     <apex:pageblockButtons location="bottom" id="findButton">
+     <apex:commandButton value="Find Product" id="findProd" action="{!findProducts}" ></apex:commandButton>
+     
+     <!--    <apex:commandButton value="Find Product" id="findProd" onclick="disablePricingOptionByDefault();"></apex:commandButton>
+    -->
+         <apex:commandButton value="Cancel Search" id="cancelSearch" action="{!CancelSearch}"></apex:commandButton>
+     </apex:pageblockButtons>
+     </div>
+  </apex:pageBlock>
+    
+  <apex:pageBlock id="pb4" rendered="{! IF(showSummary,false, true) && IF(ISBLANK(helper.oppQuoteRequestlist),false,true) && IF(helper.oppQuoteRequestlist.size==0, false,true)}">
+   
+   <apex:outputPanel rendered="{!IsNewSale}">
+        <p>Please indicate which products/services  you would like to include in your quote request by checking the ‘future’ checkbox next to the product. Please be sure to select a pricing and billing option for each product.</p>
+       </apex:outputPanel>
+       <apex:outputPanel rendered="{!!IsNewSale}">
+        <p>To include a product/service in your quote request, please make sure the ‘future’ checkbox is marked. Please note that all of the account’s current products will be included in the renewal quote by default. To exclude them, please uncheck the ‘future’ checkbox. Please be sure to select a pricing and billing option for each product to be quoted. </p>
+       </apex:outputPanel>
+       <br/>
+       
+   <div id="searchdiv" style="overflow:scroll;">
+   <apex:outputPanel id="prodOutPut" rendered="{!IF(ISBLANK(helper.oppQuoteRequestlist),false,true) && IF(helper.oppQuoteRequestlist.size==0, false,true)}" >
+      
+        <apex:pageblockSection id="prodList" columns="1" >
+         <apex:pageBlockTable value="{!helper.oppQuoteRequestlist}" var="row" id="pagePanel4">
+           
+             <apex:column headervalue="Current">
+               <apex:inputCheckbox value="{!row.IsCurrent}" disabled="true" />
+             </apex:column>
+               <apex:column headervalue="Future">
+               <apex:inputCheckbox value="{!row.IsFuture}" id="futureChkbox" onClick="setCheckBox(this, {!row.rowindex});" />
+             </apex:column>
+             <apex:column headervalue="Market Check">
+                 <apex:inputCheckbox value="{!row.IsMarketCheck}" id="marketChkbox" onClick="setCheckBox(this, {!row.rowindex});"/>
+             </apex:column>
+             
+             <apex:Column headerValue="Product Name" styleClass="rowsClassBold" >
+                <apex:OutputText value="[Service]   " styleclass="starcolor" rendered="{! row.prodrecordType=='Service'}" />
+                
+                 <apex:outPutLink styleclass="link-color" value="#" onclick="window.open('/{!row.productId}');" target="_parent" >
+                    <apex:outputText value="{!row.ProdName}" ></apex:outputText>
+                 </apex:outPutLink>
+             </apex:Column>
+             
+              <apex:column headervalue="Product Type" value="{!row.prodType}" styleClass="rowsClassBold"  />
+              
+
+           <apex:column headerValue="Product/Service Details"  styleClass="rowsClassBold" >
+             
+             <apex:outputPanel rendered="{!row.productDetailOptions.size>0}">
+              <apex:ActionRegion >   
+               <apex:selectList id="pricingOption" value="{!row.productDetailOption}" size="1"> 
+                   <apex:actionSupport event="onchange" action="{!updateListwithPricingNote}" reRender="priceNoteDisplay">
+                     <apex:param name="index" value="{!row.rowindex}" assignTo="{!rowIndex}" />
+                     
+                   </apex:actionSupport>  
+                 
+                      <apex:selectOptions value="{!row.productDetailOptions}" />
+                      
+                </apex:selectList>
+                                 
+               </apex:ActionRegion>
+               </apex:outputPanel>
+               <apex:outputText value="No Product/Service Details" rendered="{!row.productDetailOptions.size<=0}"/>   
+              </apex:column>
+
+                <apex:column headervalue="Pricing (Reference Only)"  styleClass="rowsClassBold"  >
+                  <apex:OutputText value="{!row.pricingReferenceOption}" escape="true"  id="priceNoteDisplay" />     
+              </apex:column>
+         <!-- <apex:column headervalue="Product/Service Details"  styleClass="rowsClassBold"  >
+                  <apex:OutputText value="{!row.pricingNote}" escape="true"  id="priceNoteDisplay" />     
+              </apex:column>
+             -->
+              <apex:column headervalue="Billing"  styleClass="rowsClassBold" >
+             
+             <apex:selectList id="billingOption" value="{!row.billingOption}" styleClass="rowsClassBold" size="1" rendered="{!row.billingOptions.size>0}">
+              <apex:selectOptions value="{!row.billingOptions}" />
+             </apex:selectList>
+             
+             <apex:outputText value="No Billing Info" rendered="{!row.billingOptions.size<=0}"/>   
+              </apex:column>
+              
+          
+          </apex:pageBlockTable>
+           
+        
+        </apex:pageblockSection>
+    </apex:outputPanel>
+    </div>
+    
+      <apex:pageblockButtons location="bottom" id="sendQuoteButton"  rendered="{!IF(ISBLANK(helper.oppQuoteRequestlist),false,true) && IF(helper.oppQuoteRequestlist.size==0, false,true)}" >
+         <apex:commandButton value="Next/Get Summary" id="getSummaryBtn" action="{!getSummary}" ></apex:commandButton>
+          <apex:commandButton value="Clear Search" id="clearProd" action="{!clearSearch}"></apex:commandButton>
+     </apex:pageblockButtons>
+     
+   </apex:pageBlock>
+   
+     
+   
+   <apex:pageBlock rendered="{!showSummary && (markToDeleteOppProdList.size>0|| futureOppProdList.size>0 || waterTestingOppProdList.size>0)}" tabStyle="Quote_Request_Summary__c">
+     
+ 
+        <table style="width:100%; border-size:1px">
+        
+         <tr ><td colspan="5"><font size="2"><b>Products to Quote</b></font></td></tr>
+        <tr><td colspan="5"><br/><br/></td></tr>
+          
+          <tr class="GrayBG">
+          <!--   <th style="text-decoration: underline">Product Code</th>-->
+           <th style="text-decoration: underline">Product Name</th>
+           <th style="text-decoration: underline">Product Type</th>
+           <th style="text-decoration: underline">Product/Service Detail</th>
+           <th style="text-decoration: underline">Pricing (Reference Only)</th>
+           <th style="text-decoration: underline">Billing</th>
+         </tr>
+         <apex:repeat value="{!futureOppProdList}" var="f">
+         <tr>
+       <!--    <td>{!f.prodCode}</td>-->
+          <td>{!f.prodName}</td>
+          <td>{!f.prodType}</td>
+          <td>{!f.productDetailOption}</td>
+          <td>{!f.pricingReferenceOption}</td>
+          <td>{!f.billingOption}</td>
+          </tr>
+         </apex:repeat>
+         
+      <tr><td colspan="5"><br/><br/></td></tr>
+       
+        <tr><td colspan="5"><font size="2"><b>Products Removed from Quote Request</b></font></td></tr>
+        <tr><td colspan="5"><br/></td></tr>
+        
+          <tr class="GrayBG">
+           <th style="text-decoration: underline">Product Name</th>
+           <th style="text-decoration: underline">Product Type</th>
+           <th style="text-decoration: underline">Product/Service Detail</th>
+           <th style="text-decoration: underline">Pricing (Reference Only)</th>
+           <th style="text-decoration: underline">Billing</th>
+         </tr>
+        <apex:repeat value="{!markToDeleteOppProdList}" var="c">
+          <tr>
+           <td>{!c.prodName}</td>
+           <td>{!c.prodType}</td>
+           <td>{!c.productDetailOption}</td>
+           <td>{!c.pricingReferenceOption}</td>
+           <td>{!c.billingOption}</td>
+           </tr>
+       </apex:repeat>
+         
+       <tr><td colspan="5"><br/><br/></td></tr> 
+       <tr><td colspan="5"><font size="2"><b>Products for Market Check</b></font></td></tr>
+       <tr><td colspan="5"><br/></td></tr>
+        
+          <tr class="GrayBG">
+           <th style="text-decoration: underline">Product Name</th>
+           <th style="text-decoration: underline">Product Type</th>
+           <th style="text-decoration: underline">Product/Service Detail</th>
+           <th style="text-decoration: underline">Pricing (Reference Only)</th>
+           <th style="text-decoration: underline">Billing</th>
+         </tr>
+        <apex:repeat value="{!waterTestingOppProdList}" var="m">
+         <tr>
+           <td>{!m.prodName}</td>
+           <td>{!m.prodType}</td>
+           <td>{!m.productDetailOption}</td>
+           <td>{!m.pricingReferenceOption}</td>
+           <td>{!m.billingOption}</td>
+          </tr>
+         </apex:repeat>
+        
+         <tr><td colspan="5" align="center" ><br/><br/>
+           <!--    <apex:inputfield label="Please Provide Request Description (16-60 char):"  required="true" value="{!helper.quoteRequest.Request_Description__c}" />
+           -->
+         </td>
+         </tr>
+         <tr><td colspan="5" align="center"><font size="3"><b>Comment Box</b></font></td></tr>
+         <tr>
+           <td colspan="5" align="center">
+               <apex:inputTextArea cols="100" rows="10" label="Comment Box:" value="{!commentBox}" title="Enter any additionalcomment for quoting."/>
+           </td>
+         </tr>
+  </table>
+       
+       <apex:pageblockButtons location="bottom" id="summaryBtn" >
+          <apex:commandButton value="Back" id="backFrSummaryBtn" action="{!backFromSummary}"></apex:commandButton>
+         <apex:commandButton value="Save/Send Notification" id="notificationBtn" action="{!SaveQuoteSummary}"></apex:commandButton>
+        
+       </apex:pageblockButtons>
+       
+   </apex:pageBlock>
+    <apex:pageBlock rendered="{!showSummary && (markToDeleteOppProdList.size==0 && futureOppProdList.size==0 && waterTestingOppProdList.size==0)}" tabStyle="Quote_Request_Summary__c">
+           <apex:pageblockButtons location="bottom" id="summaryBtn" >
+           <apex:commandButton value="Back" id="backFrSummaryBtn" action="{!backFromSummary}"></apex:commandButton>
+           <apex:commandButton value="Save/Send Notification" id="notificationBtn" action="{!SaveQuoteSummary}"></apex:commandButton>
+           
+           </apex:pageblockButtons>
+      </apex:pageBlock>
+  
+   </apex:form>
+   
+</apex:page>

@@ -1,0 +1,16 @@
+Hello,
+
+Below is a request for a Account Reinstatement. The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Applicable Group Section Number(s): [Enter Group Section Numbers]
+- Benefit Agreement Number: [Enter Benefit Agreement Number]
+- Billing Profile Number: [Enter Billing Profile Number]
+- Coverage Type for Benefit Agreement: [Enter Coverage Type]
+- Does on demand renewal need to be run by Underwriting? 
+(if Yes keep case open, Client Rep to follow up with Underwriting and close once on demand renewal is released to external parties)
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below. Below you will also find the routing information regarding the small group’s payment.
+
+Thank you for your help,

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_61224505</developerName>
+        <masterLabel>Return Reason</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.GEMS_Return_Reasons__r$Return_Reason__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Missing doc</sourceValue>
+            </sourceValues>
+            <value>Missing Document</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Incomplete doc</sourceValue>
+            </sourceValues>
+            <value>Incomplete Document</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ambiguous/Clarification Required</sourceValue>
+            </sourceValues>
+            <value>Ambiguous/Clarification Required</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Benefit cannot be supported</sourceValue>
+            </sourceValues>
+            <value>Benefit Cannot Be Supported</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Benefit discrepancy</sourceValue>
+            </sourceValues>
+            <value>Benefit Discrepancy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Rate discrepancy</sourceValue>
+            </sourceValues>
+            <value>Rate Discrepancy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Enrollment discrepancy</sourceValue>
+            </sourceValues>
+            <value>Enrollment Discrepancy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Benefit not compliant</sourceValue>
+            </sourceValues>
+            <value>Benefit Not Compliant</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CBSR required</sourceValue>
+            </sourceValues>
+            <value>CBSR Required</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Benefit not filed / approved by DOL</sourceValue>
+            </sourceValues>
+            <value>Benefit Not Filed / Approved by DOL</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$Sub_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Return_Reasons__r$GEMS_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Return_Reasons__r$Name</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Screening</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.GEMS_Return_Reasons__r$Return_Reason__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Screening Return Reasons</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_With_or_Without_Return_Reasons__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Act_Send_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Strategic_Plan__c$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Strategic_Plan__c$Name</field>
+    </columns>
+    <columns>
+        <field>Strategic_Plan__c.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Strategic_Plan__c.Activities$Activity_Type__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Strategic_Plan__c.Activities$Status</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Strategic_Plan__c.Activities$Owner_s_Manager_Name__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>jerry berwick</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Strategic_Plan__c.Activities$Status</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Berwick Strategic Plans</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Strategic_Plans_with_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Strategic_Plan__c$Effective_Date__c</dateColumn>
+        <endDate>2018-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

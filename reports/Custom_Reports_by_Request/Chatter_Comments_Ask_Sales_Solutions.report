@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems.Comments$CommentBody</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems.Comments$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems.Comments$CreatedDate</field>
+    </columns>
+    <description>List of all posts to Chatter group Ask Sales Solutions</description>
+    <filter>
+        <booleanFilter>1 or 2 or 3</booleanFilter>
+        <criteriaItems>
+            <column>CollaborationGroup$Name</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Ask Sales Solutions</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CollaborationGroup.FeedItems$Body</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>0F9330000000Vi6</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CollaborationGroup.FeedItems.Comments$CommentBody</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>0F9330000000Vi6</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CollaborationGroup.FeedItems$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CollaborationGroup.FeedItems$Body</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Chatter Comments - Ask Sales Solutions</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ch_dashboards__Chatter_Groups_Activity_1_0__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

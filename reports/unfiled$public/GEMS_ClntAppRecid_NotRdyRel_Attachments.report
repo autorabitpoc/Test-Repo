@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_CASE_ID</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Ready_to_release_to_screening__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_All_required_documents_attached__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_allrequired_documents_attached_date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>00412800,00378337,00348338,00407334,00390853,00358351,00393673,00413014,00358242,00391281,00408555,00379729,00373452,00413781,00419458,00367541,00408160,00410014,00380237,00409282,00392218,00375291,00408940,00392372,00396038,00336994,00390743,00389264,00415330,00409639,00392107,00345326,00392092,00341616,00407371,00415314,00399633,00413339,00411911,00425141,00394831,00344620,00395218,00357060,00400349,00377079,00379175,00417362,00406504,00388496,00372508,00360929,00378144,00416260,00339790,00400975,00416560,00393126,00375985,00387878,00358081,00351961,00354595,00425638,00418732,00366022,00390052,00387532,00398254,00354836,00358638,00424346,00409720,00354523,00387772,00413662,00401781,00410818,00397722,00417373,00427263,00408931,00417217,00411889,00358505,00413319,00413508,00414310</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>00389311,00401287,00365634,00404937,00386791,00409088,00401793,00405654,00399096,00389246,00418746,00419841,00407372,00391164,00396531,00392362,00392359,00400733,00387166,00367290,00377134,00391205,00342514,00421225,00412399,00391610,00422568,00381945,00359335,00389299,00380910,00403728,00402006,00407354</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>GEMS ClntAppRecid_NotRdyRel_Attachments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GEMS_Attachment__c@GEMS_Attachment__c.Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

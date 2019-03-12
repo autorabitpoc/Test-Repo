@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>IL</fullName>
+        <default>false</default>
+        <label>IL</label>
+    </customValue>
+    <customValue>
+        <fullName>MT</fullName>
+        <default>false</default>
+        <label>MT</label>
+    </customValue>
+    <customValue>
+        <fullName>NM</fullName>
+        <default>false</default>
+        <label>NM</label>
+    </customValue>
+    <customValue>
+        <fullName>OK</fullName>
+        <default>false</default>
+        <label>OK</label>
+    </customValue>
+    <customValue>
+        <fullName>TX</fullName>
+        <default>false</default>
+        <label>TX</label>
+    </customValue>
+    <masterLabel>HCSC Division</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,5 @@
+Hi,
+
+Your quote request {!Quote_Request_Summary__c.Name} for opportunity {!Quote_Request_Summary__c.Opportunity_Name__c} has been processed and the {!Quote_Request_Summary__c.Rate_Version_Received__c} rates & fees are available for your review. 
+
+To view the details of the quote, please see: {!Quote_Request_Summary__c.Link}

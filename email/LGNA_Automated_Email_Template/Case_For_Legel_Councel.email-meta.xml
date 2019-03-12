@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify user when the case is for Legal Councel</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case For Legel Councel</name>
+    <style>none</style>
+    <subject>{!Account.Name} - {!Case.RecordType} Case # {!Case.CaseNumber} is in House</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

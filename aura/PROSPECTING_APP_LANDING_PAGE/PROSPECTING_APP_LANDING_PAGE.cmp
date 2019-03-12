@@ -1,0 +1,27 @@
+<aura:component >
+    <aura:attribute name="typeMap" type="Map" default="{}"/>
+    <aura:attribute name="idMap" type="Map" default="{}"/>
+    <aura:attribute name="groupAccSearchFilter" type="String" 
+                    default=" WHERE RecordType.DeveloperName='Group_Account' OR RecordType.DeveloperName='Group_Prospect_Account' OR RecordType.DeveloperName='Prospect_Non_BlueSTAR' OR RecordType.DeveloperName='Group_Account_Non_BlueSTAR'"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler name="updateInfo" event="c:PROSPECTING_APP_LOOKUP_INFO_UPDATE_EVT" action="{!c.updateFieldInfo}"/>
+    <aura:registerEvent name="accessAccountPage" type="c:PROSPECTING_APP_CREATE_ACCOUNT_PAGE_EVT" />
+    
+    <div class="slds-grid slds-grid--vertical-align-center slds-grid--align-center" style="display: flex; height: 100vh; padding: 0 10px; font-size: 175%">
+        <form class="slds-form--inline slds-align-middle">
+            <div style="width: 100%; text-align: center;">
+                <img src="http://heritagegroupusa.com/wp-content/uploads/2015/12/HCSC-logo.png" style="width: 30%; margin-bottom: 30px;" />
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="text-input-01" style="font-size: 110%">Search/Create Account</label>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                    <div aura:id="accountLookup"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <button type="button" class="slds-button slds-button--brand" style="font-size: 100%; padding: 5px 10px;" onclick="{!c.showAccountPage}">Create/Access Account</button>
+            </div>
+        </form>
+    </div>
+</aura:component>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Administrative Influencer</fullName>
+        <default>false</default>
+        <label>Administrative Influencer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Approver</fullName>
+        <default>false</default>
+        <label>Approver</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Consultant</fullName>
+        <default>false</default>
+        <label>Consultant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Decision Maker</fullName>
+        <default>false</default>
+        <label>Decision Maker</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Evaluator</fullName>
+        <default>false</default>
+        <label>Evaluator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Financial Influencer</fullName>
+        <default>false</default>
+        <label>Financial Influencer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Producer</fullName>
+        <default>false</default>
+        <label>Producer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Producer Account Manager</fullName>
+        <default>false</default>
+        <label>Producer Account Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Producer Analyst</fullName>
+        <default>false</default>
+        <label>Producer Analyst</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Producer Consultant</fullName>
+        <default>false</default>
+        <label>Producer Consultant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other Influencer</fullName>
+        <default>false</default>
+        <label>Other Influencer</label>
+    </standardValue>
+</StandardValueSet>

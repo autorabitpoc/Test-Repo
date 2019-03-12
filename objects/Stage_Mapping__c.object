@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>is substage completed</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsCompleted__c</fullName>
+        <description>is stage completed</description>
+        <externalId>false</externalId>
+        <formula>No_of_Completed_Substage__c ==  Number_of_Substage__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>No_of_Completed_Substage__c</fullName>
+        <description>No of Completed Substage</description>
+        <externalId>false</externalId>
+        <inlineHelpText>No of Completed Substage</inlineHelpText>
+        <label>No of Completed Substage</label>
+        <summaryForeignKey>Substage_Mapping1__c.Stage_Mapping__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Substage__c</fullName>
+        <description>Number of Substage</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Substage</inlineHelpText>
+        <label>Number of Substage</label>
+        <summaryForeignKey>Substage_Mapping1__c.Stage_Mapping__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>associated opportunity</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Stage Mappings</relationshipLabel>
+        <relationshipName>Stage_Mappings</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Playbook__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>associated playbook</description>
+        <externalId>false</externalId>
+        <label>Playbook</label>
+        <referenceTo>Playbook__c</referenceTo>
+        <relationshipLabel>Stage Mappings</relationshipLabel>
+        <relationshipName>Stage_Mappings</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Stage_Background_Color__c</fullName>
+        <description>stage background color</description>
+        <externalId>false</externalId>
+        <formula>IF( No_of_Completed_Substage__c = Number_of_Substage__c,&apos;#99FF00&apos;,
+       IF((AND((No_of_Completed_Substage__c &gt; 0) , (No_of_Completed_Substage__c &lt;  Number_of_Substage__c)) ),&apos;#FFCC00&apos;,
+          &apos;#3333FF&apos;  )
+
+   )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage Background Color</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage_Name__c</fullName>
+        <description>id of associated stage</description>
+        <externalId>false</externalId>
+        <formula>Stage__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage_Sort_Order__c</fullName>
+        <description>sort order of stage</description>
+        <externalId>false</externalId>
+        <formula>Stage__r.Stage_Sort_Order__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>associated stage</description>
+        <externalId>false</externalId>
+        <label>Stage</label>
+        <referenceTo>Stage__c</referenceTo>
+        <relationshipLabel>Stage Mappings</relationshipLabel>
+        <relationshipName>Stage_Mappings</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Started__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Started?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Stage Mapping</label>
+    <nameField>
+        <displayFormat>SM-{0000000000}</displayFormat>
+        <label>Stage Mapping Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Stage Mappings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

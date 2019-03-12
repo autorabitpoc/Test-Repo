@@ -1,0 +1,14 @@
+Hi,  
+
+Account Structure has been approved by client and submission process is complete for all BAs for {!Case.Account}  account. You can begin Eligibility process for the account. 
+
+Here is a summary of the Eligibility Case : 
+Account : {!Case.Account}
+
+Effective Date: {!Case.GEMS_Effective_Date__c}
+Submission Type: {!Case.GEMS_Submission_Type__c}
+Case Number: {!Case.CaseNumber}
+HCSC Division: {!Case.HCSC_Division__c}
+Case Details : {!Case.Link}
+
+Thanks

@@ -1,0 +1,110 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SGR_ViewGateController">
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="err" type="Boolean" default="false" />
+    <aura:attribute name="errMsg" type="String" default="" />
+    <aura:attribute name="maxRows" type="Integer" default="100" />
+    <aura:attribute name="optycount" type="Integer" default="10"/>
+    <aura:attribute name="sortedBy" type="String" default="Renewal_Date__c"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>    
+    <aura:attribute name="spinner" type="Boolean" default="false"/>
+    <aura:attribute name="ShowPopup" type="boolean" default="false" />
+    <aura:attribute name="confirmLabel" type="String" default ="Close" />
+    <aura:attribute name="selectedIds" type="List"/>
+    <aura:attribute name="selectedopty" type="Opportunity[]"/>
+    <aura:attribute name="selectedRecords" type="List"/>
+    <aura:attribute name="buttonName" type="String"/>
+    
+    <aura:attribute name="gatestatus" type="String"/>
+    <aura:attribute name="gatestatus1" type="Boolean"/>
+    
+    <aura:attribute name="headerTxt" type="String"/>
+
+                    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:handler event="c:SGR_SelectedOptyEvent" action="{!c.UpdateStatus}"/> 
+    <aura:handler event="c:SGR_LiftGateOpty" action="{!c.handleLiftStatus}"/>
+    <aura:handler event="c:SGR_CancelButton" action="{!c.UpdateShowPopup}"/>
+    
+    
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        
+    </aura:if>
+    <div class="slds-grid">
+            
+        <div class="slds-col slds-size_1-of-1">
+            <h1 class="slds-float_left">No Of Rated Opportunity: {!v.optycount}</h1><br/><br/>
+            <aura:if isTrue="{!v.err}">
+                <span>{!v.errMsg}</span>
+                <div width="100%">
+                        
+                        <lightning:button variant="brand" label="Re-rate Selected" class="slds-float_right slds-m-right_xx-small"                                       
+                                          disabled="false" />
+                        <lightning:button variant="brand" label="Release Selected" class="slds-float_right slds-m-right_xx-small" 
+                                           disabled="{!v.selectedRowsCount==0?false:false}" onclick="{!c.handleSelectedOptys}"/>
+                        
+                        <aura:if isTrue="{!v.gatestatus1}">
+                        		<lightning:button variant="brand" label="Lift Gate" class="slds-float_right slds-m-right_xx-small"                                       
+                                      disabled="false" onclick="{!c.handleLiftSelectedOptys}"/>
+                              <aura:set attribute="else">
+                                     <lightning:button variant="brand" label="Lower Gate" class="slds-float_right slds-m-right_xx-small"                                       
+                                          disabled="false" onclick="{!c.handleGateStatus}"/>
+                              </aura:set>
+                        </aura:if>
+                        
+                    </div><br/><br/>
+                <aura:set attribute="else">
+                    <div width="100%">
+                        <h1 class="slds-float_left">Selected Rows: {!v.selectedRowsCount}</h1>
+                        <lightning:button variant="brand" label="Re-rate Selected" class="slds-float_right slds-m-right_xx-small"                                       
+                                          disabled="false" />
+                        <lightning:button variant="brand" label="Release Selected" class="slds-float_right slds-m-right_xx-small" 
+                                           disabled="{!v.selectedRowsCount==0?false:false}" onclick="{!c.handleSelectedOptys}"/>
+                        
+                        <aura:if isTrue="{!v.gatestatus1}">
+                        		<lightning:button variant="brand" label="Lift Gate" class="slds-float_right slds-m-right_xx-small"                                       
+                                      disabled="false" onclick="{!c.handleLiftSelectedOptys}"/>
+                              <aura:set attribute="else">
+                                     <lightning:button variant="brand" label="Lower Gate" class="slds-float_right slds-m-right_xx-small"                                       
+                                          disabled="false" onclick="{!c.handleGateStatus}"/>
+                              </aura:set>
+                        </aura:if>
+                        
+                    </div><br/><br/>
+                    <div width="100%">
+                    <lightning:dataTable 
+                                         columns="{!v.columns}" 
+                                         data="{!v.data}" 
+                                         keyField="id"
+                                         onsort="{!c.sortRows}"
+										 onrowselection="{!c.updateSelectedText}"
+                                         sortedBy="{!v.sortedBy}"
+                                         sortedDirection="{!v.sortedDirection}"
+                                         /></div>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    <div style="{!v.ShowPopup?'display:block':'display:none'}">
+    <!--<c:SGR_ModalPopup headerTxt="Status Update" confirmLabel="Cancel" actionLabel="Change Status"
+                      selectedRowsCount="{!v.selectedRowsCount}"/>-->
+    <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                       confirmLabel="Cancel" 
+                       actionLabel="Change Status"
+                       isOpen = "{!v.ShowPopup}"
+                       buttonName="{!v.buttonName}"
+                       />
+    </div>
+    
+    <!--<c:GateOptyStatusChangeComponent recordId="{!v.recordId}"/>-->
+</aura:component>

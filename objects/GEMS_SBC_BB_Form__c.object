@@ -1,0 +1,2488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Name_Text__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,
+IF(GEMS_SBC_Request__r.Opportunity_Link__c!=null,GEMS_SBC_Request__r.Opportunity_Link__r.Account.Name,
+GEMS_SBC_Request__r.Case__r.Account.Name),IF(GEMS_Benefit_Booklet_Request__r.Opportunity_Link__c!=null,
+GEMS_Benefit_Booklet_Request__r.Opportunity_Link__r.Account.Name,GEMS_Benefit_Booklet_Request__r.Case__r.Account.Name))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,GEMS_SBC_Request__r.Account_Name__c,GEMS_Benefit_Booklet_Request__r.Account_Name__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,GEMS_SBC_Request__r.Account_Number__c,GEMS_Benefit_Booklet_Request__r.Account_Number__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Approval Pending</fullName>
+                    <default>false</default>
+                    <label>Approval Pending</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Return</fullName>
+                    <default>false</default>
+                    <label>Return</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Recall</fullName>
+                    <default>false</default>
+                    <label>Recall</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Associated_Benefit_Agreements__c</fullName>
+        <externalId>false</externalId>
+        <label>Associated Benefit Agreements</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CBDM_Request_Trans_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>cbdmContractRequestTransId received from CBDM. CBDM&apos;s ID that tracks GEMS&apos;s sbc/bb form request</description>
+        <externalId>true</externalId>
+        <label>CBDM Request Trans Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CBDM_Status_Message__c</fullName>
+        <externalId>false</externalId>
+        <label>CBDM Status Message</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CBDM_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>CBDM Status</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Carved_Out_Benefits_From_Other_Vendors__c</fullName>
+        <externalId>false</externalId>
+        <label>Carved Out Benefits From Other Vendors?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_SharePoint_Link__c</fullName>
+        <externalId>false</externalId>
+        <label>Case SharePoint Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Case_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Status__c),TEXT(GEMS_Benefit_Booklet_Request__r.Status__c))</formula>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,HYPERLINK(&quot;/&quot;
+&amp; GEMS_SBC_Request__r.Case__r.Id
+,GEMS_SBC_Request__r.Case__r.CaseNumber),HYPERLINK(&quot;/&quot;
+&amp; GEMS_Benefit_Booklet_Request__r.Case__r.Id
+,GEMS_Benefit_Booklet_Request__r.Case__r.CaseNumber))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Submission Info</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Category__c),TEXT(GEMS_Benefit_Booklet_Request__r.Category__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chinese_specify_BAs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Chinese BAs</inlineHelpText>
+        <label>Chinese, specify BAs</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cluster__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Cluster__c),TEXT(GEMS_Benefit_Booklet_Request__r.Cluster__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cluster</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cost_Center__c</fullName>
+        <externalId>false</externalId>
+        <label>Cost Center</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_No_of_Members__c</fullName>
+        <externalId>false</externalId>
+        <label>Current # of Members</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Did_HCSC_Create_the_SBC_or_BB_Last_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>Did HCSC Create the SBC or BB Last Year?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Distribution_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Distribution Method</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Print/Mail</fullName>
+                    <default>false</default>
+                    <label>Print/Mail</label>
+                </value>
+                <value>
+                    <fullName>Portal</fullName>
+                    <default>false</default>
+                    <label>Portal</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <label>TBD</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>District__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.District__c),TEXT(GEMS_Benefit_Booklet_Request__r.District__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>District</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,IF(ISNULL(GEMS_SBC_Request__r.Effective_Date__c),&apos;&apos;,TEXT(MONTH(GEMS_SBC_Request__r.Effective_Date__c)) +&apos;/&apos;+ TEXT(DAY(GEMS_SBC_Request__r.Effective_Date__c)) +&apos;/&apos;+ TEXT(YEAR(GEMS_SBC_Request__r.Effective_Date__c)) ),IF(ISNULL(GEMS_Benefit_Booklet_Request__r.Effective_Date__c),&apos;&apos;,TEXT(MONTH(GEMS_Benefit_Booklet_Request__r.Effective_Date__c))+&apos;/&apos;+TEXT(DAY(GEMS_Benefit_Booklet_Request__r.Effective_Date__c))+&apos;/&apos;+TEXT(YEAR(GEMS_Benefit_Booklet_Request__r.Effective_Date__c))))</formula>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Form_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Form Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Form_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/&apos;&amp;Id,&apos;View Form&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Form Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Form_Request_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Form Request Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Custom SBC</fullName>
+                    <default>false</default>
+                    <label>Custom SBC</label>
+                </value>
+                <value>
+                    <fullName>Custom Benefit Booklet</fullName>
+                    <default>false</default>
+                    <label>Custom Benefit Booklet</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Form_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Form Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Sent to CBDM</fullName>
+                    <default>false</default>
+                    <label>Sent to CBDM</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Approval Pending</fullName>
+                    <default>false</default>
+                    <label>Approval Pending</label>
+                </value>
+                <value>
+                    <fullName>Internal Approval Rejected</fullName>
+                    <default>false</default>
+                    <label>Internal Approval Rejected</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Published to Portal</fullName>
+                    <default>false</default>
+                    <label>Published to Portal</label>
+                </value>
+                <value>
+                    <fullName>Sent for Translation</fullName>
+                    <default>false</default>
+                    <label>Sent for Translation</label>
+                </value>
+                <value>
+                    <fullName>Sent for Print</fullName>
+                    <default>false</default>
+                    <label>Sent for Print</label>
+                </value>
+                <value>
+                    <fullName>Mailing Completed</fullName>
+                    <default>false</default>
+                    <label>Mailing Completed</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Return</fullName>
+                    <default>false</default>
+                    <label>Return</label>
+                </value>
+                <value>
+                    <fullName>Revision Requested</fullName>
+                    <default>false</default>
+                    <label>Revision Requested</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GEMS_Benefit_Booklet_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contract Admin Request</label>
+        <referenceTo>GEMS_Contract_Admin_Request__c</referenceTo>
+        <relationshipLabel>Benefit Booklet Forms</relationshipLabel>
+        <relationshipName>GEMS_BB_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_SBC_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contract Admin Request</label>
+        <referenceTo>GEMS_Contract_Admin_Request__c</referenceTo>
+        <relationshipLabel>SBC Forms</relationshipLabel>
+        <relationshipName>GEMS_SBC_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Grandfathered_Benefit_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Grandfathered Benefit(s)?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HCSC_Division__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Hidden_HCSC_Division__c),TEXT(GEMS_Benefit_Booklet_Request__r.Hidden_HCSC_Division__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Resubmitted_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Resubmitted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lines_of_Business__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Line_of_Business__c),TEXT(GEMS_Benefit_Booklet_Request__r.Line_of_Business__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lines of Business</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Market_Segment__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,TEXT(GEMS_SBC_Request__r.Market_Segment__c),TEXT(GEMS_Benefit_Booklet_Request__r.Market_Segment__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Market Segment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mental_Health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</inlineHelpText>
+        <label>Mental Health</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Minimum_Essential_Coverage_MEC__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Essential Coverage/MEC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Minimum_Value_Standard_MV__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Value Standard/MV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Navajo_specify_BAs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Navajo BAs</inlineHelpText>
+        <label>Navajo, specify BAs</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_BAs__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of BAs</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_documents_being_requested__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of documents being requested</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Enrollment_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,IF(ISNULL(GEMS_SBC_Request__r.Open_Enrollment_Start_Date__c),&apos;&apos;,TEXT(MONTH(GEMS_SBC_Request__r.Open_Enrollment_Start_Date__c)) +&apos;/&apos;+ TEXT(DAY(GEMS_SBC_Request__r.Open_Enrollment_Start_Date__c)) +&apos;/&apos;+ TEXT(YEAR(GEMS_SBC_Request__r.Open_Enrollment_Start_Date__c)) ),IF(ISNULL(GEMS_Benefit_Booklet_Request__r.Open_Enrollment_Start_Date__c),&apos;&apos;,TEXT(MONTH(GEMS_Benefit_Booklet_Request__r.Open_Enrollment_Start_Date__c))+&apos;/&apos;+TEXT(DAY(GEMS_Benefit_Booklet_Request__r.Open_Enrollment_Start_Date__c))+&apos;/&apos;+TEXT(YEAR(GEMS_Benefit_Booklet_Request__r.Open_Enrollment_Start_Date__c))))</formula>
+        <label>Open Enrollment Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_SharePoint_Link__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity SharePoint Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,HYPERLINK(&quot;/&quot; 
+&amp; GEMS_SBC_Request__r.Opportunity_Link__r.Id 
+,GEMS_SBC_Request__r.Opportunity_Link__r.Name),HYPERLINK(&quot;/&quot; 
+&amp; GEMS_Benefit_Booklet_Request__r.Opportunity_Link__r.Id 
+,GEMS_Benefit_Booklet_Request__r.Opportunity_Link__r.Name))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</inlineHelpText>
+        <label>Other</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(OwnerId,&apos;005&apos;), HYPERLINK(&apos;/&apos;&amp;OwnerId&amp;&apos;?noredirect=1&amp;isUserEntityOverride=1&apos;,Owner:User.FirstName&amp;&apos; &apos;&amp;Owner:User.LastName), HYPERLINK(&apos;/p/own/Queue/d?id=&apos;&amp;Owner:Queue.Id,Owner:Queue.Name))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Polish_specify_BAs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Polish BAs</inlineHelpText>
+        <label>Polish, specify BAs</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Account</fullName>
+                    <default>false</default>
+                    <label>New Account</label>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                    <fullName>Material Modification</fullName>
+                    <default>false</default>
+                    <label>Material Modification</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Rush__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason for Rush</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Resubmission__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Resubmission</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Returned_User_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Returned User ID</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>SBC_BB_Forms1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rush__c</fullName>
+        <externalId>false</externalId>
+        <label>Rush?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rx__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Dependent field to &quot;Carved Out Benefits From Other Vendors&quot;</inlineHelpText>
+        <label>Rx</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_Do_Not_Send_Reminder_Mail__c</fullName>
+        <externalId>false</externalId>
+        <label>Send/Do Not Send Reminder Mail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Send_Email_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Send Email Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_Reminder_Mail__c</fullName>
+        <externalId>false</externalId>
+        <label>Send Reminder Mail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Send 30 Days Reminder Mail</fullName>
+                    <default>false</default>
+                    <label>Send 30 Days Reminder Mail</label>
+                </value>
+                <value>
+                    <fullName>Send 45 Days Reminder Mail</fullName>
+                    <default>false</default>
+                    <label>Send 45 Days Reminder Mail</label>
+                </value>
+                <value>
+                    <fullName>Send 60 Days Reminder Mail</fullName>
+                    <default>false</default>
+                    <label>Send 60 Days Reminder Mail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Ship_To_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship-To Address</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spanish_specify_BAs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Spanish BAs</inlineHelpText>
+        <label>Spanish, specify BAs</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Handling__c</fullName>
+        <description>Any special handling needed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Any special handling needed?</inlineHelpText>
+        <label>Special Handling</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Performance Guarantee</fullName>
+                    <default>false</default>
+                    <label>Performance Guarantee</label>
+                </value>
+                <value>
+                    <fullName>Priority</fullName>
+                    <default>false</default>
+                    <label>Priority</label>
+                </value>
+                <value>
+                    <fullName>Religious Exemption</fullName>
+                    <default>false</default>
+                    <label>Religious Exemption</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Standard_fully_insured_or_Blue_Direction__c</fullName>
+        <externalId>false</externalId>
+        <label>Standard fully-insured/Blue Direction?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Submission_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,GEMS_SBC_Request__r.Submission_Sub_Type__c, GEMS_Benefit_Booklet_Request__r.Submission_Sub_Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Sub Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submission_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(GEMS_SBC_Request__c!=null,GEMS_SBC_Request__r.Submission_Type__c, GEMS_Benefit_Booklet_Request__r.Submission_Type__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submitter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submitter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>SBC_BB_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tagalog_specify_BAs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Tagalog BAs</inlineHelpText>
+        <label>Tagalog, specify BAs</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Translation__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Translation Needed?</inlineHelpText>
+        <label>Translation?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Request Form</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Request_Type__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Benefit_Booklet_Analyst_IL_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Rush__c</columns>
+        <columns>Distribution_Method__c</columns>
+        <columns>Effective_Date__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Queue</filterScope>
+        <label>Benefit Booklet Analyst IL Queue</label>
+        <queue>Benefit_Booklet_Analyst_IL_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Benefit_Booklet_Analyst_MT_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>Benefit Booklet Analyst MT Queue</label>
+        <queue>Benefit_Booklet_Analyst_MT_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Benefit_Booklet_Analyst_NM_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>Benefit Booklet Analyst NM Queue</label>
+        <queue>Benefit_Booklet_Analyst_NM_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Benefit_Booklet_Analyst_OK_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>Benefit Booklet Analyst OK Queue</label>
+        <queue>Benefit_Booklet_Analyst_OK_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Benefit_Booklet_Analyst_TX_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>Benefit Booklet Analyst TX Queue</label>
+        <queue>Benefit_Booklet_Analyst_TX_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Benefit_Booklet_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>GEMS_SBC_BB_Form__c.GEMS_BB_Form</value>
+        </filters>
+        <filters>
+            <field>Form_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Cancelled</value>
+        </filters>
+        <label>My Benefit Booklet Forms</label>
+        <sharedTo>
+            <role>Contract_Administration</role>
+            <role>GEMS_Contract_Specialist</role>
+            <role>GEMS_Contract_Specialist_Manager</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_SBC_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>GEMS_SBC_BB_Form__c.GEMS_SBC_Form</value>
+        </filters>
+        <filters>
+            <field>Form_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Completed,Cancelled</value>
+        </filters>
+        <label>My SBC Forms</label>
+        <sharedTo>
+            <roleAndSubordinates>GEMS_SBC_Analyst</roleAndSubordinates>
+            <roleAndSubordinates>GEMS_SBC_Analyst_Manager</roleAndSubordinates>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SBC_Analyst_IL_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>SBC Analyst IL Queue</label>
+        <queue>SBC_Analyst_IL_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SBC_Analyst_MT_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>SBC Analyst MT Queue</label>
+        <queue>SBC_Analyst_MT_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SBC_Analyst_NM_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>SBC Analyst NM Queue</label>
+        <queue>SBC_Analyst_NM_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SBC_Analyst_OK_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>SBC Analyst OK Queue</label>
+        <queue>SBC_Analyst_OK_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>SBC_Analyst_TX_Queue_GEMS_SBC_BB_Form</fullName>
+        <columns>Form_Id__c</columns>
+        <columns>Form_Link__c</columns>
+        <columns>Form_Status__c</columns>
+        <columns>Owner__c</columns>
+        <columns>Account_Name_Text__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Case__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Queue</filterScope>
+        <label>SBC Analyst TX Queue</label>
+        <queue>SBC_Analyst_TX_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>{0000000}</displayFormat>
+        <label>Request ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Request Forms</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>GEMS_BB_Form</fullName>
+        <active>true</active>
+        <label>GEMS BB Form</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approval Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Carved_Out_Benefits_From_Other_Vendors__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Did_HCSC_Create_the_SBC_or_BB_Last_Year__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Method__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Print%2FMail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TBD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Form_Request_Type__c</picklist>
+            <values>
+                <fullName>Custom Benefit Booklet</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Form_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mailing Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Published to Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent for Print</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent for Translation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Grandfathered_Benefit_s__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Minimum_Essential_Coverage_MEC__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Minimum_Value_Standard_MV__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Material Modification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Miscellaneous</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rush__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Send_Do_Not_Send_Reminder_Mail__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Send_Reminder_Mail__c</picklist>
+            <values>
+                <fullName>Send 30 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send 45 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send 60 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Special_Handling__c</picklist>
+            <values>
+                <fullName>Performance Guarantee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Religious Exemption</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Standard_fully_insured_or_Blue_Direction__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Translation__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>GEMS_SBC_Form</fullName>
+        <active>true</active>
+        <label>GEMS SBC Form</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approval Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Carved_Out_Benefits_From_Other_Vendors__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Did_HCSC_Create_the_SBC_or_BB_Last_Year__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Method__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Print%2FMail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TBD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Form_Request_Type__c</picklist>
+            <values>
+                <fullName>Custom SBC</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Form_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mailing Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Published to Portal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent for Print</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent for Translation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Grandfathered_Benefit_s__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Minimum_Essential_Coverage_MEC__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Minimum_Value_Standard_MV__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Material Modification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Miscellaneous</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rush__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Send_Do_Not_Send_Reminder_Mail__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Send_Reminder_Mail__c</picklist>
+            <values>
+                <fullName>Send 30 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send 45 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send 60 Days Reminder Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Special_Handling__c</picklist>
+            <values>
+                <fullName>Performance Guarantee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Religious Exemption</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Standard_fully_insured_or_Blue_Direction__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Translation__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <searchResultsAdditionalFields>Form_Id__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Form_Link__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Form_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Owner__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Carved_Out_Benefits_From_Other_Vendors</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Carved_Out_Benefits_From_Other_Vendors__c,&apos;Yes&apos;),AND(Mental_Health__c==FALSE,Rx__c==FALSE,Other__c==FALSE),RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>&apos;Carved Out Benefits From Other Vendors&apos; is Yes. Please select at least one of the following: Mental Health, Rx, Other.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Distribution_Method</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(INCLUDES(Distribution_Method__c ,&apos;Print/Mail&apos;),
+OR( ISBLANK( Cost_Center__c),ISBLANK(Ship_To_Address__c) ),OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;),NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>&apos;Distribution Method&apos; is Print/Mail. Please enter Cost Center and Ship to Address</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_Change_to_New</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(ISCHANGED(Form_Status__c),ISPICKVAL(Form_Status__c, &apos;New&apos;),NOT(ISNEW()),OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;)),true,false)</errorConditionFormula>
+        <errorMessage>Status cannot be changed back to New</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_Owner_Change_After_Form_Is_Approved</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Form_Status__c,&apos;Approved&apos;),ISCHANGED(OwnerId)  ,OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;),NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>Form is Approved you can&apos;t change the owner</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Owner_Only_Changes_FormStatus</fullName>
+        <active>true</active>
+        <description>Only owner of the form is allowed to change the form status</description>
+        <errorConditionFormula>IF(AND($User.Id &lt;&gt; PRIORVALUE(OwnerId),ISCHANGED(Form_Status__c),OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;),NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>Only owner is allowed to change the Form Status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Reason_For_Rush_to_be_Completed</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(ISPICKVAL( Rush__c ,&apos;Yes&apos;),
+ISBLANK( Reason_for_Rush__c) ,OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;),NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>&apos;Rush&apos; is Yes. Please enter Reason for Rush</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Translation</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Translation__c ,&apos;Yes&apos;),AND( ISBLANK(Tagalog_specify_BAs__c),ISBLANK(Spanish_specify_BAs__c) ,ISBLANK(Navajo_specify_BAs__c),ISBLANK(Polish_specify_BAs__c), ISBLANK(Chinese_specify_BAs__c)),OR(RecordType.DeveloperName==&apos;GEMS_SBC_Form&apos;,RecordType.DeveloperName==&apos;GEMS_BB_Form&apos;),NOT(CONTAINS($Profile.Name,&apos;System&apos;))),true,false)</errorConditionFormula>
+        <errorMessage>&apos;Translation&apos; is Yes. Please select language(s) requested</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_BB_Form</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add BB Form</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var $j = jQuery.noConflict(); 
+disableRelease(); 
+try {
+setTimeout(function(){
+var objPrefix=&apos;a3I&apos;;
+var ContactAdminFieldHtmlID=&apos;CF00N0b000003Zz4F&apos;;
+var errors = [];  
+//Get RecordType Record 
+var recordTyps= sforce.connection.query(&quot;Select Id, Name From RecordType Where SobjectType = &apos;GEMS_SBC_BB_Form__c&apos; AND Name = &apos;GEMS BB Form&apos;&quot;); 
+var bbrecType= recordTyps.getArray(&quot;records&quot;); 
+
+//Get Contract Admin Request Record 
+var currentPageID=window.sfdcPage.getEntityId(); 
+
+var SBCBBReqs= sforce.connection.query(&quot;Select  Submission_Type__c,Id,Name,Category__c,Cluster__c,District__c,Effective_Date__c,Line_of_Business__c,Market_Segment__c,Open_Enrollment_Start_Date__c, Hidden_HCSC_Division__c, Account_Number__c , Region__c,Case__r.Account.HCSC_Division__c,Opportunity_Link__c,Opportunity_Link__r.HCSC_Division__c,Case__c From GEMS_Contract_Admin_Request__c Where Id = &apos;&quot;+currentPageID+&quot;&apos; LIMIT 1&quot;); 
+var contAdminReqs= SBCBBReqs.getArray(&quot;records&quot;);
+var contAdminReq=contAdminReqs[0];
+
+//SFDC-9541 
+var HCSCDiv = &apos;&apos;; 
+if(contAdminReq.Opportunity_Link__c){ 
+HCSCDiv = contAdminReq.Opportunity_Link__r.HCSC_Division__c; 
+} 
+else if(contAdminReq.Case__c){ 
+HCSCDiv = contAdminReq.Case__r.Account.HCSC_Division__c; 
+} 
+//SFDC-9541
+
+//Validation of the Parent Request page 
+if(!contAdminReq.Region__c) { 
+   errors.push(&apos;\nRegion&apos;); 
+}
+if(!contAdminReq.Category__c) { 
+   errors.push(&apos;\nCategory&apos;); 
+}
+if(!contAdminReq.Cluster__c) { 
+   errors.push(&apos;\nCluster&apos;); 
+}
+if(!contAdminReq.District__c) { 
+   errors.push(&apos;\nDistrict&apos;); 
+}
+if(!contAdminReq.Effective_Date__c) { 
+   errors.push(&apos;\nEffective Date&apos;); 
+}
+if(!contAdminReq.Line_of_Business__c) { 
+   errors.push(&apos;\nLine of Business&apos;); 
+}
+if(!contAdminReq.Market_Segment__c) { 
+   errors.push(&apos;\nMarket Segment&apos;); 
+}
+if(contAdminReq.Submission_Type__c != &apos;Cosmetic Account Maintenance&apos; &amp;&amp; contAdminReq.Submission_Type__c != &apos;Account Eligibility Maintenance&apos; &amp;&amp; !contAdminReq.Open_Enrollment_Start_Date__c) {
+   errors.push(&apos;\nOpen Enrollment Start Date&apos;); 
+}
+
+if (errors.length &gt; 0) { 
+var errorString = &apos;&apos;; 
+var errorString = errors.join(&quot;&quot;); 
+alert(&apos;Required mandatory Fields :&apos; + errorString); 
+enableRelease(); 
+} else if(HCSCDiv &amp;&amp; HCSCDiv != contAdminReq.Hidden_HCSC_Division__c) {//SFDC-9541 
+alert (&apos;HCSC Division in request should be same as in account (&apos; + HCSCDiv  + &apos;)&apos;);
+enableRelease(); 
+}
+else{
+//Construct URL 
+var bbRecTypeId = bbrecType[0].Id; 
+var URL=&apos;/&apos;+objPrefix+&apos;/e?RecordType=&apos;+bbRecTypeId +&apos;&amp;&apos;+ContactAdminFieldHtmlID+&apos;=&apos;+contAdminReq.Name+&apos;&amp;&apos;+ContactAdminFieldHtmlID+&apos;_lkid=&apos;+contAdminReq.Id+&apos;&amp;retURL=&apos;+currentPageID; 
+window.location.href=URL;
+}
+},1); 
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;); 
+console.log(err);
+}
+
+function disableRelease() { 
+var a = document.getElementsByName(&apos;add_bb_form&apos;)[0]; 
+a.className = &apos;btnDisabled&apos;; 
+a.disabled = true; 
+} 
+
+function enableRelease() { 
+var a = document.getElementsByName(&apos;add_bb_form&apos;)[0]; 
+a.className = &apos;btn&apos;; 
+a.disabled = false;  
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_SBC_Form</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add SBC Form</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+
+var $j = jQuery.noConflict(); 
+disableRelease(); 
+try{
+setTimeout(function(){
+var objPrefix=&apos;a3I&apos;; 
+var ContactAdminFieldHtmlID=&apos;CF00N0b000003Zz4G&apos;;
+var errors = [];  
+//Get RecordType Record 
+var recordTyps= sforce.connection.query(&quot;Select Id, Name From RecordType Where SobjectType = &apos;GEMS_SBC_BB_Form__c&apos; AND Name = &apos;GEMS SBC Form&apos;&quot;); 
+var sbcrecType= recordTyps.getArray(&quot;records&quot;);
+
+//Validation of the Parent Request page
+
+//Get Contract Admin Request Record 
+var currentPageID=window.sfdcPage.getEntityId(); 
+
+var SBCBBReqs= sforce.connection.query(&quot;Select Submission_Type__c,Id,Name,Category__c,Cluster__c,District__c,Effective_Date__c,Line_of_Business__c,Market_Segment__c,Open_Enrollment_Start_Date__c, Hidden_HCSC_Division__c, Account_Number__c , Region__c,Case__r.Account.HCSC_Division__c,Opportunity_Link__c,Opportunity_Link__r.HCSC_Division__c,Case__c From GEMS_Contract_Admin_Request__c Where Id = &apos;&quot;+currentPageID+&quot;&apos; LIMIT 1&quot;); 
+
+var contAdminReqs= SBCBBReqs.getArray(&quot;records&quot;); 
+var contAdminReq = contAdminReqs[0];
+
+//SFDC-9541 
+var HCSCDiv = &apos;&apos;; 
+if(contAdminReq.Opportunity_Link__c){ 
+HCSCDiv = contAdminReq.Opportunity_Link__r.HCSC_Division__c; 
+} 
+else if(contAdminReq.Case__c){ 
+HCSCDiv = contAdminReq.Case__r.Account.HCSC_Division__c; 
+} 
+//SFDC-9541 
+
+//Validation of the Parent Request page 
+if(!contAdminReq.Region__c) { 
+   errors.push(&apos;\nRegion&apos;); 
+}
+if(!contAdminReq.Category__c) { 
+   errors.push(&apos;\nCategory&apos;); 
+}
+if(!contAdminReq.Cluster__c) { 
+   errors.push(&apos;\nCluster&apos;); 
+}
+if(!contAdminReq.District__c) { 
+   errors.push(&apos;\nDistrict&apos;); 
+}
+if(!contAdminReq.Effective_Date__c) { 
+   errors.push(&apos;\nEffective Date&apos;); 
+}
+if(!contAdminReq.Line_of_Business__c) { 
+   errors.push(&apos;\nLine of Business&apos;); 
+}
+if(!contAdminReq.Market_Segment__c) { 
+   errors.push(&apos;\nMarket Segment&apos;); 
+}
+if(contAdminReq.Submission_Type__c != &apos;Cosmetic Account Maintenance&apos; &amp;&amp; contAdminReq.Submission_Type__c != &apos;Account Eligibility Maintenance&apos; &amp;&amp; !contAdminReq.Open_Enrollment_Start_Date__c) { 
+   errors.push(&apos;\nOpen Enrollment Start Date&apos;); 
+}
+
+if (errors.length &gt; 0) { 
+var errorString = &apos;&apos;; 
+var errorString = errors.join(&quot;&quot;); 
+alert(&apos;Required mandatory Fields :&apos; + errorString); 
+enableRelease(); 
+} 
+else if(HCSCDiv &amp;&amp; HCSCDiv != contAdminReq.Hidden_HCSC_Division__c) { //SFDC-9541 
+alert (&apos;HCSC Division in request should be same as in account (&apos; + HCSCDiv  + &apos;)&apos;); 
+enableRelease(); 
+} 
+else{
+//Construct URL 
+var sbcRecTypeId = sbcrecType[0].Id; 
+var URL=&apos;/&apos;+objPrefix+&apos;/e?RecordType=&apos;+sbcRecTypeId +&apos;&amp;&apos;+ContactAdminFieldHtmlID+&apos;=&apos;+contAdminReq.Name+&apos;&amp;&apos;+ContactAdminFieldHtmlID+&apos;_lkid=&apos;+contAdminReq.Id+&apos;&amp;retURL=&apos;+currentPageID; 
+window.location.href=URL;
+}
+},1);
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;); 
+console.log(err);
+}
+
+function disableRelease() { 
+var a = document.getElementsByName(&apos;add_sbc_form&apos;)[0]; 
+a.className = &apos;btnDisabled&apos;; 
+a.disabled = true; 
+} 
+
+function enableRelease() { 
+var a = document.getElementsByName(&apos;add_sbc_form&apos;)[0]; 
+a.className = &apos;btn&apos;; 
+a.disabled = false;  
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Assign_Back_to_Business_Area</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Assign Back to Business Area</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+var SBC_BBToUpdate= new sforce.SObject(&quot;GEMS_SBC_BB_Form__c&quot; ); 
+var check=true; 
+var errors=[]; 
+try{
+var SBC_BB= sforce.connection.query(&quot;select id,Form_Status__c,Resubmission__c,OwnerId ,Returned_User_ID__c from GEMS_SBC_BB_Form__c where id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos; &quot;); 
+var SBC_BBrecs = SBC_BB.getArray(&quot;records&quot;); 
+var SBC_BBrec = SBC_BBrecs[0]; 
+if(SBC_BBrec.Form_Status__c == &apos;Return&apos;) 
+{ 
+SBC_BBToUpdate.Id = SBC_BBrec.Id; 
+SBC_BBToUpdate.OwnerId = SBC_BBrec.Returned_User_ID__c;
+SBC_BBToUpdate.Form_Status__c = &apos;In Progress&apos;;
+SBC_BBToUpdate.Last_Resubmitted_Date__c = new Date();
+SBC_BBToUpdate.Resubmission__c=true;
+result = sforce.connection.update([SBC_BBToUpdate]);
+if(result[0].getBoolean(&quot;success&quot;)) {
+    console.log(&quot;Request Form with id &quot; + result[0].id + &quot; updated&quot;);
+    window.location.reload();
+  }else{
+    console.log(&quot;Failed to update Request Form &quot; + result[0]);
+    alert(&apos;Failed to update.Please contact GEMS support for assistance!&apos;)
+  } 
+}
+else
+{
+alert(&quot;Status should be &apos;Return&apos; to Assign Back.&quot;);
+}
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;); 
+console.log(err);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Cancel_Form</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Cancel Form</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+var SBC_BBToUpdate= new sforce.SObject(&quot;GEMS_SBC_BB_Form__c&quot;); 
+SBC_BBToUpdate.id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos;; 
+//Get Current User ID 
+var currentUserID=&apos;{!$User.Id}&apos;; 
+var submitter=&apos;{!GEMS_SBC_BB_Form__c.SubmitterId__c}&apos;; 
+var status = &apos;{!GEMS_SBC_BB_Form__c.Form_Status__c}&apos;;
+try{
+   if(submitter.indexOf(currentUserID) == -1){ 
+      alert(&apos;You are not authorized to cancel the form&apos;); 
+   }
+   else{
+    if(status == &apos;Approved&apos;){
+      alert(&apos;Form is already approved,you cannot cancel it.&apos;);
+    }
+    else{
+      SBC_BBToUpdate.Form_Status__c = &apos;Cancelled&apos;; 
+      result = sforce.connection.update([SBC_BBToUpdate]);
+      if(result[0].getBoolean(&quot;success&quot;)){
+        console.log(&quot;Request Form with id &quot; + result[0].id + &quot; updated&quot;);
+        alert(&apos;Form is cancelled&apos;);
+        window.location.reload();
+      }else{
+        console.log(&quot;Failed to update Request Form &quot; + result[0]);
+        alert(&apos;Failed.Please contact GEMS support for assistance!&apos;)
+      }  
+   }
+  }
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;);
+console.log(err);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Clone</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Clone</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+
+var SBC_BBClone= new sforce.SObject(&quot;GEMS_SBC_BB_Form__c&quot;);
+var recordTypeName=&apos;{!GEMS_SBC_BB_Form__c.RecordType}&apos;;
+var checkinsert =false;
+//Get current Record ID
+var retURL=window.sfdcPage.getEntityId(); 
+//Get Current User ID
+var currentUserID=&apos;{!$User.Id}&apos;;
+try{
+var SBC_BBs = sforce.connection.query(&quot;select Id,RecordTypeId,Carved_Out_Benefits_From_Other_Vendors__c,Mental_Health__c,RX__c,Other__c,Minimum_Essential_Coverage_MEC__c,Minimum_Value_Standard_MV__c,Standard_fully_insured_or_Blue_Direction__c,GEMS_SBC_Request__c,GEMS_Benefit_Booklet_Request__c,Special_Handling__c	,Distribution_Method__c,Number_of_documents_being_requested__c,Did_HCSC_Create_the_SBC_or_BB_Last_Year__c,Cost_Center__c,Current_No_of_Members__c,Ship_To_Address__c,Submitter__c,Associated_Benefit_Agreements__c,Translation__c,Grandfathered_Benefit_s__c,Form_Request_Type__c,Chinese_specify_BAs__c,Tagalog_specify_BAs__c,Spanish_specify_BAs__c,Polish_specify_BAs__c,Navajo_specify_BAs__c from GEMS_SBC_BB_Form__c where id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos;&quot;); 
+var SBC_BB=SBC_BBs.getArray(&quot;records&quot;)[0];
+var submitter=SBC_BB.Submitter__c;
+if(submitter.indexOf(currentUserID) == -1){
+alert(&apos;You are not authorized to clone the form&apos;);
+}
+else{
+if(recordTypeName == &apos;GEMS BB Form&apos;){
+SBC_BBClone.RecordTypeId=SBC_BB.RecordTypeId;
+SBC_BBClone.GEMS_Benefit_Booklet_Request__c=SBC_BB.GEMS_Benefit_Booklet_Request__c;
+SBC_BBClone.Associated_Benefit_Agreements__c=SBC_BB.Associated_Benefit_Agreements__c;
+SBC_BBClone.Translation__c=SBC_BB.Translation__c;
+SBC_BBClone.Grandfathered_Benefit_s__c=SBC_BB.Grandfathered_Benefit_s__c;
+SBC_BBClone.Did_HCSC_Create_the_SBC_or_BB_Last_Year__c=SBC_BB.Did_HCSC_Create_the_SBC_or_BB_Last_Year__c;
+SBC_BBClone.Reason__c=SBC_BB.Reason__c;
+SBC_BBClone.Rush__c=SBC_BB.Rush__c;
+SBC_BBClone.Reason_for_Rush__c=SBC_BB.Reason_for_Rush__c;
+SBC_BBClone.Chinese_specify_BAs__c=SBC_BB.Chinese_specify_BAs__c;
+SBC_BBClone.Tagalog_specify_BAs__c=SBC_BB.Tagalog_specify_BAs__c;
+SBC_BBClone.Spanish_specify_BAs__c=SBC_BB.Spanish_specify_BAs__c;
+SBC_BBClone.Polish_specify_BAs__c=SBC_BB.Polish_specify_BAs__c;
+SBC_BBClone.Navajo_specify_BAs__c=SBC_BB.Navajo_specify_BAs__c;
+SBC_BBClone.Special_Handling__c	=SBC_BB.Special_Handling_c;
+SBC_BBClone.Distribution_Method__c=SBC_BB.Distribution_Method__c;
+SBC_BBClone.Cost_Center__c=SBC_BB.Cost_Center__c;
+SBC_BBClone.Ship_To_Address__c=SBC_BB.Ship_To_Address__c;
+SBC_BBClone.Number_of_documents_being_requested__c=SBC_BB.Number_of_documents_being_requested__c;
+SBC_BBClone.Current_No_of_Members__c=SBC_BB.Current_No_of_Members__c;
+SBC_BBClone.Submitter__c=SBC_BB.Submitter__c;
+SBC_BBClone.Form_Request_Type__c=SBC_BB.Form_Request_Type__c;
+checkinsert=true;
+}
+if(recordTypeName == &apos;GEMS SBC Form&apos;){
+
+SBC_BBClone.Carved_Out_Benefits_From_Other_Vendors__c=SBC_BB.Carved_Out_Benefits_From_Other_Vendors__c;
+SBC_BBClone.Mental_Health__c=SBC_BB.Mental_Health__c;
+SBC_BBClone.RX__c=SBC_BB.RX__c;
+SBC_BBClone.Other__c=SBC_BB.Other__c;
+SBC_BBClone.Minimum_Essential_Coverage_MEC__c=SBC_BB.Minimum_Essential_Coverage_MEC__c;
+SBC_BBClone.Minimum_Value_Standard_MV__c=SBC_BB.Minimum_Value_Standard_MV__c;
+SBC_BBClone.Standard_fully_insured_or_Blue_Direction__c=SBC_BB.Standard_fully_insured_or_Blue_Direction__c;
+SBC_BBClone.GEMS_SBC_Request__c=SBC_BB.GEMS_SBC_Request__c;
+SBC_BBClone.RecordTypeId=SBC_BB.RecordTypeId;
+SBC_BBClone.Associated_Benefit_Agreements__c=SBC_BB.Associated_Benefit_Agreements__c;
+SBC_BBClone.Translation__c=SBC_BB.Translation__c;
+SBC_BBClone.Grandfathered_Benefit_s__c=SBC_BB.Grandfathered_Benefit_s__c;
+SBC_BBClone.Did_HCSC_Create_the_SBC_or_BB_Last_Year__c=SBC_BB.Did_HCSC_Create_the_SBC_or_BB_Last_Year__c;
+SBC_BBClone.Reason__c=SBC_BB.Reason__c;
+SBC_BBClone.Rush__c=SBC_BB.Rush__c;
+SBC_BBClone.Reason_for_Rush__c=SBC_BB.Reason_for_Rush__c;
+SBC_BBClone.Chinese_specify_BAs__c=SBC_BB.Chinese_specify_BAs__c;
+SBC_BBClone.Tagalog_specify_BAs__c=SBC_BB.Tagalog_specify_BAs__c;
+SBC_BBClone.Spanish_specify_BAs__c=SBC_BB.Spanish_specify_BAs__c;
+SBC_BBClone.Polish_specify_BAs__c=SBC_BB.Polish_specify_BAs__c;
+SBC_BBClone.Navajo_specify_BAs__c=SBC_BB.Navajo_specify_BAs__c;
+SBC_BBClone.Special_Handling__c	=SBC_BB.Special_Handling_c;
+SBC_BBClone.Distribution_Method__c=SBC_BB.Distribution_Method__c;
+SBC_BBClone.Cost_Center__c=SBC_BB.Cost_Center__c;
+SBC_BBClone.Ship_To_Address__c=SBC_BB.Ship_To_Address__c;
+SBC_BBClone.Number_of_documents_being_requested__c=SBC_BB.Number_of_documents_being_requested__c;
+SBC_BBClone.Current_No_of_Members__c=SBC_BB.Current_No_of_Members__c;
+SBC_BBClone.Submitter__c=SBC_BB.Submitter__c;
+SBC_BBClone.Form_Request_Type__c=SBC_BB.Form_Request_Type__c;
+checkinsert=true;
+}
+if(checkinsert == true){
+var result = sforce.connection.create([SBC_BBClone]); 
+if(result[0].getBoolean(&quot;success&quot;)){ 
+console.log(&quot;Form with id &quot; + result[0].id + &quot; inserted&quot;);
+var URL=&apos;/&apos;+result[0].id+&apos;/e?&amp;retURL=/&apos;+result[0].id;
+window.location.href=URL;
+}else{ 
+console.log(&quot;Failed to insert Form &quot; + result[0]); 
+alert(&apos;Failed to insert.Please contact GEMS support for assistance!&apos;) 
+} 
+}
+}
+}
+catch(err){
+alert(&apos;Failed to insert.Please contact GEMS support for assistance!&apos;);
+console.log(err);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Return_To_Submitter</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Return To Submitter</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>try{
+//Get Current User ID 
+var currentUserID=&apos;{!$User.Id}&apos;; 
+var submitter=&apos;{!GEMS_SBC_BB_Form__c.SubmitterId__c}&apos;; 
+if(submitter.indexOf(currentUserID) != -1){ 
+alert(&apos;You are not authorized to return the form&apos;); 
+} 
+else{
+var formstatus=&apos;{!GEMS_SBC_BB_Form__c.Form_Status__c}&apos;;
+if(formstatus == &apos;In Progress&apos;){
+window.open(&apos;/apex/GEMSReturnStatusRequestform?id={!GEMS_SBC_BB_Form__c.Id}&apos;, &apos;_self&apos;);
+}
+else if(formstatus ==&apos;Return&apos;){
+alert(&apos;Form is already return to the submitter&apos;);
+}
+else if(formstatus ==&apos;Approved&apos;){
+alert(&apos;Form is approved,you cannot return to the submitter&apos;);
+}
+else if(formstatus == &apos;Cancelled&apos; || formstatus == &apos;New&apos;){
+alert(&apos;You cannot return in New/Cancelled status&apos;);
+}
+}
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;);
+console.log(err); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_Final_Doc_Email</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send Final Document Email</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+var SBC_BBToUpdate= new sforce.SObject(&quot;GEMS_SBC_BB_Form__c&quot; ); 
+var check=true; 
+var errors=[]; 
+try{
+var result = sforce.connection.query(&quot;SELECT Id from ProcessInstance where TargetObjectId= &apos;{!GEMS_SBC_BB_Form__c.Id}&apos; and status = &apos;Approved&apos; ORDER BY CreatedDate DESC limit 1&quot;); 
+
+if(result != null &amp;&amp; result.records != null)
+{
+var SBC_BB= sforce.connection.query(&quot;select id from GEMS_SBC_BB_Form__c where id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos; &quot;); 
+var SBC_BBrecs = SBC_BB.getArray(&quot;records&quot;); 
+var SBC_BBrec = SBC_BBrecs[0]; 
+
+SBC_BBToUpdate.Id = SBC_BBrec.Id; 
+SBC_BBToUpdate.Send_Email_Flag__c = true;
+result = sforce.connection.update([SBC_BBToUpdate]);
+if(result[0].getBoolean(&quot;success&quot;)) {
+    console.log(&quot;Request Form with id &quot; + result[0].id + &quot; updated&quot;);
+    alert(&apos;The email has been sent&apos;)
+    window.location.reload();
+  }else{
+    console.log(&quot;Failed to update Request Form &quot; + result[0]);
+    alert(&apos;Failed to update.Please contact GEMS support for assistance!&apos;)
+  } 
+}
+else{ 
+console.log(&quot;Approval process not completed yet&quot;);
+alert(&apos;Please Send Final Document Email Once Approval Process is Completed&apos;); 
+}
+} 
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;); 
+console.log(err);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Submit_to_BB_Analyst</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Submit to BB Analyst</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+try{
+//Get Current User ID 
+var currentUserID=&apos;{!$User.Id}&apos;; 
+var submitter=&apos;{!GEMS_SBC_BB_Form__c.SubmitterId__c}&apos;;
+if(submitter.indexOf(currentUserID) == -1){ 
+alert(&apos;You are not authorized to submit the form to Benefit Booklet Analyst&apos;); 
+} 
+else{ 
+var status = &apos;{!GEMS_SBC_BB_Form__c.Form_Status__c}&apos;
+var SBC_BBToUpdate= new sforce.SObject( &quot;GEMS_SBC_BB_Form__c&quot; ); 
+var HCSCDiv=&apos;{!GEMS_SBC_BB_Form__c.HCSC_Division__c}&apos;;
+var QueueName=&apos;Benefit_Booklet_Analyst_&apos;+HCSCDiv+&apos;_Queue&apos;;
+SBC_BBToUpdate.id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos;; 
+var SBC_BB= sforce.connection.query(&quot;select id,Form_Status__c from GEMS_SBC_BB_Form__c where id = &apos;{!GEMS_SBC_BB_Form__c.Id}&apos; &quot;); 
+var BB_Queue= sforce.connection.query(&quot;Select Id, SobjectType, QueueId, Queue.Name From QueueSobject where Queue.DeveloperName = \&apos;&quot;+QueueName+&quot;\&apos; and SobjectType = &apos;GEMS_SBC_BB_Form__c&apos;&quot;);
+var BB_Queues= BB_Queue.getArray(&quot;records&quot;); 
+var BB_Q= BB_Queues[0];
+var SBC_BBrecs = SBC_BB.getArray(&quot;records&quot;); 
+var SBC_BBrec = SBC_BBrecs[0];
+if(SBC_BBrec.Form_Status__c == &apos;New&apos; || SBC_BBrec.Form_Status__c == &apos;In Progress&apos; || SBC_BBrec.Form_Status__c == &apos;Return&apos;) 
+{ 
+SBC_BBToUpdate.Form_Status__c = &apos;In Progress&apos;;  
+SBC_BBToUpdate.ownerId = BB_Q.QueueId;
+result=sforce.connection.update([SBC_BBToUpdate]);
+if(result[0].getBoolean(&quot;success&quot;)){ 
+console.log(&quot;Request Form with id &quot; + result[0].id + &quot; updated&quot;); 
+alert(&apos;Form assigned to Benefit Booklet Analyst Queue&apos;);
+window.location.reload(); 
+}else{ 
+console.log(&quot;Failed to update Request Form &quot; + result[0]); 
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;) 
+} 
+}
+else if(SBC_BBrec.Form_Status__c == &apos;Approved&apos;){
+alert(&apos;Form is already Approved,you cannot submit again to Analyst&apos;);
+}
+}
+}
+catch(err){
+alert(&apos;Failed.Please contact GEMS support for assistance!&apos;);
+console.log(err); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Submit_to_SBC_Analyst</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Submit to SBC Analyst</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!requireScript(&quot;/soap/ajax/27.0/connection.js&quot;)}
+{!requireScript(&quot;/soap/ajax/20.0/apex.js&quot;)}
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js&quot;)}
+try{ 
+var $g = jQuery.noConflict(); 		
+var message = &apos;Page will be automatically refreshed in {0} seconds&apos;;
+		var html = &apos;&lt;div id=&quot;timeout-dialog&quot; style=&quot;display: none;font-weight: bold;background:rgb(200,200,200);&quot; title=&quot;Please wait...&quot;&gt;&apos;+ 
+        &apos;&lt;p&gt;&apos;+ String.format(message,&apos;&lt;span id=&quot;timeout-countdown&quot;&gt;&apos; + 15 + &apos;&lt;/span&gt;&apos;) + &apos;&lt;/p&gt;&lt;/div&gt;&apos;; 
+		//Get Current User ID 
+		var currentUserID=&apos;{!$User.Id}&apos;; 
+		var submitter=&apos;{!GEMS_SBC_BB_Form__c.SubmitterId__c}&apos;; 
+		if(submitter.indexOf(currentUserID) == -1){ 
+			alert(&apos;You are not authorized to submit the form to SBC Analyst&apos;); 
+		} 
+		else{ 
+			var formStatus = &apos;{!GEMS_SBC_BB_Form__c.Form_Status__c}&apos;; 
+			if(formStatus == &apos;Approved&apos;){ 
+				alert(&apos;Form is already approved,you cannot submit again to SBC Analyst&apos;); 
+			}else{
+				if(formStatus == &apos;New&apos; || formStatus == &apos;In Progress&apos; || formStatus == &apos;Return&apos;){
+					// call the CallCBDMSubmitForm method to
+					// 1. send request form to CBDM
+					// 2. assign owner to SBC analyst queue
+					var returnMsg = sforce.apex.execute(&quot;GEMS_CbdmClient&quot;, &quot;CallCBDMSubmitForm&quot;, {formId : &apos;{!GEMS_SBC_BB_Form__c.Form_Id__c}&apos;});
+					$g(function() { 
+$g(&apos;head&apos;).append(&apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css&quot; type=&quot;text/css&quot;/&gt;&apos;); 
+$g(&apos;body&apos;).append(html); 
+$g(&quot;#timeout-dialog&quot;).dialog({	
+closeOnEscape: false,
+resizable: false,
+autoOpen: true, 
+draggable: false,
+
+open: function(event, ui) {
+$g(&quot;.ui-dialog-titlebar-close&quot;).hide();	
+
+},
+modal: true
+}).prev(&quot;.ui-dialog-titlebar&quot;).css(&quot;background&quot;,&quot;yellow&quot;);
+var counter = 15;
+countdown = setInterval(function () {
+counter--;
+$g(&quot;#timeout-countdown&quot;).html(counter);
+
+if (counter &lt;= 1) {
+clearInterval(countdown);
+window.location = &apos;/{!GEMS_SBC_BB_Form__c.Id}&apos;;
+}
+
+}, 1000);
+});
+				}else{
+					alert(&apos;The Form Status has to be New, In Progress or Return !!!&apos;);
+				}	
+			}
+		} 
+}catch(err){ 
+	alert(&apos;Failed!! Please contact GEMS support for assistance!&apos;); 
+	console.log(err); 
+}</url>
+    </webLinks>
+</CustomObject>

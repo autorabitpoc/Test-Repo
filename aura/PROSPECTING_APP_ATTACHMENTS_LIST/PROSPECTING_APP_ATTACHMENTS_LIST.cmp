@@ -1,0 +1,87 @@
+<aura:component controller="ProspectingAppAttachmentsListController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}" />
+    <aura:attribute name="accountAttachments" type="Attachment[]" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler name="uploadFinished" event="c:PROSPECTING_APP_FILE_UPLOAD_DONE_EVT" action="{!c.refreshAttachmentList}"/>
+    
+    <div>
+        <div aura:id="attachmentListLabel" class="slds-text-color--weak slds-show" style="float: left; font-size: 120%;">Attachments</div>
+        <a aura:id="collapseAttachmentList" class="slds-hide" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevronup" size="x-small" alternativeText="Collapse List"/>
+        </a> 
+        <a aura:id="expandAttachmentList" class="slds-show" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevrondown" size="x-small" alternativeText="Expand List"/>
+        </a>
+    </div>
+    
+    <div aura:id="attachmentList" class="slds-card slds-hide">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="doctype:attachment" alternativeText="Attachment Icon"/>
+                </div>
+                <div class="slds-media__body slds-truncate">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-text-link--reset">
+                            <span class="slds-text-heading--small">Attachments ({!v.accountAttachments.length})</span>
+                        </a>
+                    </h2>
+                </div>
+                <div>
+                    <button class="slds-button slds-button--neutral" onclick="{!c.openNewAttachmentModal}">New Attachment</button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col" style="width: 30%;">
+                            Name
+                        </th>
+                        <th style="width: 49.5%;">
+                            Description
+                        </th>
+                        <th scope="col">
+                            Created Date
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="View Attachment"></div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="slds-scrollable--y" style="max-height: 25vh;">
+            <div class="slds-card__body">
+                <div class="slds-scrollable--y" style="height: 30%;">
+                    <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                        <thead>
+                            <aura:iteration items="{!v.accountAttachments}" var="attachment" indexVar="idx">
+                                <tr>
+                                    <th scope="col" style="width: 30%;">
+                                        <div class="slds-truncate" title="Name">{!attachment.Name}</div>
+                                    </th>
+                                    <th style="width: 50%;">
+                                        <div class="slds-truncate" title="Description">{!attachment.Description}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Created Date">{!attachment.CreatedDate}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <ui:outputURL value="{!'/servlet/servlet.FileDownload?file='+attachment.Id}" label="View" target="_blank"/>
+                                    </th>
+                                </tr>
+                            </aura:iteration>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="slds-card__footer"><p></p></div>
+    </div>
+    
+    <div aura:id="attachmentModal"/>
+    <div><lightning:spinner aura:id="attachmentListSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

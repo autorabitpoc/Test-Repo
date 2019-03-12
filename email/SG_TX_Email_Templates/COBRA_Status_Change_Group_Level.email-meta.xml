@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Group Changing Status between COBRA and State Continuation</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>COBRA Status Change Group Level</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} COBRA Status Change Request</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

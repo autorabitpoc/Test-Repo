@@ -1,0 +1,23 @@
+<apex:page standardController="Blue_Directions_LOB__c" extensions="PrivateExchangeRecordTypeSelection">
+    <apex:form >
+        <br/><b><font size="4">New Private Exchange - Product Record Type Selection</font></b><br/><br/>
+        Select a record type for the new private exchange - product. <br/><br/>
+        <apex:outputPanel ><br/><br/>
+            <apex:pageBlock title="Private Exchange - Product Record Type" id="block">
+                <apex:outputPanel >
+                    <apex:outputLabel for="Select RecordType">Select RecordType  :</apex:outputLabel>
+                    <apex:selectList value="{!selectedValue}" multiselect="false" size="1" required="true">
+                        <apex:selectOptions value="{!recordOptions}"/>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <br/>
+               
+                <apex:panelGroup ><center>
+                    <apex:commandButton value="Continue" action="{!peContinue}"><apex:param name="selectedrctyp" value="{!selectedValue}"/></apex:commandButton>
+                    <apex:commandButton value="Cancel"/></center>
+                </apex:panelGroup>
+                            
+     </apex:form>
+</apex:page>

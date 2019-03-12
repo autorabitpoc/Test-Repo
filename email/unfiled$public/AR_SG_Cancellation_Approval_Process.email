@@ -1,0 +1,8 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following item: 
+
+To approve or reject this item, click this link 
+
+{!ApprovalRequest.Internal_URL} 
+
+Thanks, 
+Salesforce

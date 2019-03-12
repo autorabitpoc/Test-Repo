@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_16218604</developerName>
+        <masterLabel>Account Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account$Status__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Active</sourceValue>
+            </sourceValues>
+            <value>Active</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Actively Purchasing</sourceValue>
+            </sourceValues>
+            <value>Actively Purchasing</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <value>Cancelled</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_49773871</developerName>
+        <masterLabel>Opportunity Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Opportunities$StageName</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Won</sourceValue>
+            </sourceValues>
+            <value>Won - Submission Case Created</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Declined</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>No Further Action</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Prospecting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qualification</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Needs Analysis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Perception Analysis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Proposal/Price Quote</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Negotiation/Review</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Expected In</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Expected In</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Planning</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFI Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFI Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>RFP Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Negotiation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Initiated</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Underwriting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal Delivered</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Renewal In Negotiation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finalist Named</sourceValue>
+            </sourceValues>
+            <value>Pending</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account$Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account$Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account$Line_of_business__c</field>
+    </columns>
+    <columns>
+        <field>Account$District__c</field>
+    </columns>
+    <columns>
+        <field>Account$Cluster__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Requested_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$StageName</field>
+    </columns>
+    <columns>
+        <field>Account$Funding_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account$Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account$Owner</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Account_Structure_Case_Creation__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Days_to_Structure_Case__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Days_to_Structure_Approval__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Days_to_Release__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Account_Setup_Screening_Creation__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 AND 2) AND (3 OR 4 OR 5)) AND 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>Account$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active,NEW,Cancelled,In Communication,Actively Engaged,Actively Purchasing,In Negotiations,Sold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Market_Segment__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AFG,HA,HWB,LG,LGC,LGL,LGN,MAC,MGC,MGL,NAC,STU,TRS,ERS,NAL,TAC,TCI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Renewal_Date__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2/1/2017</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Renewal_Date__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2/1/2018,2/1/2019</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Effective_Date__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities$Requested_Effective_Date__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Renewal_Upsell,Opportunity.New_Sale,Opportunity.Renewal</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Status__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_49773871</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>2018 Accounts with or without Opps</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_or_without_Opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Account_Cluster_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

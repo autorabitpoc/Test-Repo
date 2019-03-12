@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS_CustomIDCardResubmitEmailTemplate</name>
+    <style>none</style>
+    <subject>{!GEMS_Custom_ID_Request_Form__c.Account_Name__c} : Custom ID Request Form Updated</subject>
+    <textOnly>Hi,
+
+Please note Custom ID Request Form is updated for {!GEMS_Custom_ID_Request_Form__c.Account_Name__c}.
+
+To review Case please click on  {!GEMS_Custom_ID_Request_Form__c.Parent_ID_Card_Case_Number__c}
+
+To review form please click on  {!GEMS_Custom_ID_Request_Form__c.Name}
+
+
+Regards,
+GEMS System</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

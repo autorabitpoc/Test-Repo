@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Account_Edit_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>Read</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Read</opportunityAccessLevel>
+        </accountSettings>
+        <description>This gives all users access to edit all the Competitor, Vendor, Consultant and Producer Accounts</description>
+        <label>Account Edit Share Competitor, Vendor, Consultant and Producer</label>
+        <sharedTo>
+            <roleAndSubordinates>Executive_Management</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Competitor,Vendor,Consultant Account,Producer Account</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Small_Group_Account_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>None</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Share all accounts with small group for edit</description>
+        <label>Small Group Account Share</label>
+        <sharedTo>
+            <roleAndSubordinates>Small_Group</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Group Account,Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Market_Segment__c</field>
+            <operation>equals</operation>
+            <value>SGAR,NRSG,SGN,OKCA,SG,SGTR,TULA,OKSA,COMA,HMSG,NRMM</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>TX_NRMM_New_Business_Coordinator_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>Edit</opportunityAccessLevel>
+        </accountSettings>
+        <description>Shares all the TX-NRMM Accounts with the New Business Coordinators</description>
+        <label>TX NRMM New Business Coordinator Share</label>
+        <sharedTo>
+            <group>TX_NRMM_New_Business_Coordinators</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Market_Segment__c</field>
+            <operation>equals</operation>
+            <value>NRMM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>HCSC_Division__c</field>
+            <operation>equals</operation>
+            <value>TX</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Underwriter_User_Account_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>None</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>SGR_Underwriter User Account Share</label>
+        <sharedTo>
+            <role>UnderwriterUser</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Group Account</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SR - Date Of Meeting Changed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SR - Date Of Meeting Changed</name>
+    <style>none</style>
+    <subject>{!Service_Request__c.RecordType}: Date of Meeting changed  {!Service_Request__c.Date_of_Meeting__c}  @ {!Service_Request__c.Start_Time__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,94 @@
+<aura:component controller="LGNA_NewOpportunityProducts" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="prod2Id" type="String"/>
+    <aura:attribute name="oppProdLost" type="Boolean" default="false" />
+    <aura:attribute name="editMode" type="Boolean" default="false" />
+    <aura:attribute name="objectName" type="String" />
+    <aura:attribute name="saved" type="Boolean" default="false" />
+    <aura:attribute name="showSpinner" type="Boolean" default="true" />
+    <aura:attribute name="OppProdDetail" type="Object"/>
+    <aura:attribute name="OppProdData" type="Object"/>
+    <aura:attribute name="loadError" type="String" />
+    <aura:attribute name="WinninCarrier" type="String" default=""/>
+    <aura:attribute name="FundingType" type="string"/>
+    <aura:attribute name="oppProdStatus" type="string"/>
+    <aura:attribute name="LCarrierFielderrorMessage" type="Boolean" default="true" />
+    <aura:attribute name="LnoteFielderrorMessage" type="Boolean" default="true" />
+    <aura:attribute name="LCarveOuterrorMessage" type="Boolean" default="true" />
+    <aura:attribute name="LspliterrorMessage" type="Boolean" default="true" />
+    <aura:attribute name="WspliterrorMessage" type="Boolean" default="true" />
+    <aura:attribute name="WinLosePopup" type="Boolean" default="false" />
+    <aura:attribute name="isInitial" type="Boolean" default="true" />
+    <aura:registerEvent name="WonLostModel" type="c:LGNA_OppProductWonLostEvent"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner />
+    </aura:if>
+    
+    <force:recordData aura:id="OppProdLoad"
+                      recordId="{!v.recordId}"
+                      layoutType="{!v.layout}"
+                      fields="Id,Name,Account__c,Product__c,Status__c,Funding_Type__c,Account__r.Name,Category__c"
+                      mode="VIEW"
+                      targetRecord="{!v.OppProdDetail}"
+                      targetFields="{!v.OppProdData}"
+                      targetError="{!v.loadError}" />
+    
+    <aura:if isTrue="{!!v.saved}">
+        <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+            <lightning:recordEditForm  aura:id="editForm"
+                                      onload="{!c.handleLoad}"
+                                      onsubmit="{!c.handleSubmit}"
+                                      onsuccess="{!c.handleSuccess}"
+                                      recordId="{!v.recordId}"
+                                      objectApiName="Opportunity_Product__c">
+                <!-- the messages component is for error messages -->
+                <lightning:messages />
+                
+                <div class="slds-form slds-form_horizontal">
+                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+v.OppProdData.Product__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                        <lightning:outputField fieldName="Product__c" />
+                    </a>
+                    <br/>
+                    <aura:if isTrue="{!v.oppProdStatus=='Won'}">
+                        <lightning:input name="STATUS" value="Won" label="Status" readonly="true"/>
+                        <lightning:input name="WIN PROBABILITY %" value="100%" label="WIN PROBABILITY %" readonly="true"/>
+                        <lightning:outputField fieldName="Projected_Contracts__c" />
+                        <lightning:outputField fieldName="Projected_Members__c" />
+                        <aura:if isTrue="{!v.OppProdData.Category__c=='Medical'}">
+                            <lightning:inputField class="{!(v.oppProdStatus=='Won' ? 'customRequired':'')}" aura:id='Wsplit' fieldName="Split__c" />
+                            <span class="slds-hide slds-required" aura:id="WspliterrorMessage">This Field is Required</span> 
+                        </aura:if>
+                    </aura:if>
+                    <aura:if isTrue="{!v.oppProdStatus=='Lost'}">
+                        <lightning:input name="STATUS" value="Lost" label="Status" readonly="true" />
+                        <lightning:input name="WIN PROBABILITY %" value="0%" label="WIN PROBABILITY %" readonly="true" />                            
+                        <label class="slds-form-element__label" for="carrierField">Winning Carrier / Vendor</label>
+                        <div class="slds-form-element__control" aura:id="LCarrierField">
+                            <c:LGNA_OppProductLookup isCarrier="true" objectAPIName="Account" IconName="standard:Account"  isInitial="{!v.isInitial}" selectedRecordId="{!v.OppProdData.Account__r.Name}" selectedRecord="{!v.WinninCarrier}" label=""/>
+                            <span class="slds-hide slds-required" aura:id="LCarrierFielderrorMessage">This Field is Required</span>  
+                        </div>
+                        <lightning:inputField class="{!(v.oppProdStatus=='Lost' ? 'customRequired ':'')}" aura:id='LnoteField' fieldName="Notes__c" />
+                        <span class="slds-hide slds-required" aura:id="LnoteFielderrorMessage">This Field is Required</span> 
+                        <aura:if isTrue="{!v.OppProdData.Category__c!='Medical' &amp;&amp; (v.FundingType == 'ASO' || v.FundingType == 'ACAP')}">
+                            <lightning:inputField class="{!(v.oppProdStatus=='Lost' ? 'customRequired':'')}" aura:id='LCarveOut' fieldName="Carve_Out__c" />
+                            <span class="slds-hide slds-required" aura:id="LCarveOuterrorMessage">This Field is Required</span> 
+                        </aura:if>
+                        <aura:if isTrue="{!v.OppProdData.Category__c=='Medical'}">
+                            <lightning:inputField class="{!(v.oppProdStatus=='Lost' ? 'customRequired':'')}" aura:id='Lsplit' fieldName="Split__c" />
+                            <span class="slds-hide slds-required" aura:id="LspliterrorMessage">This Field is Required</span> 
+                        </aura:if>
+                    </aura:if>
+                </div>
+                <br/>
+                <div class="slds-m-bottom_medium">
+                    <lightning:button variant="Neutral" label="Cancel" title="Cancel" onclick="{! c.CancelEdit}" />
+                    <lightning:button  variant="brand" label="Save" title ="Save" name="Save" onclick="{!c.onSubmit}" />
+                </div>
+            </lightning:recordEditForm>
+        </div>
+    </aura:if>
+    
+</aura:component>

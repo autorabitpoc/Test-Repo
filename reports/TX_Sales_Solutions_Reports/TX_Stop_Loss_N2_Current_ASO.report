@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_20243847</developerName>
+        <masterLabel>TX Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Owner_s_Manager_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Ben Suarez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Donna Tucker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Holly Herin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Melissa Sanden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kory Aoyama</sourceValue>
+            </sourceValues>
+            <value>North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Heather Linton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jerry Berwick</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robin Fowler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Terry Villiva</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Diana Nevins</sourceValue>
+            </sourceValues>
+            <value>Southeast</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Cindee Soza</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Abby Sterner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Trey Smith</sourceValue>
+            </sourceValues>
+            <value>Southwest</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Melissa Tessier</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cami Martin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kellie Motsinger</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Russ Plum</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Carol Riley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Joe Braley</sourceValue>
+            </sourceValues>
+            <value>ENA</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>BucketField_20243847</field>
+    </columns>
+    <columns>
+        <field>Account.Owner_s_Manager_Name__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product_Category__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>HMO,PPO,EPO,Blue Edge,Traditional</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Funding_Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ACAP,ASO</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
+        <relatedTable>Benefit_Agreement__c</relatedTable>
+        <relatedTableJoinColumn>Group_Account__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Benefit_Agreement__c.Non_BlueStar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product_Category__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Stop Loss</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
+        <relatedTable>Benefit_Agreement__c</relatedTable>
+        <relatedTableJoinColumn>Group_Account__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Benefit_Agreement__c.BlueStar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product_Category__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>HMO,PPO,EPO,Blue Edge,Traditional</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Funding_Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ACAP,ASO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Stop_Loss__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Y</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
+        <relatedTable>Benefit_Agreement__c</relatedTable>
+        <relatedTableJoinColumn>Group_Account__c</relatedTableJoinColumn>
+    </crossFilters>
+    <description>Current TX ASO accounts without stop loss (account list only)</description>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Group_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.HCSC_Division__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>TX Stop Loss (N2) - Current ASO</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account.Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Plan__c$Marketing_Sales_Plan_ID__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c$Rate_Type__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c.Opportunity_Plan_Rates__r$Member_Premium__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Plan__c.Opportunity_Plan_Rates__r$Id</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Rate Report for Vision</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Age_Rate_Report_Type_for_Vision__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Plan__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

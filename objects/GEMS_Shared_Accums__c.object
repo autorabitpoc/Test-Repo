@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>GEMSCaptureSharedAccums</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>GEMSCaptureSharedAccums</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object signifies Shared Accums for Account submission case.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Accum_Period__c</fullName>
+        <externalId>false</externalId>
+        <label>Accums Period</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Calendar Year</fullName>
+                    <default>false</default>
+                    <label>Calendar Year</label>
+                </value>
+                <value>
+                    <fullName>Benefit Year</fullName>
+                    <default>false</default>
+                    <label>Benefit Year</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Accums_Feeding_feaking__c</fullName>
+        <externalId>false</externalId>
+        <label>Accums Feeding/feaking</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Network Updates/Feeds Out of Network</fullName>
+                    <default>false</default>
+                    <label>In Network Updates/Feeds Out of Network</label>
+                </value>
+                <value>
+                    <fullName>Out of Network Updates/Feeds In Network</fullName>
+                    <default>false</default>
+                    <label>Out of Network Updates/Feeds In Network</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Accums_Shared_With__c</fullName>
+        <externalId>false</externalId>
+        <label>Accums Share With</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pharmacy Only</fullName>
+                    <default>false</default>
+                    <label>Pharmacy Only</label>
+                </value>
+                <value>
+                    <fullName>Behavioral Health Only</fullName>
+                    <default>false</default>
+                    <label>Behavioral Health Only</label>
+                </value>
+                <value>
+                    <fullName>Both Pharmacy and Behavioral Health</fullName>
+                    <default>false</default>
+                    <label>Both Pharmacy and Behavioral Health</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Aggregate_or_Embedded_Deductible__c</fullName>
+        <externalId>false</externalId>
+        <label>Aggregate or Embedded Deductible</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Aggregate (family based accums)</fullName>
+                    <default>false</default>
+                    <label>Aggregate (family based accums)</label>
+                </value>
+                <value>
+                    <fullName>Embedded (individually based accums)</fullName>
+                    <default>false</default>
+                    <label>Embedded (individually based accums)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Aggregate_or_Embedded_Out_of_Pocket__c</fullName>
+        <externalId>false</externalId>
+        <label>Aggregate or Embedded Out of Pocket</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Aggregate (family based accums)</fullName>
+                    <default>false</default>
+                    <label>Aggregate (family based accums)</label>
+                </value>
+                <value>
+                    <fullName>Embedded (individually based accums)</fullName>
+                    <default>false</default>
+                    <label>Embedded (individually based accums)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Limit $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Applicable_BAs__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable BAs</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BA_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Benefit_Agreement__r.Product__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BA Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>only shows BA’s that are associated with Account structure case for this account submission case</description>
+        <externalId>false</externalId>
+        <label>Benefit Agreement</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>GEMS_Benefit_Agreement__c.AccountStructureCase__r.ParentId</field>
+                <operation>equals</operation>
+                <valueField>$Source.GEMS_Case__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>GEMS_Benefit_Agreement__c</referenceTo>
+        <relationshipName>GEMS_Shared_Accums</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Accums_Shared_With__c, &apos;Both Pharmacy and Behavioral Health&apos;) , &apos;Yes&apos;,&apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completion_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Completion Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Deductible_Converted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Deductible__c , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deductible Converted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deductible_Middle_Tier_s_if_Applicable__c</fullName>
+        <externalId>false</externalId>
+        <label>Deductible Middle Tier (s) if Applicable</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deductible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Deductible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Does_Copay_apply_to_Out_of_Pocket__c</fullName>
+        <externalId>false</externalId>
+        <label>Does Copay apply to Out of Pocket?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Does_Deductible_apply_to_Out_of_Pocket__c</fullName>
+        <externalId>false</externalId>
+        <label>Does Deductible apply to Out of Pocket?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Family_Deductible_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Family Deductible Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Family_Out_of_Pocket_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Family Out of Pocket Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Shared Accums</relationshipLabel>
+        <relationshipName>GEMS_Shared_Accums</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>HCSC_responsible_for_Vendor_Eligibility__c</fullName>
+        <externalId>false</externalId>
+        <label>HCSC responsible for Vendor_Eligibility?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>In_Network_OOP_Feeds_Out_of_Network__c</fullName>
+        <description>In Network OOP Feeds Out of Network</description>
+        <externalId>false</externalId>
+        <label>In Network OOP Feeds Out of Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>In_Ntk_Ded_Feeds_Out_Of_Ntk__c</fullName>
+        <description>In Network Deductible Feeds Out of Network</description>
+        <externalId>false</externalId>
+        <label>In Network Deductible Feeds Out of Ntwk</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Individual_Deductible_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Individual Deductible Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Individual_Out_of_Pocket_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Individual Out of Pocket Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Innetwork_DED_feeds_Out_of_Network__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Accums_Feeding_feaking__c, &apos;In Network Updates/Feeds Out of Network&apos;) , &apos;Yes&apos;,&apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Innetwork DED feeds Out of Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lifetime_Maximum_Converted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Lifetime_Maximum__c , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lifetime Maximum Converted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lifetime_Maximum__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Lifetime Maximum</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Accum_Tiers__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Accum Tiers</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>One Tier = One Rate Applies to all Family Structures</fullName>
+                    <default>false</default>
+                    <label>One Tier = One Rate Applies to all Family Structures</label>
+                </value>
+                <value>
+                    <fullName>Two Tier = EE, Family</fullName>
+                    <default>false</default>
+                    <label>Two Tier = EE, Family</label>
+                </value>
+                <value>
+                    <fullName>Three Tier = EE, EE + One, Family</fullName>
+                    <default>false</default>
+                    <label>Three Tier = EE, EE + One, Family</label>
+                </value>
+                <value>
+                    <fullName>Four Tier = EE,  EE + Sps, EE + Child(ren), Family</fullName>
+                    <default>false</default>
+                    <label>Four Tier = EE,  EE + Sps, EE + Child(ren), Family</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Out_of_Network_DED_feeds_Innetwork__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Accums_Feeding_feaking__c, &apos;Out of Network Updates/Feeds In Network&apos;) , &apos;Yes&apos;,&apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Out of Network DED feeds Innetwork</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Out_of_Network_Deductible_Feeds_In_Ntk__c</fullName>
+        <description>Out of Network Deductible Feeds In Network</description>
+        <externalId>false</externalId>
+        <label>Out of Network Deductible Feeds In Ntk</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Out_of_Network_OOP_Feeds_In_Network__c</fullName>
+        <description>Out of Network OOP Feeds In Network</description>
+        <externalId>false</externalId>
+        <label>Out of Network OOP Feeds In Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Out_of_Pocket_Converted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Out_of_Pocket__c , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Out of Pocket Converted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Out_of_Pocket_Middle_Tier_if_Applicable__c</fullName>
+        <externalId>false</externalId>
+        <label>Out of Pocket Middle Tier if Applicable</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Out_of_Pocket__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Out of Pocket</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Benefit_Agreement__r.Product__r.Product_Category__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shared_Accum_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Shared Accum ID</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shared_Accum_with_Vendor_Using__c</fullName>
+        <externalId>false</externalId>
+        <label>Shared Accum with Vendor Using</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SSN</fullName>
+                    <default>false</default>
+                    <label>SSN</label>
+                </value>
+                <value>
+                    <fullName>Employee ID (Must have approval)</fullName>
+                    <default>false</default>
+                    <label>Employee ID (Must have approval)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Shared_Accums_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Shared Accums Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Shared_Accums_Team_Member__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Shared Accums Team Member</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>GEMS_Shared_Accums</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>GEMS Shared Accums</label>
+    <nameField>
+        <displayFormat>SA-{0000}</displayFormat>
+        <label>GEMS_Shared_Accums Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GEMS Shared Accums</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add/Edit</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+var caseToUpdate = new sforce.SObject( &quot;Case&quot; ); 
+
+var Case1 = sforce.connection.query(&quot;select Id, subject,HCSC_Division__c, GEMS_Rx_Vendor__c,GEMS_Products__c from case where id = &apos;{!Case.Id}&apos; &quot;);
+var rec1 = Case1.getArray(&quot;records&quot;); 
+var caserec = rec1[0]; 
+
+var Prodcheck = &apos;&apos;; 
+var RxProdcheck = false; 
+var SharedAccumsProdcheck = false; 
+var Primevendorcheck = false;  
+var Primemore = false; 
+var notprimeRXvendor = false;
+var caseid = caserec.Id; 
+
+if(caserec.GEMS_Products__c != null ) 
+{ 
+	Prodcheck = (caserec.GEMS_Products__c).toString(); 
+	RxProdcheck = Prodcheck.includes(&quot;RX&quot;); 
+	SharedAccumsProdcheck = Prodcheck.includes(&quot;Shared Accums&quot;);
+} 
+
+var RXvendor = &apos;&apos;
+
+if(caserec.GEMS_Rx_Vendor__c != null) 
+{ 
+	RXvendor = (caserec.GEMS_Rx_Vendor__c).toString();
+	var RXvendorLen = RXvendor.length; 
+	Primevendorcheck = RXvendor.includes(&quot;Prime&quot;); 
+	if (RXvendorLen &gt; 5)
+	{ 
+               if (Primevendorcheck)
+		{
+                 Primemore = true;
+                 } 
+               else 
+                 {
+                 notprimeRXvendor = true; 
+                 } 
+         }               			
+	else 
+	{ 
+		notprimeRXvendor = false; 
+	}
+	
+} 
+
+if((RxProdcheck &amp;&amp; SharedAccumsProdcheck) &amp;&amp; (Primemore || notprimeRXvendor)) 
+{ 
+ window.open(&apos;/apex/GEMSCaptureSharedAccums?caseId=&apos;+caseid , &apos;_blank&apos;,  &apos;toolbar=0,location=0,menubar=0,width=1350, height=1000&apos;); 	
+} 
+else 
+{ 
+	if(RxProdcheck &amp;&amp; SharedAccumsProdcheck &amp;&amp; Primevendorcheck) 
+	{
+alert(&apos;Shared Accums can not be added if Rx and Shared Accum both Product are selected along with Prime Rx venor&apos;); 
+	} 
+	else 
+	{ 		
+alert(&apos;Shared Accums can not be added if both Rx and Shared Accum are not selected&apos; ); 
+	} 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Benefits_Verification</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Generate Benefits Verification</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/00O33000004ERoc?pv0={!Case.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Shared_Accums_Team_Details</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Shared Accums Team Details</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!URLFOR(&quot;/apex/GEMS_SharedAccumsTeamDetails?Id=&quot;+Case.Id)}</url>
+    </webLinks>
+</CustomObject>

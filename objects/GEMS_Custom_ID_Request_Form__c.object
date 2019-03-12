@@ -1,0 +1,2847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>GEMSCustomIDBAAssignment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>GEMSCustomIDBAAssignment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Custom_ID_Request_Form_Case__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Setup_OSS_User_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Setup/OSS User Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Setup_OSS_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Setup/OSS User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>GEMS_Account_Setup_OSS_User</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_Specialist_Email_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Specialist Email ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Account</fullName>
+                    <default>false</default>
+                    <label>New Account</label>
+                </value>
+                <value>
+                    <fullName>Update to existing Account with Full Reissuance</fullName>
+                    <default>false</default>
+                    <label>Update to existing Account with Full Reissuance</label>
+                </value>
+                <value>
+                    <fullName>Update to existing Account with Partial Reissuance</fullName>
+                    <default>false</default>
+                    <label>Update to existing Account with Partial Reissuance</label>
+                </value>
+                <value>
+                    <fullName>Update to existing Account w/out Reissuance</fullName>
+                    <default>false</default>
+                    <label>Update to existing Account w/out Reissuance</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Additional_comments_or_instructions__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional comments or instructions</label>
+        <length>400</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Alternative_Network__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Network logo will appear in “Plan Logo E” space</inlineHelpText>
+        <label>Alternative Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Applicable_BAs__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable BAs</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Applicable_GSs__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable GSs</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Approved_Custom_Carrier_Message__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 400 characters</inlineHelpText>
+        <label>Approved Custom Carrier Message</label>
+        <length>400</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Assignment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Assignment Type</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>Benefit Agreement</label>
+                </value>
+                <value>
+                    <fullName>Group Section</fullName>
+                    <default>false</default>
+                    <label>Group Section</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BAs_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Card_Back_Message__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 350 characters; All custom language must be approved by Legal.</inlineHelpText>
+        <label>Card Back Message</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Card_Back_Message_long__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 350 characters; All custom language must be approved by Legal.</inlineHelpText>
+        <label>Card Back Message</label>
+        <length>350</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Carved_Out_Rx_Vendor_s_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Carved Out Rx Vendor&apos;s Name</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Custom_Website__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Custom Website</label>
+        <length>28</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_1__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #1</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Emergency Room</fullName>
+                    <default>false</default>
+                    <label>Emergency Room</label>
+                </value>
+                <value>
+                    <fullName>Office Visit</fullName>
+                    <default>false</default>
+                    <label>Office Visit</label>
+                </value>
+                <value>
+                    <fullName>Preventative Care</fullName>
+                    <default>false</default>
+                    <label>Preventative Care</label>
+                </value>
+                <value>
+                    <fullName>Retail RX Copay</fullName>
+                    <default>false</default>
+                    <label>Retail RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX After Ded %</fullName>
+                    <default>false</default>
+                    <label>RX After Ded %</label>
+                </value>
+                <value>
+                    <fullName>RX Brand Copay</fullName>
+                    <default>false</default>
+                    <label>RX Brand Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Copay</fullName>
+                    <default>false</default>
+                    <label>RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Formulary</label>
+                </value>
+                <value>
+                    <fullName>RX Generic Copay</fullName>
+                    <default>false</default>
+                    <label>RX Generic Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Non-Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Non-Formulary</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                    <label>Urgent Care</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_1_value__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #1 value</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_2_value__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #2 value</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_3_value__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #3 value</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_4_value__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #4 value</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CoPay_Label_5_value__c</fullName>
+        <externalId>false</externalId>
+        <label>CoPay Label #5 value</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Combine_Health_Dental_Cards_N_A__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Combine Health &amp; Dental Cards N/A</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Combine_Health_Dental_Cards_No__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Combine Health &amp; Dental Cards No</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Combine_Health_Dental_Cards__c</fullName>
+        <externalId>false</externalId>
+        <label>Combine Health &amp; Dental Cards?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes, meets requirements outlined below</fullName>
+                    <default>false</default>
+                    <label>Yes, meets requirements outlined below</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Combine_Health_Dental_Cards_yes__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Combine Health &amp; Dental Cards yes</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Copay_1_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay #1 Other</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_2_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay #2 Other</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_3_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay #3 Other</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_4_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay #4 Other</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_5_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay #5 Other</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Amount_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Amount #1</label>
+        <length>14</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Amount_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Amount #2</label>
+        <length>14</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Amount_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Amount #3</label>
+        <length>14</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Amount_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Amount #4</label>
+        <length>14</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Amount_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Amount #5</label>
+        <length>14</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Label_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Label #2</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Emergency Room</fullName>
+                    <default>false</default>
+                    <label>Emergency Room</label>
+                </value>
+                <value>
+                    <fullName>Office Visit</fullName>
+                    <default>false</default>
+                    <label>Office Visit</label>
+                </value>
+                <value>
+                    <fullName>Preventative Care</fullName>
+                    <default>false</default>
+                    <label>Preventative Care</label>
+                </value>
+                <value>
+                    <fullName>Retail RX Copay</fullName>
+                    <default>false</default>
+                    <label>Retail RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX After Ded %</fullName>
+                    <default>false</default>
+                    <label>RX After Ded %</label>
+                </value>
+                <value>
+                    <fullName>RX Brand Copay</fullName>
+                    <default>false</default>
+                    <label>RX Brand Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Copay</fullName>
+                    <default>false</default>
+                    <label>RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Formulary</label>
+                </value>
+                <value>
+                    <fullName>RX Generic Copay</fullName>
+                    <default>false</default>
+                    <label>RX Generic Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Non-Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Non-Formulary</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                    <label>Urgent Care</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Copay_Label_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Label #3</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Emergency Room</fullName>
+                    <default>false</default>
+                    <label>Emergency Room</label>
+                </value>
+                <value>
+                    <fullName>Office Visit</fullName>
+                    <default>false</default>
+                    <label>Office Visit</label>
+                </value>
+                <value>
+                    <fullName>Preventative Care</fullName>
+                    <default>false</default>
+                    <label>Preventative Care</label>
+                </value>
+                <value>
+                    <fullName>Retail RX Copay</fullName>
+                    <default>false</default>
+                    <label>Retail RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX After Ded %</fullName>
+                    <default>false</default>
+                    <label>RX After Ded %</label>
+                </value>
+                <value>
+                    <fullName>RX Brand Copay</fullName>
+                    <default>false</default>
+                    <label>RX Brand Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Copay</fullName>
+                    <default>false</default>
+                    <label>RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Formulary</label>
+                </value>
+                <value>
+                    <fullName>RX Generic Copay</fullName>
+                    <default>false</default>
+                    <label>RX Generic Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Non-Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Non-Formulary</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                    <label>Urgent Care</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Copay_Label_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Label #4</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Emergency Room</fullName>
+                    <default>false</default>
+                    <label>Emergency Room</label>
+                </value>
+                <value>
+                    <fullName>Office Visit</fullName>
+                    <default>false</default>
+                    <label>Office Visit</label>
+                </value>
+                <value>
+                    <fullName>Preventative Care</fullName>
+                    <default>false</default>
+                    <label>Preventative Care</label>
+                </value>
+                <value>
+                    <fullName>Retail RX Copay</fullName>
+                    <default>false</default>
+                    <label>Retail RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX After Ded %</fullName>
+                    <default>false</default>
+                    <label>RX After Ded %</label>
+                </value>
+                <value>
+                    <fullName>RX Brand Copay</fullName>
+                    <default>false</default>
+                    <label>RX Brand Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Copay</fullName>
+                    <default>false</default>
+                    <label>RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Formulary</label>
+                </value>
+                <value>
+                    <fullName>RX Generic Copay</fullName>
+                    <default>false</default>
+                    <label>RX Generic Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Non-Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Non-Formulary</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                    <label>Urgent Care</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Copay_Label_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Label #5</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Emergency Room</fullName>
+                    <default>false</default>
+                    <label>Emergency Room</label>
+                </value>
+                <value>
+                    <fullName>Office Visit</fullName>
+                    <default>false</default>
+                    <label>Office Visit</label>
+                </value>
+                <value>
+                    <fullName>Preventative Care</fullName>
+                    <default>false</default>
+                    <label>Preventative Care</label>
+                </value>
+                <value>
+                    <fullName>Retail RX Copay</fullName>
+                    <default>false</default>
+                    <label>Retail RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX After Ded %</fullName>
+                    <default>false</default>
+                    <label>RX After Ded %</label>
+                </value>
+                <value>
+                    <fullName>RX Brand Copay</fullName>
+                    <default>false</default>
+                    <label>RX Brand Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Copay</fullName>
+                    <default>false</default>
+                    <label>RX Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Formulary</label>
+                </value>
+                <value>
+                    <fullName>RX Generic Copay</fullName>
+                    <default>false</default>
+                    <label>RX Generic Copay</label>
+                </value>
+                <value>
+                    <fullName>RX Non-Formulary</fullName>
+                    <default>false</default>
+                    <label>RX Non-Formulary</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                    <label>Urgent Care</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Custom_Face_Message_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Face Message 2</label>
+        <length>26</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Custom_ID_Request_Form_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom ID Request Form Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Custom ID Request Forms</relationshipLabel>
+        <relationshipName>GEMS_Custom_ID_Request_Forms</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Custom_Website__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Website</label>
+        <length>28</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Custom_face_message_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Face Message 1</label>
+        <length>26</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>GEMS Custom ID Request Forms</relationshipLabel>
+        <relationshipName>GEMS_Custom_ID_Request_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>GEMS_Account_Name__r.External_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Sales_Acct_Mgr_Exec__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales/Acct Mgr/Exec</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>GEMS_Custom_ID_Request_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Include_a_custom_card_carrier__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Must be submitted as graphic and approved by Legal</inlineHelpText>
+        <label>Include a custom card carrier?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Include_a_custom_web_address_extension_o__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference Field 59 above magnetic stripe</inlineHelpText>
+        <label>Include a custom web address extension o</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes, list custom website up to 28 characters</fullName>
+                    <default>false</default>
+                    <label>Yes, list custom website up to 28 characters</label>
+                </value>
+                <value>
+                    <fullName>No, use standard www.bcbsXX.com (where XX is applicable state’s prefix)</fullName>
+                    <default>false</default>
+                    <label>No, use standard www.bcbsXX.com (where XX is applicable state’s prefix)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Include_client_web_address__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference Field 70 below the phone numbers</inlineHelpText>
+        <label>Include client web address?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes, list custom website</fullName>
+                    <default>false</default>
+                    <label>Yes, list custom website</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Issuance_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Issuance Type</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Full Issuance</fullName>
+                    <default>false</default>
+                    <label>Full Issuance</label>
+                </value>
+                <value>
+                    <fullName>Partial Issuance</fullName>
+                    <default>false</default>
+                    <label>Partial Issuance</label>
+                </value>
+                <value>
+                    <fullName>Maintenance Only</fullName>
+                    <default>false</default>
+                    <label>Maintenance Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #1</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #2</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #3</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #4</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_5__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #5</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_6__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #6</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_7__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #7</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Not_a_BCBS_product_8__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if applicable</inlineHelpText>
+        <label>Not a BCBS product #8</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Other_Alternative_Network__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Alternative Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Anthem BCBS of Georgia - Blue Open Access POS</fullName>
+                    <default>false</default>
+                    <label>Anthem BCBS of Georgia - Blue Open Access POS</label>
+                </value>
+                <value>
+                    <fullName>Anthem BCBS of Missouri - Blue Access Choice</fullName>
+                    <default>false</default>
+                    <label>Anthem BCBS of Missouri - Blue Access Choice</label>
+                </value>
+                <value>
+                    <fullName>Anthem BCBS of Missouri - Blue Preferred POS</fullName>
+                    <default>false</default>
+                    <label>Anthem BCBS of Missouri - Blue Preferred POS</label>
+                </value>
+                <value>
+                    <fullName>Anthem BCBS of Wisconsin - Blue Preferred POS</fullName>
+                    <default>false</default>
+                    <label>Anthem BCBS of Wisconsin - Blue Preferred POS</label>
+                </value>
+                <value>
+                    <fullName>Anthem California Cross - Select PPO</fullName>
+                    <default>false</default>
+                    <label>Anthem California Cross - Select PPO</label>
+                </value>
+                <value>
+                    <fullName>Anthem Empire - Empire POS</fullName>
+                    <default>false</default>
+                    <label>Anthem Empire - Empire POS</label>
+                </value>
+                <value>
+                    <fullName>Anthem New Hampshire - BlueChoice Open Access POS</fullName>
+                    <default>false</default>
+                    <label>Anthem New Hampshire - BlueChoice Open Access POS</label>
+                </value>
+                <value>
+                    <fullName>Arizona - Blue Alternative</fullName>
+                    <default>false</default>
+                    <label>Arizona - Blue Alternative</label>
+                </value>
+                <value>
+                    <fullName>BCBS of Kansas City - Preferred-Care Blue</fullName>
+                    <default>false</default>
+                    <label>BCBS of Kansas City - Preferred-Care Blue</label>
+                </value>
+                <value>
+                    <fullName>Florida Blue - Network Blue</fullName>
+                    <default>false</default>
+                    <label>Florida Blue - Network Blue</label>
+                </value>
+                <value>
+                    <fullName>Horizon BCBS of New Jersey - Horizon Managed Care Network</fullName>
+                    <default>false</default>
+                    <label>Horizon BCBS of New Jersey - Horizon Managed Care Network</label>
+                </value>
+                <value>
+                    <fullName>Maryland/DC - BlueChoice Adv Open Access</fullName>
+                    <default>false</default>
+                    <label>Maryland/DC - BlueChoice Adv Open Access</label>
+                </value>
+                <value>
+                    <fullName>Minnesota - Group Value Network</fullName>
+                    <default>false</default>
+                    <label>Minnesota - Group Value Network</label>
+                </value>
+                <value>
+                    <fullName>Pennsylvania – Highmark - Community Blue Network</fullName>
+                    <default>false</default>
+                    <label>Pennsylvania – Highmark - Community Blue Network</label>
+                </value>
+                <value>
+                    <fullName>Tennessee - Network S</fullName>
+                    <default>false</default>
+                    <label>Tennessee - Network S</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_ID_Card_Case_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Custom_ID_Request_Form_Case__r.CaseNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Parent ID Card Case Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_ID_Card_Case_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Parent ID Card Case Url</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Phone_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_5__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #5</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_6__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #6</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_7__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #7</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_8__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>No letters only digits</inlineHelpText>
+        <label>Phone #8</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #1</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>true</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #2</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #3</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #4</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_5__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #5</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_6__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #6</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_7__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #7</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_8__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Max. 16 characters for phone label</inlineHelpText>
+        <label>Phone Label #8</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Care Connect</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connect</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Access</fullName>
+                    <default>false</default>
+                    <label>Blue Care Access</label>
+                </value>
+                <value>
+                    <fullName>Condition Mgmt.</fullName>
+                    <default>false</default>
+                    <label>Condition Mgmt.</label>
+                </value>
+                <value>
+                    <fullName>Maternity Program</fullName>
+                    <default>false</default>
+                    <label>Maternity Program</label>
+                </value>
+                <value>
+                    <fullName>24/7 Nurseline</fullName>
+                    <default>false</default>
+                    <label>24/7 Nurseline</label>
+                </value>
+                <value>
+                    <fullName>DNoA Pref Network</fullName>
+                    <default>false</default>
+                    <label>DNoA Pref Network</label>
+                </value>
+                <value>
+                    <fullName>Guest Membership</fullName>
+                    <default>false</default>
+                    <label>Guest Membership</label>
+                </value>
+                <value>
+                    <fullName>Preauth-Medical</fullName>
+                    <default>false</default>
+                    <label>Preauth-Medical</label>
+                </value>
+                <value>
+                    <fullName>Preauth-MH/CD</fullName>
+                    <default>false</default>
+                    <label>Preauth-MH/CD</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>Provider Locator</fullName>
+                    <default>false</default>
+                    <label>Provider Locator</label>
+                </value>
+                <value>
+                    <fullName>Provider Service</fullName>
+                    <default>false</default>
+                    <label>Provider Service</label>
+                </value>
+                <value>
+                    <fullName>EAP*</fullName>
+                    <default>false</default>
+                    <label>EAP*</label>
+                </value>
+                <value>
+                    <fullName>Other:</fullName>
+                    <default>false</default>
+                    <label>Other:</label>
+                </value>
+                <value>
+                    <fullName>A</fullName>
+                    <default>false</default>
+                    <label>A</label>
+                </value>
+                <value>
+                    <fullName>B</fullName>
+                    <default>false</default>
+                    <label>B</label>
+                </value>
+                <value>
+                    <fullName>RX Tech Support</fullName>
+                    <default>false</default>
+                    <label>RX Tech Support</label>
+                </value>
+                <value>
+                    <fullName>RX Cust Svc*</fullName>
+                    <default>false</default>
+                    <label>RX Cust Svc*</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #1</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #2</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #3</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #4</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #5</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #6</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #7</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Label_Value_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Label Value #8</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_C_S_alpha_prefix_on_card__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 3.5</inlineHelpText>
+        <label>Print C/S alpha prefix on card?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Carve_Out_Rx_Vendor_Logo__c</fullName>
+        <externalId>false</externalId>
+        <label>Carved Out Rx Vendor Logo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Client_Logo__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Submit Logo in correct format</inlineHelpText>
+        <label>Print Client Logo?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Name_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Print Company Name Other</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Name_Value1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 25, which has a 35 character max</inlineHelpText>
+        <label>Print Company Name Value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Name in BlueStar</fullName>
+                    <default>false</default>
+                    <label>Account Name in BlueStar</label>
+                </value>
+                <value>
+                    <fullName>Group/Section Name in BlueStar</fullName>
+                    <default>false</default>
+                    <label>Group/Section Name in BlueStar</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Name_Value__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify Company name</inlineHelpText>
+        <label>Print Company Name Value</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 24, which has a 35 character max</inlineHelpText>
+        <label>Print Company Name?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Plan_Name_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>Print Company/Plan Name Other</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Plan_Name_Value__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 25, which has a 35 character max</inlineHelpText>
+        <label>Print Company/Plan Name Value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Plan Name listed in BlueStar</fullName>
+                    <default>false</default>
+                    <label>Plan Name listed in BlueStar</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Company_Plan_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 25, which has a 35 character max</inlineHelpText>
+        <label>Print Company/Plan Name?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_Custom_alpha_prefix_on_card__c</fullName>
+        <externalId>false</externalId>
+        <label>Print Custom alpha prefix on card</label>
+        <length>35</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_FAMILY_SINGLE_Coverage_on_card__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference field 19</inlineHelpText>
+        <label>Print FAMILY/SINGLE Coverage on card?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes(standard)</fullName>
+                    <default>false</default>
+                    <label>Yes(standard)</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A when IDs are issued at the member level</fullName>
+                    <default>false</default>
+                    <label>N/A when IDs are issued at the member level</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Print_custom_face_message_s_on_front__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reference fields 22 &amp; 23 (max. 26 characters)</inlineHelpText>
+        <label>Print custom face message(s) on front?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Re_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Re-Submitted</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reset_Re_Submitted_Field__c</fullName>
+        <description>0.04076 - more than 1 min diff
+0.04099 - exact 1 min</description>
+        <externalId>false</externalId>
+        <formula>LastModifiedDate - 0.04099</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reset Re-Submitted Field</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>RxBin__c</fullName>
+        <externalId>false</externalId>
+        <label>RxBin</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RxGRP__c</fullName>
+        <externalId>false</externalId>
+        <label>RxGRP</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RxPCN__c</fullName>
+        <externalId>false</externalId>
+        <label>RxPCN</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rx_Information__c</fullName>
+        <externalId>false</externalId>
+        <label>Rx Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes, with Prime</fullName>
+                    <default>false</default>
+                    <label>Yes, with Prime</label>
+                </value>
+                <value>
+                    <fullName>Yes, with Carved out Vendor</fullName>
+                    <default>false</default>
+                    <label>Yes, with Carved out Vendor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Select_one_option_for_phone_numbers_on_t__c</fullName>
+        <externalId>false</externalId>
+        <label>Select one option for phone numbers on t</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Include standard phone numbers?</fullName>
+                    <default>false</default>
+                    <label>Include standard phone numbers?</label>
+                </value>
+                <value>
+                    <fullName>Include customized labels/phone numbers?</fullName>
+                    <default>false</default>
+                    <label>Include customized labels/phone numbers?</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Select_one_option_for_the_Back_Text_Mess__c</fullName>
+        <externalId>false</externalId>
+        <label>Select one option for the Back Text Mess</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Include standard back messages?</fullName>
+                    <default>false</default>
+                    <label>Include standard back messages?</label>
+                </value>
+                <value>
+                    <fullName>Include custom back messages?</fullName>
+                    <default>false</default>
+                    <label>Include custom back messages?</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Re-Submitted</fullName>
+                    <default>false</default>
+                    <label>Re-Submitted</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Submitter_Email_ID__c</fullName>
+        <description>Email ID of who submits the ID Card. This value id updated from the class &quot;GEMS_Custom_IDRequestFormController&quot;</description>
+        <externalId>false</externalId>
+        <label>Submitter Email ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <label>GEMS Custom ID Request Form</label>
+    <nameField>
+        <displayFormat>CIR-{00000}</displayFormat>
+        <label>Custom Request Form ID#</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GEMS Custom ID Request Forms</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/27.0/connection.js&quot;)} 
+var caseToUpdate = new sforce.SObject( &quot;Case&quot; ); 
+caseToUpdate.id = &apos;{!Case.Id}&apos;; 
+
+var Case1 = sforce.connection.query(&quot;select id,subject,GEMS_Account_Submission_Info__c, GEMS_ID_Cards_Format__c from case where id = &apos;{!Case.Id}&apos; &quot;); 
+var rec1 = Case1.getArray(&quot;records&quot;); 
+var caserec = rec1[0]; 
+
+if(caserec.GEMS_ID_Cards_Format__c == &apos;Custom&apos;) {
+window.location = &quot;/apex/GEMSCustomIDBAAssignment?caseId={!Case.Id}&quot;;
+}else {
+alert(&quot;&apos;ID Cards Format&apos; should be &apos;Custom&apos; to add Custom Id form&quot;);
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,2154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>GEMS_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Return Reasons</relationshipLabel>
+        <relationshipName>GEMS_Return_Reasons</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>ABS/Matirx Sub Document Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>GEMS_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Blue Distinction</fullName>
+                    <default>false</default>
+                    <label>Blue Distinction</label>
+                </value>
+                <value>
+                    <fullName>BVA</fullName>
+                    <default>false</default>
+                    <label>BVA</label>
+                </value>
+                <value>
+                    <fullName>Eligibility Provisions</fullName>
+                    <default>false</default>
+                    <label>Eligibility Provisions</label>
+                </value>
+                <value>
+                    <fullName>Emergency Benefits</fullName>
+                    <default>false</default>
+                    <label>Emergency Benefits</label>
+                </value>
+                <value>
+                    <fullName>Exclusions</fullName>
+                    <default>false</default>
+                    <label>Exclusions</label>
+                </value>
+                <value>
+                    <fullName>Federal Mandates</fullName>
+                    <default>false</default>
+                    <label>Federal Mandates</label>
+                </value>
+                <value>
+                    <fullName>General Information Summary</fullName>
+                    <default>false</default>
+                    <label>General Information Summary</label>
+                </value>
+                <value>
+                    <fullName>General Provisions</fullName>
+                    <default>false</default>
+                    <label>General Provisions</label>
+                </value>
+                <value>
+                    <fullName>Hearing</fullName>
+                    <default>false</default>
+                    <label>Hearing</label>
+                </value>
+                <value>
+                    <fullName>Inpatient Hospital Benefits</fullName>
+                    <default>false</default>
+                    <label>Inpatient Hospital Benefits</label>
+                </value>
+                <value>
+                    <fullName>Mental Health</fullName>
+                    <default>false</default>
+                    <label>Mental Health</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous Benefit Provisions</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous Benefit Provisions</label>
+                </value>
+                <value>
+                    <fullName>National Radiology Quality Initiative (NRQI)</fullName>
+                    <default>false</default>
+                    <label>National Radiology Quality Initiative (NRQI)</label>
+                </value>
+                <value>
+                    <fullName>Other Covered Services</fullName>
+                    <default>false</default>
+                    <label>Other Covered Services</label>
+                </value>
+                <value>
+                    <fullName>Outpatient Hospital Benefits</fullName>
+                    <default>false</default>
+                    <label>Outpatient Hospital Benefits</label>
+                </value>
+                <value>
+                    <fullName>Overall Program Payment Provisions</fullName>
+                    <default>false</default>
+                    <label>Overall Program Payment Provisions</label>
+                </value>
+                <value>
+                    <fullName>Prescription Drug Benefits</fullName>
+                    <default>false</default>
+                    <label>Prescription Drug Benefits</label>
+                </value>
+                <value>
+                    <fullName>Preventive Health Benefits</fullName>
+                    <default>false</default>
+                    <label>Preventive Health Benefits</label>
+                </value>
+                <value>
+                    <fullName>Professional Service Benefits</fullName>
+                    <default>false</default>
+                    <label>Professional Service Benefits</label>
+                </value>
+                <value>
+                    <fullName>Reference Based Pricing (RBP)</fullName>
+                    <default>false</default>
+                    <label>Reference Based Pricing (RBP)</label>
+                </value>
+                <value>
+                    <fullName>Substance Use Disorder</fullName>
+                    <default>false</default>
+                    <label>Substance Use Disorder</label>
+                </value>
+                <value>
+                    <fullName>Utilization Management</fullName>
+                    <default>false</default>
+                    <label>Utilization Management</label>
+                </value>
+                <value>
+                    <fullName>VBID</fullName>
+                    <default>false</default>
+                    <label>VBID</label>
+                </value>
+                <value>
+                    <fullName>Vision</fullName>
+                    <default>false</default>
+                    <label>Vision</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Blue Distinction</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>BVA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Eligibility Provisions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Emergency Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Exclusions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Federal Mandates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>General Information Summary</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>General Provisions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Hearing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Inpatient Hospital Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Mental Health</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Miscellaneous Benefit Provisions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>National Radiology Quality Initiative (NRQI)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Other Covered Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Outpatient Hospital Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Overall Program Payment Provisions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Prescription Drug Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Preventive Health Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Professional Service Benefits</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Reference Based Pricing (RBP)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Substance Use Disorder</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Utilization Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>VBID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ABS</controllingFieldValue>
+                <valueName>Vision</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GEMS_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Returned Document Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ABS</fullName>
+                    <default>false</default>
+                    <label>ABS</label>
+                </value>
+                <value>
+                    <fullName>ACA CALCULATORS</fullName>
+                    <default>false</default>
+                    <label>ACA CALCULATORS</label>
+                </value>
+                <value>
+                    <fullName>ACCOUNT CHANGE REQUEST FORM</fullName>
+                    <default>false</default>
+                    <label>ACCOUNT CHANGE REQUEST FORM</label>
+                </value>
+                <value>
+                    <fullName>ACCOUNT STRUCTURE</fullName>
+                    <default>false</default>
+                    <label>ACCOUNT STRUCTURE</label>
+                </value>
+                <value>
+                    <fullName>ACH/WIRE FORM</fullName>
+                    <default>false</default>
+                    <label>ACH/WIRE FORM</label>
+                </value>
+                <value>
+                    <fullName>ADDENDUM TO BPA FOR AFFILIATES</fullName>
+                    <default>false</default>
+                    <label>ADDENDUM TO BPA FOR AFFILIATES</label>
+                </value>
+                <value>
+                    <fullName>ADMINISTRATIVE SERVICE AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>ADMINISTRATIVE SERVICE AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>ASO AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>ASO AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>ASO BENEFIT PROG APP (BPA)</fullName>
+                    <default>false</default>
+                    <label>ASO BENEFIT PROG APP (BPA)</label>
+                </value>
+                <value>
+                    <fullName>ASO MANDATE CHECKLIST</fullName>
+                    <default>false</default>
+                    <label>ASO MANDATE CHECKLIST</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ADHOC MEETING MINUTES</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ADHOC MEETING MINUTES</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT BOOKLETS / CERTIFICATES</fullName>
+                    <default>false</default>
+                    <label>BENEFIT BOOKLETS / CERTIFICATES</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT EDIT TOOL</fullName>
+                    <default>false</default>
+                    <label>BENEFIT EDIT TOOL</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT MATRIX</fullName>
+                    <default>false</default>
+                    <label>BENEFIT MATRIX</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT PROG DESCRIPTION-DENTAL</fullName>
+                    <default>false</default>
+                    <label>BENEFIT PROG DESCRIPTION-DENTAL</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT PROGRAM DESCRIPTION-BPD</fullName>
+                    <default>false</default>
+                    <label>BENEFIT PROGRAM DESCRIPTION-BPD</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT WALLET DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>BENEFIT WALLET DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>BINDER CHECK</fullName>
+                    <default>false</default>
+                    <label>BINDER CHECK</label>
+                </value>
+                <value>
+                    <fullName>BPA - ASOSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - ASO SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - ASO UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - ASO UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - DENTALSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - DENTAL SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - DENTAL UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - DENTAL UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HCASIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HCA SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HCA UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HCA UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HEALTHSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HEALTH SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HEALTH UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HEALTH UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPS</fullName>
+                    <default>false</default>
+                    <label>BPS</label>
+                </value>
+                <value>
+                    <fullName>BROKER TRANS/AOR</fullName>
+                    <default>false</default>
+                    <label>BROKER TRANS/AOR</label>
+                </value>
+                <value>
+                    <fullName>BUILD A PLAN-BAP</fullName>
+                    <default>false</default>
+                    <label>BUILD A PLAN-BAP</label>
+                </value>
+                <value>
+                    <fullName>BUSINESS ASSOC AGREEMENT - BAA</fullName>
+                    <default>false</default>
+                    <label>BUSINESS ASSOC AGREEMENT - BAA</label>
+                </value>
+                <value>
+                    <fullName>CANCELLATION FORM</fullName>
+                    <default>false</default>
+                    <label>CANCELLATION FORM</label>
+                </value>
+                <value>
+                    <fullName>CANCELLATION LETTER</fullName>
+                    <default>false</default>
+                    <label>CANCELLATION LETTER</label>
+                </value>
+                <value>
+                    <fullName>CBSR</fullName>
+                    <default>false</default>
+                    <label>CBSR</label>
+                </value>
+                <value>
+                    <fullName>CLAIMS EXPERIENCE ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>CLAIMS EXPERIENCE ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>COBRA ADMINISTRATOR CONTRACTS</fullName>
+                    <default>false</default>
+                    <label>COBRA ADMINISTRATOR CONTRACTS</label>
+                </value>
+                <value>
+                    <fullName>COBRA FULL SERVICE CONTRACT</fullName>
+                    <default>false</default>
+                    <label>COBRA FULL SERVICE CONTRACT</label>
+                </value>
+                <value>
+                    <fullName>COBRA TRANSMITTAL FORM</fullName>
+                    <default>false</default>
+                    <label>COBRA TRANSMITTAL FORM</label>
+                </value>
+                <value>
+                    <fullName>COMMISSION FORM</fullName>
+                    <default>false</default>
+                    <label>COMMISSION FORM</label>
+                </value>
+                <value>
+                    <fullName>ENROLLMENT CENSUS</fullName>
+                    <default>false</default>
+                    <label>ENROLLMENT CENSUS</label>
+                </value>
+                <value>
+                    <fullName>ERISA</fullName>
+                    <default>false</default>
+                    <label>ERISA</label>
+                </value>
+                <value>
+                    <fullName>EXCESS LOSS AGREEMENT COST</fullName>
+                    <default>false</default>
+                    <label>EXCESS LOSS AGREEMENT COST</label>
+                </value>
+                <value>
+                    <fullName>EXCESS LOSS POLICY APPLICATION</fullName>
+                    <default>false</default>
+                    <label>EXCESS LOSS POLICY APPLICATION</label>
+                </value>
+                <value>
+                    <fullName>EXPLANATION OF PAPERWORK</fullName>
+                    <default>false</default>
+                    <label>EXPLANATION OF PAPERWORK</label>
+                </value>
+                <value>
+                    <fullName>FEAK REQUEST SHEET</fullName>
+                    <default>false</default>
+                    <label>FEAK REQUEST SHEET</label>
+                </value>
+                <value>
+                    <fullName>FILINGS</fullName>
+                    <default>false</default>
+                    <label>FILINGS</label>
+                </value>
+                <value>
+                    <fullName>FLEX HSA EMPLOYER DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>FLEX HSA EMPLOYER DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>FULLTIME STATUS CERT OWN/PART/PR</fullName>
+                    <default>false</default>
+                    <label>FULLTIME STATUS CERT OWN/PART/PR</label>
+                </value>
+                <value>
+                    <fullName>GRANDFATHERED CERT FORM - SIGNED</fullName>
+                    <default>false</default>
+                    <label>GRANDFATHERED CERT FORM - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>GRANDFATHERED CERT FORM - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>GRANDFATHERED CERT FORM - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>GROUP ADMINISTRATION DOC-GAD</fullName>
+                    <default>false</default>
+                    <label>GROUP ADMINISTRATION DOC-GAD</label>
+                </value>
+                <value>
+                    <fullName>GROUP PROCESSING FORM</fullName>
+                    <default>false</default>
+                    <label>GROUP PROCESSING FORM</label>
+                </value>
+                <value>
+                    <fullName>HCA ASA FORM</fullName>
+                    <default>false</default>
+                    <label>HCA ASA FORM</label>
+                </value>
+                <value>
+                    <fullName>HIGHLIGHT SHEET</fullName>
+                    <default>false</default>
+                    <label>HIGHLIGHT SHEET</label>
+                </value>
+                <value>
+                    <fullName>HIPAA EXEMPTION</fullName>
+                    <default>false</default>
+                    <label>HIPAA EXEMPTION</label>
+                </value>
+                <value>
+                    <fullName>HIPAA FORMS</fullName>
+                    <default>false</default>
+                    <label>HIPAA FORMS</label>
+                </value>
+                <value>
+                    <fullName>HMO PROVIDER SELECTION FORM</fullName>
+                    <default>false</default>
+                    <label>HMO PROVIDER SELECTION FORM</label>
+                </value>
+                <value>
+                    <fullName>HOLD HARMLESS AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>HOLD HARMLESS AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>H-REVIEW FORMS / APPROVAL</fullName>
+                    <default>false</default>
+                    <label>H-REVIEW FORMS / APPROVAL</label>
+                </value>
+                <value>
+                    <fullName>HSA BANK DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>HSA BANK DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>ICCA</fullName>
+                    <default>false</default>
+                    <label>ICCA</label>
+                </value>
+                <value>
+                    <fullName>IL SG COVER SHEET FOR NEW BUS</fullName>
+                    <default>false</default>
+                    <label>IL SG COVER SHEET FOR NEW BUS</label>
+                </value>
+                <value>
+                    <fullName>INCENTIVE MATRIX VBID</fullName>
+                    <default>false</default>
+                    <label>INCENTIVE MATRIX VBID</label>
+                </value>
+                <value>
+                    <fullName>INIT PREM PAYMENT FORM</fullName>
+                    <default>false</default>
+                    <label>INIT PREM PAYMENT FORM</label>
+                </value>
+                <value>
+                    <fullName>MEMBERSHIP FILE</fullName>
+                    <default>false</default>
+                    <label>MEMBERSHIP FILE</label>
+                </value>
+                <value>
+                    <fullName>MHPAEA FORM</fullName>
+                    <default>false</default>
+                    <label>MHPAEA FORM</label>
+                </value>
+                <value>
+                    <fullName>MSP</fullName>
+                    <default>false</default>
+                    <label>MSP</label>
+                </value>
+                <value>
+                    <fullName>MSP/EGI FORM</fullName>
+                    <default>false</default>
+                    <label>MSP/EGI FORM</label>
+                </value>
+                <value>
+                    <fullName>NETWORK DISCOUNT EXHIBIT</fullName>
+                    <default>false</default>
+                    <label>NETWORK DISCOUNT EXHIBIT</label>
+                </value>
+                <value>
+                    <fullName>NEW GROUP ACTIVITY SHEET</fullName>
+                    <default>false</default>
+                    <label>NEW GROUP ACTIVITY SHEET</label>
+                </value>
+                <value>
+                    <fullName>NEW GROUP SALES CHECKLIST</fullName>
+                    <default>false</default>
+                    <label>NEW GROUP SALES CHECKLIST</label>
+                </value>
+                <value>
+                    <fullName>NON-HMO CERTIFICATION FORM</fullName>
+                    <default>false</default>
+                    <label>NON-HMO CERTIFICATION FORM</label>
+                </value>
+                <value>
+                    <fullName>NON PLAN LETTER</fullName>
+                    <default>false</default>
+                    <label>NON PLAN LETTER</label>
+                </value>
+                <value>
+                    <fullName>OTHER DOCUMENTATION</fullName>
+                    <default>false</default>
+                    <label>OTHER DOCUMENTATION</label>
+                </value>
+                <value>
+                    <fullName>PARTIAL BENEFIT MATRIX</fullName>
+                    <default>false</default>
+                    <label>PARTIAL BENEFIT MATRIX</label>
+                </value>
+                <value>
+                    <fullName>PERFORMANCE GUARANTEE - SIGNED</fullName>
+                    <default>false</default>
+                    <label>PERFORMANCE GUARANTEE - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>PERFORMANCE GUARANTEE - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>PERFORMANCE GUARANTEE - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>PREMIUM RECEIPT FORM</fullName>
+                    <default>false</default>
+                    <label>PREMIUM RECEIPT FORM</label>
+                </value>
+                <value>
+                    <fullName>PRESCREEN COVERSHEET</fullName>
+                    <default>false</default>
+                    <label>PRESCREEN COVERSHEET</label>
+                </value>
+                <value>
+                    <fullName>PRIOR CARRIER BILL</fullName>
+                    <default>false</default>
+                    <label>PRIOR CARRIER BILL</label>
+                </value>
+                <value>
+                    <fullName>PRODUCT CONFIRM GRP ELIGIBILITY</fullName>
+                    <default>false</default>
+                    <label>PRODUCT CONFIRM GRP ELIGIBILITY</label>
+                </value>
+                <value>
+                    <fullName>PROPOSAL</fullName>
+                    <default>false</default>
+                    <label>PROPOSAL</label>
+                </value>
+                <value>
+                    <fullName>PROXY CARD</fullName>
+                    <default>false</default>
+                    <label>PROXY CARD</label>
+                </value>
+                <value>
+                    <fullName>RATE ONLY RENEWAL ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>RATE ONLY RENEWAL ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>RATE PAGE (ASO FEE EXHIB)</fullName>
+                    <default>false</default>
+                    <label>RATE PAGE (ASO FEE EXHIB)</label>
+                </value>
+                <value>
+                    <fullName>RATES PAGE</fullName>
+                    <default>false</default>
+                    <label>RATES PAGE</label>
+                </value>
+                <value>
+                    <fullName>RDS AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>RDS AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>RECAP FORM</fullName>
+                    <default>false</default>
+                    <label>RECAP FORM</label>
+                </value>
+                <value>
+                    <fullName>RELIGIOUS EMPLOYER EXEMPT FORM</fullName>
+                    <default>false</default>
+                    <label>RELIGIOUS EMPLOYER EXEMPT FORM</label>
+                </value>
+                <value>
+                    <fullName>RENEWAL ACTIVITY SHEET</fullName>
+                    <default>false</default>
+                    <label>RENEWAL ACTIVITY SHEET</label>
+                </value>
+                <value>
+                    <fullName>SBC</fullName>
+                    <default>false</default>
+                    <label>SBC</label>
+                </value>
+                <value>
+                    <fullName>SBC ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>SBC ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>SSOB/BENEFIT HIGHLIGHT/MATRIX</fullName>
+                    <default>false</default>
+                    <label>SSOB/BENEFIT HIGHLIGHT/MATRIX</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS AGREEMENT - SIGNED</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS AGREEMENT - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS AGREEMENT - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS AGREEMENT - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS APPLICATION</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS APPLICATION</label>
+                </value>
+                <value>
+                    <fullName>SUMMARY OF BENEFIT</fullName>
+                    <default>false</default>
+                    <label>SUMMARY OF BENEFIT</label>
+                </value>
+                <value>
+                    <fullName>TDI REPORTS</fullName>
+                    <default>false</default>
+                    <label>TDI REPORTS</label>
+                </value>
+                <value>
+                    <fullName>VOLUNTARY GROUP DENTAL CONTRACT</fullName>
+                    <default>false</default>
+                    <label>VOLUNTARY GROUP DENTAL CONTRACT</label>
+                </value>
+                <value>
+                    <fullName>WAGE &amp; TAX</fullName>
+                    <default>false</default>
+                    <label>WAGE &amp; TAX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Process_Name__c</fullName>
+        <description>Process name that auto populates from Case object.</description>
+        <externalId>false</externalId>
+        <label>Process Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Setup Screening</fullName>
+                    <default>false</default>
+                    <label>Account Setup Screening</label>
+                </value>
+                <value>
+                    <fullName>Benefit Coding Screening</fullName>
+                    <default>false</default>
+                    <label>Benefit Coding Screening</label>
+                </value>
+                <value>
+                    <fullName>CDHP Tax Screening</fullName>
+                    <default>false</default>
+                    <label>CDHP Tax Screening</label>
+                </value>
+                <value>
+                    <fullName>Dental Screening</fullName>
+                    <default>false</default>
+                    <label>Dental Screening</label>
+                </value>
+                <value>
+                    <fullName>Dental Underwriting Screening</fullName>
+                    <default>false</default>
+                    <label>Dental Underwriting Screening</label>
+                </value>
+                <value>
+                    <fullName>EPO Screening</fullName>
+                    <default>false</default>
+                    <label>EPO Screening</label>
+                </value>
+                <value>
+                    <fullName>FSU Membership Screening</fullName>
+                    <default>false</default>
+                    <label>FSU Membership Screening</label>
+                </value>
+                <value>
+                    <fullName>Medical Management Screening</fullName>
+                    <default>false</default>
+                    <label>Medical Management Screening</label>
+                </value>
+                <value>
+                    <fullName>Underwriting Screening</fullName>
+                    <default>false</default>
+                    <label>Underwriting Screening</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Return_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Missing doc</fullName>
+                    <default>false</default>
+                    <label>Missing doc</label>
+                </value>
+                <value>
+                    <fullName>Incomplete doc</fullName>
+                    <default>false</default>
+                    <label>Incomplete doc</label>
+                </value>
+                <value>
+                    <fullName>Ambiguous/Clarification Required</fullName>
+                    <default>false</default>
+                    <label>Ambiguous/Clarification Required</label>
+                </value>
+                <value>
+                    <fullName>Benefit cannot be supported</fullName>
+                    <default>false</default>
+                    <label>Benefit cannot be supported</label>
+                </value>
+                <value>
+                    <fullName>Benefit discrepancy</fullName>
+                    <default>false</default>
+                    <label>Benefit discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Rate discrepancy</fullName>
+                    <default>false</default>
+                    <label>Rate discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Enrollment discrepancy</fullName>
+                    <default>false</default>
+                    <label>Enrollment discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Benefit not compliant</fullName>
+                    <default>false</default>
+                    <label>Benefit not compliant</label>
+                </value>
+                <value>
+                    <fullName>CBSR required</fullName>
+                    <default>false</default>
+                    <label>CBSR required</label>
+                </value>
+                <value>
+                    <fullName>Benefit not filed / approved by DOL</fullName>
+                    <default>false</default>
+                    <label>Benefit not filed / approved by DOL</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SBC_BB_Form__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SBC/BB Form</label>
+        <referenceTo>GEMS_SBC_BB_Form__c</referenceTo>
+        <relationshipLabel>GEMS Return Reasons</relationshipLabel>
+        <relationshipName>GEMS_Return_Reasons</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>GEMS Return Reason</label>
+    <nameField>
+        <displayFormat>RR-{0000}</displayFormat>
+        <label>Return Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GEMS Return Reasons</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>GEMS_Form_Return_Reason</fullName>
+        <active>true</active>
+        <label>GEMS Form Return Reason</label>
+        <picklistValues>
+            <picklist>GEMS_Sub_Type__c</picklist>
+            <values>
+                <fullName>BVA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Distinction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Emergency Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclusions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Federal Mandates</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Information Summary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inpatient Hospital Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mental Health</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Miscellaneous Benefit Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Radiology Quality Initiative %28NRQI%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Covered Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outpatient Hospital Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Overall Program Payment Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prescription Drug Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive Health Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Professional Service Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Based Pricing %28RBP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Substance Use Disorder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VBID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>ABS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA CALCULATORS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACCOUNT CHANGE REQUEST FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACCOUNT STRUCTURE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADDENDUM TO BPA FOR AFFILIATES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADMINISTRATIVE SERVICE AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO BENEFIT PROG APP %28BPA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO MANDATE CHECKLIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT ADHOC MEETING MINUTES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT BOOKLETS %2F CERTIFICATES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT EDIT TOOL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT MATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT PROG DESCRIPTION-DENTAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT PROGRAM DESCRIPTION-BPD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT WALLET DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BINDER CHECK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - ASO UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - ASOSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - DENTAL UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - DENTALSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HCA UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HCASIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HEALTH UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HEALTHSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BROKER TRANS%2FAOR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BUILD A PLAN-BAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BUSINESS ASSOC AGREEMENT - BAA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLATION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLATION LETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CLAIMS EXPERIENCE ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA ADMINISTRATOR CONTRACTS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA FULL SERVICE CONTRACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA TRANSMITTAL FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMMISSION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ENROLLMENT CENSUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ERISA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXCESS LOSS AGREEMENT COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXCESS LOSS POLICY APPLICATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXPLANATION OF PAPERWORK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEAK REQUEST SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FILINGS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FLEX HSA EMPLOYER DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FULLTIME STATUS CERT OWN%2FPART%2FPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GRANDFATHERED CERT FORM - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GRANDFATHERED CERT FORM - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GROUP ADMINISTRATION DOC-GAD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GROUP PROCESSING FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H-REVIEW FORMS %2F APPROVAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HCA ASA FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIGHLIGHT SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA EXEMPTION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA FORMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HMO PROVIDER SELECTION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOLD HARMLESS AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HSA BANK DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ICCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL SG COVER SHEET FOR NEW BUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INCENTIVE MATRIX VBID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INIT PREM PAYMENT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEMBERSHIP FILE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHPAEA FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSP%2FEGI FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NETWORK DISCOUNT EXHIBIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEW GROUP ACTIVITY SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEW GROUP SALES CHECKLIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NON PLAN LETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NON-HMO CERTIFICATION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OTHER DOCUMENTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PARTIAL BENEFIT MATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PERFORMANCE GUARANTEE - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PERFORMANCE GUARANTEE - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREMIUM RECEIPT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRESCREEN COVERSHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRIOR CARRIER BILL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRODUCT CONFIRM GRP ELIGIBILITY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROPOSAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROXY CARD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATE ONLY RENEWAL ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATE PAGE %28ASO FEE EXHIB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATES PAGE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RDS AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RECAP FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RELIGIOUS EMPLOYER EXEMPT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RENEWAL ACTIVITY SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSOB%2FBENEFIT HIGHLIGHT%2FMATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS AGREEMENT - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS AGREEMENT - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS APPLICATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUMMARY OF BENEFIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TDI REPORTS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VOLUNTARY GROUP DENTAL CONTRACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WAGE %26 TAX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Process_Name__c</picklist>
+            <values>
+                <fullName>Account Setup Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Coding Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP Tax Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental Underwriting Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPO Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU Membership Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical Management Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting Screening</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Reason__c</picklist>
+            <values>
+                <fullName>Ambiguous%2FClarification Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit cannot be supported</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit not compliant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit not filed %2F approved by DOL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete doc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing doc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rate discrepancy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>GEMS_Return_Reason</fullName>
+        <active>true</active>
+        <label>GEMS Return Reason</label>
+        <picklistValues>
+            <picklist>GEMS_Sub_Type__c</picklist>
+            <values>
+                <fullName>BVA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blue Distinction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Emergency Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclusions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Federal Mandates</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Information Summary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hearing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inpatient Hospital Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mental Health</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Miscellaneous Benefit Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Radiology Quality Initiative %28NRQI%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Covered Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outpatient Hospital Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Overall Program Payment Provisions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prescription Drug Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preventive Health Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Professional Service Benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reference Based Pricing %28RBP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Substance Use Disorder</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilization Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VBID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GEMS_Type__c</picklist>
+            <values>
+                <fullName>ABS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACA CALCULATORS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACCOUNT CHANGE REQUEST FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACCOUNT STRUCTURE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADDENDUM TO BPA FOR AFFILIATES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADMINISTRATIVE SERVICE AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO BENEFIT PROG APP %28BPA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO MANDATE CHECKLIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT ADHOC MEETING MINUTES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT BOOKLETS %2F CERTIFICATES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT EDIT TOOL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT MATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT PROG DESCRIPTION-DENTAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT PROGRAM DESCRIPTION-BPD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BENEFIT WALLET DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BINDER CHECK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - ASO UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - ASOSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - DENTAL UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - DENTALSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HCA UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HCASIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HEALTH UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - HEALTHSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPA - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BROKER TRANS%2FAOR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BUILD A PLAN-BAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BUSINESS ASSOC AGREEMENT - BAA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLATION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLATION LETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CLAIMS EXPERIENCE ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA ADMINISTRATOR CONTRACTS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA FULL SERVICE CONTRACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COBRA TRANSMITTAL FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMMISSION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ENROLLMENT CENSUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ERISA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXCESS LOSS AGREEMENT COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXCESS LOSS POLICY APPLICATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EXPLANATION OF PAPERWORK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEAK REQUEST SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FILINGS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FLEX HSA EMPLOYER DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FULLTIME STATUS CERT OWN%2FPART%2FPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GRANDFATHERED CERT FORM - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GRANDFATHERED CERT FORM - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GROUP ADMINISTRATION DOC-GAD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GROUP PROCESSING FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H-REVIEW FORMS %2F APPROVAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HCA ASA FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIGHLIGHT SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA EXEMPTION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HIPAA FORMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HMO PROVIDER SELECTION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOLD HARMLESS AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HSA BANK DISCOVERY FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ICCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL SG COVER SHEET FOR NEW BUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INCENTIVE MATRIX VBID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INIT PREM PAYMENT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEMBERSHIP FILE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHPAEA FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSP%2FEGI FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NETWORK DISCOUNT EXHIBIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEW GROUP ACTIVITY SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEW GROUP SALES CHECKLIST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NON PLAN LETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NON-HMO CERTIFICATION FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OTHER DOCUMENTATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PARTIAL BENEFIT MATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PERFORMANCE GUARANTEE - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PERFORMANCE GUARANTEE - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREMIUM RECEIPT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRESCREEN COVERSHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRIOR CARRIER BILL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRODUCT CONFIRM GRP ELIGIBILITY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROPOSAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PROXY CARD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATE ONLY RENEWAL ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATE PAGE %28ASO FEE EXHIB%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RATES PAGE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RDS AGREEMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RECAP FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RELIGIOUS EMPLOYER EXEMPT FORM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RENEWAL ACTIVITY SHEET</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SBC ADDENDUM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSOB%2FBENEFIT HIGHLIGHT%2FMATRIX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS AGREEMENT - SIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS AGREEMENT - UNSIGNED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOP LOSS APPLICATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUMMARY OF BENEFIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TDI REPORTS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VOLUNTARY GROUP DENTAL CONTRACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WAGE %26 TAX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Process_Name__c</picklist>
+            <values>
+                <fullName>Account Setup Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit Coding Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDHP Tax Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental Underwriting Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPO Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSU Membership Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical Management Screening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting Screening</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Reason__c</picklist>
+            <values>
+                <fullName>Ambiguous%2FClarification Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit cannot be supported</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit not compliant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Benefit not filed %2F approved by DOL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CBSR required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment discrepancy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete doc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing doc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rate discrepancy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

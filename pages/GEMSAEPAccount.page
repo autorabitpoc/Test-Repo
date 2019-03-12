@@ -1,0 +1,36 @@
+<apex:page standardController="Case"  sidebar="false" showChat="false" showHeader="false" id="pageId">
+   
+    <apex:form id="frmId" >
+        <apex:actionFunction name="pageRefresh" action="{!Save}" oncomplete="refreshPage()"/>
+        <apex:pageBlock id="thePageBlock">
+            <apex:actionRegion >
+                <apex:pageBlockSection id="pbs1" columns="2"> 
+                <apex:inputField value=" {!Case.GEMS_Open_Enrollment_Start__c}"/>
+                      <apex:inputField value=" {!Case.GEMS_Open_Enrollment_End__c}"/>
+                       <apex:inputField value=" {!Case.GEMS_Target_Date_Test_File_1__c}"/>
+                        <apex:inputField value=" {!Case.GEMS_Actual_Date_Test_File_1__c}"/>
+                         <apex:inputField value=" {!Case.GEMS_Target_Date_Test_File_2__c}"/>
+                          <apex:inputField value=" {!Case.GEMS_Actual_Date_Test_File_2__c}"/>
+                          <apex:inputField value=" {!Case.GEMS_Target_Date_Production_OE_File__c}"/>
+                          <apex:inputField value=" {!Case.GEMS_Actual_Date_Production_OE_File__c}"/>
+                        
+                    <apex:inputField value=" {!Case.GEMS_AEP_Account__c}">
+                        <apex:actionSupport event="onchange" reRender="thePageBlock" status="status"/>
+                    </apex:inputField>
+                  </apex:pageBlockSection>
+            </apex:actionRegion>
+                <apex:pageBlockSection id="Section" columns="2"  collapsible="false" rendered="{!Case.GEMS_AEP_Account__c==true}"> 
+              
+                    <apex:inputField value="{!Case.GEMS_Eligibility_Vendor_Name__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Eligibility_Vendor_Email__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Eligibility_Vendor_Address__c}"/>
+                  
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"  id="pageId" onclick="pageRefresh" />
+                </apex:pageBlockButtons>
+        </apex:pageBlock>
+         
+    </apex:form>
+   
+</apex:page>

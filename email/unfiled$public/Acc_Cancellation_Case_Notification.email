@@ -1,0 +1,14 @@
+***** Group Section / Billing Profile Cancellation Notification *****
+
+ {!User.FirstName} {!User.LastName} Submitted Account Cancellation Case to B* to process GroupSection(s) / Billing profile(s) Cancellation.
+
+Status : {!Case.Status}
+BlueSTAR Integration Status : {!Case.GEMS_Integration_Status__c}
+BlueSTAR Integration Message : {!Case.GEMS_Integration_Message__c}
+
+
+Case : {!Case.CaseNumber}
+Account : {!Account.Name}
+Case Details : {!Case.Link}
+
+Thanks

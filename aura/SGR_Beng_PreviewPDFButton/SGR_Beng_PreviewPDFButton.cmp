@@ -1,0 +1,20 @@
+<!-- **************************************************************************************************************************
+* Lightnigng Component Name: SGR_Beng_PreviewPDFButton
+* Version                  : 1.0
+* Function                 : This is the Preview PDF button
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Keerthi Navya Poornima Motupalli   12/20/2018         Original Version 
+****************************************************************************************************************************** -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" controller="Sgr_Beng_PreviewPDF">
+    <aura:attribute name="documentId" type="String" description="The recordId of the PDF"/>
+    <aura:attribute name="recordId" type="String" description="The record id to be displayed"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:spinner variant="brand" aura:id="spinner" class="slds-show backgroundSpinner" alternativeText="Please wait..." />
+	
+    <div class="slds-text-color_success">
+    <h1 class="slds-text-heading_regular">Please Wait....</h1>
+    </div>
+</aura:component>

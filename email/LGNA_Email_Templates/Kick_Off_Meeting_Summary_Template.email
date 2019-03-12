@@ -1,0 +1,37 @@
+I would like to thank you for attending today's meeting for the {!Case.Name} proposal. Key points from today's meeting are below:
+
+{!Account.Name} History/Background 
+History can be about company, history with carriers or if incumbent, with HCSC
+
+Hot buttons
+Identified by sales and account management)
+
+Competition
+Identified by sales and account management.
+
+Strategy (Talking Points)
+These are identified by sales and account management using probing questions in this document.
+
+Offering
+Lists components of the offering. Determined by sales and account management with input from underwriting and SMEs.
+
+Questions for Consultant
+If applicable
+
+Additional Questions
+If applicable
+
+Follow-Up Meeting
+If applicable
+
+Timeline
+•	DAY, MMM DD: {!Case.Owner} will forward pre-populated Questions to SMEs
+•	DAY, MMM DD: SMEs to return Responses to {!Case.Owner} by end of day.
+•	DAY, MMM DD: {!Case.Owner} to send draft to (Assigned Sales/Account Management) for review 
+•	DAY, MMM DD: (Assigned Sales/Account Management) edited file(s) to {!Case.Owner} with Pricing and PGs by end of day.
+•	DAY, MMM DD: Prior to 10am, {!Case.SalesExecutive} will upload hard copy files to RRD for production.
+•	DAY, MMM DD: {!Case.SalesExecutive} will email electronic proposal to (Consultant). Hard copies to follow due {!Case.MailDateDueDate}, shipped directly from RRD.
+
+Thank you again for attending yesterday’s meeting, please let me know if you have any questions or any further information that will make this a high-impact, high-quality proposal that will make us attractive to the client. Go big and go Blue!
+Thank you,
+{!Case.Owner}

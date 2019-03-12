@@ -1,0 +1,9 @@
+*** Line Item Review Notification *** 
+
+The following Line Item Review has been created and assigned to you: 
+
+Related Case #: {!Line_Item_Review__c.Related_Case__c}
+Line Item Review #: {!Line_Item_Review__c.Name}
+Disposition Status: {!Line_Item_Review__c.Disposition_Status__c}
+
+Follow this link to access the line item review: {!Line_Item_Review__c.Link}

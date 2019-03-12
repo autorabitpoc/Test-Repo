@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Consumerism</fullName>
+        <default>false</default>
+        <label>Consumerism</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Network</fullName>
+        <default>false</default>
+        <label>Network</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CDHP</fullName>
+        <default>false</default>
+        <label>CDHP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Health Care Management</fullName>
+        <default>false</default>
+        <label>Health Care Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Ancillary</fullName>
+        <default>false</default>
+        <label>Ancillary</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical</fullName>
+        <default>false</default>
+        <label>Medical</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MANAGED MENTAL HEALTH</fullName>
+        <default>false</default>
+        <label>MANAGED MENTAL HEALTH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Drug</fullName>
+        <default>false</default>
+        <label>Drug</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Stop loss</fullName>
+        <default>false</default>
+        <label>Stop loss</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Incentive</fullName>
+        <default>false</default>
+        <label>Incentive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Private Group Exchange</fullName>
+        <default>false</default>
+        <label>Private Group Exchange</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Member Engagement and Mobile Tools</fullName>
+        <default>false</default>
+        <label>Member Engagement and Mobile Tools</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dearborn</fullName>
+        <default>false</default>
+        <label>Dearborn</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,11 @@
+{!Task.Subject} has been returned. Please review and assign back to appropriate business area.
+
+Account Name: {!Case.Account}
+
+UW Case: {!Case.Link}
+
+Task Details: {!Task.Link}
+
+Task Status: Return
+
+Thanks!

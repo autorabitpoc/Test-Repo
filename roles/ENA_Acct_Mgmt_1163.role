@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ENA Acct Mgmt 1163</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ENA Acct Mgmt 1163</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>ENA_Director_1163</parentRole>
+</Role>

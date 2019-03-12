@@ -1,0 +1,8 @@
+The Scope Code is ready for peer review and approval. 
+
+Account Name: {!GEMS_Pharmacy_Scope_Code__c.Account_Name__c}
+Case Number: {!GEMS_Pharmacy_Scope_Code__c.Case__c}
+Scope Code Number: {!GEMS_Pharmacy_Scope_Code__c.Name}
+Scope Code Details: {!GEMS_Pharmacy_Scope_Code__c.Link}
+
+Thanks

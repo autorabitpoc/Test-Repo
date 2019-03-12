@@ -1,0 +1,101 @@
+<apex:page standardController="Case" extensions="CustomContractsCurrProdsController" title="Current Products">
+
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" /> 
+<apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}"/>
+
+<style>
+
+    .tab-title{
+        margin:10px 0;
+        font-size:18px; 
+    }  
+    .data-table thead th {
+        background-color:#72A9D3 !important;
+        color:#fff;
+        font-weight:bold;
+    }
+    .accordion-row {
+        background-color:#EAF5FE !important;
+        cursor:pointer;
+        font-weight:bold;   
+    }
+    table.dataTable tbody th, table.dataTable tbody td {
+      
+      border-bottom: 1px solid #CFEEF8 !important;
+      padding: 10px !important;
+    }
+    .dataTables_filter {
+        display: none; 
+    }
+
+</style>
+
+<script>
+
+    $(document).ready(function(){
+ 
+        $('#currProductsTable').DataTable({
+           "pageLength": 5,
+           "bLengthChange": false
+        });
+
+        $('#activeProductsTable').DataTable({
+           "pageLength": 5,
+           "bLengthChange": false
+        });
+
+    });
+
+</script>
+    <apex:form >
+        <apex:pagemessages />
+        <apex:outputpanel rendered="{!hasAccess}">
+          <apex:outputpanel rendered="{!currentProds}">
+            <apex:sectionHeader title="{!Case.Account.Name}" subtitle="Current Products"/>
+            <apex:inputHidden value="{!Case.AccountId}" id="acctId"/>
+                <table id="currProductsTable" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Funding Type</th>
+                            <th>Projected Members</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!currentProductsList}" var="currProd">
+                            <tr>                
+                                <td><a href="/{!currProd.productId}" target="_blank">{!currProd.productName}</a></td>
+                                <td>{!currProd.funding}</td>                   
+                                <td>{!currProd.numberOfProjectedMembers}</td>                       
+                            </tr>
+                        </apex:repeat>
+                    </tbody>           
+                </table>
+          </apex:outputpanel>
+          <apex:outputpanel rendered="{!activeProds}">
+            <apex:sectionHeader title="{!Case.Account.Name}" subtitle="Actively Purchasing Products"/>
+                <table id="activeProductsTable" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Funding Type</th>
+                            <th>Projected Members</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!currentProductsList}" var="currProd">
+                            <tr>                
+                                <td><a href="/{!currProd.productId}" target="_blank">{!currProd.productName}</a></td>
+                                <td>{!currProd.funding}</td>                   
+                                <td>{!currProd.numberOfProjectedMembers}</td>                       
+                            </tr>
+                        </apex:repeat>
+                    </tbody>           
+                </table>
+          </apex:outputpanel>
+        </apex:outputpanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,31 @@
+Hello,
+
+[Internal notes (remove prior to sending):  Send to bluequote@bcbsok.com mailbox and carbon copy cody_calderon@bcbstx.com & bridget_treadwell@bcbsok.com ]
+
+Below please find the needed information to send a [Life / Dental] quote back to the Small Group Account Management rep by attaching and replying back to this email request:  
+
+State / Account Number:  {!Case.Group_Account_Number__c}
+
+Group Name:  {!Account.Name}
+
+Location/Zip: {!Account.ShippingPostalCode}
+
+County:  [ ]
+
+SIC: {!Account.Sic}
+
+Eff Date: [mm/dd/yyyy]
+
+Group Size:  [type # of employees here]
+
+BCBSNM Medical Renewal Date: {!Account.Renewal_Date__c}
+
+Broker Information: [Name and Producer #]
+
+
+Attachments: 
+Census Attached: Includes Name, DOB, Gender, Individuals Zip Code
+
+Please return the quote back to nmsgam@bcbsnm.com, with the above reference number in the subject line.
+
+Thank you for your help,

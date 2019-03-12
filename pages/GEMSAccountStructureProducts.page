@@ -1,0 +1,21 @@
+<apex:page standardController="Case" extensions="GEMS_AccountStructureProducts">
+    <apex:form >
+        <apex:pageBlock id="BeAg" title="Benefit Agreement">
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Case.Funding_Type_Multiselect__c}"/>
+                <apex:inputField value="{!Case.GEMS_Private_Exchange__c}"/>
+                <apex:inputField value="{!Case.GEMS_Private_Exchange_Values__c}"/>
+                <apex:outputField value="{!Case.GEMS_AEP_Account__c}"/>
+                <apex:inputField value="{!Case.GEMS_Is_Account_Derivated__c}"/>
+                </apex:pageBlockSection>
+            <apex:pageBlockSection >
+            <apex:pageBlockTable id="ProductTable" value="{!OppPro}" var="Product" title="Products">
+                <apex:column width="3%" value="{!Product.Product__c}"/>
+                <apex:column width="3%" value="{!Product.Product_Category__c}"/>
+                <apex:column width="3%" value="{!Product.Funding_Type__c}"/>
+                <apex:column width="3%" value="{!Product.Product_Family__c}"/>
+            </apex:pageBlockTable>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+</apex:form>
+</apex:page>

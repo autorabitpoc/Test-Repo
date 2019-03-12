@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_36207632</developerName>
+        <masterLabel>Marketing VP</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Owner_s_Manager_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Abby Sterner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindee Soza</sourceValue>
+            </sourceValues>
+            <value>Erin Barney</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Melissa Sanden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Donna Tucker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Holly Herin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Suarez</sourceValue>
+            </sourceValues>
+            <value>Ted Holden</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Robin Fowler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Terry Villiva</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Linton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jerry Berwick</sourceValue>
+            </sourceValues>
+            <value>Tom Stewart</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Account.District__c</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Small</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Account.Cluster__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Negotiation_Type__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Account.Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Contract_Effective_Date__c</field>
+    </columns>
+    <description>OK contracts with a status of &apos;Out for Signature&apos;. Sorted by District, then Manager, then Cluster.</description>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.Custom_Contracts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Out for Signature,Sent to Sales &amp; Marketing,Final Sent to Sales &amp; Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Date_Executed__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.HCSC_Division__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OK</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.District__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Owner_s_Manager_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Contracts - Out for Signature (OK)</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.Cluster__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Case.Contract_Effective_Date__c</dateColumn>
+        <endDate>2017-01-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-02-01</startDate>
+    </timeFrameFilter>
+</Report>

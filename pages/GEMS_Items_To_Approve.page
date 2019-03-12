@@ -1,0 +1,102 @@
+<apex:page standardStylesheets="true" sidebar="false" showHeader="false" controller="GEMS_Items_To_Approve_Controller">
+    <head>
+    </head>
+    <body>
+        <div class="bRelatedList" id="PendingProcessWorkitemsList">
+          <a name="PendingProcessWorkitemsList_target"></a> 
+            <div class="bPageBlock brandSecondaryBrd secondaryPalette">
+                <div class="pbHeader">
+                   <table border="0" cellpadding="0" cellspacing="0">
+                   <tbody>
+                   <tr>
+                      <td class="pbTitle"><img src="/img/s.gif" alt="" width="12" height="1" class="minWidth" style="margin-right: 0.25em;" title=""/><img src="/img/s.gif" alt="" class="relatedListIcon" title=""/><h3 style="font-size:1.5em;font-weight:bold;" id="PendingProcessWorkitemsList_title">Items to Approve</h3></td>
+                      <td class="pbButton"><input value="Manage All" class="btn" name="manageAll" onclick="window.top.location='/04i';return false;" title="Manage All" type="button"/></td>
+                      <td class="pbHelp"><span class="help" title="Items to Approve Help (New Window)"><a style="cursor:pointer;cursor:hand;" onclick="window.open('https://help.salesforce.com/apex/htdoor?loc=help&target=approvals_processing_approval_requests_parent.htm&section=Dev_Tools&language=en_US&release=210.7.2&instance=CS14%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27','_blank')" class="linkCol"><span class="linkSpan">Items to Approve Help</span> <img src="/img/s.gif" alt="Items to Approve Help (New Window)" class="helpIcon" title="Items to Approve Help (New Window)"/></a></span></td>
+                   </tr>
+                   </tbody></table>
+                </div>
+                <div class="pbBody">  
+                <apex:outputPanel rendered="{!approvalRecords.size == 0}">
+                    <table class="list" border="0" cellspacing="0" cellpadding="0"><tbody><tr class="headerRow"><th scope="col" class="noRowsHeader">No records to display</th></tr>
+                    </tbody></table>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!approvalRecords.size > 0}">
+                        <table class="list" border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr class="headerRow">
+                                    <th class="actionColumn" scope="col">Action</th>
+                                    <th scope="col" class="zen-deemphasize">Related To</th>
+                                    <th scope="col" class="zen-deemphasize">Opportunity Name</th>
+                                    <th scope="col" class=" zen-deemphasize">Account Name</th>
+                                    <th scope="col" class=" zen-deemphasize">Parent Case ID</th>
+                                    <th scope="col" class=" zen-deemphasize">Type</th>
+                                    <th scope="col" class=" zen-deemphasize">Assign To</th>
+                                    <th scope="col" class=" zen-deemphasize">Actual Approver</th>
+                                    <th scope="col" class=" zen-deemphasize">Most Recent Approver</th>     
+                                    <th scope="col" class=" zen-deemphasize">Date Submitted</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!approvalRecords}" var="apprv">
+                                    <tr class="dataRow">
+                                        <td class="actionColumn">
+                                            <a class="underline-on-hover" onclick="window.top.location='/{!apprv.workItemId}/e?et=REASSIGN&amp;retURL=%2Fhome%2Fhome.jsp';return false;" style ="color:#015ba7;text-decoration:none;font-weight:normal;cursor:pointer;cursor:hand;"  title="Reassign - Record 1 - {!apprv.relatedToName}">Reassign</a>
+                                            &nbsp;|&nbsp;
+                                            <a class="underline-on-hover" onclick="window.top.location='/p/process/ProcessInstanceWorkitemWizardStageManager?id={!apprv.workItemId}';return false;" style ="color:#015ba7;text-decoration:none;font-weight:normal;cursor:pointer;cursor:hand;" title="Approve / Reject - Record 1 - {!apprv.relatedToName}">Approve / Reject</a>
+                                        </td>
+                                        <td scope="row" class=" dataCell  " >
+                                            <apex:outputLink value="/{!apprv.relatedToId}" onclick="window.top.location='/{!apprv.relatedToId}';return false;">
+                                                {!apprv.relatedToName}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="/{!apprv.opportunityId}" onclick="window.top.location='/{!apprv.opportunityId}';return false;">
+                                                {!apprv.opportunityName}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="/{!apprv.accountId}" onclick="window.top.location='/{!apprv.AccountId}';return false;">
+                                                {!apprv.AccountName}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="/{!apprv.parentCaseId}" onclick="window.top.location='/{!apprv.parentCaseId}';return false;">
+                                                {!apprv.parentCaseName}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputText value="{!apprv.Type}"/>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="{!IF(CONTAINS(apprv.OriginalActorId,'005'),'/'+apprv.OriginalActorId,'/p/own/Queue/d?id='+apprv.OriginalActorId)}" onclick="var URL='{!IF(CONTAINS(apprv.OriginalActorId,'005'),'/'+apprv.OriginalActorId,'/p/own/Queue/d?id='+apprv.OriginalActorId)}';window.top.location=URL;return false;">
+                                                {!apprv.OriginalActor}
+                                            </apex:outputLink>
+                                        </td>
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="/{!apprv.ActorId}" onclick="window.top.location='/{!apprv.ActorId}';return false;">
+                                                {!apprv.Actor}
+                                            </apex:outputLink>
+                                        </td>                                       
+                                        <td class=" dataCell  ">
+                                            <apex:outputLink value="/{!apprv.mostRecentApproverId}" onclick="window.top.location='/{!apprv.mostRecentApproverId}';return false;">
+                                                {!apprv.mostRecentApproverName}
+                                            </apex:outputLink>
+                                        </td>
+                                         <td class=" dataCell  ">
+                                           <apex:outputText value="{!apprv.dateSubmitted}"/>
+                                         </td>
+                                    </tr>
+                                </apex:repeat>          
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </apex:outputPanel>
+                </div>
+                <div class="pbFooter secondaryPalette">
+                    <div class="bg"></div>
+                </div> 
+            </div>
+        </div>
+    </body>    
+</apex:page>

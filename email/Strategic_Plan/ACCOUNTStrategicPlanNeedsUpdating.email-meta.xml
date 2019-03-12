@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Internal notification to account owner when strategic plan needs to be updated</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>ACCOUNT: Strategic Plan needs updating</name>
+    <style>none</style>
+    <subject>{!Account.Name} - Strategic Plan Needs Updating</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

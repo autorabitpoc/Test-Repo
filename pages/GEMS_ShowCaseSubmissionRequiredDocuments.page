@@ -1,0 +1,17 @@
+<apex:page standardController="Case" extensions="GEMS_ShowCaseSubmissionRequiredDocuments" sidebar="false" showChat="false" showHeader="false" id="pageId">
+ <apex:form id="formId">
+     <apex:outputpanel id="outputPanelId">
+     <apex:variable value="{!1}" var="rowNum"/>
+     <apex:pageblock >
+         <apex:pageblocktable value="{!requiredDocuments}" var="requiredDocument" >
+             <apex:column headerValue="Required Documents"> 
+             <apex:outputText >{!rowNum}.&nbsp;&nbsp; {!requiredDocument}</apex:outputText>
+             <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+             </apex:column>
+             
+         </apex:pageblocktable>
+      </apex:pageblock>
+     </apex:outputpanel>
+     
+ </apex:form>
+</apex:page>

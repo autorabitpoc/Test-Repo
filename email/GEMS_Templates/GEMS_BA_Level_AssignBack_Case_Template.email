@@ -1,0 +1,7 @@
+The Submitter has responded to your query. 
+
+Account Name : {!Case.Account} 
+Case Number   : {!Case.CaseNumber} 
+Case Details      : {!Case.Link}
+
+Thanks

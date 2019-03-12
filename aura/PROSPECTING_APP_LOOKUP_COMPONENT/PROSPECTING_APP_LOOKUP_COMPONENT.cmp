@@ -1,0 +1,23 @@
+<!-- Lightning Lookup Component based on Enrico Murru's code on Salesforce Developers Blog titled "Salesforce Lightning inputLookup: the missing component"-->
+<aura:component controller="InputLookupAuraController">    
+    <ltng:require scripts="/resource/1479701086000/jQueryv3_1_1,
+                           /resource/1479701249000/typeahead" 
+                      		afterScriptsLoaded="{!c.compInit}" />
+    
+    <aura:registerEvent name="updateInfo" type="c:PROSPECTING_APP_LOOKUP_INFO_UPDATE_EVT" />
+    
+    <!-- Public Attributes -->
+    <aura:attribute name="uniqueName" type="String" required="true"/>
+    <aura:attribute name="sobjectType" type="String" required="true"/>
+    <aura:attribute name="sobjectName" type="String" required="true"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="className" type="String"/>
+    <aura:attribute name="nameValue" type="String"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="resultList" type="String[]" default="[]"/>
+    <!-- Make sure filter string has a space in the beginning -->
+    <aura:attribute name="filter" type="String" default=""/> 
+
+    
+    <input id="{!globalId+'_typeahead'}" class="typeahead slds-input" type="text" placeholder="{!'Enter '+v.sobjectName+' name...'}" oninput="{!c.updateSearch}" value="{!v.nameValue}" />
+</aura:component>

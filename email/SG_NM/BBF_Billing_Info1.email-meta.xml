@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Provides important information on billing set up through BAE</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BBF Billing Info</name>
+    <style>none</style>
+    <subject>Important Billing Information on Blue Balance Funded</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

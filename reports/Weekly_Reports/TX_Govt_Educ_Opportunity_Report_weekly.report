@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities.Producer_Association_For_Opportunity__r$Producer_Consultant__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Owner</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Health_Members__c</field>
+    </columns>
+    <description>Weekly update of Government and Education Opportunities</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Industry</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Government,Education</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$HCSC_Division__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TX Govt-Educ Opportunity Report - weekly</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Opportunities_with_Producer__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Opportunities$CloseDate</dateColumn>
+        <interval>INTERVAL_CURY</interval>
+    </timeFrameFilter>
+</Report>

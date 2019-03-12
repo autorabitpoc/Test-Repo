@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Gives brokers an advance notice that their client(s) will see a Blue Balance Funded proposal in their upcoming renewal</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BBF - Broker Heads Up</name>
+    <style>none</style>
+    <subject>Advance Notice - Blue Balance Funded Proposals Included in Renewal</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,46 @@
+<!--
+*Author:  Rakesh Nunna
+ * Initial Version: V1.0
+ * Created date: 04/10/2018
+ * Discription : Client side component for Insatallation(GEMS), SAM REquests Tabs
+*/
+-->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="GLOBAL" controller="LGNA_CaseAccessController">
+    
+    <aura:attribute name="curentRecord" type="String"/>
+    <aura:attribute name="hasDelete" type="boolean" default="true"/>
+    <aura:attribute name="hasEdit" type="boolean" default="true"/>
+    <aura:attribute name="menu" type="boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:registerEvent name="delGemRelListRecEvent" type="c:LGNA_DeleteCaseRecords"/>
+    <aura:if isTrue="{!v.menu}">
+    <div class="slds-dropdown-trigger" style="display:block; margin-right:50px;">
+        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show More">
+            <lightning:icon iconName="utility:down" size="xx-small" alternativeText="Indicates approval"/>    
+            <span class="slds-assistive-text">Show More</span>
+        </button>
+        <div class="slds-dropdown slds-dropdown--right slds-dropdown--actions slds-dropdown--menu">
+            <ul class="slds-dropdown__list" role="menu">
+                <aura:if isTrue="{!v.hasEdit}">
+                    <li href="" class="slds-dropdown__item">
+                        <a href="javascript:void(0)" onclick="{!c.editCase}"  role="menuitem">
+                            <p class="slds-truncate">Edit</p>
+                        </a>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.hasDelete}">
+                    <li href="" class="slds-dropdown__item">
+                        <a href="javascript:void(0)" onclick="{!c.deleteCase}" role="menuitem">
+                            <p class="slds-truncate">Delete</p>
+                        </a>
+                    </li>
+                </aura:if>
+                
+            </ul>
+        </div>
+    </div> <!-- // end dropdown menu -->
+        </aura:if>
+    
+</aura:component>

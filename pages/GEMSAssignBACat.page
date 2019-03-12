@@ -1,0 +1,244 @@
+<apex:page standardController="GEMS_Benefit_Agreement__c" 
+
+extensions="GEMS_AssociateBACatController" recordSetVar="v" sidebar="False">
+    <script type='text/javascript'>
+    
+    function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' 
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' 
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+
+    </script>
+    <style>
+                   tr.dataRow { 
+                       background-color:white; 
+                    }
+                    tr.dataRow:hover { 
+                            background-color: #e3f3ff;
+                     };
+   </style>
+<apex:form id="TheForm" >        
+        <apex:pageMessages id="pgMsgId"/>
+        <apex:pageBlock id="thePageBlock" title="Account Structure Case">
+           
+            <apex:pageBlockSection >
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.Account.Name}" 
+
+/>
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.Account.External_ID__c}"/>  
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.HCSC_Division__c}"/>                
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.Market_Segment__c}"/>                               
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.Status}"/>
+                <apex:outputField value="{!listOfBAs
+
+[0].AccountStructureCase__r.GEMS_Account_Submission_Info__c}"/>
+
+            </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock id="SelectedBA" title="Selected Benefit Agreements">
+            <apex:pageBlockTable id="BATable" value="{!listOfBAs}" var="b">
+                            <apex:column headerValue="BA No.">
+                    <apex:outputField value="{!b.Name}" />
+                </apex:column>
+                
+                <apex:column headerValue="Product Type">
+                    <apex:outputField value="{!b.Product__c}" />
+                </apex:column>
+  
+                <apex:column headerValue="Plan">
+                    <apex:outputField value="{!b.Plan__c}" />
+                </apex:column>
+                <apex:column headerValue="BA Description">
+                    <apex:outputField value="{!b.BA_Description__c}" />
+                </apex:column>                
+                <apex:column headerValue="Fund Type">
+                    <apex:outputField value="{!b.BA_Fund_Type__c}" />
+                </apex:column>              
+                
+            </apex:pageBlockTable>
+           
+        </apex:pageBlock> 
+        
+        <apex:pageBlock id="thePageBlock1" title="Categories">
+            
+ 
+        <!--
+            <apex:pageBlockTable id="newCatTable" value="{!listOfCat}" var="c">
+            
+                <apex:column headerValue="Select" width="3%">
+                    <apex:inputCheckbox value="{!c.isSelected}"/>
+                </apex:column>
+               
+                <apex:column headerValue="Category No.">
+                    <apex:inputField value="{!c.Cat.Name}" OnkeyPress="return inputLimiter
+
+(event, 'Numbers');"/>
+                </apex:column>
+                
+                <apex:column headerValue="Category Description">
+                    <apex:InputField value="{!c.Cat.Category_Description__c}" 
+
+OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" />
+                </apex:column>
+                
+                <apex:repeat value="{!listofChars}" var="Char">
+                <apex:column headerValue="Characteristic">
+                    <apex:outputField value="{!Char.Name}" />
+                </apex:column>
+                </apex:repeat>
+                <apex:column headerValue="Usage - Billing">
+                    <apex:InputField value="{!c.Cat.Usage_Billing__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="Usage - Mailing">
+                    <apex:InputField value="{!c.Cat.Usage_Mailing__c}" />
+                </apex:column>
+                
+                                <apex:column headerValue="Usage - Product">
+                    <apex:InputField value="{!c.Cat.Usage_Product__c}" />
+                </apex:column>
+                
+                
+                               <apex:column headerValue="Usage - Reporting">
+                    <apex:InputField value="{!c.Cat.Usage_Reporting__c}" />
+                </apex:column>
+            </apex:pageBlockTable>
+            -->
+            
+            <div>
+            <apex:variable value="{!0}" var="rowNumber" />          
+            <apex:outputPanel id="panelWithVar">
+                <apex:variable value="{!0}" var="rowNumber" />
+            </apex:outputPanel>
+  
+                <table class="list" id ="NewCatTable" border="0" cellpadding="0" 
+
+cellspacing="0">
+                    <tr class="headerRow">
+                        <th class="headerRow">Select</th>
+                        <th class ="headerRow">Action</th>
+                        <th class="headerRow">Category No.</th>
+                        <th class="headerRow">Category Description</th>
+                        <apex:repeat value="{!iter}" var="i">
+                            <th class="headerRow">Characteristic: {!listOfChars
+
+[i].Characteristic_Code__c}</th>
+                        </apex:repeat>
+                        <th class="headerRow">Usage - Billing</th>
+                        <th class="headerRow">Usage - Reporting</th>
+                        <th class="headerRow">Category Cobra Code</th>
+                    </tr>
+                    <apex:repeat value="{!listOfCat}" var="c">
+                        <tr class="dataRow">
+                            <td class="dataCell"> <apex:inputCheckbox value="{!c.isSelected}"/> 
+
+</td>
+                            <td clas = "dataCell">
+                                <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                <apex:commandLink action="{!removeRow}" value="Del" 
+
+style="color: #015BA7;font-weight:bold" reRender="thePageBlock1,panelWithVar" immediate="true" 
+
+>
+                                    <apex:param name="p1" value="{!rowNumber}" assignTo="{!
+
+numberOfRowToRemove}"/>
+                                    <apex:param name="p2" value="{!c.Cat.Id}" assignTo="{!
+
+recordToDelete}"/>
+                                </apex:commandLink>
+                            </td>
+                            <td class="dataCell"> <apex:inputField value="{!c.Cat.Name}" 
+
+OnkeyPress="return inputLimiter(event, 'Numbers');"/></td>
+                            <td class="dataCell"> <apex:InputField value="{!
+
+c.Cat.Category_Description__c}" OnkeyPress="return inputLimiter(event, 
+
+'NameCharactersAndNumbers');" /></td>
+                            
+                            <apex:repeat value="{!iter}" var="i">
+                                <td class="dataCell">
+                                    <apex:selectList value="{!c.InputCharVals[i]}" 
+
+id="Characteristic" size="1" required="true">
+                                        <apex:selectOptions value="{!listOfOptions[i]}"/>
+                                    </apex:selectList>    
+                                </td>
+                            </apex:repeat>
+                            
+                            <td class="dataCell"> <apex:InputField value="{!
+
+c.Cat.Usage_Billing__c}" /> </td>
+                            <td class="dataCell"> <apex:InputField value="{!
+
+c.Cat.Usage_Reporting__c}" /> </td>
+                            <td class="dataCell"> <apex:InputField value="{!
+
+c.Cat.Category_Cobra_Code__c}" /> </td>
+                                
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+            
+            <div id="AddNewButton">
+                    <apex:commandButton value="Add New" action="{!addCat}" 
+
+reRender="thePageBlock1,panelWithVar" />
+            </div>
+            
+            
+            <center>
+                <apex:commandButton value="Assign & Create Account Structure" action="{!
+
+assignCat}" />
+                <apex:commandButton value="Cancel" action="{!gotoCase}" immediate="true"/>
+                <!--<apex:commandButton value="Create Account Structure" action="{!
+
+gotoCreateAccountStructure}" /> -->               
+            </center>
+           
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

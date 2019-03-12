@@ -1,0 +1,18 @@
+The following {!Service_Request__c.Name}  has been submitted for: 
+
+Account: {!Service_Request__c.Account__c}
+Status:  {!Service_Request__c.Status__c} 
+Date of Meeting : {!Service_Request__c.Date_of_Meeting__c} 
+Start Time : {!Service_Request__c.Start_Time__c} 
+End Time : {!Service_Request__c.End_Time__c} 
+Addition Time Comments : {!Service_Request__c.Additional_Time_Comments__c} 
+
+BENEFIT INFORMATION 
+---------------------------------------------------------------------------------- 
+Products : {!Service_Request__c.Products__c} 
+
+Carve Outs : {!Service_Request__c.Carve_Outs__c} 
+
+Follow this link to access the Case: {!Service_Request__c.Link}
+
+***EOM***

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>ShareQuoteReqToUw</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>ShareQuoteReqToUw</label>
+        <sharedTo>
+            <group>Underwriting</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Sale,Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_QuoteReq_With_Uw_LG_50</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share QuoteReq With Uw LG 50</label>
+        <sharedTo>
+            <group>Underwriting_IL_LG_151_5_000</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Sale,Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_QuoteReq_with_UW50</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share QuoteReq with UW50</label>
+        <sharedTo>
+            <group>Underwriting_IL_NA_151_5_000</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Sale,Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_QuoteReq_with_Uw_Exchange</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share QuoteReq with Uw Exchange</label>
+        <sharedTo>
+            <group>Underwriting_25_000_Exchange_Only_RFP</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Sale,Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_Quote_Req_to_Uw25</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share Quote Req to Uw25</label>
+        <sharedTo>
+            <group>Underwriting_5_000_25_000</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Sale,Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

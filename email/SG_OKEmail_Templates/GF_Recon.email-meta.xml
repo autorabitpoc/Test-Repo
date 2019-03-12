@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending reminders that Grandfather Paperwork Due</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GF Recon</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Courtesy e-mail: Renewal GF Paperwork Due (Response needed with groups intention)</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

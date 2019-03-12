@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customObject>true</customObject>
+    <description>this tab is used in Opp Quote request page as tabstyle, change the tab style will impact the Quote Summary page color.</description>
+    <mobileReady>false</mobileReady>
+    <motif>Custom91: Shield</motif>
+</CustomTab>

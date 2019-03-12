@@ -1,0 +1,4 @@
+<apex:page StandardController="Actuary_Gate__c" docType="html-5.0" readOnly="true"
+extensions="UFHT.RelatedListComponentExtension" sidebar="false"
+cache="false" showHeader="true"> <UFHT:HistoryRecordsRelatedList recId="{!CASESAFEID(recordId)}" inlineMode="true" />
+</apex:page>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Holds the actions under each substage</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Action__c</fullName>
+        <externalId>false</externalId>
+        <label>Action</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Available_for_Resubmit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Available for Resubmit</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Case_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Case Record Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Trigger_After_Completion__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Underwriting</fullName>
+                    <default>false</default>
+                    <label>Underwriting</label>
+                </value>
+                <value>
+                    <fullName>CBSR Issue</fullName>
+                    <default>false</default>
+                    <label>CBSR Issue</label>
+                </value>
+                <value>
+                    <fullName>Custom Benefit/Service</fullName>
+                    <default>false</default>
+                    <label>Custom Benefit/Service</label>
+                </value>
+                <value>
+                    <fullName>LGNA - General Case</fullName>
+                    <default>false</default>
+                    <label>LGNA - General Case</label>
+                </value>
+                <value>
+                    <fullName>Network Information</fullName>
+                    <default>false</default>
+                    <label>Network Information</label>
+                </value>
+                <value>
+                    <fullName>Performance Guarantee</fullName>
+                    <default>false</default>
+                    <label>Performance Guarantee</label>
+                </value>
+                <value>
+                    <fullName>Proposal</fullName>
+                    <default>false</default>
+                    <label>Proposal</label>
+                </value>
+                <value>
+                    <fullName>SG - General Case</fullName>
+                    <default>false</default>
+                    <label>SG - General Case</label>
+                </value>
+                <value>
+                    <fullName>Mid-Market Underwriting</fullName>
+                    <default>false</default>
+                    <label>Mid-Market Underwriting</label>
+                </value>
+                <value>
+                    <fullName>Cede</fullName>
+                    <default>false</default>
+                    <label>Cede</label>
+                </value>
+                <value>
+                    <fullName>Private Exchange - Blue Directions</fullName>
+                    <default>false</default>
+                    <label>Private Exchange - Blue Directions</label>
+                </value>
+                <value>
+                    <fullName>Private Exchange - External</fullName>
+                    <default>false</default>
+                    <label>Private Exchange - External</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Underwriting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>CBSR Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Custom Benefit/Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>LGNA - General Case</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Network Information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Performance Guarantee</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Proposal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>SG - General Case</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Mid-Market Underwriting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Cede</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Private Exchange - Blue Directions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Create a Case</controllingFieldValue>
+                <valueName>Private Exchange - External</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Due_Days__c</fullName>
+        <externalId>false</externalId>
+        <label>Due Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Image_URL__c</fullName>
+        <description>Insite url for images for the Tasks.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please enter a valid URL address.</inlineHelpText>
+        <label>Image URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Insite_Image__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE( Image_URL__c ,  Name )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Insite Image</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Owner/Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Manager</fullName>
+                    <default>false</default>
+                    <label>Account Manager</label>
+                </value>
+                <value>
+                    <fullName>Channel Manager</fullName>
+                    <default>false</default>
+                    <label>Channel Manager</label>
+                </value>
+                <value>
+                    <fullName>Executive Sponsor</fullName>
+                    <default>false</default>
+                    <label>Executive Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Lead Qualifier</fullName>
+                    <default>false</default>
+                    <label>Lead Qualifier</label>
+                </value>
+                <value>
+                    <fullName>Pre-Sales Consultant</fullName>
+                    <default>false</default>
+                    <label>Pre-Sales Consultant</label>
+                </value>
+                <value>
+                    <fullName>Sales Manager</fullName>
+                    <default>false</default>
+                    <label>Sales Manager</label>
+                </value>
+                <value>
+                    <fullName>Sales Rep</fullName>
+                    <default>false</default>
+                    <label>Sales Rep</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Substage__c</fullName>
+        <externalId>false</externalId>
+        <label>Substage</label>
+        <referenceTo>Substage__c</referenceTo>
+        <relationshipName>Tasks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Task_External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Task External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Sort_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Type__c</fullName>
+        <description>Task Type</description>
+        <externalId>false</externalId>
+        <label>Task Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Best Practices</fullName>
+                    <default>false</default>
+                    <label>Best Practices</label>
+                </value>
+                <value>
+                    <fullName>Other Applications</fullName>
+                    <default>false</default>
+                    <label>Other Applications</label>
+                </value>
+                <value>
+                    <fullName>Tools, Templates, Forms</fullName>
+                    <default>false</default>
+                    <label>Tools, Templates, Forms</label>
+                </value>
+                <value>
+                    <fullName>Scripting</fullName>
+                    <default>false</default>
+                    <label>Scripting</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Trigger_After_Completion__c</fullName>
+        <externalId>false</externalId>
+        <label>Trigger After Completion</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Create a Case</fullName>
+                    <default>false</default>
+                    <label>Create a Case</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Action</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Action</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Actions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

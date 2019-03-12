@@ -1,0 +1,27 @@
+.THIS #stickyFooterSaveCancel {
+    position: fixed; 
+    width: 850px; 
+    left: 29px; 
+    bottom: 0px;
+}
+
+.THIS #stickyFooterEdit {
+    position: fixed; 
+    width: 850px; 
+    left: 29px; 
+    bottom: 0px;
+}
+
+.THIS .slds-input:read-only { 
+    border: none !important; 
+    padding-top:2px;
+    margin-left:-0.9px;
+}
+
+.THIS .slds-textarea:read-only { 
+    border: none !important; 
+    margin-left:-0.9px;
+}
+.THIS .slds-dropdown-trigger{
+    width:400px;
+}

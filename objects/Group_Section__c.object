@@ -1,0 +1,1417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Group_Section_Standard_Compact_Layout</fullName>
+        <fields>External_ID__c</fields>
+        <fields>Name__c</fields>
+        <fields>Status__c</fields>
+        <fields>Effective_Date__c</fields>
+        <label>Group Section Standard Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Group Section information associated to a Group Account will be stored using this object</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>ACA_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <label>ACA Indicator</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alpha_Prefix__c</fullName>
+        <description>The prefix assigned to the National Account Customer by BCBSA that is associated with this Group Section.</description>
+        <externalId>false</externalId>
+        <label>Alpha Prefix</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACZ</fullName>
+                    <default>false</default>
+                    <label>ACZ</label>
+                </value>
+                <value>
+                    <fullName>BAF</fullName>
+                    <default>false</default>
+                    <label>BAF</label>
+                </value>
+                <value>
+                    <fullName>BAU</fullName>
+                    <default>false</default>
+                    <label>BAU</label>
+                </value>
+                <value>
+                    <fullName>BNH</fullName>
+                    <default>false</default>
+                    <label>BNH</label>
+                </value>
+                <value>
+                    <fullName>BOK</fullName>
+                    <default>false</default>
+                    <label>BOK</label>
+                </value>
+                <value>
+                    <fullName>BRQ</fullName>
+                    <default>false</default>
+                    <label>BRQ</label>
+                </value>
+                <value>
+                    <fullName>CKX</fullName>
+                    <default>false</default>
+                    <label>CKX</label>
+                </value>
+                <value>
+                    <fullName>EAX</fullName>
+                    <default>false</default>
+                    <label>EAX</label>
+                </value>
+                <value>
+                    <fullName>FTC</fullName>
+                    <default>false</default>
+                    <label>FTC</label>
+                </value>
+                <value>
+                    <fullName>GNF</fullName>
+                    <default>false</default>
+                    <label>GNF</label>
+                </value>
+                <value>
+                    <fullName>HPG</fullName>
+                    <default>false</default>
+                    <label>HPG</label>
+                </value>
+                <value>
+                    <fullName>HXN</fullName>
+                    <default>false</default>
+                    <label>HXN</label>
+                </value>
+                <value>
+                    <fullName>HYC</fullName>
+                    <default>false</default>
+                    <label>HYC</label>
+                </value>
+                <value>
+                    <fullName>MYX</fullName>
+                    <default>false</default>
+                    <label>MYX</label>
+                </value>
+                <value>
+                    <fullName>OGE</fullName>
+                    <default>false</default>
+                    <label>OGE</label>
+                </value>
+                <value>
+                    <fullName>ONP</fullName>
+                    <default>false</default>
+                    <label>ONP</label>
+                </value>
+                <value>
+                    <fullName>OPC</fullName>
+                    <default>false</default>
+                    <label>OPC</label>
+                </value>
+                <value>
+                    <fullName>YUB</fullName>
+                    <default>false</default>
+                    <label>YUB</label>
+                </value>
+                <value>
+                    <fullName>YUK</fullName>
+                    <default>false</default>
+                    <label>YUK</label>
+                </value>
+                <value>
+                    <fullName>YUN</fullName>
+                    <default>false</default>
+                    <label>YUN</label>
+                </value>
+                <value>
+                    <fullName>YUP</fullName>
+                    <default>false</default>
+                    <label>YUP</label>
+                </value>
+                <value>
+                    <fullName>YUS</fullName>
+                    <default>false</default>
+                    <label>YUS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Assignment_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Assignment Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Assignment_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Assignment End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Automated_Eligibility_Process__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Automated Eligibility Process</description>
+        <externalId>false</externalId>
+        <label>Automated Eligibility Process</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Cancel_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Cancel Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Description</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Number</label>
+        <length>4</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Renewal_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Renewal Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Benefit Agreement</label>
+        <referenceTo>Benefit_Agreement__c</referenceTo>
+        <relationshipLabel>Group Sections</relationshipLabel>
+        <relationshipName>Group_Sections</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Billing__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Billing profile number for the group section from Blue Star</description>
+        <externalId>false</externalId>
+        <label>Billing</label>
+        <referenceTo>Billing__c</referenceTo>
+        <relationshipLabel>Group Sections</relationshipLabel>
+        <relationshipName>Group_Sections</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Code__c</fullName>
+        <description>Cancellation code to be sent to Accounts Receivable</description>
+        <externalId>false</externalId>
+        <label>Cancellation Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CBS - Cancel BlueSTAR Section</fullName>
+                    <default>false</default>
+                    <label>CBS - Cancel BlueSTAR Section</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Date__c</fullName>
+        <description>Cancellation Date of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Cancellation Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Explanation__c</fullName>
+        <description>Free form explanation of why Group Section is being cancelled</description>
+        <externalId>false</externalId>
+        <label>Cancellation Explanation</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <description>Reason why Group Section is being cancelled</description>
+        <externalId>false</externalId>
+        <label>Cancellation Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>401 Misc - Below Percentage</fullName>
+                    <default>false</default>
+                    <label>401 Misc - Below Percentage</label>
+                </value>
+                <value>
+                    <fullName>402 Misc - Reason/Unknown</fullName>
+                    <default>false</default>
+                    <label>402 Misc - Reason/Unknown</label>
+                </value>
+                <value>
+                    <fullName>403 Misc - Non-Payment of Dues</fullName>
+                    <default>false</default>
+                    <label>403 Misc - Non-Payment of Dues</label>
+                </value>
+                <value>
+                    <fullName>404 Misc - Grp Moved Out of State</fullName>
+                    <default>false</default>
+                    <label>404 Misc - Grp Moved Out of State</label>
+                </value>
+                <value>
+                    <fullName>405 Misc - Never Effective</fullName>
+                    <default>false</default>
+                    <label>405 Misc - Never Effective</label>
+                </value>
+                <value>
+                    <fullName>406 Misc - New Group Number</fullName>
+                    <default>false</default>
+                    <label>406 Misc - New Group Number</label>
+                </value>
+                <value>
+                    <fullName>408 Misc - Other UW Requirements</fullName>
+                    <default>false</default>
+                    <label>408 Misc - Other UW Requirements</label>
+                </value>
+                <value>
+                    <fullName>409 Misc - Acct has 0 Subs</fullName>
+                    <default>false</default>
+                    <label>409 Misc - Acct has 0 Subs</label>
+                </value>
+                <value>
+                    <fullName>410 Misc - Coverage Discontinued</fullName>
+                    <default>false</default>
+                    <label>410 Misc - Coverage Discontinued</label>
+                </value>
+                <value>
+                    <fullName>411 Misc - New Decision Maker</fullName>
+                    <default>false</default>
+                    <label>411 Misc - New Decision Maker</label>
+                </value>
+                <value>
+                    <fullName>412 Misc - Trans to Existing Acct</fullName>
+                    <default>false</default>
+                    <label>412 Misc - Trans to Existing Acct</label>
+                </value>
+                <value>
+                    <fullName>413 Misc - Broker Recommendation</fullName>
+                    <default>false</default>
+                    <label>413 Misc - Broker Recommendation</label>
+                </value>
+                <value>
+                    <fullName>414 Misc - Cons Cov w/1+ Carrier</fullName>
+                    <default>false</default>
+                    <label>414 Misc - Cons Cov w/1+ Carrier</label>
+                </value>
+                <value>
+                    <fullName>415 Moved to Other BCBS Plan</fullName>
+                    <default>false</default>
+                    <label>415 Moved to Other BCBS Plan</label>
+                </value>
+                <value>
+                    <fullName>416 Misc - Owner Chg/Merg/Acq</fullName>
+                    <default>false</default>
+                    <label>416 Misc - Owner Chg/Merg/Acq</label>
+                </value>
+                <value>
+                    <fullName>417 Misc - Parent Co Decision</fullName>
+                    <default>false</default>
+                    <label>417 Misc - Parent Co Decision</label>
+                </value>
+                <value>
+                    <fullName>418 Misc - Absorbed by ParentGrp</fullName>
+                    <default>false</default>
+                    <label>418 Misc - Absorbed by ParentGrp</label>
+                </value>
+                <value>
+                    <fullName>419 Misc - Out-of-Business</fullName>
+                    <default>false</default>
+                    <label>419 Misc - Out-of-Business</label>
+                </value>
+                <value>
+                    <fullName>427 Misc - Political</fullName>
+                    <default>false</default>
+                    <label>427 Misc - Political</label>
+                </value>
+                <value>
+                    <fullName>433 Misc - Trans Due to Ben Chg</fullName>
+                    <default>false</default>
+                    <label>433 Misc - Trans Due to Ben Chg</label>
+                </value>
+                <value>
+                    <fullName>436 Misc - Changed Brokers</fullName>
+                    <default>false</default>
+                    <label>436 Misc - Changed Brokers</label>
+                </value>
+                <value>
+                    <fullName>501 Claims - Service/Problems</fullName>
+                    <default>false</default>
+                    <label>501 Claims - Service/Problems</label>
+                </value>
+                <value>
+                    <fullName>502 Mbrship - Billing Serv/Prob</fullName>
+                    <default>false</default>
+                    <label>502 Mbrship - Billing Serv/Prob</label>
+                </value>
+                <value>
+                    <fullName>503 Service - Local Office</fullName>
+                    <default>false</default>
+                    <label>503 Service - Local Office</label>
+                </value>
+                <value>
+                    <fullName>504 Service - Customer Service</fullName>
+                    <default>false</default>
+                    <label>504 Service - Customer Service</label>
+                </value>
+                <value>
+                    <fullName>608 Network - PPO/POS Hospital</fullName>
+                    <default>false</default>
+                    <label>608 Network - PPO/POS Hospital</label>
+                </value>
+                <value>
+                    <fullName>609 Network - PPO/POS Phys</fullName>
+                    <default>false</default>
+                    <label>609 Network - PPO/POS Phys</label>
+                </value>
+                <value>
+                    <fullName>612 Network - HMO Hospital</fullName>
+                    <default>false</default>
+                    <label>612 Network - HMO Hospital</label>
+                </value>
+                <value>
+                    <fullName>613 Network - HMO Phys Network</fullName>
+                    <default>false</default>
+                    <label>613 Network - HMO Phys Network</label>
+                </value>
+                <value>
+                    <fullName>614 Prod Design - Prescription</fullName>
+                    <default>false</default>
+                    <label>614 Prod Design - Prescription</label>
+                </value>
+                <value>
+                    <fullName>701 Rates - Emp Extremely High</fullName>
+                    <default>false</default>
+                    <label>701 Rates - Emp Extremely High</label>
+                </value>
+                <value>
+                    <fullName>702 Rates - Dep Extremely High</fullName>
+                    <default>false</default>
+                    <label>702 Rates - Dep Extremely High</label>
+                </value>
+                <value>
+                    <fullName>703 Rates - All Extremely High</fullName>
+                    <default>false</default>
+                    <label>703 Rates - All Extremely High</label>
+                </value>
+                <value>
+                    <fullName>704 Rates - Agg Stop Loss HIgh</fullName>
+                    <default>false</default>
+                    <label>704 Rates - Agg Stop Loss HIgh</label>
+                </value>
+                <value>
+                    <fullName>705 Rates - Spec Stop Loss High</fullName>
+                    <default>false</default>
+                    <label>705 Rates - Spec Stop Loss High</label>
+                </value>
+                <value>
+                    <fullName>706 Rates - AdminCharge Too High</fullName>
+                    <default>false</default>
+                    <label>706 Rates - AdminCharge Too High</label>
+                </value>
+                <value>
+                    <fullName>707 Rates - General</fullName>
+                    <default>false</default>
+                    <label>707 Rates - General</label>
+                </value>
+                <value>
+                    <fullName>709 Rates - Large Rate Increase</fullName>
+                    <default>false</default>
+                    <label>709 Rates - Large Rate Increase</label>
+                </value>
+                <value>
+                    <fullName>801 Reports - NA Due to Grp Size</fullName>
+                    <default>false</default>
+                    <label>801 Reports - NA Due to Grp Size</label>
+                </value>
+                <value>
+                    <fullName>802 Reports - Spcl Rpts Not Avail</fullName>
+                    <default>false</default>
+                    <label>802 Reports - Spcl Rpts Not Avail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Status__c</fullName>
+        <description>Cancellation status of the group section</description>
+        <externalId>false</externalId>
+        <label>Cancellation Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Approval</fullName>
+                    <default>false</default>
+                    <label>Pending Approval</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Cancellation Rejected</fullName>
+                    <default>false</default>
+                    <label>Cancellation Rejected</label>
+                </value>
+                <value>
+                    <fullName>Requested Cancellation</fullName>
+                    <default>false</default>
+                    <label>Requested Cancellation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Submitted_Date__c</fullName>
+        <description>The date when the cancellation request is submitted</description>
+        <externalId>false</externalId>
+        <label>Cancellation Submitted Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Certs_Cancelling__c</fullName>
+        <description>Certs Cancelling</description>
+        <externalId>false</externalId>
+        <label>Certs Cancelling</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corporate_Entity_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Corporate Entity Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corporate_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Corporate Product Name</label>
+        <length>45</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corporate_Product_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Corporate Product Number</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Coverage_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Coverage Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>H</fullName>
+                    <default>false</default>
+                    <label>H</label>
+                </value>
+                <value>
+                    <fullName>D</fullName>
+                    <default>false</default>
+                    <label>D</label>
+                </value>
+                <value>
+                    <fullName>V</fullName>
+                    <default>false</default>
+                    <label>V</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Delinquent_Letter_Release_Date__c</fullName>
+        <description>The date that the Delinquent Letter was Released.</description>
+        <externalId>false</externalId>
+        <label>Delinquent Letter Release Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deliquent_Stage__c</fullName>
+        <description>Indicates the Current Stage of Delinquency of the Billing Profile.</description>
+        <externalId>false</externalId>
+        <label>Delinquent Stage</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>20 Day</fullName>
+                    <default>false</default>
+                    <label>20 Day</label>
+                </value>
+                <value>
+                    <fullName>30 Day</fullName>
+                    <default>false</default>
+                    <label>30 Day</label>
+                </value>
+                <value>
+                    <fullName>45 Day</fullName>
+                    <default>false</default>
+                    <label>45 Day</label>
+                </value>
+                <value>
+                    <fullName>60 Day</fullName>
+                    <default>false</default>
+                    <label>60 Day</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Department_Type__c</fullName>
+        <description>Identifies the SSD area that has been assigned to process the claims for the Group Section</description>
+        <externalId>false</externalId>
+        <label>Department Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>M</fullName>
+                    <default>false</default>
+                    <label>M</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <description>Effective Date of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique identifier of Group Section for the Group Account</description>
+        <externalId>true</externalId>
+        <label>Group Section ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Funding_Type__c</fullName>
+        <description>Funding type of the Group section</description>
+        <externalId>false</externalId>
+        <label>Funding Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>PREM</fullName>
+                    <default>false</default>
+                    <label>PREM</label>
+                </value>
+                <value>
+                    <fullName>SERV</fullName>
+                    <default>false</default>
+                    <label>SERV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GSA_SSNK__c</fullName>
+        <externalId>false</externalId>
+        <label>GSA SSNK</label>
+        <length>38</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GS_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>GS External Id</label>
+        <length>8</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Account__c</fullName>
+        <description>Group Section related to the Group Account</description>
+        <externalId>false</externalId>
+        <label>Group Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Group Sections</relationshipLabel>
+        <relationshipName>Group_Sections</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Group_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Number__c</fullName>
+        <description>Group Number of the Group Section (This number can be different compared to the Group Account Number - Starting with Y or Z observed)</description>
+        <externalId>false</externalId>
+        <label>Group Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_SSNK__c</fullName>
+        <externalId>false</externalId>
+        <label>Group SSNK</label>
+        <length>22</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Cancel_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Section Cancel Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Cancel_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Section Cancel Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Section Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Original_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Section Original Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Insurance_Type_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Insurance Type Code</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Internal_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invitro__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Code indicating whether Invitro Coverage is included.</description>
+        <externalId>false</externalId>
+        <label>Invitro</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Market_Plan_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Market Plan Number</label>
+        <length>13</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maternity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Code indicating whether Maternity Coverage is included.</description>
+        <externalId>false</externalId>
+        <label>Maternity</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Members_Cancelling__c</fullName>
+        <description>Count of the Members Canelled</description>
+        <externalId>false</externalId>
+        <label>Members Cancelling</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <description>Name of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>National_Anniv_Period_Effective_Date__c</fullName>
+        <description>BlueStar - Dental National Anniversary Period Effective Date</description>
+        <externalId>false</externalId>
+        <label>National Anniv Period Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Paid_To_Date__c</fullName>
+        <description>Indicates how far a profile has been paid and reconciled.</description>
+        <externalId>false</externalId>
+        <label>Paid To Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Policy_SSNK__c</fullName>
+        <externalId>false</externalId>
+        <label>Policy SSNK</label>
+        <length>17</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <length>6</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Cancellation_Date__c</fullName>
+        <description>Requested Cancellation Date of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Requested Cancellation Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Plan_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Plan Id</label>
+        <length>13</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Section_Number__c</fullName>
+        <description>Section Number of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Section Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Self_Billing__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Code indicating if self billing.</description>
+        <externalId>false</externalId>
+        <label>Self Billing</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Serious_Mental_Illness__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Code indicating whether SMI Indicator was updated.</description>
+        <externalId>false</externalId>
+        <label>Serious Mental Illness</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Speech__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Code indicating whether Speech Coverage is included.</description>
+        <externalId>false</externalId>
+        <label>Speech</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of the Group Section</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Active_Members__c</fullName>
+        <description>BlueStar - Total Active Member count</description>
+        <externalId>false</externalId>
+        <label>Total Active Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Active_Subscribers__c</fullName>
+        <description>Total Active Subscriber count</description>
+        <externalId>false</externalId>
+        <label>Total Active Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Cancel_Members__c</fullName>
+        <description>Total Cancel Member count</description>
+        <externalId>false</externalId>
+        <label>Total Cancel Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Cancel_Subscribers__c</fullName>
+        <description>Total Cancel Subscriber count</description>
+        <externalId>false</externalId>
+        <label>Total Cancel Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Active_Members__c</fullName>
+        <description>Total Dental Active Member count</description>
+        <externalId>false</externalId>
+        <label>Total Dental Active Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Active_Subscribers__c</fullName>
+        <description>Total Dental Active Subscriber count</description>
+        <externalId>false</externalId>
+        <label>Total Dental Active Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Cancel_Members__c</fullName>
+        <description>Total Dental Cancel Member count.</description>
+        <externalId>false</externalId>
+        <label>Total Dental Cancel Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Cancel_Subscribers__c</fullName>
+        <description>Total Dental Cancel Subscriber count</description>
+        <externalId>false</externalId>
+        <label>Total Dental Cancel Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Healthcare_Active_Members__c</fullName>
+        <description>Total Healthcare Active Member count.</description>
+        <externalId>false</externalId>
+        <label>Total Healthcare Active Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Healthcare_Active_Subscribers__c</fullName>
+        <description>Total Healthcare Active Subscriber count</description>
+        <externalId>false</externalId>
+        <label>Total Healthcare Active Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Healthcare_Cancel_Members__c</fullName>
+        <description>Total Healthcare Cancel Member Count</description>
+        <externalId>false</externalId>
+        <label>Total Healthcare Cancel Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Healthcare_Cancel_Subscribers__c</fullName>
+        <description>Total Healthcare Cancel Subscriber Count</description>
+        <externalId>false</externalId>
+        <label>Total Healthcare Cancel Subscribers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Underwriter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Underwriter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Group_Sections</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>User_Display_Ben_Agree_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>User Display Ben Agree Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Display_Section_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>User Display Section Number</label>
+        <length>4</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isInvitro__c</fullName>
+        <externalId>false</externalId>
+        <label>isInvitro</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Group Section</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>GS-{000000}</displayFormat>
+        <label>Group Section Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Group Sections</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,7 @@
+The Benefit Booklet Analyst has returned the Benefit Booklet Form for clarification. Please provide a response. 
+
+Account Name : {!GEMS_SBC_BB_Form__c.Account_Name_Text__c} 
+Form Number : {!GEMS_SBC_BB_Form__c.Form_Id__c}
+Form Details : {!GEMS_SBC_BB_Form__c.Link}
+
+Thanks

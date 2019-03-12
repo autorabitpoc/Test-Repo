@@ -1,0 +1,52 @@
+This is an Open Enrollment request notification with some details.
+
+
+Request #: {!Service_Request__c.Name} 
+Enrollment Specialist: {!Service_Request__c.Enrollment_Specialist__c}
+
+
+ACCOUNT DETAILS
+----------------------------------------------------------------------------------
+Account : {!Service_Request__c.Account__c}
+Account Executive : {!Service_Request__c.Account_Executive__c}
+Account Executive Email :  {!Service_Request__c.Account_Executive_Email__c}
+Account Executive Phone : {!Service_Request__c.Account_Executive_Phone__c}
+Alternative Contact : {!Service_Request__c.Alternative_Contact__c}
+Alternative Contact Email :  {!Service_Request__c.Alternative_Contact_Email__c}
+Alternative Contact Phone	:  {!Service_Request__c.Alternative_Contact_Phone__c}
+
+
+MEETING INFORMATION
+----------------------------------------------------------------------------------
+Implementation Type : {!Service_Request__c.Implementation_Type__c}
+Control Par (Plan) : {!Service_Request__c.Control_Par_Plan__c}
+Audience : {!Service_Request__c.Audience__c}
+Contact Person on Employer site : {!Service_Request__c.Contact_Person_on_employer_site__c}
+Additional language required : {!Service_Request__c.Language__c}
+Enrollment Contact Info : {!Service_Request__c.Enrollment_Contact_Info__c}
+Status :  {!Service_Request__c.Status__c}
+No of EE’s (employees on-site) : {!Service_Request__c.No_of_EE_s_employees_on_site__c}
+Address/Location of event : {!Service_Request__c.Site_Location_of_event__c}
+Site/Location type : {!Service_Request__c.Site_Location_type__c}
+
+Date of Meeting : {!Service_Request__c.Date_of_Meeting__c}  
+Start Time : {!Service_Request__c.Start_Time__c}  
+End Time :  {!Service_Request__c.End_Time__c}           
+Addition Time Comments : {!Service_Request__c.Additional_Time_Comments__c}
+
+BENEFIT INFORMATION
+----------------------------------------------------------------------------------          
+Products : {!Service_Request__c.Products__c}
+Carve Outs : {!Service_Request__c.Carve_Outs__c}        
+ 
+ 
+ENROLLMENT INFO                                           
+----------------------------------------------------------------------------------
+Type of Event : {!Service_Request__c.Type_of_Event__c}
+Dedicated customer service # : {!Service_Request__c.Dedicated_customer_service__c} 
+Marketing Service Rep (MSR) : {!Service_Request__c.Marketing_Service_Rep__c}
+Email (MSR) : {!Service_Request__c.Email_MSR__c}
+Phone (MSR) : {!Service_Request__c.Phone_MSR__c}	
+ 
+
+******************EOM*****************

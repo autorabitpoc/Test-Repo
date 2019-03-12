@@ -1,0 +1,196 @@
+<apex:page standardController="Account" extensions="ServiceRequestController" sidebar="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'bootstrap-3.3.4-dist/css/bootstrap.min.css')}"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/makeusabrew/bootbox/f3a04a57877cab071738de558581fbc91812dce9/bootbox.js"></script>
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" />
+    <!--  <style>
+.margin{
+margin-left:2%;
+margin-right:2%;
+}
+
+.space{
+height:5px;
+}
+
+.widthSpace{
+width:10px;
+}
+
+}
+</style> -->
+
+    <style>
+      #col1,#col2{width:49%;display:inline-block;}
+    #block_container
+    {
+        text-align:left;
+    }
+    #bloc1, #bloc2
+    {
+        display:inline;
+    }
+    </style>
+    <!-- SFDC-7107 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+            var $j = jQuery.noConflict();
+            $j(document).ready(function() {
+                setTimeout(function() {
+                    $j('select.myMultiClass').each(function(i, val) { 
+                        $j(val).width(100);
+                        $j(val).height(300);
+                    })
+                },100);
+            });
+    </script>
+
+    <Script>
+        function refreshaccountpage(){
+        var subtype = document.getElementById('frmId:pgbId:pbId:SubmissionSubType').value();
+        alert(subtype);
+        }
+    </Script>
+      <apex:pageMessages id="showmsg"></apex:pageMessages>
+    <apex:form id="frmId">
+      
+        <apex:pageBlock id="pgbId"><br/>  
+            
+            <div class="container" style="margin-Center:2%;width=100%">
+                <apex:actionRegion id="Reqcat">
+                    <apex:outputPanel >
+                        <apex:outputLabel for="RequestCategory">Request Category </apex:outputLabel> <br/>
+                        <apex:SelectList value="{!selectedValue}" multiselect="false" size="1">
+                            <apex:selectOptions value="{!recordOptions}" id="RequestCategory"></apex:selectOptions> 
+                            <apex:actionSupport event="onchange" rerender="pgbId,cancelOptPanel,SubmissionType,SubmissionSubType,CaseComments,frmId,pbId" />
+                        </apex:SelectList>
+                    </apex:outputPanel>
+                </apex:actionRegion> 
+                <br/><br/>
+                <apex:outputPanel id="cancelOptPanel" rendered="{!IF(selectedValue = 'Cancellation',true,false)}" >
+                  <apex:outputLabel for="cancellOptions">Cancellation Options</apex:outputLabel>
+                  <apex:selectlist id="cancellOptions" value="{!selectedCancelOption}" size="1" required="{!IF(selectedValue = 'Cancellation',true,false)}">
+                   <apex:selectOptions value="{!CancellationOptions}"></apex:selectOptions>
+                   <apex:actionSupport event="onchange" rerender="btn1,btn2,pgbId,cancelOptPanel,SubmissionType,SubmissionSubType,CaseComments,frmId,pbId" /> 
+                  </apex:selectlist>
+                  
+                </apex:outputPanel>
+                
+                <!-- Mark Start Story 5750, 2751 -->
+                <apex:outputPanel id="LGNACaseOptPanel" rendered="{!IF(selectedValue = 'LGNA Case',true,false)}" >
+                    <apex:outputLabel for="LGNACaseOptions">LGNA Case Options</apex:outputLabel>&nbsp;&nbsp;
+                    <apex:selectlist id="LGNACaseOptions" value="{!selectedLGNACaseOption}" size="1" required="{!IF(selectedValue = 'LGNA Case',true,false)}">
+                        <apex:selectOptions value="{!LGNACaseOptions}"></apex:selectOptions>
+                    </apex:selectlist>
+                </apex:outputPanel>
+                <!-- End Story 5750, 2751 -->  
+                <!-- Start Story 6109 -->    
+            <apex:outputPanel id="LGNAQs" rendered="{!IF(selectedValue = 'Contract Admin',true,false)}" > 
+               <apex:selectList id="selected_list1" value="{!Question1}" required="false" size="1">
+                                    <apex:outputPanel > 
+                                        For this case, do any of the below apply?
+                                        <br/> 
+                                        A.) Custom Pharmacy pricing
+                                        <br/>
+                                        B.) Previously Negotiated Contractual Language
+                                        <br/>
+                                        C.) Anticipated Negotiation of Contractual Language
+                                        <br/>
+                                        D.) Group has requested changes to Standard Contracts                                        
+                                        <br/><br/>
+                                    </apex:outputPanel>
+                                        <apex:selectOption itemvalue="--None--" itemLabel="--None--"/>
+                                        <apex:selectOption itemvalue="Yes" itemLabel="Yes"/>
+                                        <apex:selectOption itemvalue="No" itemLabel="No"/>
+                                        <apex:actionSupport event="onchange" reRender="ContractType" action="{!find}"/>
+                                        </apex:selectList>  
+                                        <br/><br/>
+                    
+                                        <apex:panelGroup >        
+                                        <apex:outputPanel id="ContractType">  
+                                        <font size="3" color="black"> <b> Contract Type:  </b> </font>     
+                                        <font size="3" color="blue"> <b> {!tempContractType}  </b> </font>            
+                                        </apex:outputPanel>
+                                        </apex:panelGroup>
+                                
+             </apex:outputPanel>
+             <!-- End Story 6109 --> 
+                               
+                <apex:outputPanel id="pbId" rendered="{!IF(selectedValue = 'Account Maintenance',true,false)}">
+                    <Label for="SubmissionType">Maintenance Type</Label>&nbsp;&nbsp;
+                    <apex:inputField id="SubmissionType" value="{!AMCase.GEMS_Submission_Type__c}" required="{!IF(selectedValue = 'Account Maintenance',true,false)}">
+                        <apex:actionSupport event="onchange" rerender="pgbId,frmId,showmsg,subType" />
+                    </apex:inputField>
+                    <br/> <br/>
+                    <apex:outputPanel id="subType">
+                    <Label for="SubmissionSubType">Maintenance Sub Type</Label>&nbsp;&nbsp;
+                    <apex:inputField id="SubmissionSubType" value="{!AMCase.GEMS_Submission_Sub_Type__c}" required="{!IF(selectedValue = 'Account Maintenance',true,false)}">
+                        <apex:actionSupport event="onchange"/>
+                    </apex:inputField>
+                    </apex:outputPanel>
+                    <br/> <br/>
+                    
+                    <Label for="CaseComments">Case Comments</Label> <br/>
+                    <apex:inputTextarea id="CaseComments"  title="Case Comments" value="{!CaseCommentdesc}" cols="80" rows="5"/>
+                </apex:outputPanel>
+                
+                <!-- SFDC-7107 -->
+                <apex:outputPanel id="reqSubCategory" rendered="{!IF(selectedValue = 'Contract Admin Request',true,false)}">
+                  <div id="col1">
+                    <Label for="Request Sub-Category">Request Sub-Category</Label>&nbsp;&nbsp;
+                    <apex:selectList value="{!selectedSubCat}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!RequestSubCategoryChoices[selectedValue]}" id="RequestSubCategory"></apex:selectOptions>
+                        <!--  apex:actionSupport event="onchange" rerender="btn1,btn2,btn3,pgbId,frmId" / -->
+                    </apex:selectList>
+                    <br/> <br/>
+                  </div>  
+                </apex:outputPanel>
+
+                 <br/> <br/> <br/>
+                <apex:pageBlockTable value="{!tableRows}" var="RTdesc" rendered="{!IF(((selectedValue = 'Cancellation') || (selectedValue = 'Transmit EIN to BlueStar')),false,true)}">                   
+                    <apex:column headerValue="Name" value="{!RTdesc.NameColumn}" title="Name"/> 
+                    <apex:column headerValue="Description" value="{!RTdesc.DescriptionColumn}" title="Description"/>
+                    <apex:column headerValue="Open Requests" title="Open Requests" style="text-align:center">  
+                        <apex:outputLink title="Details" value="/{!RTdesc.openRequestsReportObj.Id}?pv0={!azId}" disabled="{!IF((RTdesc.openReqs = '--' || RTdesc.openReqs = '0'), true, false)}" target="_blank">{!RTdesc.openReqs}</apex:outputLink>
+                    </apex:column>                     
+                    <apex:column headerValue="Completed/Closed YTD" title="Closed Requests" style="text-align:center">                   
+                        <apex:outputLink title="Details" value="/{!RTdesc.closedRequestsReportObj.Id}?pv0={!azId}" disabled="{!IF((RTdesc.closedreqs = '--' || RTdesc.closedreqs = '0'), true, false)}" target="_blank">{!RTdesc.closedreqs}  </apex:outputLink>
+                    </apex:column>                                             
+                </apex:pageBlockTable>
+                <br/> <br/> <br/>
+                
+              
+                <div align="center">    
+                    <apex:commandlink id="btn1" styleClass="btn" value="Continue" action="{!AccountCancellation}" target="_blank" 
+                                      rendered="{!IF((selectedValue = 'Cancellation' && selectedCancelOption = 'Account'),true,false)}">
+                        <apex:param name="selectedrctyp" value="{!selectedValue}"/>
+                    </apex:commandlink>
+
+                    <!-- 8691 Start - Show continue button for EIN transmission cand call sendEIN method when user chooses Send EIN to BlueStar option -->
+                    <apex:commandlink id="btn4" styleClass="btn" value="Continue" action="{!sendEIN}" target="_blank" 
+                                      rendered="{!IF((selectedValue = 'Transmit EIN to BlueStar'),true,false)}">
+                        <apex:param name="selectedrctyp" value="{!selectedValue}"/>
+                    </apex:commandlink>
+					<!-- 8691 End -->                    
+
+					<!--8691 - Following continue button is updated to not show when user chooses 'Send EIN to BlueStar option'. -->                    
+                    <apex:commandlink id="btn2" styleClass="btn" value="Continue" action="{!createNewCase}" target="_blank" 
+                                      rendered="{!IF(((selectedValue  =  'Cancellation' && selectedCancelOption = 'Group Section, Billing Profile, & Category')
+                                                    || (selectedValue != 'Cancellation' && selectedValue != 'Contract Admin Request' && selectedValue != '--None--'
+                                                && selectedValue != 'Transmit EIN to BlueStar')),true,false)}">                                    
+                        <apex:param name="selectedrctyp" value="{!selectedValue}"/>
+                    </apex:commandlink> 
+                    <!-- SFDC-7107 -->
+                    <apex:commandLink id="btn3" value="Continue" action="{!createRequest}" styleClass="btn" rendered="{!IF(selectedValue = 'Contract Admin Request',true,false)}" target="_blank">
+                        <apex:param name="selectedrctyp" value="{!selectedValue}"/>
+                    </apex:commandLink> 
+                   
+                </div>
+            </div>
+        </apex:pageBlock>
+       
+    </apex:form>
+</apex:page>

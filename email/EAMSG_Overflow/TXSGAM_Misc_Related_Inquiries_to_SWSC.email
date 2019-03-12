@@ -1,0 +1,11 @@
+Hello,
+
+Below is a request for [Group Leader Change/Email Address Change/Group Leader Change] effective [Enter Date]. The following information can be used to process this request:
+
+Group Name:   {!Case.Account}
+BlueSTAR Account Number:  {!Case.Group_Account_Number__c}
+Current Information to be replaced: [xxxxx]
+Replacement information: [xxxxx]
+
+Thank you,
+BCBS Account Management

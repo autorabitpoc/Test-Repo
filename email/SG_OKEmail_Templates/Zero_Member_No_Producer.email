@@ -1,0 +1,7 @@
+Dear Group Administrator,
+
+BCBSOK shows your group {!Case.Group_Account_Number__c} - {!Case.Account} as offering a benefit plan that has no enrollment.  We are unable to keep zero member plans open, and will be cancelling this plan.
+
+Should you wish to add a plan for your employees, please ask your broker to submit a new group rates request directly to us.
+
+Thank you for allowing us to serve you.

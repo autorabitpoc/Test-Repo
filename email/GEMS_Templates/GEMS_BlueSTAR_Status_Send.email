@@ -1,0 +1,8 @@
+Account Structure details has been  sent to BlueSTAR successfully.
+BlueSTAR will notify the status of the shell creation once the request processed
+
+Account Name : {!Case.Account_Name__c}
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

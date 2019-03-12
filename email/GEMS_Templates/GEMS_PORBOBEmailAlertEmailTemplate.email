@@ -1,0 +1,11 @@
+A POR or Partial BOB change has been requested for account {!Case.Account}_{!Case.Account_Number__c}. 
+
+Please access applicable documents using the below Sharepoint link and search using the Case Number.
+
+Account Name : {!Case.Account} 
+
+Case Number : {!Case.GEMS_Account_Submission_Info__c} 
+
+Document Location:  https://myfyi.sharepoint.com/teams/phi_GrpSFDocs/default.aspx
+
+Thank You.

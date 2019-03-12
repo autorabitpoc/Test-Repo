@@ -1,0 +1,10 @@
+<!--Kishore created for US#SFDC-9297 to override Standard Edit button-->
+<aura:component controller="LGNA_NewOpportunityProducts" implements="force:appHostable,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride,force:hasSObjectName,force:hasRecordId,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="optyFlg" type="Boolean" default="false"/>
+    <aura:attribute name="OpyId" type="string" default=""/>
+    <aura:if isTrue="{!v.optyFlg}">
+		<c:LGNA_OpportunityProducts recordId="{!v.OpyId}"/>        
+    </aura:if>
+</aura:component>

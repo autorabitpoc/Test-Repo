@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Field_Trip__Object_Analysis__c$Field_Trip__Last_Analyzed__c</field>
+    </columns>
+    <columns>
+        <field>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Field_Trip__Populated_On_Percent__c</field>
+    </columns>
+    <columns>
+        <field>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Field_Trip__Populated_On__c</field>
+    </columns>
+    <columns>
+        <field>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Field_Trip__isRequired__c</field>
+    </columns>
+    <columns>
+        <field>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Field_Trip__Type__c</field>
+    </columns>
+    <columns>
+        <field>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Name</field>
+    </columns>
+    <description>Report on Available Field Trip Analysis</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Field_Trip__Object_Analysis__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Field_Trip__Object_Analysis__c$Field_Trip__Object_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Field_Trip__Object_Analysis__c$Field_Trip__Records__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Field Trip Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Field_Trip__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Field_Trip__Object_Analysis__c.Field_Trip__Field_Analyses__r$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Field_Trip__Object_Analysis__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,10 @@
+*** Idea Notification ***
+
+The following Idea has been created:
+
+Idea Name: {!Ideas__c.Name} 
+Submitter: {!Ideas__c.CreatedBy}
+Summary: {!Ideas__c.Summary__c}
+Description: {!Ideas__c.Description__c}
+
+Follow this link to access the Idea: {!Ideas__c.Link}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Contains Renewal Initiated, Renewal Delivered, Renewal in Negotiation, Finalist Named, Won Stages of Renewal Opportunity</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Stage_to_Check__c</fullName>
+        <externalId>false</externalId>
+        <label>Stage to Check</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Renewal Opportunity Stages</label>
+    <visibility>Public</visibility>
+</CustomObject>

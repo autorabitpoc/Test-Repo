@@ -1,0 +1,7 @@
+<!-- Kishore Added code for 9526 US Component will call CreateNewSaleChange component!-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="RecordTypeId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:LGNA_CreateNewOffCycleChange recordId="{!v.recordId}" recordTypeid="01233000000QMPCAA4"/>
+</aura:component>

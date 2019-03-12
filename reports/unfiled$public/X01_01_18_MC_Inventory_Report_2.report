@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_33365447</developerName>
+        <masterLabel>Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STATUS</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Shared Accum Approval Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Shared Accum Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FEAK Approval Receivd</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FEAK Approval Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DTU Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Return</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Progress</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>No GCPS Action Required</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Coding Complete</sourceValue>
+            </sourceValues>
+            <value>In Progress</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Approved</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Completed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Medical Benefits Production Ready</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Closed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Routed In Error</sourceValue>
+            </sourceValues>
+            <value>Completed</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case.GEMS_Flag__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>TYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Medical Benefit Coding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Benefit_Agreement__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>01.01.18 MC Inventory Report (2)</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>STATUS</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

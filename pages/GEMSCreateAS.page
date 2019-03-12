@@ -1,0 +1,315 @@
+<!--
+5/11/2018       Luke Chen           SFDC-8446 GEMS: Acct Structure - Select group number for overall BAs (but still be editable)
+-->
+<apex:page standardController="GEMS_Benefit_Agreement__c" extensions="GEMSAccountStructureController" recordSetVar="v" sidebar="False" action="{!init}">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <apex:stylesheet value="{!URLFOR($Resource.FontAwesome, '/font-awesome-4.6.3/css/font-awesome.css')}" />
+    
+    
+    <script type='text/javascript'>
+    var count = 0;
+    
+    function togg(ba) {
+        
+        if (count % 2 == 0) {
+            $("#butt" + ba).removeClass("fa fa-minus-circle");
+            $("#butt" + ba).addClass("fa fa-plus-circle");
+            
+            count = count + 1;
+        } else {
+            $("#butt" + ba).removeClass("fa fa-plus-circle");
+            $("#butt" + ba).addClass("fa fa-minus-circle");
+            
+            count = count + 1;
+        }
+    }
+    
+    $(document).ready(function () {
+        $('[data-toggle="toggle"]').change(function () {
+            $(this).parents().next('.hide').toggle();
+            
+        });
+    });
+    
+    function inputLimiter(e, allow) {
+        var AllowableCharacters = '';
+        
+        if (allow == 'Letters') {
+            AllowableCharacters = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        }
+        if (allow == 'Numbers') {
+            AllowableCharacters = '1234567890';
+        }
+        if (allow == 'NameCharacters') {
+            AllowableCharacters = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';
+        }
+        if (allow == 'NameCharactersAndNumbers') {
+            AllowableCharacters = '1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';
+        }
+        
+        var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+        if (k != 13 && k != 8 && k != 0) {
+            if ((e.ctrlKey == false) && (e.altKey == false)) {
+                return (AllowableCharacters.indexOf(String.fromCharCode(k)) != -1);
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    </script>
+    
+    
+    <style>
+        .icon-circle-arrow-up::before {
+        content: "+";
+        }
+        .icon-circle-arrow-down::before {
+        content: "-";
+        }
+        tr.dataRow {
+        background-color: white;
+        }
+        tr.dataRow:hover {
+        background-color: #e3f3ff;
+        }
+        ;
+        table {
+        border-collapse: collapse;
+        }
+        .label tr td label {
+        display: block;
+        }
+        [data-toggle="toggle"] {
+        display: none;
+        }
+        
+    </style>
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/> -->
+    
+    
+    <apex:form >
+        <apex:pageMessages id="pgMsgId" />
+        <apex:pageBlock id="thePageBlock" title="Account Structure Case">
+            <apex:pageBlockSection >
+                <apex:outputField value="{!accStr.asCase.Account.Name}" /> 
+                <apex:outputField value="{!accStr.asCase.Account.External_ID__c}" />
+                <apex:outputField value="{!accStr.asCase.GEMS_Case_Effective_Date__c}" />
+                <apex:outputField value="{!accStr.asCase.HCSC_Division__c}" />
+                <apex:outputField value="{!accStr.asCase.GEMS_Submission_Type__c}" />
+                <apex:outputField value="{!accStr.asCase.GEMS_Submission_Sub_Type__c}" />
+                <apex:outputField value="{!accStr.asCase.Market_Segment__c}" />
+                <apex:outputField value="{!accStr.asCase.GEMS_Line_of_Business__c}" />
+                <apex:outputField value="{!accStr.asCase.Status}" />
+                <apex:outputField value="{!accStr.asCase.GEMS_Account_Submission_Info__c}" />
+                <!-- <apex:outputField value="{!accStr.asCase.id}" /> -->
+                <!--  <apex:outputField value="{!accStr.asCase.id}" /> -->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageblock id="acctStrPageBlock" title="Account Structure">
+            <apex:repeat value="{!accStr.benefitAgreements}" var="pbRecord">
+                <table style="width:100%">
+                    
+                    <!--<apex:outputText value="{!pbRecord.ba.Product__r.Name} " label="BA Product"/>
+<apex:outputText value="{!pbRecord.ba.BA_Description__c} "/>                 
+<apex:outputText value="{!pbRecord.ba.BA_Fund_Type__c} "/>-->
+                    <tbody>
+                        <tbody class="labels">
+                            <tr>
+                                <!-- <td colspan="24"  id="butt" class="icon-circle-arrow-down" > -->
+                                <td colspan="24">
+                                    <!--
+<apex:image url="{!$Resource.Sampleicon}" width="10" height="10"/>
+
+
+<apex:image url="{!$Resource.Sampleicon2}" width="10" height="10"/> -->
+                                    
+                                    <label id="butt{!pbRecord.ba.Name}" class="fa fa-minus-circle"  style="font-weight: bold;width:80%;font-size: 120%" onclick="togg({!pbRecord.ba.Name});" for="{!pbRecord.ba.Name}">
+                                        &nbsp;&nbsp;&nbsp; BA# : {!pbRecord.ba.Name} &nbsp;&nbsp;&nbsp; Product : {!pbRecord.ba.Product__r.Name} &nbsp;&nbsp;&nbsp; Desc : {!pbRecord.ba.BA_Description__c} &nbsp;&nbsp;&nbsp; Fund Type : {!pbRecord.ba.BA_Fund_Type__c} 
+                                        <!-- SFDC-8446 start -->
+                                        &nbsp;&nbsp;&nbsp; Group# &nbsp;
+                                            <apex:selectList id="bagrpnoSelect" value="{!pbRecord.groupnumber}" size="1" required="true">
+                                                <apex:selectOptions value="{!accStr.GroupNumbers}"></apex:selectOptions>
+                                            </apex:selectList>
+                                        <!-- SFDC-8446 end -->
+                                    </label>
+                                    <input type="checkbox" name="ToggleChech" id="{!pbRecord.ba.Name}" data-toggle="toggle" />
+                                </td>
+                            </tr>
+                    </tbody>
+                    <tbody class="hide" style="border-left-width:100px" >
+                        <tr class="headerRow">
+                            <th class="headerRow" width="2%">
+                            </th>
+                            
+                            <th class="headerRow" width="5%">Category#
+                            </th>
+                            <th class="headerRow" width="10%">Description
+                            </th>
+                            <th class="headerRow" width="2%">B
+                            </th>
+                            <th width="2%" class="headerRow">R
+                            </th>
+                            <th width="2%" class="headerRow">P
+                            </th>
+                            <th width="2%" class="headerRow">M
+                            </th>
+                            <th width="5%" class="headerRow">Group#
+                            </th>
+                            <th width="5%" class="headerRow">Section#
+                            </th>
+                            <th width="15%" class="headerRow">Section Description
+                            </th>
+                            <!--  Commented Vijay Needed to Confirm with JJ 
+<apex:column headerValue="Section Description" width="60px">
+<apex:inputField value="{!categoryVal.groupSection.Section_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" /> 
+</apex:column>                        
+-->
+                            
+                            <th width="7%" class="headerRow">Effective Date
+                            </th>
+                            <!--<th width="7%" class="headerRow">Cancel Date
+</th>-->
+                            <th width="10%" class="headerRow">Billing Profile
+                            </th>
+                            <th width="7%" class="headerRow">Billing Association
+                            </th>
+                            <th width="8%" class="headerRow" style="display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};" >Alpha Prefix
+                            </th>
+                            <th width="8%" class="headerRow" style="display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};" >SPI Codes
+                            </th>
+                            <th width="10%" class="headerRow" style="display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};">Par Plan Codes
+                            </th>
+                            
+                        </tr>
+                        <apex:repeat id="AssociationTable1" value="{!pbRecord.categories}" var="categoryVal">
+                            
+                            
+                            <tr class="headerRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" id="roww">
+                                <td  width="2%" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                </td>
+                                
+                                <td class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}"  width="5%">                                        
+                                    {!categoryVal.cat.name}
+                                </td>
+                                <td width="10%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >                                        
+                                    {!categoryVal.cat.Category_Description__c}
+                                </td>
+                                <td width="2%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:outputField value="{!categoryVal.cat.Usage_Billing__c}" />                                        
+                                </td>
+                                <td width="2%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:outputField value="{!categoryVal.cat.Usage_Reporting__c}" />
+                                </td>
+                                <td width="2%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:outputField value="{!categoryVal.cat.Usage_Product__c}" />
+                                </td>
+                                <td width="2%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:outputField value="{!categoryVal.cat.Usage_Mailing__c}" />
+                                </td>
+                                
+                                
+                                <td width="5%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:actionRegion >
+                                        <apex:selectList id="countries" value="{!categoryVal.GS.groupnumber}" size="1" disabled="{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true || (categoryVal.bacat.IsNew__c == true && (categoryVal.groupsection.IsNew__c || ISNULL(categoryVal.groupsection)))),'false', 'true')}" required="true">
+                                            <apex:actionSupport event="onchange" rerender="AssociationTable1" immediate="true" />
+                                            <apex:selectOptions value="{!accStr.GroupNumbers}"></apex:selectOptions>
+                                        </apex:selectList>
+                                    </apex:actionRegion>
+                                </td>
+                                <!-- SFDC-8445 Display defaulted Section number in bold blue -->
+                                <td width="5%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <apex:inputText maxlength="4" value="{!categoryVal.GS.sectionNumber}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="width:35px; color:{!IF((categoryVal.GS.groupnumber == NULL),'blue', 'black')}; font-weight:{!IF((categoryVal.GS.groupnumber == NULL), 'bold', 'normal')}; display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true || (categoryVal.bacat.IsNew__c == true && (categoryVal.groupsection.IsNew__c || ISNULL(categoryVal.groupsection)))),'inline', 'none')};"/>
+                                    <apex:outputText value="{!categoryVal.GS.sectionNumber}" style="width:10px;display:{!IF((pbRecord.ba.IsNew__c == true || categoryVal.cat.IsNew__c == true || (categoryVal.bacat.IsNew__c == true && (categoryVal.groupsection.IsNew__c || ISNULL(categoryVal.groupsection)))),'none', 'inline')};" />                                                                                
+                                </td>
+                                <!-- <td width="2%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}">
+<apex:inputCheckbox value="{!categoryVal.groupSection.IsNew__c}" disabled="{!IF(categoryVal.groupSection.IsNew__c == true,'false','true')}"/>
+</td> -->
+                                
+                                <!--   Commented Vijay Needed to Confirm with JJ -->
+                                <!--<td  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" width="15%">
+<apex:inputText value="{!categoryVal.GS.sectionDesc}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="width:100%;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'inline', 'none')};" /> 
+<apex:outputText value="{!categoryVal.GS.sectionDesc}" style="width:20%;display:{!IF((pbRecord.ba.IsNew__c == true || categoryVal.cat.IsNew__c == true),'none', 'inline')};" />
+
+</td>
+-->
+                                <!-- SFDC-3641: Enabling Group Section description when Account structure is retrieved during renewal or offcycle -->
+                                
+                                <td  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" width="15%">
+                                    <apex:inputText value="{!categoryVal.GS.sectionDesc}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="width:100%;" /> 
+                                </td>
+                                
+                                
+                                <td width="7%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <!--   <apex:inputField value="{!categoryVal.groupSection.Section_Eff_Date__c}"  style="width: 60px; display:{!IF((c.categoryVal.IsNew__c == false ),'inline', 'none')};"/> -->
+                                    <div align="center" >
+                                        <apex:outputText value="{0,date,MM/dd/yyyy}" style="width: 40px;">
+                                            <apex:Param value="{!categoryVal.GS.effDate}" />
+                                        </apex:outputText>
+                                    </div>
+                                </td>
+                                
+                                <!--<td width="7%" class="dataRow" style="background-color:white">
+<apex:outputText value="{0,date,MM/dd/yy}" style="width: 40px">
+<apex:Param value="{!categoryVal.groupSection.Section_Can_Date__c}" />
+</apex:outputText>
+</td>-->
+                                <!-- <td>
+<apex:outputText value="{!categoryVal.bpBAAssign.Case__c}" style="display:{!IF(((pbRecord.ba.IsNew__c == true || categoryVal.cat.IsNew__c == true) && pbRecord.ba.BA_Fund_Type__c == 'PREM' && categoryVal.cat.Usage_Billing__c == true),'none', 'inline')};" />                                       
+</td> -->
+                                <td width="10%" class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')}" >
+                                    <div style="display:none">
+                                        <apex:inputField value="{!categoryVal.bpBAAssign.Case__c}" required="false"/> 
+                                    </div>
+                                    
+                                    <apex:inputField value="{!categoryVal.bpBAAssign.Billing_Profile__c}" style="display:{!IF(((pbRecord.ba.IsNew__c == true || categoryVal.cat.IsNew__c == true || (categoryVal.bacat.IsNew__c == true && (categoryVal.groupsection.IsNew__c || ISNULL(categoryVal.groupsection)))) && pbRecord.ba.BA_Fund_Type__c == 'PREM' && categoryVal.cat.Usage_Billing__c == true),'inline', 'none')};" 
+                                                     required="false"  />                                        
+                                    <apex:outputText value="{!categoryVal.bpBAAssign.Billing_Profile__r.Name}" style="display:{!IF(((pbRecord.ba.IsNew__c == true || categoryVal.cat.IsNew__c == true || (categoryVal.bacat.IsNew__c == true && (categoryVal.groupsection.IsNew__c || ISNULL(categoryVal.groupsection)))) && pbRecord.ba.BA_Fund_Type__c == 'PREM' && categoryVal.cat.Usage_Billing__c == true),'none', 'inline')};" />                                       
+                                </td>
+     <!-- SFDC6942 -->          <td width="7%"  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')};">
+                                    <apex:inputText value="{!categoryVal.GS.billingAssoc}" style="display:{!IF((pbRecord.ba.BA_Fund_Type__c != 'PREM' && pbRecord.ba.BA_Fund_Type__c != null),'inline', 'none')};"  /> 
+                                </td>                                
+                                <td width="8%"  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')};display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};">
+                                    <apex:inputText value="{!categoryVal.GS.alphaPrefix}" style="width:50px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'inline', 'none')};"  /> 
+                                    <apex:outputText value="{!categoryVal.GS.alphaPrefix}" style="width:50px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'none', 'inline')};" /> 
+                                </td>
+                                
+                                <td width="8%"  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')};display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};">
+                                    <apex:inputText value="{!categoryVal.GS.spiCodes}" style="width:100px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'inline', 'none')};" />
+                                    <apex:outputText value="{!categoryVal.GS.spiCodes}" style="width:100px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'none', 'inline')}" />
+                                </td>
+                                
+                                <td width="10%"  class="dataRow" style="background-color:{!IF(categoryVal.isDuplicate == false,'white','red')};display:{!IF((accStr.asCase.HCSC_Division__c == 'IL' ),'true', 'none')};">
+                                    <apex:inputText value="{!categoryVal.GS.parPlanCodes}" style="width:100px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'inline', 'none')};" />
+                                    <apex:outputText value="{!categoryVal.GS.parPlanCodes}" style="width:100px;display:{!IF((categoryVal.cat.IsNew__c == true || pbRecord.ba.IsNew__c == true),'none', 'inline')};" />
+                                </td>
+                                
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </tbody>
+            </table>
+        </apex:repeat>
+        
+        
+        <apex:outputPanel id="ErrorMessagePanel">
+            <apex:pageMessages id="errorMessage" />
+        </apex:outputPanel>
+        
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Go To Account Structure Operation" style="margin:5px" action="{!GoBackToAccountStructureOperationCase}" rendered="{!IF(accStr.asCase.GEMS_Submission_Type__c == 'New Account' || accStr.asCase.GEMS_Submission_Type__c == 'Renewal' || accStr.asCase.GEMS_Submission_Type__c == 'Off Cycle',true,false)}"/>
+            <apex:commandButton value="Previous" action="{!getPrevious}" disabled="{!disablePrev}" style="Width:100px;margin:5px" immediate="true"/>
+            <apex:commandButton value="Save Draft" action="{!saveDraftAccountStructure}" style="Width:100px;margin:5px"/> 
+            <apex:commandButton value="Save Final" action="{!saveAccountStructure}" style="Width:100px;margin:5px"/>     
+            <apex:commandButton value="Cancel" action="{!gotoCase}" style="Width:100px;margin:5px" immediate="true"/> 
+            <apex:commandButton value="Populate Group#" action="{!populateGroupNo}" style="Width:100px;margin:5px"/>   <!-- SFDC-8446  -->
+            <apex:commandButton value="Next" action="{!getNext}" disabled="{!disableNext}" style="Width:100px;margin:5px" immediate="true"/> 
+        </apex:pageBlockButtons>
+        
+    </apex:pageblock>
+</apex:form>
+</apex:page>

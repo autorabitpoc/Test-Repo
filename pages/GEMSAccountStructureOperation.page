@@ -1,0 +1,238 @@
+<!--
+******************************************************************************************************************************
+// Name             : GEMSAccountStructureOperation.vfp
+// Description      : Visual force page for add/remove/move existing BA, existing CAT, existing GS
+// ********************************************Version Updates******************************************************************
+// Date             Developer           Description
+// -----------------------------------------------------------------------------------------------------------------------------
+// 4/19/2018        Gokul               SFDC-8523 GEMS: BlueSTAR - Add existing Category to an existing BA
+// 4/19/2018        Phani               SFDC-4903 GEMS: BlueSTAR - Un-assigning & re-assigning (moving) Group Sections
+// ***************************************************************************************************************************** 
+-->
+
+<apex:page controller="GEMS_AccountStructureOperationController" sidebar="false" tabStyle="Case" cache="true">
+    <apex:form id="oper_form">
+        <apex:pageBlock id="op_blk">
+            <apex:PageBlockButtons location="top">
+                <apex:commandButton value="Go Back To Account Structure Case" action="{!GoBackToAccountStructureCase}" />
+            </apex:PageBlockButtons>
+            <apex:outputPanel id="err_pan">
+                <apex:pageMessages id="err_Msg"/>
+            </apex:outputPanel>
+            <apex:actionFunction name="searchBA" action="{!SearchBA}" reRender="add_panel,rem_panel,err_pan,add_but_pan" id="s_ba"/>
+            <apex:actionFunction name="searchCAT" action="{!SearchCAT}" reRender="add_panel,rem_panel,err_pan,add_but_pan" id="s_cat"/>        
+            <apex:actionFunction name="searchTargetBA" action="{!SearchTargetBA}" reRender="movepanel,ba_panel,err_pan,add_but_pan,gs_panel" id="s_tba"/>
+            <apex:actionFunction name="searchGS" action="{!SearchGS}" reRender="movepanel,err_pan,add_but_pan" id="s_gs"/>        
+            
+            <!------------------Select Operation---------------------->
+            <apex:pageBlockSection Title="Select Operation" collapsible="false" showHeader="true">
+                <apex:pageBlockSectionItem dataTitle="Select Operation">
+                    <apex:selectList multiselect="false" size="1" value="{!selectOperation}">
+                        <apex:selectOptions value="{!operations}"/>
+                        <apex:actionSupport action="{!showSelectedOperation}" event="onchange" reRender="operation_pan,wrap_panel,err_pan"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!------------------Select Operation---------------------->
+            <apex:outputPanel id="operation_pan">        
+                <!------------------Select Add---------------------->
+                <apex:outputPanel id="add_panel" rendered="{!IF(selectOperation == 'Add',true,false)}">
+                    <apex:pageBlockSection title="Add Existing Category to Existing BA" collapsible="false" columns="1">
+                        <apex:pageBlockSectionItem dataTitle="Enter Existing Benefit Agreement#">
+                            <apex:outputLabel value="Enter Existing BA#" style="float:left;"/>
+                            <apex:inputText value="{!enterBA}" html-placeholder="Enter existing BA#" style="float:left;" id="add_ba">
+                                <img src="/s.gif" onclick="searchBA();" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>                 
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(BAList)) && IF(BAList.size>0,true,false)}">
+                            <!---Add BA pageBlockTable--->
+                            <apex:pageBlockTable value="{!BAList}" var="ba">
+                                <apex:column headerValue="BA No." value="{!ba.Name}"/>
+                                <apex:column headerValue="Product Type" value="{!ba.Product_Type__c}"/>
+                                <apex:column headerValue="BA Product" value="{!ba.Product_Name__c}"/>
+                                <apex:column headerValue="BA Description" value="{!ba.BA_Description__c}"/>
+                                <apex:column headerValue="Eff Date" value="{!ba.Effective_Date__c}"/>
+                                <apex:column headerValue="BA Fund Type" value="{!ba.BA_Fund_Type__c}"/>
+                                <apex:column headerValue="Schedule" value="{!ba.Schedule__c}"/>
+                                <apex:column headerValue="Billing Association" value="{!ba.Billing_Assoc__c}"/>
+                            </apex:pageBlockTable>
+                            <!---Add BA pageBlockTable---->
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataTitle="Enter CAT">
+                            <apex:outputLabel value="Enter Existing Category#" style="float:left;"/>
+                            <apex:inputtext value="{!enterCAT}" html-placeholder="Enter existing Category#" style="float:left;" id="add_cat">
+                                <img src="/s.gif" onclick="searchCAT();" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>                                        
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(CATList)) && IF(CATList.size>0,true,false)}">
+                            <!---Add CAT pageBlockTable--->
+                            <apex:pageBlockTable value="{!CATList}" var="ca">
+                                <apex:column headerValue="Category#" value="{!ca.Name}"/>
+                                <apex:column headerValue="Description" value="{!ca.Category_Description__c}"/>
+                                <apex:column headerValue="Effective Date" value="{!ca.Effective_Date__c}"/>
+                                <apex:column headerValue="B" value="{!ca.Usage_Billing__c}"/>
+                                <apex:column headerValue="R" value="{!ca.Usage_Reporting__c}"/>
+                                <apex:column headerValue="P" value="{!ca.Usage_Product__c}"/>
+                                <apex:column headerValue="M" value="{!ca.Usage_Mailing__c}"/>
+                                <apex:column headerValue="Cobra Code" value="{!ca.Category_Cobra_Code__c}"/>
+                            </apex:pageBlockTable>
+                            <!---Add CAT pageBlockTable---->
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!---Add Button Cancel--------->
+                    <apex:outputPanel id="add_but_pan">
+                        <apex:commandButton value="Add Row" action="{!AddRow}" reRender="wrap_panel,err_pan" rendered="{!NOT(ISNULL(BAList)) && NOT(ISNULL(CATList)) && IF(BAList.size>0 && CATList.size>0,true,false)}" style="display: inline-block;"/>
+                        <apex:commandButton value="Reset" action="{!AddRemoveReset}" reRender="add_panel,err_pan" rendered="{!NOT(ISNULL(BAList)) && NOT(ISNULL(CATList)) && IF(BAList.size>0 && CATList.size>0,true,false)}" style="display: inline-block;"/>                   
+                    </apex:outputPanel>
+                    <!---Add Button Cancel--------->                
+                </apex:outputPanel> 
+                <!------------------Select Add---------------------->  
+                <!------------------Select ReMove---------------------->
+                <apex:outputPanel id="rem_panel" rendered="{!IF(selectOperation == 'Remove',true,false)}">
+                    <apex:pageBlockSection title="Remove Existing Category from Existing BA" collapsible="false" columns="1">
+                        <apex:pageBlockSectionItem dataTitle="Enter BA">
+                            <apex:outputLabel value="Enter Existing BA#" style="float:left;"/>
+                            <apex:inputText value="{!enterBA}" html-placeholder="Enter existing BA#" style="float:left;" id="remove_ba">
+                                <img src="/s.gif" onclick="searchBA();" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>                
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(BAList)) && IF(BAList.size>0,true,false)}">
+                            <!---Add BA pageBlockTable--->
+                            <apex:pageBlockTable value="{!BAList}" var="ba">
+                                <apex:column headerValue="BA No." value="{!ba.Name}"/>
+                                <apex:column headerValue="Product Type" value="{!ba.Product_Type__c}"/>
+                                <apex:column headerValue="BA Product" value="{!ba.Product_Name__c}"/>
+                                <apex:column headerValue="BA Description" value="{!ba.BA_Description__c}"/>
+                                <apex:column headerValue="Eff Date" value="{!ba.Effective_Date__c}"/>
+                                <apex:column headerValue="BA Fund Type" value="{!ba.BA_Fund_Type__c}"/>
+                                <apex:column headerValue="Schedule" value="{!ba.Schedule__c}"/>
+                                <apex:column headerValue="Billing Association" value="{!ba.Billing_Assoc__c}"/>
+                            </apex:pageBlockTable>
+                            <!---Add BA pageBlockTable---->
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataTitle="Enter CAT">
+                            <apex:outputLabel value="Enter Existing Category#" style="float:left;"/>    
+                            <apex:inputText value="{!enterCAT}" html-placeholder="Enter existing Category#" style="float:left;" id="remove_cat">
+                                <img src="/s.gif" onclick="searchCAT();" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(CATList)) && IF(CATList.size>0,true,false)}">
+                            <!---Add CAT pageBlockTable--->
+                            <apex:pageBlockTable value="{!CATList}" var="ca">
+                                <apex:column headerValue="Category#" value="{!ca.Name}"/>
+                                <apex:column headerValue="Description" value="{!ca.Category_Description__c}"/>
+                                <apex:column headerValue="Effective Date" value="{!ca.Effective_Date__c}"/>
+                                <apex:column headerValue="B" value="{!ca.Usage_Billing__c}"/>
+                                <apex:column headerValue="R" value="{!ca.Usage_Reporting__c}"/>
+                                <apex:column headerValue="P" value="{!ca.Usage_Product__c}"/>
+                                <apex:column headerValue="M" value="{!ca.Usage_Mailing__c}"/>
+                                <apex:column headerValue="Cobra Code" value="{!ca.Category_Cobra_Code__c}"/>
+                            </apex:pageBlockTable>
+                            <!---Add CAT pageBlockTable---->
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!---Add Button Cancel--------->
+                    <apex:commandButton value="Add Row" action="{!RemoveAddRow}" style="display: inline-block;" rendered="{!NOT(ISNULL(BAList)) && NOT(ISNULL(CATList)) && IF(BAList.size>0 && CATList.size>0,true,false)}" reRender="wrap_panel,err_pan"/>
+                    <apex:commandButton value="Reset" action="{!AddRemoveReset}" reRender="rem_panel,err_pan" rendered="{!NOT(ISNULL(BAList)) && NOT(ISNULL(CATList)) && IF(BAList.size>0 && CATList.size>0,true,false)}" style="display: inline-block;"/>                                      
+                    <!---Add Button Cancel--------->
+                </apex:outputPanel>
+                <apex:outputPanel id="movepanel" rendered="{!IF(selectOperation == 'Move',true,false)}">
+                    <apex:pageBlockSection title="Move Existing Group Section" collapsible="false" columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Select Groupnumber" for="select_gn" style="float:left;"  />
+                            <apex:selectList multiselect="false" size="1" value="{!selectedGN}" style="float:left;" id="select_gn" disabled="{!asw != null}">
+                                <apex:selectOptions value="{!groups}" />      
+                                <apex:actionSupport action="{!showSelectedOperation}" event="onchange" reRender="operation_pan,err_pan"/>
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Enter Section Number" for="select_gn" style="float:left;"/>
+                            <apex:inputText value="{!enterSN}" html-placeholder="Enter Section Number" id="add_sectionno" style="float:left;"
+                                            disabled="{!IF((selectedGN== 'None'|| selectedGN == null || asw != null),true,false)}" maxlength="4">
+                                <img src="/s.gif" onclick="searchGS()" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>                
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>    
+                        <apex:pageBlockSectionItem rendered="{!asw != null}">
+                            <apex:pageBlockTable value="{!asw}" var="item">
+                                <apex:column value="{!item.baName}" headerValue="BA#" />
+                                <apex:column value="{!item.baProduct}" headerValue="BA Product"/>
+                                <apex:column value="{!item.baDescription}" headerValue="BA Description"/>
+                                <apex:column value="{!item.baFundType}" headerValue="BA FundType"/>
+                                <apex:column value="{!item.categoryName}" headerValue="Cat#"/>
+                                <apex:column value="{!item.catDescription}" headerValue="Cat Description"/>
+                                <apex:column headerValue="B" >
+                                    <apex:inputCheckbox value="{!item.categoryUsageBilling}" disabled="true"/>
+                                </apex:column>
+                                <apex:column headerValue="R" >
+                                    <apex:inputCheckbox value="{!item.categoryUsageReporting}" disabled="true"/>
+                                </apex:column>
+                                <apex:column headerValue="P" >
+                                    <apex:inputCheckbox value="{!item.categoryUsageProduct}" disabled="true"/>
+                                </apex:column>
+                                <apex:column headerValue="M" >
+                                    <apex:inputCheckbox value="{!item.categoryUsageMailing}" disabled="true"/>
+                                </apex:column>
+                                <apex:column value="{!item.groupNumber}" headerValue="Group#" />
+                                <apex:column value="{!item.sectionNumber}" headerValue="Section#" />
+                                <apex:column value="{!item.sectionDesc}" headerValue="Section Description" />
+                                <apex:column headerValue="Effective Date">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}" style="width: 40px;">
+                                        <apex:Param value="{!item.gsEffDate}" />
+                                    </apex:outputText>
+                                </apex:column>
+                                <apex:column value="{!item.bpName}" headerValue="Billing Profile"/>
+                                <apex:column value="{!item.gsAlphaPrefix}" headerValue="Alpha Prefix" />
+                                <apex:column value="{!item.gsSpiCodes}" headerValue="SPI Codes" />
+                                <apex:column value="{!item.gsParPlanCodes}" headerValue="Par Plan Codes" />
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataTitle="Enter Target BA">
+                            <apex:outputLabel value="Enter Target BA" for="add_sectionno" style="float:left;"/>
+                            <apex:inputText value="{!enterTargetBA}" html-placeholder="Enter Target BA" style="float:left;" id="add_ba" disabled="{!asw==null}" maxlength="4">
+                                <img src="/s.gif" onclick="searchTargetBA()" class="lookupIcon" onmouseout="this.className='lookupIcon';" onmouseover="this.className='lookupIconOn';"/>                
+                            </apex:inputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!targetBA != null}">
+                            <apex:pageBlockTable value="{!targetBA}" var="item">
+                                <apex:column value="{!item.name}" headerValue="BA#" />
+                                <apex:column value="{!item.Product__r.Name}" headerValue="BA Product" />
+                                <apex:column value="{!item.BA_Description__c}" headerValue="BA Description" />
+                                <apex:column value="{!item.BA_Fund_Type__c}" headerValue="BA FundType" />
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:commandButton value="Reset" action="{!MoveReset}" reRender="movepanel,err_pan" style="display: inline-block;"/>
+                    
+                    <apex:actionStatus id="moveStatusId">
+                        <apex:facet name="stop">
+                            <apex:commandButton value="Move" action="{!move}" reRender="movepanel,err_pan" style="display: inline-block;" disabled="{!targetBA == null || disableSubmitButton}"  status="moveStatusId"/>
+                        </apex:facet>
+                        <apex:facet name="start">
+                            <apex:image value="/img/loading32.gif" />                            
+                        </apex:facet>
+                    </apex:actionStatus>                    
+                </apex:outputPanel>
+            </apex:outputPanel>             
+        </apex:pageBlock>
+        <!-------------------------Result Page Block Table------------>
+        <apex:outputPanel id="wrap_panel">
+            <apex:pageBlock title="Results" rendered="{!NOT(ISNULL(results)) && results.size > 0}">
+                <apex:pageBlockTable value="{!results}" var="wrap">
+                    <apex:column style="width:5px;">
+                        <apex:inputCheckbox value="{!wrap.selected}"/>
+                    </apex:column>  
+                    <apex:column headerValue="Benefit Agreement" value="{!wrap.ba.Name}"/>
+                    <apex:column headerValue="Category" value="{!wrap.cat.Name}"/>
+                </apex:pageBlockTable>
+                <!---Add Button Cancel--------->
+                <apex:outputPanel id="add_but_res_pan">
+                    <apex:commandButton id="add_res" value="Add" action="{!Add}" rendered="{!NOT(ISNULL(results)) && results.size>0 && selectOperation == 'Add'}" style="display: inline-block;"/>
+                    <apex:commandButton id="rem_res" value="Remove" action="{!Remove}" rendered="{!NOT(ISNULL(results)) && results.size>0 && selectOperation == 'Remove'}" style="display: inline-block;"/>        
+                    <apex:commandButton id="rem_res_wrap" value="Remove Row" action="{!RemoveRow}" rendered="{!NOT(ISNULL(results)) && results.size>0 && (selectOperation == 'Add'|| selectOperation == 'Remove')}" style="display: inline-block;" reRender ="wrap_panel"/>                
+                </apex:outputPanel>
+                <!---Add Button Cancel--------->
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <!-------------------------Result Page Block Table------------>
+    </apex:form>   
+</apex:page>

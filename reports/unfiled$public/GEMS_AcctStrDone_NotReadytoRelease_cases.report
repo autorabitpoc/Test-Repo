@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Case$Status</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c.Status</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_All_required_documents_attached__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_Ready_to_release_to_screening__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Structure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$Status</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled,Client Approval Pending,Client Approval Received with Changes,Closed,Design In Progress,Internal Approval Pending,Internal Approval Received,Internal Approval Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Account_Submission_Info__c.GEMS_Ready_to_release_to_screening__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Not Ready for release</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>GEMS AcctStrDone_NotReadytoRelease cases</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Actual_Date_Production_OE_File__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

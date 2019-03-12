@@ -1,0 +1,3 @@
+<apex:page showHeader="true" sidebar="true">
+   <apex:enhancedList type="Ticket_Event__c" height="600" rowsPerPage="25" id="All" /> 
+</apex:page>

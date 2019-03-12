@@ -1,0 +1,118 @@
+<aura:component controller="ProspectingAppContactListController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="accountContacts" type="Contact[]" default="[]"/>
+    <aura:attribute name="emptyAccountContactRelations" type="AccountContactRelation[]" default="[]"/>
+    <aura:attribute name="modalLinkTextValue" type="String" default="Show"/>
+    <aura:attribute name="modalButtonTextValue" type="String" default="Add Relationship"/>
+    
+    <aura:handler name="modalReturnValueEventFromLink" event="c:PROSPECTING_APP_SHOW_MODAL_EVT" action="{!c.showRelatedAccounts}"/>
+    <aura:handler name="modalReturnValueEventFromButton" event="c:PROSPECTING_APP_SHOW_MODAL_EVT" action="{!c.openAccountContactRelation}"/>
+    <aura:handler name="updateContactList" event="c:PROSPECTING_APP_UPDATE_CONTACT_LIST_EVT" action="{!c.updateContactList}"/>
+    
+    <!-- SFDC-4497 - 06/2017 - Shuyler - Begin -->
+    <aura:attribute name="emptyContact" type="Contact[]" default="[]"/>
+    <aura:attribute name="contactModalLinkValue" type="String" default="Contact Details"/>
+    <aura:attribute name="contactRelatedAccountLinkValue" type="String" default="Related Accounts Link"/>    
+        
+    <aura:handler name="modalReturnValueExistingContactFromLink" event="c:PROSPECTING_APP_SHOW_MODAL_EVT" action="{!c.showContactDetails}"/>
+    <!-- SFDC-4497 - 06/2017 - Shuyler - End   -->
+    
+    <div>
+        <div aura:id="contactListLabel" class="slds-text-color--weak slds-show" style="float: left; font-size: 120%;">Contacts</div>
+        <a aura:id="collapseContactList" class="slds-hide" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevronup" size="x-small" alternativeText="Collapse List"/>
+        </a> 
+        <a aura:id="expandContactList" class="slds-show" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevrondown" size="x-small" alternativeText="Expand List"/>
+        </a>
+    </div>
+    
+    <div aura:id="contactList" class="slds-card slds-hide">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:contact" alternativeText="Contact Icon"/>
+                </div>
+                <div class="slds-media__body slds-truncate">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-text-link--reset">
+                            <span class="slds-text-heading--small">Contacts ({!v.accountContacts.length})</span>
+                        </a>
+                    </h2>
+                </div>
+                <button class="slds-button slds-button--neutral" onclick="{!c.openNewContactModal}">Add Contact</button>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                <thead class="slds-text-title--caps">
+                    <tr>
+                        <th scope="col" style="width: 20%;">
+                            <div class="slds-truncate" title="Contact Name">Contact Name</div>
+                        </th>
+                        <th scope="col" style="width: 9.6%;">
+                            <div class="slds-truncate" title="Title">Title</div>
+                        </th>
+                        <th scope="col" style="width: 15%;">
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th>
+                        <th scope="col" style="width: 13%;">
+                            <div class="slds-truncate" title="Phone Number">Phone Number</div>
+                        </th>
+                        <th scope="col" style="width: 17.9%;">
+                            <div class="slds-truncate" title="Contact Type">Contact Type</div>
+                        </th>
+                        <th scope="col" style="width: 15%;">
+                            <div class="slds-truncate" title="Related Accounts">Related Accounts</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Add Relationship"></div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="slds-scrollable--y" style="max-height: 25vh;">
+            <div class="slds-card__body">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                    <thead>
+                        <aura:iteration items="{!v.accountContacts}" var="currentContact" indexVar="idx">
+                        <tr>
+                            <th scope="col" style="width: 20%;">
+                                <div class="slds-truncate" title="Contact Name"><c:PROSPECTING_APP_MODAL_LINK sobjectRecord="{!currentContact}" textValue="{!currentContact.Name}" calledFrom="{!v.contactModalLinkValue}"/></div>
+                            </th>
+                            <th scope="col" style="width: 10%;">
+                                <div class="slds-truncate" title="Title">{!currentContact.Title}</div>
+                            </th>
+                            <th scope="col" style="width: 15%;">
+                                <div class="slds-truncate" title="Email">{!currentContact.Email}</div>
+                            </th>
+                            <th scope="col" style="width: 13%;">
+                                <div class="slds-truncate" title="Phone Number">{!currentContact.MobilePhone}</div>
+                            </th>
+                            <th scope="col" style="width: 18%;">
+                                <div class="slds-truncate" title="Contact Type">{!currentContact.RecordType.Name}</div>
+                            </th>
+                            <th scope="col" style="width: 15%;">
+                                <c:PROSPECTING_APP_MODAL_LINK sobjectRecord="{!currentContact}" textValue="{!v.modalLinkTextValue}"  calledFrom="{!v.contactRelatedAccountLinkValue}"/>
+                            </th>
+                            <th scope="col">
+                                <c:PROSPECTING_APP_MODAL_BUTTON sobjectRecord="{!currentContact}" textValue="{!v.modalButtonTextValue}"/>
+                            </th>
+                        </tr>
+                        </aura:iteration>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="slds-card__footer"><p></p></div>
+    </div>
+    
+    <div aura:id="relatedAccountsModal" />
+    <div aura:id="newAccountContactRelationshipModal" />
+    <div aura:id="newContactModal" />
+    <!-- SFDC-4497 - 06/2017 - Shuyler - Begin -->
+    <div aura:id="contactDetailsModal" />
+    <!-- SFDC-4497 - 06/2017 - Shuyler - End   -->
+    <div><lightning:spinner aura:id="contactListSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

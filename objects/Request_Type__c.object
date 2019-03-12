@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to populate Case Network Information Types and the number requested.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Case__c</fullName>
+        <description>Network information case.</description>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Request Types</relationshipLabel>
+        <relationshipName>Request_Types</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Proposal_NI_Type__c</fullName>
+        <description>The Case Proposal/ NI type.</description>
+        <externalId>false</externalId>
+        <label>Proposal/NI Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ClaimsQuest (Milliman) Repricing</fullName>
+                    <default>false</default>
+                    <label>ClaimsQuest (Milliman) Repricing</label>
+                </value>
+                <value>
+                    <fullName>Discounts (ClaimsQuest)</fullName>
+                    <default>false</default>
+                    <label>Discounts (ClaimsQuest)</label>
+                </value>
+                <value>
+                    <fullName>Discounts (Local)</fullName>
+                    <default>false</default>
+                    <label>Discounts (Local)</label>
+                </value>
+                <value>
+                    <fullName>Disruption</fullName>
+                    <default>false</default>
+                    <label>Disruption</label>
+                </value>
+                <value>
+                    <fullName>GeoAccess</fullName>
+                    <default>false</default>
+                    <label>Geo</label>
+                </value>
+                <value>
+                    <fullName>Maps</fullName>
+                    <default>false</default>
+                    <label>Maps</label>
+                </value>
+                <value>
+                    <fullName>MarketQuest Network Compare Analysis</fullName>
+                    <default>false</default>
+                    <label>MarketQuest Network Compare Analysis</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous</label>
+                </value>
+                <value>
+                    <fullName>NDAT</fullName>
+                    <default>false</default>
+                    <label>NDAT</label>
+                </value>
+                <value>
+                    <fullName>Page Calculations</fullName>
+                    <default>false</default>
+                    <label>Page Calculations</label>
+                </value>
+                <value>
+                    <fullName>Provider Counts</fullName>
+                    <default>false</default>
+                    <label>Provider Counts</label>
+                </value>
+                <value>
+                    <fullName>Radius Page</fullName>
+                    <default>false</default>
+                    <label>Radius Page</label>
+                </value>
+                <value>
+                    <fullName>Service Area</fullName>
+                    <default>false</default>
+                    <label>Service Area</label>
+                </value>
+                <value>
+                    <fullName>Site Match</fullName>
+                    <default>false</default>
+                    <label>Site Match</label>
+                </value>
+                <value>
+                    <fullName>Strennus Network Comparison</fullName>
+                    <default>false</default>
+                    <label>Strennus Network Comparison</label>
+                </value>
+                <value>
+                    <fullName>Summary Chart</fullName>
+                    <default>false</default>
+                    <label>Summary Chart</label>
+                </value>
+                <value>
+                    <fullName>Toggle</fullName>
+                    <default>false</default>
+                    <label>Toggle</label>
+                </value>
+                <value>
+                    <fullName>Total Discount Measurement Analysis</fullName>
+                    <default>false</default>
+                    <label>Total Discount Measurement Analysis</label>
+                </value>
+                <value>
+                    <fullName>TX Repricing</fullName>
+                    <default>false</default>
+                    <label>TX Repricing</label>
+                </value>
+                <value>
+                    <fullName>ValueQuest Analysis</fullName>
+                    <default>false</default>
+                    <label>ValueQuest Analysis</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>number_of_requests__c</fullName>
+        <description>The number of requests for the type.</description>
+        <externalId>false</externalId>
+        <label># of requests</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Request Type</label>
+    <nameField>
+        <label>Request Type Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Request Types</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Edit_Proposal_NI_Type</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add/Edit Proposal/NI Type</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot;)}
+
+var currName = sforce.connection.getUserInfo().userFullName;
+var currId = sforce.connection.getUserInfo().userId;
+var caseStatus = &apos;{!Case.Status}&apos;; 
+var ownerName = &apos;{!Case.Owner_Name__c}&apos;;
+var caseRT = &apos;{!Case.RecordType}&apos;;
+
+var MembersId = sforce.connection.query(&quot;SELECT (SELECT UserOrGroupId FROM GroupMembers) FROM Group where DeveloperName = &apos;Network_Information&apos;&quot;);
+records = MembersId.getArray(&quot;records&quot;);
+var rLine = &apos;Record Line &apos; + records[0];
+
+
+if(caseRT == &apos;Network Information&apos; &amp;&amp; caseStatus == &apos;Assigned&apos; &amp;&amp;
+   ownerName == &apos;Network Information&apos; &amp;&amp; rLine.indexOf(currId) &lt; 0){
+      alert(&apos;Only team members can make updates to a case assigned to the team.&apos;);
+} else 
+      if(caseRT == &apos;Network Information&apos; &amp;&amp; caseStatus == &apos;Assigned&apos; &amp;&amp;
+         ownerName != &apos;Network Information&apos; &amp;&amp; rLine.indexOf(currId) &lt; 0){
+            alert(&apos;Only team members can make updates to an assigned case.&apos;);
+      } else {
+        var url = window.location.href;
+        var id = url.split(&quot;/&quot;);
+        var strURL = &apos;/apex/AddEditProposalNIType?id=&apos; + id[id.length-1];
+        window.open(strURL,&apos;_top&apos;);
+      }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Edit_Proposal_NI_Type_Lex</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add/Edit Proposal/NI Type</masterLabel>
+        <openType>sidebar</openType>
+        <page>LGNA_RequestTypeButtonNI</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

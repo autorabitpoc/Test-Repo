@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify user when parent account is changed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>ProducerHouseUpdateTemplate</name>
+    <style>none</style>
+    <subject>Parent Account of {!Account.Name} Has Been Changed and Needs Review</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

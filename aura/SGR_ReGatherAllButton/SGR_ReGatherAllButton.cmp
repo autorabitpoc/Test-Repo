@@ -1,0 +1,80 @@
+<aura:component
+        implements="force:appHostable,force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+        access="global" controller="SGR_ReGatherAllButton">
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="record" type="Object"
+                    description="The record object to be displayed"/>
+    <aura:attribute name="Opportunity" type="Object"
+                    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="recordError" type="String"
+                    description="An error message bound to force:recordData"/>
+
+    <aura:attribute name="confirmText" type="String"
+                    default="All existing BA, group section and census information etc. on the opportunity will be 
+                             refreshed(Wipe out and recreate) from account level. &lt;br/&gt; Do you wish to proceed?&lt;br/&gt;&lt;br/&gt;"/>
+
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetFields="{!v.Opportunity}"
+                      targetRecord="{!v.record}"
+                      targetError="{!v.recordError}"
+    />
+
+
+    <div>
+
+        <!-- Display Lightning Data Service errors, if any -->
+        <aura:if isTrue="{!not(empty(v.recordError))}">
+            <div class="recordError">
+                {!v.recordError}</div>
+        </aura:if>
+
+        <!-- // Start - JIRA # SFDC - 15909 - Verify Logged in user profile name to perform the Refresh action- by Balasubramanyam.Peri(Accenture)  -->
+        <aura:if
+                isTrue="{!or(or(v.Opportunity.CurrentUserProfileName__c == 'SGR Operations User',v.Opportunity.CurrentUserProfileName__c == 'SGR SAM User'),v.Opportunity.CurrentUserProfileName__c == 'SGR_Group Verifier')}">
+            <h2>
+                <strong>
+                    <p> Your profile is restricted to regather the data. </p>
+                </strong>
+            </h2>
+            <aura:set attribute="else">
+                <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->
+
+                <aura:if
+                        isTrue="{!not(or(v.Opportunity.Rating_Status__c == 'Underwriting-Released',or(v.Opportunity.Rating_Status__c == 'Closed',or(v.Opportunity.Rating_Status__c == 'Sold',or(v.Opportunity.Rating_Status__c == 'Finalized',v.Opportunity.Rating_Status__c == 'Marketing Release')))))}">
+                    <aura:set attribute="else">
+                        <h2><strong>
+                                <p> User can't regather the data when the rating status is
+                                    {!v.Opportunity.Rating_Status__c} </p>
+                            </strong>
+                        </h2>
+                    </aura:set>
+                    <!--  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                 <div class="slds-text-align_center" style="}"> -->
+                    <Strong>
+                        <aura:unescapedHtml value="{!v.confirmText}"/>
+                    </Strong>
+
+                    <footer>
+                        <lightning:button variant="brand"
+                                          label="Yes"
+                                          title="Yes"
+                                          iconPosition="Right"
+                                          onclick="{!c.Yes}"/>
+                        <lightning:button variant="neutral"
+                                          label="No"
+                                          title="No"
+                                          iconPosition="Right"
+                                          onclick="{!c.closeModel }"/>
+                    </footer>
+                    <!-- </div> -->
+
+                </aura:if>
+
+            </aura:set> <!-- // End - JIRA # SFDC - 15909-->
+        </aura:if>
+
+    </div>
+
+</aura:component>

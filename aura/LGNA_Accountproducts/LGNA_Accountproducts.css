@@ -1,0 +1,22 @@
+.THIS .slds_hide{
+    display:none
+}
+
+.THIS.popoverSelecter {
+    min-height: 100px;
+    right:0!important;
+    position: relative;
+}
+.THIS.popover .my-popover{
+    left: 90% !important;
+}
+.THIS.popoverclass {
+   min-height: 100px;
+}
+.THIS.no-pointer .pointer{
+    visibility: hidden;
+   
+}
+.THIS .hideDiv {
+    display: none;
+}

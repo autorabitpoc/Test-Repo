@@ -1,0 +1,319 @@
+<aura:component access="global" controller="LGNA_NewRequestHubItemController" implements="force:appHostable,force:lightningQuickAction,force:hasSObjectName,force:hasRecordId,flexipage:availableForAllPageTypes" >
+    <aura:attribute name="requestItemList" type="Request_Hub_Items__c[]" access="public" />
+    <aura:attribute name="favoriteList" type="Request_Hub_Items__c[]" access="public" />
+    <aura:attribute name="initialReqList" type="Request_Hub_Items__c[]" access="public" />
+    <aura:attribute name="initialFavoriteList" type="Request_Hub_Items__c[]" access="public" />
+    <aura:attribute name="selectedItem" type="String" access="public"/>
+    <aura:attribute name="currentItem" type="String" access="public" />
+    <aura:attribute name="recordId" type="String" access="public"/>
+    <aura:attribute name="sObjectName" type="String" access="public"/>
+    <aura:attribute name="openReqCt" type="Integer" access="public" default="10" />
+    <aura:attribute name="closedReqCt" type="Integer" access="public" default="101" />
+    <aura:attribute name="isChanged" type="Boolean" access="public" default="false" />
+    <aura:attribute name="MarkReqChanged" type="Boolean" access="public" default="false" />
+    <aura:attribute name="MarkFavChanged" type="Boolean" access="public" default="false" />
+    <aura:attribute name="initialHit" type="Boolean" access="public" default="false" />
+    <aura:attribute name="SaveBtnClass" type="String" access="public" default="HideSaveBtn"/>
+    <aura:attribute name="accDetails" type="Account"/>
+     <!--<aura:attribute name="OpportunityId" type="Opportunity" />-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- SFDC - 9050 Code Starts here   -->
+    <aura:attribute name="keyword" type="String"/>
+    <aura:method name="refresh" action="{!c.doInit}"/> 
+    <aura:attribute name="requestItemListTemp" type="Request_Hub_Items__c[]" access="public" />
+    <aura:attribute name="favoriteListTemp" type="Request_Hub_Items__c[]" access="public" />
+    <!-- SFDC - 9050 Code Ends here   -->
+    
+    <!-- SFDC-9356 - Begin -->    
+    <aura:attribute name="CSSTaskRecordId" type="String" access="public" default="" />
+    <aura:attribute name="CSSTaskRecordAccess" type="Boolean" access="public" default="false" />    
+    <!-- SFDC-9356 - End   -->
+    
+    <!-- SFDC - 9020 - Start-->
+    <aura:attribute name="accMaintRecAccess" type="Boolean" access="public" default="false"/>
+    <!-- SFDC - 9020 - End-->
+    
+    <!-- SFDC - 9055,9056,9235 - Start-->
+    <aura:attribute name="caseRecordTypeAccess" type="Boolean" access="public" default="false"/>
+    <!-- SFDC - 9055,9056,9235 - End-->
+    
+    <!-- SFDC - 9626 - Start-->
+    <aura:attribute name="contractAdminRequestRecordTypeAccess" type="Boolean" access="public" default="false"/>
+     <!-- SFDC - 9626 - End-->
+    
+    <!--SFDC -8918 - Start-->
+    <aura:attribute name="openContractAdmin" type="Boolean" default="false"/>
+    <aura:attribute name="accountRecord" type="Account"/>
+    <aura:attribute name="contractAdminAccess" type="Boolean" default="false"/>
+    <!--SFDC -8918 - END-->
+    
+    <aura:attribute name="prospectRecordId" type="String" access="public" default="01233000000QMOmAAO"/> <!-- 01233000000QMOmAAO -->
+    <aura:attribute name="createProspectAccess" type="Boolean" access="public" default="true" />
+    <aura:attribute name="CancelledGrpAcccount" type="Account" access="public"  />
+ <aura:attribute name="account" type="Object" />
+    <aura:attribute name="currentAccount" type="Object" />
+    <aura:attribute name="loadError" type="String"/>
+    
+     <!--SFDC-9466, SFDC-9579 Start -->
+    <aura:attribute name="options" type="List" default="[
+                                                        {'label': 'Account', 'value': 'Account'},
+                                                        {'label': 'Group Section, Billing Profile and Category Cancellation', 'value': 'Group Section, Billing Profile and Category Cancellation'}
+                                                        ]"/>
+    <aura:attribute name="value" type="String" default="option1"/>
+    <aura:attribute name="canReqModal" type="Boolean" access="public" default="false"/>
+    <aura:attribute name="canReqSelected" type="String" access="public"/>
+    <!--SFDC-9466, SFDC-9579 End -->
+    <!--SFDC-10022 : attribute to show/hide the EIN transmission confirmation screen.-->
+    <aura:attribute name="einSendModal" type="Boolean" access="public" default="false"/>
+
+     <aura:if isTrue="{!v.sObjectName =='Account'}" >
+          <force:recordData aura:id="accountDetail"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      fields="Name,Status__c,External_ID__c,AccountNumber,Effective_Date__c,Time_Sent__c,Integration_Status__c"
+                      targetRecord="{!v.account}"
+                      targetFields="{!v.currentAccount}"
+                      targetError="{!v.loadError}"
+                      recordUpdated="{!c.loadRecord}"
+        />    
+    </aura:if>
+    
+    <div class="mainWrap"> <!-- class="slds customBackground requesttabheight" -->
+        <lightning:layout horizontalAlign="Stretch">
+            
+            <lightning:layoutItem flexibility="auto" padding="around-small">
+                <lightning:input aura:id="enter-search"
+                                 name="enter-search"
+                                 label="Find List"
+                                 placeholder="Find Request"
+                                 type="search"
+                                 variant="label-hidden" 
+                                 value="{!v.keyword}"
+                                 onchange="{!c.handleKeyUp}"
+                                 />
+                <aura:if isTrue="{!v.isChanged==true}">
+                    
+                    <div > <!-- class="slds-align_absolute-center" -->
+                        
+                        <lightning:button aura:Id="SaveBtn"  class="floateSaveBtn" variant="brand" label="Save Favorite" onclick="{! c.SaveUserFavorite}" />
+                        
+                    </div>  
+                </aura:if>
+                
+                <br/>
+                <!-- selectedItem="{! v.selectedItem }"-->
+                
+                <div class="slds-scrollable" style="height:500px; width:100%">
+                    
+                    <lightning:verticalNavigation onselect="{!c.HandleRequested }"
+                                                  class="navigation" 
+                                                  Shaded="false">                     
+                        
+                        <lightning:verticalNavigationSection label="Favorite"  class="navHeader" >
+                            
+                            <table>
+                                <aura:iteration items="{!v.favoriteList}" var="item" indexVar="i">
+                                    <tr>
+                                        <td class="tdBd">
+                                            <div>
+                                                <div class="slds-float--left" onclick="{!c.openModel}">
+                                                    <lightning:verticalNavigationItem class="navFont" label="{!item.Label__c}" name="{!item.Name}" />
+                                                    
+                                                    <div class="inlineText">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>{!item.Description__c}</span><br/>
+                                                        <aura:if isTrue="{! item.Open_Request__c ==true}" >
+                                                            <!-- SFDC-9356 BEGIN -->                                                        
+                                                            <c:LGNA_NewRHItemTotals itemName="{!item.Name}" recordId="{!v.recordId}" sObjectName="{!v.sObjectName}" />                                                         
+                                                            <!-- SFDC-9356 END   -->                                                            
+                                                            <br/>
+                                                        </aura:if>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </td>
+                                        <td  class="tdBd">
+                                            <div class="slds-float--right slds-m-right_large">
+                                                
+                                                <lightning:buttonIcon name="{!i}" iconClass="{! item.FavoriteColor__c}" iconName="utility:favorite" variant="border-filled" onclick="{! c.ChangeFavorite}" alternativeText="favorite this request" />
+                                                
+                                            </div> 
+                                            
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>
+                            
+                        </lightning:verticalNavigationSection>
+                        
+                        
+                        <lightning:verticalNavigationSection label="Request Items" class="navHeader">
+                            
+                            <table ><!-- class="slds-table slds-table**bordered slds-table**fixed-layout" role="grid" -->
+                                <aura:iteration items="{!v.requestItemList}" var="item" indexVar="index">
+                                    <tr>
+                                        <td class="tdBd">
+                                            <div class="slds-float--left">
+                                                
+                                                <lightning:verticalNavigationItem class="navFont" label="{!item.Label__c}" name="{!item.Name}" />
+                                                
+                                                
+                                                <div class="inlineText">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{!item.Description__c}</span><br/>
+                                                    <aura:if isTrue="{! item.Open_Request__c ==true}" >                                                        
+                                                        <!-- SFDC-9356 BEGIN -->                                                        
+                                                        <c:LGNA_NewRHItemTotals itemName="{!item.Name}" recordId="{!v.recordId}" sObjectName="{!v.sObjectName}" />                                                         
+                                                        <!-- SFDC-9356 END   -->
+                                                        <br/>
+                                                    </aura:if>    
+                                                </div>
+                                                
+                                            </div>
+                                        </td>   
+                                        <td class="tdBd" >
+                                            <div class="slds-float--right slds-m-right_large">
+                                                <lightning:buttonIcon name="{!index}" iconClass="{! item.FavoriteColor__c}" iconName="utility:favorite" variant="border-filled" onclick="{! c.ChangeFavoriteFromRequestList}" alternativeText="favorite this request" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>                                          
+                            
+                        </lightning:verticalNavigationSection>
+                    </lightning:verticalNavigation>
+                    
+               
+                    <c:LGNA_NewRequestHubModal recordId="{!v.recordId}" aura:id="reqMaint"/>    <!--SFDC - 9020 Sujatha/Rakesh-->
+                    <!--SFDC-10022 Start : Show pop-up for EIN transmission confirmation using the lightning component LGNA_EIN_Confirm
+                    when user selects Transmit EIN to BlueStar. ************************************************-->
+                    <aura:if isTrue="{!v.einSendModal}">
+                        <!--###### MODAL BOX Start From Here ######--> 
+                        <div role="dialog" style="padding-top:10px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open slds-modal_large">
+                            <div class="slds-modal__container" style="width:95%; height:900px max-width:500rem;" >
+                                <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                                <div class="slds-modal__header">
+                                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelWindow}">
+                                        X
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 id="header99" class="slds-text-heading--medium">Transmit EIN to BlueStar</h2>
+                                </div>
+                                <!--###### MODAL BOX BODY Part Start From Here ######-->
+                                <div style="padding-left:50px" class="slds-modal__content slds-p-around_medium" id="canOption">
+                                    <!--Component LGNA_EIN_Confirm component is called within the modal.-->
+                                    <c:LGNA_EIN_Confirm recordId="{!v.recordId}"/>           
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-backdrop slds-backdrop--open"></div>
+                        <!--###### MODAL BOX Part END Here ######-->    
+                    </aura:if>
+                    <!--SFDC-10022 End**************************************************************************************************-->  
+                    <c:LGNA_NewRHSelectedItemCreatedModal aura:id="reqItemConfirm"/> <!--SFDC-9055,9056,9235 Padma Bedampeta -->
+                    <c:LGNA_NewRHSelectedItemSIModal aura:id="selectedSI"/><!-- SFDC-9269 Padma Bedampeta -->
+                    <c:LGNA_NewRHSelectedItemCreatedModal recordId="{!v.recordId}"   aura:id="reqItemConfirmContractAdminRequest"/>
+                    <!--SFDC-9626 Ranjit G -->
+                    
+                    <!-- 8918 - Sujatha/Rakesh Start -->
+                    <!--Use "slds-m-around- -xx-large" class to add standard Large padding to the component--> 
+                    <div class="slds customBackground">	 
+                        
+                        <!--Use aura:if tag to display Model Box, on the bese of conditions. [openModelAMC boolean attribute] -->   
+                        <aura:if isTrue="{!v.openContractAdmin}">
+                            
+                            <!--###### MODAL BOX Start From Here ######--> 
+                            <div role="dialog" style="padding-top:120px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                                <div class="slds-modal__container" style="width:50%; height:300px max-width:90rem;" >
+                                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                                    <div class="slds-modal__header">
+                                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelWindow}">
+                                            X
+                                            <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                        <h2 id="header99" class="slds-text-heading--medium">Contract Admin</h2>
+                                    </div>
+                                    <!--###### MODAL BOX BODY Part Start From Here ######-->
+                                    <div style="padding-left:50px" class="slds-modal__content slds-p-around_medium customfontsize" id="modal-content-id-2">
+                                        <p>
+                                            <h1 class="quest">For this Case, do any of the below apply?</h1>
+                                            <h1>A) Custom Pharmacy Pricing</h1>
+                                            <h1>B) Previously Negotiated Contractual Language</h1>
+                                            <h1>C) Anticipated Negotiation of Contractual Language</h1>
+                                            <h1>D) Group has requested changes to Standard Contracts</h1>
+                                        </p>            
+                                    </div>
+                                    <div style="padding-left:50px" class="customfontsize slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                                        <p>
+                                            <h1>If answer to any of the above is "Yes", Click on
+                                                <a>
+                                                    <span data-name="custom" onclick="{!c.redirectToContract}">Custom Contracts</span>
+                                                </a>
+                                            </h1>
+                                            <h1>If answer to all of the above is "No", Click on
+                                                <a>
+                                                    <span data-name="standard" onclick="{!c.redirectToContract}">Standard Contracts</span>
+                                                </a>
+                                            </h1>
+                                        </p>
+                                    </div>
+                                    
+                                    <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                                    <footer class ="slds-modal__footer" style="padding-top:40px">
+                                        
+                                    </footer>
+                                </div>
+                            </div>
+                            <div class="slds-backdrop slds-backdrop--open"></div>
+                            <!--###### MODAL BOX Part END Here ######-->
+                        </aura:if>
+                    </div> <!-- 8918 - ENDS Here-->
+                    
+                     <!--###### SFDC-9466, SFDC-9579  Start Padma Bedampeta ######-->
+                    
+                    <aura:if isTrue="{!v.canReqModal}">
+                        
+                        <!--###### MODAL BOX Start From Here ######--> 
+                        <div role="dialog" style="padding-top:120px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                            <div class="slds-modal__container" style="width:50%; height:300px max-width:90rem;" >
+                                <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                                <div class="slds-modal__header">
+                                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelWindow}">
+                                        X
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 id="header99" class="slds-text-heading--medium">Cancellation</h2>
+                                </div>
+                                <!--###### MODAL BOX BODY Part Start From Here ######-->
+                                <div style="padding-left:50px" class="slds-modal__content slds-p-around_medium" id="canOption">
+                                    <h1>
+                                    <lightning:radioGroup 
+                                                          aura:id="mygroup"
+                                                          name="radioButtonGroup"
+                                                          label="Select Cancellation"
+                                                          options="{! v.options }"
+                                                          value="{! v.value }"
+                                                          onchange="{! c.handleChange }"
+                                                          required="true" />
+                                   </h1> 
+                                </div>
+                                <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                                <footer class ="slds-modal__footer" style="padding-top:10px">
+                                    <lightning:button variant="brand" class="slds-button slds-align_absolute-center" onclick="{!c.navtoCancelPage}" >Continue</lightning:button>
+                                </footer>
+                            </div>
+                        </div>
+                        <div class="slds-backdrop slds-backdrop--open"></div>
+                        <!--###### MODAL BOX Part END Here ######-->
+                    </aura:if>
+                    
+                    <!--SFDC-9466 End-->
+
+                    
+                </div>
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+    </div>
+</aura:component>

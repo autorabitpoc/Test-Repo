@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object that captures product-level rates for the ASO BPA</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Column_1_Fee__c</fullName>
+        <description>Fee of the related Product / Service in column 1 of the PEPM table</description>
+        <externalId>false</externalId>
+        <label>Column 1 Fee</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_1_Name__c</fullName>
+        <description>References column 1 name of the PEPM table on the related ASO BPA</description>
+        <externalId>false</externalId>
+        <formula>Rate__r.Column_1_Name__c</formula>
+        <inlineHelpText>Captured on the related Rate record</inlineHelpText>
+        <label>Column 1 Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Column_1_Rollup_Amount__c</fullName>
+        <description>Converts *Prescription Drug Rebate Credit amount to a negative value, keeps all other values as is</description>
+        <externalId>false</externalId>
+        <formula>if( TEXT(PEPM_Product_Service_Name__c) = &quot;*Prescription Drug Rebate Credit&quot;,-(Column_1_Fee__c),Column_1_Fee__c)</formula>
+        <label>Column 1 Rollup Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_2_Fee__c</fullName>
+        <description>Fee of the related Product / Service in column 2 of the PEPM table</description>
+        <externalId>false</externalId>
+        <label>Column 2 Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_2_Name__c</fullName>
+        <description>References column 2 name of the PEPM table on the related ASO BPA</description>
+        <externalId>false</externalId>
+        <formula>Rate__r.Column_2_Name__c</formula>
+        <inlineHelpText>Captured on the related Rate record</inlineHelpText>
+        <label>Column 2 Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Column_2_Rollup_Amount__c</fullName>
+        <description>Converts *Prescription Drug Rebate Credit amount to a negative value, keeps all other values as is</description>
+        <externalId>false</externalId>
+        <formula>if( TEXT(PEPM_Product_Service_Name__c) = &quot;*Prescription Drug Rebate Credit&quot;,-(Column_2_Fee__c),Column_2_Fee__c)</formula>
+        <label>Column 2 Rollup Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_3_Fee__c</fullName>
+        <description>Fee of the related Product / Service in column 3 of the PEPM table</description>
+        <externalId>false</externalId>
+        <label>Column 3 Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_3_Name__c</fullName>
+        <description>References column 3 name of the PEPM table on the related ASO BPA</description>
+        <externalId>false</externalId>
+        <formula>Rate__r.Column_3_Name__c</formula>
+        <inlineHelpText>Captured on the related Rate record</inlineHelpText>
+        <label>Column 3 Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Column_3_Rollup_Amount__c</fullName>
+        <description>Converts *Prescription Drug Rebate Credit amount to a negative value, keeps all other values as is</description>
+        <externalId>false</externalId>
+        <formula>if( TEXT(PEPM_Product_Service_Name__c) = &quot;*Prescription Drug Rebate Credit&quot;,-(Column_3_Fee__c),Column_3_Fee__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Column 3 Rollup Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_4_Fee__c</fullName>
+        <description>Fee of the related Product / Service in column 4 of the PEPM table</description>
+        <externalId>false</externalId>
+        <label>Column 4 Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Column_4_Name__c</fullName>
+        <description>References column 4 name of the PEPM table on the related ASO BPA</description>
+        <externalId>false</externalId>
+        <formula>Rate__r.Column_4_Name__c</formula>
+        <inlineHelpText>Captured on the related Rate record</inlineHelpText>
+        <label>Column 4 Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Column_4_Rollup_Amount__c</fullName>
+        <description>Converts *Prescription Drug Rebate Credit amount to a negative value, keeps all other values as is</description>
+        <externalId>false</externalId>
+        <formula>if( TEXT(PEPM_Product_Service_Name__c) = &quot;*Prescription Drug Rebate Credit&quot;,-(Column_4_Fee__c),Column_4_Fee__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Column 4 Rollup Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PEPM_Product_Service_Name__c</fullName>
+        <description>Name of the product or service that the administrative PEPM charges outlined in the BPA relate to</description>
+        <externalId>false</externalId>
+        <label>Product / Service Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Medical Administrative Fee</fullName>
+                    <default>false</default>
+                    <label>Medical Administrative Fee</label>
+                </value>
+                <value>
+                    <fullName>Commissions</fullName>
+                    <default>false</default>
+                    <label>Commissions</label>
+                </value>
+                <value>
+                    <fullName>Dental</fullName>
+                    <default>false</default>
+                    <label>Dental</label>
+                </value>
+                <value>
+                    <fullName>Claims Fiduciary</fullName>
+                    <default>false</default>
+                    <label>Claims Fiduciary</label>
+                </value>
+                <value>
+                    <fullName>Prescription Drug Administrative Fee</fullName>
+                    <default>false</default>
+                    <label>Prescription Drug Administrative Fee</label>
+                </value>
+                <value>
+                    <fullName>*Prescription Drug Rebate Credit</fullName>
+                    <default>false</default>
+                    <label>*Prescription Drug Rebate Credit</label>
+                </value>
+                <value>
+                    <fullName>Outpatient Imaging Management Services</fullName>
+                    <default>false</default>
+                    <label>Outpatient Imaging Management Services</label>
+                </value>
+                <value>
+                    <fullName>Other 1</fullName>
+                    <default>false</default>
+                    <label>Other 1</label>
+                </value>
+                <value>
+                    <fullName>Other 2</fullName>
+                    <default>false</default>
+                    <label>Other 2</label>
+                </value>
+                <value>
+                    <fullName>Other 3</fullName>
+                    <default>false</default>
+                    <label>Other 3</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous 1</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous 1</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous 2</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_or_Service_Name_for_Other_Misc__c</fullName>
+        <description>References Product or Service Name for Other / Misc based on the related Rate record based on picklist value selected</description>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(PEPM_Product_Service_Name__c),
+&quot;Other 1&quot;,&quot;Other: &quot;&amp;TEXT(Rate__r.Other_1_Service_Category__c)&amp;br()&amp;&quot;List Service:  &quot;&amp;Rate__r.Other_1_Service_Name__c,
+&quot;Other 2&quot;, &quot;Other: &quot;&amp;TEXT(Rate__r.Other_2_Service_Category__c)&amp;br()&amp;&quot;List Service: &quot;&amp;Rate__r.Other_2_Service_Name__c,
+&quot;Other 3&quot;, &quot;Other: &quot;&amp;TEXT(Rate__r.Other_3_Service_Category__c)&amp;br()&amp;&quot;List Service: &quot;&amp;Rate__r.Other_3_Service_Name__c,
+&quot;Miscellaneous 1&quot;, &quot;Miscellaneous: &quot;&amp;Rate__r.Misc_1_Description__c,
+&quot;Miscellaneous 2&quot;, &quot;Miscellaneous: &quot;&amp;Rate__r.Misc_2_Description__c,
+&quot;&quot;)</formula>
+        <inlineHelpText>Captured on the related Rate record</inlineHelpText>
+        <label>Product or Service Name for Other / Misc</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate__c</fullName>
+        <description>Captures parent Rate record related to PEPM Feerecord</description>
+        <externalId>false</externalId>
+        <label>Rate</label>
+        <referenceTo>Rate__c</referenceTo>
+        <relationshipLabel>PEPM Fees</relationshipLabel>
+        <relationshipName>PEPM_Fees</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>PEPM Fee</label>
+    <nameField>
+        <displayFormat>PF-{00000}</displayFormat>
+        <label>PEPM Fee Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>PEPM Fees</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>At_least_1_Column_fee_must_be_populated</fullName>
+        <active>true</active>
+        <description>Throws error if all of the Column fee fields on the PEPM Fee record are blank</description>
+        <errorConditionFormula>AND(
+ISBLANK( Column_1_Fee__c ),
+ISBLANK(Column_2_Fee__c ),
+ISBLANK(Column_3_Fee__c ),
+ISBLANK(Column_4_Fee__c )
+)</errorConditionFormula>
+        <errorMessage>You must populate at least 1 Column Fee field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Outpatient_Imaging_not_available_for_IL</fullName>
+        <active>true</active>
+        <description>Prevents users from adding Outpatient Imaging Management Services to rates related to IL ASOs</description>
+        <errorConditionFormula>if( Rate__r.Secure_Information__r.Division__c  = &apos;IL&apos; &amp;&amp;   text(PEPM_Product_Service_Name__c) = &apos;Outpatient Imaging Management Services&apos;, true,false)</errorConditionFormula>
+        <errorDisplayField>PEPM_Product_Service_Name__c</errorDisplayField>
+        <errorMessage>Outpatient Imaging Management Services is not available in Illinois. Select a different product / service.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

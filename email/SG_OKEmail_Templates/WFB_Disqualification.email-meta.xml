@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Based on group questionnaire, group does not meet Workforce Blue qualifications</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WFB Disqualification - Group</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Work Force Blue Eligibility Denied</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

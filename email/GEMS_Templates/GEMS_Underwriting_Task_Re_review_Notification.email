@@ -1,0 +1,11 @@
+{!Task.Subject} has been assigned back to you. Please review and approve or reject as necessary.
+
+Account Name: {!Case.Account}
+
+UW Case : {!Case.Link}
+
+Task Details: {!Task.Link}
+
+Task Status: Re-Review
+
+Thanks !

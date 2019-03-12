@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Completed_Date_Time__c</fullName>
+        <description>substage completed date time</description>
+        <externalId>false</externalId>
+        <label>Completed Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Completed_Tasks__c</fullName>
+        <description>Completed Tasks with Checkbox &apos;Completed__c&apos; as checked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Completed Tasks</inlineHelpText>
+        <label>Completed Tasks</label>
+        <summaryForeignKey>Task_Mapping__c.Substage_Mapping__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>is stage completed</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SS_Task_Type_URL__c</fullName>
+        <description>ss task type url</description>
+        <externalId>false</externalId>
+        <formula>Substage__r.Image_URL__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SS Task Type URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage_ID__c</fullName>
+        <description>is of stage associated</description>
+        <externalId>false</externalId>
+        <formula>Stage_Mapping__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage_Mapping__c</fullName>
+        <description>asspciated stage mapping record</description>
+        <externalId>false</externalId>
+        <label>Stage Mapping</label>
+        <referenceTo>Stage_Mapping__c</referenceTo>
+        <relationshipLabel>Substage Mappings</relationshipLabel>
+        <relationshipName>Substage_Mappings</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Start_DateTime__c</fullName>
+        <description>sub stage start date</description>
+        <externalId>false</externalId>
+        <label>Start Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Started__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>is stage started</description>
+        <externalId>false</externalId>
+        <label>Started?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SubStage_Name__c</fullName>
+        <description>sub stage name</description>
+        <externalId>false</externalId>
+        <formula>Substage__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SubStage Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Substage_Background_Color__c</fullName>
+        <description>sub stage background color</description>
+        <externalId>false</externalId>
+        <formula>IF(   Completed_Tasks__c   =   Total_Tasks__c ,&apos;#B3F07D&apos;, 
+IF((AND((Completed_Tasks__c &gt; 0) , (Completed_Tasks__c &lt; Total_Tasks__c)) ),&apos;#FFB300&apos;, 
+&apos;#006472&apos; ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Substage Background Color</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Substage_Sort_Order__c</fullName>
+        <description>substage sort order</description>
+        <externalId>false</externalId>
+        <formula>Substage__r.Substage_Sort_Order__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Substage Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Substage__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>associated substage</description>
+        <externalId>false</externalId>
+        <label>Substage</label>
+        <referenceTo>Substage__c</referenceTo>
+        <relationshipLabel>Substage Mappings</relationshipLabel>
+        <relationshipName>Substage_Mappings</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Task_Type__c</fullName>
+        <description>task type</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL( Substage__r.Task_Type__c ,&quot;Best Practices&quot;),&quot;Best Practices&quot;,
+   IF(ISPICKVAL( Substage__r.Task_Type__c ,&quot;Other Applications&quot;),&quot;Other Applications&quot;,
+      IF(ISPICKVAL( Substage__r.Task_Type__c ,&quot;Tools, Templates, Forms&quot;),&quot;Tools, Templates, Forms&quot;,
+          IF(ISPICKVAL( Substage__r.Task_Type__c ,&quot;Scripting&quot;),&quot;Scripting&quot;,
+            IF(ISPICKVAL( Substage__r.Task_Type__c ,&quot;&quot;),&quot;&quot;,&quot;|Error|:Formula Field:Task Type:Add the new value&quot;
+  )   )  )  )  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Substage Task Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Tasks__c</fullName>
+        <description>Total Tasks</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Tasks</inlineHelpText>
+        <label>Total Tasks</label>
+        <summaryForeignKey>Task_Mapping__c.Substage_Mapping__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Verifiable_Outcome__c</fullName>
+        <description>veriable outcome</description>
+        <externalId>false</externalId>
+        <formula>Substage__r.Verifiable_Outcome__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Verifiable Outcome</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Substage Mapping</label>
+    <nameField>
+        <displayFormat>SSM-{0000000000}</displayFormat>
+        <label>Substage Mapping Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Substage Mappings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

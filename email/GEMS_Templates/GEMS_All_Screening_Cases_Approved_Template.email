@@ -1,0 +1,7 @@
+Screening has been completed by all applicable business for the account.
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

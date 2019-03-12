@@ -1,0 +1,12 @@
+<aura:component >
+    <aura:attribute name="sobjectRecord" type="sObject" default="{}"/>
+    <aura:attribute name="textValue" type="String" default=""/>
+    
+    <aura:registerEvent name="modalReturnValueEventFromButton" type="c:PROSPECTING_APP_SHOW_MODAL_EVT"/>
+    
+	<button class="slds-button slds-button--brand" style="line-height:120%;" onclick="{!c.returnValue}">
+        <div style="margin-top: 4px; margin-bottom: 4px;">
+        	{!v.textValue}
+        </div>
+    </button>
+</aura:component>

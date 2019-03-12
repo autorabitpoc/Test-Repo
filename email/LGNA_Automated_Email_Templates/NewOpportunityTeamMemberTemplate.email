@@ -1,0 +1,45 @@
+<messaging:emailTemplate subject="You have been added to a new opportunity team" recipientType="User" relatedToType="OpportunityTeamMember">
+<messaging:htmlEmailBody >
+<p>Dear {!relatedTo.User.Name},</p>
+<p>You have been added to an Opportunity Team. The details are below:</p>
+
+<ul>
+<li><strong>Account Name</strong></li>
+<ul>
+<li>{!relatedTo.Opportunity.Account.Name}</li>
+</ul>
+<li><strong>Account Number</strong></li>
+<ul>
+<li>{!NULLVALUE(relatedTo.Opportunity.Account.AccountNumber,(NULLVALUE(relatedTo.Opportunity.Account.External_ID__c,"No Information Available")))}</li>
+</ul>
+<li><strong>Opportunity Name</strong></li>
+<ul>
+<li>{!relatedTo.Opportunity.Name}</li>
+</ul>
+<li><strong>Opportunity Record Type</strong></li>
+<ul>
+<li>{!relatedTo.Opportunity.RecordType.Name}</li>
+</ul>
+<li><strong>Opportunity Owner</strong></li>
+<ul>
+<li>{!relatedTo.Opportunity.Owner.Name}</li>
+</ul>
+<li><strong>Opportunity Effective Date</strong></li>
+<ul>
+<li>
+<apex:outputText value="{0,date,MM.dd.yyyy}">
+<apex:param value="{!relatedTo.Opportunity.Requested_Effective_Date__c}" />
+</apex:outputText>
+</li>
+</ul>
+<li><strong>Client Due Date</strong></li>
+<ul>
+<li>
+<apex:outputText value="{0,date,MM.dd.yyyy}">
+<apex:param value="{!relatedTo.Opportunity.CloseDate}" />
+</apex:outputText>
+</li>
+</ul>
+</ul>
+<p><em>(This email is automatically generated from NewOpportunityTeamMember Email Alert.)</em></p></messaging:htmlEmailBody>
+</messaging:emailTemplate>

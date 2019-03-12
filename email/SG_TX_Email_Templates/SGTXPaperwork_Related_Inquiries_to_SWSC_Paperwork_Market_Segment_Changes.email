@@ -1,0 +1,17 @@
+Hello,
+
+Below is a request for a Group Market Segment Changes from Chamber to Non-Chamber Market Segment effective for [Enter Date].The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+
+If applicable, attached you will find
+
+BPA amendment file
+Rates
+Census of employees
+If applicable, Applications
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_47873318</developerName>
+        <masterLabel>Report Category</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Report$Owner</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Performance Management Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Management - Performance Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Home Page Slider Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Master Data Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Enterprise Reports</sourceValue>
+            </sourceValues>
+            <value>Standard Enterprise Reports</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Standard Sales Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Account Management Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Proposal Unit Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Dental UW Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Manager - Acct Mgmt Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Manager - Sales Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard Medical UW Reports</sourceValue>
+            </sourceValues>
+            <value>Standard Business Unit Reports</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Standard IL Executive Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard MT Executive Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard NM Executive Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard OK Executive Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Standard TX Executive Reports</sourceValue>
+            </sourceValues>
+            <value>Standard State Specific Reports</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ENA Illinois Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA Texas Reports</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Marketing Report</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IL Local Markets</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>IL State Markets Reports</sourceValue>
+            </sourceValues>
+            <value>Business Unit Specific Reports</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Pie</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>false</expandOthers>
+        <groupingColumn>BucketField_47873318</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Reports by Cateogry</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$Description</field>
+    </columns>
+    <columns>
+        <field>Report$CreatedBy</field>
+    </columns>
+    <description>This report is to be used to track the reports created during the Additional Leadership Report Development timeframe</description>
+    <filter>
+        <criteriaItems>
+            <column>Report$Owner</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IL State Markets Reports,ENA Illinois Reports,ENA Texas Reports,Enterprise Marketing Report,Home Page Slider Reports,IL Local Markets,Management - Performance Management,Master Data Reports,Performance Management Reports,Standard Account Management Reports,Standard Dental UW Reports,Standard Enterprise Reports,Standard IL Executive Reports,Standard Manager - Acct Mgmt Reports,Standard Manager - Sales Reports,Standard Medical UW Reports,Standard MT Executive Reports,Standard NM Executive Reports,Standard OK Executive Reports,Standard Proposal Unit Reports,Standard Sales Reports,Standard TX Executive Reports</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_47873318</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Report$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Report Development Reports Tracker</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Reports__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Report$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

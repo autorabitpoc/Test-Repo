@@ -1,0 +1,32 @@
+<apex:page standardController="Case" extensions="GEMS_ReviewDocuments" showChat="false" showHeader="false" showQuickActionVfHeader="false">
+    <apex:form >
+        <apex:pageBlock title="Review Documents" >
+            <apex:pageblockTable value="{!documentsList}" var="document" id="myPanel">
+                
+                <apex:column headerValue="File Name">
+                  <!--
+                  <apex:outputlink value="/servlet/servlet.FileDownload?file={!document.Attachment__c}" target="_blank" rendered="{!if(document.Attachment__c!=null, true, false)}"> {!document.name}  </apex:outputlink>
+                  <apex:outputlink value="/servlet/servlet.FileDownload?file={!document.Attachment__c}" target="_blank" rendered="{!if(document.Attachment__c==null, true, false)}"> {!document.name}  </apex:outputlink>
+                  -->
+                  <apex:outputText value="{!document.name}"></apex:outputText>
+                </apex:column>
+                
+                <!--
+                <apex:column headerValue="File Name">
+                  <apex:outputlink value="/servlet/servlet.FileDownload?file={!document.Attachment__c}" target="_blank" rendered="{!if(document.Attachment__c!=null, true, false)}"> {!document.name}  </apex:outputlink>
+                  <apex:outputlink value="{!document.AttachmentUrl__c}" target="_blank" rendered="{!if(document.Attachment__c==null, true, false)}"> {!document.name}  </apex:outputlink>
+                </apex:column>
+                -->
+                <apex:column headerValue="Document Type" value="{!document.Type__c}"/>
+                <apex:column headerValue="Description" value="{!document.Description__c}"/>
+                
+                <apex:column headerValue="View" value="{!document.View__c}"/>
+                
+                <apex:column headerValue="Created By">
+                 <apex:outputlink value="/{!document.CreatedById}" target="_blank">{!document.CreatedBy.name}</apex:outputlink>,&nbsp;<apex:outputField value="{!document.createdDate}" ></apex:outputfield>
+                </apex:column>
+               
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

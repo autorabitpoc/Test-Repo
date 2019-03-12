@@ -1,0 +1,14 @@
+Good Afternoon, {!Contact.Name} --
+
+I wanted to schedule a quick kick-off meeting to discuss our strategy and story for the {!Case.Opportunity_Name__c} proposal. I have attached the proposal below. Please read the proposal in its entirety before our meeting and bring any questions and we will discuss accordingly. 
+
+If you cannot attend this meeting, please send a representative from your team who has the authority to make business decisions as we want to make this meeting as productive as possible.
+
+Topics to be discussed:
+Company history with HCSC
+Hot buttons
+Offering
+Competition
+Strategy (talking points)
+Timeline
+Additional questions

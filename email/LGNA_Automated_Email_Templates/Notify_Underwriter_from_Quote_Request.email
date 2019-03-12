@@ -1,0 +1,53 @@
+<messaging:emailTemplate subject="There is a new quote request assigned to you." recipientType="User" relatedToType="Quote_Request_Summary__c">
+<messaging:htmlEmailBody >
+<p>Dear {!relatedTo.Underwriter_Name_frm_owner__c},</p>
+<p>A new Quote request (<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">here</apex:outputLink>) has been assigned to you. The details are below:</p>
+
+<ul>
+<li><strong>Account Name</strong></li>
+<ul>
+<li><apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Account_Id__c}">{!relatedTo.Account_Name_tx__c}</apex:outputlink></li>
+</ul>
+<li><strong>Account Number</strong></li>
+<ul>
+<li>{!relatedTo.Account_Number__c}</li>
+</ul>
+<li><strong>Opportunity Name</strong></li>
+<ul>
+<li><apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Opportunity_Id__c}">{!relatedTo.Opportunity_Name__c}</apex:outputLink></li>
+</ul>
+<li><strong>Opportunity Owner</strong></li>
+<ul>
+<li>{!relatedTo.Opportunity_Owner_tx__c}</li>
+</ul>
+<li><strong>HCSC Division</strong></li>
+<ul>
+<li>{!relatedTo.HCSC_Division__c}</li>
+</ul>
+<li><strong>Underwriting Due Date</strong></li>
+<ul>
+<li>
+<apex:outputText value="{0,date,MM.dd.yyyy}">
+<apex:param value="{!relatedTo.Underwriting_Due_Date__c}" />
+</apex:outputText>
+</li>
+</ul>
+<li><strong>Requested Effective Date</strong></li>
+<ul>
+<li>
+<apex:outputText value="{0,date,MM.dd.yyyy}">
+<apex:param value="{!relatedTo.Request_Effective_Date__c}" />
+</apex:outputText>
+</li>
+</ul>
+<li><strong>Proposal Due Date</strong></li>
+<ul>
+<li>
+<apex:outputText value="{0,date,MM.dd.yyyy}">
+<apex:param value="{!relatedTo.Proposed_Due_Date__c}" />
+</apex:outputText>
+</li>
+</ul>
+</ul>
+<p><em>(This email is automatically generated from an Email Alert on the Quote Request Summary sObject.)</em></p></messaging:htmlEmailBody>
+</messaging:emailTemplate>

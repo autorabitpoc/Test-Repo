@@ -1,0 +1,13 @@
+Hello,
+
+Below is a request for a Texas Producer [Enter Producer Level Request Type] effective for [Enter Date]. The following information can be used to process this request:
+
+- Producer BCBS Number: {!Case.Producer_Account_Number__c}
+- Producer Name: {!Case.Contact}
+- Group Name: {!Case.Account}
+- Group Number: {!Case.Group_Account_Number__c}
+- Description of commission to be reviewed: [Enter Details]
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

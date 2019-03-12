@@ -1,0 +1,15 @@
+Hello,
+
+Below is a request for a New Mexico Producer [Enter Producer Level Request Type] effective for [Enter Date]. The following information can be used to process this request:
+
+- Producer BCBS Number: {!Case.Producer_Account_Number__c}
+- Producer Name: {!Case.Contact}
+- Group Name: {!Case.Account}
+- Group Number: {!Case.Group_Account_Number__c}
+- Date of requested change: [Enter Request Date]
+- Current information to be replaced: [Enter Current Information]
+- Replacement information: [Enter Replacement Information]
+
+Please communicate directly with the producer for any responses, additional information, denials, etc.  For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessType>Shared</accessType>
+    <name>EAMSG Overflow</name>
+    <publicFolderAccess>ReadWrite</publicFolderAccess>
+    <sharedTo>
+        <group>IL_Management</group>
+        <group>IL_Reps</group>
+        <group>OK_Management</group>
+        <group>OK_Reps</group>
+        <group>SG_Blue_Directions_Group</group>
+        <group>SG_Overflow_Group</group>
+        <group>TX_Management</group>
+        <group>TX_Reps</group>
+    </sharedTo>
+</EmailFolder>

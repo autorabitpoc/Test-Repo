@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>Account.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Group_Number__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Section_Number__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Group_Section__c.Cancellation_Date__c</field>
+    </columns>
+    <description>This reports contains all the Group Section records in Salesforce with Status Cancelled and does not have a Cancellation Date</description>
+    <filter>
+        <criteriaItems>
+            <column>Group_Section__c.Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Group_Section__c.Cancellation_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Cancelled GSs Missing Cancellation Date</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Group_Section__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

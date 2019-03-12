@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>Campaign.Account__c</field>
+    </columns>
+    <columns>
+        <field>Campaign.Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>Campaign.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Campaign.Energy__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Energy Vertical Accounts</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignList</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+</Report>

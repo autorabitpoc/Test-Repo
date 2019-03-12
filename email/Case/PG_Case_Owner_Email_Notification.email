@@ -1,0 +1,13 @@
+*** Case Notification ***
+
+{!Case.Opportunity_Name__c} with PGs has been {!Case.Opportunity_Status__c}.  Please update your records accordingly:
+
+Account:  {!Case.Account}
+AE Contact Name:  {!Case.Account_Executive_Name__c} 
+PG Case #:  {!Case.CaseNumber}
+Subject:  {!Case.Opportunity_Name__c} with PGs has been {!Case.Opportunity_Status__c}.
+Description: As a result of {!Case.Opportunity_Name__c} being {!Case.Opportunity_Status__c},  please either begin the process of tracking "sold" PGs or closing out "not sold" PGs as appropriate.
+
+Thank You.
+
+Follow this link to access the PG case:  {!Case.Link}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>katrina_ormsby@hcsc.net.samprod</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>Oklahoma Contacts</name>
+</ReportFolder>

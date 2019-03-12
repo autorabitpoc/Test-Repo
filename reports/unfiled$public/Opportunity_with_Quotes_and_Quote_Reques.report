@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Access_Fee_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Account_Sales_Executive1__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Account_Executive1_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Account_Executive2__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Account_Name_tx__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Quotes.Quote_Request_Summarys__r$Active_Health_Contracts__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Opportunity with Quotes and Quote Reques</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity_with_Quotes_and_Quote_Requests__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+    <userFilter>patricia_lin@bcbsil.com</userFilter>
+</Report>

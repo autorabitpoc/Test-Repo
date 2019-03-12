@@ -1,0 +1,49 @@
+.THIS .slds-card{
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 219, 218);
+    background-clip: padding-box;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+}
+.THIS .inner-box{
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 219, 218);
+    background-clip: padding-box;
+}
+
+.THIS .slds-size_7-of-12.inner-box{
+    width: 60%;
+}
+
+.THIS .empty-box{
+    width: 1%;
+}
+
+.THIS .slds-size_4-of-12.inner-box{
+    width: 39%;
+}
+
+.THIS .empty-box{
+    width: 1%;
+}
+
+.THIS .box-line{
+    margin-top: 24px;
+}
+
+.THIS .combo-max{
+    max-width: 250px;
+}
+
+.THIS .box-margin{
+    margin-left: 50px;
+}
+
+.THIS .show-error{
+    color: rgb(194, 57, 52);
+    font-size: .75rem;
+    margin-top: .125rem;
+}
+
+.THIS .hide-error{
+    display: none;
+}

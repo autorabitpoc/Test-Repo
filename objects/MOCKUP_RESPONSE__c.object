@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>this field is used in test envs for integration with other apps to use  mockup response or not</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>USE_MOCKUP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>by default, do not use mockup for response</description>
+        <externalId>false</externalId>
+        <label>USE MOCKUP</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>MOCKUP RESPONSE</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,10 @@
+The following ticket is unassigned: Ticket {!Ticket__c.Ticket_Number__c}
+
+It is within 5 days of the event so please assign this ticket out so it does not go to waste.
+
+Event: {!Ticket__c.Ticket_Event__c}
+Ticket: Ticket {!Ticket__c.Ticket_Number__c}
+Ticket Grouping for Ticket: {!Ticket__c.Ticket_Grouping__c}
+
+Link to Ticket
+{!Ticket__c.Link}

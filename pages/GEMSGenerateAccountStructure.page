@@ -1,0 +1,192 @@
+<!--
+************************************************************************************
+// Name             : GEMSGenerateAccountStructure
+// ************************Version Updates********************************************
+// Date             Developer           Description
+// -----------------------------------------------------------------------------------
+// 4/3/2017         Ranjit Gandhi        Cancelled Ba's added to Grid output
+// 4/30/2018        Luke Chen            SFDC-6942 GEMS: Acct Structure - Move Billing Association to the Group Section level in the "Create Account Structure" view.
+// 05/30/2018       Malathi.K            SFDC-9952 Add Product code to Grid,Excel and VF Page.
+// ************************************************************************************
+-->
+
+<apex:page standardcontroller="GEMS_Benefit_Agreement__c" extensions="GEMS_AccountStructureOutputController" showHeader="false" sidebar="false" title="Account Structure" recordSetVar="C" readOnly="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Bootstarp css & Combined Css -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+   
+                 <style>
+                   tr.dataRow { 
+                       background-color:white; 
+                    }
+                    tr.dataRow:hover { 
+                            background-color: #e3f3ff;
+                     };
+                    
+               </style>
+    <apex:form >
+    <apex:commandLink value="Back to Account Structure Case" action="{!gotoCase}"/>
+    <br/>
+    <apex:pageBlock id="thePageBlock" title="Account Structure">
+
+            <apex:pageBlockButtons styleClass="align:center">
+            <apex:commandButton value="Previous" action="{!getPrevious}" disabled="{!!disablePrev}" style="Width:120px;margin:10px" immediate="true"/>
+                <apex:commandButton value="Generate Account Structure" action="{!GenerateDocument}"/>
+            <apex:commandButton value="Next" action="{!getNext}" disabled="{!disableNext}" style="Width:120px;margin:10px" immediate="true"/> 
+            </apex:pageBlockButtons>
+            
+         <apex:pageMessages id="pgMsgId"/>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!accSetUp.asCase.Account.Name}" />
+                <apex:outputField value="{!accSetUp.asCase.Account.External_ID__c}"/>  
+                <apex:outputField value="{!accSetUp.asCase.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!accSetUp.asCase.HCSC_Division__c}"/>                
+                <apex:outputField value="{!accSetUp.asCase.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!accSetUp.asCase.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!accSetUp.asCase.Market_Segment__c}"/>                               
+                <apex:outputField value="{!accSetUp.asCase.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!accSetUp.asCase.Status}"/>
+                <apex:outputField value="{!accSetUp.asCase.GEMS_Account_Submission_Info__c}"/>
+         </apex:pageBlockSection>  
+        <br/>
+                    
+         
+         
+                    
+        <div style="overflow: auto;width: 1320px; ">
+            <table class="list " border="1" cellpadding="0" cellspacing="0">
+                <tr style="background-color:#c0c3c6">
+                <th class="headerRow"> BA No.</th>
+                <th class="headerRow"> BA Cancel<br/> date</th>
+                <th class="headerRow"> Product Code</th>
+                <th class="headerRow"> BA Product</th>                
+                <th class="headerRow"> BA Description</th>                                
+                <th class="headerRow"> BA Fund Type</th>
+                <th class="headerRow"> Billing<br/> Category No </th>                
+                <th class="headerRow"> Billing Category<br/>Description</th>
+                <th class="headerRow"> Mailing <br/> Category No </th>                
+                <th class="headerRow"> Mailing Category<br/>Description</th>
+                <th class="headerRow"> Reporting <br/> Category No </th>                
+                <th class="headerRow"> Reporting  Category<br/>Description</th>
+                <th class="headerRow"> Product <br/> Category No </th>                
+                <th class="headerRow"> Product  Category<br/>Description</th>
+          
+                <apex:repeat value="{!accSetUp.Characts}" var="Char">
+                    <apex:outputPanel rendered="{!IF(accSetUp.asCase.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                        <th class="headerRow"> Character <br/> [PROD/RPT] <br/> {!Char.Characteristic_Code__c}</th>
+                    </apex:outputPanel>
+                </apex:repeat>
+                <!--<th class="headerRow"> Billing</th>
+                <th class="headerRow"> Report</th>-->
+                <th class="headerRow"> Group No.</th>
+                <th class="headerRow"> Section No.</th>
+                <th class="headerRow"> Section <br/> Description</th>
+                <th class="headerRow"> Section <br/> Eff Date</th>
+                <th class="headerRow"> Section <br/> Can Date</th>
+                <th class="headerRow"> Billing <br/> Profile</th>
+                <th class="headerRow"> Billing <br/> Association</th>
+                <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                <th class="headerRow"> Alpha Prefix</th>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                    <th class="headerRow" > ID Card <br/> Type</th>
+                </apex:outputPanel>
+                <!--<apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                <th class="headerRow"> Pres Drug <br/> Type/Copays</th>
+                </apex:outputPanel>-->
+                <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                <th class="headerRow"> SPI Codes</th>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                <th class="headerRow"> Par Plan <br/> Codes</th>
+                </apex:outputPanel>
+                </tr>
+      <apex:repeat value="{!accSetUp.cancelledbenefitAgreements}" var="pbRecord">
+                
+            <tr style="background-color:pink;">
+                <td class="dataCell"><apex:outputField value="{!pbRecord.ba.Name} "/> </td>
+             <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Cancel_Date__c} "/> </td>
+             <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Product__r.ProductCode} "/> </td>
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Plan__c} "/> </td>               
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.BA_Description__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.BA_Fund_Type__c}"/> </td>
+               <td /> <td /> <td /> <td /> <td /> <td /> <td /><td /><td /><td /><td /><td /><td /> <td /> <td /> <td /> <td /> <td /> <td /> <td /> <td />
+               
+
+                    </tr>
+               </apex:repeat>
+            <apex:repeat value="{!accSetUp.benefitAgreements}" var="pbRecord">
+            <apex:repeat value="{!pbRecord.categories}" var="categoryVal">
+            <tr class="dataRow">
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Name} "/> </td>
+               <td class="dataCell">  </td>
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Product__r.ProductCode} "/> </td>
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.Plan__c} "/> </td>               
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.BA_Description__c}"/> </td>               
+               <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.BA_Fund_Type__c}"/> </td>
+               <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Billing__c==true,categoryVal.cat.name,'')}"/> </td>
+               <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Billing__c==true,categoryVal.cat.Category_Description__c,'')}"/> </td>
+                <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Mailing__c==true,categoryVal.cat.name,'')}"/> </td>
+               <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Mailing__c==true,categoryVal.cat.Category_Description__c,'')}"/> </td>
+                <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Reporting__c==true,categoryVal.cat.name,'')}"/> </td>
+               <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Reporting__c==true,categoryVal.cat.Category_Description__c,'')}"/> </td>
+                <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Product__c==true,categoryVal.cat.name,'')}"/> </td>
+               <td class="dataCell"> <apex:outputtext value="{!if(categoryVal.cat.Usage_Product__c==true,categoryVal.cat.Category_Description__c,'')}"/> </td>
+                <!--
+               <apex:repeat value="{!categoryVal.CatCharValues}" var="charVal">
+                   <apex:outputPanel rendered="{!IF(accSetUp.asCase.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                       <td class="dataCell"> <apex:outputField value="{!charVal.Name}"/> </td>                             
+                   </apex:outputPanel>
+               </apex:repeat>
+               -->
+               
+               <apex:repeat value="{!LoopCharVals}" var="i">
+                   <apex:outputPanel rendered="{!IF(accSetUp.asCase.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                       <td class="dataCell"> <apex:outputText value="{!categoryVal.AlignedCharValsperRow[i]}"/> </td>                             
+                   </apex:outputPanel>
+               </apex:repeat>
+               <!--<td class="dataCell"> <apex:outputField value="{!categoryVal.cat.Usage_Billing__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.cat.Usage_Reporting__c}"/> </td>-->
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Group_No__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Section_No__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Section_Description__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Section_Eff_Date__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Section_Can_Date__c}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.bpBAAssign.Billing_Profile__r.Name}"/> </td>
+               <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Billing_Assoc__c}" rendered="{!IF((pbRecord.ba.BA_Fund_Type__c != 'PREM' && pbRecord.ba.BA_Fund_Type__c != null), true, false)}"/> </td> <!-- SFDC-6942 -->
+               <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                   <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Alpha_Prefix__c}"/> </td>
+               </apex:outputPanel>
+               <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                   <td class="dataCell"> <apex:outputField value="{!pbRecord.ba.ID_Card_Type__c}"/> </td>
+               </apex:outputPanel>
+               <!--<apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                   <td class="dataCell"> <apex:outputText value="{!pbRecord.ba.Prescription_Drug_Type__c}/{!pbRecord.ba.Copays__c}"/> </td>
+               </apex:outputPanel>-->
+               <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                   <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.SPI_Codes__c}"/> </td>
+               </apex:outputPanel> 
+               <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">
+                   <td class="dataCell"> <apex:outputField value="{!categoryVal.groupSection.Par_Plan_Codes__c}"/> </td>
+               </apex:outputPanel>
+            </tr>
+                </apex:repeat>  
+                </apex:repeat>  
+                
+            </table>
+            
+        </div>
+                   
+
+        
+    </apex:pageblock>
+  
+
+        
+        <apex:commandLink value="Back to Account Structure Case" action="{!gotoCase}"/>
+      
+      
+    </apex:form> 
+</apex:page>

@@ -1,0 +1,13 @@
+Hello,
+
+Below is a request for [Enter Member Level Request Type] effective for [Enter Date].The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Current information to be replaced: [Enter Current Information]
+- Replacement information: [Enter Replacement Information]
+- Subscriber ID / SSN: [Enter Subscriber ID]
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

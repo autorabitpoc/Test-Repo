@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Escalations Template:  Please complete when requesting a RUSH to be filtered through MOSU point of contact (POC)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Escalations</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: Escalation Request - Renewal Date:  {!Account.Renewal_Date__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

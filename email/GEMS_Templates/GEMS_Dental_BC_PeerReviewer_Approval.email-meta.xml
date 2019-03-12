@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template used to notify Peer Reviewer that Dental Benefit Coding is ready for review</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Dental BC PeerReviewer Approval</name>
+    <style>none</style>
+    <subject>{!Case.Account} - {!Case.Account_Number__c} - {!Case.GEMS_Case_Effective_Date__c} - Dental Benefit Coding Peer Reviewer Approval Request</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

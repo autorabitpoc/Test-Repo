@@ -1,0 +1,12 @@
+<aura:component description="SGR_CensusAddEditHeader">
+    <aura:attribute name="title" type="String" default="Add New Subscriber"/>
+    <aura:attribute name="showToast" type="Boolean" default="false"/>
+    <aura:attribute name="toastTitle" type="String"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="timerRef" type="Integer" default="-1"/>
+    <aura:handler event="c:SGR_ModalClickEvent" action="{!c.handleModalEvent}"/>
+    <div class="slds-align--absolute-center">{!v.title}</div>
+    <aura:if isTrue="{!v.showToast}">
+        <c:SGR_ModalToast title="{!v.toastTitle}" message="{!v.message}" closeClick="{!c.handleCloseClick}"/>
+    </aura:if>
+</aura:component>

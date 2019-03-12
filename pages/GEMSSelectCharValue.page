@@ -1,0 +1,143 @@
+<apex:page controller="GEMS_SelectCharValController">
+  <script>
+      function assignCharValueToCat(){
+          assignment();
+          
+      }
+      function assignCharact(){
+          assignment1();
+      }
+      function refreshRender(){
+          refresh();
+      }
+      function refreshRenderChar(){
+          refresh1();
+      }
+      function renewCategory(){
+          renewCategory();
+      }
+  </script>
+  <apex:form id="form1">
+  
+        <apex:Actionfunction name="assignment1" rerender="pbChar,pbPanel" action="{!assignChar}"/>        
+        <apex:Actionfunction name="assignment" rerender="pb" action="{!assignValues}"/> 
+        <apex:Actionfunction name="refresh" rerender="pb" action="{!refresh}"/>
+        <apex:Actionfunction name="refresh1" rerender="pbChar" action="{!refreshChar}"/>
+        <apex:Actionfunction name="renewCategory"  action="{!updateCategory}"  />
+  
+        <apex:pageMessages id="pgMsgId"/>
+        
+        <apex:pageBlock id="pbCat" title="Selected Category :">
+            <apex:pageBlockTable value="{!cats}" var="cat">                
+                <apex:column value="{!cat.Name}"/>
+                <apex:column value="{!cat.Category_Description__c}"/>                
+                <apex:column value="{!cat.Effective_Date__c}"/>
+                <apex:column value="{!cat.Category_Cobra_Code__c}"/>
+                <apex:column value="{!cat.Usage_Reporting__c}"/>
+                <apex:column value="{!cat.Usage_Billing__c}"/>
+                <apex:column value="{!cat.Usage_Product__c}"/>
+                <apex:column value="{!cat.Usage_Mailing__c}"/>
+                <apex:column value="{!cat.Members_Derivation_Type__c}"/>
+                <!--<apex:column headerValue="Derivation Type">
+                    <apex:inputField value="{!cat.Members_Derivation_Type__c}">
+                    </apex:inputField>
+                </apex:column>-->
+                <apex:column headerValue="Renew Assignments">
+                    <apex:inputCheckbox value="{!cat.IsUpdated__c}" 
+                        disabled="{!IF(cat.Members_Derivation_Type__c == 'CT' || cat.Members_Derivation_Type__c == 'CH', false,true)}"
+                        rendered="{!IF(cat.IsNew__c == true, false, true)}">
+                        <apex:actionSupport event="onchange"  action="{!updateCategory}"    >
+                        </apex:actionSupport>
+                    </apex:inputCheckbox>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="pbChar"  title="Characteristic :">          
+            <apex:pageBlockTable value="{!chars}" var="a">
+                <apex:column headerValue="Select" width="10px" >
+                    <apex:inputCheckbox value="{!a.isSelected}" onclick="startLoading();" >
+                        <apex:actionSupport event="onchange" reRender="pbChar" oncomplete="endLoading();assignCharact();" >
+                            <apex:param name="selChar" value="{!a.characteristic.id}" assignTo="{!selChar}"/>
+                        </apex:actionSupport>
+                    </apex:inputCheckbox>
+                </apex:column>
+                <apex:column headerValue="Assigned" width="10px" >
+                <apex:image url="{!$Resource.greentick}" width="15" height="15" style="display:{!IF((a.isAssigned== true),'inline', 'none')};"    />
+                   <!-- <apex:inputCheckbox value="{!a.isAssigned}" disabled="true"/>  -->
+                </apex:column>
+                <apex:column value="{!a.characteristic.Characteristic_Code__c}"/>
+                <apex:column value="{!a.characteristic.Corp_Characteristic_Code__r.Name}"/>
+                <apex:column value="{!a.characteristic.Effective_Date__c}"/>                
+                <apex:column value="{!a.characteristic.Reporting__c}"/>
+                <apex:column value="{!a.characteristic.Billing__c}"/>
+                <apex:column value="{!a.characteristic.Product__c}"/>
+                <apex:column value="{!a.characteristic.Mailing__c}"/>
+                <!--<apex:column value="{!a.characteristic.Other__c}"/>-->
+                <apex:column value="{!a.characteristic.Mandatory__c}"/>
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="9">
+                <apex:commandButton status="fetchStatus" reRender="pbChar,pbPanel" value="|<" disabled="{!!hasPreviousChar}" action="{!firstChar}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pbChar,pbPanel" value="<" disabled="{!!hasPreviousChar}" action="{!previousChar}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pbChar,pbPanel" value=">" disabled="{!!hasNextChar}" action="{!nextChar}" title="Next Page" />
+                <apex:commandButton status="fetchStatus" reRender="pbChar,pbPanel" value=">|" disabled="{!!hasNextChar}" action="{!lastChar}" title="Last Page"/>
+                <apex:outputText >{!(pageNumberChar * limitSizeChar )+1 - limitSizeChar }-{!IF((pageNumberChar * limitSizeChar )>sizeChar, sizeChar,(pageNumberChar * limitSizeChar ))} of {!sizeChar}</apex:outputText>
+                <apex:commandButton status="fetchStatus" reRender="pbchar" value="Refresh" action="{!refreshChar}" title="Refresh Page"/>
+               <!-- <apex:commandButton action="{!assignValues}" value="Assign Values"/>   -->
+                <apex:outputText >Records per Page : </apex:outputText>              
+                <apex:inputText value="{!limitSizeChar}" onchange="return refreshRenderChar();" maxlength="3" style="width:30px;"/>
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="pbPanel" style="display:{!IF((selChar == Null ),'none', 'inline')}">
+        <apex:pageBlock id="pb" title="Characteristic Values :">
+            <apex:pageBlockTable value="{!charValues}" var="a">
+                <!--<apex:column headerValue="Assign" width="10px" >
+                    <apex:inputCheckbox value="{!a.isSelected}" disabled="{!a.isDisabled}" onclick="startLoading();">
+                        <apex:actionSupport event="onchange" reRender="pbPanel,pbChar" oncomplete="endLoading();return assignCharValueToCat();">
+                            <apex:param name="selChar" value="{!a.characteristicValue.id}" assignTo="{!selCharVal}"/>
+                            <apex:param name="isSel" value="{!a.isSelected}" assignTo="{!isSelected}"/>
+                        </apex:actionSupport>
+                    </apex:inputCheckbox>
+                </apex:column>-->
+                <apex:column headerValue="Assign" width="10px" >
+                    <apex:inputCheckbox value="{!a.isSelected}" disabled="{!a.isDisabled}"/>
+                </apex:column>     
+                <!--<apex:column value="{!chars[0].Characteristic_Code__c}"/>
+                <apex:column value="{!chars[0].Corp_Characteristic_Code__r.Name}"/>-->         
+                <apex:column value="{!a.characteristicValue.Code__c}"/>
+                <apex:column value="{!a.characteristicValue.Name}"/>
+                <apex:column value="{!a.characteristicValue.Effective_Date__c}"/>
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="10">
+                <apex:commandButton status="fetchStatus" reRender="pbPanel" value="|<" disabled="{!!hasPrevious}" action="{!first}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pbPanel" value="<" disabled="{!!hasPrevious}" action="{!previous}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pbPanel" value=">" disabled="{!!hasNext}" action="{!next}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pbPanel" value=">|" disabled="{!!hasNext}" action="{!last}" title="Last Page"/>                
+                <apex:outputText >{!(pageNumber * limitSize)+1-limitSize}-{!IF((pageNumber * limitSize)>size, size,(pageNumber * limitSize))} of {!size}</apex:outputText>
+                <apex:commandButton status="fetchStatus" reRender="pbPanel" value="Refresh" action="{!refresh}" title="Refresh Page"/>                
+                <apex:outputText >Records per Page : </apex:outputText>
+                <apex:inputText value="{!limitSize}" onchange="return refreshRender();" maxlength="3" style="width:30px;"/> 
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                    <apex:actionStatus id="fetchStatus2" startText="Saving..." stopText=""/>
+                </apex:outputPanel>
+                <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                    <apex:outputText >* Please save the assignment changes done if any before navigating to the next page.</apex:outputText> 
+                </apex:outputPanel>
+            </apex:panelGrid>
+        </apex:pageBlock>
+        <center>       
+            <apex:commandButton action="{!assignCatValues}" status="fetchStatus2" reRender="pbPanel,pbChar" disabled="{!isDisabled}" value="Save Assignments" style="float: center;width:120px;"/>
+        </center>
+        </apex:outputPanel>
+        <center>
+             <apex:commandButton action="{!goToCats}" value="<< Categories" style="float: left;width:120px;"/>
+             <apex:commandButton action="{!goToCase}" value="Account Structure Case >>" style="float: right;width:180px;" />
+        </center>
+    </apex:form>
+    <c:Gems_loader />
+</apex:page>

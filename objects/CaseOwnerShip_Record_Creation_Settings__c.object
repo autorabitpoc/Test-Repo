@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Keeps the list of case record types which is used for recording the case ownership detail information</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Create_CaseOwnership_Record__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Create CaseOwnership Record</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Case Ownership Record Creation Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

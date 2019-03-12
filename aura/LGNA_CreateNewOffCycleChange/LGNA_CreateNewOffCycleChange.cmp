@@ -1,0 +1,8 @@
+<!--  Ranjit Gandhi       03/27/2018    SFDC-8771 Group Account - Renewal Opportunity Button-->
+<aura:component controller="LGNA_CreateOffCycleOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <!--Added Recordtypeid to identify which record needs to be created-->
+    <aura:attribute name="recordTypeid" type="String" default="01233000000IgsI"/>
+    <aura:attribute name="accDetails" type="Account"/>    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Subscribers__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.BCBS_Enrolled_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.of_BCBS_Enrolled_Subscribers__c</field>
+    </columns>
+    <columns>
+        <field>Account.Risk_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Current_Risk_Level__c</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <description>Report to show &quot;all&quot; accounts and their risk level</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Owner_s_Manager_Name__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>cami martin,russ plum,carol riley,sandy sadler,kellie motsinger</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TX ENA Accounts_Risk Level</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

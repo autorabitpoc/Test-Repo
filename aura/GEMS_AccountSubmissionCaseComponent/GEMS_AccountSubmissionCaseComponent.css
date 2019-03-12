@@ -1,0 +1,10 @@
+.THIS.popoverclass {
+    min-height: 200px;
+}
+
+.THIS.no-pointer .pointer{
+    visibility: hidden;
+}
+.THIS .hideDiv{
+    display: none;
+}

@@ -1,0 +1,9 @@
+*** Account Notification *** 
+
+The following Account's count of Active Health Members has been changed by 400 or more members. 
+
+Account: {!Account.Name} 
+Previous Active Health Members: {!Account.Previous_Active_Health_Members__c} 
+New Active Health Members: {!Account.Active_Health_Members__c}
+
+Follow this link to access the Account: {!Account.Link}

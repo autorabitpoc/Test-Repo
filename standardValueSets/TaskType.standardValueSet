@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Account</fullName>
+        <default>false</default>
+        <label>Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Ask for RFP</fullName>
+        <default>false</default>
+        <label>Ask for RFP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Broker Contact (Prospects &amp; Opportunities 1 /day /consulting house)</fullName>
+        <default>false</default>
+        <label>Broker Contact (Prospects &amp; Opportunities 1 /day /consulting house)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Call</fullName>
+        <default>false</default>
+        <label>Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Complete Sales Rep/AE Scorecard</fullName>
+        <default>false</default>
+        <label>Complete Sales Rep/AE Scorecard</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Create a Report to &quot;Assess Winning Carrier&quot;</fullName>
+        <default>false</default>
+        <label>Create a Report to &quot;Assess Winning Carrier&quot;</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Crisis Communication-Anticipated Event</fullName>
+        <default>false</default>
+        <label>Crisis Communication-Anticipated Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Crisis Communication-Unanticipated Event</fullName>
+        <default>false</default>
+        <label>Crisis Communication-Unanticipated Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Develop Customer Lose/Gain Document</fullName>
+        <default>false</default>
+        <label>Develop Customer Lose/Gain Document</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow Up Call</fullName>
+        <default>false</default>
+        <label>Follow Up Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In Person Visit</fullName>
+        <default>false</default>
+        <label>In Person Visit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meeting</fullName>
+        <default>false</default>
+        <label>Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Need Additional Information</fullName>
+        <default>false</default>
+        <label>Need Additional Information</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Post Mortem Summary</fullName>
+        <default>false</default>
+        <label>Post Mortem Summary</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Proactive Delivery of &quot;Getting to Zero&quot;</fullName>
+        <default>false</default>
+        <label>Proactive Delivery of &quot;Getting to Zero&quot;</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Call</fullName>
+        <default>false</default>
+        <label>Sales Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Plan</fullName>
+        <default>false</default>
+        <label>Strategic Plan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Plan Client Meeting</fullName>
+        <default>false</default>
+        <label>Strategic Plan Client Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Use of Data</fullName>
+        <default>false</default>
+        <label>Strategic Use of Data</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategy Letter to UW</fullName>
+        <default>false</default>
+        <label>Strategy Letter to UW</label>
+    </standardValue>
+    <standardValue>
+        <fullName>To Do</fullName>
+        <default>false</default>
+        <label>To Do</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Create a Contract Admin Case</fullName>
+        <default>false</default>
+        <label>Create a Contract Admin Case</label>
+    </standardValue>
+</StandardValueSet>

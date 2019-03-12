@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Accounts</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_4079896</developerName>
+        <masterLabel>Wave LOB</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.GEMS_Line_of_Business__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Major National GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA GET</sourceValue>
+            </sourceValues>
+            <value>ENA &amp; Major National</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Municipal GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Student Health</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SCP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Large/Mid Market</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Major National</sourceValue>
+            </sourceValues>
+            <value>Key Markets</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case.GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Account.Line_of_business__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Case.Opportunity_Name__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Structure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_4079896</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Key Markets</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_4079896</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.HCSC_Division__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Wave Submissions (Key Market Actuals)</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

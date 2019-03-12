@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Case Record Types for LGNA Account Cancellation Record Types (Used in GEMS_AccountStructureCreateService)</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Record_Type_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Record Type Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>LGNA Case Account Cancellation RecType</label>
+    <visibility>Public</visibility>
+</CustomObject>

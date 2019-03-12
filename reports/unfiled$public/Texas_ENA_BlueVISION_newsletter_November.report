@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <columns>
+        <field>Contact.AccountContactRelations$Name</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Contact$Mail_Communication__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>BlueVision Newsletter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.AccountContactRelations*Account$Enterprise_National_Account__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Leave,Probation,Short Term Leave,Terminated,Inactive</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.AccountContactRelations*Account$HCSC_Division__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Texas_ENA_BlueVISION_newsletter_November</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contacts_with_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Contact$LastActivityDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

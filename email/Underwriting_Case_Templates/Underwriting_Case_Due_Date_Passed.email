@@ -1,0 +1,10 @@
+*** Case Action Required ***
+
+The due date for a Case you own has passed:
+
+Account: {!Case.Account_Name__c}
+Case #: {!Case.CaseNumber}
+Subject: {!Case.Subject} 
+Description: {!Case.Description} 
+
+Follow this link to access and resolve the Case: {!Case.Link}

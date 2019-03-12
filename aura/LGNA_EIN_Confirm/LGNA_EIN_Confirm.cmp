@@ -1,0 +1,225 @@
+<aura:component controller="LGNA_EIN_ConfirmControllerApx" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride,force:hasRecordId,force:lightningQuickAction" access="global" >	
+    <aura:attribute name="reg" type="EIN__c[]"/>
+    <aura:attribute name="sent" type="EIN__c[]"/>
+    <aura:attribute name="sending" type="EIN__c[]"/>
+    <!--<aura:attribute name="record" type="EIN__c"/>-->
+    <aura:attribute name="record" type="Account"/>
+    <!--<aura:attribute name="simpleRecord" type="EIN__c"/>-->
+    <aura:attribute name="simpleRecord" type="Account"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="disableButton" type="boolean" default="true"/>
+    <aura:attribute name="disableButton1" type="boolean" default="true"/>
+    <aura:attribute name="sentRecords" type="boolean" default="false"/>
+    <aura:attribute name="sendingRecords" type="boolean" default="false"/>    
+    <aura:attribute name="noNewRecords" type="boolean" default="false"/>
+    <aura:attribute name="singleEinOnly" type="boolean" default="false"/>
+    <aura:attribute name="noSentRecords" type="boolean" default="false"/>
+    <aura:attribute name="noSendingRecords" type="boolean" default="false"/>    
+    <aura:attribute name="showAcctErrors" type="boolean" default="false"/>
+    <aura:attribute name="showSuccess" type="boolean" default="false"/>
+    <aura:attribute name="showSrvError" type="boolean" default="false"/>
+    <aura:attribute name="srvErrorMsg" type="string" default=""/>
+    <!--<force:recordData aura:id="recordHandler" 
+       	              recordId="{!v.recordId}"
+           	          layoutType="FULL"
+               	      targetRecord="{!v.record}"
+                   	  targetFields="{!v.simpleRecord}"
+                  	  targetError="{!v.recordError}"
+                      mode="EDIT"
+                      recordUpdated="{!c.handleRecordUpdated}"/>-->
+    <force:recordData aura:id="recordHandler" 
+       	              recordId="{!v.recordId}"
+                      fields="Name,External_ID__c,Effective_Date__c,Market_Segment__c,HCSC_Division__c"
+               	      targetRecord="{!v.record}"
+                   	  targetFields="{!v.simpleRecord}"
+                  	  targetError="{!v.recordError}"
+                      recordUpdated="{!c.handleRecordUpdated}"/>    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" /> 
+	<div class="slds-box slds-theme_default">
+        <div class="slds-box slds-box_xx-small">
+            <div class="slds-align_absolute-center slds-text-title_caps">Transmit Employer Identification Numbers to BlueStar.</div>
+        <div class="slds-clearfix">
+            <div class="slds-float_left">
+        <div><b>Account Name : </b>{!v.simpleRecord.Name}</div>
+        <div><b>Account Number : </b>{!v.simpleRecord.External_ID__c}</div>
+        <div><b>Account Effective Date : </b>{!v.simpleRecord.Effective_Date__c}</div>
+                </div>
+            <div class="slds-float_right">
+        <div><b>Market Segment : </b>{!v.simpleRecord.Market_Segment__c}</div>
+        <div><b>HCSC Division : </b>{!v.simpleRecord.HCSC_Division__c}</div>
+                </div>
+        </div>
+            <aura:if isTrue="{!v.showAcctErrors}">
+            <div class="slds-text-color_error">
+                            <aura:if isTrue="{!(empty(v.simpleRecord.Name))}">
+                                EIN transmission to BlueStar cannot be initiated until the Account is updated with Account Name. <br/>
+            </aura:if>
+                            <aura:if isTrue="{!(empty(v.simpleRecord.External_ID__c))}">
+                EIN transmission to BlueStar cannot be initiated until the Account is updated with Account Number. <br/>
+            </aura:if>
+                            <aura:if isTrue="{!(empty(v.simpleRecord.Effective_Date__c))}">
+                EIN transmission to BlueStar cannot be initiated until the Account is updated with Original Effective Date. <br/>
+            </aura:if>
+                            <aura:if isTrue="{!(empty(v.simpleRecord.Market_Segment__c))}">
+                EIN transmission to BlueStar cannot be initiated until the Account is updated with Market Segment. <br/>
+            </aura:if>
+            <aura:if isTrue="{!(empty(v.simpleRecord.HCSC_Division__c))}">
+                EIN transmission to BlueStar cannot be initiated until the Account is updated with HCSC Division. <br/>
+            </aura:if>
+            </div>
+                </aura:if>
+            </div>
+        <div class="slds-align_absolute-center" style="height: 3rem;">
+                <aura:if isTrue="{!or(or(v.disableButton,v.disableButton1),(and(v.singleEinOnly, and(v.noSentRecords, v.noSendingRecords))))}">
+      				<button class="slds-button slds-button_brand slds-text-align_center" disabled="true">Send to BlueStar</button>
+                <aura:set attribute="else">
+                	<button class="slds-button slds-button_brand slds-text-align_center" onclick="{!c.sendEIN}">Send to BlueStar</button>
+                </aura:set>
+            </aura:if>
+            <!--singleEinOnly = "{!v.singleEinOnly}"<br/>
+            noSentRecords = "{!v.noSentRecords}"<br/>
+            noSendingRecords = "{!v.noSendingRecords}"<br/>
+            <aura:if isTrue="{!and(and(v.disableButton == false,v.disableButton1 == false))}">
+                <aura:if isTrue="{!or(v.singleEinOnly == false, and(v.singleEinOnly == true,or(v.noSentRecords == false,v.noSendingRecords == false)))}">
+                    <button class="slds-button slds-button_brand slds-text-align_center" onclick="{!c.sendEIN}">Send to BlueStar</button>
+                    <aura:set attribute="else">
+                        <button class="slds-button slds-button_brand slds-text-align_center" disabled="true">Send to BlueStar</button>
+                    </aura:set>
+                </aura:if>    
+
+                <aura:set attribute="else">
+                    <button class="slds-button slds-button_brand slds-text-align_center" disabled="true">Send to BlueStar</button>
+                </aura:set>
+            </aura:if>-->
+        </div>
+        <!--Bharath--><aura:if isTrue="{!and(v.singleEinOnly, and(v.noSentRecords, v.noSendingRecords))}">
+        	<div class="slds-align_absolute-center slds-text-color_error">
+            	Transmisssion to BlueStar is allowed only when there are more than one Employer Identification Number available for the Account.
+            </div>
+        </aura:if>                
+        <aura:if isTrue="{!v.showSuccess}">
+            <div class="slds-align_absolute-center slds-text-color_success">Transmission to BlueStar has been initiated. If there are any communication failures, these EINs will be available for retransmission after couple of hours from now.</div>
+        </aura:if>
+		<aura:if isTrue="{!v.showSrvError}">
+            <div class="slds-align_absolute-center slds-text-color_error">{!v.srvErrorMsg}</div>
+        </aura:if>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-no-row-hover">
+			<thead>
+    			<tr class="slds-text-title_caps">
+      				<th scope="col">
+        				<div class="slds-truncate" title="EIN">EIN</div>
+      				</th>
+      				<th scope="col">
+        				<div class="slds-truncate" title="Primary">Primary</div>
+      				</th>
+      				<th scope="col">
+        				<div class="slds-truncate" title="LocationName">Location Name</div>
+      				</th>
+      				<th scope="col">
+        				<div class="slds-truncate" title="EffectiveDate">Effective Date</div>
+      				</th>
+      				<th scope="col">
+        				<div class="slds-truncate" title="EndDate">End Date</div>
+      				</th>
+      				<th scope="col">
+        				<div class="slds-truncate" title="ChgReason">Change Reason</div>
+      				</th>                    
+                </tr>
+            </thead>            
+        	<tbody>
+            	<aura:if isTrue="{!v.disableButton == false}">
+            		<tr class=" slds-theme_alert-texture slds-theme_shade slds-row-shrink">
+                    	<td class="slds-cell-shrink">
+            				Following Employer Identification Numbers are ready for transmission to BlueStar. 
+                		</td>
+                	</tr>
+            	</aura:if>                
+				<aura:iteration var="r" items="{!v.reg}">
+            		<tr>
+      					<td data-label="EIN">
+        					<div class="slds-truncate" title="EIN">{!r.Name}</div>
+      					</td>
+      					<td data-label="Primary">
+        					<div class="slds-truncate" title="Cloudhub">{!r.Primary__c}</div>
+      					</td>
+      					<td data-label="LocationName">
+        					<div class="slds-truncate" title="LocationName">{!r.Location_Name__c}</div>
+      					</td>
+      					<td data-label="EffectiveDate">
+        					<div class="slds-truncate" title="EffectiveDate">{!r.Effective_Date__c}</div>
+      					</td>
+      					<td data-label="EndDate">
+        					<div class="slds-truncate" title="EndDate">{!r.End_Date__c}</div>
+      					</td>
+      					<td data-label="ChgReason">
+        					<div class="slds-truncate" title="ChgReason">{!r.Change_Reason__c}</div>
+      					</td>                        
+    				</tr>       
+        		</aura:iteration>
+            	<aura:if isTrue="{!v.sendingRecords}">
+            		<tr class=" slds-theme_alert-texture slds-theme_shade slds-row-shrink">
+                    	<td class="slds-cell-shrink">
+            				Transmission of following Employer Identification Numbers to BlueStar is in progress.
+                		</td>
+                	</tr>
+            	</aura:if>
+				<aura:iteration var="t" items="{!v.sending}">
+            		<tr class="slds-theme_shade">
+      					<td data-label="EIN1">
+        					<div class="slds-truncate" title="EIN">{!t.Name}</div>
+      					</td>
+      					<td data-label="Primary1">
+        					<div class="slds-truncate" title="Cloudhub">{!t.Primary__c}</div>
+      					</td>
+      					<td data-label="LocationName1">
+        					<div class="slds-truncate" title="LocationName">{!t.Location_Name__c}</div>
+      					</td>
+      					<td data-label="EffectiveDate1">
+        					<div class="slds-truncate" title="EffectiveDate">{!t.Effective_Date__c}</div>
+      					</td>
+      					<td data-label="EndDate">
+        					<div class="slds-truncate" title="EndDate">{!t.End_Date__c}</div>
+      					</td>
+      					<td data-label="ChgReason">
+        					<div class="slds-truncate" title="ChgReason">{!t.Change_Reason__c}</div>
+      					</td>                        
+    				</tr>       
+        		</aura:iteration>            
+            	<aura:if isTrue="{!v.sentRecords}">
+            		<tr class=" slds-theme_alert-texture slds-theme_shade slds-row-shrink">
+						<td class="slds-cell-shrink">
+            				Following Employer Identification Numbers have already been updated to BlueStar.
+                		</td>
+                	</tr>
+            	</aura:if>
+				<aura:iteration var="s" items="{!v.sent}">
+            		<tr class="slds-theme_shade">
+      					<td data-label="EIN1">
+        					<div class="slds-truncate" title="EIN">{!s.Name}</div>
+      					</td>
+      					<td data-label="Primary1">
+        					<div class="slds-truncate" title="Cloudhub">{!s.Primary__c}</div>
+      					</td>
+      					<td data-label="LocationName1">
+        					<div class="slds-truncate" title="LocationName">{!s.Location_Name__c}</div>
+      					</td>
+      					<td data-label="EffectiveDate1">
+        					<div class="slds-truncate" title="EffectiveDate">{!s.Effective_Date__c}</div>
+      					</td>
+      					<td data-label="EndDate">
+        					<div class="slds-truncate" title="EndDate">{!s.End_Date__c}</div>
+      					</td>
+      					<td data-label="ChgReason">
+        					<div class="slds-truncate" title="ChgReason">{!s.Change_Reason__c}</div>
+      					</td>                        
+    				</tr>       
+        		</aura:iteration>            
+        	</tbody>            
+        </table>
+        <aura:if isTrue="{!and(and(v.noNewRecords, and(v.noSentRecords, v.noSendingRecords)),(v.singleEinOnly == false))}">
+        	<div class="slds-box slds-text-color_error">
+            	There are no Employer Identification Numbers available for this Account. 
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

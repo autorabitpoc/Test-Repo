@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity.Requests__r$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$Date_Time_Declined__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Primary_Closed_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$Proposal_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Requests__r$ClosedDate</field>
+    </columns>
+    <description>This report shows reasons a quote is declined</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Requests__r$RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.Underwriting</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Declined Quotes</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_Cases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Rate_End_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

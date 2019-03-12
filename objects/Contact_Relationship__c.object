@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Relationship_Standard_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Related_Record__c</fields>
+        <fields>Type__c</fields>
+        <fields>Status__c</fields>
+        <fields>RecordTypeId</fields>
+        <label>Relationship Standard Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Captures the relationship of a contact with other contacts (Internal or External) or users</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>AccountToAccount</fullName>
+        <description>Create Account To Account records</description>
+        <displayedFields>
+            <field>Related_Account__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Relationship_Info__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Dollars_Invested__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>AccountToAccount</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>AccountToContact</fullName>
+        <description>AccountToContact association</description>
+        <displayedFields>
+            <field>Contact__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Relationship_Info__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>AccountToContact</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>ContactToAccount</fullName>
+        <description>Contact To Account Records</description>
+        <displayedFields>
+            <field>Account__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Relationship_Info__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ContactToAccount</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Account in relationship</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Primary Account in relationship</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Public Affairs Relationships</relationshipLabel>
+        <relationshipName>Contact_Relationships</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Contact in the relationship</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contact Relationships</relationshipLabel>
+        <relationshipName>Contact_Relationships</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Dollars_Invested__c</fullName>
+        <description>Amount of money an organization invests in another organization</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount of money an organization invests in another organization</inlineHelpText>
+        <label>Dollars Invested</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Migration_Source__c</fullName>
+        <description>This will be used during migrations to identify the source</description>
+        <externalId>false</externalId>
+        <label>Migration Source</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account related to the Primary Contact or Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account related to the Primary Contact or Account</inlineHelpText>
+        <label>Related Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Contact Relationships (Related Account)</relationshipLabel>
+        <relationshipName>Contact_Relationships1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Related_Contact_Relationship_Id__c</fullName>
+        <description>Id of the related contact relationship record</description>
+        <externalId>true</externalId>
+        <label>Related Contact Relationship Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Contact related to the Primary Contact</description>
+        <externalId>false</externalId>
+        <label>Related Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contact Relationships (Related Contact)</relationshipLabel>
+        <relationshipName>Contact_Relationships1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Related_Record_On_Account__c</fullName>
+        <description>Displays the related account or contact record name on the Contact Relationship related list on Account detail page</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+IF( Contact__c != null , &apos;/&apos;+ Contact__c , Related_Account__c ), 
+
+IF( Contact__c != null , Contact__r.FirstName + &apos; &apos; + Contact__r.LastName , Related_Account__r.Name ), 
+
+&apos;_blank&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Displays the related account or contact record name on the Contact Relationship related list on Account detail page</inlineHelpText>
+        <label>Related Record</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Record__c</fullName>
+        <description>Displays the related account, contact or user record name on the Contact Relationship related list on Contact detail page</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+IF( Account__c != null , &apos;/&apos;+ Account__c , IF( Related_Contact__c  != null , &apos;/&apos; + Related_Contact__c, &apos;/&apos; + Related_User__c )), 
+
+IF( Account__c != null , Account__r.Name, IF( Related_Contact__c  != null , Related_Contact__r.FirstName + &apos; &apos; +  Related_Contact__r.LastName, Related_User__r.FirstName + &apos; &apos; + Related_User__r.LastName )), 
+
+&apos;_blank&apos;)</formula>
+        <inlineHelpText>Displays the related account, contact or user record name on the Contact Relationship related list on Contact detail page</inlineHelpText>
+        <label>Related Record</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User related to the Primary Contact</description>
+        <externalId>false</externalId>
+        <label>Related User</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <filterItems>
+                <field>User.IsActive</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>$Profile.Name</field>
+                <operation>equals</operation>
+                <value>Integration Profile</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Contact_Relationships</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Relationship_Info__c</fullName>
+        <description>Description of relationship between contact, user or account</description>
+        <externalId>false</externalId>
+        <label>Relationship Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Indicates if relationship is active or inactive</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates if relationship is active or inactive</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Describes type of relationship between two accounts or an acocunt and a contact</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describes type of relationship between two accounts or an acocunt and a contact</inlineHelpText>
+        <label>Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Community Sponsor</fullName>
+                    <default>false</default>
+                    <label>Community Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Community Partner</fullName>
+                    <default>false</default>
+                    <label>Community Partner</label>
+                </value>
+                <value>
+                    <fullName>Grantee</fullName>
+                    <default>false</default>
+                    <label>Grantee</label>
+                </value>
+                <value>
+                    <fullName>Membership Association</fullName>
+                    <default>false</default>
+                    <label>Membership Association</label>
+                </value>
+                <value>
+                    <fullName>Media Outlet</fullName>
+                    <default>false</default>
+                    <label>Media Outlet</label>
+                </value>
+                <value>
+                    <fullName>Board Member</fullName>
+                    <default>false</default>
+                    <label>Board Member</label>
+                </value>
+                <value>
+                    <fullName>Chamber Member</fullName>
+                    <default>false</default>
+                    <label>Chamber Member</label>
+                </value>
+                <value>
+                    <fullName>Donor</fullName>
+                    <default>false</default>
+                    <label>Donor</label>
+                </value>
+                <value>
+                    <fullName>Volunteer</fullName>
+                    <default>false</default>
+                    <label>Volunteer</label>
+                </value>
+                <value>
+                    <fullName>Thought Leader</fullName>
+                    <default>false</default>
+                    <label>Thought Leader</label>
+                </value>
+                <value>
+                    <fullName>Media Contact</fullName>
+                    <default>false</default>
+                    <label>Media Contact</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Contact Relationship</label>
+    <nameField>
+        <displayFormat>CR-{00000}</displayFormat>
+        <label>Contact Relationship #</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Contact Relationships</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Account_to_Account</fullName>
+        <active>true</active>
+        <description>This recordtype is used to create Contact Relationship record of Account to account relationship</description>
+        <label>Account to Account</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Board Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chamber Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Sponsor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grantee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Outlet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership Association</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leader</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volunteer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Contact_to_Account</fullName>
+        <active>true</active>
+        <description>This recordtype is used to create Contact Relationship record of Contact to account relationship</description>
+        <label>Contact to Account</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Board Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chamber Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Sponsor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grantee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Outlet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Membership Association</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leader</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volunteer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Related_Contact</fullName>
+        <active>true</active>
+        <description>This recordtype is used to create Contact Relationship record of Related Contact Type</description>
+        <label>Related Contact</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Related_User</fullName>
+        <active>true</active>
+        <description>This recordtype is used to create Contact Relationship record of Related User Type</description>
+        <label>Related User</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Relate_Account_For_Contact_Relationship</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Relate Account</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ContactRelationship?contactId={!Contact.Id}&amp;Type=RelateContactToAccount</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Relate_Account_For_Public_Affair</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Relate Account</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/ContactRelationship?accountId={!Account.Id}&amp;Type=RelateAccountToAccount</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Relate_Contact</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Relate Contact</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ContactRelationship?contactId={!Contact.Id}&amp;Type=Relate Contact</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Relate_Contact_For_Public_Affairs</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Relate Contact</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ContactRelationship?accountId={!Account.Id}&amp;Type=RelateAccountToContact</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Relate_User</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Relate User</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ContactRelationship?contactId={!Contact.Id}&amp;Type=Relate User</url>
+    </webLinks>
+</CustomObject>

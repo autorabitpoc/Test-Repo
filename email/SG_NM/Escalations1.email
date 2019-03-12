@@ -1,0 +1,23 @@
+Hello,
+
+Below is a request for escalation for [ Name of Processing Area ]
+
+The following information can be used to review and process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Renewal Date:  {!Account.Renewal_Date__c}
+- Type of Escalation:  [BCBS Error, Paperwork not in EWF, Member Emergency]
+- Paperwork Receipt Date: [ date received - attach PDF of proof ]
+- Group Plan Change Information:
+
+- Member Name:  [     ]
+- Member ID Number:  [     ]  
+
+- Description of action needed:  [ please be specific and detailed ]
+
+- Justification for request:  [ include any specific member services needed, High dollar RX needs, upcoming surgery and surgery date, etc... ]
+
+Please advise as soon as possible.  
+
+Thank you,

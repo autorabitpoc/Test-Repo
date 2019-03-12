@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_$Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.Funding_Type_Multiselect__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Client_Approval_Received_Date__c</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Type__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <description>Just ASO BPAs (removed health, dental and HCA)</description>
+    <filter>
+        <criteriaItems>
+            <column>GEMS_Attachment__c.Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>BPA - ASO SIGNED,BPA - SIGNED,SIGNED BPA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Case.Funding_Type_Multiselect__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>ASO</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>2017 Signed BPA Data</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GEMS_Attachment__c@GEMS_Attachment__c.Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>FK_$Case.GEMS_Effective_Date__c</dateColumn>
+        <endDate>2017-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

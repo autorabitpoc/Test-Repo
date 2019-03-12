@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>EIN</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Bluestar_Transfer_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Bluestar Transfer Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Due for Transfer</fullName>
+                    <default>true</default>
+                    <label>Due for Transfer</label>
+                </value>
+                <value>
+                    <fullName>Transfer In Transit</fullName>
+                    <default>false</default>
+                    <label>Transfer In Transit</label>
+                </value>
+                <value>
+                    <fullName>Transfer Complete</fullName>
+                    <default>false</default>
+                    <label>Transfer Complete</label>
+                </value>
+                <value>
+                    <fullName>Seq# Requested</fullName>
+                    <default>false</default>
+                    <label>Seq# Requested</label>
+                </value>
+                <value>
+                    <fullName>Seq# updated</fullName>
+                    <default>false</default>
+                    <label>Seq# updated</label>
+                </value>
+                <value>
+                    <fullName>Wait BS Confirm</fullName>
+                    <default>false</default>
+                    <label>Wait BS Confirm</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Change_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ADD</fullName>
+                    <default>true</default>
+                    <label>ADD</label>
+                </value>
+                <value>
+                    <fullName>CHG</fullName>
+                    <default>false</default>
+                    <label>CHG</label>
+                </value>
+                <value>
+                    <fullName>END</fullName>
+                    <default>false</default>
+                    <label>END</label>
+                </value>
+                <value>
+                    <fullName>ERR</fullName>
+                    <default>false</default>
+                    <label>ERR</label>
+                </value>
+                <value>
+                    <fullName>NONE</fullName>
+                    <default>false</default>
+                    <label>NONE</label>
+                </value>
+                <value>
+                    <fullName>ENDSENT</fullName>
+                    <default>false</default>
+                    <label>ENDSENT</label>
+                </value>
+                <value>
+                    <fullName>null</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>null</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>City1__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country1__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>US</fullName>
+                    <default>true</default>
+                    <label>US</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>County_Code1__c</fullName>
+        <externalId>false</externalId>
+        <label>County Code</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EIN_Sequence_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>BlueStar EIN Sequence Number</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Location_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Location Name</label>
+        <length>45</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Setting any EIN as Primary will clear any other EIN which is already set as Primary for that Account.</inlineHelpText>
+        <label>Primary</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sent_Effective_Date__c</fullName>
+        <description>Hidden field to record the effective date already transmitted to BlueStar. This will be used in trigger for validation.</description>
+        <externalId>false</externalId>
+        <label>Sent Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>State1__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AL</fullName>
+                    <default>false</default>
+                    <label>AL</label>
+                </value>
+                <value>
+                    <fullName>AK</fullName>
+                    <default>false</default>
+                    <label>AK</label>
+                </value>
+                <value>
+                    <fullName>AZ</fullName>
+                    <default>false</default>
+                    <label>AZ</label>
+                </value>
+                <value>
+                    <fullName>AR</fullName>
+                    <default>false</default>
+                    <label>AR</label>
+                </value>
+                <value>
+                    <fullName>CA</fullName>
+                    <default>false</default>
+                    <label>CA</label>
+                </value>
+                <value>
+                    <fullName>CO</fullName>
+                    <default>false</default>
+                    <label>CO</label>
+                </value>
+                <value>
+                    <fullName>CT</fullName>
+                    <default>false</default>
+                    <label>CT</label>
+                </value>
+                <value>
+                    <fullName>DE</fullName>
+                    <default>false</default>
+                    <label>DE</label>
+                </value>
+                <value>
+                    <fullName>FL</fullName>
+                    <default>false</default>
+                    <label>FL</label>
+                </value>
+                <value>
+                    <fullName>GA</fullName>
+                    <default>false</default>
+                    <label>GA</label>
+                </value>
+                <value>
+                    <fullName>HI</fullName>
+                    <default>false</default>
+                    <label>HI</label>
+                </value>
+                <value>
+                    <fullName>ID</fullName>
+                    <default>false</default>
+                    <label>ID</label>
+                </value>
+                <value>
+                    <fullName>IL</fullName>
+                    <default>false</default>
+                    <label>IL</label>
+                </value>
+                <value>
+                    <fullName>IN</fullName>
+                    <default>false</default>
+                    <label>IN</label>
+                </value>
+                <value>
+                    <fullName>IA</fullName>
+                    <default>false</default>
+                    <label>IA</label>
+                </value>
+                <value>
+                    <fullName>KS</fullName>
+                    <default>false</default>
+                    <label>KS</label>
+                </value>
+                <value>
+                    <fullName>KY</fullName>
+                    <default>false</default>
+                    <label>KY</label>
+                </value>
+                <value>
+                    <fullName>LA</fullName>
+                    <default>false</default>
+                    <label>LA</label>
+                </value>
+                <value>
+                    <fullName>ME</fullName>
+                    <default>false</default>
+                    <label>ME</label>
+                </value>
+                <value>
+                    <fullName>MD</fullName>
+                    <default>false</default>
+                    <label>MD</label>
+                </value>
+                <value>
+                    <fullName>MA</fullName>
+                    <default>false</default>
+                    <label>MA</label>
+                </value>
+                <value>
+                    <fullName>MI</fullName>
+                    <default>false</default>
+                    <label>MI</label>
+                </value>
+                <value>
+                    <fullName>MN</fullName>
+                    <default>false</default>
+                    <label>MN</label>
+                </value>
+                <value>
+                    <fullName>MS</fullName>
+                    <default>false</default>
+                    <label>MS</label>
+                </value>
+                <value>
+                    <fullName>MO</fullName>
+                    <default>false</default>
+                    <label>MO</label>
+                </value>
+                <value>
+                    <fullName>MT</fullName>
+                    <default>false</default>
+                    <label>MT</label>
+                </value>
+                <value>
+                    <fullName>NE</fullName>
+                    <default>false</default>
+                    <label>NE</label>
+                </value>
+                <value>
+                    <fullName>NV</fullName>
+                    <default>false</default>
+                    <label>NV</label>
+                </value>
+                <value>
+                    <fullName>NH</fullName>
+                    <default>false</default>
+                    <label>NH</label>
+                </value>
+                <value>
+                    <fullName>NJ</fullName>
+                    <default>false</default>
+                    <label>NJ</label>
+                </value>
+                <value>
+                    <fullName>NM</fullName>
+                    <default>false</default>
+                    <label>NM</label>
+                </value>
+                <value>
+                    <fullName>NY</fullName>
+                    <default>false</default>
+                    <label>NY</label>
+                </value>
+                <value>
+                    <fullName>NC</fullName>
+                    <default>false</default>
+                    <label>NC</label>
+                </value>
+                <value>
+                    <fullName>ND</fullName>
+                    <default>false</default>
+                    <label>ND</label>
+                </value>
+                <value>
+                    <fullName>OH</fullName>
+                    <default>false</default>
+                    <label>OH</label>
+                </value>
+                <value>
+                    <fullName>OK</fullName>
+                    <default>false</default>
+                    <label>OK</label>
+                </value>
+                <value>
+                    <fullName>OR</fullName>
+                    <default>false</default>
+                    <label>OR</label>
+                </value>
+                <value>
+                    <fullName>PA</fullName>
+                    <default>false</default>
+                    <label>PA</label>
+                </value>
+                <value>
+                    <fullName>RI</fullName>
+                    <default>false</default>
+                    <label>RI</label>
+                </value>
+                <value>
+                    <fullName>SC</fullName>
+                    <default>false</default>
+                    <label>SC</label>
+                </value>
+                <value>
+                    <fullName>SD</fullName>
+                    <default>false</default>
+                    <label>SD</label>
+                </value>
+                <value>
+                    <fullName>TN</fullName>
+                    <default>false</default>
+                    <label>TN</label>
+                </value>
+                <value>
+                    <fullName>TX</fullName>
+                    <default>false</default>
+                    <label>TX</label>
+                </value>
+                <value>
+                    <fullName>UT</fullName>
+                    <default>false</default>
+                    <label>UT</label>
+                </value>
+                <value>
+                    <fullName>VT</fullName>
+                    <default>false</default>
+                    <label>VT</label>
+                </value>
+                <value>
+                    <fullName>VA</fullName>
+                    <default>false</default>
+                    <label>VA</label>
+                </value>
+                <value>
+                    <fullName>WA</fullName>
+                    <default>false</default>
+                    <label>WA</label>
+                </value>
+                <value>
+                    <fullName>WV</fullName>
+                    <default>false</default>
+                    <label>WV</label>
+                </value>
+                <value>
+                    <fullName>WI</fullName>
+                    <default>false</default>
+                    <label>WI</label>
+                </value>
+                <value>
+                    <fullName>WY</fullName>
+                    <default>false</default>
+                    <label>WY</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Street11__c</fullName>
+        <externalId>false</externalId>
+        <label>Street 1</label>
+        <length>80</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Street21__c</fullName>
+        <externalId>false</externalId>
+        <label>Street 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Zip_Code1__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip Code</label>
+        <length>10</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Employer Identification Number</label>
+    <nameField>
+        <label>Employer Identification Number</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Employer Identification Numbers</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>CheckEINNumericLength9</fullName>
+        <active>true</active>
+        <errorConditionFormula>(NOT(ISNUMBER( Name )))  || 	
+(LEN( Name ) &lt;&gt; 9)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>EIN has to be numeric value of length 9.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>DoNotEndPrimary</fullName>
+        <active>true</active>
+        <description>This validation rule will not allow End Date to be updated for an EIN having Primary flag marked.</description>
+        <errorConditionFormula>Primary__c == true &amp;&amp;
+ NOT( ISNULL( End_Date__c ) )</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>Primary EIN cannot be ended. Please mark another EIN related to this Account as Primary before populating End Date for this EIN.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EIN_should_not_have_HCSC_value</fullName>
+        <active>true</active>
+        <errorConditionFormula>Name  =  TEXT(361236610)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Please do not use HCSC&apos;s EIN.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EndDateGreater</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISNEW() || ISPICKVAL(Change_Reason__c, &apos;ADD&apos;) 
+|| ISPICKVAL(Change_Reason__c, &apos;CHG&apos;))
+&amp;&amp; (End_Date__c &lt; Effective_Date__c || 
+End_Date__c &lt; TODAY())</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>Please ensure that End Date is greater than Effective Date, and is not in the past.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EndedEIN</fullName>
+        <active>true</active>
+        <description>Do not allow changes to any field when an EIN is marked as Ended.</description>
+        <errorConditionFormula>( NOT(ISBLANK( End_Date__c ))) &amp;&amp; (
+ ISCHANGED(Account__c) ||
+ ISCHANGED(EIN_Sequence_Number__c) ||
+ ISCHANGED(Effective_Date__c) ||
+ ISCHANGED(Street11__c) ||
+ ISCHANGED(Street21__c) ||
+ ISCHANGED(City1__c) ||
+ ISCHANGED(State1__c) ||
+ ISCHANGED(Zip_Code1__c) ||
+ ISCHANGED(County_Code1__c) ||
+ ISCHANGED(Country1__c) ||
+ ISCHANGED(Location_Name__c) ||
+ ISCHANGED( Name ) ||
+ ISCHANGED(Primary__c))</errorConditionFormula>
+        <errorMessage>Please do not change any field for EIN having End Date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>InvalidEIN</fullName>
+        <active>true</active>
+        <description>Do not allow repeating number or consecutive number for EIN.</description>
+        <errorConditionFormula>Name = &apos;111111111&apos; ||
+ Name = &apos;222222222&apos; ||
+ Name = &apos;333333333&apos; ||
+ Name = &apos;444444444&apos; ||
+ Name = &apos;555555555&apos; ||
+ Name = &apos;666666666&apos; ||
+ Name = &apos;777777777&apos; ||
+ Name = &apos;888888888&apos; ||
+ Name = &apos;999999999&apos; ||
+ Name = &apos;000000000&apos; ||
+ Name = &apos;123456789&apos; ||
+ Name = &apos;012345678&apos; ||
+ Name = &apos;098765432&apos; ||
+ Name = &apos;987654321&apos;</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Please do not enter repeating or sequential numbers.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>NoEndDateDuringAddChange</fullName>
+        <active>true</active>
+        <errorConditionFormula>( ISNEW() || ISPICKVAL(Change_Reason__c, &apos;ADD&apos;) 
+|| ISPICKVAL(Change_Reason__c, &apos;CHG&apos;)
+|| ISPICKVAL(Change_Reason__c, &apos;ERR&apos;)) 
+&amp;&amp; NOT(ISNULL( End_Date__c ))</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>Please do not fill End Date until the EIN updates are transmitted to BlueStar.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>NoNameChange</fullName>
+        <active>true</active>
+        <errorConditionFormula>(NOT(ISNEW())  &amp;&amp;  NOT(ISPICKVAL(Change_Reason__c, &apos;ADD&apos;))) &amp;&amp; 
+ISCHANGED( Name )</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Employer Identification Number cannot be changed once transmitted to BlueStar.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SendingEIN</fullName>
+        <active>true</active>
+        <description>Do not allow changes to any field while transmission is in progress.</description>
+        <errorConditionFormula>(  ISPICKVAL(Bluestar_Transfer_Status__c, &apos;Transfer In Transit&apos;)  || 
+ISPICKVAL(Bluestar_Transfer_Status__c, &apos;Seq# updated&apos;)  ||
+ISPICKVAL(Bluestar_Transfer_Status__c, &apos;Wait BS Confirm&apos;)  ||
+ISPICKVAL(Bluestar_Transfer_Status__c, &apos;Seq# Requested&apos;)  ) &amp;&amp; (
+ ISCHANGED(Account__c) ||
+ ISCHANGED(Effective_Date__c) ||
+ ISCHANGED(Street11__c) ||
+ ISCHANGED(Street21__c) ||
+ ISCHANGED(City1__c) ||
+ ISCHANGED(State1__c) ||
+ ISCHANGED(Zip_Code1__c) ||
+ ISCHANGED(County_Code1__c) ||
+ ISCHANGED(Country1__c) ||
+ ISCHANGED(Location_Name__c) ||
+ ISCHANGED(Name) ||
+ ISCHANGED(End_Date__c) ||
+ ISCHANGED(Primary__c))</errorConditionFormula>
+        <errorMessage>This EIN is being transmitted to BlueStar. No changes are allowed at this point of time. If the issue persists for more than an hour, please reach out to IT support.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

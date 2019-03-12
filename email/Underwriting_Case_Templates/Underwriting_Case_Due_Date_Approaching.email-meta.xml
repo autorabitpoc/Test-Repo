@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify user when the due date for the case is one day away</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Underwriting Case Due Date Approaching</name>
+    <style>none</style>
+    <subject>{!Case.Account_Name__c}  - The Due Date for Case # {!Case.CaseNumber} is Approaching</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

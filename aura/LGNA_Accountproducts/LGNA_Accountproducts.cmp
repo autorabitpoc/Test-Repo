@@ -1,0 +1,476 @@
+<aura:component implements="force:appHostable,force:lightningQuickAction,force:hasSObjectName,force:hasRecordId,flexipage:availableForAllPageTypes" controller="LGNA_AccountProducts" access="global" >
+    <aura:attribute name="AccountActiveProductsMap" type="List"/>
+   <aura:attribute name="AccountHistoricalProductsMap" type="List"/>
+    <aura:attribute name="OpportunityHistoricalProductsMap" type="List"/>
+	<aura:attribute name="groupRec" type="String" />
+    <aura:attribute name="prospectRec" type="String" />
+    <aura:attribute name="currentRecordId" type="String"/>
+    <aura:attribute name="selectedSection" type="String"/>
+    <aura:attribute name="key" type="String" default="one" />
+    <aura:attribute name="showPopover" type="Boolean" default="false"/>
+    <aura:attribute name="hoverComponent" type="Aura.Component" />
+    <aura:attribute name="hoverPromise" type="Aura.Action"/>   
+    
+    <aura:handler name="change" value="{!v.key}" action="{!c.selectTab}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
+     <lightning:overlayLibrary aura:id="popOverlayLib"/>
+    
+    <article class="slds-card slds-card_boundary forceRelatedListCardDesktop">        
+        <div class="slds-card__body">
+            <aura:If isTrue="{!v.groupRec=='Group Account'}"  >
+            <lightning:tabset aura:id="tabs">                
+                <lightning:tab label="ACTIVE" id="one" title="Active Products" >
+                    <!-- <lightning:accordion aura:id="previousAccordion">--> 
+                    <aura:iteration items="{!v.AccountActiveProductsMap}" var="cus" indexVar="index">
+                       <!-- <lightning:accordionSection name="{!cus.key}" label="{!cus.key}">--> 
+                        <div class="slds-is-open slds-section"  >
+                            <h3 class="slds-section__title">
+                                <button class="slds-button slds-section__title-action">  
+                                    <b> <span class="slds-truncate"> {!cus.key}</span></b>
+                                </button>
+                            </h3>                                   
+                        </div> 
+                        <br/>
+                        <div class="slds-show" >  
+                            <table style="margin-top:-16px;" class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                                <thead >
+                                    <tr class="slds-text-title_caps slds-is-selected">
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                                <span class="slds-truncate" title="Account Product# ">Account Product# </span>
+                                            </a>                 
+                                            
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Product Name">Product Name </span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Category ">Category </span>
+                                            </a>
+                                            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                            
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Effective Date ">Effective Date </span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Record Type" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Active Members">Active Members</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Date Opened" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Active Contracts">Active Contracts</span>
+                                            </a>
+                                            
+                                        </th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!cus.value}" var="item">
+                                        <tr>
+                                            <td>
+                                                <div class="slds-truncate" title="{!item.name}">	
+                                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Name}</a>
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title="{!item.Product2__r.Name}">	
+                                                 <!--  <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product2__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product2__r.Name}</a>
+                                                  -->
+                                                    <div class="{!'popoverA'+item.Id}" id="{!'popoverA'+item.Id+'+'+item.Id+'+'+item.Name+'+'+item.Product2__c}" onmouseover="{!c.handleShowPopover}"  onmouseleave="{!c.closePopover}" style="display:inline-block;padding-right: 15px;"> 
+                                                         <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product2__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product2__r.Name}</a>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title="{!item.Product2__r.Product_Category__c}">{!item.Product2__r.Product_Category__c}</div>	                    
+                                            </td>
+                                            <td>
+                                                <ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Start_Date__c}"/>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" title="{!item.Active_Members__c}">{!item.Active_Members__c}</div>	                    
+                                            </td>
+                                            
+                                            <td >
+                                                <div class="slds-truncate" title="{!item.Active_Contracts__c}">{!item.Active_Contracts__c}</div>	                    
+                                                
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                            <br/>
+                   <!-- </lightning:accordionSection>--> 
+                    </aura:iteration>
+                    <!-- </lightning:accordion>--> 
+                    <!--<footer class="slds-card__footer" style="margin-bottom:-25px;margin"><a href="javascript:void(0);" onclick="{!c.navigatetab1}">View All <span class="slds-assistive-text">entity type</span></a></footer>-->
+                </lightning:tab>
+               
+                
+				 <lightning:tab label="HISTORICAL" id="two" title="Historical Products" >                   
+                    <aura:iteration items="{!v.AccountHistoricalProductsMap}" var="cus" indexVar="index">
+                      
+                        <div class="slds-is-open slds-section"  >
+                            <h3 class="slds-section__title">
+                                <button class="slds-button slds-section__title-action">  
+                                    <b> <span class="slds-truncate"> {!cus.key}</span></b>
+                                </button>
+                                
+                                
+                                
+                            </h3>                                   
+                        </div> 
+                        <br/>
+                        <div class="slds-show" >  
+                            <table style="margin-top:-16px;" class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                                <thead >
+                                    <tr class="slds-text-title_caps slds-is-selected">
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                                <span class="slds-truncate">Product#</span>
+                                            </a>                 
+                                            
+                                            
+                                        </th>
+                                         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Status</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Product Name">Product Name</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Category</span>
+                                            </a>
+                                            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                            
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate"  title="Effective Date">Effective Date</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">End Date</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Record Type" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" >Members</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Date Opened" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Contracts</span>
+                                            </a>
+                                            
+                                        </th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!cus.value}" var="item">
+                                        <tr>
+                                            <td>
+                                                <div class="slds-truncate">	
+                                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Name}</a>
+                                                </div>
+                                                
+                                            </td>
+                                             <td>
+                                                <div class="slds-truncate">	
+                                                  {!item.Status__c}
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">	
+                                                    <aura:renderIf isTrue="{!item.Product2__c}">
+                                                         <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product2__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product2__r.Name}</a>
+
+                                                          <aura:set attribute="else">
+                                                          <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product__r.Name}</a>
+
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" >
+                                                     <aura:renderIf isTrue="{!item.Product2__r.Product_Category__c}">
+                                                                    {!item.Product2__r.Product_Category__c}
+                                                          <aura:set attribute="else">
+                                                                     {!item.Product__r.Product_Category__c}
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                    </div>	                    
+                                            </td>
+                                            <td>
+                                                  <aura:renderIf isTrue="{!item.Effective_Start_Date__c}">
+																<ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Start_Date__c}"/>
+                                                          <aura:set attribute="else">
+																<ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Date__c}"/>
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_End_Date__c}"/>                                            
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">
+                                                      <aura:renderIf isTrue="{!item.Active_Members__c}">
+																{!item.Active_Members__c}
+                                                          <aura:set attribute="else">
+																{!item.Projected_Members__c}
+                                                           </aura:set>
+                                                     </aura:renderIf>
+                                                </div>	                    
+                                            </td>
+                                            
+                                            <td >
+                                                 <div class="slds-truncate">
+                                                      <aura:renderIf isTrue="{!item.Active_Contracts__c}">
+																 {!item.Active_Contracts__c}
+                                                          <aura:set attribute="else">
+																{!item.Projected_Contracts__c}
+                                                           </aura:set>
+                                                     </aura:renderIf>
+                                                </div>
+                                                                   
+                                                
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                            <br/>
+                   <!-- </lightning:accordionSection>--> 
+                    </aura:iteration>
+                    <!-- </lightning:accordion>--> 
+                    <!--<footer class="slds-card__footer" style="margin-bottom:-25px;margin"><a href="javascript:void(0);" onclick="{!c.navigatetab1}">View All <span class="slds-assistive-text">entity type</span></a></footer>-->
+                </lightning:tab> 
+            </lightning:tabset>
+            </aura:If>
+            
+            <aura:If isTrue="{!v.prospectRec=='Prospect'}"  >
+                <lightning:tabset aura:id="tab1s">   
+                <lightning:tab label="HISTORICAL" id="three" title="Historical Products" >                   
+                    <aura:iteration items="{!v.AccountHistoricalProductsMap}" var="cus" indexVar="index">
+                      
+                        <div class="slds-is-open slds-section"  >
+                            <h3 class="slds-section__title">
+                                <button class="slds-button slds-section__title-action">  
+                                    <b> <span class="slds-truncate"> {!cus.key}</span></b>
+                                </button>
+                                
+                                
+                                
+                            </h3>                                   
+                        </div> 
+                        <br/>
+                        <div class="slds-show" >  
+                            <table style="margin-top:-16px;" class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                                <thead >
+                                    <tr class="slds-text-title_caps slds-is-selected">
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Account Product Number" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">                               
+                                                <span class="slds-truncate">Product#</span>
+                                            </a>                 
+                                            
+                                            
+                                        </th>
+                                         <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Status</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" title="Product Name">Product Name</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Category</span>
+                                            </a>
+                                            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                            
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate"  title="Effective Date">Effective Date</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">End Date</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Record Type" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate" >Members</span>
+                                            </a>
+                                            
+                                        </th>
+                                        <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Date Opened" scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                
+                                                <span class="slds-truncate">Contracts</span>
+                                            </a>
+                                            
+                                        </th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!cus.value}" var="item">
+                                        <tr>
+                                            <td>
+                                                <div class="slds-truncate">	
+                                                    <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Name}</a>
+                                                </div>
+                                                
+                                            </td>
+                                             <td>
+                                                <div class="slds-truncate">	
+                                                  {!item.Status__c}
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">	
+                                                    <aura:renderIf isTrue="{!item.Product2__c}">
+                                                         <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product2__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product2__r.Name}</a>
+
+                                                          <aura:set attribute="else">
+                                                          <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Product__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Product__r.Name}</a>
+
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                </div>
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate" >
+                                                     <aura:renderIf isTrue="{!item.Product2__r.Product_Category__c}">
+                                                                    {!item.Product2__r.Product_Category__c}
+                                                          <aura:set attribute="else">
+                                                                     {!item.Product__r.Product_Category__c}
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                    </div>	                    
+                                            </td>
+                                            <td>
+                                                  <aura:renderIf isTrue="{!item.Effective_Start_Date__c}">
+																<ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Start_Date__c}"/>
+                                                          <aura:set attribute="else">
+																<ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_Date__c}"/>
+                                                           </aura:set>
+                                                     </aura:renderIf> 
+                                                
+                                                
+                                            </td>
+                                            <td>
+                                                <ui:outputDate format="MM/dd/yyyy"  value="{!item.Effective_End_Date__c}"/>                                            
+                                            </td>
+                                            <td>
+                                                <div class="slds-truncate">
+                                                      <aura:renderIf isTrue="{!item.Active_Members__c}">
+																{!item.Active_Members__c}
+                                                          <aura:set attribute="else">
+																{!item.Projected_Members__c}
+                                                           </aura:set>
+                                                     </aura:renderIf>
+                                                </div>	                    
+                                            </td>
+                                            
+                                            <td >
+                                                 <div class="slds-truncate">
+                                                      <aura:renderIf isTrue="{!item.Active_Contracts__c}">
+																 {!item.Active_Contracts__c}
+                                                          <aura:set attribute="else">
+																{!item.Projected_Contracts__c}
+                                                           </aura:set>
+                                                     </aura:renderIf>
+                                                </div>
+                                                                   
+                                                
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                            <br/>
+                   <!-- </lightning:accordionSection>--> 
+                    </aura:iteration>
+                    <!-- </lightning:accordion>--> 
+                    <!--<footer class="slds-card__footer" style="margin-bottom:-25px;margin"><a href="javascript:void(0);" onclick="{!c.navigatetab1}">View All <span class="slds-assistive-text">entity type</span></a></footer>-->
+                    </lightning:tab> </lightning:tabset>
+           </aura:If>
+        </div>
+        
+    </article>
+    
+</aura:component>

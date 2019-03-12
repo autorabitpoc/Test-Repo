@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>eager</name>
+                <type>decorator</type>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <type>decorator</type>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>icon</name>
+                <type>decorator</type>
+                <value>fallback</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <type>decorator</type>
+                <value>Quick Access</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;ul&gt;
+	&lt;li&gt;&lt;a href=&quot;/one/one.app#/home&quot; target=&quot;_self&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/one/one.app#/chatter&quot; target=&quot;_self&quot;&gt;Chatter&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/one/one.app#/sObject/Report/home&quot; target=&quot;_self&quot;&gt;Reports&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/one/one.app#/sObject/Dashboard/home&quot; target=&quot;_self&quot;&gt;Dashboards&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://employersportal.hcsc.net/wps/portal/bae/csr&quot; target=&quot;_blank&quot;&gt;BAE&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://www.myprime.com/MyRx/MyPrime/#!/ViewHomeEvent/+&quot; target=&quot;_blank&quot;&gt;Prime Therapeutics&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://sfa81prd.fyiblue.com/fins_enu/start.swe?SWECmd=Login&amp;amp;SWEPL=1&amp;amp;SWETS=1399983808758&quot; target=&quot;_blank&quot;&gt;Siebel&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://10.139.26.45/uiroot/default/ipccAdmin/loginSupervisor.jsp&quot; target=&quot;_blank&quot;&gt;Reskilling&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://aceyus.fyiblue.com/aceyus45/&quot; target=&quot;_blank&quot;&gt;Real Dash&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;http://hcsc.fyiblue.com/training/marketing/marketing_communications/database.htm&quot; target=&quot;_blank&quot;&gt;FYI Blue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>scrollable</name>
+                <type>decorator</type>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>width</name>
+                <type>decorator</type>
+                <value>250</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>console:history</componentName>
+        </componentInstances>
+        <name>utilityItems</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Small Group - Service Center UtilityBar</masterLabel>
+    <template>
+        <name>one:utilityBarTemplateDesktop</name>
+    </template>
+    <type>UtilityBar</type>
+</FlexiPage>

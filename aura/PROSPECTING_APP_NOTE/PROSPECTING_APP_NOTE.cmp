@@ -1,0 +1,30 @@
+<aura:component >
+    <aura:attribute name="curNote" type="Note" default="{'sobjectType':'Note', 'ParentId':'', 'Title':'', 'Body':'', 'CreatedDate':''}"/>
+    
+    <li>
+        <span class="slds-assistive-text">Note</span>
+        <div class="slds-media">
+            <div class="slds-media__body">
+                <div class="slds-media slds-media--timeline slds-timeline__media--note">
+                    <div class="slds-media__figure slds-timeline__icon">
+                        <div class="slds-icon_container">
+                            <lightning:icon iconName="standard:note" size="small" alternativeText="Account Icon"/>
+                        </div>
+                    </div>
+                    <div class="slds-media__body">
+                        <h3 class="slds-truncate" title="Note Title"><a href="javascript:void(0);" onclick="{!c.openNoteModal}">{!v.curNote.Title}</a></h3>
+                        <p class="slds-truncate">{!v.curNote.Body}</p>
+                        <p class="slds-truncate slds-m-top--xx-small slds-text-body--small">Date Created: {!v.curNote.CreatedDate}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-media__figure slds-media__figure--reverse">
+                <div class="slds-timeline__actions">
+                </div>
+            </div>
+        </div>
+    </li>
+    
+    <div aura:id="noteDetails"/>
+    <div><lightning:spinner aura:id="noteSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

@@ -1,0 +1,7 @@
+This account is released for underwriting review and approval. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

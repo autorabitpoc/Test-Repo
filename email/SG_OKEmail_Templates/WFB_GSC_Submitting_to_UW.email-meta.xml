@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending group size certifications to UW for Workforce Blue block of business.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WFB GSC - Submitting to UW</name>
+    <style>none</style>
+    <subject>WFB2018 Group Size Cert {!Case.Group_Account_Number__c} - {!Case.Account}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

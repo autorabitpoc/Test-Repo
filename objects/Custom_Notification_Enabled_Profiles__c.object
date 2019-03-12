@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Used to store the profile names enabled to receive custom notifications such as renewal reminders.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Renewal_Tasks__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to store if Account Renewal tasks should be created for a profile.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select if Account Renewal tasks should be created for this profile.</inlineHelpText>
+        <label>Account Renewal Tasks</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Custom Notification Enabled Profiles</label>
+    <visibility>Public</visibility>
+</CustomObject>

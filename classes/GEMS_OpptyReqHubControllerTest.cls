@@ -1,0 +1,2 @@
+// Luke Chen    01/11/2017  Remove all code due to SFDC-7107 Merge Opportunity Request Hub code to the Account Request Hub's
+@isTest public class GEMS_OpptyReqHubControllerTest {}

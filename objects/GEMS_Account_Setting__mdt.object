@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AEP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>AEP</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Account_Submission_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Submission Sub-Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Submission_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account Submission Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Underwriter__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Additional Underwriter</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BCC_Product__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BCC Product</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BCC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BCC</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Booklet_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Benefit Booklet Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Business_Area_Processes__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Business Area/Processes</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Custom_HCA_CDHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Custom HCA(CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Dental__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Dental</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Division__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Division</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSA_CDHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>FSA (CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Product__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>GEMS Product</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HSA_Blueprint__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>HSA Blueprint(CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HSA_Custom__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>HSA Custom(CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incetives_CDHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Incetives (CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Rule_Active_del__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This field will describe whether the rule is active or not.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Rule Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_the_account_Derivated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is the account Derivated?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Line_of_Business__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Line of Business</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medical__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Medical</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Non_AEP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Non-AEP</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Non_Prime_Vendor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Non-Prime Vendor</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pharmacy_Rx__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Pharmacy (Rx)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Prime_Vendor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Prime Vendor</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>RBP_CDHP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RBP (CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SCP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SCP</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>VBID__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>VBID(CDHP)</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>GEMS Account Setting</label>
+    <pluralLabel>GEMS Account Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

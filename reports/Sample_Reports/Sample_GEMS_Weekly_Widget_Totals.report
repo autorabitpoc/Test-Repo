@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_33365447</developerName>
+        <masterLabel>Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STATUS</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>QR Approval Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>QR Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>QR Approval Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>In Progress</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BW Approval Pending</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BW Approval Received</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BW Approval Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BlueSTAR Entry Complete</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BlueSTAR Walkthrough Complete</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Quality Review Completed</sourceValue>
+            </sourceValues>
+            <value>In Progress</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Release Underwriting Complete</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Completed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Approved</sourceValue>
+            </sourceValues>
+            <value>Release to UW</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Case.Opportunity_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 AND 2) OR (6 AND 7)) AND 3 AND 4 AND 5) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Setup_Process</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Release Underwriting Complete</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>11/12/2017 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Line_of_business__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>&quot;ENA,&quot;,Major National GET,Municipal,SCP,ENA GET</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Market_Segment__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>MGC,MGL,TAC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Structure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client Approval Received,BlueSTAR Sent,BlueSTAR Shell Created,BlueSTAR Failed,BlueSTAR Partial Fail</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Thomas Abbene</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>RECORDTYPE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.HCSC_Division__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sample GEMS Weekly Widget Totals</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

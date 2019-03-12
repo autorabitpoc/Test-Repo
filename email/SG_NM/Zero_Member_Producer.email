@@ -1,0 +1,7 @@
+Dear Producer,
+
+BCBSNM shows your group {!Case.Group_Account_Number__c} - {!Case.Account} as offering a benefit plan that has no enrollment.  We are unable to keep zero member plans open, and will be cancelling this plan.
+
+Should you wish to obtain rates for this group, please submit it as a new group through e-Sales.
+
+Thank you for allowing us to serve you.

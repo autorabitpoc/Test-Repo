@@ -1,0 +1,7 @@
+BlueSTAR was unable to create the account structure shell. Please take appropriate action.
+
+Account Name : {!Case.Account_Name__c}
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

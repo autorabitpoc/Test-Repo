@@ -1,0 +1,81 @@
+<!-- **************************************************************************************************************************
+* Lightnigng Component Name: SGR_BlueStarInitiation
+* Version                  : 1.0
+* Function                 : This Component gives Operations Managers to select the Opportunities to send to Blue STAR.
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Vijaya Channamsetti                12/11/2018         Original Version
+****************************************************************************************************************************** -->
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SGR_BlueSTAROptysPost" >
+   
+    <aura:attribute name="selectedMonth" type="String" default="Month"/>
+    <aura:attribute name="selectedYear" type="String" default="Year"/>
+    <aura:attribute name="selectedDivision" type="String" default=""/>
+    <aura:attribute name="selectedMarketSeg" type="String" default="SG" />
+    <aura:attribute name="selectedFundingType" type="String" default="PREM" />
+    <aura:attribute name="isMultMarkSegs" type="Boolean" default="false" />
+    <aura:attribute name="scheduledDate" type="Datetime" default=""/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="closeTrigRenEvent" type="c:SGR_TriggerRenewalCloseEvent"/>
+    <aura:registerEvent name="navigate" type="c:SGR_ResultEvent"/>
+    <aura:dependency resource="markup://c:SGR_ModalPopup"/>
+    <div class="slds-grid slds-gutters">
+      
+       <div class="slds-col">
+            <div class="slds-form-element">
+                <label for="selectMonth">Renewal Date                
+                    <abbr class="slds-required" title="required">*</abbr></label>
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-gutters">
+                        <div class="slds-size--2-of-4">
+                            <!--<lightning:Select class="single" aura:id="selectMonth" value="{!v.selectedMonth}" required= "true" /> -->
+                            <ui:inputSelect class="single" aura:id="selectMonth" change="{!c.onMonthSelectChange}" />
+                        </div>
+                        <div class="slds-size--2-of-4">
+                            <ui:inputSelect class="single" aura:id="selectYear" change="{!c.onYearSelectChange}" />
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col" style ="margin-top: -5px;">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control"> 
+                    <ui:inputDateTime aura:id="scheduleDate" 
+                                      label="Schedule Date"                                       
+                                      required="true"
+                                      displayDatePicker="true" 
+                                      change="{!c.onScheduleDateSelectChange}"/> 
+                </div>
+            </div>
+        </div>
+   </div>      
+       <div class="slds-form-element">
+            <label for="startMonth">Division
+                <abbr class="slds-required" title="required">*</abbr></label>
+            <div class="slds-form-element__control"> 
+                <ui:inputSelect multiple="false" class="single" aura:id="selectDivision" change="{!c.onDivisionSelectChange}">                    
+                    <ui:inputSelectOption text=""/>
+                    <ui:inputSelectOption text="IL"/>
+                    <ui:inputSelectOption text="MT"/>
+                    <ui:inputSelectOption text="NM"/>
+                    <ui:inputSelectOption text="OK"/>
+                    <ui:inputSelectOption text="TX"/>
+                </ui:inputSelect>                             
+            </div>           
+        </div>
+        <lightning:Select class="single" disabled="False" label="Market Segment" aura:id="selectmarketSeg" value="{!v.selectedMarketSeg}" required= "true" messageWhenValueMissing = "Please select Market Segment"> 
+                <Option value="SG" >SG</Option>
+        </lightning:Select>    
+        <lightning:Select class="single" disabled="False" label="Funding Type" aura:id="selectfundingType" value="{!v.selectedFundingType}" required= "true" messageWhenValueMissing = "Please select Funding Type"> 
+                <Option value="PREM" >PREM</Option>
+        </lightning:Select>              
+            
+    <div class="slds-float--right" style="margin-top:24px;">
+        <lightning:button variant="brand" aura:id="cancelButtId" label="Cancel" onclick="{! c.handleCancel }"  />
+        <lightning:button variant="brand" aura:id="postButtId" label="Post" onclick="{! c.handlePostToBlueStar }"  />
+    </div>  
+    <div aura:id="ModalPopupPlaceholder" />
+</aura:component>

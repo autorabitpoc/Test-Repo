@@ -1,0 +1,428 @@
+<apex:page standardController="Account" lightningStylesheets="true" extensions="AccountCancellationClass" sidebar="true" showHeader="true"  docType="html-5.0">
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!$Resource.jquery_1_11_1}" />
+    <apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}"/>
+    <!-- <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'bootstrap-3.3.4-dist/css/bootstrap.min.css')}"/> -->
+    
+    <style>
+        .DisplayInfoMessage{
+        border-radius: 10px;
+        background: #FFFF33;
+        padding: 2px 8px; 
+        display: inline-block;
+        height: 16px;  
+        font-size: 12px;
+        }
+        .DisplayCanMessage{
+        font-size: 14px;
+        }
+        .accordion div.accordion-label label h4 {
+        white-space: nowrap;
+        }
+        .media-holder {
+        width:100% !important;
+        }     
+        .dataTables_length{
+        display:none !important;
+        }
+        
+        .data-table thead th {
+        background-color:#1797C0 !important;
+        color:#fff;
+        font-weight:bold;
+        } 
+        
+        .accountTab .tertiaryPalette, .individualPalette .accountBlock .tertiaryPalette, .layoutEdit .individualPalette .accountBlock .tertiaryPalette {
+        background-color: #1797C0 !important;
+        border-color: #1797C0 !important;
+        }
+        
+        .popup
+        {
+        
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 60%;
+        padding:10px;
+        position: absolute;
+        width: 500px;
+        margin-left: -250px;
+        top:20%;
+        color : #1797c0 !important;
+        border: 1px solid #1797c0 !important;
+        border-radius: 3px !important;
+        font-size: 14px !important;
+        text-align: center !important;
+        font-weight: bold !important;
+        
+        }
+        
+        .popupBg
+        {
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 70);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        color : #1797c0 !important;
+        border: 1px solid #1797c0 !important;
+        border-radius: 3px !important;
+        }
+        
+    </style>
+    
+    <apex:form id="frm">
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.openTab').find("a").attr("target","_blank");
+            $('.My-Group-Section').dataTable();
+            
+            var reasonValue = $('.reason').val();
+            /**if(reasonValue.length != 0){
+                  if(reasonvalue == '413 Misc - Broker Recommendation'){
+                   $('.carrierSection').show();
+                } else if(reasonvalue == '436 Misc - Changed Brokers'){
+                   $('.carrierSection').show();
+                } else if(reasonvalue.includes('Rate')){
+                   $('.carrierSection').show();
+                } else {
+                   $('.carrierSection').hide();
+                }
+              } else {
+                  $('.carrierSection').hide();
+              }*/
+        });
+    
+    function displayCarrierSection(value){
+        /** if(value.length != 0){
+              if(value == '413 Misc - Broker Recommendation'){
+                 $('.carrierSection').show();
+              } else if(value == '436 Misc - Changed Brokers'){
+                 $('.carrierSection').show();
+              } else if(value.includes('Rate')){
+                 $('.carrierSection').show();
+              } else {
+                 $('.carrierSection').hide();
+              }
+          } else {
+              $('.carrierSection').hide();
+          }*/
+        }
+    
+    function closeWindow() {
+        window.open('','_parent','');
+        window.close();
+    }
+    
+    function sgApprovalMsg() {
+        alert('Please make sure Underwriting reto-cancellation approval has been associated to the Small Group case.');  
+    }
+    
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- <br/>
+<div align="left">
+<div>
+<img class="socialProfilePhoto" src="/img/social/unknown_company_pic.png" alt="Account Profile Picture"/>
+<h3>{!accountRecord[0].Name} - Cancellation</h3>
+</div>
+</div>-->
+                <Apex:sectionHeader title="{!accountRecord[0].Name}" subtitle="Cancellation"   /> 
+                <br/><br/>
+                <apex:actionRegion >
+                    <apex:actionFunction name="GoBack" action="{!backToAccountHome}" reRender="IntermediateSection"/>
+                </apex:actionRegion>
+                <apex:pagemessages />
+                <apex:outputPanel id="IntermediateSection" rendered="{!completeCancellationSectionToggle}">
+                    <apex:pageBlock >
+                        <apex:outputpanel >
+                            <!--<div class="message infoM3" role="alert">
+<img alt="INFO" class="msgIcon" src="/img/msg_icons/info24.png" title="INFO" data-pin-nopin="true" />
+<span style="vertical-align: middle;">{!$Label.AccountCancellationClassInfo1}</span>
+</div>-->                       
+                            <br />Underwriter: <apex:inputfield value="{!AccountRecord[0].Underwriter__c}"></apex:inputfield><br />                   
+                        </apex:outputpanel>
+                        <apex:pageBlockSection title="Please fill in Account Cancellation details below: " collapsible="false" columns="1">     
+                            <apex:pageblockSectionItem >
+                                <apex:outputLabel >Requested Cancellation Date:</apex:outputLabel>
+                                <apex:inputField required="true" value="{!AccountRecord[0].Requested_Cancellation_Date__c}"/>   
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem >
+                                <apex:outputLabel >Cancellation Code:</apex:outputLabel>
+                                <apex:inputField required="true" value="{!AccountRecord[0].Cancellation_Code__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem >
+                                <apex:outputLabel >Cancellation Explanation:</apex:outputLabel>
+                                <apex:inputField required="true" value="{!AccountRecord[0].Cancellation_Explanation__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem >
+                                <apex:outputLabel >Cancellation Reason:</apex:outputLabel>
+                                <apex:inputField required="true" value="{!AccountRecord[0].Cancellation_Reason__c}" styleClass="reason" onchange="displayCarrierSection(this.value);"/>                              
+                            </apex:pageblockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel >Small Group Cancellation:</apex:outputLabel>
+                                <!-- start SFDC-5767 - Zachary Campbell - 09/23/2017 --> 
+                                <!--<apex:inputField value="{!AccountRecord[0].Small_Group_Cancellation__c}"></apex:inputField>-->                              
+                                <apex:inputCheckbox value="{!AccountRecord[0].Small_Group_Cancellation__c}"> 
+                                    <apex:actionSupport event="onchange" rerender="MsgPanel" action="{!click}"/>                              
+                                </apex:inputCheckbox>
+                            </apex:pageBlockSectionItem>  
+
+                           <!-- SFDC-8825 - Lori Dacus - 03/19/2018 --> 
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >Carrier:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].Carrier__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >Other Carrier:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].OtherCarrier__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >New Funding Type:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].NewFundingType__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >Funding Increment:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].FundingIncrement__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >% Amount:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].PercentAmount__c}"/>
+                            </apex:pageblockSectionItem>
+                            <apex:pageblockSectionItem rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='SG - Service Center User'||$Profile.Name =='SG - Partner User'||$Profile.Name =='SG - Read-only User'|| $Profile.Name =='SG Service Center_LEX', true , false)}" >
+                                <apex:outputLabel >$ Amount:</apex:outputLabel>
+                                <apex:inputField required="false" value="{!AccountRecord[0].DollarAmount__c}"/>
+                            </apex:pageblockSectionItem>
+                            <!-- end SFDC-8825  -->
+                            
+                            <apex:outputPanel id="MsgPanel">
+                                <apex:pageBlockSectionItem rendered="{!displayInputputText}">
+                                    <apex:outputText style="color: red;font-weight: bold;" value="Please verify Underwriting retro cancellation approval has been associated to the Small Group case.">
+                                    </apex:outputText>
+                                </apex:pageBlockSectionItem>
+                            </apex:outputPanel>
+                            <!-- end SFDC-5767 - Zachary Campbell - 09/23/2017 -->
+                        </apex:pageBlockSection>
+                        <!-- SFDC-3825 - 09/2017 - Hide New Carrier Medical/Dental - BEGIN  -->
+                        <div class="carrierSection">
+                            <apex:pageBlockSection collapsible="false" columns="1" rendered="False">
+                                <apex:pageblockSectionItem >
+                                    <apex:outputLabel >New Carrier for Medical:</apex:outputLabel>
+                                    <apex:inputField value="{!AccountRecord[0].New_Carrier_For_Medical_C__c}" />
+                                </apex:pageblockSectionItem>
+                                <apex:pageblockSectionItem >
+                                    <apex:outputLabel >New Carrier for Dental:</apex:outputLabel>                       
+                                    <apex:inputField value="{!AccountRecord[0].New_Carrier_For_Dental_C__c}" />    
+                                </apex:pageblockSectionItem>
+                            </apex:pageBlockSection>
+                            <!-- SFDC-3825 - 09/2017 - Hide New Carrier Medical/Dental - BEGIN  -->
+                        </div>
+                        <apex:pageBlockButtons location="bottom">
+                            <!-- start SFDC-6076 - Zachary Campbell - 9/29/2017 -->                        
+                            <!--<apex:commandButton value="Back" onclick="GoBack();"/>  action="{!cancel}"-->
+                            <!--<apex:commandButton value="Cancel"  onclick="closeWindow();return false;"/>-->
+                            <apex:commandButton value="Cancel" action="{!cancel}"/>
+                            <!-- end SFDC-6076 -->
+                            <apex:commandButton value="Next" action="{!moveToAccountCompCancelReviewPg}" rerender="frm"/>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+                <apex:outputPanel id="ReviewSection" rendered="{!!completeCancellationSectionToggle}">
+                    <apex:pageBlock > 
+                        <!-- start SFDC-7455 - Zachary Campbell - 12/15/2017 -->
+                        <apex:outputPanel rendered="{!if(LGNA_GroupSectionList != null && LGNA_GroupSectionList.size > 0,true,false)}" style="width:60%">              
+                            <!-- end SFDC-7455 - Zachary Campbell - 12/15/2017 -->                         
+                            <p ><b>{!$Label.AccountCompleteCancellationPageLabel1}</b></p>
+                            <table class="My-Group-Section data-table"  style="width:100%">
+                                <thead>
+                                    <tr>                       
+                                        <th>Name</th>
+                                        <th>Section Number</th>
+                                        <th>Status</th>                
+                                        <th>Requested Cancellation Date</th>
+                                        <th>Cancellation Code</th>
+                                        <th>Cancellation Explanation</th>
+                                        <th>Cancellation Reason</th>
+                                    </tr>                      
+                                </thead>
+                                <tbody>
+                                    <!-- start SFDC-7455 - Zachary Campbell - 12/15/2017 -->
+                                    <!--SFDC-7899 Start Padma Bedampeta 2/23/2018 - Corrected code to view GS Data onto CompleteAccountCancellation VF page -->
+                                    <apex:repeat value="{!LGNA_GroupSectionList}" var="gsw"> 
+                                        <!-- end SFDC-7455 - Zachary Campbell - 12/15/2017 -->
+                                        <apex:repeat value="{!gsw}" var="bnfsec">
+                                            <tr>                             
+                                                <td>
+                                                    <a href="/{!bnfsec.Id}" target="_blank">
+                                                        <apex:outputField value="{!bnfsec.Name__c}" />
+                                                        <!--<apex:outputField value="{!gsw.Name}" />-->
+                                                    </a>
+                                                </td>
+                                                <td> 
+                                                    <apex:outputField value="{!bnfsec.Section_Number__c}" />
+                                                    <!--<apex:outputField value="{!gsw.Section_No__c}" />-->
+                                                </td>
+                                                <td>
+                                                    <apex:outputField value="{!bnfsec.Status__c}" />                         
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Requested_Cancellation_Date__c}" /> 
+                                                </td>
+                                                <td >                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Code__c}" /> 
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Explanation__c}"/> 
+                                                </td>
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Reason__c}"/> 
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </apex:repeat>
+                                </tbody><!--SFDC-7899 END - Corrected code to view GS Data onto CompleteAccountCancellation VF page -->
+                                
+                            </table>
+                        </apex:outputPanel>
+                        <!-- start SFDC-7455 - Zachary Campbell - 12/15/2017 -->
+                        <apex:outputPanel rendered="{!if(LGNA_GroupSectionList != null && LGNA_GroupSectionList.size > 0,false,true)}">
+                            <!-- end SFDC-7455 - Zachary Campbell - 12/15/2017 -->
+                            <apex:outputLabel >{!$Label.AccountCancellationGroupSectionLabel1}</apex:outputLabel>
+                        </apex:outputPanel> 
+                        <apex:outputPanel rendered="{!if(BenefitAgreementList != null && BenefitAgreementList.size > 0,true,false)}" style="width:60%">   
+                            <p style="font-size: 14px;"><b>{!$Label.AccountCompleteCancellationPageLabel2}</b></p>                                 
+                            <table class="My-Group-Section data-table"  style="width:100%">
+                                <thead>
+                                    <tr>                       
+                                        <th>Name</th>
+                                        <th>Section Number</th>
+                                        <th>Status</th>                    
+                                        <th>Requested Cancellation Date</th>
+                                        <th>Cancellation Code</th>
+                                        <th>Cancellation Explanation</th>
+                                        <th>Cancellation Reason</th>-->
+                                    </tr>                      
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!BenefitAgreementList}" var="bnfsecs">
+                                        <apex:repeat value="{!bnfsecs}" var="bnfsec">
+                                            <tr>                             
+                                                <td>
+                                                    <a href="/{!bnfsec.Id}" target="_blank">
+                                                        <apex:outputField value="{!bnfsec.Name}" />
+                                                    </a>
+                                                </td>
+                                                <td>                            
+                                                    <apex:outputField value="{!bnfsec.Benefit_Agreement_Number__c}" />
+                                                </td>
+                                                <td>
+                                                    <apex:outputField value="{!bnfsec.Status__c}" />                           
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Requested_Cancellation_Date__c}" /> 
+                                                </td>
+                                                <td >                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Code__c}" /> 
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Explanation__c}"/> 
+                                                </td>
+                                                <td>                                 
+                                                    <apex:outputField value="{!bnfsec.Cancellation_Reason__c}"/> 
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel rendered="{!if(BenefitAgreementList != null && BenefitAgreementList.size > 0,false,true)}">
+                            <apex:outputLabel >{!$Label.AccountCancellationBenefitAgreementPageLabel1}</apex:outputLabel>
+                        </apex:outputPanel> 
+                        <br/>
+                        <!-- start SFDC-7485 - Nathan Shuyler - 12/15/2017 -->
+                        <apex:outputPanel rendered="{!if(LGNA_BillingProfileList != null && LGNA_BillingProfileList.size > 0,true,false)}" style="width:60%">   
+                            <!-- end SFDC-7485 - Nathan Shuyler - 12/15/2017 -->                       
+                            <p style="font-size: 14px;"><b>{!$Label.AccountCompleteCancellationPageLabel3}</b></p>                                 
+                            <table class="My-Group-Section data-table"  style="width:100%">
+                                <thead>
+                                    <tr>                       
+                                        <th>Name</th>
+                                        <th>Status</th>                  
+                                        <th>Requested Cancellation Date</th>
+                                        <th>Cancellation Code</th>
+                                        <th>Cancellation Explanation</th>
+                                        <th>Cancellation Reason</th>
+                                    </tr>                      
+                                </thead>
+                                <tbody>
+                                    <!-- start SFDC-7485 - Nathan Shuyler - 12/15/2017 -->
+                                    <apex:repeat value="{!LGNA_BillingProfileList}" var="BillPrfs">
+                                        <!-- end SFDC-7485 - Nathan Shuyler - 12/15/2017 -->
+                                        <!-- start SFDC-789 - Padma Bedampeta - 2/23/2018 -->
+                                        <apex:repeat value="{!BillPrfs}" var="BillPrf">
+                                            <!-- start SFDC-7899 - Padma Bedampeta - 2/23/2018 -->
+                                            <tr>                             
+                                                <td>
+                                                    <a href="/{!BillPrf.Id}" target="_blank">
+                                                        <apex:outputField value="{!BillPrf.Name}" />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <apex:outputField value="{!BillPrf.Status__c}" />                          
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!BillPrf.Requested_Cancellation_Date__c}" /> 
+                                                </td>
+                                                <td >                                 
+                                                    <apex:outputField value="{!BillPrf.Cancellation_Code__c}" /> 
+                                                </td>  
+                                                <td>                                 
+                                                    <apex:outputField value="{!BillPrf.Cancellation_Explanation__c}"/> 
+                                                </td>
+                                                <td>                                 
+                                                    <apex:outputField value="{!BillPrf.Cancellation_Reason__c}"/> 
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputPanel>
+                        <!-- start SFDC-7485 - Nathan Shuyler - 12/15/2017 -->
+                        <apex:outputPanel rendered="{!if(LGNA_BillingProfileList != null && LGNA_BillingProfileList.size > 0,false,true)}">
+                            <!-- end SFDC-7485 - Nathan Shuyler - 12/15/2017 -->
+                            <apex:outputLabel >{!$Label.billingProfileCancellationPageLabel1}</apex:outputLabel>
+                        </apex:outputPanel>
+                        
+                        <apex:pageBlockButtons location="bottom">
+                            <apex:commandButton value="Back" action="{!moveToAccountCompCancel}" reRender="frm"/>
+                            <apex:commandButton value="Finish" action="{!DiplaycancellationAccountMessage}"/>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+                <apex:outputPanel id="MessagePanel" rendered="{!showMessagepanel}">
+                    <apex:outputPanel styleClass="popupBg"  layout="block" />
+                    <apex:outputPanel styleClass="popup" layout="block">
+                        <div align="center">
+                            <span> {!DisplayMessage} </span> <br/>
+                            <apex:commandButton value=" Confirm " action="{!confirmcancellationAccount}" rerender="frm"/>
+                            <apex:commandButton value=" Back " action="{!backcancellationAccount}" rerender="frm"/>
+                        </div>    
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+            </div>
+        </div>
+    </div>
+    </apex:form> 
+</apex:page>

@@ -1,0 +1,8 @@
+Account Submission is complete. Please proceed with screening for your business area.
+ 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

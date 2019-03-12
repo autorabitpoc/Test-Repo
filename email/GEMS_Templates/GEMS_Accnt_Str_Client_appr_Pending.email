@@ -1,0 +1,7 @@
+Account Structure is ready for final review and approval. Please notify Account Specialist of any feedback and when client approval is received.
+
+Account Name : {!Case.Account_Name__c} 
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

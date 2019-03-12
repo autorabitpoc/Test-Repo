@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groupColumn>CLOSED</groupColumn>
+    <mappings>
+        <aggregateType>Average</aggregateType>
+        <sourceField>Case.GEMS_Days_Business_Open__c</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>GEMS_Cycle_Time_Report_Snapshot__c.Avg_Days_Open__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>TYPE</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>GEMS_Cycle_Time_Report_Snapshot__c.Category__c</targetField>
+    </mappings>
+    <mappings>
+        <aggregateType>Sum</aggregateType>
+        <sourceField>Case.GEMS_Case_Count__c</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>GEMS_Cycle_Time_Report_Snapshot__c.Count__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>CLOSED</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>GEMS_Cycle_Time_Report_Snapshot__c.Status__c</targetField>
+    </mappings>
+    <name>GEMS Processes CaseInventoryCycleTime Snapshot</name>
+    <runningUser>renay_readette@bcbsok.com.sgprod</runningUser>
+    <sourceReport>unfiled$public/GEMS_PhaseGate_Processes_Summary</sourceReport>
+    <targetObject>GEMS_Cycle_Time_Report_Snapshot__c</targetObject>
+</AnalyticSnapshot>

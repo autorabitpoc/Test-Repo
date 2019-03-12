@@ -1,0 +1,9 @@
+The Private Exchange case opened for {!Case.Opportunity_Name__c} on {!Case.Account} is in the {!Case.Status} status.
+
+This is a reminder to submit this case to the Private Exchange Team.  In order for the Private Exchange Team to work this case, please follow the below instructions:
+•	Open the Case in Salesforce: {!Case.Link}
+•	Ensure that you have filled out all of the fields required to work the case
+•	Click the “Submit” button at the top of the case
+•	Confirm that the case status has been changed to the “submitted” status and the case owner has been changed to the “PE Team”
+
+Thank you.

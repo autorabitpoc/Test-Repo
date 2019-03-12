@@ -1,0 +1,9 @@
+The maintenance request you submitted has been completed for account {!Case.Account} - {!Case.Account_Number__c}. This is the final step in this maintenance request. The below case has been marked as "Completed".
+
+ Account Name: {!Case.Account}    
+ Maintenance Request Type/Sub Type: {!Case.GEMS_Submission_Type__c} / {!Case.GEMS_Submission_Sub_Type__c} 
+ Case Number : {!Case.GEMS_Account_Submission_Info__c}   
+ Case Details : {!Case.baseURL__c}{!Case.GEMS_Account_Submission_InfoId__c}   
+
+
+Thank you

@@ -1,0 +1,101 @@
+<apex:page standardController="GEMS_Characteristic_Value__c" extensions="GEMS_CaptureCharacteristicsController" recordSetVar="v">
+  <apex:form >        
+        <apex:pageMessages id="pgMsgId"/>
+        <apex:pageBlock id="thePageBlock" title="Characteristic Details">
+            
+            <apex:variable value="{!0}" var="rowNumber" />
+            
+            <apex:outputPanel id="panelWithVar">
+                <apex:variable value="{!0}" var="rowNumber" />
+            </apex:outputPanel>
+        
+            <apex:pageBlockTable id="newCharacteristicTable" value="{!Characteristic}" var="c">
+            <!--
+                <apex:column headerValue="Select" width="3%">
+                    <apex:inputCheckbox value="{!c.isSelected}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Action" width="3%">
+                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                    <apex:commandLink action="{!removeRow}" value="Del" style="color: #015Characteristic7;font-weight:bold" reRender="newCharacteristicTable,panelWithVar" immediate="true" >
+                        <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}"/>
+                        <apex:param name="p2" value="{!c.Characteristic.Id}" assignTo="{!recordToDelete}"/>
+                    </apex:commandLink>
+                </apex:column>
+
+                <apex:column headerValue="Characteristic No." width="3%">
+                    <apex:inputField value="{!c.Characteristic.Name}" />
+                </apex:column>
+-->                
+                <apex:column headerValue="Characteristic Corp Code" width="3%">
+                    <apex:inputField value="{!c.Corp_Characteristic_Code__c}" />
+                </apex:column>
+                
+                                
+                <apex:column headerValue="Effective Date" width="3%">
+                    <apex:inputField value="{!c.Effective_Date__c}" />
+                </apex:column>
+                                 
+                                                                        
+                <apex:column headerValue="End Date" width="3%">
+                    <apex:inputField value="{!c.End_Date__c}" />
+                </apex:column>
+ 
+                <apex:column headerValue="Mandatory" width="3%">
+                    <apex:inputField value="{!c.Mandatory__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="Usage" width="3%" >
+                   <apex:inputField value="{!c.Usage__c}"/>                           
+                </apex:column>
+                
+                <apex:column headerValue="Comments" width="3%">
+                    <apex:inputField value="{!c.Comments__c}" />
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            
+
+
+            <apex:pageBlockSection title="Characteristic Values">
+
+            <apex:pageBlockTable id="newCharacteristicValueTable" title="Characteristic Values"  value="{!listOfCharacteristic_Values}" var="c">
+ 
+                <apex:column headerValue="Select" width="3%">
+                    <apex:inputCheckbox value="{!c.isSelected}"/>
+                </apex:column>
+
+                <apex:column headerValue="Action" width="3%">
+                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                    <apex:commandLink action="{!removeRow}" value="Del" style="color: #015Characteristic7;font-weight:bold" reRender="newCharacteristicValueTable,panelWithVar" immediate="true" >
+                        <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}"/>
+                        <apex:param name="p2" value="{!c.Characteristic_Value.Id}" assignTo="{!recordToDelete}"/>
+                    </apex:commandLink>
+                </apex:column>
+            
+                <apex:column headerValue="Characteristic Code" width="3%">
+                    <apex:inputField value="{!c.Characteristic_Value.Code__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="Description" width="3%">
+                    <apex:inputField value="{!c.Characteristic_Value.Name}" />
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            
+                        
+            <div id="AddNewButton">
+                    <apex:commandButton value="Add New" action="{!addCharacteristic_Value}" reRender="newCharacteristicValueTable,panelWithVar" />
+            </div>
+                </apex:pageBlockSection>
+           
+           <center>
+                <apex:commandButton value="Save" action="{!saveCharacteristicValues}" />
+                <apex:commandButton value="Cancel" action="{!gotoCase}" immediate="true"/>
+            </center>
+           
+        </apex:pageBlock>
+ 
+        
+    </apex:form>
+</apex:page>

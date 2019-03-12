@@ -1,0 +1,5 @@
+Hi Account Executive,
+
+You have a new product lead on {!Lead.Account_Name__c} . Please take a look at the details within the Leads Tab OR click here {!Lead.Link} and reach out as soon as you can. Keep in mind that they have not necessarily requested a consultation yet, so upon outreach, talk with them about their current needs and any pending questions they may have about our product offerings.
+
+----------------EOM------------------------

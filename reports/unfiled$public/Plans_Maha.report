@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Plan__c$Name</field>
+    </columns>
+    <columns>
+        <field>Plan__c$External_Id__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c$Id</field>
+    </columns>
+    <columns>
+        <field>Plan__c$Plan_Type__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c$Product__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c$Product_Category__c</field>
+    </columns>
+    <columns>
+        <field>Plan__c$ProductCode__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Plans - Maha</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>All_Plans__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Plan__c$Corporate_Product_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,7 @@
+Hi, 
+
+{!Case.Account} Company is terminated 
+
+Account Number : {!Case.External_Account_Number__c} 
+
+Thanks

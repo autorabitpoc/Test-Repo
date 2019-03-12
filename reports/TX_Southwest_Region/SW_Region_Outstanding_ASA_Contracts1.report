@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_36207632</developerName>
+        <masterLabel>Marketing VP</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.Owner_s_Manager_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Abby Sterner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindee Soza</sourceValue>
+            </sourceValues>
+            <value>Erin Barney</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Melissa Sanden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Donna Tucker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Holly Herin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Suarez</sourceValue>
+            </sourceValues>
+            <value>Ted Holden</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Robin Fowler</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Terry Villiva</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Linton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jerry Berwick</sourceValue>
+            </sourceValues>
+            <value>Tom Stewart</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.District__c</field>
+    </columns>
+    <columns>
+        <field>Account.Cluster__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>Account.Contract_Signer__c</field>
+    </columns>
+    <columns>
+        <field>Case.Negotiation_Type__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Account.Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Contract_Effective_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.Custom_Contracts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.HCSC_Division__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Owner_s_Manager_Name__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cindee Soza,Abby Sterner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.ASA_Signed__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled,Closed,Declined,Draft,Executed,Fully Executed,Retracted,Return,Routed In Error,Withdrawn,Denied,Completed</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>SW Region Outstanding ASA Contracts</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account.Cluster__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Case.Contract_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTFY</interval>
+    </timeFrameFilter>
+</Report>

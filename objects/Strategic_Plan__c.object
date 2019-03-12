@@ -1,0 +1,4111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Strategic_Plan_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Industry__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Account_Name__r.Industry)</formula>
+        <label>Industry</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <description>associated account of strategic plan</description>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Strategic Plans</relationshipLabel>
+        <relationshipName>Strategic_Account_Plans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <description>The account number related to</description>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.AccountNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Producer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>auto prepopulated from Account, if there isn&apos;t one, user should look up one from Strategic plan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Producer from associated Account. Only allow to update from Account.</inlineHelpText>
+        <label>Producer (Account)</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Producer_Account,Consultant_Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Strategic Plans (Producer)</relationshipLabel>
+        <relationshipName>Strategic_Plans1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_Risk_Level__c</fullName>
+        <description>The risk level for Account</description>
+        <externalId>false</externalId>
+        <label>Account Risk Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Account_Stickiness__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Account_Stickiness__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Stickiness</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>is plan active</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Advance_Of_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(FLOOR((Effective_Date__c - DATEVALUE(CreatedDate) ) / 30)) &amp; &quot; months and &quot; &amp; TEXT(MOD((Effective_Date__c - DATEVALUE(CreatedDate) ), 30)) &amp; &quot; days&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Advance Of Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attitude_Towards_Employees__c</fullName>
+        <description>Captures the attitude towards employees of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Attitude Towards Employees</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>BCBS_Challenge_Threats__c</fullName>
+        <description>HCSC weaknesses for a Group Account</description>
+        <externalId>false</externalId>
+        <label>BCBS Challenge / Threats</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>BCBS_Strength_Opportunity__c</fullName>
+        <description>HCSC strengths for a Group Account</description>
+        <externalId>false</externalId>
+        <label>BCBS Strength / Opportunity</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Benefits_of_change__c</fullName>
+        <externalId>false</externalId>
+        <label>Benefits of change</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Increase Membership</fullName>
+                    <default>false</default>
+                    <label>Increase Membership</label>
+                </value>
+                <value>
+                    <fullName>New Product Sale</fullName>
+                    <default>false</default>
+                    <label>New Product Sale</label>
+                </value>
+                <value>
+                    <fullName>Increase Revenue</fullName>
+                    <default>false</default>
+                    <label>Increase Revenue</label>
+                </value>
+                <value>
+                    <fullName>Cost Control</fullName>
+                    <default>false</default>
+                    <label>Cost Control</label>
+                </value>
+                <value>
+                    <fullName>Member Education</fullName>
+                    <default>false</default>
+                    <label>Member Education</label>
+                </value>
+                <value>
+                    <fullName>Provider Education</fullName>
+                    <default>false</default>
+                    <label>Provider Education</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Risks__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there known external factors that present risk to the client&apos;s current business environment? Are there known external factors that present risk to the client&apos;s growth strategy</inlineHelpText>
+        <label>Business Risks</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Campaign__c</fullName>
+        <description>Types of campaigns that are in progress or planned for a Group Account</description>
+        <externalId>false</externalId>
+        <label>Campaign</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Carrier_History__c</fullName>
+        <description>Captures the carrier history of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Carrier History</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Client_Goals_and_Strategy__c</fullName>
+        <description>Captures goals and strategy for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Client high level goals</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Client_Industry_and_Market_Trends__c</fullName>
+        <description>Captures the client industry and market trends for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Client Industry and Market Trends</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Client_Longterm_Business_Goals__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is our understanding of the clients current business environment? What is their business growth strategy for 12, 18, 36 months?</inlineHelpText>
+        <label>Client&apos;s Long-Term Business Environment</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Client_s_long_term_goals__c</fullName>
+        <externalId>false</externalId>
+        <label>Client’s long term goals</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Communication Strategy</fullName>
+                    <default>false</default>
+                    <label>Communication Strategy</label>
+                </value>
+                <value>
+                    <fullName>Product Strategy</fullName>
+                    <default>false</default>
+                    <label>Product Strategy</label>
+                </value>
+                <value>
+                    <fullName>Increase Provider Acessibility</fullName>
+                    <default>false</default>
+                    <label>Increase Provider Acessibility</label>
+                </value>
+                <value>
+                    <fullName>Incentives/disincentives</fullName>
+                    <default>false</default>
+                    <label>Incentives/disincentives</label>
+                </value>
+                <value>
+                    <fullName>Financial stability</fullName>
+                    <default>false</default>
+                    <label>Financial stability</label>
+                </value>
+                <value>
+                    <fullName>Increase Productivity</fullName>
+                    <default>false</default>
+                    <label>Increase Productivity</label>
+                </value>
+                <value>
+                    <fullName>Reduce employee absentiness</fullName>
+                    <default>false</default>
+                    <label>Reduce employee absentiness</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Client_s_short_term_goals__c</fullName>
+        <externalId>false</externalId>
+        <label>Client’s short term goals</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Reduce Costs</fullName>
+                    <default>false</default>
+                    <label>Reduce Costs</label>
+                </value>
+                <value>
+                    <fullName>Member Education</fullName>
+                    <default>false</default>
+                    <label>Member Education</label>
+                </value>
+                <value>
+                    <fullName>Communication Strategy</fullName>
+                    <default>false</default>
+                    <label>Communication Strategy</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Communications_and_Objectives__c</fullName>
+        <description>Captures the Communications and Objectives for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Communications and Objectives</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Compelling_Event__c</fullName>
+        <description>Reason for a Group Account to go out to bid and switch health insurance carriers</description>
+        <externalId>false</externalId>
+        <label>Compelling Event</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>is substage completed</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Consultant_Strategy__c</fullName>
+        <description>Captures the Strategy for engaging with the Consulant related to the Group Account associated with the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Consultant Strategy &amp; Tactics</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_Healthcare_Painpoints__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What painpoints exist with the current healthcare solution? Should include painpoints experienced with HCSC, another carrier or a consultant/producer?</inlineHelpText>
+        <label>Current Healthcare Painpoints</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Current_Year_Goals__c</fullName>
+        <description>HCSC&apos;s goals for growing and retaining a Group Account</description>
+        <externalId>false</externalId>
+        <label>Current Year Goals</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_changes_or_issues__c</fullName>
+        <externalId>false</externalId>
+        <label>Current changes or issues</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Product</fullName>
+                    <default>false</default>
+                    <label>New Product</label>
+                </value>
+                <value>
+                    <fullName>New Client Contact</fullName>
+                    <default>false</default>
+                    <label>New Client Contact</label>
+                </value>
+                <value>
+                    <fullName>Vendor Change</fullName>
+                    <default>false</default>
+                    <label>Vendor Change</label>
+                </value>
+                <value>
+                    <fullName>Enrollment fluctuation</fullName>
+                    <default>false</default>
+                    <label>Enrollment fluctuation</label>
+                </value>
+                <value>
+                    <fullName>Communication method</fullName>
+                    <default>false</default>
+                    <label>Communication method</label>
+                </value>
+                <value>
+                    <fullName>Service Issue</fullName>
+                    <default>false</default>
+                    <label>Service Issue</label>
+                </value>
+                <value>
+                    <fullName>Billing Issue</fullName>
+                    <default>false</default>
+                    <label>Billing Issue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Date_Approved__c</fullName>
+        <description>The date this strategic plan was approved by the manager.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the date the strategic plan was approved by the manager.</inlineHelpText>
+        <label>Approved Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Driver_of_Change_in_Carrier__c</fullName>
+        <description>Captures the driver of change in carrier of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Driver of Change in Carrier</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Drivers_of_change__c</fullName>
+        <externalId>false</externalId>
+        <label>Drivers of change</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cost</fullName>
+                    <default>false</default>
+                    <label>Cost</label>
+                </value>
+                <value>
+                    <fullName>Service</fullName>
+                    <default>false</default>
+                    <label>Service</label>
+                </value>
+                <value>
+                    <fullName>Leadership Change</fullName>
+                    <default>false</default>
+                    <label>Leadership Change</label>
+                </value>
+                <value>
+                    <fullName>New Initiative</fullName>
+                    <default>false</default>
+                    <label>New Initiative</label>
+                </value>
+                <value>
+                    <fullName>Union Negotiations</fullName>
+                    <default>false</default>
+                    <label>Union Negotiations</label>
+                </value>
+                <value>
+                    <fullName>Loss of Grandfathered Status</fullName>
+                    <default>false</default>
+                    <label>Loss of Grandfathered Status</label>
+                </value>
+                <value>
+                    <fullName>Funding Changes</fullName>
+                    <default>false</default>
+                    <label>Funding Changes</label>
+                </value>
+                <value>
+                    <fullName>Government and State Regulations</fullName>
+                    <default>false</default>
+                    <label>Government and State Regulations</label>
+                </value>
+                <value>
+                    <fullName>Media Communication</fullName>
+                    <default>false</default>
+                    <label>Media Communication</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>For existing Accounts, select the upcoming Renewal Date.
+For new Accounts, select the Effective Date.</inlineHelpText>
+        <label>Renewal Date</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Benefits__c</fullName>
+        <description>Captures the employee benefits of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Employee Benefits</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Growth_and_Training__c</fullName>
+        <description>Captures the employee growth and training of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Employee Growth and Training</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Growth_and_Retention_Strategy__c</fullName>
+        <description>Captures the Growth and Retention Strategy of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Growth and Retention Strategy &amp; Tactics</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>HCSC_Gaps_with_Healthcare_Painpoints__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What hurdles does HCSC need to overcome to meet client&apos;s healthcare vision? Examples can range from new products, enhanced features, enhanced networks, innovation, bundled pricing, etc</inlineHelpText>
+        <label>HCSC Gaps with Healthcare Painpoints</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HCSC_State__c</fullName>
+        <description>HCSC plan that owns or is pursuing a Group Account (IL, TX, OK, NM, MT)</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;IL&quot;) ,  IMAGE(&quot;https://c.cs15.content.force.com/servlet/servlet.ImageServer?id=015e00000008RyT&amp;oid=00De0000005UsP5&amp;lastMod=1428905965000&quot;,&quot;White&quot;) ,  IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;TX&quot;), IMAGE(&quot;https://c.cs15.content.force.com/servlet/servlet.ImageServer?id=015e00000008RyY&amp;oid=00De0000005UsP5&amp;lastMod=1428906015000&quot;,&quot;White&quot;),  IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;OK&quot;), IMAGE(&quot;https://c.cs15.content.force.com/servlet/servlet.ImageServer?id=015e00000008Ryd&amp;oid=00De0000005UsP5&amp;lastMod=1428906070000&quot;,&quot;White&quot;),  IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;NM&quot;), IMAGE(&quot;https://c.cs15.content.force.com/servlet/servlet.ImageServer?id=015e00000008Ryi&amp;oid=00De0000005UsP5&amp;lastMod=1428906096000&quot;,&quot;White&quot;),  IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;MT&quot;), IMAGE(&quot;https://c.cs15.content.force.com/servlet/servlet.ImageServer?id=015e00000008Ryn&amp;oid=00De0000005UsP5&amp;lastMod=1428906119000&quot;,&quot;White&quot;), null) ) ) ) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HCSC_s_long_term_goals_for_the_client__c</fullName>
+        <description>Captures HCSC’s long term goals for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>HCSC’s long term goals for the client</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Achieve Performance Measurements</fullName>
+                    <default>false</default>
+                    <label>Achieve Performance Measurements</label>
+                </value>
+                <value>
+                    <fullName>Control Costs</fullName>
+                    <default>false</default>
+                    <label>Control Costs</label>
+                </value>
+                <value>
+                    <fullName>Network Solutions</fullName>
+                    <default>false</default>
+                    <label>Network Solutions</label>
+                </value>
+                <value>
+                    <fullName>Product Solutions</fullName>
+                    <default>false</default>
+                    <label>Product Solutions</label>
+                </value>
+                <value>
+                    <fullName>Minimize Carve Outs</fullName>
+                    <default>false</default>
+                    <label>Minimize Carve Outs</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HCSC_s_short_term_goals_for_the_client__c</fullName>
+        <externalId>false</externalId>
+        <label>HCSC’s short term goals for the client</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Achieve Performance Measurements</fullName>
+                    <default>false</default>
+                    <label>Achieve Performance Measurements</label>
+                </value>
+                <value>
+                    <fullName>Member Education</fullName>
+                    <default>false</default>
+                    <label>Member Education</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HCSC_s_strengths_differentiators__c</fullName>
+        <externalId>false</externalId>
+        <label>HCSC’s strengths / differentiators</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Discounts</fullName>
+                    <default>false</default>
+                    <label>Discounts</label>
+                </value>
+                <value>
+                    <fullName>Network Solutions</fullName>
+                    <default>false</default>
+                    <label>Network Solutions</label>
+                </value>
+                <value>
+                    <fullName>Product Solutions</fullName>
+                    <default>false</default>
+                    <label>Product Solutions</label>
+                </value>
+                <value>
+                    <fullName>Transprency Tools</fullName>
+                    <default>false</default>
+                    <label>Transprency Tools</label>
+                </value>
+                <value>
+                    <fullName>Brand Recognition</fullName>
+                    <default>false</default>
+                    <label>Brand Recognition</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HCSC_s_weaknesses_limitations__c</fullName>
+        <externalId>false</externalId>
+        <label>HCSC’s weaknesses / limitations</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Higher Fees</fullName>
+                    <default>false</default>
+                    <label>Higher Fees</label>
+                </value>
+                <value>
+                    <fullName>Slow Product Roll out</fullName>
+                    <default>false</default>
+                    <label>Slow Product Roll out</label>
+                </value>
+                <value>
+                    <fullName>Timely or Effective Communication</fullName>
+                    <default>false</default>
+                    <label>Timely or Effective Communication</label>
+                </value>
+                <value>
+                    <fullName>Unable to Deliver as Promised</fullName>
+                    <default>false</default>
+                    <label>Unable to Deliver as Promised</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Immediate_need_to_know__c</fullName>
+        <description>Immediate need to know information about the Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Immediate need to know</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Incumbent_Strength_and_Opportunity__c</fullName>
+        <description>Strengths of a Group Account&apos;s current carrier</description>
+        <externalId>false</externalId>
+        <label>Incumbent Strength and Opportunity</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Incumbent_Weaknesses_and_Threats__c</fullName>
+        <description>Weaknesses of a Group Account&apos;s current carrier</description>
+        <externalId>false</externalId>
+        <label>Incumbent Weaknesses and Threats</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Industry_Insights__c</fullName>
+        <externalId>false</externalId>
+        <label>Industry Insights</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Info_that_can_be_used_to_BCBS_advantage__c</fullName>
+        <description>Captures info that can be used to BCBS advantage for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Info that can be used to BCBS advantage</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Is_Status_Quo_Acceptable_to_Client__c</fullName>
+        <description>Captures if the status quo is acceptable to the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Is Status Quo Acceptable to Client?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Key_Differentiators_to_Competitors__c</fullName>
+        <description>Captures key differentiators to competitors of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Key Differentiators to Competitors</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Key_Focus_Areas_from_ESM__c</fullName>
+        <externalId>false</externalId>
+        <label>Key Focus Areas from ESM</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Sales_Rep__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lead Sales Rep</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Strategies</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Length_of_HCSC_relationship__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( RecordType.DeveloperName  &lt;&gt; &apos;Prospect_Account_Plan&apos;, IF( ISBLANK(Account_Name__r.HCSC_Client_Since__c),&quot;&quot;,TEXT(ROUND(((TODAY()-Account_Name__r.HCSC_Client_Since__c) / 365),1)) &amp; &quot; years&quot;), &apos;-NA-&apos;)</formula>
+        <label>Length of HCSC relationship</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Length_of_relationship_with_HCSC__c</fullName>
+        <description>Used to capture the relationship with HCSC for Group Prospect Accounts (a formula field is used for Group Accounts)</description>
+        <externalId>false</externalId>
+        <label>Length of relationship with HCSC</label>
+        <length>140</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Logo__c</fullName>
+        <description>Stores logo file reference for Opportunity Plan document</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;IL&quot;) , IMAGE( $Label.BCBS_IL_LOGO ,&quot;White&quot;) , IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;TX&quot;), IMAGE( $Label.BCBS_TX_LOGO ,&quot;White&quot;), IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;OK&quot;), IMAGE( $Label.BCBS_OK_LOGO ,&quot;White&quot;), IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;NM&quot;), IMAGE( $Label.BCBS_NM_LOGO ,&quot;White&quot;), IF(ISPICKVAL( Account_Name__r.HCSC_Division__c , &quot;MT&quot;), IMAGE( $Label.BCBS_MT_LOGO ,&quot;White&quot;), null) ) ) ) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manager_Approval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Strategic Plan Approved by Manager</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Medical_Cost_Drivers__c</fullName>
+        <description>Captures medical cost drivers of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Medical Cost Drivers</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_HCSC_long_term_goals_for_client__c</fullName>
+        <externalId>false</externalId>
+        <label>Other HCSC long term goals for client</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_HCSC_s_strengths_differentiators__c</fullName>
+        <externalId>false</externalId>
+        <label>Other HCSC’s strengths / differentiators</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_HCSC_s_weaknesses_limitations__c</fullName>
+        <externalId>false</externalId>
+        <label>Other HCSC’s weaknesses / limitations</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_HCSC_short_term_goal_s_for_client__c</fullName>
+        <externalId>false</externalId>
+        <label>Other HCSC short term goal(s) for client</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_benefits_of_change__c</fullName>
+        <externalId>false</externalId>
+        <label>Other benefits of change</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_client_long_term_goals__c</fullName>
+        <externalId>false</externalId>
+        <label>Other client long term goals</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_current_changes_or_issues__c</fullName>
+        <externalId>false</externalId>
+        <label>Other current changes or issues</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_drivers_of_change__c</fullName>
+        <externalId>false</externalId>
+        <label>Other drivers of change</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_risks_of_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Other risks of Change</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_short_term_goal_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Other short-term goal(s)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_what_it_will_take_to_win__c</fullName>
+        <externalId>false</externalId>
+        <label>Other what it will take to win</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Our_Strategy_Response2__c</fullName>
+        <description>Captures strategy response #2 for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Our Strategy / Response</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Our_Strategy_Response3__c</fullName>
+        <description>Captures strategy response #3 for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Our Strategy / Response</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Our_Strategy_Response4__c</fullName>
+        <description>Captures strategy response #4 for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Our Strategy / Response</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Our_Strategy_Response__c</fullName>
+        <description>HCSC&apos;s strategy to win business for a Group Account</description>
+        <externalId>false</externalId>
+        <label>Our Strategy / Response</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Philanthropic_Activities__c</fullName>
+        <description>Captures the philanthropic activites of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Philanthropic Activities</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Plan_for_use_of_Client_Analytics__c</fullName>
+        <description>Captures how will you use client analytics to better drive value</description>
+        <externalId>false</externalId>
+        <label>Plan for use of Client Analytics</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Plan_to_Pursue_Carve_Out__c</fullName>
+        <description>HCSC&apos;s plan to go after business that a Group Account currently carves out to a different vendor (e.g., RX, Dental, Life)</description>
+        <externalId>false</externalId>
+        <label>Plan to Pursue Carve Out</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Potential_Obstacles__c</fullName>
+        <description>Captures the Potential threats to the relationship with the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Potential threats to relationship</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Primary_ESM_Personality_Type__c</fullName>
+        <description>Captures Primary ESM Personality Type related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Primary ESM Personality Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All-Inclusive</fullName>
+                    <default>false</default>
+                    <label>All-Inclusive</label>
+                </value>
+                <value>
+                    <fullName>Network Focused</fullName>
+                    <default>false</default>
+                    <label>Network Focused</label>
+                </value>
+                <value>
+                    <fullName>Product Oriented</fullName>
+                    <default>false</default>
+                    <label>Product Oriented</label>
+                </value>
+                <value>
+                    <fullName>Price Sensitive</fullName>
+                    <default>false</default>
+                    <label>Price Sensitive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Primary_ESM_Personality__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary ESM Personality %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Priorities_and_agendas__c</fullName>
+        <description>This field is used to capture priorities and agendas of key stakeholders and decision makers</description>
+        <externalId>false</externalId>
+        <label>Priorities / agendas of key stakeholders</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Product_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Priority</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dental</fullName>
+                    <default>false</default>
+                    <label>Dental</label>
+                </value>
+                <value>
+                    <fullName>Vision</fullName>
+                    <default>false</default>
+                    <label>Vision</label>
+                </value>
+                <value>
+                    <fullName>Life</fullName>
+                    <default>false</default>
+                    <label>Life</label>
+                </value>
+                <value>
+                    <fullName>Disability</fullName>
+                    <default>false</default>
+                    <label>Disability</label>
+                </value>
+                <value>
+                    <fullName>Custom</fullName>
+                    <default>false</default>
+                    <label>Custom</label>
+                </value>
+                <value>
+                    <fullName>Medical</fullName>
+                    <default>true</default>
+                    <label>Medical</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proposed_Product_Service_Description__c</fullName>
+        <description>Description of what value and benefits HCSC can offer to a Group Account</description>
+        <externalId>false</externalId>
+        <label>Proposed Product / Service Description</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proposed_solution__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed solution</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Prospect_Key_Concerns__c</fullName>
+        <description>Captures the Key Concerns of the Group Prospect Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Prospect Key Concerns</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Prospect_perception_of_BCBS__c</fullName>
+        <description>Captures the relationship that HCSC has with the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Relationship with HCSC</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Rate_History__c</fullName>
+        <description>Captures overview of historic rate changes for the Group Account associated with the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Overview of historic rate changes</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Reason_why_proposed_solution_is_the_best__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason why proposed solution is the best</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Concerns_Issues__c</fullName>
+        <description>Captures renewal concerns and issues of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Renewal Concerns / Issues &amp; Tactics</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Risk_Reason__c</fullName>
+        <description>Captures rationale of Risk Rating given to the acount</description>
+        <externalId>false</externalId>
+        <label>Risk Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Risks_And_Benefits_Of_Changing_Carriers__c</fullName>
+        <description>Captures the risks and benefits of changing carriers for the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Risks And Benefits Of Changing Carriers</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Risks_of_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Risks of Change</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Decrease Membership</fullName>
+                    <default>false</default>
+                    <label>Decrease Membership</label>
+                </value>
+                <value>
+                    <fullName>Unable to Deliver as Promised</fullName>
+                    <default>false</default>
+                    <label>Unable to Deliver as Promised</label>
+                </value>
+                <value>
+                    <fullName>Client Dissatisfaction</fullName>
+                    <default>false</default>
+                    <label>Client Dissatisfaction</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SIC_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Sic</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SIC Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Secondary_ESM_Personality_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Secondary ESM Personality Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All-Inclusive</fullName>
+                    <default>false</default>
+                    <label>All-Inclusive</label>
+                </value>
+                <value>
+                    <fullName>Network Focused</fullName>
+                    <default>false</default>
+                    <label>Network Focused</label>
+                </value>
+                <value>
+                    <fullName>Product Oriented</fullName>
+                    <default>false</default>
+                    <label>Product Oriented</label>
+                </value>
+                <value>
+                    <fullName>Price Sensitive</fullName>
+                    <default>false</default>
+                    <label>Price Sensitive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Secondary_ESM_Personality__c</fullName>
+        <externalId>false</externalId>
+        <label>Secondary ESM Personality %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Strategic_Plan_Name_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/apex/NewStrategicPlanLayout?id=&quot;&amp;Id , Name ,&apos;_self&apos;)</formula>
+        <label>Strategic Plan Link (Consolidated View)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Strategic_Vision__c</fullName>
+        <description>Documents strategic vision on account plan</description>
+        <externalId>false</externalId>
+        <label>Strategic Vision</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Tactics_Reduce_Vulnerability__c</fullName>
+        <description>Captures tactics to reduce vulnerability of losing business</description>
+        <externalId>false</externalId>
+        <label>Tactics to Reduce Vulnerability</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Tactics_to_Pursue_Opportunities__c</fullName>
+        <description>Captures tactics to purse opportunities to grow business</description>
+        <externalId>false</externalId>
+        <label>Tactics to Pursue Opportunities</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Turnover_Recruitment_and_Retention__c</fullName>
+        <description>Captures turnover, recruitment, and retention of the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>Turnover, Recruitment and Retention</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Value_prioritization_of_the_account__c</fullName>
+        <externalId>false</externalId>
+        <label>Value / prioritization of the account</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Value_proposition_statement__c</fullName>
+        <externalId>false</externalId>
+        <label>Value proposition statement</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Website__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Website</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Website</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>What_Will_It_Take_To_Win__c</fullName>
+        <description>Captures &apos;what it will take to win&apos; the Group Account related to the Strategic Plan</description>
+        <externalId>false</externalId>
+        <label>What Will It Take To Win?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lower Administrative Fee</fullName>
+                    <default>false</default>
+                    <label>Lower Administrative Fee</label>
+                </value>
+                <value>
+                    <fullName>Enhanced Performance Guarantees</fullName>
+                    <default>false</default>
+                    <label>Enhanced Performance Guarantees</label>
+                </value>
+                <value>
+                    <fullName>Increase Fees at Risk</fullName>
+                    <default>false</default>
+                    <label>Increase Fees at Risk</label>
+                </value>
+                <value>
+                    <fullName>Customization</fullName>
+                    <default>false</default>
+                    <label>Customization</label>
+                </value>
+                <value>
+                    <fullName>Better Communication</fullName>
+                    <default>false</default>
+                    <label>Better Communication</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>What_are_HCSC_competitors_doing__c</fullName>
+        <description>Describes what the competition of HCSC is doing around the Account related to the strategic plan</description>
+        <externalId>false</externalId>
+        <label>What are HCSC competitors doing?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Why_Is_Product_Service_Bundle_Compelling__c</fullName>
+        <description>Describes how will this product, service or product/service bundle address the customer/prospect&apos;s compelling event</description>
+        <externalId>false</externalId>
+        <label>Why Is Product/Service Bundle Compelling</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Reduce Cost</fullName>
+                    <default>false</default>
+                    <label>Reduce Cost</label>
+                </value>
+                <value>
+                    <fullName>Reduce Trend</fullName>
+                    <default>false</default>
+                    <label>Reduce Trend</label>
+                </value>
+                <value>
+                    <fullName>Improve Service</fullName>
+                    <default>false</default>
+                    <label>Improve Service</label>
+                </value>
+                <value>
+                    <fullName>Enhance Employee Recruitment &amp; Retention</fullName>
+                    <default>false</default>
+                    <label>Enhance Employee Recruitment &amp; Retention</label>
+                </value>
+                <value>
+                    <fullName>Save Time</fullName>
+                    <default>false</default>
+                    <label>Save Time</label>
+                </value>
+                <value>
+                    <fullName>Reduce Complexity</fullName>
+                    <default>false</default>
+                    <label>Reduce Complexity</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Strategic Plan</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account_Name__c</columns>
+        <columns>Account_Number__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Strategic_Plan__c.New_Group_Account_Plan</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Strategic Plan Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Strategic Plans</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Account_Plan</fullName>
+        <active>true</active>
+        <description>*Phased out record type* that stores past records that provides the plan and strategy for growing and retaining existing accounts</description>
+        <label>Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>ENA_Account_Plan</fullName>
+        <active>true</active>
+        <description>Captures the plan and strategy for growing and retaining existing ENA Accounts</description>
+        <label>ENA Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Benefits_of_change__c</picklist>
+            <values>
+                <fullName>Cost Control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_long_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial stability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentives%2Fdisincentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Productivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Provider Acessibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce employee absentiness</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_short_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Costs</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_changes_or_issues__c</picklist>
+            <values>
+                <fullName>Billing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication method</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment fluctuation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Client Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Change</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Drivers_of_change__c</picklist>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funding Changes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Government and State Regulations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership Change</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Loss of Grandfathered Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Union Negotiations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_long_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Control Costs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimize Carve Outs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_short_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_strengths_differentiators__c</picklist>
+            <values>
+                <fullName>Brand Recognition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transprency Tools</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_weaknesses_limitations__c</picklist>
+            <values>
+                <fullName>Higher Fees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slow Product Roll out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timely or Effective Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risks_of_Change__c</picklist>
+            <values>
+                <fullName>Client Dissatisfaction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decrease Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Enhance Employee Recruitment %26 Retention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>ENA_Prospect_Account_Plan</fullName>
+        <active>true</active>
+        <description>Captures the plan and strategy for winning new business for ENA Accounts</description>
+        <label>ENA Prospect Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Benefits_of_change__c</picklist>
+            <values>
+                <fullName>Cost Control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_long_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial stability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentives%2Fdisincentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Productivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Provider Acessibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce employee absentiness</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_short_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Costs</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_changes_or_issues__c</picklist>
+            <values>
+                <fullName>Billing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication method</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment fluctuation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Client Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Change</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Drivers_of_change__c</picklist>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funding Changes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Government and State Regulations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership Change</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Loss of Grandfathered Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Union Negotiations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_long_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Control Costs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimize Carve Outs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_short_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_strengths_differentiators__c</picklist>
+            <values>
+                <fullName>Brand Recognition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transprency Tools</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_weaknesses_limitations__c</picklist>
+            <values>
+                <fullName>Higher Fees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slow Product Roll out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timely or Effective Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risks_of_Change__c</picklist>
+            <values>
+                <fullName>Client Dissatisfaction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decrease Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Enhance Employee Recruitment %26 Retention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Group_Account_Plan</fullName>
+        <active>true</active>
+        <description>Captures the plan and strategy for growing and retaining existing Group Accounts</description>
+        <label>Group Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Benefits_of_change__c</picklist>
+            <values>
+                <fullName>Cost Control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_long_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial stability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentives%2Fdisincentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Productivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Provider Acessibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce employee absentiness</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_short_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Costs</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_changes_or_issues__c</picklist>
+            <values>
+                <fullName>Billing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication method</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment fluctuation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Client Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Change</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Drivers_of_change__c</picklist>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funding Changes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Government and State Regulations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership Change</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Loss of Grandfathered Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Union Negotiations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_long_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Control Costs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimize Carve Outs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_short_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_strengths_differentiators__c</picklist>
+            <values>
+                <fullName>Brand Recognition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transprency Tools</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_weaknesses_limitations__c</picklist>
+            <values>
+                <fullName>Higher Fees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slow Product Roll out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timely or Effective Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Priority__c</picklist>
+            <values>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Life</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risks_of_Change__c</picklist>
+            <values>
+                <fullName>Client Dissatisfaction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decrease Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Enhance Employee Recruitment %26 Retention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>New_Group_Account_Plan</fullName>
+        <active>true</active>
+        <description>New Strategic plan page layout for Group Account</description>
+        <label>New Group Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Benefits_of_change__c</picklist>
+            <values>
+                <fullName>Cost Control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_long_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial stability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentives%2Fdisincentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Productivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Provider Acessibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce employee absentiness</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_short_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Costs</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_changes_or_issues__c</picklist>
+            <values>
+                <fullName>Billing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication method</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment fluctuation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Client Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Change</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Drivers_of_change__c</picklist>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funding Changes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Government and State Regulations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership Change</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Loss of Grandfathered Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Union Negotiations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_long_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Control Costs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimize Carve Outs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_short_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_strengths_differentiators__c</picklist>
+            <values>
+                <fullName>Brand Recognition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transprency Tools</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_weaknesses_limitations__c</picklist>
+            <values>
+                <fullName>Higher Fees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slow Product Roll out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timely or Effective Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Priority__c</picklist>
+            <values>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dental</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Life</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Vision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risks_of_Change__c</picklist>
+            <values>
+                <fullName>Client Dissatisfaction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decrease Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Enhance Employee Recruitment %26 Retention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Opportunity_Plan</fullName>
+        <active>true</active>
+        <description>*Phased out record type* that stores past records that provides plan and strategy for winning new business</description>
+        <label>Opportunity Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Prospect_Account_Plan</fullName>
+        <active>true</active>
+        <description>Captures plan and strategy for winning new business</description>
+        <label>Group Prospect Account Plan</label>
+        <picklistValues>
+            <picklist>Account_Risk_Level__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Benefits_of_change__c</picklist>
+            <values>
+                <fullName>Cost Control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provider Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_long_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Financial stability</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incentives%2Fdisincentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Productivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Provider Acessibility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce employee absentiness</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_s_short_term_goals__c</picklist>
+            <values>
+                <fullName>Communication Strategy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Costs</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_changes_or_issues__c</picklist>
+            <values>
+                <fullName>Billing Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication method</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment fluctuation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Client Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor Change</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Drivers_of_change__c</picklist>
+            <values>
+                <fullName>Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funding Changes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Government and State Regulations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership Change</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Loss of Grandfathered Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Union Negotiations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_long_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Control Costs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimize Carve Outs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_short_term_goals_for_the_client__c</picklist>
+            <values>
+                <fullName>Achieve Performance Measurements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Member Education</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_strengths_differentiators__c</picklist>
+            <values>
+                <fullName>Brand Recognition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transprency Tools</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_s_weaknesses_limitations__c</picklist>
+            <values>
+                <fullName>Higher Fees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slow Product Roll out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timely or Effective Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risks_of_Change__c</picklist>
+            <values>
+                <fullName>Client Dissatisfaction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Decrease Membership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unable to Deliver as Promised</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_ESM_Personality_Type__c</picklist>
+            <values>
+                <fullName>All-Inclusive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Sensitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Oriented</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>What_Will_It_Take_To_Win__c</picklist>
+            <values>
+                <fullName>Better Communication</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhanced Performance Guarantees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Increase Fees at Risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lower Administrative Fee</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Why_Is_Product_Service_Bundle_Compelling__c</picklist>
+            <values>
+                <fullName>Enhance Employee Recruitment %26 Retention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Complexity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Cost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reduce Trend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Save Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Clone</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Clone</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/32.0/connection.js&quot;)} 
+
+
+
+var s = new sforce.SObject(&quot;Strategic_Plan__c&quot;); 
+s.id = &quot;{!Strategic_Plan__c.Id}&quot;; 
+s.Manager_Approval__c= false; 
+result = sforce.connection.update([s]);
+
+window.location = &apos;/{!Strategic_Plan__c.Id}/e?clone=1&apos;;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Conga_Composer</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Conga Composer</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;attachmentparentID={!Strategic_Plan__c.Id}
+&amp;TemplateId=a0L3300000SUCCP
+&amp;QueryId=[StrgPlanAcct]a0K3300000VfGfn?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;Queryid=[StrgPlanStick]a0K3300000VfGg2?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[StrgPlanGoals]a0K3300000VfGgC?pv0={!Strategic_Plan__c.Id}
+&amp;QueryId=[StrgPlanCompt]a0K3300000VfGgH?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Buyer_Heirarchy_Image</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Strategic Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/BuyerHierarchyOnAccount?id={!Strategic_Plan__c.Account_NameId__c}&amp;spId={!Strategic_Plan__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Conga_Reports</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Conga Reports</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!$Api.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;TemplateID=a0ee0000003pIWX
+&amp;DV0=DRAFT
+&amp;QueryId=[Opportunities]a0de0000008vBoP?pv0={!Strategic_Plan__c.Account_NameId__c},[Accounts]a0de0000008vgD6?pv0={!Strategic_Plan__c.Account_NameId__c},[OpportunityProducts]a0de0000008vgq3?pv1={!Strategic_Plan__c.Account_NameId__c},[BenefitAgreement]a0de0000008vgq8?pv2={!Strategic_Plan__c.Account_NameId__c},[CompetitorProducts]a0de0000008vgqD?pv2={!Strategic_Plan__c.Account_NameId__c},[AccoProdInfo]a0de0000008vgqm?pv0={!Strategic_Plan__c.Account_NameId__c},[ContactQ2]a0de0000008vjhT?pv0={!Strategic_Plan__c.Account_NameId__c},[ContactQ1]a0de0000008vjiR?pv0={!Strategic_Plan__c.Account_NameId__c},[Task]a0de0000008vji7?pv0={!Strategic_Plan__c.Account_NameId__c},[Event]a0de0000008vjiM?pv0={!Strategic_Plan__c.Account_NameId__c},
+[ActionMapping]a0de0000008vkIm?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Executive_Summary</fullName>
+        <availability>online</availability>
+        <description>Generates Executive Summary document and prompts user to download</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Executive Summary</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!$Api.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;OFN={!Strategic_Plan__c.Name}+-+Executive Summary+-+{!YEAR(TODAY())}-{!MONTH(TODAY())}-{!DAY(TODAY())}
+&amp;DS7=3
+&amp;sc0=1
+&amp;attachmentparentID={!Strategic_Plan__c.Id}
+&amp;TemplateId=a0L3300000RYNAe
+&amp;QueryId=[Account]a0K3300000SA8OF?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[AccountTeamMember]a0K3300000SA8O4?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[ActiveHCSCProds]a0K3300000SA8O7?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[PastEvents]a0K3300000SA8O5?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[OpptyGAP]a0K3300000SA8Nj?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[ContactDecMak]a0K3300000SA8Nn?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CPCV]a0K3300000SA8Nk?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[Oppty]a0K3300000SA8OA?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[BuyHierImage]a0K3300000SA8Nl?pv0={!Strategic_Plan__c.Id}~pv1={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[RecentCases]a0K3300000SA8No?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CurrentCases]a0K3300000SA8Nm?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[UpcomingEvents]a0K3300000SA8OI?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[DecMakers]a0K3300000SA8O9?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[AccountTeamNonSFDC]a0K3300000SA8Nh?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[OpenTasks]a0K3300000SA8OK?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CompetitorProds]a0K3300000SA8OL?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Opportunity_Plan</fullName>
+        <availability>online</availability>
+        <description>Generates Opportunity Plan document and prompts user to download</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Opportunity Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!$Api.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;TemplateId=a0L3300000RJxft
+&amp;DS7=3
+&amp;sc0=1
+&amp;attachmentparentID={!Strategic_Plan__c.Id}
+&amp;QueryId=[Account]a0K3300000RjkTm?pv0={!Strategic_Plan__c.Account_NameId__c},[Opportunity]a0K3300000RjkU2?pv0={!Strategic_Plan__c.Account_NameId__c},[ConsultantTeamMember]a0K3300000RjkTn?pv0={!Strategic_Plan__c.Account_NameId__c},[OpenTasks]a0K3300000RjkTh?pv0={!Strategic_Plan__c.Account_NameId__c},[ClosedTasks]a0K3300000RjkTq?pv0={!Strategic_Plan__c.Account_NameId__c},[UpcomingEvents]a0K3300000RjkTe?pv0={!Strategic_Plan__c.Account_NameId__c},[PastEvents]a0K3300000RjkU3?pv0={!Strategic_Plan__c.Account_NameId__c},[CompetitorRelate]a0K3300000RjkTp?pv0={!Strategic_Plan__c.Account_NameId__c},
+[ActiveHCSCProds]a0K3300000RjkTv?pv0={!Strategic_Plan__c.Account_NameId__c},
+[CompetitorProds]a0K3300000RjkTi?pv0={!Strategic_Plan__c.Account_NameId__c}
+[OpportunityProds]a0K3300000RjkTg?pv0={!Strategic_Plan__c.Account_NameId__c},
+[Detractors]a0K3300000RjkTb?pv0={!Strategic_Plan__c.Account_NameId__c},
+[DecisionMaker]a0K3300000RjkTx?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Opportunity_Plan_BH</fullName>
+        <availability>online</availability>
+        <description>Genrates Buyer hierarchy image and routes to opportunity plan button</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Opportunity Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/BuyerHierarchyOnAccount?id={!Strategic_Plan__c.Account_NameId__c}&amp;spId={!Strategic_Plan__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Plan</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Plan (Auto Download)</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;ReportId=00Oe0000000GoCf?pv0={!Account.Id}
+&amp;ReportId=00Oe0000000GoMk?pv0={!Account.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Plan_2</fullName>
+        <availability>online</availability>
+        <description>Generates Account Plan document and prompts user to download</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Account Plan - no BH</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!$Api.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;OFN={!Strategic_Plan__c.Account_Name__c}+-+Strategic Plan+-+{!YEAR(TODAY())}-{!MONTH(TODAY())}-{!DAY(TODAY())}
+&amp;DS7=3
+&amp;sc0=1
+&amp;attachmentparentID={!Strategic_Plan__c.Id}
+&amp;TemplateId=a0L3300000RYNAj
+&amp;QueryId=[Account]a0K3300000SA8OD?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[AccountTeamMember]a0K3300000SA8O4?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[ActiveHCSCProds]a0K3300000SA8O7?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[PastEvents]a0K3300000SA8O5?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[OpptyGAP]a0K3300000SA8Nj?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[ContactDecMak]a0K3300000SA8Nn?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CPCV]a0K3300000SA8Nk?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[Oppty]a0K3300000SA8OA?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[BuyHierImage]a0K3300000SA8Nl?pv1={!Strategic_Plan__c.Id}~pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[RecentCases]a0K3300000SA8No?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CurrentCases]a0K3300000SA8Nm?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[UpcomingEvents]a0K3300000SA8OI?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[DecMakers]a0K3300000SA8O9?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[AccountTeamNonSFDC]a0K3300000SA8Nh?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[OpenTasks]a0K3300000SA8OK?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[CompetitorProds]a0K3300000SA8OL?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Strategic_Report</fullName>
+        <availability>online</availability>
+        <description>For Generate Strategic Report</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Strategic Report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;OFN={!Strategic_Plan__c.Name}+-+Executive Summary+-+{!YEAR(TODAY())}-{!MONTH(TODAY())}-{!DAY(TODAY())}
+&amp;DS7=3
+&amp;sc0=1
+&amp;DefaultPDF=1
+&amp;attachmentparentID={!Strategic_Plan__c.Id}
+&amp;TemplateId=a0L3300000SUCCP
+&amp;QueryId=[StrgPlanAcct]a0K3300000VfGfn?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;Queryid=[StrgPlanStick]a0K3300000VfGg2?pv0={!Strategic_Plan__c.Account_NameId__c}
+&amp;QueryId=[StrgPlanGoals]a0K3300000VfGgC?pv0={!Strategic_Plan__c.Id}
+&amp;QueryId=[StrgPlanCompt]a0K3300000VfGgH?pv0={!Strategic_Plan__c.Account_NameId__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_and_Save_to_Attachments</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate and Save to Attachments</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!$Api.Partner_Server_URL_290}
+&amp;Id={!Strategic_Plan__c.Id}
+&amp;TemplateID=a0ee0000003pIIL
+&amp;DS7=1</url>
+    </webLinks>
+</CustomObject>

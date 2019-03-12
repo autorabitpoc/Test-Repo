@@ -1,0 +1,7 @@
+The SBC has not been approved. Please make updates and re-submit the SBC.
+
+Form Number : {!GEMS_SBC_BB_Form__c.Form_Id__c}
+Account number : {!GEMS_SBC_BB_Form__c.Account_Number__c} 
+Form Details : {!GEMS_SBC_BB_Form__c.Link}
+
+Thanks

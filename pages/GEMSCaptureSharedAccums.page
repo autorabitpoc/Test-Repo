@@ -1,0 +1,401 @@
+<!--
+/**************************************************************************************
+Visulaforce Page Name : GEMSCaptureSharedAccums
+Version               : 1.0
+Function              : This Page is for assigning Shared Accums to BA's.
+Modification Log      :
+* Developer           Date                   Description
+* ----------------------------------------------------------------------------                 
+* CAP             06/10/2016             Original Version
+* Ranjit Gandhi   07/26/2017             SFDC-2074 Change how BAs are associated to Shared accums
+* Phani K         01/22/2018             SFDC-7906 GEMS: Shared Accums - One field removed and additional fields needed on the Shared Accums Form and Grid output
+* Gokul Bharati   01/23/2018             SFDC-7966 GEMS: Shared Accums - Make all fields on Shared Accums form visible at the outset, but gray out if not applicable
+* Gokul Bharati   03/02/2018             SFDC-8322 GEMS: Shared Accums - Ability to Clone Existing Shared Accums Form
+*************************************************************************************/
+-->
+<apex:page standardController="GEMS_Shared_Accums__c" extensions="GEMS_CaptureSharedAccumsController,GEMS_CustomCaseLookupController" sidebar="true" showHeader="true" showChat="false" id="pageId">
+    <apex:includeScript value="{!URLFOR($Resource.GEMSSharePoint, '/GEMSSharePoint/JS/jquery-1.12.4.js')}" loadOnReady="false"/>     
+    <apex:form id="formId">
+        <apex:pageBlock title="Account Submission - BA Level Shared Accum" id="pbId">
+            <!--Start SFDC-8322-->
+            <apex:pageblockButtons location="top" rendered="{!NOT(ISNULL($CurrentPage.parameters.Id))}">
+                <apex:CommandButton action="{!cloneRecord}" value="Clone" onclick="if(!confirm('Are you sure you want to create a cloned Shared Accums?')){return false};" rerender="formId" oncomplete="if('{!cloneId}') redToCloneRec('{!cloneId}'); else false;"/>
+            </apex:pageblockButtons>
+            <!--End SFDC-8322-->
+            <apex:pageBlockSection id="pbsId">
+                <apex:outputField value="{!caseRec.Account.Name}" />
+                <apex:outputField value="{!caseRec.Account.External_ID__c}"/>  
+                <apex:outputField value="{!caseRec.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!caseRec.HCSC_Division__c}"/>                
+                <apex:outputField value="{!caseRec.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!caseRec.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!caseRec.FSU_Location__c}"/> 
+                <apex:outputField value="{!caseRec.Market_Segment__c}"/>
+                <apex:outputField value="{!caseRec.OwnerId}"/>
+                <apex:outputField value="{!caseRec.CaseNumber}"/>                
+                <apex:outputField value="{!sharedAccumRecord.Applicable_BAs__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageblock title="Shared Accums" id="Pbid2">
+            <apex:outputPanel id="errorpan">
+                <apex:messages style="color:red" />
+            </apex:outputPanel>
+            <apex:pageblockSection id="Main" >
+                <!-- Ranjit Gandhi   07/26/2017    Remove the lookup field for BA-->
+                <!--<apex:inputField value="{!sharedAccumRecord.Benefit_Agreement__c}" id="benefitagreement"/>-->
+                <apex:inputField value="{!sharedAccumRecord.Accum_Period__c}"/> 
+                <apex:inputField value="{!sharedAccumRecord.Shared_Accums_Effective_Date__c}"/>                  
+                <apex:inputField value="{!sharedAccumRecord.HCSC_responsible_for_Vendor_Eligibility__c}" label="Is HCSC responsible for Eligibility to Vendor?" />  
+                <!-- SFDC-7906 GEMS: Shared Accums - One field removed and additional fields needed on the Shared Accums Form and Grid output -->
+                <apex:inputField value="{!sharedAccumRecord.Number_of_Accum_Tiers__c}"/>
+                <p>
+                </p>
+            </apex:pageblockSection>       
+            
+            <apex:pageBlockSection >
+                <apex:inputField value="{!sharedAccumRecord.Deductible__c}" id="deduc"> &nbsp;
+                </apex:inputField>       
+            </apex:pageBlockSection>           
+            
+            <apex:pageBlockSection id="Deductible" >    
+                <apex:inputField value="{!sharedAccumRecord.Aggregate_or_Embedded_Deductible__c}" Id="Deductible1"/>
+                <apex:inputField value="{!sharedAccumRecord.Individual_Deductible_Amount__c}" Id="Deductible2"
+                                 label="Individual Deductible Amount $ "/>                    
+                <apex:inputField value="{!sharedAccumRecord.Deductible_Middle_Tier_s_if_Applicable__c}" Id="Deductible3"  
+                                 label="Deductible Middle Tier(s) if Applicable $" />                    
+                <apex:inputField value="{!sharedAccumRecord.Family_Deductible_Amount__c}" Id="Deductible4"
+                                 label="Family Deductible Amount $"/>
+                <!-- SFDC-7906 GEMS: Shared Accums - One field removed and additional fields needed on the Shared Accums Form and Grid output -->
+                <apex:inputField value="{!sharedAccumRecord.In_Ntk_Ded_Feeds_Out_Of_Ntk__c}"  Id="Deductible5" 
+                                 label="In Network Deductible Feeds Out of Network"/>
+                <apex:inputField value="{!sharedAccumRecord.Out_of_Network_Deductible_Feeds_In_Ntk__c}"  Id="Deductible6" 
+                                 label="Out of Network Deductible Feeds In Network  "/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection >
+                <apex:inputField value="{!sharedAccumRecord.Out_of_Pocket__c}" id="Outofpocket">
+                </apex:inputField>   
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection >
+                <apex:inputField value="{!sharedAccumRecord.Aggregate_or_Embedded_Out_of_Pocket__c}" Id="Outofpocket1" />
+                <apex:inputField value="{!sharedAccumRecord.Individual_Out_of_Pocket_Amount__c}" Id="Outofpocket2"
+                                 label="Individual Out of Pocket Amount $"/>                    
+                <apex:inputField value="{!sharedAccumRecord.Out_of_Pocket_Middle_Tier_if_Applicable__c}" Id="Outofpocket3" label="Out of Pocket Middle Tier(s) if Applicable $" />                    
+                <apex:inputField value="{!sharedAccumRecord.Family_Out_of_Pocket_Amount__c}" Id="Outofpocket4"
+                                 label="Family Out of Pocket Amount $"/> 
+                <apex:inputField value="{!sharedAccumRecord.Does_Deductible_apply_to_Out_of_Pocket__c}" Id="Outofpocket5" />
+                <apex:inputField value="{!sharedAccumRecord.Does_Copay_apply_to_Out_of_Pocket__c}" Id="Outofpocket6" />                    
+                <!-- SFDC-7906 GEMS: Shared Accums - One field removed and additional fields needed on the Shared Accums Form and Grid output -->
+                <apex:inputField value="{!sharedAccumRecord.In_Network_OOP_Feeds_Out_of_Network__c}" Id="Outofpocket7" />                      
+                <apex:inputField value="{!sharedAccumRecord.Out_of_Network_OOP_Feeds_In_Network__c}" Id="Outofpocket8" />                      
+            </apex:pageBlockSection>     
+            
+            <apex:pageBlockSection >                
+                <apex:inputField value="{!sharedAccumRecord.Lifetime_Maximum__c}" id="lifetimemax">
+                </apex:inputField>                                   
+            </apex:pageBlockSection>  
+            
+            <apex:pageBlockSection >                
+                <apex:inputField value="{!sharedAccumRecord.Amount__c}" Id="lifetimemax1"/>                      
+            </apex:pageBlockSection>            
+            
+            <apex:pageBlockSection >                
+                <p>
+                </p>                                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="pbsId">                    
+                <apex:inputField value="{!sharedAccumRecord.Accums_Shared_With__c}"/>
+                <apex:inputField value="{!sharedAccumRecord.Shared_Accum_ID__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" onkeydown="return validate();" id="sharedAccumId"/>
+                <apex:inputField value="{!sharedAccumRecord.Shared_Accum_with_Vendor_Using__c}"/>   
+            </apex:pageBlockSection>                                                                                         
+            
+            <apex:pageblockButtons >
+                <!-- Ranjit Gandhi   07/26/2017    Save and Assign BA's button-->
+                <apex:commandbutton value="Save & Assign BA's"  oncomplete="saveAndAssignBAToSharedAcc();">
+                </apex:commandbutton>
+                <apex:CommandButton action="{!back}" value="Cancel"/>
+            </apex:pageblockButtons>
+                 
+        </apex:pageblock>
+        <!-- Ranjit Gandhi   07/26/2017 - upon selection of BA's, save & redirect -->
+        <apex:actionFunction name="saveAndAssignBAToSharedAccCtrl" action="{!save1}" oncomplete="fun('{!caseID}', '{!Addsuccess}')" rerender="errorpan" status="pageStatus"> 
+            <apex:param name="baString" value="" assignTo="{!baCaseNums}" />
+            <apex:param name="baProductTypeString" value="" assignTo="{!baProductTypes}" />
+        </apex:actionFunction>  
+        
+        <!-- Ranjit Gandhi    07/26/2017    Display BA records. Obtain list of BA records from baIdWrapper class -->
+        <apex:pageBlock id="baIDRecsBlockId" title="BA Records">
+            <apex:variable value="{!0}" var="baIdIncr" />
+            <apex:pageBlockTable value="{!listOfBARecords}" var="baIdWrapper" id="newBATable">
+                <apex:column headerValue="Select" width="3%" id="selectCol">
+                    <apex:variable value="{!baIdIncr+1}" var="baIdIncr" />
+                    <input type="checkbox" id="{!baIdIncr}" onclick="setSelectedBANumbers('{!baIdIncr}','{!baIdWrapper.ba.Name}','{!baIdWrapper.ba.product__r.Name}');"/>
+                </apex:column>
+                <apex:column headerValue="BA No." width="5%">
+                    <apex:outputField value="{!baIdWrapper.ba.Name}"/>
+                </apex:column>
+                <apex:column headerValue="BA Product Type" value="{!baIdWrapper.ba.product__r.Name}" width="3%"/>
+                <apex:column headerValue="BA Description" value="{!baIdWrapper.ba.BA_Description__c}" width="7%"/>
+                <apex:column headerValue="BA Fund Type" value="{!baIdWrapper.ba.BA_Fund_Type__c}" width="7%"/>
+                <apex:column headerValue="Group Number" value="{!baIdWrapper.groupNo}" width="7%"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock> 
+    </apex:form>
+    <script type="text/javascript"> 
+    <!-- Ranjit Gandhi    07/26/2017    on load query account structure BA's-->
+    function setFocusOnLoad(){}
+    var selectedIds = '';
+    var selectedProductTypes = '';
+    function setSelectedBANumbers(checkID,baRecName,baProductType) {
+        // alert('setSelectedBANumbers'+ baRecName);
+        if(document.getElementById(checkID).checked) {
+            if(selectedIds == '' || selectedIds.length == 0) {
+                
+                selectedIds = baRecName;
+                selectedProductTypes = baProductType;
+            }else {
+                selectedIds = selectedIds+','+baRecName;                     
+                selectedProductTypes = selectedProductTypes+','+baProductType;
+            }
+        }else if(!document.getElementById(checkID).checked) {
+            var commaString = ','+baRecName;
+            if(selectedIds.includes(commaString)) {
+                selectedIds = selectedIds.replace(commaString,'');
+                selectedProductTypes = selectedProductTypes.replace(commaString,'');
+            }else if(selectedIds.includes(baRecName)) {
+                selectedIds = selectedIds.replace(baRecName,'');
+                selectedProductTypes = selectedProductTypes.replace(baProductType,'');
+            }
+        }            
+    }
+    <!-- Ranjit Gandhi    07/26/2017    Redirect in console & classic-->
+        function fun(value,successval){  
+            if (typeof(srcUp) == 'function') {
+                srcUp('/'+value);
+            } else {
+                if (successval=='true'){
+                    window.open('/'+value);  }             
+            }
+        }
+    <!-- Ranjit Gandhi      07/26/2017    Save and assign - select atleast one BA-->
+        function saveAndAssignBAToSharedAcc() {
+            
+            //alert('selectedIds'+selectedIds);
+            if(selectedIds == '' || selectedIds == ',') {
+                alert('Please select BA');
+            } else {
+                saveAndAssignBAToSharedAccCtrl(selectedIds,selectedProductTypes);
+            }
+        }
+    
+    function openLookup(baseURL, width, modified, searchParam){
+        var originalbaseURL = baseURL;
+        
+        var originalwidth = width;
+        var originalmodified = modified;
+        var originalsearchParam = searchParam;
+        var caseId = '{!$CurrentPage.parameters.caseId}';
+        
+        
+        var lookupType = baseURL.substr(baseURL.length-3, 3);
+        
+        if (modified == '1') baseURL = baseURL + searchParam;
+        
+        var isCustomLookup = false;
+        
+        // Following "a1j" is the lookup type for benefit agreement object 
+        
+        if(lookupType == "a1q"){
+            var urlArr = baseURL.split("&");
+            
+            var txtId = '';
+            if(urlArr.length > 2) {
+                urlArr = urlArr[1].split('=');
+                txtId = urlArr[1];
+                
+                
+            }
+            
+            // Following is the url of Custom Lookup page. 
+            //baseURL = "/apex/GEMSCustomCaseLookup?txt=" + txtId +"& caseid="+caseid;
+            baseURL = "/apex/GEMSCustomCaseLookup?txt=" + txtId +" ? caseId="+caseId;  
+            
+            //baseURL = "/apex/GEMSCustomCaseLookup?txt=" + txtId+ " " +caseId;  
+            //baseURL = "/apex/GEMSCustomCaseLookup?case=" + caseid +"& txt="+txtid;
+            // Following is the id of apex:form control "formId". 
+            baseURL =  baseURL + "&frm=" + escapeUTF("{!$Component.formId}");
+            
+            if (modified == '1') {
+                baseURL = baseURL + "&lksearch=" + searchParam;
+            }
+            
+            // Following is the ID of inputField that is the lookup to be customized as custom lookup
+            if(txtId.indexOf('benefitagreement') > -1 ){
+                isCustomLookup = true;
+            }
+        }
+        
+        
+        if( isCustomLookup ){
+            openPopup(baseURL, "lookup", 350, 480, "width="+width+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        }
+        else {
+            if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+            openPopup(originalbaseURL, "lookup", 350, 480, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        } 
+    }
+    
+    function inputLimiter(e,allow) 
+    {
+        var AllowableCharacters = '';
+        
+        if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+        if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+        if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+        if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+        
+        var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+        if (k!=13 && k!=8 && k!=0)
+        {
+            if ((e.ctrlKey==false) && (e.altKey==false)) 
+            {
+                return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+            } 
+            else 
+            {
+                return true;
+            }
+        } 
+        else 
+        {
+            return true;
+        }
+    }
+    
+    //Start US-7966    
+    $(document).ready(function(){     
+        onloadInit();
+    });
+    
+    
+    function onloadInit(){
+        
+        var deduc = $("input[id$=deduc]");  
+        if(deduc.is(':checked')){
+            enableDeductibleFields(); 
+        }
+        else{
+            disableDeductibleFields();
+        }
+        
+        var outpoc = $("input[id$=Outofpocket]");
+        if(outpoc.is(':checked')){
+            enableOutOfPocketFields();
+        }
+        else{
+            disableOutOfPocketFields();         
+        }
+        
+        var lifemax = $("input[id$=lifetimemax]");
+        if(lifemax.is(':checked')){
+            enableLifeTimeMaxFields();  
+        }
+        else{
+            disableLifeTimeMaxFields();
+        }
+        
+        $("input[id$=deduc]").change(function(){
+            if(!this.checked){
+                disableDeductibleFields();
+                $("input[id$=Outofpocket]").prop("checked",false);
+                disableOutOfPocketFields();
+            }
+            else{
+                enableDeductibleFields();   
+                $("input[id$=Outofpocket]").prop("checked",true);
+                enableOutOfPocketFields();
+            }               
+        });
+        
+        $("input[id$=Outofpocket]").change(function(){
+            if(!this.checked){
+                disableOutOfPocketFields();                        
+            }
+            else{
+                enableOutOfPocketFields();   
+            }               
+        });
+        
+        $("input[id$=lifetimemax]").change(function(){
+            if(!this.checked){
+                disableLifeTimeMaxFields();                       
+            }
+            else{
+                enableLifeTimeMaxFields();
+            }               
+        });
+        
+    }
+    function enableDeductibleFields(){
+        $("select[id$=Deductible1]").prop("disabled",false);
+        $("input[id$=Deductible2]").prop("disabled",false); 
+        $("input[id$=Deductible3]").prop("disabled",false); 
+        $("input[id$=Deductible4]").prop("disabled",false); 
+        $("select[id$=Deductible5]").prop("disabled",false); 
+        $("select[id$=Deductible6]").prop("disabled",false);         
+    }
+    
+    function disableDeductibleFields(){
+        $("select[id$=Deductible1]").prop("disabled",true).val('');
+        $("input[id$=Deductible2]").prop("disabled",true).val('');
+        $("input[id$=Deductible3]").prop("disabled",true).val(''); 
+        $("input[id$=Deductible4]").prop("disabled",true).val('');
+        $("select[id$=Deductible5]").prop("disabled",true).val(''); 
+        $("select[id$=Deductible6]").prop("disabled",true).val('');    
+    }
+    
+    function enableOutOfPocketFields(){
+        $("select[id$=Outofpocket1]").prop("disabled",false);
+        $("input[id$=Outofpocket2]").prop("disabled",false);
+        $("input[id$=Outofpocket3]").prop("disabled",false);
+        $("input[id$=Outofpocket4]").prop("disabled",false);
+        $("select[id$=Outofpocket5]").prop("disabled",false); 
+        $("select[id$=Outofpocket6]").prop("disabled",false); 
+        $("select[id$=Outofpocket7]").prop("disabled",false); 
+        $("select[id$=Outofpocket8]").prop("disabled",false);    
+    }
+    
+    function disableOutOfPocketFields(){
+        $("select[id$=Outofpocket1]").prop("disabled",true).val('');
+        $("input[id$=Outofpocket2]").prop("disabled",true).val('');
+        $("input[id$=Outofpocket3]").prop("disabled",true).val(''); 
+        $("input[id$=Outofpocket4]").prop("disabled",true).val(''); 
+        $("select[id$=Outofpocket5]").prop("disabled",true).val(''); 
+        $("select[id$=Outofpocket6]").prop("disabled",true).val('');
+        $("select[id$=Outofpocket7]").prop("disabled",true).val('');
+        $("select[id$=Outofpocket8]").prop("disabled",true).val('');  
+    }
+    
+    function enableLifeTimeMaxFields(){
+        $("input[id$=lifetimemax1]").prop("disabled",false);   
+    }
+    
+    function disableLifeTimeMaxFields(){
+        $("input[id$=lifetimemax1]").prop("disabled",true).val(''); 
+    }
+    //End US-7966
+    //start SFDC-8322
+    function redToCloneRec(value) {  
+        if (typeof(srcUp) == 'function') {
+            srcUp('/'+value);
+        } else {
+            window.open('/apex/'+'{!$CurrentPage.Name}'+'?Id='+value,'_self');               
+        }
+        alert('Please Save and Assign BA after making changes to this cloned'); 
+    }
+    //End SFDC-8322
+    </script>
+</apex:page>

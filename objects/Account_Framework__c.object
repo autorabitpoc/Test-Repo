@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.External_ID__c</formula>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Owner.FirstName + &quot; &quot; +  Account__r.Owner.LastName</formula>
+        <label>Account Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Primary_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/&apos;+ Account__r.Primary_Contact__r.Id ,  Account__r.Primary_Contact__r.FirstName +&apos; &apos;+ Account__r.Primary_Contact__r.LastName)</formula>
+        <label>Primary Decision Maker</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Account</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Account_Framework</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Active_Health_Contracts__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Active_Health_Subscribers__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Active Health Contracts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Active_Health_Members__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Active_Health_Members__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Active Health Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Beginning_of_this_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE(YEAR(today()),1,1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Beginning of this Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Comment_for_Solution_Gap__c</fullName>
+        <externalId>false</externalId>
+        <label>Comment for Solution Gap</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comments_Major_Service_Issued__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments : Major Service Issued</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Comments_Major_Solution_Gap__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments :  Major Solution Gap</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Condition_Disease_Mgmt_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Condition Mgmt or Disease Mgmt completd?</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_EndDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Contract_End__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Update this field on the account page under renewal information</inlineHelpText>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date2__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Contract_End__c</formula>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please update the Contract End Date field on Account Renewal Information Section.</inlineHelpText>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DirectRelationshipwithDecisionMaker_BE__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Direct_Relationshipwith_Decision_Maker__c, &quot;1-No Relationship&quot;), 1,
+IF( ISPICKVAL(Direct_Relationshipwith_Decision_Maker__c, &quot;2-Direct with Consultant&quot;), 2,
+IF( ISPICKVAL(Direct_Relationshipwith_Decision_Maker__c, &quot;3-Direct with Influencer&quot;), 3,
+IF( ISPICKVAL(Direct_Relationshipwith_Decision_Maker__c, &quot;4-Direct with Consultant &amp; Client&quot;), 4,
+IF( ISPICKVAL(Direct_Relationshipwith_Decision_Maker__c, &quot;5-Direct with Client&quot;), 5,
+0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DirectRelationshipwithDecisionMaker BE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Relationship_w_Decision_Maker__c</fullName>
+        <externalId>false</externalId>
+        <label>Direct Relationship with Decision Maker</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Relationshipwith_Decision_Maker__c</fullName>
+        <externalId>false</externalId>
+        <label>Direct Relationship with Decision Maker</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1-No Relationship</fullName>
+                    <default>false</default>
+                    <label>1-No Relationship</label>
+                </value>
+                <value>
+                    <fullName>2-Direct with Consultant</fullName>
+                    <default>false</default>
+                    <label>2-Direct with Consultant</label>
+                </value>
+                <value>
+                    <fullName>3-Direct with Influencer</fullName>
+                    <default>false</default>
+                    <label>3-Direct with Influencer</label>
+                </value>
+                <value>
+                    <fullName>4-Direct with Consultant &amp; Client</fullName>
+                    <default>false</default>
+                    <label>4-Direct with Consultant &amp; Client</label>
+                </value>
+                <value>
+                    <fullName>5-Direct with Client</fullName>
+                    <default>false</default>
+                    <label>5-Direct with Client</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Discount_Advantage_Best_SoaK__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please update with the current Discount Advantage fields located on your account Tableau page.</inlineHelpText>
+        <label>Discount Advantage (Best)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Discount_Advantage_Blended__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please update with the current Discount Advantage fields located on your account Tableau page.</inlineHelpText>
+        <label>Discount Advantage (Blended)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>End_Of_This_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE(Year(today()),12,31)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>End Of This Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_of_Next_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>Date(Year(today())+1, 12,31)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>End of Next Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HCM_Fees_Current_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>HCM Fees - Current Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HCM_Fees_Next_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>HCM Fees - Next Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HCM_Product_1__c</fullName>
+        <externalId>false</externalId>
+        <label>HCM Product 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BCC Custom</fullName>
+                    <default>false</default>
+                    <label>BCC Custom</label>
+                </value>
+                <value>
+                    <fullName>BCC Elite</fullName>
+                    <default>false</default>
+                    <label>BCC Elite</label>
+                </value>
+                <value>
+                    <fullName>BCC Enhanced</fullName>
+                    <default>false</default>
+                    <label>BCC Enhanced</label>
+                </value>
+                <value>
+                    <fullName>BCC HMO Illinois</fullName>
+                    <default>false</default>
+                    <label>BCC HMO Illinois</label>
+                </value>
+                <value>
+                    <fullName>BCC Standard</fullName>
+                    <default>false</default>
+                    <label>BCC Standard</label>
+                </value>
+                <value>
+                    <fullName>No BCC</fullName>
+                    <default>false</default>
+                    <label>No BCC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HCM_Product_2__c</fullName>
+        <externalId>false</externalId>
+        <label>HCM Product 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BCC Custom</fullName>
+                    <default>false</default>
+                    <label>BCC Custom</label>
+                </value>
+                <value>
+                    <fullName>BCC Elite</fullName>
+                    <default>false</default>
+                    <label>BCC Elite</label>
+                </value>
+                <value>
+                    <fullName>BCC Enhanced</fullName>
+                    <default>false</default>
+                    <label>BCC Enhanced</label>
+                </value>
+                <value>
+                    <fullName>BCC Enhanced &amp; I/O</fullName>
+                    <default>false</default>
+                    <label>BCC Enhanced &amp; I/O</label>
+                </value>
+                <value>
+                    <fullName>BCC HMO Illinois</fullName>
+                    <default>false</default>
+                    <label>BCC HMO Illinois</label>
+                </value>
+                <value>
+                    <fullName>BCC I/O</fullName>
+                    <default>false</default>
+                    <label>BCC I/O</label>
+                </value>
+                <value>
+                    <fullName>BCC Standard</fullName>
+                    <default>false</default>
+                    <label>BCC Standard</label>
+                </value>
+                <value>
+                    <fullName>No BCC</fullName>
+                    <default>false</default>
+                    <label>No BCC</label>
+                </value>
+                <value>
+                    <fullName>Enhanced</fullName>
+                    <default>false</default>
+                    <label>Enhanced</label>
+                </value>
+                <value>
+                    <fullName>MHA</fullName>
+                    <default>false</default>
+                    <label>MHA</label>
+                </value>
+                <value>
+                    <fullName>Primary Nurse</fullName>
+                    <default>false</default>
+                    <label>Primary Nurse</label>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                    <label>Standard</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Multiplier_Discount_AdvantageSP__c</fullName>
+        <externalId>false</externalId>
+        <label>Scale - Multiplier Discount Advantage SP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Multiplier_Discount_Advantage__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scale_Discount_Advantage__c  * 5</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scale - Multiplier Discount Advantage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Members__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Active_Health_Members__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PEPM_Fees_ASO__c</fullName>
+        <externalId>false</externalId>
+        <label>PEPM Fees (ASO)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scale_Contract_End_Date2__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Contract_End_Date__c &lt;=TODAY(),-5, 
+IF(AND(Contract_End_Date__c &gt;= Beginning_of_this_Year__c,Contract_End_Date__c &lt;= End_Of_This_Year__c),-5, 
+IF(AND(Contract_End_Date__c &gt; End_Of_This_Year__c,Contract_End_Date__c &lt;= End_of_Next_Year__c),-2.5, 
+IF(ISBLANK(Contract_End_Date__c),-2.5,
+Year(Contract_End_Date__c)-Year(Today())
+))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scale - Contract End Date2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scale_Contract_End_DateSP__c</fullName>
+        <externalId>false</externalId>
+        <label>Scale Contract End Date SP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scale_Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Contract_EndDate__c &lt;=TODAY(),-5, 
+IF(AND(Contract_EndDate__c &gt;= Beginning_of_this_Year__c,Contract_EndDate__c &lt;= End_Of_This_Year__c),-5, 
+IF(AND(Contract_EndDate__c &gt; End_Of_This_Year__c,Contract_EndDate__c &lt;= End_of_Next_Year__c),-2.5, 
+IF(ISBLANK(Contract_EndDate__c),-2.5, 
+Year(Contract_EndDate__c)-Year(Today()) 
+))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scale - Contract End Date</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scale_Discount_Advantage__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( Discount_Advantage_Best_SoaK__c &lt;0, -3, 
+ if( Discount_Advantage_Best_SoaK__c &gt;=1 &amp;&amp; Discount_Advantage_Best_SoaK__c &lt;=10, -1,
+  if( Discount_Advantage_Best_SoaK__c &gt;=11 &amp;&amp;  Discount_Advantage_Best_SoaK__c &lt;=20,0,
+   if(  Discount_Advantage_Best_SoaK__c &gt;=21 &amp;&amp; Discount_Advantage_Best_SoaK__c &lt;=40,1,
+    if( Discount_Advantage_Best_SoaK__c &gt;=41,3,-1
+      )
+    )
+   )
+ )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scale - Discount Advantage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Split_Sole_Medical_Carrier__c</fullName>
+        <externalId>false</externalId>
+        <label>Split vs Sole Medical Carrier</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Split__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.Sliced__c</formula>
+        <label>Split ?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Split_vs_Sole_Medical_Carrier2__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Account__r.Sliced__c = true, 1, 5)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Update this field on the account page under renewal information</inlineHelpText>
+        <label>Split vs Sole Medical Carrier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Split_vs_Sole_Medical_Carrier3__c</fullName>
+        <externalId>false</externalId>
+        <label>Split vs Sole Medical Carrier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Less than Half with HCSC</fullName>
+                    <default>false</default>
+                    <label>1 - Less than Half with HCSC</label>
+                </value>
+                <value>
+                    <fullName>3 - Half</fullName>
+                    <default>false</default>
+                    <label>3 - Half with HCSC</label>
+                </value>
+                <value>
+                    <fullName>5 - Sole</fullName>
+                    <default>false</default>
+                    <label>5 - Sole with HCSC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Split_vs_Sole_Medical_Carrier_SP__c</fullName>
+        <externalId>false</externalId>
+        <label>Split vs Sole Medical Carrier SP</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Split_vs_Sole_Medical_Carrier_system__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Split_vs_Sole_Medical_Carrier3__c, &quot;1 - Less than Half with HCSC&quot;),1, 
+IF( ISPICKVAL(Split_vs_Sole_Medical_Carrier3__c, &quot;3 - Half&quot;),3, 
+IF( ISPICKVAL(Split_vs_Sole_Medical_Carrier3__c, &quot;5 - Sole&quot;),5,
+0)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Split vs Sole Medical Carrier system</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stickiness2__c</fullName>
+        <externalId>false</externalId>
+        <formula>Split_Sole_Medical_Carrier__c + Scale_Contract_End_Date2__c + Years_Since_Major_Service_Issued__c + Years_Since_Major_Solution_Gap__c + Direct_Relationship_w_Decision_Maker__c + Multiplier_Discount_Advantage__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stickiness2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>StickinessNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>StickinessNumber</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stickiness_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Stickiness__c &lt; -1 , &apos;Low&apos;,&apos;NA&apos;)</formula>
+        <label>Stickiness Indicator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stickiness_Range_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(StickinessNumber__c &lt;= 0 , &apos;Low&apos;, if(StickinessNumber__c &lt;=14, &apos;Medium&apos;,&apos;High&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stickiness Range Indicator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stickiness__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ((Split_vs_Sole_Medical_Carrier_SP__c=0) || (Years_Since_Major_Service_Issued_System__c=0) || (Years_Since_Major_Solution_Gap_System__c=0) || (DirectRelationshipwithDecisionMaker_BE__c=0)), 
+0.00, 
+Split_vs_Sole_Medical_Carrier_system__c + 
+Scale_Contract_End_Date__c + 
+Years_Since_Major_Service_Issued_System__c + 
+Years_Since_Major_Solution_Gap_System__c + 
+DirectRelationshipwithDecisionMaker_BE__c + 
+Multiplier_Discount_Advantage__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Stickiness will not populate unless &quot;Stickiness section&quot; is completely filled out.</inlineHelpText>
+        <label>Stickiness</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Years_SinceMajor_Service_Issued__c</fullName>
+        <externalId>false</externalId>
+        <label>Years Since Major Service Issue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Less than or equal to 1 Year</fullName>
+                    <default>false</default>
+                    <label>1 - Less than or equal to 1 Year</label>
+                </value>
+                <value>
+                    <fullName>2 - More than 1 Year and less than or equal to 2 Years</fullName>
+                    <default>false</default>
+                    <label>2 - More than 1 Year and less than or equal to 2 Years</label>
+                </value>
+                <value>
+                    <fullName>3 - More than 2 Years and less than or equal to 3 Years</fullName>
+                    <default>false</default>
+                    <label>3 - More than 2 Years and less than or equal to 3 Years</label>
+                </value>
+                <value>
+                    <fullName>4 - More than 3 Years and less than or equal to 4 Years</fullName>
+                    <default>false</default>
+                    <label>4 - More than 3 Years and less than or equal to 4 Years</label>
+                </value>
+                <value>
+                    <fullName>5 - no major service issue in last 5+ years</fullName>
+                    <default>false</default>
+                    <label>5 - no major service issue in last 5+ years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Years_SinceMajor_Solution_Gap__c</fullName>
+        <externalId>false</externalId>
+        <label>Years Since Major Solution Gap</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Less than or equal to 1 Year</fullName>
+                    <default>false</default>
+                    <label>1 - Less than or equal to 1 Year</label>
+                </value>
+                <value>
+                    <fullName>2 - More than 1 Year and less than or equal to 2 Years</fullName>
+                    <default>false</default>
+                    <label>2 - More than 1 Year and less than or equal to 2 Years</label>
+                </value>
+                <value>
+                    <fullName>3 - More than 2 Years and less than or equal to 3 Years</fullName>
+                    <default>false</default>
+                    <label>3 - More than 2 Years and less than or equal to 3 Years</label>
+                </value>
+                <value>
+                    <fullName>4 - More than 3 Years and less than or equal to 4 Years</fullName>
+                    <default>false</default>
+                    <label>4 - More than 3 Years and less than or equal to 4 Years</label>
+                </value>
+                <value>
+                    <fullName>5 - No major solution gap in last 5+ years</fullName>
+                    <default>false</default>
+                    <label>5 - No major solution gap in last 5+ years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Years_Since_Major_Service_Issued_System__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Years_SinceMajor_Service_Issued__c, &quot;1 - Less than or equal to 1 Year&quot;), 1, 
+IF( ISPICKVAL(Years_SinceMajor_Service_Issued__c, &quot;2 - More than 1 Year and less than or equal to 2 Years&quot;), 2, 
+IF( ISPICKVAL(Years_SinceMajor_Service_Issued__c, &quot;3 - More than 2 Years and less than or equal to 3 Years&quot;), 3, 
+IF( ISPICKVAL(Years_SinceMajor_Service_Issued__c, &quot;4 - More than 3 Years and less than or equal to 4 Years&quot;), 4, 
+IF( ISPICKVAL(Years_SinceMajor_Service_Issued__c, &quot;5 - no major service issue in last 5+ years&quot;), 5, 
+0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Years Since Major Service Issued System</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Years_Since_Major_Service_Issued__c</fullName>
+        <externalId>false</externalId>
+        <label>Years Since Major Service Issued</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Years_Since_Major_Solution_Gap_System__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Years_SinceMajor_Solution_Gap__c, &quot;1 - Less than or equal to 1 Year&quot;), 1, 
+IF( ISPICKVAL(Years_SinceMajor_Solution_Gap__c, &quot;2 - More than 1 Year and less than or equal to 2 Years&quot;), 2, 
+IF( ISPICKVAL(Years_SinceMajor_Solution_Gap__c, &quot;3 - More than 2 Years and less than or equal to 3 Years&quot;), 3, 
+IF( ISPICKVAL(Years_SinceMajor_Solution_Gap__c, &quot;4 - More than 3 Years and less than or equal to 4 Years&quot;), 4, 
+IF( ISPICKVAL(Years_SinceMajor_Solution_Gap__c, &quot;5 - No major solution gap in last 5+ years&quot;), 5, 
+0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Years Since Major Solution Gap  System</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Years_Since_Major_Solution_Gap__c</fullName>
+        <externalId>false</externalId>
+        <label>Years Since Major Solution Gap</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Stickiness Scoring</label>
+    <nameField>
+        <displayFormat>F-{0000}</displayFormat>
+        <label>Framework Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Stickiness Scoring</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Restrict_Acnt_Framework_to_1_per_account</fullName>
+        <active>true</active>
+        <description>Account cannot have more than 1 Framework</description>
+        <errorConditionFormula>AND( ISNEW(), Account__r.Account_Framework_Count__c &gt;0)</errorConditionFormula>
+        <errorMessage>Account Framework already exists for this Account , cannot have another.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

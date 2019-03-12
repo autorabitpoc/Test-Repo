@@ -1,0 +1,27 @@
+<aura:component description="SGR_ModalToast">
+    <aura:attribute name="title" type="String" required="true"/>
+    <aura:attribute name="message" type="String" required="true"/>
+    <aura:attribute name="closeClick" type="Aura.Action" required="true"/>
+    <div class="forceToastManager--default forceToastManager" aria-live="assertive">
+        <div class="forceVisualMessageQueue">
+            <div class="toastContainer slds-notify_container slds-is-relative">
+                <div class="slds-theme--warning slds-notify--toast slds-notify slds-notify--toast forceToastMessage"
+                     role="alert">
+                    <lightning:icon class="content-flex slds-no-flex slds-align-top" iconName="utility:warning" alternativeText="Warning!" variant="warning"/>
+                    <div class="toastContent slds-notify__content content-inline">
+                        <div class="slds-align-middle slds-hyphenate">
+                            <div class="toastTitle slds-text-heading--small title-txt slds-text-title_bold">
+                                {!v.title}
+                            </div>
+                            <span class="toastMessage forceActionsText msg-txt">{!v.message}</span>
+                        </div>
+                    </div>
+                    <div class="slds-notify__close">
+                        <lightning:buttonIcon size="large" iconName="utility:close" variant="bare-inverse" title="close"
+                                              alternativeText="Close modal" onclick="{!v.closeClick}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send with paperwork. Includes helpful reminders on BBF design options</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BBF Initial Inquiry</name>
+    <style>none</style>
+    <subject>Blue Balance Funded Paperwork and Reminders {!Case.Group_Account_Number__c} - {!Case.Account} {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

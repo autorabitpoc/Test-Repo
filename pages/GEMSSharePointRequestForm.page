@@ -1,0 +1,8 @@
+<apex:page standardController="GEMS_SBC_BB_Form__c" sidebar="false" showHeader="false" standardStylesheets="false">
+   
+   <c:GEMS_SharePointComponent recdId="{!GEMS_SBC_BB_Form__c.Id}" casId="{!IF(GEMS_SBC_BB_Form__c.GEMS_SBC_Request__c!=NULL,
+   GEMS_SBC_BB_Form__c.GEMS_SBC_Request__r.Case__c,GEMS_SBC_BB_Form__c.GEMS_Benefit_Booklet_Request__r.Case__c)}" 
+   oppId="{!IF(GEMS_SBC_BB_Form__c.GEMS_SBC_Request__c!=NULL,GEMS_SBC_BB_Form__c.GEMS_SBC_Request__r.Opportunity_Link__c,GEMS_SBC_BB_Form__c.GEMS_Benefit_Booklet_Request__r.Opportunity_Link__c)}"
+   ></c:GEMS_SharePointComponent>
+  
+</apex:page>

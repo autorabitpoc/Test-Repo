@@ -1,0 +1,69 @@
+<apex:page controller="GEMS_CustomUserLookupController"  
+  title="Search" 
+  showHeader="false" 
+  sideBar="false" 
+  tabStyle="Account" 
+  id="pg">
+
+  <apex:form id="formid">
+  <apex:outputPanel id="page" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+    <apex:tabPanel switchType="client" selectedTab="name1" id="tabbedPanel">
+
+      <!-- SEARCH TAB -->
+      <apex:tab label="Search" name="tab1" id="tabOne">
+
+       <apex:actionRegion >
+          <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+            <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/>
+            <apex:inputText id="txtSearch" value="{!searchString}" onkeypress="return checkEnter(event);"/>
+              <span style="padding-left:5px"><apex:commandButton id="btnGo" value="Go" action="{!Search}" rerender="searchResults"></apex:commandButton></span>
+          </apex:outputPanel>
+         
+          <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:350px;overflow-Y:auto;" layout="block">
+            <apex:pageBlock id="searchResults"> 
+              <apex:pageBlockTable value="{!userList}" var="a" id="tblResults">
+                <apex:column >
+                  <apex:facet name="header">
+                    <apex:outputPanel >Name</apex:outputPanel>
+                  </apex:facet>
+                   <apex:commandlink action="{!updateCase}" oncomplete="CloseAndRefresh()" >
+                   {!a.name}
+                   <apex:param name="userId" value="{!a.Id}" assignTo="{!userId }" />
+                   <apex:actionStatus startText="(Saving...)"  stopText="" onstop="CloseWindow();" id="closer"></apex:actionStatus>
+                   </apex:commandLink>     
+                </apex:column>
+
+              </apex:pageBlockTable>
+            </apex:pageBlock>
+          </apex:outputPanel>
+        </apex:actionRegion>
+      </apex:tab>
+
+    </apex:tabPanel>
+  </apex:outputPanel>
+   <apex:actionfunction name="search" action="{!Search}"  rerender="pnlSearchResults"/>
+  </apex:form>
+  <script language="JavaScript" type="text/javascript">
+function CloseAndRefresh(){
+window.top.location.href="/{!$CurrentPage.parameters.id}";
+      window.top.close();
+  
+  }
+  
+  function checkEnter(evnt){
+  //alert(evnt.which);
+  if(window.event && window.event.keyCode == 13 || evnt.which == 13){
+  //alert('shiva');
+  search();
+  return false;
+  }
+  else {return true;}
+  }
+  
+  function CloseWindow() {
+   var winMain=window.opener; 
+   if (null==winMain) { winMain=window.parent.opener; } 
+   winMain.closePopup();
+    }
+</script>
+</apex:page>

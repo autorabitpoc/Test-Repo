@@ -1,0 +1,33 @@
+<!--Kishore Created component to replace classic LGNA Account Retrive Structure button as per US#SFDC-9728-->
+<aura:component controller ="GEMS_AccountRetrieveServiceHelper" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="CaseDetails" type="Case"/>
+    <aura:attribute name="CaseData" type="Object"/>
+    <aura:attribute name="CaseLoadError" type="String"/>
+    <aura:attribute name="cancleFlag" type="boolean" default="false"/>
+    <force:recordData aura:id="CaseRecordLoader"
+                      recordId="{!v.recordId}"
+                      
+                      targetRecord="{!v.CaseDetails}"
+                      targetFields="{!v.CaseData}"
+                      targetError="{!v.CaseLoadError}"
+                      recordUpdated="{!c.CaseDetails}"
+                      layoutType="FULL"
+
+                      
+                      />
+    <div class="slds-align_absolute-center">
+        <aura:if isTrue="{!v.CaseData.RecordType.Name == 'Account Cancellation'}">
+        <lightning:button class="slds-button slds-button_brand" label="LGNA Retrieve Account Structure" onclick="{!c.AccountRetrieveServices}" />
+        </aura:if>
+        <aura:if isTrue="{!v.CaseData.RecordType.Name == 'Custom Benefit/Service'}">
+            <lightning:button class="slds-button slds-button_brand" label="CBSR Account Submit" onclick="{!c.calloutToCBSRAccountSubmit}" />
+    	</aura:if>
+        </div>
+    
+    <aura:if isTrue="{!v.cancleFlag}">   
+        <div class="exampleHolder">
+            <lightning:spinner aura:id="mySpinner" />
+        </div>
+    </aura:if>
+</aura:component>

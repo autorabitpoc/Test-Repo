@@ -1,0 +1,15 @@
+Hello,
+
+Below is a request for a New Mexico Producer [Enter Producer Level Request Type] effective for [Enter Date]. The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- Group Number: {!Case.Group_Account_Number__c}
+- Current Producer Name: [Enter Producer Name]
+- New Producer Name: [Enter Producer Name]
+- Date of requested change: [Enter Request Date]
+
+Attached you will find (signed POR letter, BPA, ICCA or Group Reassignment form) as required for processing.
+
+Please communicate directly with the producer for any responses, additional information, denials, etc.  For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

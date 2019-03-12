@@ -1,0 +1,479 @@
+<apex:page standardController="GEMS_Benefit_Agreement__c" extensions="GEMSBACatAssignController" recordSetVar="v" sidebar="False" id="GemsAssignBA">
+
+    <apex:stylesheet value="{!URLFOR($Resource.FontAwesome, '/font-awesome-4.6.3/css/font-awesome.css')}" />
+    
+    
+    
+    <script>
+    
+    
+        function setFocusOnLoad() {
+            document.getElementById("TheForm").focus();
+        }
+
+        function setFocus() {
+            //alert('here');
+            document.getElementById("TheForm").focus();
+        }
+
+        function goToCharacteristics() {
+            assignValues();
+        }
+
+        function refreshRender() {
+            refresh();
+        }
+    </script>
+
+
+    <script type='text/javascript'>
+        function inputLimiter(e, allow) {
+            var AllowableCharacters = '';
+
+            if (allow == 'Letters') {
+                AllowableCharacters = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            }
+            if (allow == 'Numbers') {
+                AllowableCharacters = '1234567890';
+            }
+            if (allow == 'NameCharacters') {
+                AllowableCharacters = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';
+            }
+            if (allow == 'NameCharactersAndNumbers') {
+                AllowableCharacters = '1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';
+            }
+
+            var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            if (k != 13 && k != 8 && k != 0) {
+                if ((e.ctrlKey == false) && (e.altKey == false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k)) != -1);
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
+
+        function checkCancel(cat, rowNum, id, dDate) {
+            // alert('here');
+            var rowNumm = rowNum - 1;
+            var ddDate = document.getElementById('GemsAssignBA:TheForm:thePageBlock1:repeat1:' + rowNumm + ':selectedCancelDate').value;
+            // alert(''+ddDate);
+            if (ddDate == null || ddDate == '') {
+                alert('Please Enter Cancel Date.');
+                document.getElementById('GemsAssignBA:TheForm:thePageBlock1:repeat1:' + rowNum + ':CancelLink').addEventListener('click', checkCancel, false);
+                return false;
+            } else {
+                //nothing javascript: confirm('All BA and Group Section associations will also be cancelled. Are you sure you want to Cancel this Category?');
+                var r = confirm("All BA and Group Section associations will also be cancelled. Are you sure you want to Cancel this Category?");
+                if (r == true) {
+                    jsCancelRecord(cat, rowNum, id, dDate);
+                    return true;
+                    document.getElementById('GemsAssignBA:TheForm:thePageBlock1:repeat1:' + rowNum + ':CancelLink').addEventListener('click', checkCancel, true);
+                } else {
+                    return false;
+                    document.getElementById('GemsAssignBA:TheForm:thePageBlock1:repeat1:' + rowNum + ':CancelLink').addEventListener('click', checkCancel, false);
+
+
+                }
+            }
+        }
+
+
+        function jsCancelRecord(cat, rowNum, id, dDate) {
+            //startLoading();
+            var rowNnum = rowNum - 1;
+            var ddDate = document.getElementById('GemsAssignBA:TheForm:thePageBlock1:repeat1:' + rowNnum + ':selectedCancelDate').value;
+            if (ddDate == null || ddDate == '') {
+                //alert('Please enter Cancel Date');
+            } else {
+                ajaxCancelRecord(rowNum, id, ddDate);
+                cat.isCancelled__c = true;
+            }
+
+        }
+    </script>
+    <style type="text/css">
+        .dateFormat {
+            visibility: hidden;
+        }
+    </style>
+    <style>
+        tr.dataRow {
+            background-color: white;
+        }
+        tr.dataRow:hover {
+            background-color: #e3f3ff;
+        }
+        ;
+    </style>
+
+    <apex:form id="TheForm">
+
+        <apex:Actionfunction name="goToCharacteristics" action="{!goToCharacteristics}" />
+        <apex:Actionfunction name="refresh" rerender="thePageBlock1" action="{!refresh}" />
+
+        <apex:actionfunction name="hitme" rerender="addCatBlock" />
+
+
+        <apex:Actionfunction name="ajaxCancelRecord" action="{!CancelRecord}" reRender="NewCatTable,panelWithVar" oncomplete="comp1();">
+            <apex:Param value="" name="RN" />
+            <apex:Param value="" name="RecordCan" />
+            <apex:param value="" name="dDate" />
+        </apex:Actionfunction>
+
+        <apex:pageMessages id="pgMsgId" />
+
+        <apex:pageBlock id="thePageBlock" title="Account Structure Case">
+
+            <apex:pageBlockSection >
+
+                <apex:outputField value="{!listOfBAs[0].Account__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.Account.External_ID__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.GEMS_Case_Effective_Date__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.HCSC_Division__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.GEMS_Submission_Type__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.GEMS_Submission_Sub_Type__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.Market_Segment__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.GEMS_Line_of_Business__c}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.Status}" />
+                <apex:outputField value="{!listOfBAs[0].AccountStructureCase__r.GEMS_Account_Submission_Info__c}" />
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+
+        <apex:pageBlock id="SelectedBA" title="Selected Benefit Agreement :">
+            <apex:pageBlockTable id="BATable" value="{!listOfBAs}" var="b">
+                <apex:column headerValue="BA No.">
+                    <apex:outputField value="{!b.Name}" />
+                </apex:column>
+                <apex:column headerValue="Product Type">
+                    <apex:outputField value="{!b.Product__c}" />
+                </apex:column>
+                <apex:column headerValue="Plan">
+                    <apex:outputField value="{!b.Plan__c}" />
+                </apex:column>
+                <apex:column headerValue="BA Description">
+                    <apex:outputField value="{!b.BA_Description__c}" />
+                </apex:column>
+                <apex:column headerValue="Effective Date">
+                    <apex:outputField value="{!b.Effective_Date__c}" />
+                </apex:column>
+                <apex:column headerValue="Fund Type">
+                    <apex:outputField value="{!b.BA_Fund_Type__c}" />
+                </apex:column>
+            </apex:pageBlockTable>
+
+        </apex:pageBlock>
+
+        <apex:pageBlock id="thePageBlock1" title="Categories and Assignments :">
+            <apex:outputtext value="{!listOfBAs[0].AccountStructureCase__r.Account.id}" style="display:none" />
+            <div>
+                <apex:variable value="{!0}" var="rowNumber" />
+                <apex:outputPanel id="panelWithVar">
+                    <apex:variable value="{!0}" var="rowNumber" />
+                </apex:outputPanel>
+
+                <table class="list" id="NewCatTable" border="0" cellpadding="0" cellspacing="0">
+
+                    <tr class="headerRow">
+                        <th class="headerRow">Assign</th>
+                        <th class="headerRow">Update</th>
+                        <th class="headerRow">Action</th>
+                        <th class="headerRow">Category#</th>
+                        <th class="headerRow">Description</th>
+                        <th class="headerRow">Effective Date</th>
+                        <th class="headerRow">Cancel Date</th>
+                        <th class="headerRow">B</th>
+                        <th class="headerRow">R</th>
+                        <th class="headerRow">P</th>
+                        <th class="headerRow">M</th>
+                        <th class="headerRow">Mailing Address</th>
+                        <th class="headerRow">Cobra Code</th>
+
+                        <th class="headerRow">
+                            <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                Derivation Type
+                            </apex:outputPanel>
+                        </th>
+
+                        <th class="headerRow">
+                            <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                Go to Characteristics
+                            </apex:outputPanel>
+                        </th>
+
+                    </tr>
+                    <apex:repeat value="{!cats}" var="c" id="repeat1">
+                        <tr class="dataRow" id="tablerow2">
+                            <td class="dataCell">
+                                <apex:inputCheckbox value="{!c.isAssigned}"  style="display:{!IF((c.Cat.IsCancelled__c == true ),'none', 'inline')}"
+                                    disabled="{!IF((listOfBAs[0].AccountStructureCase__r.GEMS_Submission_Type__c !='New Account' && c.cat.IsNew__c == false && listOfBAs[0].isNew__c == false)|| ( c.cat.Has_Group_Sections__c == false && c.cat.IsNew__c == false),'true', 'false')}" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:inputcheckbox id="checkUpdated" value="{!c.Cat.IsUpdated__c}" style="display:{!IF((c.Cat.IsNew__c == false && c.Cat.IsCancelled__c == false ),'inline', 'none')}" disabled="{!IF(( c.cat.Has_Group_Sections__c == false),'true', 'false')}">
+                                    
+                                    <apex:actionsupport event="onclick" rerender="thePageBlock1,panelWithVar"  oncomplete="setFocus();" />
+                                 <!--    <apex:param name="p3" value="true" assignTo="{!c.isChanged}" /> -->
+                                   
+                                </apex:inputcheckbox>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold ; display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')}" rerender="thePageBlock1,panelWithVar" immediate="true">
+                                    <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}" />
+                                    <apex:param name="p2" value="{!c.Cat.Id}" assignTo="{!recordToDelete}" />
+                                </apex:commandLink>
+
+                                <apex:commandLink value="Cancel" id="CancelLink" status="loadstatus" style="color: #015BA7;font-weight:bold;display:{!IF((c.Cat.IsNew__c == false && c.Cat.IsCancelled__c == false),'inline', 'none')};" onclick=" return checkCancel('{!c.Cat}','{!rowNumber}','{!c.Cat.Id}', '{!c.Cat.Cancel_Date__c}');">
+                                    <apex:param name="p4" value="true" assignTo="{!c.Cat.IsCancelled__c}" />
+                                    <apex:param name="p5" value="false" assignTo="{!c.isAssigned}" />
+                                </apex:commandLink>
+
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:inputText maxlength="4" value="{!c.Cat.Name}" OnkeyPress="return inputLimiter(event, 'Numbers');" style="display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')}" />
+                                <apex:outPutText value="{!c.Cat.Name}" style="display:{!IF((c.Cat.IsNew__c == true ),'none', 'inline')}" />
+                            </td>
+
+                            <!-- <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Category_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="display:{!IF((c.Cat.IsNew__c == true                                    ),'inline', 'none')}" />
+                                <apex:outPutText value="{!c.Cat.Category_Description__c}" style="display:{!IF((c.Cat.IsNew__c == true ),'none', 'inline')}" />
+                            </td> -->
+ 
+                            <!-- SFDC-3641: Enabling Category description when Account structure is retrieved during renewal or offcycle -->
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Category_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" />
+                            </td>
+
+
+                            <td class="dataCell">
+                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:Param value="{!c.Cat.Effective_Date__c}" />
+                                </apex:outputText>
+                            </td>
+
+                            <td class="dataCell" id="tablelevel3">
+                                <apex:InputField value="{!c.Cat.Cancel_Date__c}" style="width:100px; display:{!IF(( ( c.cat.IsUpdated__c == false && c.cat.IsCancelled__c == false && c.cat.IsNew__c == false && c.cat.Has_Group_Sections__c == true) ),'inline', 'none')};" id="selectedCancelDate">
+                                </apex:InputField>
+                                <apex:outputPanel style="float:left;">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!IF((c.cat.IsCancelled__c == true || c.cat.IsNew__c == true || c.cat.Has_Group_Sections__c == false ),true, false)}" style="width:100px; display:{!IF((c.cat.IsCancelled__c == true || c.cat.IsNew__c == true || c.cat.Has_Group_Sections__c == false ),'inline', 'none')};">
+                                        <apex:Param value="{!c.Cat.Cancel_Date__c}" />
+                                    </apex:outputText>
+                                </apex:outputPanel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Usage_Billing__c}" style="display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')}" />
+                                <apex:outputLabel style="display:{!IF((c.cat.IsNew__c == false  ),'inline', 'none')};">
+                                    <apex:outputField value="{!c.Cat.Usage_Billing__c}" />
+                                </apex:outputLabel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Usage_Reporting__c}" style="display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')}" />
+                                <apex:outputLabel style="display:{!IF((c.cat.IsNew__c == false  ),'inline', 'none')};">
+                                    <apex:outputField value="{!c.Cat.Usage_Reporting__c}" />
+                                </apex:outputLabel>
+                            </td>
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Usage_Product__c}" style="display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')};" />
+                                <apex:outputLabel style="display:{!IF((c.cat.IsNew__c == false  ),'inline', 'none')};">
+                                    <apex:outputField value="{!c.Cat.Usage_Product__c}" />
+                                </apex:outputLabel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:inputCheckbox value="{!c.Cat.Usage_Mailing__c}" style="display:{!IF((c.Cat.IsNew__c == true ),'inline', 'none')}" id="mailcheckid">
+                                    <apex:actionSupport event="onchange" reRender="thePageBlock1" oncomplete="setFocus();">
+                                    </apex:actionSupport>
+                                </apex:inputCheckbox>
+                                <apex:outputLabel style="display:{!IF((c.cat.IsNew__c == false ),'inline', 'none')};">
+                                    <apex:outputField value="{!c.Cat.Usage_Mailing__c}" />
+                                </apex:outputLabel>
+                            </td>
+
+                            <td class="dataCell">
+                                <div style="display:none">
+                                    <apex:InputField value="{!c.Cat.Account__c}" />
+                                </div>
+                                <apex:InputField id="mailAddr" value="{!c.Cat.Mailing_Address__c}" style="width:100px;display:{!IF((c.Cat.IsNew__c == true &&  c.Cat.Usage_Mailing__c == true )  ,'inline', 'none')};" />
+
+                                <apex:outputLabel style="width:100px;display:{!IF((c.Cat.IsNew__c == true &&  c.Cat.Usage_Mailing__c == false)||(c.Cat.IsNew__c == false  )  ,'inline', 'none')};" rendered="{!IF((c.cat.Usage_Mailing__c == true ),'true', 'false')}">
+                                    <apex:outputField value="{!c.Cat.Mailing_Address__c}" />
+                                </apex:outputLabel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Cat.Category_Cobra_Code__c}" style="display:{!IF((c.Cat.IsNew__c == true && c.cat.IsUpdated__c == false && c.cat.IsCancelled__c == false  )||(c.Cat.IsNew__c == false && c.cat.IsUpdated__c == true )  ,'inline', 'none')};" />
+                                <apex:outputtext value="{!c.Cat.Category_Cobra_Code__c}" style="display:{!IF((c.Cat.IsNew__c == true ||  c.cat.IsUpdated__c == true ),'none', 'inline')};" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                    <!--<apex:outputField value="{!c.Cat.Members_Derivation_Type__c}"/>      -->
+                                    <apex:InputField value="{!c.Cat.Members_Derivation_Type__c}" required="" style="display:{!IF((c.Cat.IsNew__c == true && c.cat.IsUpdated__c == false && c.cat.IsCancelled__c == false  )||(c.Cat.IsNew__c == false && c.cat.IsUpdated__c == true ),'inline', 'none')};" />
+                                    <apex:outputtext value="{!c.Cat.Members_Derivation_Type__c}" style="display:{!IF((c.Cat.IsNew__c == true ||  c.cat.IsUpdated__c == true ),'none', 'inline')};" />
+                                </apex:outputPanel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                    <apex:inputCheckbox onclick="startLoading();">
+                                        <apex:actionSupport event="onchange" rerender="pb" oncomplete="return goToCharacteristics();endLoading();">
+                                            <apex:param name="selCat" value="{!c.cat.Id}" assignTo="{!selectedCategory}" />
+                                        </apex:actionSupport>
+                                    </apex:inputCheckbox>
+                                    <apex:image url="{!$Resource.greentick}" width="15" height="15" style="display:{!IF((c.hasCharacteristics  == true),'inline', 'none')};" />
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+
+            <apex:panelGrid columns="10">
+                <apex:commandButton status="fetchStatus" reRender="thePageBlock1" value="|<" disabled="{!!hasPrevious}" action="{!first}" title="First Page" />
+                <apex:commandButton status="fetchStatus" reRender="thePageBlock1" value="<" disabled="{!!hasPrevious}" action="{!previous}" title="Previous Page" />
+                <apex:commandButton status="fetchStatus" reRender="thePageBlock1" value=">" disabled="{!!hasNext}" action="{!next}" title="Next Page" />
+                <apex:commandButton status="fetchStatus" reRender="thePageBlock1" value=">|" disabled="{!!hasNext}" action="{!last}" title="Last Page" />
+                <apex:outputText >{!(pageNumber * limitSize)+1-limitSize}-{!IF((pageNumber * limitSize)>size, size,(pageNumber * limitSize))} of {!size}</apex:outputText>
+                <apex:commandButton status="fetchStatus" reRender="thePageBlock1" value="Refresh" action="{!refresh}" title="Refresh Page" />
+                <apex:outputText >Records per Page : </apex:outputText>
+                <apex:inputText value="{!limitSize}" onchange="return refreshRender();" maxlength="3" style="width:30px;" />
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText="" />
+                    <apex:actionStatus id="fetchStatus2" startText="Saving..." stopText="" />
+                </apex:outputPanel>
+                <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                    <apex:outputText >* Please save the changes done if any before navigating to the next page.</apex:outputText> 
+                </apex:outputPanel>
+            </apex:panelGrid>
+
+            <center>
+                <apex:commandButton value="< Back to BA Selection" style="Width:150px;margin:10px;float:left" action="{!backtoBA}" />
+                <apex:commandButton value="Save and Assign" reRender="thePageBlock1" action="{!saveCat}" style="Width:120px;margin:10px;"/>
+                <apex:commandButton value="Cancel" action="{!gotoCase}" style="Width:120px;margin:10px;" />                
+                <apex:commandButton value="Create Account Structure >" action="{!gotoCreateAccountStructure}" style="Width:180px;margin:10px;float: right;" />
+            </center>
+
+        </apex:pageBlock>
+
+        <apex:pageBlock title="Add New Categories :" id="addCatblock">
+
+            <apex:outputtext value="{!listOfBAs[0].AccountStructureCase__r.Account.id}" style="display:none" />
+            <div>
+                <apex:variable value="{!0}" var="rowNumber" />
+                <apex:outputPanel id="panelWithVar">
+                    <apex:variable value="{!0}" var="rowNumber" />
+                </apex:outputPanel>
+
+                <table class="list" id="NewCatTable" border="0" cellpadding="0" cellspacing="0">
+
+                    <tr class="headerRow">
+                        <th class="headerRow">Del</th>
+                        <th class="headerRow">Category#</th>
+                        <th class="headerRow">Description</th>
+                        <th class="headerRow">Effective Date</th>
+                        <th class="headerRow">B</th>
+                        <th class="headerRow">R</th>
+                        <th class="headerRow">P</th>
+                        <th class="headerRow">M</th>
+                        <th class="headerRow">Mailing Address</th>
+                        <th class="headerRow">Cobra Code</th>
+                        <th class="headerRow">
+                            <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                Derivation Type
+                            </apex:outputPanel>
+                        </th>
+
+                    </tr>
+                    <apex:repeat value="{!newCats}" var="c" id="repeat2">
+                        <tr class="dataRow" id="tablerow2">
+
+                            <td class="dataCell">
+                                <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                <apex:commandLink action="{!removeNewRow}" value="Del" style="color: #015BA7;font-weight:bold ; display:{!IF((c.IsNew__c == true ),'inline', 'none')}" reRender="addCatblock" oncomplete="setFocus();" >
+                                    <apex:param name="p8" value="{!rowNumber}" assignTo="{!numberOfNewRowToRemove}" />
+                                    <apex:param name="p9" value="{!c.Id}" assignTo="{!NewrecordToDelete }" />
+                                </apex:commandLink>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:inputText maxlength="4" value="{!c.Name}" OnkeyPress="return inputLimiter(event, 'Numbers');" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')}" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Category_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')}" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:Param value="{!c.Effective_Date__c}" />
+                                </apex:outputText>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Usage_Billing__c}" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')}" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Usage_Reporting__c}" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')}" />
+                            </td>
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Usage_Product__c}" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')};" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:inputCheckbox value="{!c.Usage_Mailing__c}" style="display:{!IF((c.IsNew__c == true ),'inline', 'none')}" id="mailcheckid">
+                                    <apex:actionSupport event="onchange" reRender="addCatblock" oncomplete="setFocus();">
+                                    </apex:actionSupport>
+                                </apex:inputCheckbox>
+                            </td>
+
+                            <td class="dataCell">
+                                <div style="display:none">
+                                    <apex:InputField value="{!c.Account__c}" />
+                                </div>
+                                <apex:InputField id="mailAddr" value="{!c.Mailing_Address__c}" style="width:100px;display:{!IF((c.IsNew__c == true &&  c.Usage_Mailing__c == true )  ,'inline', 'none')};" />
+
+                                <apex:outputLabel style="width:100px;display:{!IF((c.IsNew__c == true &&  c.Usage_Mailing__c == false)||(c.IsNew__c == false  )  ,'inline', 'none')};" rendered="{!IF((c.Usage_Mailing__c == true ),'true', 'false')}">
+                                    <apex:outputField value="{!c.Mailing_Address__c}" />
+                                </apex:outputLabel>
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:InputField value="{!c.Category_Cobra_Code__c}" style="display:{!IF((c.IsNew__c == true && c.IsUpdated__c == false && c.IsCancelled__c == false  )||(c.IsNew__c == false && c.IsUpdated__c == true )  ,'inline', 'none')};" />
+                            </td>
+
+                            <td class="dataCell">
+                                <apex:outputPanel rendered="{!IF(listOfBAs[0].AccountStructureCase__r.GEMS_Is_Account_Derivated__c == true, true, false)}">
+                                    <apex:inputField value="{!c.Members_Derivation_Type__c}" />
+                                </apex:outputPanel>
+                            </td>
+
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+
+            <apex:panelGrid columns="1">
+                <apex:commandButton value="New" action="{!addCat}" reRender="addCatblock,panelWithVar">
+                    <apex:actionSupport event="onchange" oncomplete="setFocus();" />
+                </apex:commandButton>
+            </apex:panelGrid>
+
+            <center>
+                <!--<apex:commandButton value="Add" action="{!addAllCats}" reRender="addCatblock,thePageBlock1,panelWithVar" style="Width:120px;margin:10px;" onclick="startLoading();" oncomplete="endLoading();" id="addButton" /> -->
+                <apex:commandButton value="Add" action="{!addAllCats}" reRender="TheForm" style="Width:120px;margin:10px;" onclick="startLoading();" oncomplete="endLoading();" id="addButton" /> 
+            </center>
+
+        </apex:pageBlock>
+
+    </apex:form>
+    <c:Gems_loader />
+</apex:page>

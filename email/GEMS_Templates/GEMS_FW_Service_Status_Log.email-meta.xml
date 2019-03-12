@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS FW Service Status Log</name>
+    <style>none</style>
+    <subject>{!FW_Service_Status_Log__c.Account_Name__c} - {!FW_Service_Status_Log__c.Account_Number__c} - {!FW_Service_Status_Log__c.Effective_Date__c} - Account Structure retrieval Status from BlueSTAR</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

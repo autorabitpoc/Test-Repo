@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Dearborn Sales and Account Executive</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Dearborn_Sales_and_Account_Management_Leadership</parentRole>
+</Role>

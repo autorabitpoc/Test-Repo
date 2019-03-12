@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>we are using this template,during the account setup process creation</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Account Setup Email Template</name>
+    <style>none</style>
+    <subject>{!Case.Account} - {!Case.Account_Number__c} - {!Case.GEMS_Case_Effective_Date__c} - Screening Process Complete</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

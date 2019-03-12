@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when reaching out to group to obtain email address when there is not one listed in BlueStar.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Outreach - Email Address</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Email Address Request Case Number: {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

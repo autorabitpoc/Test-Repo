@@ -1,0 +1,64 @@
+<apex:page standardController="Account">
+    <Style>
+        .activeTab {
+        background-color: #8A9744;background-image:none; padding-top:5px;height:15px;color:white; font-family:Arial;
+        }
+        .inActiveTabClass{
+        font-weight: bold;
+        }
+    </Style>
+   
+    <apex:pageMessage summary="Content does not exist for non-ASO funding types." 
+                      severity="info" 
+                      strength="3"
+                      rendered="{!IF(CONTAINS(Account.Funding_Type__c,'ASO'),false,true)}"/>
+    <apex:tabPanel headerSpacing="5px" height="150%" activeTabClass="activeTab" inactiveTabClass="inActiveTabClass" rendered="{!IF(CONTAINS(Account.Funding_Type__c,'ASO'),true,false)}">  
+        <!--Tableau has a change in URLS for UAT Vs Prod, Please Uncomment UAT URLS before deployed to Prod to reduce Tableau Prod server usage, and comment Prod URLS-->
+        <!--SFDC-7858 Start-->
+        <!-- UAT URLS Start -->
+       <!--  <apex:tab label="SoaK" labelWidth="100%">
+            <apex:iframe id="tableau1" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.test.fyiblue.com/views/SoaK/NetworkAdvantage?:embed=y&Select=Number&Account={!RIGHT(Account.External_ID__c,6)}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+       </apex:tab>
+        <apex:tab label="VBC BARS Supplemental" labelWidth="100%">
+            <apex:iframe id="tableau" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.test.fyiblue.com/views/VBCBARSSupplemental/HealthSystemSummary?:embed=y&Account_Parameter=Number&Name_Number={!RIGHT(Account.External_ID__c,6)}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="HCC Insights" labelWidth="100%">
+            <apex:iframe id="tableau2" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.test.fyiblue.com/views/HCCInsights/HCCAccountSummary?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="Value of the Network" labelWidth="100%">
+            <apex:iframe id="tableau3" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.test.fyiblue.com/views/ValueoftheNetwork/Parameters?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="BDC" labelWidth="100%">
+            <apex:iframe id="tableau4" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.test.fyiblue.com/views/BDCReport/Utilization?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab> -->
+          <!-- UAT URLS END -->
+         <!-- Prod URLS Start-->
+        <apex:tab label="SoaK" labelWidth="100%">
+            <apex:iframe id="tableau1" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.fyiblue.com/views/SoaK/NetworkAdvantage?:embed=y&Select=Number&Account={!RIGHT(Account.External_ID__c,6)}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="VBC BARS Supplemental" labelWidth="100%">
+            <apex:iframe id="tableau" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.fyiblue.com/views/VBCBARSSupplemental/HealthSystemSummary?:embed=y&Account_Parameter=Number&Name_Number={!RIGHT(Account.External_ID__c,6)}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="HCC Insights" labelWidth="100%">
+            <apex:iframe id="tableau2" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.fyiblue.com/views/HCCInsights/HCCAccountSummary?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="Value of the Network" labelWidth="100%">
+            <apex:iframe id="tableau3" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.fyiblue.com/views/ValueoftheNetwork/Parameters?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab>
+        <apex:tab label="BDC" labelWidth="100%">
+            <apex:iframe id="tableau4" width="100%" height="1000px" scrolling="true" frameborder="0" src="https://tableau.fyiblue.com/views/BDCReport/Utilization?:embed=y&Account={!Account.Name}&Plan={!Account.HCSC_Division__c}">
+            </apex:iframe>
+        </apex:tab> 
+        <!--SFDC-7858 End-->
+        <!-- Prod URLS End-->
+    </apex:tabPanel>         
+</apex:page>

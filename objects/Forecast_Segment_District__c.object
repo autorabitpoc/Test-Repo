@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>A list of all district number values that apply to Forecast segments</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>District__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>The district number for Forecast segments</description>
+        <externalId>false</externalId>
+        <label>District</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Forecast Segment District</label>
+    <visibility>Public</visibility>
+</CustomObject>

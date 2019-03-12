@@ -1,0 +1,143 @@
+<apex:page id="pageId" standardController="Case"  extensions="GEMS_ReturnReasonUnderwritingController">
+
+  <style>        
+        .radioClass { margin-left: 80px;}        
+    </style>
+    <script>
+        function refreshPage(refreshPage,errormsg) {             
+            //alert(refreshPage);
+            //alert('All tasks approved successfully!');   
+            if(refreshPage == 'false')
+            window.open('/'+"{!caseRecord.ID}",'_parent'); 
+            //window.top.location = '/{!caseRecord.ID}'; 
+            //else
+            //alert(errormsg);    
+        }
+        
+        var selectedIds = '';
+        var unSelected = false;
+        
+        
+        function setSelectedId(checkID,taskId,taskStage) {
+            
+            if(document.getElementById(checkID).checked ) {
+                if(checkID=='checkBoxYNId'+taskStage)
+                {
+                    
+                    if(document.getElementById('checkBoxId'+taskStage).checked)
+                    {
+                        alert('You can check either Yes or N/A');
+                        return false;
+                    }
+                }
+                if(checkID=='checkBoxId'+taskStage)
+                {
+                    
+                    //alert(document.getElementById('statusHide1'+taskStage).value);
+                    if(document.getElementById('checkBoxYNId'+taskStage).checked)
+                    {
+                        alert('You can check either Yes or N/A');
+                        return false;
+                    }
+                }
+                unSelected = false;            
+                if(taskId != '' && selectedIds.length == 0) {
+                    selectedIds= selectedIds+taskId;
+                }else if(taskId != '' && selectedIds.length > 1) {
+                    selectedIds= selectedIds+','+taskId;
+                }
+                
+            }else {
+                if(taskId != '') {
+                    unSelected = true;
+                    var replaceStr = ','+taskId;
+                    if(selectedIds.indexOf(replaceStr) > -1 ) {
+                    
+                        selectedIds = selectedIds.replace(replaceStr,'');
+                        
+                    }else if(selectedIds.indexOf(taskId) > -1) {
+                        selectedIds = selectedIds.replace(taskId,'');
+                    }                   
+                }              
+            }                            
+        }
+                
+        function approveTasks(){
+            
+            if((document.getElementById('checkBoxId0').checked || document.getElementById('checkBoxYNId0').checked) && ( document.getElementById('checkBoxYNId1').checked) && (document.getElementById('checkBoxId2').checked || document.getElementById('checkBoxYNId2').checked))
+            {
+
+                updateTasksToApprove(document.getElementById('checkBoxYNId0').checked,document.getElementById('checkBoxId0').checked,document.getElementById('checkBoxYNId1').checked,document.getElementById('checkBoxYNId2').checked,document.getElementById('checkBoxId2').checked);
+                //document.getElementById('checkBoxYNId0').value
+            }else {
+                alert('Please select all tasks to approve');
+                return false;
+            }
+            
+        }
+    </script>
+    <apex:form id="formId" >
+    
+        <apex:outputPanel id="errorBlock">
+            <apex:messages style="color:red" />
+        </apex:outputPanel>
+        <apex:pageBlock id="pbId"  >
+            <apex:variable value="{!0}" var="taskIncr" />
+            <apex:actionFunction action="{!approveDummy}" name="approveTaskFun" rerender="" >
+                <apex:param name="selectedIds" assignTo="{!selectedIds}" value=""/>                
+            </apex:actionFunction>  
+            <apex:actionFunction action="{!updateTasksToApprove}" name="updateTasksToApprove" oncomplete="refreshPage('{!errorCheck}','{!errorMsg}')" rerender="errorBlock" >
+            <apex:param name="firstRecParam1"  value="" />
+            <apex:param name="firstRecParam2"  value="" />
+            <apex:param name="secondParam"  value="" />
+             <apex:param name="thirdRecParam1"  value="" />
+            <apex:param name="thirdRecParam2"  value="" />
+
+            </apex:actionFunction>
+            
+            <apex:pageBlockButtons >
+             <apex:commandButton id="approveButton"  action="{!approveDummy}" value="Approve"  title="Approve"  oncomplete="return approveTasks();" rendered="{! buttonDisable}" reRender="pageId" />
+             <apex:commandButton id="approveButton2"  action="{!approveDummy}" value="Approve"  title="Approve" oncomplete="return approveTasks();" disabled="true" rendered="{! !buttonDisable}" reRender="pageId" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockTable id="pbTable" value="{!taskList}" var="taskk"  >
+                <apex:column headerValue="Yes" width="5%">
+                    <apex:outputPanel rendered="{!taskk.status == 'Approved'}">
+                        <apex:inputCheckbox value="{!taskk.GEMS_UnderWriting_Yes_No__c}" disabled="true" />
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!taskk.status != 'Approved' }">
+                        <input type="checkbox" id="checkBoxYNId{!taskIncr}" value="{!taskk.GEMS_UnderWriting_Yes_No__c}"  onclick="return setSelectedId('checkBoxYNId{!taskIncr}','{!taskk.Id}','{!taskIncr}');" />
+                        
+                    </apex:outputPanel>
+                </apex:column>
+
+                <apex:column headerValue="N/A">
+                    <apex:outputPanel rendered="{!taskk.subject != 'Approve Account Paperwork' && taskk.status == 'Approved'}">
+                        <apex:inputCheckbox value="{!taskk.GEMS_UnderWriting_N_A__c}" disabled="true" />
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!taskk.subject != 'Approve Account Paperwork' && taskk.status != 'Approved'}">
+                        <input type="checkbox" id="checkBoxId{!taskIncr}" value="{!taskk.GEMS_UnderWriting_N_A__c}" onclick="return setSelectedId('checkBoxId{!taskIncr}','{!taskk.Id}','{!taskIncr}');" />
+                    </apex:outputPanel>
+                </apex:column>
+                <apex:column headerValue="Subject">                     
+                    <apex:outputText >{!taskk.subject}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Status">                     
+                    <apex:outputText >{!taskk.status}</apex:outputText>
+                    <input type="hidden" id="statusHide{!taskIncr}" value="{!taskk.status}"/>
+                    <apex:variable value="{!taskIncr+1}" var="taskIncr" />
+                </apex:column>
+                <apex:column headerValue="Start Date">                     
+                    <apex:outputfield value="{!taskk.GEMS_Start_Date__c}"  /> 
+                    <!--<apex:outputText value="{0,date,MM/dd/yy}" ><apex:param value="{!taskk.GEMS_Start_Date__c}" /></apex:outputText>-->
+                </apex:column>
+                <apex:column headerValue="End Date">   
+                    <apex:outputfield value="{!taskk.GEMS_End_Date__c}"  />               
+                   <!-- <apex:outputText value="{0,date,MM/dd/yy}"><apex:param value="{!taskk.GEMS_End_Date__c}" /></apex:outputText>-->
+                </apex:column>
+            </apex:pageBlockTable>
+                
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

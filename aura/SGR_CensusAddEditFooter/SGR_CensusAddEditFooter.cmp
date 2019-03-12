@@ -1,0 +1,9 @@
+<aura:component description="SGR_CensusAddEditFooter">
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:handler event="c:SGR_ModalClickEvent" action="{!c.handleModalEvent}"/>
+    <aura:registerEvent name="modalEvent" type="c:SGR_ModalClickEvent"/>
+    <div class="slds-float--right">
+        <lightning:button variant="destructive" label="Cancel" title="Cancel" onclick="{!c.handleClick}"/>
+        <lightning:button variant="success" label="Save" title="Save" onclick="{!c.handleClick}"/>
+    </div>
+</aura:component>

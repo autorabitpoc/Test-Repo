@@ -1,0 +1,7 @@
+Hi
+Underwriting has approved the case and membership has started to load in BlueSTAR.
+
+Case Details: {!Case.Link}
+Account Name : {!Case.Account}
+
+Thanks

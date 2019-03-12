@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email - enterprise_booklet_inquiries@bcbstx.com</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Benefit Book Order Electronic or Physical</name>
+    <style>none</style>
+    <subject>Electronic or Physical Benefit Booklet - [Group # and Name]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

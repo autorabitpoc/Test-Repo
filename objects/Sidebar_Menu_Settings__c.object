@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Display_Name__c</fullName>
+        <description>This is the name which is displayed on menu.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the name which is displayed on menu.</inlineHelpText>
+        <label>Display Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Market_Segment__c</fullName>
+        <description>Small Group
+Mid Market
+Large Group
+National Accounts</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Small Group
+Mid Market
+Large Group
+National Accounts</inlineHelpText>
+        <label>Market Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Role</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sort_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Sort Order</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target__c</fullName>
+        <description>New Tab or Same Window</description>
+        <externalId>false</externalId>
+        <inlineHelpText>New Tab or Same Window</inlineHelpText>
+        <label>Target</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <externalId>false</externalId>
+        <label>URL</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Sidebar Menu Settings</label>
+    <listViews>
+        <fullName>All_fields</fullName>
+        <columns>NAME</columns>
+        <columns>Display_Name__c</columns>
+        <columns>Market_Segment__c</columns>
+        <columns>Sort_Order__c</columns>
+        <columns>Target__c</columns>
+        <columns>URL__c</columns>
+        <columns>State__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All fields</label>
+    </listViews>
+    <visibility>Protected</visibility>
+</CustomObject>

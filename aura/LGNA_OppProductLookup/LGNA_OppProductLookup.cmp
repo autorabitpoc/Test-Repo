@@ -1,0 +1,64 @@
+<aura:component controller="LGNA_NewOpportunityProducts" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <!--declare attributes--> 
+    <!--<aura:attribute name="selectedRecord" type="sObject" default="{}" description="Use,for store SELECTED sObject Record"/>-->
+    <aura:attribute name="selectedRecord" type="String"/>
+    <aura:attribute name="selectedRecordName" type="String"/>
+
+    <aura:attribute name="selectedRecordId" type="string" description="Use,for store SELECTED sObject Record"/>
+    <aura:attribute name="accountId" type="String"/>
+    <aura:attribute name="listOfSearchRecords" type="List" description="Use,for store the list of search records which returns from apex class"/>
+    <aura:attribute name="SearchKeyWord" type="string"/>
+    <aura:attribute name="objectAPIName" type="string" default=""/>
+    <aura:attribute name="IconName" type="string" default=""/>
+    <aura:attribute name="label" type="string" default=""/>
+    <aura:attribute name="Message" type="String" default=""/>
+    <aura:attribute name="conditionval" type="String" default=""/>
+    <aura:attribute name="indexval" type="string" />
+    <aura:attribute name="isCarrier" type="Boolean" default="false" />
+    <aura:attribute name="isInitial" type="Boolean" default="true" />
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--declare events hendlers-->  
+    <aura:handler name="oSelectedRecordEvent" event="c:LGNA_OppProductLookupEvent" action="{!c.handleComponentEvent}"/>
+    
+    <!-- https://www.lightningdesignsystem.com/components/lookups/ --> 
+    <div onmouseleave="{!c.onblur}" aura:id="searchRes" class="slds-form-element slds-lookup slds-is-close" data-select="single">
+        <div class="slds-form-element__control">
+            <div class="slds-input-has-icon slds-input-has-icon--right">
+                <!--<lightning:icon class="slds-input__icon slds-show" iconName="utility:search" size="x-small" alternativeText="search"/>-->
+                <!-- This markup is for when an record is selected -->
+                <div aura:id="lookup-pill" class="slds-pill-container slds-hide">
+                    <!--<lightning:pill class="pillSize" label="{!v.selectedRecord.Name}" name="{!v.selectedRecord.Name}" onremove="{! c.clear }">-->
+                        <lightning:pill class="pillSize" label="{!v.selectedRecordName}" name="{!v.selectedRecord}" onremove="{! c.clear }">
+                    	<aura:set attribute="media">
+                            <lightning:icon iconName="{!v.IconName}" size="x-small" alternativeText="{!v.IconName}"/>
+                        </aura:set>
+                    </lightning:pill>
+                </div>
+                <div aura:id="lookupField">
+                    
+                    <lightning:input class="searchbox" aura:id="enter-search"
+                                 name="enter-search"
+                                 label="Find List"
+                                 placeholder="Search"                                                                      
+                                 type="search"
+                                 variant="label-hidden" 
+                                 value="{!v.SearchKeyWord}"
+                                 onfocus="{c.onfocus}"
+                                 onchange="{!c.keyPressController}"
+                                     />
+                                    
+                </div>   
+            </div>
+        </div>
+        <!--This part is for Display typehead lookup result List-->  
+        <ul style="min-height:40px;margin-top:0px !important " class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-lookup__menu slds" role="listbox">
+            <lightning:spinner class="slds-hide" variant="brand" size="small" aura:id="mySpinner"/>
+            <center> {!v.Message}</center>
+            <aura:iteration items="{!v.listOfSearchRecords}" var="singleRec">
+                <c:LGNA_OppProductLookupResult oRecord="{!singleRec}" IconName="{!v.IconName}"/>
+            </aura:iteration>
+        </ul>
+         
+    </div>
+</aura:component>

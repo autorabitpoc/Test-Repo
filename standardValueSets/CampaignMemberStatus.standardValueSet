@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Clicked Email1</fullName>
+        <default>false</default>
+        <label>Clicked Email1</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Clicked Email2</fullName>
+        <default>false</default>
+        <label>Clicked Email2</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed 2018 Product Survey</fullName>
+        <default>false</default>
+        <label>Completed 2018 Product Survey</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responded</fullName>
+        <default>false</default>
+        <label>Responded</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent</fullName>
+        <default>false</default>
+        <label>Sent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Viewed Conifer Member Rewards PDF</fullName>
+        <default>false</default>
+        <label>Viewed Conifer Member Rewards PDF</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Webpage: Beneficiary Resource Services</fullName>
+        <default>false</default>
+        <label>Webpage: Beneficiary Resource Services</label>
+    </standardValue>
+</StandardValueSet>

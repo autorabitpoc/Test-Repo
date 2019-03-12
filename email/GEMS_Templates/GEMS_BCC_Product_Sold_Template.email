@@ -1,0 +1,7 @@
+Hi,
+Account submission has been completed and include BCC product {!Case.CaseNumber}
+
+Account Name:  {!Case.Account}
+Case Details: {!Case.Link}
+
+Thanks

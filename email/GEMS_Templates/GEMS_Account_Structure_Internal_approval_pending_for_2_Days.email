@@ -1,0 +1,9 @@
+Hi,
+Please review and provide a disposition for the account structure.
+
+Below are account structure details:
+
+Accoutn Name: {!Case.Account}
+Case Link : {!Case.Link}
+
+Thanks

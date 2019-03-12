@@ -1,0 +1,123 @@
+<apex:page standardController="case" extensions="GEMS_CaseTeamMembersController" sidebar="true" showHeader="true" showChat="true" id="thePage" title="{!caseNumber}: Update Case Team Members">  
+<script>
+    var newWin=null;
+    var url = location.href;
+    var match = url.match(/inline=1/);
+    if (match != null) { 
+        var newUrl = url.replace(/inline=1/, '');
+        window.top.location=newUrl;
+    }
+    
+    function changeTeamMember(newVal) {
+        document.getElementById("memberName").value = newVal;
+    }
+    
+    
+    function openLookup(memberId,memberName,rowNum){
+        var memberidVal = document.getElementById(memberId).value;
+        var baseURL="/apex/GEMSUserLookupPopup?namefield=" + memberName+"&idfield="+memberId+"&rowNum="+rowNum;
+        newWin = window.open(baseURL, "" , "width=480,height=400,resizable=no,scrollbars=yes,toolbar=no,status=no", true);
+        if (window.focus) {
+            newWin.focus();
+        }
+        return false;
+    }
+    
+    
+    function validate(roleName,roleId) {
+        var ret = confirm("Are you sure you want to remove this team member?");
+        if(ret) {
+            removeRoleFtn(roleName,roleId);                
+        }
+    }
+    
+    
+    function closeLookupPopup(nameid,name,rowNum)   {
+       if (null!=newWin) {
+           updateMemberNameId(nameid,name,rowNum);
+           newWin.close();
+       }  
+    }
+    
+        
+    function validateRole(trNameElement,rowNum) {
+        var memberRole = document.getElementById(trNameElement).value;
+        if(memberRole == 'Select One'){
+            alert('Please select a Member Role');            
+        } else {
+            updateTeamMemberRole(memberRole,rowNum);
+        }
+    }
+    // SFDC-4225. Methods to enable & disable Save button
+    function disableSaveButton(btnId) {
+		var btn = document.getElementById(btnId);
+		btn.disabled = true;		
+	}
+	function enableSaveButton(btnId) {		
+		var btn = document.getElementById(btnId);
+		btn.disabled = false;	
+	}        
+    // SFDC-4225. End   
+    
+</script>
+
+<apex:form id="thisForm" >
+    <apex:pageblock id="pb" mode="maindetail" title="Case Team Member Edit">
+     <apex:pageblockButtons location="top">
+        <apex:commandButton value="Save" id="saveButton" action="{!saveCaseTeamList}" immediate="true" />
+        <!-- SFDC-4225 Disable Save button before executing validateRole action. Enable once done -->
+        <apex:actionStatus id="AjaxStatus" onstart="disableSaveButton('{!$Component.saveButton}')" onstop="enableSaveButton('{!$Component.saveButton}')" ></apex:actionStatus>
+        <!-- SFDC-4225 End -->
+        <apex:commandButton value="Cancel" id="cancelButton" action="{!RedirectToCase}" immediate="true" />
+     </apex:pageblockButtons>
+    <apex:outputPanel >
+        <apex:pagemessages />  
+    </apex:outputPanel>
+    <apex:outputPanel id="caseTeamHead">
+    <apex:variable id="rowNum" value="{!0}" var="rowNum" />  
+    <apex:pageBlockSection columns="1" id="pbs" collapsible="False" /> 
+    <apex:pageBlockTable value="{!indexedCTMList}" var="caseTeamMemberRec" id="theTable">
+        <apex:column headerValue="Action">
+            <apex:commandLink value="Remove" action="{!removeRowFromCaseTeamList}" rerender="caseTeamHead" target="_top" immediate="true" rendered="{!if(caseTeamRoleMap[caseTeamMemberRec.record.TeamRoleId].Name != 'Implementer',true,false)}">
+                <apex:param value="{!rowNum}" name="rowToRemove" assignTo="{!rowToRemove}"/> 
+            </apex:commandLink> 
+        </apex:column>
+        <apex:column headerValue="Team Member(Lookup to Change)">
+            <apex:inputHidden id="memberId" value="{!caseTeamMemberRec.record.MemberId}"   />
+            <apex:inputText id="memberName" value="{!caseTeamMemberRec.teamMemberName}" disabled="true" title="Lookup to Change" />
+            <apex:image value="/s.gif" StyleClass="lookupIcon"  style="cursor:pointer;" onclick="openLookup('{!$Component.memberId}','{!$Component.memberName}','{!rowNum}')" title="User Lookup"/>  
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Member Role</apex:facet>
+            <apex:selectList id="trName" value="{!caseTeamRoleMap[caseTeamMemberRec.record.TeamRoleId].Name}" multiselect="false" size="1" disabled="{!if(caseTeamRoleMap[caseTeamMemberRec.record.TeamRoleId].Name == 'Implementer',true,false)}" onchange="validateRole('{!$Component.trName}',{!rowNum})" > 
+                <apex:selectOptions value="{!roleOptions}" />  
+            </apex:selectList>
+
+            
+        </apex:column>     
+        <apex:column >
+            <apex:facet name="header">Case Access</apex:facet>
+            <apex:outputField value="{!caseTeamRoleMap[caseTeamMemberRec.record.TeamRoleId].AccessLevel}" id="caseAccessId"  /> 
+            <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+        </apex:column>     
+    </apex:pageBlockTable>
+    <br/>
+    <!--  SFDC-4225. Wire actions with AjaxStatus actionStatus & reRender Save button to enable/disable it -->
+    <apex:actionFunction name="updateTeamMemberRole"  action="{!updateMemberRole}" rerender="caseTeamHead,saveButton" status="AjaxStatus" immediate="true" >
+        <apex:param name="updatedMemberRole"  value="" assignTo="{!updatedMemberRole}" />
+        <apex:param name="rowToUpdate"  value=""  assignTo="{!rowToUpdate}"/> 
+    </apex:actionFunction>
+
+    <apex:actionFunction name="updateMemberNameId"  action="{!updateMemberNameId}" status="AjaxStatus" rerender="caseTeamHead,saveButton" immediate="true" >
+        <apex:param name="teammemberid"  value="" assignTo="{!updatedTeamMemberId}" />
+        <apex:param name="name"  value="" assignTo="{!updatedTeamMemberName}" />
+        <apex:param name="rowNum"  value=""  assignTo="{!rowToUpdate}"/> 
+    </apex:actionFunction>
+
+    <apex:commandLink value="Add 1 Row" action="{!addNewRowToCaseTeamList}" rerender="caseTeamHead,saveButton" Status="status" immediate="true" /> 
+    <!--  SFDC-4225. End -->
+    </apex:outputPanel>
+
+    </apex:pageblock>
+</apex:form>
+</apex:page>

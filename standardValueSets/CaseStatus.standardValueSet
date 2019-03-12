@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>AS400 &amp; BlueStar Update Completed</fullName>
+        <default>false</default>
+        <label>AS400 &amp; BlueStar Update Completed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>AS400 &amp; BlueStar Update Pending</fullName>
+        <default>false</default>
+        <label>AS400 &amp; BlueStar Update Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Assigned</fullName>
+        <default>false</default>
+        <label>Assigned</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Assigned to CS</fullName>
+        <default>false</default>
+        <label>Assigned to CS</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>BlueSTAR Entry Complete</fullName>
+        <default>false</default>
+        <label>BlueSTAR Entry Complete</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>BlueSTAR Walkthrough Complete</fullName>
+        <default>false</default>
+        <label>BlueSTAR Walkthrough Complete</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>BW Approval Pending</fullName>
+        <default>false</default>
+        <label>BW Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>BW Approval Received</fullName>
+        <default>false</default>
+        <label>BW Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>BW Approval Rejected</fullName>
+        <default>false</default>
+        <label>BW Approval Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Approval Pending</fullName>
+        <default>false</default>
+        <label>Client Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Approval Received</fullName>
+        <default>false</default>
+        <label>Client Approval Received</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed (Marked for Delete)</fullName>
+        <default>false</default>
+        <label>Closed (Marked for Delete)</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - No Response</fullName>
+        <default>false</default>
+        <label>Closed - No Response</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed but No Signature Required</fullName>
+        <default>false</default>
+        <label>Completed but No Signature Required</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Declined</fullName>
+        <default>false</default>
+        <label>Declined</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Deferred for Business Decision</fullName>
+        <default>false</default>
+        <label>Deferred for Business Decision</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Deferred to Business Decision</fullName>
+        <default>false</default>
+        <label>Deferred to Business Decision</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Design In Progress</fullName>
+        <default>false</default>
+        <label>Design In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Developing Content</fullName>
+        <default>false</default>
+        <label>Developing Content</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Draft</fullName>
+        <default>false</default>
+        <label>Draft</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>DTU Approval Received</fullName>
+        <default>false</default>
+        <label>DTU Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Executed</fullName>
+        <default>false</default>
+        <label>Executed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>FEAK Approval Receivd</fullName>
+        <default>false</default>
+        <label>FEAK Approval Receivd</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>FEAK Approval Rejected</fullName>
+        <default>false</default>
+        <label>FEAK Approval Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Final</fullName>
+        <default>false</default>
+        <label>Final</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Final Sent to Sales &amp; Marketing</fullName>
+        <default>false</default>
+        <label>Final Sent to Sales &amp; Marketing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Fully Executed</fullName>
+        <default>false</default>
+        <label>Fully Executed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Initial Setup</fullName>
+        <default>false</default>
+        <label>Initial Setup</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Initial Setup Completed</fullName>
+        <default>false</default>
+        <label>Initial Setup Completed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal Approval Pending</fullName>
+        <default>false</default>
+        <label>Internal Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal Approval Received</fullName>
+        <default>false</default>
+        <label>Internal Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal Approval Rejected</fullName>
+        <default>false</default>
+        <label>Internal Approval Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Benefits Production Ready</fullName>
+        <default>false</default>
+        <label>Medical Benefits Production Ready</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Coding Complete</fullName>
+        <default>false</default>
+        <label>Medical Coding Complete</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>No GCPS Action Required</fullName>
+        <default>false</default>
+        <label>No GCPS Action Required</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Out for DOI Approval</fullName>
+        <default>false</default>
+        <label>Out for DOI Approval</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Out for Internal Review</fullName>
+        <default>false</default>
+        <label>Out for Internal Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Out for Signature by AE</fullName>
+        <default>false</default>
+        <label>Out for Signature by AE</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Out for Signature - beyond 55 days</fullName>
+        <default>false</default>
+        <label>Out for Signature - beyond 55 days</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Peer Review Approval Pending</fullName>
+        <default>false</default>
+        <label>Peer Review Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Peer Reviewer Approved</fullName>
+        <default>false</default>
+        <label>Peer Reviewer Approved</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending - Partner</fullName>
+        <default>false</default>
+        <label>Pending - Partner</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Plan President Approval Received</fullName>
+        <default>false</default>
+        <label>Plan President Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Prime Build Completed</fullName>
+        <default>false</default>
+        <label>Prime Build Completed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Prime Build Started</fullName>
+        <default>false</default>
+        <label>Prime Build Started</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Production Completed</fullName>
+        <default>false</default>
+        <label>Production Completed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Production In Progress</fullName>
+        <default>false</default>
+        <label>Production In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>QR Approval Pending</fullName>
+        <default>false</default>
+        <label>QR Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>QR Approval Received</fullName>
+        <default>false</default>
+        <label>QR Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>QR Approval Rejected</fullName>
+        <default>false</default>
+        <label>QR Approval Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Release Underwriting Complete</fullName>
+        <default>false</default>
+        <label>Release Underwriting Complete</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Request from Sales &amp; Marketing, Draft</fullName>
+        <default>false</default>
+        <label>Request from Sales &amp; Marketing, Draft</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Retracted</fullName>
+        <default>false</default>
+        <label>Retracted</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Return</fullName>
+        <default>false</default>
+        <label>Return</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Routed In Error</fullName>
+        <default>false</default>
+        <label>Routed In Error</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales &amp; Marketing Returns Draft</fullName>
+        <default>false</default>
+        <label>Sales &amp; Marketing Returns Draft</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent to Marketing</fullName>
+        <default>false</default>
+        <label>Sent to Marketing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent to Sales &amp; Marketing</fullName>
+        <default>false</default>
+        <label>Sent to Sales &amp; Marketing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Shared Accum Approval Pending</fullName>
+        <default>false</default>
+        <label>Shared Accum Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Shared Accum Approval Received</fullName>
+        <default>false</default>
+        <label>Shared Accum Approval Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Started</fullName>
+        <default>false</default>
+        <label>Started</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Submitted</fullName>
+        <default>false</default>
+        <label>Submitted</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent Back for More Info</fullName>
+        <default>false</default>
+        <label>Sent Back for More Info</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal HCSC SME Review</fullName>
+        <default>false</default>
+        <label>Internal HCSC SME Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Reviewed by SMEs</fullName>
+        <default>false</default>
+        <label>Reviewed by SMEs</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal HCSC UW Review</fullName>
+        <default>false</default>
+        <label>Internal HCSC UW Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Reviewed by UW</fullName>
+        <default>false</default>
+        <label>Reviewed by UW</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Withdrawn</fullName>
+        <default>false</default>
+        <label>Withdrawn</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Approved</fullName>
+        <default>false</default>
+        <label>Approved</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Denied</fullName>
+        <default>false</default>
+        <label>Denied</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Submitted for Legal Review</fullName>
+        <default>false</default>
+        <label>Submitted for Legal Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Testing Completed</fullName>
+        <default>false</default>
+        <label>Testing Completed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Testing In Progress</fullName>
+        <default>false</default>
+        <label>Testing In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Under Editing Review</fullName>
+        <default>false</default>
+        <label>Under Editing Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Under Proofing Review</fullName>
+        <default>false</default>
+        <label>Under Proofing Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting for Information</fullName>
+        <default>false</default>
+        <label>Waiting for Information</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting for Information - External</fullName>
+        <default>false</default>
+        <label>Waiting for Information - External</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting for Information - Internal</fullName>
+        <default>false</default>
+        <label>Waiting for Information - Internal</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>CDHP Team Approval Rejected</fullName>
+        <default>false</default>
+        <label>CDHP Team Approval Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Peer Review Approved</fullName>
+        <default>false</default>
+        <label>Peer Review Approved</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Peer Review Pending</fullName>
+        <default>false</default>
+        <label>Peer Review Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Peer Review Rejected</fullName>
+        <default>false</default>
+        <label>Peer Review Rejected</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Quality Review Completed</fullName>
+        <default>false</default>
+        <label>Quality Review Completed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>FEAK Approval Pending</fullName>
+        <default>false</default>
+        <label>FEAK Approval Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Out for Signature by Contract Specialist</fullName>
+        <default>false</default>
+        <label>Out for Signature by Contract Specialist</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>On Hold</fullName>
+        <default>false</default>
+        <label>On Hold</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed – Without SIGNED BPA</fullName>
+        <default>false</default>
+        <label>Completed – Without SIGNED BPA</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Testing Failed</fullName>
+        <default>false</default>
+        <label>Testing Failed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Testing Passed</fullName>
+        <default>false</default>
+        <label>Testing Passed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>FEAK Analysis In Progress</fullName>
+        <default>false</default>
+        <label>FEAK Analysis In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>LGNA Waiting for Submission to BlueStar</fullName>
+        <default>false</default>
+        <label>LGNA Waiting for Submission to BlueStar</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Approval</fullName>
+        <default>false</default>
+        <label>Pending Approval</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Additional Input required</fullName>
+        <default>false</default>
+        <label>Additional Input Required</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed12</fullName>
+        <default>false</default>
+        <label>SGR_closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending GV Review</fullName>
+        <default>false</default>
+        <label>Pending GV Review</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

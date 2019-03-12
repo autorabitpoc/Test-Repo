@@ -1,0 +1,2995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.External_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Activities</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Activity_Type__c</fullName>
+        <description>REPORTING ONLY FIELD. This field will be populated with the activity type so it can be visible on custom report types.</description>
+        <externalId>false</externalId>
+        <label>Activity Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Presenters__c</fullName>
+        <description>Presenters for topics other than Wellness at the meeting</description>
+        <externalId>false</externalId>
+        <label>Additional Presenters</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned Partner</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Executive</fullName>
+                    <default>false</default>
+                    <label>Account Executive</label>
+                </value>
+                <value>
+                    <fullName>Accounts Receivable</fullName>
+                    <default>false</default>
+                    <label>Accounts Receivable</label>
+                </value>
+                <value>
+                    <fullName>Account Support Services</fullName>
+                    <default>false</default>
+                    <label>Account Support Services</label>
+                </value>
+                <value>
+                    <fullName>Actuarial</fullName>
+                    <default>false</default>
+                    <label>Actuarial</label>
+                </value>
+                <value>
+                    <fullName>Blue Directions</fullName>
+                    <default>false</default>
+                    <label>Blue Directions</label>
+                </value>
+                <value>
+                    <fullName>CAS Reporting</fullName>
+                    <default>false</default>
+                    <label>CAS Reporting</label>
+                </value>
+                <value>
+                    <fullName>CBSR Team</fullName>
+                    <default>false</default>
+                    <label>CBSR Team</label>
+                </value>
+                <value>
+                    <fullName>CDHP</fullName>
+                    <default>false</default>
+                    <label>CDHP</label>
+                </value>
+                <value>
+                    <fullName>Client Analytic Consultants</fullName>
+                    <default>false</default>
+                    <label>Client Analytic Consultants</label>
+                </value>
+                <value>
+                    <fullName>COBRA</fullName>
+                    <default>false</default>
+                    <label>COBRA</label>
+                </value>
+                <value>
+                    <fullName>Coding</fullName>
+                    <default>false</default>
+                    <label>Coding</label>
+                </value>
+                <value>
+                    <fullName>Contract Administration</fullName>
+                    <default>false</default>
+                    <label>Contract Administration</label>
+                </value>
+                <value>
+                    <fullName>Contracting - ASO Agreement</fullName>
+                    <default>false</default>
+                    <label>Contracting - ASO Agreement</label>
+                </value>
+                <value>
+                    <fullName>Contracting - Benefit Booklets</fullName>
+                    <default>false</default>
+                    <label>Contracting - Benefit Booklets</label>
+                </value>
+                <value>
+                    <fullName>Contract Processing</fullName>
+                    <default>false</default>
+                    <label>Contract Processing</label>
+                </value>
+                <value>
+                    <fullName>Dental</fullName>
+                    <default>false</default>
+                    <label>Dental</label>
+                </value>
+                <value>
+                    <fullName>ECE Enterprise Client Extracts</fullName>
+                    <default>false</default>
+                    <label>ECE Enterprise Client Extracts</label>
+                </value>
+                <value>
+                    <fullName>Enrollment Services</fullName>
+                    <default>false</default>
+                    <label>Enrollment Services</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Eligibility Team</fullName>
+                    <default>false</default>
+                    <label>Enterprise Eligibility Team</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Pharmacy Operations</fullName>
+                    <default>false</default>
+                    <label>Enterprise Pharmacy Operations</label>
+                </value>
+                <value>
+                    <fullName>Financial Operations</fullName>
+                    <default>false</default>
+                    <label>Financial Operations</label>
+                </value>
+                <value>
+                    <fullName>Fraud and Abuse</fullName>
+                    <default>false</default>
+                    <label>Fraud and Abuse</label>
+                </value>
+                <value>
+                    <fullName>FSU - Benefit Specialist</fullName>
+                    <default>false</default>
+                    <label>FSU - Benefit Specialist</label>
+                </value>
+                <value>
+                    <fullName>FSU - Claims</fullName>
+                    <default>false</default>
+                    <label>FSU - Claims</label>
+                </value>
+                <value>
+                    <fullName>FSU - CMS</fullName>
+                    <default>false</default>
+                    <label>FSU - CMS</label>
+                </value>
+                <value>
+                    <fullName>FSU - Eligibility</fullName>
+                    <default>false</default>
+                    <label>FSU - Eligibility</label>
+                </value>
+                <value>
+                    <fullName>FSU - Membership Specialist</fullName>
+                    <default>false</default>
+                    <label>FSU - Membership Specialist</label>
+                </value>
+                <value>
+                    <fullName>Group Benefit Specialist</fullName>
+                    <default>false</default>
+                    <label>Group Benefit Specialist</label>
+                </value>
+                <value>
+                    <fullName>Group Fulfillment Center</fullName>
+                    <default>false</default>
+                    <label>Group Fulfillment Center</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Management - Clinical Consultants</fullName>
+                    <default>false</default>
+                    <label>Healthcare Management - Clinical Consultants</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Management - Clinical Management</fullName>
+                    <default>false</default>
+                    <label>Healthcare Management - Clinical Management</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Management - Medical Director</fullName>
+                    <default>false</default>
+                    <label>Healthcare Management - Medical Director</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Management - Other</fullName>
+                    <default>false</default>
+                    <label>Healthcare Management - Other</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Management - Pre-Authorization</fullName>
+                    <default>false</default>
+                    <label>Healthcare Management - Pre-Authorization</label>
+                </value>
+                <value>
+                    <fullName>Help Desk</fullName>
+                    <default>false</default>
+                    <label>Help Desk</label>
+                </value>
+                <value>
+                    <fullName>Incentive Admin</fullName>
+                    <default>false</default>
+                    <label>Incentive Admin</label>
+                </value>
+                <value>
+                    <fullName>Installation Teams</fullName>
+                    <default>false</default>
+                    <label>Installation Teams</label>
+                </value>
+                <value>
+                    <fullName>Internal Audit</fullName>
+                    <default>false</default>
+                    <label>Internal Audit</label>
+                </value>
+                <value>
+                    <fullName>Legal</fullName>
+                    <default>false</default>
+                    <label>Legal</label>
+                </value>
+                <value>
+                    <fullName>Marketing Communications</fullName>
+                    <default>false</default>
+                    <label>Marketing Communications</label>
+                </value>
+                <value>
+                    <fullName>Networks Management</fullName>
+                    <default>false</default>
+                    <label>Networks Management</label>
+                </value>
+                <value>
+                    <fullName>Operations Support Services</fullName>
+                    <default>false</default>
+                    <label>Operations Support Services</label>
+                </value>
+                <value>
+                    <fullName>Performance Guarantees</fullName>
+                    <default>false</default>
+                    <label>Performance Guarantees</label>
+                </value>
+                <value>
+                    <fullName>Policy Fulfillment</fullName>
+                    <default>false</default>
+                    <label>Policy Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>Prime</fullName>
+                    <default>false</default>
+                    <label>Prime</label>
+                </value>
+                <value>
+                    <fullName>Privacy Office</fullName>
+                    <default>false</default>
+                    <label>Privacy Office</label>
+                </value>
+                <value>
+                    <fullName>Producer Service Center</fullName>
+                    <default>false</default>
+                    <label>Producer Service Center</label>
+                </value>
+                <value>
+                    <fullName>Product Development</fullName>
+                    <default>false</default>
+                    <label>Product Development</label>
+                </value>
+                <value>
+                    <fullName>Proposal Team</fullName>
+                    <default>false</default>
+                    <label>Proposal Team</label>
+                </value>
+                <value>
+                    <fullName>Provider Management</fullName>
+                    <default>false</default>
+                    <label>Provider Management</label>
+                </value>
+                <value>
+                    <fullName>SBC Team</fullName>
+                    <default>false</default>
+                    <label>SBC Team</label>
+                </value>
+                <value>
+                    <fullName>Strategic Business Relations</fullName>
+                    <default>false</default>
+                    <label>Strategic Business Relations</label>
+                </value>
+                <value>
+                    <fullName>Subrogation</fullName>
+                    <default>false</default>
+                    <label>Subrogation</label>
+                </value>
+                <value>
+                    <fullName>Treasury Operations</fullName>
+                    <default>false</default>
+                    <label>Treasury Operations</label>
+                </value>
+                <value>
+                    <fullName>Underwriting</fullName>
+                    <default>false</default>
+                    <label>Underwriting</label>
+                </value>
+                <value>
+                    <fullName>Urgent Communications</fullName>
+                    <default>false</default>
+                    <label>Urgent Communications</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Account Executive</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Accounts Receivable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Account Support Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Actuarial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Blue Directions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>CAS Reporting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>CBSR Team</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>CDHP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Client Analytic Consultants</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>COBRA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Coding</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Contract Administration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Contracting - ASO Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Contracting - Benefit Booklets</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Contract Processing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Dental</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>ECE Enterprise Client Extracts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Enrollment Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Enterprise Eligibility Team</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Enterprise Pharmacy Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Financial Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Fraud and Abuse</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>FSU - Benefit Specialist</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>FSU - Claims</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>FSU - CMS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>FSU - Eligibility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>FSU - Membership Specialist</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Group Benefit Specialist</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Group Fulfillment Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Healthcare Management - Clinical Consultants</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Healthcare Management - Clinical Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Healthcare Management - Medical Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Healthcare Management - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Healthcare Management - Pre-Authorization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Help Desk</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Incentive Admin</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Installation Teams</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Internal Audit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Legal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Marketing Communications</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Networks Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Operations Support Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Performance Guarantees</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Policy Fulfillment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Prime</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Privacy Office</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Producer Service Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Product Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Proposal Team</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Provider Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>SBC Team</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Strategic Business Relations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Subrogation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Treasury Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Underwriting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pending - Partner</controllingFieldValue>
+                <valueName>Urgent Communications</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Audits</fullName>
+                    <default>false</default>
+                    <label>Audits</label>
+                </value>
+                <value>
+                    <fullName>Benefits</fullName>
+                    <default>false</default>
+                    <label>Benefits</label>
+                </value>
+                <value>
+                    <fullName>Billing Explained</fullName>
+                    <default>false</default>
+                    <label>Billing Explained</label>
+                </value>
+                <value>
+                    <fullName>Case Management and Wellness</fullName>
+                    <default>false</default>
+                    <label>Case Management and Wellness</label>
+                </value>
+                <value>
+                    <fullName>Claims</fullName>
+                    <default>false</default>
+                    <label>Claims</label>
+                </value>
+                <value>
+                    <fullName>CMS Demand Letters</fullName>
+                    <default>false</default>
+                    <label>CMS Demand Letters</label>
+                </value>
+                <value>
+                    <fullName>Contract Administration</fullName>
+                    <default>false</default>
+                    <label>Contract Administration</label>
+                </value>
+                <value>
+                    <fullName>General Inquiry</fullName>
+                    <default>false</default>
+                    <label>General Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Group Exception</fullName>
+                    <default>false</default>
+                    <label>Group Exception</label>
+                </value>
+                <value>
+                    <fullName>Membership</fullName>
+                    <default>false</default>
+                    <label>Membership</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Real Time Benefits</fullName>
+                    <default>false</default>
+                    <label>Real Time Benefits</label>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                    <label>Reporting</label>
+                </value>
+                <value>
+                    <fullName>Rx</fullName>
+                    <default>false</default>
+                    <label>Rx</label>
+                </value>
+                <value>
+                    <fullName>Service Center</fullName>
+                    <default>false</default>
+                    <label>Service Center</label>
+                </value>
+                <value>
+                    <fullName>Subrogation</fullName>
+                    <default>false</default>
+                    <label>Subrogation</label>
+                </value>
+                <value>
+                    <fullName>Vendor Type</fullName>
+                    <default>false</default>
+                    <label>Vendor Type</label>
+                </value>
+                <value>
+                    <fullName>Care Management and Wellness</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Care Management and Wellness</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Complexity__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Level 1 = &lt;24 hrs, Level 2 = 24-72 hrs, Level 3 = 72+ hrs</inlineHelpText>
+        <label>Complexity</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Level 1</fullName>
+                    <default>true</default>
+                    <label>Level 1</label>
+                </value>
+                <value>
+                    <fullName>Level 2</fullName>
+                    <default>false</default>
+                    <label>Level 2</label>
+                </value>
+                <value>
+                    <fullName>Level 3</fullName>
+                    <default>false</default>
+                    <label>Level 3</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contact_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Phone</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Marketing Rep</fullName>
+                    <default>false</default>
+                    <label>Marketing Rep</label>
+                </value>
+                <value>
+                    <fullName>Broker</fullName>
+                    <default>false</default>
+                    <label>Broker</label>
+                </value>
+                <value>
+                    <fullName>Group Contact</fullName>
+                    <default>false</default>
+                    <label>Group Contact</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Activities</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Feedback__c</fullName>
+        <description>Text field to enter Voice of Customer feedback</description>
+        <externalId>false</externalId>
+        <label>Customer Feedback</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>DB_Activity_Type__c</fullName>
+        <description>This is a field that is installed by and used with the Adoption Dashboard AppExchange package.  If your org already has a similar field, you can change the reports that are part of the Adoption Dashboard package to use your custom field and then delete this field.</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS( Subject , &quot;Email&quot;), &quot;Email&quot;, IF(CONTAINS( Subject , &quot;Cold Call&quot;), &quot;Cold Call&quot;, IF(CONTAINS( Subject , &quot;Call&quot;), &quot;Call&quot;, IF(CONTAINS( Subject , &quot;Meeting&quot;), &quot;Meeting&quot;, IF(CONTAINS( Subject , &quot;On Site Visit&quot;), &quot;Site Visit&quot;, IF(CONTAINS( Subject , &quot;Quote&quot;), &quot;Send Letter/Quote&quot;, &quot;Other&quot;))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DB Activity Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_Open__c</fullName>
+        <description>Number of days from creation date to close date for the task.</description>
+        <externalId>false</externalId>
+        <formula>CASE(RecordType.DeveloperName, 
+&quot;CSS_Task_Record_Type&quot;, 
+IF(((TODAY() - Task_Created_Date__c) = 0),1,Task_Closed_Date__c - Task_Created_Date__c), 
+VALUE(IF(ISBLANK(Task_Closed_Date__c), TEXT(TODAY() - DATEVALUE(CreatedDate)),
+TEXT(Task_Closed_Date__c - DATEVALUE(CreatedDate)))))</formula>
+        <label>Days Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Resolution</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Direct_Indirect_Manager_of_Owner__c</fullName>
+        <description>This field is to check if the manager or indirect manager of an Activity record owner is the logged in user.</description>
+        <externalId>false</externalId>
+        <formula>OR( $User.Id =  Owner:User.ManagerId  , $User.Id =  Owner:User.Manager.ManagerId  , $User.Id = Owner:User.Manager.Manager.ManagerId, $User.Id = Owner:User.Manager.Manager.Manager.ManagerId )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner on My Team?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disposition_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Disposition Description</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Disposition__c</fullName>
+        <externalId>false</externalId>
+        <label>Disposition</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No Interest, reason not given</fullName>
+                    <default>false</default>
+                    <label>No Interest, reason not given</label>
+                </value>
+                <value>
+                    <fullName>No Interest, reason given</fullName>
+                    <default>false</default>
+                    <label>No Interest, reason given</label>
+                </value>
+                <value>
+                    <fullName>Interested – Schedule Next Meeting</fullName>
+                    <default>false</default>
+                    <label>Interested – Schedule Next Meeting</label>
+                </value>
+                <value>
+                    <fullName>Future Follow-Up</fullName>
+                    <default>false</default>
+                    <label>Future Follow-Up</label>
+                </value>
+                <value>
+                    <fullName>Meeting Scheduled</fullName>
+                    <default>false</default>
+                    <label>Meeting Scheduled</label>
+                </value>
+                <value>
+                    <fullName>Waiting on Additional Information</fullName>
+                    <default>false</default>
+                    <label>Waiting on Additional Information</label>
+                </value>
+                <value>
+                    <fullName>Completed – Implementation Ready</fullName>
+                    <default>false</default>
+                    <label>Completed – Implementation Ready</label>
+                </value>
+                <value>
+                    <fullName>Waiting on Completed Paperwork</fullName>
+                    <default>false</default>
+                    <label>Waiting on Completed Paperwork</label>
+                </value>
+                <value>
+                    <fullName>Paperwork Submitted</fullName>
+                    <default>false</default>
+                    <label>Paperwork Submitted</label>
+                </value>
+                <value>
+                    <fullName>OE Started</fullName>
+                    <default>false</default>
+                    <label>OE Started</label>
+                </value>
+                <value>
+                    <fullName>OE Closed</fullName>
+                    <default>false</default>
+                    <label>OE Closed</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>75 day Renewal Reminder Sent</fullName>
+                    <default>false</default>
+                    <label>75 day Renewal Reminder Sent</label>
+                </value>
+                <value>
+                    <fullName>60 day Renewal Reminder Sent</fullName>
+                    <default>false</default>
+                    <label>60 day Renewal Reminder Sent</label>
+                </value>
+                <value>
+                    <fullName>Renewal Meeting Scheduled</fullName>
+                    <default>false</default>
+                    <label>Renewal Meeting Scheduled</label>
+                </value>
+                <value>
+                    <fullName>No Longer Interested</fullName>
+                    <default>false</default>
+                    <label>No Longer Interested</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Escalated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Escalated</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>External ID of the record from Source System</description>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Follow_Up_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>GEMS_Account_Submission_Info__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>GEMS_Account_Submission_Info__r.Account.External_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Submission_Info__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Submission Info</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Activities</relationshipLabel>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Submission_Owner_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Submission Owner Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Case_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Effective Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Opportunity__c</fullName>
+        <externalId>false</externalId>
+        <formula>GEMS_Account_Submission_Info__r.Opportunity_Name__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Pharmacy_Scope_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( &apos;/&apos;+WhatId, &apos;View Pharmacy Scope Code&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pharmacy Scope Code</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>RecordTypeId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>GEMS Record Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Related_To_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Owner:User.FirstName) &amp;&amp; ISBLANK(Owner:User.LastName)),Owner:User.FirstName +&apos; &apos;+ Owner:User.LastName,&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Related To Owner</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Return_Reasons__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Reasons</label>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASO Billing Issue (case sent to Accnt. Specialist)</fullName>
+                    <default>false</default>
+                    <label>ASO Billing Issue (case sent to Accnt. Specialist)</label>
+                </value>
+                <value>
+                    <fullName>BlueSTAR Issue(case sent to Accnt. Specialist)</fullName>
+                    <default>false</default>
+                    <label>BlueSTAR Issue(case sent to Accnt. Specialist)</label>
+                </value>
+                <value>
+                    <fullName>Missing doc</fullName>
+                    <default>false</default>
+                    <label>Missing doc</label>
+                </value>
+                <value>
+                    <fullName>Incomplete doc</fullName>
+                    <default>false</default>
+                    <label>Incomplete doc</label>
+                </value>
+                <value>
+                    <fullName>Ambiguous/Clarification Required</fullName>
+                    <default>false</default>
+                    <label>Ambiguous/Clarification Required</label>
+                </value>
+                <value>
+                    <fullName>Benefit cannot be supported</fullName>
+                    <default>false</default>
+                    <label>Benefit cannot be supported</label>
+                </value>
+                <value>
+                    <fullName>Benefit discrepancy</fullName>
+                    <default>false</default>
+                    <label>Benefit discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Rate discrepancy</fullName>
+                    <default>false</default>
+                    <label>Rate discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Enrollment discrepancy</fullName>
+                    <default>false</default>
+                    <label>Enrollment discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Benefit not compliant</fullName>
+                    <default>false</default>
+                    <label>Benefit not compliant</label>
+                </value>
+                <value>
+                    <fullName>CBSR required</fullName>
+                    <default>false</default>
+                    <label>CBSR required</label>
+                </value>
+                <value>
+                    <fullName>Benefit not filed / approved by DOL</fullName>
+                    <default>false</default>
+                    <label>Benefit not filed / approved by DOL</label>
+                </value>
+                <value>
+                    <fullName>Inaccurate or Missing Commission Agreement</fullName>
+                    <default>false</default>
+                    <label>Inaccurate or Missing Commission Agreement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>GEMS_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Submission_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Submission Sub Type</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Submission_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Submission Type</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pharmacy Scope Code Owner</fullName>
+                    <default>false</default>
+                    <label>Pharmacy Scope Code Owner</label>
+                </value>
+                <value>
+                    <fullName>Pharmacy Scope Code Account Specialist</fullName>
+                    <default>false</default>
+                    <label>Pharmacy Scope Code Account Specialist</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GEMS_UnderWriting_N_A__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GEMS_UnderWriting_N/A</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_UnderWriting_No__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GEMS UnderWriting No</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_UnderWriting_Yes_No__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GEMS_UnderWriting_Yes/No</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HCM_Prep_Time__c</fullName>
+        <description>Time spent preparing for the meeting in hours</description>
+        <externalId>false</externalId>
+        <label>HCM Prep Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HCM_Services_Sold__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Were any Health Care Management programs sold during or as a result of this meeting?</description>
+        <externalId>false</externalId>
+        <label>HCM Services Sold?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Impact__c</fullName>
+        <externalId>false</externalId>
+        <label>Impact</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Member</fullName>
+                    <default>false</default>
+                    <label>Member</label>
+                </value>
+                <value>
+                    <fullName>Group</fullName>
+                    <default>false</default>
+                    <label>Group</label>
+                </value>
+                <value>
+                    <fullName>Global</fullName>
+                    <default>false</default>
+                    <label>Global</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Internal_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Internal Only</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LIU_equals_the_Manager_of_AccountOwner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Id = Account.Owner.ManagerId,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU equals the Manager of AccountOwner</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LIU_equals_the_Manager_of_AssignedTo__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Id = Owner:User.ManagerId ,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU equals the Manager of AssignedTo</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LIU_is_Manager_of_AccountOwner_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Id = Account.Owner.Manager.Manager_of_the_User_s_Manager__c,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU is Manager of AccountOwner Manager</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LIU_is_Manager_of_AssignedTo_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Id = Owner:User.Manager.Manager_of_the_User_s_Manager__c,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU is Manager of AssignedTo Manager</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Assigned_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Last Assigned Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Activities</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loggedin_User_equals_AccountOwner_User__c</fullName>
+        <description>REPORTING ONLY FIELD. This field checks o see if the Logged in User is the same User ID of the Account Owner of the Account related to an activity.</description>
+        <externalId>false</externalId>
+        <formula>IF($User.Id = Account.OwnerId,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU equals AccountOwner User?</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loggedin_User_equals_AssignedTo_User__c</fullName>
+        <description>REPORTING ONLY FIELD. This field checks o see if the Logged in User is the same User ID of the User Assigned To the activity</description>
+        <externalId>false</externalId>
+        <formula>IF($User.Id =  Owner:User.Id ,&quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LIU equals AssignedTo User?</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Migration_Source__c</fullName>
+        <description>This will be used during migrations to identify the source</description>
+        <externalId>false</externalId>
+        <label>Migration Source</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Migration_additional_information__c</fullName>
+        <externalId>false</externalId>
+        <label>Migration additional information</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Num_of_Client_Visits__c</fullName>
+        <description>REPORTING ONLY FIELD. This field will be populated with a 1 if the activity type is signifies a client visit.</description>
+        <externalId>false</externalId>
+        <formula>IF(OR(Activity_Type__c = &quot;Social&quot;,Activity_Type__c=&quot;In Person Meeting&quot;,Activity_Type__c=&quot;In Person Visit&quot;),1,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label># of Client Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Sub Category</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Name__c</fullName>
+        <description>Owner Full Name</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.FirstName  + &apos; &apos;+ Owner:User.LastName</formula>
+        <inlineHelpText>Owner Full Name</inlineHelpText>
+        <label>Owner Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_of_Record__c</fullName>
+        <description>This field will be used to capture if the current logged in user is the owner of the Activity record.</description>
+        <externalId>false</externalId>
+        <formula>$User.Id =  Owner:User.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner of Record?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Owner_s_Manager_Name__c</fullName>
+        <description>This field will be used to capture the name of the Activity record owner&apos;s managers name</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.Manager.FirstName  + &quot; &quot; +  Owner:User.Manager.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner&apos;s Manager Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Paper_Work_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Paper Work Due Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Paper_Work_Received__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Paper Work Received</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Private_Exchange_Discussed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Whether Private Exchanges were discussed in a meeting</description>
+        <externalId>false</externalId>
+        <label>Private Exchange Discussed?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Profile_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>$Profile.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Profile Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_Time__c</fullName>
+        <externalId>false</externalId>
+        <formula>Closed_Date__c -  CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Response Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Role</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Broker/Agent</fullName>
+                    <default>false</default>
+                    <label>Broker/Agent</label>
+                </value>
+                <value>
+                    <fullName>Group Admin</fullName>
+                    <default>false</default>
+                    <label>Group Admin</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Source__c</fullName>
+        <externalId>false</externalId>
+        <label>Source</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Webinar Attendance</fullName>
+                    <default>false</default>
+                    <label>Webinar Attendance</label>
+                </value>
+                <value>
+                    <fullName>Research</fullName>
+                    <default>false</default>
+                    <label>Research</label>
+                </value>
+                <value>
+                    <fullName>Inbound Outreach</fullName>
+                    <default>false</default>
+                    <label>Inbound Outreach</label>
+                </value>
+                <value>
+                    <fullName>Outbound Outreach</fullName>
+                    <default>false</default>
+                    <label>Outbound Outreach</label>
+                </value>
+                <value>
+                    <fullName>AE</fullName>
+                    <default>false</default>
+                    <label>AE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>90-day email</fullName>
+                    <default>false</default>
+                    <label>90-day email</label>
+                </value>
+                <value>
+                    <fullName>60-day email</fullName>
+                    <default>false</default>
+                    <label>60-day email</label>
+                </value>
+                <value>
+                    <fullName>Paperwork initiated</fullName>
+                    <default>false</default>
+                    <label>Paperwork initiated</label>
+                </value>
+                <value>
+                    <fullName>Paperwork submitted</fullName>
+                    <default>false</default>
+                    <label>Paperwork submitted</label>
+                </value>
+                <value>
+                    <fullName>Open Enrollment</fullName>
+                    <default>false</default>
+                    <label>Open Enrollment</label>
+                </value>
+                <value>
+                    <fullName>Complete</fullName>
+                    <default>false</default>
+                    <label>Complete</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Category__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>3rd Party Disease Management</fullName>
+                    <default>false</default>
+                    <label>3rd Party Disease Management</label>
+                </value>
+                <value>
+                    <fullName>ABS/Matrix Updates</fullName>
+                    <default>false</default>
+                    <label>ABS/Matrix Updates</label>
+                </value>
+                <value>
+                    <fullName>ACA</fullName>
+                    <default>false</default>
+                    <label>ACA</label>
+                </value>
+                <value>
+                    <fullName>Accums Inquiry</fullName>
+                    <default>false</default>
+                    <label>Accums Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Additional Information Request</fullName>
+                    <default>false</default>
+                    <label>Additional Information Request</label>
+                </value>
+                <value>
+                    <fullName>Add Member</fullName>
+                    <default>false</default>
+                    <label>Add Member</label>
+                </value>
+                <value>
+                    <fullName>Adjustment Request</fullName>
+                    <default>false</default>
+                    <label>Adjustment Request</label>
+                </value>
+                <value>
+                    <fullName>Advocacy</fullName>
+                    <default>false</default>
+                    <label>Advocacy</label>
+                </value>
+                <value>
+                    <fullName>Alt Net Related Issue</fullName>
+                    <default>false</default>
+                    <label>Alt Net Related Issue</label>
+                </value>
+                <value>
+                    <fullName>Appeal</fullName>
+                    <default>false</default>
+                    <label>Appeal</label>
+                </value>
+                <value>
+                    <fullName>Audit</fullName>
+                    <default>false</default>
+                    <label>Audit</label>
+                </value>
+                <value>
+                    <fullName>BAE Portal</fullName>
+                    <default>false</default>
+                    <label>BAE Portal</label>
+                </value>
+                <value>
+                    <fullName>BAM PortaL</fullName>
+                    <default>false</default>
+                    <label>BAM PortaL</label>
+                </value>
+                <value>
+                    <fullName>Benefit Booklet</fullName>
+                    <default>false</default>
+                    <label>Benefit Booklet</label>
+                </value>
+                <value>
+                    <fullName>Benefit Inquiry</fullName>
+                    <default>false</default>
+                    <label>Benefit Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Benefit Interpretation</fullName>
+                    <default>false</default>
+                    <label>Benefit Interpretation</label>
+                </value>
+                <value>
+                    <fullName>Benefit Overview/Clarification</fullName>
+                    <default>false</default>
+                    <label>Benefit Overview/Clarification</label>
+                </value>
+                <value>
+                    <fullName>Benefits Exception</fullName>
+                    <default>false</default>
+                    <label>Benefits Exception</label>
+                </value>
+                <value>
+                    <fullName>Benefit Value Advisor</fullName>
+                    <default>false</default>
+                    <label>Benefit Value Advisor</label>
+                </value>
+                <value>
+                    <fullName>Blue Care Connection/Blue Elite</fullName>
+                    <default>false</default>
+                    <label>Blue Care Connection/Blue Elite</label>
+                </value>
+                <value>
+                    <fullName>Call Routing</fullName>
+                    <default>false</default>
+                    <label>Call Routing</label>
+                </value>
+                <value>
+                    <fullName>Cancel Member</fullName>
+                    <default>false</default>
+                    <label>Cancel Member</label>
+                </value>
+                <value>
+                    <fullName>Case Management</fullName>
+                    <default>false</default>
+                    <label>Case Management</label>
+                </value>
+                <value>
+                    <fullName>Claim Denial</fullName>
+                    <default>false</default>
+                    <label>Claim Denial</label>
+                </value>
+                <value>
+                    <fullName>Claim Detail/Status Request</fullName>
+                    <default>false</default>
+                    <label>Claim Detail/Status Request</label>
+                </value>
+                <value>
+                    <fullName>Claim Detail Request</fullName>
+                    <default>false</default>
+                    <label>Claim Detail Request</label>
+                </value>
+                <value>
+                    <fullName>Claim Exception</fullName>
+                    <default>false</default>
+                    <label>Claim Exception</label>
+                </value>
+                <value>
+                    <fullName>Claim Impact Reports</fullName>
+                    <default>false</default>
+                    <label>Claim Impact Reports</label>
+                </value>
+                <value>
+                    <fullName>Claim in Process</fullName>
+                    <default>false</default>
+                    <label>Claim in Process</label>
+                </value>
+                <value>
+                    <fullName>Claim Not on File</fullName>
+                    <default>false</default>
+                    <label>Claim Not on File</label>
+                </value>
+                <value>
+                    <fullName>Claim Paid Incorrectly</fullName>
+                    <default>false</default>
+                    <label>Claim Paid Incorrectly</label>
+                </value>
+                <value>
+                    <fullName>Claim Submitted for Processing</fullName>
+                    <default>false</default>
+                    <label>Claim Submitted for Processing</label>
+                </value>
+                <value>
+                    <fullName>COBRA</fullName>
+                    <default>false</default>
+                    <label>COBRA</label>
+                </value>
+                <value>
+                    <fullName>COB Updates</fullName>
+                    <default>false</default>
+                    <label>COB Updates</label>
+                </value>
+                <value>
+                    <fullName>Coding Discrepancy</fullName>
+                    <default>false</default>
+                    <label>Coding Discrepancy</label>
+                </value>
+                <value>
+                    <fullName>Condition Management</fullName>
+                    <default>false</default>
+                    <label>Condition Management</label>
+                </value>
+                <value>
+                    <fullName>Covered Rx</fullName>
+                    <default>false</default>
+                    <label>Covered Rx</label>
+                </value>
+                <value>
+                    <fullName>Deductible Credit</fullName>
+                    <default>false</default>
+                    <label>Deductible Credit</label>
+                </value>
+                <value>
+                    <fullName>Denied Rx</fullName>
+                    <default>false</default>
+                    <label>Denied Rx</label>
+                </value>
+                <value>
+                    <fullName>Dental</fullName>
+                    <default>false</default>
+                    <label>Dental</label>
+                </value>
+                <value>
+                    <fullName>Eligibility Verification</fullName>
+                    <default>false</default>
+                    <label>Eligibility Verification</label>
+                </value>
+                <value>
+                    <fullName>EOB Copy</fullName>
+                    <default>false</default>
+                    <label>EOB Copy</label>
+                </value>
+                <value>
+                    <fullName>Files Transfers</fullName>
+                    <default>false</default>
+                    <label>Files Transfers</label>
+                </value>
+                <value>
+                    <fullName>Follow-Up</fullName>
+                    <default>false</default>
+                    <label>Follow-Up</label>
+                </value>
+                <value>
+                    <fullName>Fraud</fullName>
+                    <default>false</default>
+                    <label>Fraud</label>
+                </value>
+                <value>
+                    <fullName>FSA Vendors</fullName>
+                    <default>false</default>
+                    <label>FSA Vendors</label>
+                </value>
+                <value>
+                    <fullName>Group</fullName>
+                    <default>false</default>
+                    <label>Group</label>
+                </value>
+                <value>
+                    <fullName>Group Benefit Specialist</fullName>
+                    <default>false</default>
+                    <label>Group Benefit Specialist</label>
+                </value>
+                <value>
+                    <fullName>H.S.A. Custodians</fullName>
+                    <default>false</default>
+                    <label>H.S.A. Custodians</label>
+                </value>
+                <value>
+                    <fullName>High Cost Claimants</fullName>
+                    <default>false</default>
+                    <label>High Cost Claimants</label>
+                </value>
+                <value>
+                    <fullName>High Dollar Notification Issues</fullName>
+                    <default>false</default>
+                    <label>High Dollar Notification Issues</label>
+                </value>
+                <value>
+                    <fullName>HIPAA Authorization</fullName>
+                    <default>false</default>
+                    <label>HIPAA Authorization</label>
+                </value>
+                <value>
+                    <fullName>ID Cards</fullName>
+                    <default>false</default>
+                    <label>ID Cards</label>
+                </value>
+                <value>
+                    <fullName>Incentive Issue/Inquiry</fullName>
+                    <default>false</default>
+                    <label>Incentive Issue/Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Incentives</fullName>
+                    <default>false</default>
+                    <label>Incentives</label>
+                </value>
+                <value>
+                    <fullName>Individual Claimant</fullName>
+                    <default>false</default>
+                    <label>Individual Claimant</label>
+                </value>
+                <value>
+                    <fullName>Information Correction</fullName>
+                    <default>false</default>
+                    <label>Information Correction</label>
+                </value>
+                <value>
+                    <fullName>Inquiry</fullName>
+                    <default>false</default>
+                    <label>Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Integration/Shared Accums</fullName>
+                    <default>false</default>
+                    <label>Integration/Shared Accums</label>
+                </value>
+                <value>
+                    <fullName>International Claims</fullName>
+                    <default>false</default>
+                    <label>International Claims</label>
+                </value>
+                <value>
+                    <fullName>Lifestyle Management</fullName>
+                    <default>false</default>
+                    <label>Lifestyle Management</label>
+                </value>
+                <value>
+                    <fullName>Manual Claim Processing</fullName>
+                    <default>false</default>
+                    <label>Manual Claim Processing</label>
+                </value>
+                <value>
+                    <fullName>Medicare</fullName>
+                    <default>false</default>
+                    <label>Medicare</label>
+                </value>
+                <value>
+                    <fullName>Membership/Census</fullName>
+                    <default>false</default>
+                    <label>Membership/Census</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Performance Guarantees/Requests</fullName>
+                    <default>false</default>
+                    <label>Performance Guarantees/Requests</label>
+                </value>
+                <value>
+                    <fullName>Pharmacy Vendors</fullName>
+                    <default>false</default>
+                    <label>Pharmacy Vendors</label>
+                </value>
+                <value>
+                    <fullName>Precertification</fullName>
+                    <default>false</default>
+                    <label>Precertification</label>
+                </value>
+                <value>
+                    <fullName>Predetermination</fullName>
+                    <default>false</default>
+                    <label>Predetermination</label>
+                </value>
+                <value>
+                    <fullName>Pre-Determination</fullName>
+                    <default>false</default>
+                    <label>Pre-Determination</label>
+                </value>
+                <value>
+                    <fullName>Preventive List</fullName>
+                    <default>false</default>
+                    <label>Preventive List</label>
+                </value>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                    <label>Pricing</label>
+                </value>
+                <value>
+                    <fullName>Prime Eligibility</fullName>
+                    <default>false</default>
+                    <label>Prime Eligibility</label>
+                </value>
+                <value>
+                    <fullName>Prior Authorization</fullName>
+                    <default>false</default>
+                    <label>Prior Authorization</label>
+                </value>
+                <value>
+                    <fullName>Prior Carrier Credit</fullName>
+                    <default>false</default>
+                    <label>Prior Carrier Credit</label>
+                </value>
+                <value>
+                    <fullName>Provider Network Status</fullName>
+                    <default>false</default>
+                    <label>Provider Network Status</label>
+                </value>
+                <value>
+                    <fullName>Reference Base Pricing Issue</fullName>
+                    <default>false</default>
+                    <label>Reference Base Pricing Issue</label>
+                </value>
+                <value>
+                    <fullName>Reimbursement Issue (BCBS)</fullName>
+                    <default>false</default>
+                    <label>Reimbursement Issue (BCBS)</label>
+                </value>
+                <value>
+                    <fullName>Reinstate Member</fullName>
+                    <default>false</default>
+                    <label>Reinstate Member</label>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                    <label>Reporting</label>
+                </value>
+                <value>
+                    <fullName>Reverse Eligibility</fullName>
+                    <default>false</default>
+                    <label>Reverse Eligibility</label>
+                </value>
+                <value>
+                    <fullName>RTB/Coord Notes</fullName>
+                    <default>false</default>
+                    <label>RTB/Coord Notes</label>
+                </value>
+                <value>
+                    <fullName>RTB Updates</fullName>
+                    <default>false</default>
+                    <label>RTB Updates</label>
+                </value>
+                <value>
+                    <fullName>RTB Verification</fullName>
+                    <default>false</default>
+                    <label>RTB Verification</label>
+                </value>
+                <value>
+                    <fullName>Step Therapy</fullName>
+                    <default>false</default>
+                    <label>Step Therapy</label>
+                </value>
+                <value>
+                    <fullName>Stop Los</fullName>
+                    <default>false</default>
+                    <label>Stop Los</label>
+                </value>
+                <value>
+                    <fullName>Summary of Benefits &amp; Coverage</fullName>
+                    <default>false</default>
+                    <label>Summary of Benefits &amp; Coverage</label>
+                </value>
+                <value>
+                    <fullName>Tiering Related Issue</fullName>
+                    <default>false</default>
+                    <label>Tiering Related Issue</label>
+                </value>
+                <value>
+                    <fullName>Transcription/Listen to Call</fullName>
+                    <default>false</default>
+                    <label>Transcription/Listen to Call</label>
+                </value>
+                <value>
+                    <fullName>Transition of Care</fullName>
+                    <default>false</default>
+                    <label>Transition of Care</label>
+                </value>
+                <value>
+                    <fullName>Utilization Management</fullName>
+                    <default>false</default>
+                    <label>Utilization Management</label>
+                </value>
+                <value>
+                    <fullName>VIP Claims Issue</fullName>
+                    <default>false</default>
+                    <label>VIP Claims Issue</label>
+                </value>
+                <value>
+                    <fullName>VIP Lock</fullName>
+                    <default>false</default>
+                    <label>VIP Lock</label>
+                </value>
+                <value>
+                    <fullName>Vision</fullName>
+                    <default>false</default>
+                    <label>Vision</label>
+                </value>
+                <value>
+                    <fullName>Wellness</fullName>
+                    <default>false</default>
+                    <label>Wellness</label>
+                </value>
+                <value>
+                    <fullName>Wellness Portal</fullName>
+                    <default>false</default>
+                    <label>Wellness Portal</label>
+                </value>
+                <value>
+                    <fullName>ASA Issuance</fullName>
+                    <default>false</default>
+                    <label>ASA Issuance</label>
+                </value>
+                <value>
+                    <fullName>Adjustments</fullName>
+                    <default>false</default>
+                    <label>Adjustments</label>
+                </value>
+                <value>
+                    <fullName>Lost invoice</fullName>
+                    <default>false</default>
+                    <label>Lost invoice</label>
+                </value>
+                <value>
+                    <fullName>Settlement</fullName>
+                    <default>false</default>
+                    <label>Settlement</label>
+                </value>
+                <value>
+                    <fullName>Over bill</fullName>
+                    <default>false</default>
+                    <label>Over bill</label>
+                </value>
+                <value>
+                    <fullName>Delinquency</fullName>
+                    <default>false</default>
+                    <label>Delinquency</label>
+                </value>
+                <value>
+                    <fullName>ABS Copy Request</fullName>
+                    <default>false</default>
+                    <label>ABS Copy Request</label>
+                </value>
+                <value>
+                    <fullName>Accum</fullName>
+                    <default>false</default>
+                    <label>Accum</label>
+                </value>
+                <value>
+                    <fullName>Acquisition</fullName>
+                    <default>false</default>
+                    <label>Acquisition</label>
+                </value>
+                <value>
+                    <fullName>Address Request</fullName>
+                    <default>false</default>
+                    <label>Address Request</label>
+                </value>
+                <value>
+                    <fullName>BCBS Secure Site</fullName>
+                    <default>false</default>
+                    <label>BCBS Secure Site</label>
+                </value>
+                <value>
+                    <fullName>Campaign Manager</fullName>
+                    <default>false</default>
+                    <label>Campaign Manager</label>
+                </value>
+                <value>
+                    <fullName>Claim Lock</fullName>
+                    <default>false</default>
+                    <label>Claim Lock</label>
+                </value>
+                <value>
+                    <fullName>COB</fullName>
+                    <default>false</default>
+                    <label>COB</label>
+                </value>
+                <value>
+                    <fullName>COCC</fullName>
+                    <default>false</default>
+                    <label>COCC</label>
+                </value>
+                <value>
+                    <fullName>Customer Service Analytics Report</fullName>
+                    <default>false</default>
+                    <label>Customer Service Analytics Report</label>
+                </value>
+                <value>
+                    <fullName>Customer Service Complaint</fullName>
+                    <default>false</default>
+                    <label>Customer Service Complaint</label>
+                </value>
+                <value>
+                    <fullName>Dependent Transactions</fullName>
+                    <default>false</default>
+                    <label>Dependent Transactions</label>
+                </value>
+                <value>
+                    <fullName>HDN</fullName>
+                    <default>false</default>
+                    <label>HDN</label>
+                </value>
+                <value>
+                    <fullName>Incentive</fullName>
+                    <default>false</default>
+                    <label>Incentive</label>
+                </value>
+                <value>
+                    <fullName>Member Contract Request</fullName>
+                    <default>false</default>
+                    <label>Member Contract Request</label>
+                </value>
+                <value>
+                    <fullName>Open Enrollment Inquiries</fullName>
+                    <default>false</default>
+                    <label>Open Enrollment Inquiries</label>
+                </value>
+                <value>
+                    <fullName>Outbound Call</fullName>
+                    <default>false</default>
+                    <label>Outbound Call</label>
+                </value>
+                <value>
+                    <fullName>Precert/Prior Auth</fullName>
+                    <default>false</default>
+                    <label>Precert/Prior Auth</label>
+                </value>
+                <value>
+                    <fullName>Pre-D</fullName>
+                    <default>false</default>
+                    <label>Pre-D</label>
+                </value>
+                <value>
+                    <fullName>Prescription</fullName>
+                    <default>false</default>
+                    <label>Prescription</label>
+                </value>
+                <value>
+                    <fullName>Production Verification</fullName>
+                    <default>false</default>
+                    <label>Production Verification</label>
+                </value>
+                <value>
+                    <fullName>Provider Finder</fullName>
+                    <default>false</default>
+                    <label>Provider Finder</label>
+                </value>
+                <value>
+                    <fullName>QMCSO</fullName>
+                    <default>false</default>
+                    <label>QMCSO</label>
+                </value>
+                <value>
+                    <fullName>Seasons of Life</fullName>
+                    <default>false</default>
+                    <label>Seasons of Life</label>
+                </value>
+                <value>
+                    <fullName>Social Media</fullName>
+                    <default>false</default>
+                    <label>Social Media</label>
+                </value>
+                <value>
+                    <fullName>Tech Time Questions</fullName>
+                    <default>false</default>
+                    <label>Tech Time Questions</label>
+                </value>
+                <value>
+                    <fullName>Telephone Number Request</fullName>
+                    <default>false</default>
+                    <label>Telephone Number Request</label>
+                </value>
+                <value>
+                    <fullName>Benefit Overview</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Benefit Overview</label>
+                </value>
+                <value>
+                    <fullName>Case Management Inquiry</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Case Management Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Wellness-</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Wellness-</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Benefit Value Advisor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Call Routing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Group Benefit Specialist</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Performance Guarantees/Requests</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Open Enrollment Inquiries</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Outbound Call</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Seasons of Life</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Center</controllingFieldValue>
+                <valueName>Tech Time Questions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subrogation</controllingFieldValue>
+                <valueName>Inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subrogation</controllingFieldValue>
+                <valueName>Reporting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>3rd Party Disease Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>Advocacy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>FSA Vendors</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>H.S.A. Custodians</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>Integration/Shared Accums</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <valueName>Pharmacy Vendors</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vendor Type</controllingFieldValue>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Wellness</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Real Time Benefits</controllingFieldValue>
+                <valueName>RTB/Coord Notes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Real Time Benefits</controllingFieldValue>
+                <valueName>RTB Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Real Time Benefits</controllingFieldValue>
+                <valueName>RTB Verification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Billing Explained</controllingFieldValue>
+                <valueName>Adjustments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Billing Explained</controllingFieldValue>
+                <valueName>Lost invoice</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Billing Explained</controllingFieldValue>
+                <valueName>Settlement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Billing Explained</controllingFieldValue>
+                <valueName>Over bill</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Billing Explained</controllingFieldValue>
+                <valueName>Delinquency</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Contract Administration</controllingFieldValue>
+                <valueName>ASA Issuance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Blue Care Connection/Blue Elite</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Case Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Condition Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Lifestyle Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Transition of Care</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Utilization Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Precert/Prior Auth</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Case Management and Wellness</controllingFieldValue>
+                <valueName>Telephone Number Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Audits</controllingFieldValue>
+                <valueName>Follow-Up</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Audits</controllingFieldValue>
+                <valueName>Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Audits</controllingFieldValue>
+                <valueName>Individual Claimant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>ABS/Matrix Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Benefit Booklet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Benefit Interpretation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Benefit Overview/Clarification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Benefits Exception</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Coding Discrepancy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Summary of Benefits &amp; Coverage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>ABS Copy Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Pre-D</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Benefits</controllingFieldValue>
+                <valueName>Production Verification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Accums Inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Additional Information Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Adjustment Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Alt Net Related Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Audit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Denial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Detail/Status Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Detail Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Exception</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim in Process</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Not on File</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Paid Incorrectly</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Submitted for Processing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Deductible Credit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Dental</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>EOB Copy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Fraud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Incentive Issue/Inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>International Claims</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Manual Claim Processing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Medicare</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Pricing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Prior Carrier Credit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Reference Base Pricing Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Reimbursement Issue (BCBS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Stop Los</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Tiering Related Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>VIP Claims Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>VIP Lock</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Vision</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>Claim Lock</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Claims</controllingFieldValue>
+                <valueName>COB</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CMS Demand Letters</controllingFieldValue>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>ACA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Appeal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>BAE Portal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>BAM PortaL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>COB Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Precertification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Predetermination</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Provider Network Status</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Transcription/Listen to Call</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Wellness Portal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Acquisition</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>BCBS Secure Site</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Campaign Manager</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Customer Service Complaint</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Member Contract Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Prescription</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Provider Finder</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Inquiry</controllingFieldValue>
+                <valueName>Social Media</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Add Member</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Cancel Member</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>COBRA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Eligibility Verification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Files Transfers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>HIPAA Authorization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>ID Cards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Information Correction</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Pre-Determination</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Reinstate Member</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Reverse Eligibility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Address Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>COCC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>Dependent Transactions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Membership</controllingFieldValue>
+                <valueName>QMCSO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Claim Impact Reports</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>High Cost Claimants</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>High Dollar Notification Issues</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Incentives</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Membership/Census</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Accum</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>Customer Service Analytics Report</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reporting</controllingFieldValue>
+                <valueName>HDN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Benefit Inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Covered Rx</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Denied Rx</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Preventive List</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Prime Eligibility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Prior Authorization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rx</controllingFieldValue>
+                <valueName>Step Therapy</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_Task_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Task Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Task_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AE/AM</fullName>
+                    <default>false</default>
+                    <label>AE/AM</label>
+                </value>
+                <value>
+                    <fullName>GET Management</fullName>
+                    <default>false</default>
+                    <label>GET Management</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Claims</fullName>
+                    <default>false</default>
+                    <label>Claims</label>
+                </value>
+                <value>
+                    <fullName>Other Operational Area</fullName>
+                    <default>false</default>
+                    <label>Other Operational Area</label>
+                </value>
+                <value>
+                    <fullName>Client</fullName>
+                    <default>false</default>
+                    <label>Client</label>
+                </value>
+                <value>
+                    <fullName>Broker</fullName>
+                    <default>false</default>
+                    <label>Broker</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Internal</controllingFieldValue>
+                <valueName>AE/AM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internal</controllingFieldValue>
+                <valueName>GET Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internal</controllingFieldValue>
+                <valueName>Customer Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internal</controllingFieldValue>
+                <valueName>Claims</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internal</controllingFieldValue>
+                <valueName>Other Operational Area</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>External</controllingFieldValue>
+                <valueName>Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>External</controllingFieldValue>
+                <valueName>Broker</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Task_Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Closed Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Task_Created_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <externalId>false</externalId>
+        <label>Task Created Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Task_Number__c</fullName>
+        <description>Unique number assigned to each task when generated.</description>
+        <displayFormat>T-{000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Task Number</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Task_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Internal</fullName>
+                    <default>false</default>
+                    <label>Internal</label>
+                </value>
+                <value>
+                    <fullName>External</fullName>
+                    <default>false</default>
+                    <label>External</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Wants_more_information__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Wants more information?</label>
+        <type>Checkbox</type>
+    </fields>
+    <listViews>
+        <fullName>MyActivities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyDelegatedActivities</fullName>
+        <filterScope>Delegated</filterScope>
+        <label>My Delegated Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyTeamsActivities</fullName>
+        <filterScope>Team</filterScope>
+        <label>My Team&apos;s Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Today&apos;s Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>UpcomingEvents</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>greaterThan</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Upcoming Events</label>
+    </listViews>
+    <searchLayouts>
+        <searchResultsAdditionalFields>TASK.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHO_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHAT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.DUE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

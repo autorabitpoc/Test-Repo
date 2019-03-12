@@ -1,0 +1,25 @@
+<aura:component >
+    
+    <aura:attribute name="caseOwner" type="String" default="i am the default" access="public"/>
+    <aura:attribute name="caseStatus" type="String" default="i am the default" access="public"/>
+    <aura:attribute name="caseEffDt" type="String" default="i am the default" access="public"/>
+    <aura:attribute name="caseOpp" type="String" default="i am the default" access="public"/>
+    
+    <aura:attribute name="CaseNumber" type="String" default="i am the default" access="public"/>
+    <aura:attribute name="displayPopup" type="Boolean"/>
+    
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>--> 
+   
+    <aura:if isTrue="{!v.displayPopup}">
+        <lightning:card variant="Narrow" title="{!'Case#:'+v.CaseNumber}" iconName="standard:case">
+            <div class="slds-popover__body">   
+                <div>
+                    <strong><lightning:formattedText value="Case Owner: " /></strong><lightning:formattedText value="{!v.caseOwner}" /><br/>
+                    <strong><lightning:formattedText value="Case Status: " /></strong><lightning:formattedText value="{!v.caseStatus}" /><br/>
+                    <strong><lightning:formattedText value="Case Effective Date: " /></strong><lightning:formattedText value="{!v.caseEffDt}" /><br/>
+                    <strong><lightning:formattedText value="Opportunity: " /></strong><lightning:formattedText value="{!v.caseOpp}" /><br/>
+                </div>  
+            </div>
+        </lightning:card>
+    </aura:if>
+</aura:component>

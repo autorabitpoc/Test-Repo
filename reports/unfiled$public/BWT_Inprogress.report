@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$Id</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$Status</field>
+    </columns>
+    <columns>
+        <field>Case.Activities$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case$Owner</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Is_BlueSTAR_Walkthrough_Needed__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEM_Is_group_loading_eligty_via_LGDE__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_OE_Eligibility_Method__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Maint_Eligibility_Method__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Setup Process</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$IsClosed</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Activities$Subject</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>BlueSTAR Walkthrough</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Activities$CreatedDate</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>8/18/2017 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Activities$Status</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In Progress</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>BWT Inprogress</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Cases_with_Tasks__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Account_Setup_Opened_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

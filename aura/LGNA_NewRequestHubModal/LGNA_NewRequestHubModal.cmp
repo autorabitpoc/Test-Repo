@@ -1,0 +1,186 @@
+<!-- SFDC - 9020 Component -->
+<aura:component access="global" controller="LGNA_NewRequestHubItemController" implements="force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes">
+    <!--use boolean attribute for Store true/false value,
+    make default to "false" so modal box are not display on the load of component-->
+    <!--Declare Attributes-->
+    <aura:attribute name="openModelAMC" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="String" />
+     <aura:attribute name="OpportunityId" type="Opportunity" />
+    <aura:attribute name="caseDetails" type="Case"  default="{ 'sobjectType': 'Case',
+                                                             'GEMS_Submission_Type__c' : ''
+                                                             }"/>
+    <aura:attribute name="accDetails" type="Account"/>
+    
+    <aura:attribute name="oppDetails" type="Opportunity"/>
+    <aura:attribute name="optionsListCAM" type="List" />
+    <aura:attribute name="optionsListAEPFM" type="List" />
+    <aura:attribute name="optionsListRCM" type="List" />
+    <aura:attribute name="optionsListAEM" type="List" />
+    <aura:attribute name="optionsListICM" type="List" />
+    <aura:attribute name="optionsListASM" type="List" />
+    <aura:attribute name="errorsubtype" type="Boolean" default='false' />
+    <aura:attribute name="errorFlag" type="Boolean" default='false'/>
+    <aura:attribute name="errorRCM" type="Boolean" default='false'/>
+    <aura:attribute name="SubmissionTypeList" type="List" default=""/>
+    <aura:attribute name="SubTypeList" type="List" default="[]" description="SubType Picklist Values"/>
+    <aura:attribute name="selectedSubTypeList" type="List" default="[]" description="Selected SubType Picklist Values"/>
+    
+    <aura:attribute name="newcase" type="Case" default="{ 'sobjectType': 'Case',
+                                                        'CaseNumber': '',
+                                                        'Status':'',
+                                                        'Type': '',
+                                                        'Subject': '',
+                                                        'Priority': '',
+                                                        'Reason': '',
+                                                        'Category':''
+                                                        
+                                                        }"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component load to get picklist values"/>
+    
+    <aura:Method name="setModel" action="{!c.openAccMaintModel}">
+        <aura:attribute name="showMaintenanceModel" type="boolean" default="false"/>
+        <aura:attribute name="currentRecord" type="String"/>
+        
+    </aura:Method>
+    <aura:Method name="loadInitialData" action="{!c.doInit}"/>
+    
+    
+    <!--Use "slds-m-around- -xx-large" class to add standard Large padding to the component--> 
+    <div class="slds customBackground">	 
+       
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [openModelAMC boolean attribute] -->   
+      <aura:if isTrue="{!v.openModelAMC}">
+            
+            <!--###### MODAL BOX Start From Here ######--> 
+            <div role="dialog" style="padding-top:120px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                <div class="slds-modal__container" style="width:50%; height:300px max-width:90rem;" >
+                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelpopup}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="header99" class="slds-text-heading--medium">Account Maintanance</h2>
+                    </div>
+                    <!--###### MODAL BOX BODY Part Start From Here ######-->
+                    <div class="slds-modal__content slds-p-around--medium">
+                        
+                       <aura:if isTrue="{!v.errorFlag}">
+                            <div id="errormsg" class="globalError">"Error: Maintenance Type: You must enter a value"</div>
+                        </aura:if> 
+						  <aura:if isTrue="{!v.errorsubtype}">
+                                <div id="errormsgtesst" class="globalError">"Error: Maintenance sub Type: You must enter value"</div>
+                           </aura:if>
+                         <aura:if isTrue="{!v.errorRCM}">
+                                <div id="errorrcm" class="globalError">"Error: You cannot select more than one Submission Sub type "</div>
+                           </aura:if>
+                       <lightning:select required="true" label="Maintenance Type" aura:id="submiss" value="{!v.caseDetails.GEMS_Submission_Type__c}"><sup style="font-size:13px; font-weight: bold;">*</sup>
+                            <ui:inputSelectOption label="--None--" value="--None--"/>	
+                            <aura:iteration items="{!v.SubmissionTypeList}" var="stlist" >                                                
+                                <ui:inputSelectOption text="{!stlist}" label="{!stlist}" value="{!v.caseDetails.GEMS_Submission_Type__c == stlist}"/>                                                   
+                            </aura:iteration>
+                        </lightning:select>
+                        <aura:if aura:id='cam' isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'Cosmetic Account Maintenance'}">                                               
+                            <div class="slds-form-element"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListCAM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                                
+                                <!--<lightning:button variant="brand" label="Get Selected SubType" onclick="{!c.getSelectedSubType}" />-->
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'Account Structure Maintenance'}">                                               
+                            <div class="slds-form-element slds-form-element__legend  slds-text-title_small"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListASM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'Rate Change/Stop Loss Maintenance'}">                                               
+                            <div class="slds-form-element"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListRCM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                                
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'Account Eligibility Maintenance'}">                                               
+                            <div class="slds-form-element"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListAEM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                                
+                            </div>
+                        </aura:if>
+                        
+                        
+                        <aura:if isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'AEP File Maintenance'}">                                               
+                            <div class="slds-form-element"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListAEPFM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                                
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.caseDetails.GEMS_Submission_Type__c == 'ID Card Maintenance'}">                                               
+                            <div class="slds-form-element"> 
+                                <lightning:dualListbox required="true" aura:id="selectSubType"
+                                                       name="SubType"
+                                                       label="Maintenance SubType"
+                                                       sourceLabel="Available"
+                                                       selectedLabel="Chosen"
+                                                       options="{!v.optionsListICM}"
+                                                       value="{!v.selectedSubTypeList}"
+                                                       onchange="{!c.handleSubTypeChange}"/>
+                                
+                            </div>
+                        </aura:if>
+                        
+                        <div class="slds-form-element">
+                            <div>
+                                <label class="slds-form-element__label" for="type">Comments</label></div>
+                            <ui:inputTextArea class="slds-textarea slds-scrollable--y slds-input" labelClass="slds-form-element__label" value="" aura:id="commentid"/>
+                        </div>
+                    </div>
+                    
+                    <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                    <div class="slds-modal__footer">
+                        <lightning:button variant="brand" class="slds-button slds-align_absolute-center" onclick="{!c.continuetosave}" >Continue</lightning:button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+        </aura:if>
+    </div>
+</aura:component>

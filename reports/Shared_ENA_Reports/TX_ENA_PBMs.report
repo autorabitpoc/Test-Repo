@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_$Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Competitor_Account__c</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Rate_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Contract_End_Date__c</field>
+    </columns>
+    <description>TX ENA Accounts (by director) with ESI, Prime, or Caremark designated as 3rd Party Vendor</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Account.Owner_s_Manager_Name__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Cami Martin,Kellie Motsinger,Russ Plum,Carol Riley,Sandy Sadler,Joe Braley,Keith Barnes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Competitor_Relationship__c.Competitor_Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>ESI,Prime,Caremark,Express</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TX ENA PBMs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Competitor_Relationship__c@Competitor_Relationship__c.Group_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Competitor_Relationship__c.Contract_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,15 @@
+<aura:component controller="fetchPicklistOptsController">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:attribute name="objInfo" type="string" default="" />
+    <aura:attribute name="fieldName" type="String" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="labelforField" type="String" />
+    <aura:attribute name = "defaultValue"    type = "String" />
+    <aura:attribute name = "change"    type = "String" />
+    
+    
+      <label class="slds-form-element__label" for="select-01">{!v.labelforField}</label>
+      <div class="slds-select_container">
+         <ui:inputSelect class="single" aura:id="ObjectField"   change="{!c.onPicklistChange}" disabled= "true"/>
+      </div>   
+</aura:component>

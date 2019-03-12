@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Account Trigger check</description>
+        <externalId>false</externalId>
+        <label>Account Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Attachment_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Attachment Trigger check</description>
+        <externalId>false</externalId>
+        <label>Attachment Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Benefit Agreement Trigger check</description>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Case_Component_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Case Component Trigger check</description>
+        <externalId>false</externalId>
+        <label>Case Component Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Case_Ownership_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Case Ownership Trigger check</description>
+        <externalId>false</externalId>
+        <label>Case Ownership Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Case_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Case Trigger check</description>
+        <externalId>false</externalId>
+        <label>Case Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Competitor_Relationship_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Competitor Relationship Trigger check</description>
+        <externalId>false</externalId>
+        <label>Competitor Relationship Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Relationship_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Contact Relationship Trigger check</description>
+        <externalId>false</externalId>
+        <label>Contact Relationship Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Contact Trigger check</description>
+        <externalId>false</externalId>
+        <label>Contact Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Content_Document_Link_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Content Document Link Trigger check</description>
+        <externalId>false</externalId>
+        <label>Content Document Link Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Content_Version_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Content Version Trigger checkbox</description>
+        <externalId>false</externalId>
+        <label>Content Version Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Integration_Status_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Integration Status Trigger check</description>
+        <externalId>false</externalId>
+        <label>Integration Status Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Opportunity Trigger check</description>
+        <externalId>false</externalId>
+        <label>Opportunity Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Secure_Information_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Secure Information Trigger checkbox</description>
+        <externalId>false</externalId>
+        <label>Secure Information Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Task_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Task Trigger check</description>
+        <externalId>false</externalId>
+        <label>Task Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>User_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>User Trigger check</description>
+        <externalId>false</externalId>
+        <label>User Trigger</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Trigger Execution</label>
+    <visibility>Public</visibility>
+</CustomObject>

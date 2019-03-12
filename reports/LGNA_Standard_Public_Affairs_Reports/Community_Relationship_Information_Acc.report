@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Contacts$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Contact_Relationships1__r$Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Contact_Relationships1__r$Relationship_Info__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Contact_Relationships1__r$Dollars_Invested__c</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Contact_Relationships1__r$Related_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_Cluster_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_Executive_2__c</field>
+    </columns>
+    <columns>
+        <field>Account$Sales_Team__c</field>
+    </columns>
+    <columns>
+        <field>Account$Owner_s_Manager_Name__c</field>
+    </columns>
+    <description>This report shows the Community Relationship Information for each account</description>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Account$Owner_of_Record__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Direct_Indirect_Manager_of_Owner__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Community Relationship Information</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Contact_Relationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_97298566</developerName>
+        <masterLabel>Wave LOB</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case$GEMS_Line_of_Business__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ENA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Major National GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal GET</sourceValue>
+            </sourceValues>
+            <value>ENA/Major National</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Major National</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Large/Mid Market</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SCP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Student Health</sourceValue>
+            </sourceValues>
+            <value>Key Markets</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Case$Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_97298566</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case$ClosedDate</field>
+    </columns>
+    <columns>
+        <field>Case$Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Days_Business_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$Sub_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.CaseComments$CommentBody</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Screening</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>Screening Return Case Comments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_with_Case_Comments1__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Account_Setup_Opened_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

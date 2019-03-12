@@ -1,0 +1,3858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ACAP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACAP</shortDescription>
+        <value>ACAP</value>
+    </labels>
+    <labels>
+        <fullName>ASO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ASO</shortDescription>
+        <value>ASO</value>
+    </labels>
+    <labels>
+        <fullName>ASO_Rate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ASO - Rate</shortDescription>
+        <value>ASO - Rate</value>
+    </labels>
+    <labels>
+        <fullName>AccountAccountExecutiveRole</fullName>
+        <categories>account,role</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountAccountExecutiveRole</shortDescription>
+        <value>Account Executive</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationBenefitAgreementPageLabel1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationBenefitAgreementPageLabel1</shortDescription>
+        <value>There are no Benefit Agreement associated to this Account.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationBenefitAgreementPageLabel2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationBenefitAgreementPageLabel2</shortDescription>
+        <value>Selected Benefit Agreement/Group Section</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationBenefitAgreementPageLabel3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationBenefitAgreementPageLabel3</shortDescription>
+        <value>Below Are the list of Group Sections that will also be cancelled based on your group selections</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationCategoryPageLabel1</fullName>
+        <categories>Account Cancellation</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationCategoryPageLabel1</shortDescription>
+        <value>There are no Category record.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError1</shortDescription>
+        <value>Please select at least one record.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError10</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message for cancelling group sections with Active Members</shortDescription>
+        <value>The following Group Sections have Active Health Members and can not be cancelled:</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError11</fullName>
+        <categories>account,cancellation,error,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError11</shortDescription>
+        <value>Retroactively cancelling requires that an Underwriter is assigned to the Account. Please go back, assign an Underwriter to the Account, and try again.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError12</fullName>
+        <categories>account,cancellation,error,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError12</shortDescription>
+        <value>Retroactively cancelling an Account requires that an Underwriter is assigned to the Account. Please go back, assign an Underwriter, and try again.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError13</fullName>
+        <categories>account,cancellation,error,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError13</shortDescription>
+        <value>Retro cancellations for Group Sections, Categories &amp; Billing Profiles will require an Underwriter approval on the Case.  When the Case has been approved then this information will be sent to BlueStar.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError15</fullName>
+        <categories>Account Cancellation</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Missing Underwriter on Retro</shortDescription>
+        <value>Underwriter must be populated on the Case for Retro cancellations.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError16</fullName>
+        <categories>account,cancellation,error,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError16</shortDescription>
+        <value>Retro Cancellations are not enabled at this Time.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError17</fullName>
+        <categories>account,cancellation,error,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Underwriter Not Active for Retro</shortDescription>
+        <value>The Underwriter assigned to this Account is Inactive.  Please revisit the Account, update the &quot;Underwriter Name&quot; field, and try again.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError2</shortDescription>
+        <value>For Selected records please populate Requested Cancellation Date, Cancellation Code, Cancellation Explanation and Cancellation Reason before proceeding.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError3</shortDescription>
+        <value>At least one Billing Profile needs to be Active for the Account.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError4</shortDescription>
+        <value>At least one Benefit Agreement needs to be Active for the Account</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError5</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError5</shortDescription>
+        <value>At Least one Group Section needs to be Active for the Account</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError6</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError6</shortDescription>
+        <value>The Requested Cancellation date for one or more of the selected Group Sections is 60 or more days in the past, so an approval request will be sent to the listed Underwriter.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError7</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError7</shortDescription>
+        <value>The Requested Cancellation date for one or more of the selected Benefit Agreement is 60 or more days in the past, hence make sure the underwriting approval is attached.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError8</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassError8</shortDescription>
+        <value>The Requested Cancellation date for one or more of the selected Billing Profile is 60 or more days in the past, hence make sure the underwriting approval is attached.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassError9</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Benefit Agreement Cancel Error</shortDescription>
+        <value>The following Benefit Agreements have Group Sections with Active Members and cannot be cancelled:</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassErrorHasActiveMembers</fullName>
+        <categories>account,cancellation,class,warning,error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassErrorHasActiveMembers</shortDescription>
+        <value>One or more Group Sections you have selected currently have Active Members. Click Okay to continue cancelling selected Group Sections despite some containing Active Members.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationClassInfo1</fullName>
+        <categories>account,cancellation,info,message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationClassInfo1</shortDescription>
+        <value>Please make sure there is an Underwriter assigned to the Account before performing any retroactive cancellations</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationGroupSectionLabel1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationGroupSectionLabel1</shortDescription>
+        <value>There are no Group Sections associated to this Account.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationGroupSectionLabel2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationGroupSectionLabel2</shortDescription>
+        <value>Below Are the list of Benefit Agreement/s that will also be cancelled based on your group selections</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationGroupSectionLabel3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationGroupSectionLabel3</shortDescription>
+        <value>There are no Benefit Agreement that is orphaned due to the group section cancellation.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationHomeErrorMsg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationHomeErrorMsg</shortDescription>
+        <value>Account is in an Approval Process for cancellation.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationHomeErrorMsg2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationHomeErrorMsg2</shortDescription>
+        <value>The Account is already Cancelled.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationHomeWarning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Warning message displayed when selecting Group Section or Benefit Agreement</shortDescription>
+        <value>NOTE: 1. Prior to cancelling any group sections, please ensure that there are no memberships residing on the sections being cancelled. If any memberships remain when the sections are cancelled, the members will be cancelled as well. 
+2. If you need to cancel a benefit agreement, the group sections must be cancelled first. Please indicate in the &quot;Cancellation Explanation&quot; space that the attached benefit agreement should be cancelled after the group section cancellation has been completed.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationSenderDisplayName</fullName>
+        <categories>account,cancellation,email,sender,display,name</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationSenderDisplayName</shortDescription>
+        <value>Automated Account/Group Cancellation Message</value>
+    </labels>
+    <labels>
+        <fullName>AccountCancellationSubjectLine</fullName>
+        <categories>account,cancellation,email,subject</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCancellationSubjectLine</shortDescription>
+        <value>Retroactively Cancelled Accounts/Group Sections - &lt;today&gt;</value>
+    </labels>
+    <labels>
+        <fullName>AccountCompleteCancellationPageLabel1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCompleteCancellationPageLabel1</shortDescription>
+        <value>Along with Account all associated Group Sections, Benefit Agreements and Billing Profiles will be canceled.</value>
+    </labels>
+    <labels>
+        <fullName>AccountCompleteCancellationPageLabel2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCompleteCancellationPageLabel2</shortDescription>
+        <value>Benefit Agreements which will be cancelled along with the Account:</value>
+    </labels>
+    <labels>
+        <fullName>AccountCompleteCancellationPageLabel3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCompleteCancellationPageLabel3</shortDescription>
+        <value>Billing Profiles which will be cancelled along with the Account:</value>
+    </labels>
+    <labels>
+        <fullName>AccountUnderwriterRole</fullName>
+        <categories>account,role</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountUnderwriterRole</shortDescription>
+        <value>Underwriter</value>
+    </labels>
+    <labels>
+        <fullName>Account_Active_Health_Subscribers</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Active_Health_Subscribers__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Cancellation_Not_Sent_To_Receivable_team</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Cancellation Not Sent To Receivable team</shortDescription>
+        <value>Account Cancellation not yet sent to the Accounts Receivable Team. Do you want to activate the account and withdraw cancellation?</value>
+    </labels>
+    <labels>
+        <fullName>Account_Cancellation_Sent_To_Receivable_Team_Not_Approved</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Cancellation Sent To Receivable Team Not Approved</shortDescription>
+        <value>Account Cancellation is not been approved and not yet sent to the Accounts Receivable Team. Do you want to withdraw cancellation?</value>
+    </labels>
+    <labels>
+        <fullName>Account_Cancelled_Benefit_Agreement_Reinstatement_Not_Allowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Cancelled Benefit Agreement Reinstatement Not Allowed</shortDescription>
+        <value>Since Account is already cancelled and cannot reinstate Benefit Agreements. If needed submit Account Reinstatement.</value>
+    </labels>
+    <labels>
+        <fullName>Account_Cannot_Be_Cancelled</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Cannot Be Cancelled</shortDescription>
+        <value>&apos;This account cannot be cancelled as it is either already cancelled or cancellation is in progress.&apos;</value>
+    </labels>
+    <labels>
+        <fullName>Account_Ceded</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Ceded__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Cobra_Administration_Type</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Cobra_Administration_Type__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Effective_Date_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Effective Date ID</shortDescription>
+        <value>00N40000002P0H1</value>
+    </labels>
+    <labels>
+        <fullName>Account_Exchange_Account</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Exchange_Account__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Funding_Type</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Funding_Type__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Group_Account_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Group Account Record Type</shortDescription>
+        <value>Group Account</value>
+    </labels>
+    <labels>
+        <fullName>Account_HCM_Program_Model</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>HCM_Program_Model__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Name</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Account_Name</shortDescription>
+        <value>Account Name</value>
+    </labels>
+    <labels>
+        <fullName>Account_Not_Cancelled_No_Reinstatement_Allowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Not Cancelled No Reinstatement Allowed</shortDescription>
+        <value>Account is not cancelled and hence no reinstatement required.</value>
+    </labels>
+    <labels>
+        <fullName>Account_Number</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Account_Number</shortDescription>
+        <value>Account Number</value>
+    </labels>
+    <labels>
+        <fullName>Account_Number_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Number ID</shortDescription>
+        <value>00N40000002P0H3</value>
+    </labels>
+    <labels>
+        <fullName>Account_Out_of_Business_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Out of Business ID</shortDescription>
+        <value>00N33000002yl25</value>
+    </labels>
+    <labels>
+        <fullName>Account_Reinstatement_Code</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Reinstatement Code</shortDescription>
+        <value>RGB - Reinstatement Bluestar Group</value>
+    </labels>
+    <labels>
+        <fullName>Account_Renewal_Task_Subject</fullName>
+        <categories>Task, subject, renewal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Renewal Task Subject</shortDescription>
+        <value>Create Renewal Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>Account_Reserved_Group_Number_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Reserved Group Number ID</shortDescription>
+        <value>00N33000002yl2N</value>
+    </labels>
+    <labels>
+        <fullName>Account_Sliced</fullName>
+        <categories>complexity score, account, fields</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field API Name used in Account Trigger Handler</shortDescription>
+        <value>Sliced__c</value>
+    </labels>
+    <labels>
+        <fullName>Account_Type</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Account_Type</shortDescription>
+        <value>Account Type</value>
+    </labels>
+    <labels>
+        <fullName>Active</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>Actual_Renewal_Release_Date_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Actual Renewal Release Date Validation</shortDescription>
+        <value>You are not allowed to modify the &quot;Actual Renewal Release Date&quot; field</value>
+    </labels>
+    <labels>
+        <fullName>AddBAControllerBAWithoutPlanError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AddBAControllerBAWithoutPlanError</shortDescription>
+        <value>You must enter a value</value>
+    </labels>
+    <labels>
+        <fullName>AddBAControllerPlansWithoutProdCodeError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>You cannot add a BA without a product code</shortDescription>
+        <value>You cannot add a BA without a product code</value>
+    </labels>
+    <labels>
+        <fullName>AddMultipleMedicalOpportunityProducts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AddMultipleMedicalOpportunityProducts</shortDescription>
+        <value>If quoting multiple medical products, Total Expected Health Members and Total Expected Health Contracts must be filled out at the bottom of the page. If these are not filled out when quoting multiple medical products, the totals on the related Opportunity will not be accurate.</value>
+    </labels>
+    <labels>
+        <fullName>AddOpportunityProductsControllerMedicalProductsError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cannot Add medical products on won opportunity</shortDescription>
+        <value>You cannot add medical products to a won opportunity, please reopen the opportuntiy to do so</value>
+    </labels>
+    <labels>
+        <fullName>AdminCharge</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AdminCharge</shortDescription>
+        <value>Administrative Charge</value>
+    </labels>
+    <labels>
+        <fullName>Allowed_Attachment_Size_in_MB</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Allowed Attachment Size in MB</shortDescription>
+        <value>10</value>
+    </labels>
+    <labels>
+        <fullName>AnErrorHasOcurred</fullName>
+        <categories>Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AnErrorHasOcurred</shortDescription>
+        <value>An error has occurred :</value>
+    </labels>
+    <labels>
+        <fullName>Assigned_To_Edit_Not_Allowed</fullName>
+        <categories>Error, Trigger Validation Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assigned_To_Edit_Not_Allowed</shortDescription>
+        <value>You can not edit Assigned To for this record.</value>
+    </labels>
+    <labels>
+        <fullName>AtLeaseOneOppProduct</fullName>
+        <categories>AddOpportunityProductsController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AtLeaseOneOppProduct</shortDescription>
+        <value>Please select at least one Opportunity Product</value>
+    </labels>
+    <labels>
+        <fullName>BCBS_IL_LOGO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BCBS_IL_LOGO</shortDescription>
+        <value>https://c.na27.content.force.com/servlet/servlet.ImageServer?id=01533000001pOGR&amp;oid=00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>BCBS_MT_LOGO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BCBS_MT_LOGO</shortDescription>
+        <value>https://c.na27.content.force.com/servlet/servlet.ImageServer?id=01533000001pOGS&amp;oid=00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>BCBS_NM_LOGO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BCBS_NM_LOGO</shortDescription>
+        <value>https://c.na27.content.force.com/servlet/servlet.ImageServer?id=01533000001pOGT&amp;oid=00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>BCBS_OK_LOGO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BCBS_OK_LOGO</shortDescription>
+        <value>https://c.na27.content.force.com/servlet/servlet.ImageServer?id=01533000001pOGU&amp;oid=00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>BCBS_TX_LOGO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BCBS_TX_LOGO</shortDescription>
+        <value>https://c.na27.content.force.com/servlet/servlet.ImageServer?id=01533000001pOGV&amp;oid=00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>Benefit_Agreement_Reinstatement_Code</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Benefit Agreement Reinstatement Code</shortDescription>
+        <value>RBA - Reinstatement Benefit Agreement</value>
+    </labels>
+    <labels>
+        <fullName>Benefit_Agreement_Reinstatement_Section_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Benefit Agreement Reinstatement Section 1</shortDescription>
+        <value>Please fill in Benefit Agreement Reinstatement details below:</value>
+    </labels>
+    <labels>
+        <fullName>Benefit_Agreement_Report_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Benefit_Agreement_Report_Id</shortDescription>
+        <value>00O33000003oWBb</value>
+    </labels>
+    <labels>
+        <fullName>BlueDirectionsRecordTypeDental</fullName>
+        <categories>Blue Directions,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueDirectionsRecordTypeDental</shortDescription>
+        <value>Blue Directions - Dental</value>
+    </labels>
+    <labels>
+        <fullName>BlueDirectionsRecordTypeExternalMedical</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueDirectionsRecordTypeExternalMedical</shortDescription>
+        <value>External - Medical</value>
+    </labels>
+    <labels>
+        <fullName>BlueDirectionsRecordTypeMedical</fullName>
+        <categories>Blue Directions,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueDirectionsRecordTypeMedical</shortDescription>
+        <value>Blue Directions - Medical</value>
+    </labels>
+    <labels>
+        <fullName>BlueSTAR_System_Status_Ready_to_Send_to_BlueSTAR</fullName>
+        <categories>SGR Workflow System Status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueSTAR System Status Ready to Send to BlueSTAR</shortDescription>
+        <value>Ready to Send to BlueSTAR</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg1</shortDescription>
+        <value>Based on the products sold, an Account number will be reserved in BlueStar, along with group #s for the following products.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg2</shortDescription>
+        <value>Based on the products sold, an Account number will be reserved.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg3</shortDescription>
+        <value>*= Optional Dental PPO only since Mandatory Dental PPO shares group # with medical</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg4</shortDescription>
+        <value>The system will automatically reserve one Account Number when 00 is shown, and the drop down</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg5</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg5</shortDescription>
+        <value>allows you to select the additional Group Numbers needed.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg6</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg6</shortDescription>
+        <value>Please review the selections below, and update if needed before Confirming the same.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg7</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg7</shortDescription>
+        <value>Based on your selections, a BlueSTAR Account number will be reserved, but No group numbers will be reserved. Please “Confirm Selections” if this is intended.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg8</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg8</shortDescription>
+        <value>The Account Number has been reserved and you cannot resubmit request to reserve Account/Group Number(s).</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarAccountReservationMsg9</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarAccountReservationMsg9</shortDescription>
+        <value>Effective Date is required to submit a request to reserve Account/Group Number(s).</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarFailedEligibility_WorkFlow_Activity_Updated_Status</fullName>
+        <categories>SGR Workflow Activity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarFailedEligibility_WorkFlow_Activity_Updated_Status</shortDescription>
+        <value>Not Eligible to be Transferred</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarFailed_WorkFlow_Activity_Updated_Status</fullName>
+        <categories>SGR Workflow Activity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarFailed_WorkFlow_Activity_Updated_Status</shortDescription>
+        <value>BlueStar Transfer Failed</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarFailed_WorkFlow_System_Status_Updated_Value</fullName>
+        <categories>SGR Workflow System Status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarFailed_WorkFlow_System_Status_Updated_Value</shortDescription>
+        <value>Not Eligible to Send to BlueSTAR</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarModule</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarModule</shortDescription>
+        <value>Bluestar</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarPassEligibility_WorkFlow_Activity_Updated_Status</fullName>
+        <categories>SGR Workflow Activity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarPassEligibility_WorkFlow_Activity_Updated_Status</shortDescription>
+        <value>Eligible to be Transferred</value>
+    </labels>
+    <labels>
+        <fullName>BlueStarSuccess_WorkFlow_System_Status_Updated_Value</fullName>
+        <categories>SGR Workflow System Status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStarSuccess_WorkFlow_System_Status_Updated_Value</shortDescription>
+        <value>Workflow Completed</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Count_Limit_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar Count Limit Error Message</shortDescription>
+        <value>Total Count of the Group Numbers cannot exceed</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Rating_Status_Update_Finalized</fullName>
+        <categories>SGR Rating Status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar_Rating_Status_Update_Finalized</shortDescription>
+        <value>Finalized</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Rating_Status_Update_Sold</fullName>
+        <categories>SGR Rating Status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar_Rating_Status_Update_Sold</shortDescription>
+        <value>Sold</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Time_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar Time Error Message</shortDescription>
+        <value>The Reservation of Account/Group Number(s) has been already submitted. Please refresh the browser to look for Success and the reserved Account/Group Number(s). The request can be retried only after 15 minutes from the previous request or upon failure of the previous request.</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Total_Count_Limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar_Total_Count_Limit</shortDescription>
+        <value>49</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_Workflow_Activity_Status_Awaiting_BlueSTAR_Transfer</fullName>
+        <categories>SGR Workflow Activity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar Workflow Activity Status Awaiting BlueSTAR Transfer</shortDescription>
+        <value>Awaiting BlueSTAR Transfer</value>
+    </labels>
+    <labels>
+        <fullName>BlueStar_success_message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BlueStar success message</shortDescription>
+        <value>Call was successfully made to Reserve the Account Number in BlueStar.</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Group_Number_Limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Group Number Limit</shortDescription>
+        <value>50</value>
+    </labels>
+    <labels>
+        <fullName>CBSRAttachmentError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSRAttachmentError</shortDescription>
+        <value>Can not insert Attachments on CBSR Issue when the Case is in Draft Status.</value>
+    </labels>
+    <labels>
+        <fullName>CBSRPassword</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSRPassword</shortDescription>
+        <value>dummy</value>
+    </labels>
+    <labels>
+        <fullName>CBSRUserName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSRUserName</shortDescription>
+        <value>mbhadane@deloitte.com.lgnadev</value>
+    </labels>
+    <labels>
+        <fullName>CBSR_Header_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSR Header RecordTypeId</shortDescription>
+        <value>01233000000QMOw</value>
+    </labels>
+    <labels>
+        <fullName>CBSR_Issue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSR Issue</shortDescription>
+        <value>CBSR Issue</value>
+    </labels>
+    <labels>
+        <fullName>CBSR_Issue_Attachment_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSR Issue Attachment Error</shortDescription>
+        <value>Cannot insert Attachments on CBSR Issue when the Case is in Draft Status.</value>
+    </labels>
+    <labels>
+        <fullName>CBSR_Issue_RecordtypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBSR Issue RecordtypeId</shortDescription>
+        <value>01233000000QMOv</value>
+    </labels>
+    <labels>
+        <fullName>COST</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COST</shortDescription>
+        <value>COST</value>
+    </labels>
+    <labels>
+        <fullName>CallOutLimit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CallOutLimit</shortDescription>
+        <value>2</value>
+    </labels>
+    <labels>
+        <fullName>CallOut_EnterpriseUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CallOut EnterpriseUrl</shortDescription>
+        <value>https://na27.salesforce.com/services/Soap/c/33.0/00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>CallOut_PartnerUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CallOut_PartnerUrl</shortDescription>
+        <value>https://na27.salesforce.com/services/Soap/c/33.0/00Df0000001oI92</value>
+    </labels>
+    <labels>
+        <fullName>Cancelled</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancelled</shortDescription>
+        <value>Cancelled</value>
+    </labels>
+    <labels>
+        <fullName>Cancelled_Benefit_Agreement_Dont_Exist</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancelled Benefit Agreement Dont Exist</shortDescription>
+        <value>No cancelled Benefit Agreements exist</value>
+    </labels>
+    <labels>
+        <fullName>CannotSelectNSorRProd</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CannotSelectNSorRProd</shortDescription>
+        <value>You cannot select a New Sale or Renewal product type on an Off-Cycle Change Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>CannotSelectNewSaleProd</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CannotSelectNewSaleProd</shortDescription>
+        <value>You cannot select a New Sale product type on a Renewal Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>CannotSelectNonNewSaleProduct</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CannotSelectNonNewSaleProduct</shortDescription>
+        <value>You can only select a New Sale product type on a New Sale Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>Cannot_Reinstate_More_Than_One_Year_For_Cancellation</fullName>
+        <categories>Reinstatement</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cannot Reinstate More Than One Year For Cancellation</shortDescription>
+        <value>You cannot reinstate an Account which has been cancelled for more than a year. If Underwriting approval has been obtained, please send the reinstatement request to Accounts Receivable. Otherwise, follow the process to create the Account as a New Prospect.</value>
+    </labels>
+    <labels>
+        <fullName>CarrierHistoryValidationMonths</fullName>
+        <categories>Number of months of carrier history required</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CarrierHistoryValidationMonths</shortDescription>
+        <value>24</value>
+    </labels>
+    <labels>
+        <fullName>CarrierHistoryValidationOnTask</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CarrierHistoryValidationOnTask</shortDescription>
+        <value>Please provide atleast 24 months of carrier history for the associated case.</value>
+    </labels>
+    <labels>
+        <fullName>CaseCommentsReportId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseCommentsReportId</shortDescription>
+        <value>00O0b000004vNBx</value>
+    </labels>
+    <labels>
+        <fullName>CasePGErrorSMESelections</fullName>
+        <categories>case, trigger, handler, error, sme, performance, guarantee</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CasePGErrorSMESelections</shortDescription>
+        <value>This case&apos;s SME Group selections can no longer be modified</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeCBSRIssue</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeCBSRIssue</shortDescription>
+        <value>CBSR Issue</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeCede</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeCede</shortDescription>
+        <value>Cede</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeCustomBenefitService</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeCustomBenefitService</shortDescription>
+        <value>Custom Benefit/Service</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeCustomContracts</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeCustomContracts</shortDescription>
+        <value>Custom Contracts</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeDentalUnderwriting</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeDentalUnderwriting</shortDescription>
+        <value>Dental Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeDentalUnderwritingPrivateExchange</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeDentalUnderwritingPrivateExchange</shortDescription>
+        <value>Dental Underwriting Private Exchange</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeENAEnterpriseNationalAccounts</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeENAEnterpriseNationalAccounts</shortDescription>
+        <value>ENA - Enterprise National Accounts</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeLGNAGeneralCase</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeLGNAGeneralCase</shortDescription>
+        <value>LGNA - General Case</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeMedicalUnderwritingPrivateExchange</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeMedicalUnderwritingPrivateExchange</shortDescription>
+        <value>Medical Underwriting Private Exchange</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeMidMarketUnderwriting</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeMidMarketUnderwriting</shortDescription>
+        <value>Mid-Market Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeNetworkInformation</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeNetworkInformation</shortDescription>
+        <value>Network Information</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypePerformanceGuarantee</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypePerformanceGuarantee</shortDescription>
+        <value>Performance Guarantee</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypePrivateExchangeBlueDirections</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypePrivateExchangeBlueDirections</shortDescription>
+        <value>Private Exchange - Blue Directions</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypePrivateExchangeExternal</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypePrivateExchangeExternal</shortDescription>
+        <value>Private Exchange - External</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeProposal</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeProposal</shortDescription>
+        <value>Proposal</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeSGGeneralCase</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeSGGeneralCase</shortDescription>
+        <value>SG - General Case</value>
+    </labels>
+    <labels>
+        <fullName>CaseRecordTypeUnderwriting</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseRecordTypeUnderwriting</shortDescription>
+        <value>Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>CaseStatusAssigned</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseStatusAssigned</shortDescription>
+        <value>Assigned</value>
+    </labels>
+    <labels>
+        <fullName>CaseStatusClosed</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseStatusClosed</shortDescription>
+        <value>Closed</value>
+    </labels>
+    <labels>
+        <fullName>CaseStatusInProgress</fullName>
+        <categories>Case,status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseStatusInProgress</shortDescription>
+        <value>In Progress</value>
+    </labels>
+    <labels>
+        <fullName>CaseStatusNew</fullName>
+        <categories>Case,status</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseStatusNew</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>CaseStatusSubmitted</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseStatusSubmitted</shortDescription>
+        <value>Submitted</value>
+    </labels>
+    <labels>
+        <fullName>CaseSubcaseErrorMsg1</fullName>
+        <categories>Case,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseSubcaseErrorMsg1</shortDescription>
+        <value>Unable to close the case. One or more sub-cases are still open.</value>
+    </labels>
+    <labels>
+        <fullName>CaseTriggerMatrixLink</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseTriggerMatrixLink</shortDescription>
+        <value>https://hcscgroup.my.salesforce.com/sfc/p/40000000N3to/a/0b000000k9rz/.fuM9TayPGe7YjLlNSEJKWb0TbenCABTloIavSQEqVk</value>
+    </labels>
+    <labels>
+        <fullName>CaseUpdatePostChatterToOpportunityOwner</fullName>
+        <categories>Chatter Post to opportunity owner when case status updated</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseUpdatePostChatterToOpportunityOwner</shortDescription>
+        <value>The Case &lt;&lt;CaseNumber&gt;&gt; linked to Opportunity &lt;&lt;OpportunityName&gt;&gt; on Account &lt;&lt;AccountName&gt;&gt; with RecordType &lt;&lt;RecordType&gt;&gt; is &lt;&lt;CaseStatus&gt;&gt;.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Comment_Insert_Validation_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Comment Insert Validation Error</shortDescription>
+        <value>Can not Insert Case comment Unless parent CBSR have an External Id.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Error_Provider_Standard_Medical_Required</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Error Provider Standard Medical Required</shortDescription>
+        <value>Provider Groups and Standard Medical Access Criteria are required when GeoAccess or Radius Page is selected for Proposal/NI Type. Please return to the Case and fill out these fields.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Owner_Change_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Owner Change Validation</shortDescription>
+        <value>Please update the status to Assigned before assigning the case to underwriting.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Private_Exchange_Blue_Directions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Private Exchange - Blue Directions Record Type for Case</shortDescription>
+        <value>Private Exchange - Blue Directions</value>
+    </labels>
+    <labels>
+        <fullName>Case_Private_Exchange_External</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Private Exchange - External Record Type for Case</shortDescription>
+        <value>Private Exchange - External</value>
+    </labels>
+    <labels>
+        <fullName>Case_Queue_Available_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Case Queue Available Text</shortDescription>
+        <value>Take a case from</value>
+    </labels>
+    <labels>
+        <fullName>Case_Queue_Not_Available_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Case Queue Not Available Text</shortDescription>
+        <value>No cases for</value>
+    </labels>
+    <labels>
+        <fullName>Case_Queues_Error_Message_Text</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Queues Error Message Text</shortDescription>
+        <value>Please retry and if still exists contact your supervisor.</value>
+    </labels>
+    <labels>
+        <fullName>Cases_Assigned_to_Me</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cases Assigned to Me</shortDescription>
+        <value>Cases Pending Partner</value>
+    </labels>
+    <labels>
+        <fullName>Cases_I_Own</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cases I Own</shortDescription>
+        <value>Cases I Own</value>
+    </labels>
+    <labels>
+        <fullName>Cede</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cede</shortDescription>
+        <value>Cede</value>
+    </labels>
+    <labels>
+        <fullName>Cede_Account_Renewal_Task_Subject</fullName>
+        <categories>Task, subject, renewal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cede Account Renewal Task Subject</shortDescription>
+        <value>Create Renewal Opportunity with Cede Case</value>
+    </labels>
+    <labels>
+        <fullName>Client</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Client</shortDescription>
+        <value>Client Implementation Consultant</value>
+    </labels>
+    <labels>
+        <fullName>Closed_Marked_for_Delete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Closed (Marked for Delete)</shortDescription>
+        <value>Closed (Marked for Delete)</value>
+    </labels>
+    <labels>
+        <fullName>Competitor_Rel_Group_Account_Field_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Competitor Rel Group Account Field Id</shortDescription>
+        <value>CF00N33000002yl9C</value>
+    </labels>
+    <labels>
+        <fullName>Competitor_Rel_Opportunity_Field_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Competitor Rel Opportunity Field Id</shortDescription>
+        <value>CF00N33000002yl9N</value>
+    </labels>
+    <labels>
+        <fullName>Competitor_Relationship_Object_prefix</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Competitor Relationship Object prefix</shortDescription>
+        <value>a0Z</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Amount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConfirmProgressExpectedAmount</shortDescription>
+        <value>Please confirm that this is the correct total number of Expected Members and Expected Contracts for the medical and dental products being proposed</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Dental_Contracts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Expected Dental Contracts</shortDescription>
+        <value>Expected Dental Contracts</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Dental_Members</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Expected Dental Members</shortDescription>
+        <value>Expected Dental Members</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Health_Contracts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Expected Health Contracts</shortDescription>
+        <value>Expected Health Contracts</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Health_Members</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Expected Health Members</shortDescription>
+        <value>Expected Health Members</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Expected_Member_Fields</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Expected Member Fields</shortDescription>
+        <value>Expected Member/Contract Fields</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Recommended_Value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Recommended Member/Contract Values</shortDescription>
+        <value>Recommended Member/Contract Values</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Total_Dental_Contracts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Dental Product Contracts</shortDescription>
+        <value>Total Dental Product Contracts</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Total_Dental_Members</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Dental Product Members</shortDescription>
+        <value>Total Dental Product Members</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Total_Medical_Contracts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Medical Product Contracts</shortDescription>
+        <value>Total Medical Product Contracts</value>
+    </labels>
+    <labels>
+        <fullName>Confirm_Progress_Total_Medical_Members</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Medical Product Members</shortDescription>
+        <value>Total Medical Product Members</value>
+    </labels>
+    <labels>
+        <fullName>Consultant_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Consultant Account</shortDescription>
+        <value>Consultant Account</value>
+    </labels>
+    <labels>
+        <fullName>ContactDeleteValidationMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactDeleteValidationMessage</shortDescription>
+        <value>You cannot delete this contact as it feeds through integrations.</value>
+    </labels>
+    <labels>
+        <fullName>ContactValidationMigrationValue3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactValidationMigrationValue3</shortDescription>
+        <value>Siebel_SFA,BlueStar,PeopleSoft</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Email</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Email</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Account_Team_For</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Account Team For</shortDescription>
+        <value>Account Team for</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Account_Team_Members</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Account Team Members</shortDescription>
+        <value>Account Team Members</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Account_Team_Non_SF</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Account Team Non SF</shortDescription>
+        <value>Account Team Non Salesforce Members</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Back</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Back</shortDescription>
+        <value>Back to Account</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Cancel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Email</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Export</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Export</shortDescription>
+        <value>Export Selected Contacts</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_No_Contact_Records_On_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation No Contact Records On Account</shortDescription>
+        <value>No Account Team or Account Team Non Salesforce Records on the Account</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_No_Contacts_Selected</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation No Contacts Selected</shortDescription>
+        <value>There are no contacts selected</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Phone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Phone</shortDescription>
+        <value>Phone</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Role</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Role</shortDescription>
+        <value>Title/Role</value>
+    </labels>
+    <labels>
+        <fullName>Contact_List_Creation_Select</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact List Creation Select</shortDescription>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Lookup</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Lookup</shortDescription>
+        <value>cas3_lkid</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Name</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Name</shortDescription>
+        <value>Contact Name</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Number</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Number</shortDescription>
+        <value>Contact Number</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Phone</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Phone</shortDescription>
+        <value>Phone</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Relationship_prefix</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Relationship prefix</shortDescription>
+        <value>a0a</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Type</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact_Type</shortDescription>
+        <value>Contact Type</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Type_Primary</fullName>
+        <categories>complexity score</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Type</shortDescription>
+        <value>Primary</value>
+    </labels>
+    <labels>
+        <fullName>Coverage_Type_DRUG</fullName>
+        <categories>complexity score, benefit agreement</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Coverage Type</shortDescription>
+        <value>DRUG</value>
+    </labels>
+    <labels>
+        <fullName>Create_a_Case</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Create_a_Case</shortDescription>
+        <value>Create a Case</value>
+    </labels>
+    <labels>
+        <fullName>Custom_Benefit_Service</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Benefit/Service</shortDescription>
+        <value>Custom Benefit/Service</value>
+    </labels>
+    <labels>
+        <fullName>DR_Account_Name</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DR_Account_Name</shortDescription>
+        <value>Account Name</value>
+    </labels>
+    <labels>
+        <fullName>DR_Contact_Name</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DR_Contact_Name</shortDescription>
+        <value>Contact Name</value>
+    </labels>
+    <labels>
+        <fullName>DR_Raise_A_Case</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DR_Raise_A_Case</shortDescription>
+        <value>Create a Case</value>
+    </labels>
+    <labels>
+        <fullName>Date_for_Underwritind_days_calculation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Date for Underwriting days calculation (YYYY-MM-DD)</shortDescription>
+        <value>2015-12-07</value>
+    </labels>
+    <labels>
+        <fullName>Dearborn</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dearborn</shortDescription>
+        <value>Dearborn</value>
+    </labels>
+    <labels>
+        <fullName>Dearborn_Critical_Illness</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dearborn - Critical Illness</shortDescription>
+        <value>Dearborn - Critical Illness</value>
+    </labels>
+    <labels>
+        <fullName>Dearborn_Disability</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dearborn - Disability</shortDescription>
+        <value>Dearborn - Disability</value>
+    </labels>
+    <labels>
+        <fullName>Dearborn_Term_Life</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dearborn - Term Life</shortDescription>
+        <value>Dearborn - Term Life</value>
+    </labels>
+    <labels>
+        <fullName>Declined</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Declined</shortDescription>
+        <value>Declined</value>
+    </labels>
+    <labels>
+        <fullName>Default_Account</fullName>
+        <categories>Case functionality</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default_Account</shortDescription>
+        <value>0014000001XLTui</value>
+    </labels>
+    <labels>
+        <fullName>Dental</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dental</shortDescription>
+        <value>Dental</value>
+    </labels>
+    <labels>
+        <fullName>Dental_Underwriting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dental Underwriting</shortDescription>
+        <value>Dental Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>Dental_Underwriting_Queue_Name</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dental Underwriting Quque Name</shortDescription>
+        <value>Dental Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>Draft</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Draft</shortDescription>
+        <value>Draft</value>
+    </labels>
+    <labels>
+        <fullName>EIN_Trigger_Disabled</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EIN Trigger Disabled</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>ESalesHTTPEndPoint</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ESalesHTTPEndPoint</shortDescription>
+        <value>http://requestb.in/123vqgr1</value>
+    </labels>
+    <labels>
+        <fullName>ESalesHTTPPassword</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ESalesHTTPPassword</shortDescription>
+        <value>Password</value>
+    </labels>
+    <labels>
+        <fullName>ESalesHTTPUserName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ESalesHTTPUserName</shortDescription>
+        <value>UserName</value>
+    </labels>
+    <labels>
+        <fullName>ESalesModule</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ESalesModule</shortDescription>
+        <value>ESalesModule</value>
+    </labels>
+    <labels>
+        <fullName>Err_CauseBy</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_CauseBy</shortDescription>
+        <value>Caused by:</value>
+    </labels>
+    <labels>
+        <fullName>Err_Exp</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_Exp</shortDescription>
+        <value>Exception ::</value>
+    </labels>
+    <labels>
+        <fullName>Err_Lime</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_Lime#</shortDescription>
+        <value>Line # ::</value>
+    </labels>
+    <labels>
+        <fullName>Err_Name</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>Err_RecordId</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_RecordId</shortDescription>
+        <value>Record ID:</value>
+    </labels>
+    <labels>
+        <fullName>Err_RecordName</fullName>
+        <categories>Error Log</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Err_RecordName</shortDescription>
+        <value>Record Name:</value>
+    </labels>
+    <labels>
+        <fullName>Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error</shortDescription>
+        <value>Error:</value>
+    </labels>
+    <labels>
+        <fullName>ErrorLog_Application_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrorLog Application Name</shortDescription>
+        <value>SGR</value>
+    </labels>
+    <labels>
+        <fullName>ErrorLog_Application_TriggerOff</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>To inactivate trigger on Error log Object</shortDescription>
+        <value>Small Group Renewals</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message</shortDescription>
+        <value>An error occured while loading. Please contact your administrator with this error:</value>
+    </labels>
+    <labels>
+        <fullName>Error_for_Trigger_Batch_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error for Trigger Batch Validation</shortDescription>
+        <value>Error! The Renewal Effective Date is outside of the configured allowable date range. Opportunity(ies) are not created.</value>
+    </labels>
+    <labels>
+        <fullName>EstimatedCurrMoAllocated</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EstimatedCurrMoAllocated</shortDescription>
+        <value>Estimated Current Monthly Allocated T/F</value>
+    </labels>
+    <labels>
+        <fullName>EstimatedProjMoAllocated</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EstimatedProjMoAllocated</shortDescription>
+        <value>Estimated Projected Monthly Allocated T/F</value>
+    </labels>
+    <labels>
+        <fullName>EventTicketsReportId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Event and Tickets Report Id</shortDescription>
+        <value>00O33000004FJhs</value>
+    </labels>
+    <labels>
+        <fullName>Exception</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Exception</shortDescription>
+        <value>Exception:</value>
+    </labels>
+    <labels>
+        <fullName>External_medical_recordtype</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>External-medical recordtype for Blue_Directions_LOB__c</shortDescription>
+        <value>External-Medical</value>
+    </labels>
+    <labels>
+        <fullName>FSU_Membership</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FSU Membership</shortDescription>
+        <value>venugopal.manchukonda@capgemini.com</value>
+    </labels>
+    <labels>
+        <fullName>Find_Accounts</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Find_Accounts</shortDescription>
+        <value>Find Accounts</value>
+    </labels>
+    <labels>
+        <fullName>Find_Contacts</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Find_Contacts</shortDescription>
+        <value>Find Contacts</value>
+    </labels>
+    <labels>
+        <fullName>Fully_Insured_BPA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fully Insured BPA</shortDescription>
+        <value>Fully Insured BPA</value>
+    </labels>
+    <labels>
+        <fullName>Funding_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Funding Type</shortDescription>
+        <value>PREM</value>
+    </labels>
+    <labels>
+        <fullName>GEMSBaCatLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMSBaCatLabel</shortDescription>
+        <value>Y</value>
+    </labels>
+    <labels>
+        <fullName>GEMSBaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMSBaLabel</shortDescription>
+        <value>Y</value>
+    </labels>
+    <labels>
+        <fullName>GEMSCatLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMSCatLabel</shortDescription>
+        <value>Y</value>
+    </labels>
+    <labels>
+        <fullName>GEMSProcessEntitlementName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMSProcessEntitlementName</shortDescription>
+        <value>GEMS Process Entitlement</value>
+    </labels>
+    <labels>
+        <fullName>GEMSScreeningEntitlementName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMSScreeningEntitlementName</shortDescription>
+        <value>GEMS Entitlement</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Account_Structure</fullName>
+        <categories>Case, record type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>case record type</shortDescription>
+        <value>GEMS Account Structure</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Account_Submission</fullName>
+        <categories>Case, record type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>case record type</shortDescription>
+        <value>GEMS Account Submission</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_BA_Limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS BA Limit</shortDescription>
+        <value>8</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Benefit_Adhoc_Meeting_Minutes_Doc_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Benefit Adhoc Meeting Minutes Doc Name</shortDescription>
+        <value>Benefit Adhoc Meeting Minutes</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Custom_Products</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS Custom Products</shortDescription>
+        <value>Custom Products</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Docs_Required</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS Docs Required</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Duplicate_UW_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS Duplicate UW Error Message</shortDescription>
+        <value>Only one Underwriter and Dental Underwriter is allowed.  If another Underwriter is needed please select the Additional Underwriter Role.</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Noreply</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS Noreply</shortDescription>
+        <value>noreply@hcsc.com</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Send_first_BA_approval_notification</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send first BA approval notification</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Send_last_BA_approval_notification</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send last BA approval notification</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_Send_notification_to_underwriter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send_notification_to_underwriter</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_SharedAccumsBenefitAgreementInfo</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS_SharedAccumsBenefitAgreementInfo</shortDescription>
+        <value>Remove Shared Accums option if account is not Sharing Accums. If Sharing Accums, complete grid in the Shared Accums section or upload the Shared Accums Grid.</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_SharedAccumsBenefitAgreementInfo1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS_SharedAccumsBenefitAgreementInfo1</shortDescription>
+        <value>If Sharing Accums, add Shared Accums form(s) in the Shared Accums section below. If not, remove Shared Accums from the Chosen Products list.</value>
+    </labels>
+    <labels>
+        <fullName>GEMS_SharedAccumsBenefitAgreementInfo2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS_SharedAccumsBenefitAgreementInfo2</shortDescription>
+        <value>Make product selections carefully as they trigger specific downstream workflows. For more details, review the GEMS Case Triggers document HERE.</value>
+    </labels>
+    <labels>
+        <fullName>GemsCharValTriggerLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GemsCharValTriggerLabel</shortDescription>
+        <value>Y</value>
+    </labels>
+    <labels>
+        <fullName>Gems_status_Alert_Standard_value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gems status Alert Standard value</shortDescription>
+        <value>No Alert</value>
+    </labels>
+    <labels>
+        <fullName>Group</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Group</shortDescription>
+        <value>Group</value>
+    </labels>
+    <labels>
+        <fullName>GroupId_Prefix</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GroupId Prefix</shortDescription>
+        <value>00G</value>
+    </labels>
+    <labels>
+        <fullName>Group_Account</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Group_Account</shortDescription>
+        <value>Group Account</value>
+    </labels>
+    <labels>
+        <fullName>Group_Account_Lookup</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Group_Account_Lookup</shortDescription>
+        <value>cas4_lkid</value>
+    </labels>
+    <labels>
+        <fullName>Group_Account_Task_Subject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Group Account Task Subject</shortDescription>
+        <value>Create Renewal Opportunity for Medicare</value>
+    </labels>
+    <labels>
+        <fullName>Group_Contact</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Group_Contact</shortDescription>
+        <value>Group Contact</value>
+    </labels>
+    <labels>
+        <fullName>HCA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCA</shortDescription>
+        <value>HCA</value>
+    </labels>
+    <labels>
+        <fullName>HCSC</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCSC</shortDescription>
+        <value>HCSC</value>
+    </labels>
+    <labels>
+        <fullName>HCSCBlueStar</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCSCBlueStar</shortDescription>
+        <value>HCSC BlueStar Product</value>
+    </labels>
+    <labels>
+        <fullName>HCSCCertificate</fullName>
+        <categories>Used in IntegrationStatusTriggerHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCSCCertificate</shortDescription>
+        <value>eamsg_salesforce_hcscexttest_net</value>
+    </labels>
+    <labels>
+        <fullName>HCSCNonBlueStar</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCSCNonBlueStar</shortDescription>
+        <value>HCSC Non BlueStar Product</value>
+    </labels>
+    <labels>
+        <fullName>Imp</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Imp</shortDescription>
+        <value>Implementation Manager</value>
+    </labels>
+    <labels>
+        <fullName>In_Underwriting</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>In Underwriting</shortDescription>
+        <value>In Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>InsufficientError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InsufficientError</shortDescription>
+        <value>Insufficient Privileges</value>
+    </labels>
+    <labels>
+        <fullName>Integration_Time_out</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration Time out</shortDescription>
+        <value>15</value>
+    </labels>
+    <labels>
+        <fullName>Internal_Address_Service_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Internal Address Service Error</shortDescription>
+        <value>Your batch job BatchAddressCache has been stopped with error for {!statecode} state &lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Internal_Address_Service_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Internal Address Service Success</shortDescription>
+        <value>Your batch job BatchAddressCache has finished for all states.&lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>LineItemReviewRecordTypePGSME</fullName>
+        <categories>line, item, review, record, type, sme</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LineItemReviewRecordTypePGSME</shortDescription>
+        <value>PG SME Line Item Review</value>
+    </labels>
+    <labels>
+        <fullName>LineItemReviewRecordTypePGUW</fullName>
+        <categories>line, item, review, record, type, uw</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LineItemReviewRecordTypePGUW</shortDescription>
+        <value>PG UW Line Item Review</value>
+    </labels>
+    <labels>
+        <fullName>Loading_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Loading Message</shortDescription>
+        <value>Loading...</value>
+    </labels>
+    <labels>
+        <fullName>Lost</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lost</shortDescription>
+        <value>Lost</value>
+    </labels>
+    <labels>
+        <fullName>MIME_type_not_allowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MIME type not allowed</shortDescription>
+        <value>MIME type not allowed</value>
+    </labels>
+    <labels>
+        <fullName>MPP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MPP</shortDescription>
+        <value>MPP</value>
+    </labels>
+    <labels>
+        <fullName>Mail</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Mail</shortDescription>
+        <value>Mail</value>
+    </labels>
+    <labels>
+        <fullName>Market_Segment</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Market Segment</shortDescription>
+        <value>SG</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_Preference_Selected_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Maximum Preference Selected Validation</shortDescription>
+        <value>You cannot select more than @@@ components.</value>
+    </labels>
+    <labels>
+        <fullName>Medical</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Medical</shortDescription>
+        <value>Medical</value>
+    </labels>
+    <labels>
+        <fullName>Mid_Market_Underwriting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mid-Market Underwriting</shortDescription>
+        <value>Mid-Market Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>Mid_Market_Underwriting_recordtypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mid-Market Underwriting recordtypeId</shortDescription>
+        <value>01233000000QMOy</value>
+    </labels>
+    <labels>
+        <fullName>Miscellaneous</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Miscellaneous</shortDescription>
+        <value>Miscellaneous</value>
+    </labels>
+    <labels>
+        <fullName>ModuleName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ModuleName</shortDescription>
+        <value>CaseModule1</value>
+    </labels>
+    <labels>
+        <fullName>My_Cases</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>My Cases</shortDescription>
+        <value>My Cases</value>
+    </labels>
+    <labels>
+        <fullName>NPNProducerHouseRecordTypeName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Producer House Record Type</shortDescription>
+        <value>Producer_House</value>
+    </labels>
+    <labels>
+        <fullName>NPN_Already_Assigned_To_A_Producer_House</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPN Already Assigned To A Producer House</shortDescription>
+        <value>An NPN has to be unique among producer houses.  The NPN specified NPN is already being used by a Producer House:</value>
+    </labels>
+    <labels>
+        <fullName>NPN_Delete_not_allowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPN Delete not allowed</shortDescription>
+        <value>Deletion if NPN is not allowed because there are producers associated with this NPN. Please update the producer records then delete the NPN record.</value>
+    </labels>
+    <labels>
+        <fullName>NP_Password</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NP Password</shortDescription>
+        <value>Test Password</value>
+    </labels>
+    <labels>
+        <fullName>NP_Username</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NP Username</shortDescription>
+        <value>Test username</value>
+    </labels>
+    <labels>
+        <fullName>National_Producer_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>National Producer Number</shortDescription>
+        <value>National Producer Number</value>
+    </labels>
+    <labels>
+        <fullName>NetAdjustment</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NetAdjustment</shortDescription>
+        <value>Net Adjustment</value>
+    </labels>
+    <labels>
+        <fullName>Network_Information</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Network Information</shortDescription>
+        <value>Network Information</value>
+    </labels>
+    <labels>
+        <fullName>New</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>No_Access_to_create_a_quote_request</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Access to create a quote request</shortDescription>
+        <value>You do not have access to create a quote request because you do not have &quot;Write&quot; access to the opportunity Record.</value>
+    </labels>
+    <labels>
+        <fullName>No_Proposal_NI_type_duplicates</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Proposal/NI type duplicates</shortDescription>
+        <value>You cannot have duplicate proposal/NI types.</value>
+    </labels>
+    <labels>
+        <fullName>No_Records_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Records Message</shortDescription>
+        <value>No records to show.</value>
+    </labels>
+    <labels>
+        <fullName>No_Records_To_Share</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Records To Share</shortDescription>
+        <value>No Records found to share.</value>
+    </labels>
+    <labels>
+        <fullName>No_Results_Found</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No_Results_Found</shortDescription>
+        <value>No results Found, Please Refine your search.</value>
+    </labels>
+    <labels>
+        <fullName>NoneP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoneP</shortDescription>
+        <value>None</value>
+    </labels>
+    <labels>
+        <fullName>Note_Insert</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Note Insert</shortDescription>
+        <value>Note Insert</value>
+    </labels>
+    <labels>
+        <fullName>Off_Cycle_Upsell</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Off-Cycle Change</shortDescription>
+        <value>Off-Cycle Change</value>
+    </labels>
+    <labels>
+        <fullName>OneAccountSubProducerAllowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OneAccountSubProducerAllowed</shortDescription>
+        <value>You can insert only one records in Producer account with type as sub Producer.</value>
+    </labels>
+    <labels>
+        <fullName>One_Up</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>One Up</shortDescription>
+        <value>One Up</value>
+    </labels>
+    <labels>
+        <fullName>OppNoAccountUnderwriterErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppNoAccountUnderwriterErrorMessage</shortDescription>
+        <value>Please add an Account Underwriter in the Account</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Due_Date_Chatter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Due Date Chatter</shortDescription>
+        <value>[Opportunity Name] is due in [Due Date Notification (in days)] days on [Due Date]. Please work with the Opportunity team to ensure information is provided to the client on time</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Stage_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Stage Name</shortDescription>
+        <value>Triggered</value>
+    </labels>
+    <labels>
+        <fullName>OpporuntiyUpdatePostToChatterMessage</fullName>
+        <categories>Chatter Post to Case when Opportunity stage updated</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpporuntiyUpdatePostToChatterMessage</shortDescription>
+        <value>The Account  &lt;&lt;AccountName&gt;&gt; Opportunity  stage was updated to &lt;&lt;UpdatedOpportunityStage&gt;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>OpporuntiyUpdatePostToChatterMessageCedeCase</fullName>
+        <categories>Chatter Post to Case when Opportunity stage updated</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpporuntiyUpdatePostToChatterMessageCedeCase</shortDescription>
+        <value>The Ceded Account &lt;&lt;AccountName&gt;&gt;&apos;s Opportunity stage was updated to &lt;&lt;UpdatedOpportunityStage&gt;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>OrgUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrgUrl</shortDescription>
+        <value>https://hcscgroup.my.salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>Other</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other</shortDescription>
+        <value>Other</value>
+    </labels>
+    <labels>
+        <fullName>Owner_Edit_Not_Allowed</fullName>
+        <categories>Error, Trigger Validation Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Owner Edit Not Allowed</shortDescription>
+        <value>You can not edit Owner of this record.</value>
+    </labels>
+    <labels>
+        <fullName>PAR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PAR</shortDescription>
+        <value>PAR</value>
+    </labels>
+    <labels>
+        <fullName>PEBD_Records_Not_FIlled_Out_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PEBD Records Not FIlled Out Error</shortDescription>
+        <value>The following related Blue Directions Product records need to be filled out before you can proceed to the Submitted or Assigned Status:</value>
+    </labels>
+    <labels>
+        <fullName>PNICasesPage_Network_Information</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PNICasesPage Network Information</shortDescription>
+        <value>Network Information</value>
+    </labels>
+    <labels>
+        <fullName>PNICasesPage_Proposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PNICasesPage Proposal</shortDescription>
+        <value>Proposal</value>
+    </labels>
+    <labels>
+        <fullName>PREM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PREM</shortDescription>
+        <value>PREM</value>
+    </labels>
+    <labels>
+        <fullName>Performance_Guarantee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Performance Guarantee</shortDescription>
+        <value>Performance Guarantee</value>
+    </labels>
+    <labels>
+        <fullName>Performance_Guarantee_Case_Locked</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Message telling Account Executives the PG Case is locked.</shortDescription>
+        <value>Performance Guarantee Cases that do not have a &quot;New&quot;, &quot;In Progress&quot;, or &quot;Sent Back for More Info&quot; statuses are locked for Account Executives</value>
+    </labels>
+    <labels>
+        <fullName>PermissionSetCanApproveStrategicPlans</fullName>
+        <categories>permission, set, strategic, plan</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PermissionSetCanApproveStrategicPlans</shortDescription>
+        <value>Strategic_Plan_Approval</value>
+    </labels>
+    <labels>
+        <fullName>Plan_Rates_Report</fullName>
+        <categories>Text,Number</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Report ID</shortDescription>
+        <value>00O4D000000KrRWUA0</value>
+    </labels>
+    <labels>
+        <fullName>Please_check_at_lease_one_product_for_Future_or_Market_Check</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please check at least one product for Future or Market Check</shortDescription>
+        <value>Please check at least one product for Future or Market Check!</value>
+    </labels>
+    <labels>
+        <fullName>Primary_Account_Contact_Relationship</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Primary Account Contact Relationship</shortDescription>
+        <value>CF00N54000000O0oS</value>
+    </labels>
+    <labels>
+        <fullName>Priority_Field</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Priority_Field</shortDescription>
+        <value>Priority</value>
+    </labels>
+    <labels>
+        <fullName>PrivateExchangeYear</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrivateExchangeYear</shortDescription>
+        <value>2017</value>
+    </labels>
+    <labels>
+        <fullName>PrivateExchangeYearStateAddition</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrivateExchangeYearStateAddition</shortDescription>
+        <value>-17</value>
+    </labels>
+    <labels>
+        <fullName>Producer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Producer</shortDescription>
+        <value>Producer</value>
+    </labels>
+    <labels>
+        <fullName>Producer_Account</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Producer_Account</shortDescription>
+        <value>Producer Account</value>
+    </labels>
+    <labels>
+        <fullName>Producer_Account_Lookup</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Producer Account Lookup</shortDescription>
+        <value>CF00N40000002P0He_lkid</value>
+    </labels>
+    <labels>
+        <fullName>Producer_Account_Lookup_Name</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Producer Account Lookup Name</shortDescription>
+        <value>CF00N40000002P0He</value>
+    </labels>
+    <labels>
+        <fullName>Producer_Contact</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Producer_Contact</shortDescription>
+        <value>Producer Contact</value>
+    </labels>
+    <labels>
+        <fullName>Producer_House</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Producer_House</shortDescription>
+        <value>Producer House</value>
+    </labels>
+    <labels>
+        <fullName>Product2_RecordType_HCSC_Non_BlueStar_Product</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product2 NonBlueStar RecordType</shortDescription>
+        <value>HCSC Non BlueStar Product</value>
+    </labels>
+    <labels>
+        <fullName>Product360NoAccounts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product360NoAccounts</shortDescription>
+        <value>You do not own an Account with a related open Opportunity nor are you on an Account team of an Account with a related open Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>ProductSave</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductSave</shortDescription>
+        <value>Products cannot be saved at this stage</value>
+    </labels>
+    <labels>
+        <fullName>ProductSelect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductSelect</shortDescription>
+        <value>Please select at least one Opportunity Product</value>
+    </labels>
+    <labels>
+        <fullName>ProductStatusLostWinningCompetitorError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductStatusLostWinningCompetitorError</shortDescription>
+        <value>If the product status is lost you need to add the Winning Carrier / Vendor</value>
+    </labels>
+    <labels>
+        <fullName>ProductStatusWonWinningCompetitorError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductStatusWonWinningCompetitorError</shortDescription>
+        <value>If the product status is won, the Winning Carrier / Vendor Field should not be filled out</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeD</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductTypeD</shortDescription>
+        <value>Dental</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductTypeM</shortDescription>
+        <value>Medical</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeN</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductTypeN</shortDescription>
+        <value>New Sale</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductTypeR</shortDescription>
+        <value>Renewal</value>
+    </labels>
+    <labels>
+        <fullName>ProductsAdded</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductsAdded</shortDescription>
+        <value>Products cannot be added at this stage</value>
+    </labels>
+    <labels>
+        <fullName>ProductsRemoved</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductsRemoved</shortDescription>
+        <value>Products cannot be removed at this stage</value>
+    </labels>
+    <labels>
+        <fullName>ProfileIntegrationProfile</fullName>
+        <categories>profile,integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProfileIntegrationProfile</shortDescription>
+        <value>Integration Profile</value>
+    </labels>
+    <labels>
+        <fullName>Progress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Progress</shortDescription>
+        <value>In Progress</value>
+    </labels>
+    <labels>
+        <fullName>Proposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Proposal</shortDescription>
+        <value>Proposal</value>
+    </labels>
+    <labels>
+        <fullName>Prospect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect Account</shortDescription>
+        <value>Prospect</value>
+    </labels>
+    <labels>
+        <fullName>Prospect_Record_Type_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect Record Type Id</shortDescription>
+        <value>01233000000QMOm</value>
+    </labels>
+    <labels>
+        <fullName>QLI_IPN_id</fullName>
+        <categories>Special Price Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QLI_IPN_id</shortDescription>
+        <value>id</value>
+    </labels>
+    <labels>
+        <fullName>Quote_Request_Status_Received_Final</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Request Status: Received Final</shortDescription>
+        <value>Received Final</value>
+    </labels>
+    <labels>
+        <fullName>Quote_Request_Status_Received_Initial</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Request Status: Received Initial</shortDescription>
+        <value>Received Initial</value>
+    </labels>
+    <labels>
+        <fullName>Quote_can_not_be_created</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote can not be created</shortDescription>
+        <value>Quote can not be created. Please contact System Administrator.</value>
+    </labels>
+    <labels>
+        <fullName>RFP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RFP</shortDescription>
+        <value>RFP</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Administrative_Charge</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Administrative Charge</shortDescription>
+        <value>Administrative Charge</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Administrative_Charges</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Administrative Charges</shortDescription>
+        <value>Administrative Charges</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Administrative_Line_Item_Charges</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Administrative Line Item Charges</shortDescription>
+        <value>Administrative Line Item Charges</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Administrative_Provider</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Administrative Provider</shortDescription>
+        <value>Administrative Provider</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Amount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Amount</shortDescription>
+        <value>Amount</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Blue_Card_Program_Network_access_fee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Blue Card Program/Network access fee:</shortDescription>
+        <value>Blue Card Program/Network access fee:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Claim_Administrator_Provider_Access_Fee_s</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Claim Administrator Provider Access Fee(s):</shortDescription>
+        <value>Claim Administrator Provider Access Fee(s):</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Claims_Fiduciary</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Claims Fiduciary</shortDescription>
+        <value>Claims Fiduciary</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Commissions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commissions</shortDescription>
+        <value>Commissions</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Data_Exchange</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Exchange</shortDescription>
+        <value>Data Exchange</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Frequency</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Frequency</shortDescription>
+        <value>Frequency</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Group_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Group Name</shortDescription>
+        <value>Group Name</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Group_Number_s</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Group Number(s):</shortDescription>
+        <value>Group Number(s):</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Group_with_multiple_Provider_Products</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Group with multiple Provider Products</shortDescription>
+        <value>Groups with multiple Provider Access Fees by product (e.g, CMM and/or PPO plans):</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Medical_Administrative_Fee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Medical Administrative Fee</shortDescription>
+        <value>Medical Administrative Fee</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_No_Changes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Changes</shortDescription>
+        <value>No Changes</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Non_Standard_Services</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Non-Standard Services</shortDescription>
+        <value>Non-Standard Services</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Other_Administrative_Line_Item_Charges</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Administrative Line Item Charges</shortDescription>
+        <value>Other Administrative Line Item Charges</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Other_Frequency</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Frequency</shortDescription>
+        <value>Other Frequency</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Other_Service_Fee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Service Fee</shortDescription>
+        <value>Other Service Fee</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Other_Services</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Services</shortDescription>
+        <value>Other Services</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Prescription_Administrative_Fee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prescription Administrative Fee</shortDescription>
+        <value>Prescription Administrative Fee</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Product_Related_Services</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Related Services</shortDescription>
+        <value>Product Related Services</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_See_Aditional_Provisions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>See Aditional Provisions</shortDescription>
+        <value>See Aditional Provisions</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Service_Fees</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Fees</shortDescription>
+        <value>Service Fees</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_Total</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total</shortDescription>
+        <value>Total</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_of_ADP_Savings</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>% of ADP Savings: %</shortDescription>
+        <value>% of ADP Savings: %</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_ASO_per_Covered_Employee_per_Month</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>$ per Covered Employee per Month: $</shortDescription>
+        <value>$ per Covered Employee per Month: $</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Employee_Child_ren</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee + Child(ren):</shortDescription>
+        <value>Employee + Child(ren):</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Employee_One_Dependent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee + One Dependent:</shortDescription>
+        <value>Employee + One Dependent:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Employee_Only</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee Only:</shortDescription>
+        <value>Employee Only:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Employee_Spouse</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee + Spouse:</shortDescription>
+        <value>Employee + Spouse:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Employee_Two_or_More_Dependents</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee + Two or More Dependents:</shortDescription>
+        <value>Employee + Two or More Dependents:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Family</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Family:</shortDescription>
+        <value>Family:</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_No_Opportuntiy_Products</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Opportunity Products</shortDescription>
+        <value>There are no Opportunity Products related to this record</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Number_of_Years</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Number of Years</shortDescription>
+        <value>Number of Years</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Other_Rate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Other Rate</shortDescription>
+        <value>Other Rate</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Product_Coverage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product/Coverage</shortDescription>
+        <value>Product/Coverage</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Rate_Background</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rate Background</shortDescription>
+        <value>Rate Background</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Rate_Chart_Detail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rate Chart Detail</shortDescription>
+        <value>Rate Chart Detail</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Rate_Structure</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rate Structure</shortDescription>
+        <value>Rate Structure</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Select_State</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select State</shortDescription>
+        <value>Select State</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Year_One</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Year One</shortDescription>
+        <value>Year One</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Year_Three</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Year Three</shortDescription>
+        <value>Year Three</value>
+    </labels>
+    <labels>
+        <fullName>Rate_Matrix_Year_Two</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Year Two</shortDescription>
+        <value>Year Two</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixASOPrescriptionDrugProgramCredit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RatingMatrixASOPrescriptionDrugProgramCredit</shortDescription>
+        <value>*Prescription Drug Program - Rebate Credit</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixASOStateIL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RatingMatrixASOStateIL</shortDescription>
+        <value>IL</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixASOStateNM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RatingMatrixASOStateNM</shortDescription>
+        <value>NM</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixASOStateOK</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RatingMatrixASOStateOK</shortDescription>
+        <value>OK</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixHCAMTState</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MT State</shortDescription>
+        <value>MT</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixHCARateHCART</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rate HCA Record Type</shortDescription>
+        <value>Rate HCA</value>
+    </labels>
+    <labels>
+        <fullName>RatingMatrixHCARateHCARTMT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rate HCA MT Record Type</shortDescription>
+        <value>Rate HCA MT</value>
+    </labels>
+    <labels>
+        <fullName>Re_review</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Re-review</shortDescription>
+        <value>Re-review</value>
+    </labels>
+    <labels>
+        <fullName>Record_Display_Limit</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record_Display_Limit</shortDescription>
+        <value>1000</value>
+    </labels>
+    <labels>
+        <fullName>Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Type</shortDescription>
+        <value>Record Type</value>
+    </labels>
+    <labels>
+        <fullName>Refine_Search</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Refine_Search</shortDescription>
+        <value>Search returned more than 1000 records. Please refine your search.</value>
+    </labels>
+    <labels>
+        <fullName>ReinstatementBAFilterMandatory</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReinstatementBAFilterMandatory</shortDescription>
+        <value>Please perform the filter first before clicking on next</value>
+    </labels>
+    <labels>
+        <fullName>ReinstatementFromToDateValidation1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReinstatementFromToDateValidation1</shortDescription>
+        <value>From date should be less than the to date</value>
+    </labels>
+    <labels>
+        <fullName>ReinstatementFromToDateValidation2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReinstatementFromToDateValidation2</shortDescription>
+        <value>Both From and To Dates are required</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Account_Underwiting_Warning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Account Underwiting Warning</shortDescription>
+        <value>Please obtain approval from Underwriting before submitting reinstatement requests. Underwriting approval is required to reinstate an account that was cancelled due to delinquency.</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Code</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Code</shortDescription>
+        <value>Reinstatement Code :</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Explanation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Explanation</shortDescription>
+        <value>Reinstatement Explanation :</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Explanation_Fill</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Explanation Fill</shortDescription>
+        <value>Please provide Reinstatement Explanation.</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Fill_Account_Details_Header</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Fill Account Details Header</shortDescription>
+        <value>Please fill in Account Reinstatement details below:</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Home_Section</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Home Section</shortDescription>
+        <value>Please select the type of Reinstatement</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Reason</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Reason</shortDescription>
+        <value>Reinstatement Reason :</value>
+    </labels>
+    <labels>
+        <fullName>Reinstatement_Reason_Fill</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reinstatement Reason Fill</shortDescription>
+        <value>Please provide Reinstatement Reason.</value>
+    </labels>
+    <labels>
+        <fullName>Related_Account_Contact_Relationship</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Related Account Contact Relationship</shortDescription>
+        <value>CF00N54000000O0oX</value>
+    </labels>
+    <labels>
+        <fullName>Renewal_Opportunity_Warning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Renewal Opportunity  Warning</shortDescription>
+        <value>Warning: A Renewal Opportunity has already been created for this year. Select OK to continue with creating an additional Renewal Opportunity.</value>
+    </labels>
+    <labels>
+        <fullName>Request_Type_Warning_Parent_Case_Missing_Fields</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Request Type Warning Parent Case Missing Fields</shortDescription>
+        <value>The parent case is missing required fields, please return and fill them out.</value>
+    </labels>
+    <labels>
+        <fullName>Requested_Reinstatement_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Requested Reinstatement Date</shortDescription>
+        <value>Requested Reinstatement Date :</value>
+    </labels>
+    <labels>
+        <fullName>Require_3_characters_to_search_product</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Require 3 characters to search product</shortDescription>
+        <value>Please enter at least 3 characters for Product Name to search product.</value>
+    </labels>
+    <labels>
+        <fullName>ResetRelease</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ResetRelease</shortDescription>
+        <value>u031338,U318609,U273969,U356254,U349547,U274901,U336902,U343666,I365233</value>
+    </labels>
+    <labels>
+        <fullName>SERV</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SERV</shortDescription>
+        <value>SERV</value>
+    </labels>
+    <labels>
+        <fullName>SGRAccountRenewalBatchSize</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>It is for batch size of SGR Account renewal Batch</shortDescription>
+        <value>1</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Actuarial_Release</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Actuarial Release</shortDescription>
+        <value>Actuarial-Released</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Analytical_Opportunity_Access</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Analytical Opportunity Access</shortDescription>
+        <value>IF(AND(OR(CurrentUserProfileName__c=&apos;SGR Operations User&apos;,CurrentUserProfileName__c=&apos;SGR SAM User&apos;,CurrentUserProfileName__c=&apos;SGR_Group Verifier&apos;),OR(ISPICKVAL(Rating_Status__c,&apos;Initiated&apos;),ISPICKVAL(Rating_Status__c,&apos;Rated&apos;),ISPICKVAL(Rating_Status__c,&apos;Actuarial-Released&apos;)), RecordType.DeveloperName=&apos;SGR_Analytical_Opportunity&apos; ),1,0)</value>
+    </labels>
+    <labels>
+        <fullName>SGR_BlueStar_Duplicate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR BlueStar Duplicate</shortDescription>
+        <value>You cannot initiate a duplicate batch.</value>
+    </labels>
+    <labels>
+        <fullName>SGR_BlueStar_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR BlueStar Message</shortDescription>
+        <value>No Opportunities found</value>
+    </labels>
+    <labels>
+        <fullName>SGR_BlueStar_success_message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR BlueStar success message</shortDescription>
+        <value>Opportunities batch scheduled successfully</value>
+    </labels>
+    <labels>
+        <fullName>SGR_GSPS_ClientId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR GSPS ClientId</shortDescription>
+        <value>RENEWALS</value>
+    </labels>
+    <labels>
+        <fullName>SGR_GSPS_FIPS_AddDays</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR GSPS FIPS AddDays</shortDescription>
+        <value>150</value>
+    </labels>
+    <labels>
+        <fullName>SGR_GSPS_Funding_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR GSPS Funding Type</shortDescription>
+        <value>PREM</value>
+    </labels>
+    <labels>
+        <fullName>SGR_GSPS_Market_Segment</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR GSPS Market Segment</shortDescription>
+        <value>SG</value>
+    </labels>
+    <labels>
+        <fullName>SGR_GSPS_Version</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR GSPS Version</shortDescription>
+        <value>1</value>
+    </labels>
+    <labels>
+        <fullName>SGR_No_Of_Dental_Plan_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This label contains No of dental plan id goes in URE WS request</shortDescription>
+        <value>2</value>
+    </labels>
+    <labels>
+        <fullName>SGR_No_Of_Plan_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This label contains No of plan id goes in URE WS request</shortDescription>
+        <value>5</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Renewal_Email_Subject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Renewal Email Subject</shortDescription>
+        <value>SFDC Renewal &lt;RenewalType&gt; Batch &lt;EmailType&gt;</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Renewel_Email_Body</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Renewel Email Body</shortDescription>
+        <value>A SFDC &lt;RenewalType&gt; Batch was &lt;EmailType&gt; for &lt;Division&gt; for &lt;created&gt;. Please contact if you have any concerns about the batch being &lt;EmailType&gt;.
+&lt;br&gt;&lt;br&gt;</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Select_Dependent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR Select Dependent</shortDescription>
+        <value>Please select at least one dependent record to delete.</value>
+    </labels>
+    <labels>
+        <fullName>SGR_Tasks</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This label contains task type to be passed in URE WS request</shortDescription>
+        <value>RetentionTask,MarketingRatesGenericTask</value>
+    </labels>
+    <labels>
+        <fullName>SGR_URE_FIPS_AddDays</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR URE FIPS AddDays</shortDescription>
+        <value>139</value>
+    </labels>
+    <labels>
+        <fullName>SGR_You_cannot_delete_subscriber</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SGR You cannot delete subscriber</shortDescription>
+        <value>You cannot delete subscriber</value>
+    </labels>
+    <labels>
+        <fullName>SR_GFRA_Integration_Status_Failed</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR-GFRA Integration Status Failed</shortDescription>
+        <value>Failed</value>
+    </labels>
+    <labels>
+        <fullName>SR_GFRA_Integration_Status_OK</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR-GFRA Integration Status OK</shortDescription>
+        <value>OK</value>
+    </labels>
+    <labels>
+        <fullName>SR_GFRA_Status_Pending_For_Rejection</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR-GFRA Status Pending For Rejection</shortDescription>
+        <value>Pending for Rejection</value>
+    </labels>
+    <labels>
+        <fullName>SR_Record_Type_GFRA_Adjustment</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR- Record Type GFRA-Adjustment</shortDescription>
+        <value>GFRA - Adjustment</value>
+    </labels>
+    <labels>
+        <fullName>SR_queueName_GFRA_Queue</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR-queueName_GFRA Queue</shortDescription>
+        <value>GFRA Queue</value>
+    </labels>
+    <labels>
+        <fullName>SR_queue_name_GFRA_Manager</fullName>
+        <categories>Service Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SR-queue name GFRA Manager</shortDescription>
+        <value>GFRA Manager</value>
+    </labels>
+    <labels>
+        <fullName>Search</fullName>
+        <categories>SearchPage</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>Search_Criteria_Account</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search_Criteria_Account</shortDescription>
+        <value>Account</value>
+    </labels>
+    <labels>
+        <fullName>Search_Criteria_Contact</fullName>
+        <categories>DisplayResults</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search_Criteria_Contact</shortDescription>
+        <value>Contact</value>
+    </labels>
+    <labels>
+        <fullName>Search_return_too_large_data</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search return too large data</shortDescription>
+        <value>Search returns too large data,  please redefine your search criteria to continue.</value>
+    </labels>
+    <labels>
+        <fullName>Search_returns_no_result_base_on_your_criteria</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search returns no result base on your criteria</shortDescription>
+        <value>Search returns no result  base on your criteria or has been returned in previous search.</value>
+    </labels>
+    <labels>
+        <fullName>SecureInformationCreateError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SecureInformationCreateError</shortDescription>
+        <value>You need to have read/write access to the Account or Opportunity to create or edit this record.</value>
+    </labels>
+    <labels>
+        <fullName>Select_Type_Of_Reinstatement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select Type Of Reinstatement</shortDescription>
+        <value>Please select a type of reinstatement before proceeding.</value>
+    </labels>
+    <labels>
+        <fullName>Select_one_Record</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select one Record</shortDescription>
+        <value>You must select at least one item.</value>
+    </labels>
+    <labels>
+        <fullName>Send_notification_to_underwriter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send notification to underwriter</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>Sgr_Dependents_belonging_to_same_subscriber</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sgr Dependents belonging to same subscriber</shortDescription>
+        <value>Only dependents for the same subscriber can be selected for deletion</value>
+    </labels>
+    <labels>
+        <fullName>Sgr_deleted_successful</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sgr deleted successful</shortDescription>
+        <value>Selected record(s) got deleted successfully</value>
+    </labels>
+    <labels>
+        <fullName>SharePoint_Authentication_Issue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SharePoint Authentication Issue</shortDescription>
+        <value>An issue has occurred with SharePoint authentication. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>SharePoint_Missing_Opportunity_On_Case</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SharePoint Missing Opportunity On Case</shortDescription>
+        <value>This Case does not have a relationship with an Opportunity. You will not be able to upload documents to SharePoint.</value>
+    </labels>
+    <labels>
+        <fullName>SharePoint_Unknown_Issue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SharePoint Unknown Issue</shortDescription>
+        <value>An unknown issue has occurred with SharePoint. Please contact your administrator.</value>
+    </labels>
+    <labels>
+        <fullName>SharedRecordsSuccessfully</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SharedRecordsSuccessfully</shortDescription>
+        <value>The Secure Information Records have been successfully shared with the account team members and opportunity team members.</value>
+    </labels>
+    <labels>
+        <fullName>Small_Group_Case_Recordtype</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Small Group Case Recordtype</shortDescription>
+        <value>SG_General_Case</value>
+    </labels>
+    <labels>
+        <fullName>Standard_Flow</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GEMS Standard Flow</shortDescription>
+        <value>submissionType == &apos;Renewal&apos; &amp;&amp;  submissionSubType == &apos;Funding Change&apos; &amp;&amp; stdProduct != &apos;Standard Products only&apos;;</value>
+    </labels>
+    <labels>
+        <fullName>Status_Field</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Status_Field</shortDescription>
+        <value>Status</value>
+    </labels>
+    <labels>
+        <fullName>Strategic_Plan_Update_Not_Allowed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Strategic_Plan_Update_Not_Allowed</shortDescription>
+        <value>Updates to the Strategic Plan not allowed after the effective date!</value>
+    </labels>
+    <labels>
+        <fullName>Sub_Producer_Validation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sub Producer Validation</shortDescription>
+        <value>You can insert only one records in Producer account with type as sub Producer</value>
+    </labels>
+    <labels>
+        <fullName>Submit_for_Reinstatement_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit for Reinstatement Button</shortDescription>
+        <value>Submit for Reinstatement</value>
+    </labels>
+    <labels>
+        <fullName>Super_User_Permissions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Super_User_Permissions</shortDescription>
+        <value>Super_User_Permissions</value>
+    </labels>
+    <labels>
+        <fullName>System_Admin_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System Admin Profile</shortDescription>
+        <value>System Administrator</value>
+    </labels>
+    <labels>
+        <fullName>System_Recall_Due_Reinstatement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System Recall Due Reinstatement</shortDescription>
+        <value>System recall due to reinstatement process</value>
+    </labels>
+    <labels>
+        <fullName>TaskRecordTypeCSSTaskRecordType</fullName>
+        <categories>Task,record,type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TaskRecordTypeCSSTaskRecordType</shortDescription>
+        <value>CSS Task Record Type</value>
+    </labels>
+    <labels>
+        <fullName>TaskTypeValidation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TaskTypeValidation</shortDescription>
+        <value>Please select a value in the Type field before saving this record.</value>
+    </labels>
+    <labels>
+        <fullName>TicketDistributionGroupingString</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grouping</shortDescription>
+        <value>Grouping</value>
+    </labels>
+    <labels>
+        <fullName>TotalCurrMoPremium</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TotalCurrMoPremium</shortDescription>
+        <value>Total Current Monthly Premium (Inclusive T/F)</value>
+    </labels>
+    <labels>
+        <fullName>TotalNbrOfMembers</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TotalNbrOfMembers</shortDescription>
+        <value>Total Number of Members</value>
+    </labels>
+    <labels>
+        <fullName>TotalNbrOfSubcribers</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TotalNbrOfSubcribers</shortDescription>
+        <value>Total Number of Subscribers</value>
+    </labels>
+    <labels>
+        <fullName>TotalProjMoPremium</fullName>
+        <categories>SGR Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TotalProjMoPremium</shortDescription>
+        <value>Total Projected Monthly Premium (Inclusive T/F)</value>
+    </labels>
+    <labels>
+        <fullName>UCR_FINAL_PDF_URL2</fullName>
+        <categories>SGR Renewal Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR FINAL PDF URL2</shortDescription>
+        <value>&amp;paramType=property/paramName=group_renewal_package&amp;paramValue=group_renewal_package&amp;paramType=type/paramName=limit_results&amp;paramValue=1000&amp;paramType=options&amp;pageNumber=1&amp;sortAttr=objectName&amp;sortOrder=-1</value>
+    </labels>
+    <labels>
+        <fullName>UCR_Final_PDF_URL</fullName>
+        <categories>SGR Renewal Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR_Final_PDF_URL</shortDescription>
+        <value>https://ecmucr.test.fyiblue.com/hpi/search/Group%20Renewal%20Package/group_renewal_package/paramName=account_number&amp;paramValue=&lt;account number&gt;&amp;paramType=property&amp;operator=OPERATOR_EQUALS/paramName=division&amp;paramValue=&lt;division&gt;&amp;paramType=property/paramName=group_renewal_package&amp;paramValue=group_renewal_package&amp;paramType=type/paramName=limit_results&amp;paramValue=1000&amp;paramType=options&amp;pageNumber=1&amp;sortAttr=objectName&amp;sortOrder=-1</value>
+    </labels>
+    <labels>
+        <fullName>UCR_Rating_Status_Updated_Value</fullName>
+        <categories>SGR Renewals Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR Rating Status Updated Value</shortDescription>
+        <value>Marketing Released</value>
+    </labels>
+    <labels>
+        <fullName>UCR_URL_DEV_HOST_Name</fullName>
+        <categories>SGR Renewals Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR URL DEV HOST Name</shortDescription>
+        <value>ecmucr.dev.fyiblue.com</value>
+    </labels>
+    <labels>
+        <fullName>UCR_URL_PROD_HOST_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR URL PROD HOST Name</shortDescription>
+        <value>ecmucr.fyiblue.com</value>
+    </labels>
+    <labels>
+        <fullName>UCR_URL_TEST_HOST_NAME</fullName>
+        <categories>SGR Renewals Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR URL TEST HOST NAME</shortDescription>
+        <value>ecmucr.test.fyiblue.com</value>
+    </labels>
+    <labels>
+        <fullName>UCR_WorkFlow_Activity_Updated_Status</fullName>
+        <categories>SGR Renewal  Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR WorkFlow Activity Updated Status</shortDescription>
+        <value>Ready for Distribution</value>
+    </labels>
+    <labels>
+        <fullName>UCR_WorkFlow_System_Status_Updated_Value</fullName>
+        <categories>SGR Renewals Package</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UCR WorkFlow System Status Updated Value</shortDescription>
+        <value>Ready for BlueSTAR Initiation</value>
+    </labels>
+    <labels>
+        <fullName>URE_Batch_Rate_Eff_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This label contains rate eff Date for URE Gen Req &amp; Res to process from UREbatch</shortDescription>
+        <value>System.Today()</value>
+    </labels>
+    <labels>
+        <fullName>UW_Risk_Popup</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UW_Risk_Popup</shortDescription>
+        <value>Please attach the Detailed documents supporting risk data</value>
+    </labels>
+    <labels>
+        <fullName>Underwriting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Underwriting</shortDescription>
+        <value>Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>UnderwritingCaseCarrierHistory</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnderwritingCaseCarrierHistory</shortDescription>
+        <value>Please provide at least 24 months of carrier history.</value>
+    </labels>
+    <labels>
+        <fullName>Underwriting_Email_Template</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Underwriting Email Template</shortDescription>
+        <value>Notify_Underwriter_When_Quote_Req_Summary_Created</value>
+    </labels>
+    <labels>
+        <fullName>UnexpectedError</fullName>
+        <categories>System Error occur.</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnexpectedError</shortDescription>
+        <value>An unexpected error has occurred while performing the action. Please contact your system administrator.</value>
+    </labels>
+    <labels>
+        <fullName>Unexpected_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unexpected Error</shortDescription>
+        <value>There was an unexpected error</value>
+    </labels>
+    <labels>
+        <fullName>Upsell</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Upsell</shortDescription>
+        <value>Upsell</value>
+    </labels>
+    <labels>
+        <fullName>UserId_Prefix</fullName>
+        <categories>Escalation Email Service</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>UserId Prefix</shortDescription>
+        <value>005</value>
+    </labels>
+    <labels>
+        <fullName>UsersManagerNotAvailable</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UsersManagerNotAvailable</shortDescription>
+        <value>An error occurred while submitting account. Please contact your system administrator to ensure that you have manager configured.</value>
+    </labels>
+    <labels>
+        <fullName>ValidProduct</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ValidProduct</shortDescription>
+        <value>Search did not return a valid Product</value>
+    </labels>
+    <labels>
+        <fullName>Validation_Error_HCSC_Division_is_missing_from_Account</fullName>
+        <categories>Price Matrix Quote Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation Error, HCSC Division is missing from Account</shortDescription>
+        <value>Validation Error!  HCSC Division is missing from Account.</value>
+    </labels>
+    <labels>
+        <fullName>Warning_Label_for_Add_Edit_Proposal_NI_Type_Page</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Warning Label for Add/Edit Proposal/NI Type Page</shortDescription>
+        <value>Select a Proposal/NI type</value>
+    </labels>
+    <labels>
+        <fullName>Withdraw_Cancellation_Button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw Cancellation Button</shortDescription>
+        <value>Yes, Withdraw Cancellation</value>
+    </labels>
+    <labels>
+        <fullName>Withdrawn</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdrawn</shortDescription>
+        <value>Withdrawn</value>
+    </labels>
+    <labels>
+        <fullName>WonP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WonP</shortDescription>
+        <value>Won</value>
+    </labels>
+    <labels>
+        <fullName>YesP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>YesP</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>billingProfileCancellationPageLabel1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>billingProfileCancellationPageLabel1</shortDescription>
+        <value>There are no Billing Profile associated to this Account.</value>
+    </labels>
+    <labels>
+        <fullName>billingProfileCancellationPageLabel2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>billingProfileCancellationPageLabel2</shortDescription>
+        <value>Selected Billing Profile</value>
+    </labels>
+    <labels>
+        <fullName>caseDetailReportId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CaseDetailReportId</shortDescription>
+        <value>00O33000004isU8</value>
+    </labels>
+    <labels>
+        <fullName>countyCodeAllowedLength</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>countyCodeAllowedLength</shortDescription>
+        <value>5</value>
+    </labels>
+    <labels>
+        <fullName>zeroSet</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>zeroSet</shortDescription>
+        <value>00000000000000</value>
+    </labels>
+</CustomLabels>

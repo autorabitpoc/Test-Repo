@@ -1,0 +1,8 @@
+2nd Notification
+*** CASE ESCALATION ALERT *** 
+
+Account Name :  {!Account.Name} 
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

@@ -1,0 +1,1174 @@
+<!--
+/**************************************************************************************
+  Visulaforce Page Name : GEMSCustomIDBAAssignment
+  Version               : 1.0
+  Function              : This Page is for assigning ID Card record to ID Card Child Case under Selected BA(For GEMS Project).
+  Modification Log      :
+* Developer           Date                   Description
+* ----------------------------------------------------------------------------                 
+* Praveen             06/01/2016             Original Version
+* Ranjit Gandhi       08/02/2016             Added Custom ID Card Case History 
+* Malathi             05/15/2017             SFDC-2814 Ability to Clone Custom ID Form
+* Phani Kommareddy    06/12/2017             SFDC-3064 Change how BAs are associated to Custom ID Card, Prospective and Suppression requests
+* Phani Kommareddy    08/11/2017             SFDC-5306 GEMS: Custom ID Request Form Enhancements
+* Phani Kommareddy    09/11/2017             SFDC-4442 GEMS - Ability to associate group sections to Custom ID Card requests
+* Sree Harsha         11/07/2017             SFDC-6854 GEMS: Wrap-text for Applicable BAs on ID Card Case and Forms
+* Phani Kommareddy    11/27/2017             SFDC-6369 GEMS - ID Card Maintenance: ID Card Case Page Layout & Functionality
+* Malathi.K           05/11/2017             SFDC-6975 GEMS - ID Cards - Show request form ID field on the ID Card Case forms.
+*************************************************************************************/
+-->
+
+<apex:page standardController="GEMS_Custom_ID_Request_Form__c" extensions="GEMS_Custom_IDRequestFormController" sidebar="false" id="pageId" >
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
+    <apex:includeScript value="/support/console/26.0/integration.js"/>
+    <apex:form id="formId">
+    <style>
+        th, td 
+        {
+            padding: 4px;
+        }
+        input[type=radio] { margin-left: 0px;}
+        .radioClass 
+        { 
+            margin-left: 0px;
+            border: none;
+            padding-right: 0px;
+            padding-left: 0px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+    </style>
+    <style>
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+                                  position:absolute;
+                                  top:1.25em;
+                                  padding:2px 5px;
+                                  left:auto; width:19em; right:-10em;
+                                  z-index:100;
+                                  border:1px solid orange;
+                                  background-color:#FEFDB9;
+                                  color:black;
+                                  margin:auto;
+                                 }
+    </style>
+    <script>
+    
+
+        <!-- function setFocusOnLoad(){} -->
+
+        var selectedBAIds = '';
+    var selectedGSIds = '';
+    var assignmentRadio = '';
+    
+    function setSelectedValues(checkID,name,assignmentType) {
+            
+        if(assignmentType == 'Benefit Agreement') {
+            selectedIds = selectedBAIds;
+        } else {
+            selectedIds = selectedGSIds;
+        }
+        if(document.getElementById(checkID).checked) {
+            if(selectedIds == '' || selectedIds.length == 0) {
+                selectedIds = name;                    
+            } else {
+                selectedIds = selectedIds+', '+name;       <!-- SFDC-6854 -->              
+            }
+        } else if(!document.getElementById(checkID).checked) {
+            var commaString = ', '+name;                    <!-- SFDC-6854 -->
+            if(selectedIds.includes(commaString)) {
+                selectedIds = selectedIds.replace(commaString,'');                    
+            } else if(selectedIds.includes(name)) {
+                selectedIds = selectedIds.replace(name,'');                    
+            }
+        }            
+        if(assignmentType == 'Benefit Agreement') {
+            selectedBAIds = selectedIds;
+        } else {
+            selectedGSIds = selectedIds;
+        }
+    }
+        
+    function saveAndAssignBAToCustForm(checkIssuance) {
+        var errorMessages= '';
+        
+        if(checkIssuance) {
+            var issuanceTypeElementId = document.getElementById('pageId:formId:thePageBlock:pbs:issuanceTypeId');
+            if(issuanceTypeElementId.value == null || issuanceTypeElementId.value == '') {
+                errorMessages = errorMessages.concat('Issuance Type is a required field \n');
+                alert(errorMessages);
+            } 
+        }
+        if(errorMessages.length == 0) {
+            if('{!ParentCase.GEMS_Submission_Type__c}' == 'ID Card Maintenance') {
+                //if bas && gs is empty ask for a confirmation box
+                var applicableBAsId = document.getElementById('pageId:formId:thePageBlock:pbs:applicableBAsId');
+                var applicableGSsId = document.getElementById('pageId:formId:thePageBlock:pbs:applicableGSsId');
+                selectedBAIds = applicableBAsId.value;
+                selectedGSIds = applicableGSsId.value;
+                if((applicableBAsId.value == null || applicableBAsId.value == '' ) || (applicableGSsId.value == null || applicableGSsId.value == '' )) {
+                    if(!confirm("Applicable BAs and Applicable GSs data is needed, Do you want to proceed without them?")) {
+                        errorMessages('Error in Applicable BAs and GSs');
+                    }
+                }
+            } else {
+                if(assignmentRadio == '' || assignmentRadio == null) {
+                    checkValue('pageId:form2:assignmentTypePB:assignmentTypeId');
+                } 
+                var isBA = (assignmentRadio == 'Benefit Agreement') ?true:false;
+                var isGS = (assignmentRadio == 'Group Section') ?true:false;
+                if(isBA && (selectedBAIds == '' || selectedBAIds == ',')) {
+                    errorMessages =errorMessages.concat('Please select BA \n');
+                } else if(isGS && (selectedGSIds == '' || selectedGSIds == ',')) {
+                    errorMessages =errorMessages.concat('Please select Group Section \n');
+                }
+                if(errorMessages.length > 0) 
+                    alert(errorMessages);
+            }
+        }
+        if(!errorMessages.length > 0) 
+            saveAndAssignBAToCustFormCtrl(selectedBAIds,selectedGSIds);
+        
+    }    
+    
+    
+     function checkValue(someId) {
+        var theRadioButtonSet = document.getElementsByName(someId);
+        for (var x = 0; x < theRadioButtonSet.length; x++) {
+            if (theRadioButtonSet[x].checked) {
+                assignmentRadio = theRadioButtonSet[x].value;
+                updateAssignmentType(assignmentRadio);
+                break;
+            }
+        }
+    }
+    
+        function inputLimiter(e,allow) {
+            var AllowableCharacters = '';
+            if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+            if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+            if (allow == 'phoneNumbers'){AllowableCharacters='1234567890-';}
+            if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+            if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+    
+            var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+            if (k!=13 && k!=8 && k!=0){
+                if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
+        
+        function fun(value){  
+            if (typeof(srcUp) == 'function') {
+                srcUp('/'+value);
+            } else {
+                window.open('/apex/GEMSCustomIDBAAssignment?Id='+value,'_parent');               
+            }
+            
+        }
+        
+        function cfun(value) {  
+            if (typeof(srcUp) == 'function') {
+                srcUp('/'+value);
+            } else {
+                window.open('/apex/GEMSCustomIDBAAssignment?Id='+value,'_parent');               
+            }
+            alert('Please Save and Assign BA, GS after making changes to this Cloned record');
+        }        
+        
+        </script>
+        
+        <apex:pageMessages id="pgMsgId"/> 
+        <apex:actionFunction name="saveAndAssignBAToCustFormCtrl" action="{!saveAndAssignBAs}" oncomplete="fun('{!customIdCardId}')" rerender="formId" status="pageStatus"> 
+            <apex:param name="baString" value="" assignTo="{!baCaseNums}" />     
+            <apex:param name="gsString" value="" assignTo="{!gsCaseNums}" />
+        </apex:actionFunction>   
+        <apex:pageBlock id="thePageBlock" title="Custom ID Card Case">          
+            <apex:pageblockbuttons location="top">
+                <apex:commandButton Value="Clone" onclick="if(!confirm('Are you sure you want to create a cloned Custom ID Request Form?')){return false};" action="{!ClonecustID}" status="save-status" rerender="formId" rendered="{!ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}" />                              
+                <apex:actionStatus id="save-status" onstart="" onstop="cfun('{!newcloneId}')" />            
+            </apex:pageblockbuttons> 
+           
+            <apex:pageBlockSection id="pbs">
+                <apex:outputField value="{!ParentCase.Account.Name}" />
+                <apex:outputField value="{!ParentCase.Account.External_ID__c}"/>  
+                <apex:outputField value="{!ParentCase.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!ParentCase.HCSC_Division__c}"/>                
+                <apex:outputField value="{!ParentCase.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!ParentCase.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!ParentCase.Market_Segment__c}"/>                               
+                <apex:outputField value="{!ParentCase.GEMS_Line_of_Business__c}"/>                
+                <apex:inputField value="{!customIdCard.Status__c}"/>
+                <apex:outputField value="{!ParentCase.GEMS_Account_Submission_Info__c}"/>
+                <apex:outputField value="{!customIdCard.Applicable_BAs__c}" rendered="{!ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}"  />
+                <apex:inputField id="applicableBAsId" value="{!customIdCard.Applicable_BAs__c}" rendered="{!ParentCase.GEMS_Submission_Type__c == 'ID Card Maintenance'}"/>
+                <apex:inputField id="issuanceTypeId" label="Issuance Type" value="{!customIdCard.Issuance_Type__c}" required="true"/>
+                <apex:outputField value="{!customIdCard.Applicable_GSs__c}" rendered="{!ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}"  />
+                <apex:inputField id="applicableGSsId" value="{!customIdCard.Applicable_GSs__c}" rendered="{!ParentCase.GEMS_Submission_Type__c == 'ID Card Maintenance'}" />
+                <apex:outputField value="{!customIdCard.Name}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:commandLink value="Back to Custom ID Card Case" immediate="true" action="{!gotoCase}" />
+        <br/><br/>
+        <center><b style="font-size: 140%;">Custom ID Request Form</b></center>
+        <br/> 
+        
+        <apex:pageblock id="pageBlockAId">
+        <apex:actionRegion >   
+        <center><b style="font-size: 140%;">Front ID Card Fields</b></center>
+        <br/>
+        <font style="font-style: italic;">If all the formats are the same for each product type, then only complete 1 form per product type. If the same product type has different formats please complete 1 form per each benefit agreement.  Only complete the fields that are changing from the previous custom ID card.</font>
+            <br/><br/>
+            <table width="100%">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="padding-top: 3px;padding-left: 0px;padding-bottom: 9px;padding-right: 0px;">
+                                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Client_Logo__c.label}"/></b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb"/>
+                                            <span style="float:right; !important"> Submit Logo to Contract Processing in correct format (EPS or PDF) </span>                                
+                                        </apex:outputLink>
+                                    </span>
+                                </td>
+                                <td>
+                                
+                                </td>
+                                <td>
+                                    <apex:selectRadio styleClass="radioClass" value="{!clientlogo}" style="border: none;margin-left: 0px;padding-left: 7px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!ClientlogoItems}" id="clientLogoRadioValue"/>
+                                    </apex:selectRadio>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>
+                                        <apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Name__c.label}" style="margin-left:-7px;"/>
+                                    </b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Name__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                </td>
+                                <td>
+                                    <apex:selectRadio value="{!companyName}" styleClass="radioClass" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;" >
+                                        <apex:selectOptions value="{!companyNameItems}" id="companyNameRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="printCompanyPlanValuePanelId, otherLabel1, printCompanyPlanValueOtherPanelId" status="statusId7"/>
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId7"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>
+                                        <apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Plan_Name__c.label}" style="margin-left:-8px;"/>
+                                    </b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Plan_Name__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                </td>
+                                <td>
+                                    <apex:selectRadio value="{!companyPlanName}" styleClass="radioClass" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;" >
+                                        <apex:selectOptions value="{!companyPlanNameItems}" id="companyPlanNameRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="printCompanyPlanNameValueId,printCompanyPlanNameValueOtherPanelId,otherLabel2" status="statusId8" />
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId8"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="padding-top: 0px;padding-left: 0px;padding-bottom: 19px;padding-right: 0px;">
+                                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Alternative_Network__c.label}"/>:</b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Alternative_Network__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                </td>
+                                
+                                <td>
+                                    <apex:outputPanel id="AlternateNetworkPanelId">
+                                        <apex:selectRadio styleClass="radioClass" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;" value="{!alternativeNetwork}">
+                                            <apex:selectOptions value="{!AlternativeNetworkItems}" id="alternativeNetworkRadioValue"/>
+                                            <apex:actionSupport event="onchange" reRender="OtheralternateNetworkPanelId,printCompanyPlanNameValueOtherPanelId" status="statusId" />
+                                        </apex:selectRadio>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:actionStatus startText="Loading..." id="statusId"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td >
+                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Name_Value1__c.label}"/>:</b>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Name_Value1__c.inlineHelpText}</span>
+                            </apex:outputLink>
+                        </span>
+                        <apex:outputPanel id="printCompanyPlanValuePanelId">
+                            <apex:inputField value="{!customIdCard.Print_Company_Name_Value1__c}" rendered="{!companyName='Yes'}" id="printCompanyPlanValueInId">
+                                <apex:actionSupport event="onchange" reRender="otherLabel1,printCompanyPlanValueOtherPanelId" status="statusId" /><br/>
+                                <apex:actionStatus startText="Loading..." id="statusId"/>
+                            </apex:inputfield>
+                            <apex:inputText rendered="{!companyName!='Yes'}" id="printCompanyNotPlanValueInId" disabled="{!companyName!='Yes'}"/>
+                        </apex:outputPanel>
+                        
+                    </td>
+                    <td>
+                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Plan_Name_Value__c.label}"/>:</b>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Company_Plan_Name_Value__c.inlineHelpText}</span>
+                            </apex:outputLink>
+                        </span>
+                        <apex:outputPanel id="printCompanyPlanNameValueId">
+                            <apex:inputField value="{!customIdCard.Print_Company_Plan_Name_Value__c}" rendered="{!(companyPlanName='Yes')}" id="printCompanyPlanNameValueInId">
+                                <apex:actionSupport event="onchange" reRender="otherLabel2,printCompanyPlanNameValueOtherPanelId" status="statusId" />
+                                <br/>&nbsp;
+                                <apex:actionStatus startText="Loading..." id="statusId"/>
+                            </apex:inputfield>
+                            <apex:inputText rendered="{!(companyPlanName!='Yes')}" id="printCompanyPlanNameValueInIdOut" disabled="{!(companyPlanName!='Yes')}"/>
+                        </apex:outputPanel>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputPanel id="OtheralternateNetworkPanelId">
+                            <b><apex:outputLabel value="Network Name:" rendered="{!(alternativeNetwork='Yes' )}" /></b>
+                            &nbsp;&nbsp;&nbsp;
+                            <apex:inputField value="{!customIdCard.Other_Alternative_Network__c}" rendered="{!alternativeNetwork='Yes'}"  style="width: 150px" />
+                            <b><apex:outputLabel value="Network Name:" rendered="{!(alternativeNetwork!='Yes')}" style="margin-left:-12px;"/></b>
+                            &nbsp;&nbsp;&nbsp;
+                            <apex:inputText disabled="{!alternativeNetwork!='Yes'}" rendered="{!alternativeNetwork!='Yes'}" />
+                        </apex:outputPanel>
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:outputPanel id="otherLabel1"  >
+                            <b>
+                                <apex:outputLabel value="Other Value" rendered="{!(customIdCard.Print_Company_Name_Value1__c='Other' && CompanyName='Yes' )}" style="margin-left:-11px;"/>
+                            </b>
+                            <span class="vfHelpText">
+                                <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                    
+                                    <span></span>
+                                </apex:outputLink>
+                            </span>
+                            </apex:outputPanel>
+                        <apex:outputPanel id="printCompanyPlanValueOtherPanelId">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <apex:inputField value="{!customIdCard.Print_Company_Name_Other__c}" rendered="{!(customIdCard.Print_Company_Name_Value1__c='Other' && companyName='Yes')}" id="printCompanyPlanValueOtherInId"/>
+                            <b><apex:outputLabel style="margin-left:-30px;" value="Other Value:" rendered="{!(customIdCard.Print_Company_Name_Value1__c!='Other')}"/></b>
+                            &nbsp;&nbsp;&nbsp;
+                            <apex:inputText rendered="{!(customIdCard.Print_Company_Name_Value1__c!='Other')}" id="printCompanyPlanValueNotOtherInId" disabled="{!(customIdCard.Print_Company_Name_Value1__c!='Other')}"/>
+                        </apex:outputPanel>
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:outputPanel id="otherLabel2">
+                            <b>
+                                <apex:outputLabel value="Other Value" rendered="{!(customIdCard.Print_Company_Plan_Name_Value__c='Other' && companyPlanName='Yes')}" style="margin-left:-11px;"/>
+                            </b>
+                            <span class="vfHelpText">
+                                <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                   
+                                    <span></span>
+                                </apex:outputLink>
+                            </span>
+                        </apex:outputPanel> 
+                            <apex:outputPanel id="printCompanyPlanNameValueOtherPanelId">&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <apex:inputField value="{!customIdCard.Print_Company_Plan_Name_Other__c}" rendered="{!(customIdCard.Print_Company_Plan_Name_Value__c='Other' && companyPlanName='Yes')}" id="printCompanyPlanNameValueOtherInId"/>
+                            <b><apex:outputLabel style="margin-left:-35px;" value="Other Value:" rendered="{!(customIdCard.Print_Company_Plan_Name_Value__c!='Other')}"/></b>
+                            &nbsp;&nbsp;&nbsp;
+                            <apex:inputText rendered="{!(customIdCard.Print_Company_Plan_Name_Value__c!='Other')}" id="printCompanyPlanNameValueNotOtherInId" disabled="{!(customIdCard.Print_Company_Plan_Name_Value__c!='Other')}" />
+                        </apex:outputPanel>                        
+                    </td>
+                </tr>
+            </table>
+            
+            <table width="100%">
+                <tr>
+                    <td width="60%">
+                        <b style="font-size: 120%;">CoPay Information:</b>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>Copay Labels/Amounts will reflect on IDs as requested</span>
+                            </apex:outputLink>
+                        </span>
+                        <br/><br/>
+                        <table width="100%" border="1" height="15px" style="border-collapse: collapse;border: 1px solid black">
+                            <th>
+                                CoPay Label
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>Choose or provide; Max. 16 characters</span>
+                                    </apex:outputLink>
+                                </span>
+                            </th>
+                            <th>Amount ($/%)
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>Max.14 characters</span>
+                                    </apex:outputLink>
+                                </span>
+                            </th>
+                            <tr>
+                                <td width="70%">CoPay Label #1:&nbsp;&nbsp;
+                                    <apex:inputField value="{!customIdCard.CoPay_Label_1__c}">
+                                        <apex:actionSupport event="onchange" reRender="copayLableValue1Id" status="statusId"/>                                        
+                                    </apex:inputField>
+                                    &nbsp;
+                                    <apex:outputpanel id="copayLableValue1Id">
+                                        <apex:inputField value="{!customIdCard.CoPay_Label_1_value__c}" rendered="{!customIdCard.CoPay_Label_1__c =='OTHER'}"/>
+                                      <!--  <apex:inputText value="{!customIdCard.CoPay_Label_1_value__c}" rendered="{!customIdCard.CoPay_Label_1__c !='OTHER'}" disabled="{!customIdCard.CoPay_Label_1__c !='OTHER'}"/> -->
+                                      <apex:inputText rendered="{!customIdCard.CoPay_Label_1__c !='OTHER'}" disabled="{!customIdCard.CoPay_Label_1__c !='OTHER'}"/> 
+
+                                    </apex:outputpanel>
+                                </td>
+                                <td width="30%">
+                                    <apex:inputField value="{!customIdCard.Copay_Amount_1__c}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">CoPay Label #2:&nbsp;&nbsp;
+                                    <apex:inputField value="{!customIdCard.Copay_Label_2__c}">
+                                        <apex:actionSupport event="onchange" reRender="copayLableValue2Id"/>
+                                    </apex:inputField>
+                                    &nbsp;
+                                    <apex:outputpanel id="copayLableValue2Id">
+                                        <apex:inputField value="{!customIdCard.CoPay_Label_2_value__c}" rendered="{!customIdCard.Copay_Label_2__c =='OTHER'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Copay_Label_2__c !='OTHER'}" disabled="{!customIdCard.Copay_Label_2__c !='OTHER'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td width="30%">
+                                    <apex:inputField value="{!customIdCard.Copay_Amount_2__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">CoPay Label #3:&nbsp;&nbsp;
+                                    <apex:inputField value="{!customIdCard.Copay_Label_3__c}">
+                                        <apex:actionSupport event="onchange" reRender="copayLableValue3Id"/>
+                                    </apex:inputField>
+                                    &nbsp;
+                                    <apex:outputpanel id="copayLableValue3Id">
+                                        <apex:inputField value="{!customIdCard.CoPay_Label_3_value__c}" rendered="{!customIdCard.Copay_Label_3__c =='OTHER'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Copay_Label_3__c !='OTHER'}" disabled="{!customIdCard.Copay_Label_3__c !='OTHER'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td width="30%">
+                                    <apex:inputField value="{!customIdCard.Copay_Amount_3__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">CoPay Label #4:&nbsp;&nbsp;
+                                    <apex:inputField value="{!customIdCard.Copay_Label_4__c}">
+                                        <apex:actionSupport event="onchange" reRender="copayLableValue4Id"/>
+                                    </apex:inputField>
+                                    &nbsp;
+                                    <apex:outputpanel id="copayLableValue4Id">
+                                        <apex:inputField value="{!customIdCard.CoPay_Label_4_value__c}" rendered="{!customIdCard.Copay_Label_4__c =='OTHER'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Copay_Label_4__c !='OTHER'}" disabled="{!customIdCard.Copay_Label_4__c !='OTHER'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td width="30%">
+                                    <apex:inputField value="{!customIdCard.Copay_Amount_4__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">CoPay Label #5:&nbsp;&nbsp;
+                                    <apex:inputField value="{!customIdCard.Copay_Label_5__c}">
+                                        <apex:actionSupport event="onchange" reRender="copayLableValue5Id"/>
+                                    </apex:inputField>
+                                    &nbsp;
+                                    <apex:outputpanel id="copayLableValue5Id">
+                                        <apex:inputField value="{!customIdCard.CoPay_Label_5_value__c}" rendered="{!customIdCard.Copay_Label_5__c =='OTHER'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Copay_Label_5__c !='OTHER'}" disabled="{!customIdCard.Copay_Label_5__c !='OTHER'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td width="30%">
+                                    <apex:inputField value="{!customIdCard.Copay_Amount_5__c}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <br/><br/>
+                        <apex:image url="{!URLFOR($Resource.GEMSIDCardImagesSource_V1, '/GEMSFrontIDCard.jpg')}" width="400" height="190" />
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table width="100%">
+                <tr>
+                    <td width="50%">
+                        
+                        
+                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Rx_Information__c.label}"/>:</b>
+                        &nbsp;&nbsp;&nbsp;
+                        <apex:inputField value="{!customIdCard.Rx_Information__c}" id="rxInfoId">
+                            <apex:actionSupport event="onchange" reRender="rXVendorPanelId" status="statusId" /><br/>
+                            <apex:actionStatus startText="Loading..." id="statusId"/>
+                        </apex:inputField>
+                        <br/>
+                        
+                         <apex:outputpanel id="rXVendorPanelId">
+                         <b><apex:outputLabel style="margin-left: -12px;" value="Carved Out Rx Vendor's Name:" rendered="{!customIdCard.Rx_Information__c='Yes, with Carved out Vendor'}"/></b>&nbsp;&nbsp;&nbsp;
+                            <apex:inputField value="{!customIdCard.Carved_Out_Rx_Vendor_s_Name__c}" rendered="{!customIdCard.Rx_Information__c='Yes, with Carved out Vendor'}" id="carvedOutRxVenNameInId"/>
+                            <b><apex:outputLabel style="margin-left: -12px;" value="Carved Out Rx Vendor's Name:" rendered="{!customIdCard.Rx_Information__c!='Yes, with Carved out Vendor'}"/></b>
+                            &nbsp;&nbsp;&nbsp;
+                            <apex:InputText rendered="{!(customIdCard.Rx_Information__c!='Yes, with Carved out Vendor')}" id="carvedOutRxVenNotNameInId" disabled="{!(customIdCard.Rx_Information__c!='Yes, with Carved out Vendor')}"/>
+                        </apex:outputpanel>
+                        <br/>
+                        
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>
+                                        <apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Carve_Out_Rx_Vendor_Logo__c.label}"/>
+                                    </b>&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <apex:selectRadio styleClass="radioClass" value="{!carvedOutRxVendorLogo}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!carvedOutRxVendorLogoItems}" id="carvedOutRxVendorLogoRadioValue"/>
+                                    </apex:selectRadio>                                    
+                                </td>
+                            </tr>
+                        </table>
+                    <br/>
+                        
+                    </td>
+                    <td width="50%">
+                        <b style="font-size: 120%;">Rx Information for External Vendors:</b>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>Reference Fields 41, 43 , 45</span>
+                            </apex:outputLink>
+                        </span>
+                        <br/><br/>
+                        <table border="1" height="15px" style="border-collapse: collapse;border: 1px solid black">
+                            <th>Label</th>
+                            <th>Value</th>
+                            <tr>
+                                <td>RxBin</td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.RxBin__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RxPCN</td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.RxPCN__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RxGRP</td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.RxGRP__c}"/>
+                                </td>
+                            </tr>
+                        </table><br/>
+                        <b>Note: </b>Rx Vendors must be approved by BCA in order to print their logo on the BCBS ID Card. To find the most updated list of approved vendors, please visit the BlueWeb Website at: http://blueweb.bcbs.com/login/login.asp.
+                    </td>
+                    <!--
+                    <td >
+                        <apex:outputpanel id="rXVendorPanelId">
+                            <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Carved_Out_Rx_Vendor_s_Name__c.label}"/>:</b>&nbsp;&nbsp;&nbsp;
+                            <apex:inputField value="{!customIdCard.Carved_Out_Rx_Vendor_s_Name__c}" rendered="{!customIdCard.Rx_Information__c='Yes, with Carved out Vendor'}" id="carvedOutRxVenNameInId"/>
+                        </apex:outputpanel>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <b>
+                                        <apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_Carve_Out_Rx_Vendor_Logo__c.label}"/>
+                                    </b>&nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <apex:selectRadio styleClass="radioClass" value="{!carvedOutRxVendorLogo}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!carvedOutRxVendorLogoItems}" id="carvedOutRxVendorLogoRadioValue"/>
+                                    </apex:selectRadio>                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </td> -->
+                </tr>
+            </table>
+            
+            
+            
+            <table width="100%">
+                <tr>
+                    
+                    <td>
+                        <table width="100%">
+                            <tr>
+                                <td width="50%">
+                                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_FAMILY_SINGLE_Coverage_on_card__c.label}"/></b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_FAMILY_SINGLE_Coverage_on_card__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                    
+                                    <apex:selectRadio styleClass="radioClass" value="{!familyOrSingleCoverage}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!FamilyOrSingleCoverageItems}" id="familyOrSingleCoverageRadioValue"/>
+                                    </apex:selectRadio>
+                                </td>
+                                <td width="50%">
+
+                                    <b>
+                                        <apex:outputLabel value="Print standard or custom alpha prefix on card?"/>
+                                    </b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_C_S_alpha_prefix_on_card__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                    <apex:selectRadio styleClass="radioClass" value="{!customStandardAlphaPrefix}" layout="pageDirection" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!CustomStandardAlphaPrefixItems}" id="customStandardAlphaRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="customAlphaPanelId" status="statusId1" />
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId1"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                
+                                </td>
+                                <td>
+                                    <apex:outputpanel id="customAlphaPanelId">
+                                        <b><apex:outputLabel value="Custom alpha prefix to print on card :" rendered="{!customStandardAlphaPrefix ='No'}"/></b>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <apex:inputField value="{!customIdCard.Print_Custom_alpha_prefix_on_card__c}" rendered="{!customStandardAlphaPrefix='No'}" id="printCACardPreId"/>
+                                        <b><apex:outputLabel value="Custom alpha prefix to print on card :" rendered="{!customStandardAlphaPrefix!='No'}"/></b>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <apex:inputText rendered="{!customStandardAlphaPrefix!='No'}" id="printCACardNotPreId" disabled="{!customStandardAlphaPrefix!='No'}"/>
+                                        </apex:outputpanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="11.5%">
+                                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_custom_face_message_s_on_front__c.label}"/></b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Print_custom_face_message_s_on_front__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <apex:selectRadio styleClass="radioClass" value="{!customFaceMesssage}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!CustomFaceMesssageItems}" id="customMessagesRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="customFaceMsgPanelId" status="statusId2" />
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId2"/>
+                                </td>
+                                <td width="11%">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputpanel id="customFaceMsgPanelId">
+                                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Custom_face_message_1__c.label}"/>:</b>&nbsp;&nbsp;&nbsp;
+                                        <apex:inputField value="{!customIdCard.Custom_face_message_1__c}" rendered="{!customFaceMesssage='Yes'}" id="customfaceMsgInId"/>
+                                        <apex:inputText rendered="{!customFaceMesssage!='Yes'}" id="customfaceMsgNotInId" disabled="{!customFaceMesssage!='Yes'}"/>
+                                        <br/><br/>
+                                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Custom_Face_Message_2__c.label}"/>:</b>&nbsp;&nbsp;&nbsp;
+                                        <apex:inputField value="{!customIdCard.Custom_Face_Message_2__c}" rendered="{!customFaceMesssage='Yes'}" id="customfaceMsgIn2Id"/>
+                                        <apex:inputText rendered="{!customFaceMesssage!='Yes'}" id="customfaceMsgNotIn2Id" disabled="{!customFaceMesssage!='Yes'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <b>
+                        <apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Combine_Health_Dental_Cards__c.label}"/>
+                    </b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:selectRadio styleClass="radioClass" value="{!combineHealthAndMedicalCards}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                        <apex:selectOptions value="{!combineHealthAndMedicalCardsItems}" id="combineHealthAndMedicalCardsRadioValue"/>
+                    </apex:selectRadio>
+            
+                </td>
+             </tr>
+            </table>
+            <font style="font-style: italic;">
+            <p><b>
+            Note:</b>The standard is to combine Health&nbsp;<apex:outputtext value="&"/> Dental ID Cards whenever possible. In order to combine ID Cards for Health&nbsp;<apex:outputtext value="&"/> Dental the following requirements must be met:</p>
+            <ol>
+                <li>Health&nbsp;<apex:outputtext value="&"/> Dental funding types&nbsp;<apex:outputtext value="&"/> group # must be the same.</li>
+                <li>Combined ID Cards for PDENT&nbsp;<apex:outputtext value="&"/> TDENT product types must include the claims filing address for Dental claims.</li>
+                <li>Combined ID Cards for PDENT must list the DNoA phone label on the back of the ID Card.</li>
+                <li>VGDENT can <b>NOT</b> be combined as this product must have its own group #.</li>
+            </ol>
+            </font>
+        </apex:actionRegion>  
+        </apex:pageblock>
+        
+        <apex:pageBlock id="pageBlockBId">
+            <apex:actionRegion >
+            <center><b style="font-size: 140%;">Back ID Card Fields</b></center>
+            <table width="100%">
+                <tr>
+                    <td width="60%">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <b>Include a custom web address extension on back?</b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Include_a_custom_web_address_extension_o__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                    &nbsp;
+                                    <apex:selectRadio styleClass="radioClass" value="{!includeCustomWebAddressOnBack}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!IncludeCustomWebAddressOnBackItems}" id="IncludeCustomWebAddressOnBackRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="customWebSiteId" status="statusId4" />
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId4"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputpanel id="customWebSiteId">
+                                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Custom_Website__c.label}"/>:</b>&nbsp;&nbsp;&nbsp;
+                                        <apex:inputField value="{!customIdCard.Custom_Website__c}" rendered="{!includeCustomWebAddressOnBack=='Yes'}" /> 
+                                        <apex:inputText rendered="{!includeCustomWebAddressOnBack!='Yes'}" disabled="{!(includeCustomWebAddressOnBack !='Yes')}" /> 
+                                    </apex:outputpanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Include_client_web_address__c.label}"/></b>
+                                    <span class="vfHelpText">
+                                        <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                            <img src="/s.gif" alt="" class="helpOrb" />
+                                            <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Include_client_web_address__c.inlineHelpText}</span>
+                                        </apex:outputLink>
+                                    </span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <apex:selectRadio styleClass="radioClass" value="{!includeClientWebAddress}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!includeClientWebAddressItems}" id="includeClientWebAddressRadioValue"/>
+                                        <apex:actionSupport event="onchange" reRender="customClientWebSiteId" status="statusId6" />
+                                    </apex:selectRadio>
+                                    <apex:actionStatus startText="Loading..." id="statusId6"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputpanel id="customClientWebSiteId">
+                                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Client_Custom_Website__c.label}"/>:</b>&nbsp;&nbsp;
+                                        <apex:inputField value="{!customIdCard.Client_Custom_Website__c}" rendered="{!includeClientWebAddress='Yes'}"/>
+                                        <apex:inputText rendered="{!includeClientWebAddress!='Yes'}" disabled="{!(includeClientWebAddress !='Yes')}" /> 
+                                    </apex:outputpanel>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                 <td>
+                                     &nbsp;
+                                 </td>
+                            
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Select one option for phone numbers on the card back:</b>&nbsp;&nbsp;
+                                    <apex:selectRadio styleClass="radioClass" value="{!selectOneOptionForPhoneNumbers}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                        <apex:selectOptions value="{!selectOneOptionForPhoneNumbersItems}" id="selectOneOptionForPhoneNumbersRadioValue"/>
+                                    </apex:selectRadio>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <apex:image url="{!URLFOR($Resource.GEMSIDCardImagesSource_V1, '/GEMSBackIDCard.jpg')}" width="350" height="180" />
+                    </td>
+                </tr>
+            </table>
+            
+            <table width="100%">
+                <tr>
+                    <td width="60%">
+                        <!-- <br/> -->
+                        <table width="100%" border="1" height="15px" style="border-collapse: collapse;border: 1px solid black">
+                            <th>PHONE LABEL
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>Max. 16 characters for phone label</span>
+                                    </apex:outputLink>
+                                </span>
+                            </th>
+                            <th>PHONE NUMBER
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>No letters only digits with dashes</span>
+                                    </apex:outputLink>
+                                </span>
+                            </th>
+                            <th>*Not a BCBS Product
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>Check only if applicable</span>
+                                    </apex:outputLink>
+                                </span>
+                            </th>
+                            <tr>
+                                <td width="70%">Phone Label #1:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_1__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue1Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue1Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_1__c}" rendered="{!customIdCard.Phone_Label_1__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_1__c!='Other:'}"
+                                        disabled="{!customIdCard.Phone_Label_1__c!='Other:'}" />
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_1__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();" id="phone1Id"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_1__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #2:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_2__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue2Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue2Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_2__c}" rendered="{!customIdCard.Phone_Label_2__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_2__c!='Other:'}" disabled="{!customIdCard.Phone_Label_2__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_2__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_2__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #3:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_3__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue3Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue3Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_3__c}" rendered="{!customIdCard.Phone_Label_3__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_3__c!='Other:'}"
+                                        disabled="{!customIdCard.Phone_Label_3__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_3__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_3__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #4:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_4__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue4Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue4Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_4__c}" rendered="{!customIdCard.Phone_Label_4__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_4__c!='Other:'}" disabled="{!customIdCard.Phone_Label_4__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_4__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_4__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #5:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_5__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue5Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue5Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_5__c}" rendered="{!customIdCard.Phone_Label_5__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_5__c!='Other:'}" disabled="{!customIdCard.Phone_Label_5__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_5__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_5__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #6:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_6__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue6Id"/>
+                                    </apex:inputField>
+                                    
+                                    <apex:outputpanel id="phoneLableValue6Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_6__c}" rendered="{!customIdCard.Phone_Label_6__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_6__c!='Other:'}" disabled="{!customIdCard.Phone_Label_6__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_6__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_6__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #7:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_7__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue7Id"/>
+                                    </apex:inputField> 
+                                    
+                                    <apex:outputpanel id="phoneLableValue7Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_7__c}" rendered="{!customIdCard.Phone_Label_7__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_7__c!='Other:'}" disabled="{!customIdCard.Phone_Label_7__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_7__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_7__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="70%">Phone Label #8:&nbsp;
+                                    <apex:inputField value="{!customIdCard.Phone_Label_8__c}">
+                                        <apex:actionSupport event="onchange" reRender="phoneLableValue8Id"/>
+                                    </apex:inputField> 
+                                    
+                                    <apex:outputpanel id="phoneLableValue8Id">
+                                        <apex:inputField value="{!customIdCard.Phone_Label_Value_8__c}" rendered="{!customIdCard.Phone_Label_8__c=='Other:'}"/>
+                                        <apex:inputText rendered="{!customIdCard.Phone_Label_8__c!='Other:'}" disabled="{!customIdCard.Phone_Label_8__c!='Other:'}"/>
+                                    </apex:outputpanel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Phone_8__c}" OnkeyPress="return inputLimiter(event, 'phoneNumbers');" onkeydown="return validate();"/>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!customIdCard.Not_a_BCBS_product_8__c}"/>
+                                    <b>*Not a BCBS Product</b>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <font style="font-style: italic;"><b>
+            Note:</b> If another vendor's phone number is requested to add to the BCBS ID Card, they must be approved by the BCA as an approved vendor.<br/> There must be an asterisk at the end of the phone label to indicate that this vendor is not a BCBS product. To find the most updated list of approved vendors, please visit the BlueWeb Website at: <a href="http://blueweb.bcbs.com/login/login.asp" target="_blank">http://blueweb.bcbs.com/login/login.asp</a>.</font>
+            <br/><br/>
+            <table>
+            <tr>
+                <td>
+                    <b>Select one option for the Back Text Message on the back of the ID card:</b>
+                    <apex:selectRadio styleClass="radioClass" value="{!selectOneOptionForBackText}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                        <apex:selectOptions value="{!selectOneOptionForBackTextItems}" id="selectOneOptionForBackTextRadioValue"/>
+                        <apex:actionSupport event="onchange" reRender="cardBackMsgPanelId" status="statusId8" />
+                    </apex:selectRadio>
+                    <apex:actionStatus startText="Loading..." id="statusId8"/>
+                    
+                    <br/><br/>
+                    
+                    <apex:outputpanel id="cardBackMsgPanelId">
+                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Card_Back_Message_long__c.label}:"/></b>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Card_Back_Message_long__c.inlineHelpText}</span>
+                            </apex:outputLink>
+                        </span>  
+                        <apex:inputTextarea value="{!customIdCard.Card_Back_Message_long__c}" rendered="{!selectOneOptionForBackText='Custom'}" style="margin:2px;width: 531px;height: 123px;"/>
+                        <apex:inputTextarea rendered="{!selectOneOptionForBackText!='Custom'}" disabled="{!selectOneOptionForBackText!='Custom'}" style="margin:2px;width: 531px;height: 123px;"/>
+                    </apex:outputpanel>
+                    
+                    <br/><br/>
+                    <table Style="padding: 0px 0px 0px 0px;" height="0px; !important">
+                        <tr height="0px; !important">
+                            <td style="padding-left: 0px;padding-top: 0px;padding-bottom: 19px;padding-right: 0px;">
+                                <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Include_a_custom_card_carrier__c.label}"/></b>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="vfHelpText">
+                                    <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                        <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Include_a_custom_card_carrier__c.inlineHelpText}</span>
+                                    </apex:outputLink>
+                                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <apex:selectRadio styleClass="radioClass" value="{!customCardCarrier}" style="border: none;margin-left: 0px;padding-left: 0px;padding-bottom: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;margin-right: 0px;">
+                                    <apex:selectOptions value="{!customCardCarrierItems}" id="customCardCarrierRadioValue"/>
+                                    <apex:actionSupport event="onchange" reRender="customCareerMsgId" status="statusId" />
+                                </apex:selectRadio>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <apex:actionStatus startText="Loading..." id="statusId"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/><br/>
+                    
+                    <apex:outputpanel id="customCareerMsgId">
+                        <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Approved_Custom_Carrier_Message__c.label}"/>:</b>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" Style="text-decoration: none;">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Approved_Custom_Carrier_Message__c.inlineHelpText}</span>
+                            </apex:outputLink>
+                        </span>
+                        <apex:inputTextarea value="{!customIdCard.Approved_Custom_Carrier_Message__c}" rendered="{!customCardCarrier='Yes'}" style="margin: 2px;width: 514px;height: 125px;"/>
+                        <apex:inputTextarea rendered="{!customCardCarrier!='Yes'}" disabled="{!customCardCarrier!='Yes'}" style="margin: 2px;width: 514px;height: 125px;"/>
+                    </apex:outputpanel>
+                    
+                    <br/><br/>
+                    
+                    <b><apex:outputLabel value="{!$ObjectType.GEMS_Custom_ID_Request_Form__c.fields.Additional_comments_or_instructions__c.label}"/>:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:inputTextarea value="{!customIdCard.Additional_comments_or_instructions__c}" style="margin: 2px;width: 514px;height: 125px;"/>
+                    <br/><br/>
+                 
+                </td>
+                </tr>
+            </table>
+            </apex:actionRegion> 
+            <apex:pageblockbuttons location="bottom">
+                <apex:commandButton Value="Cancel" immediate="true" action="{!gotoCase}" />
+                <apex:commandButton Value="Submit" action="{!submitIdCard}" disabled="{!disableSubmitButton}"/>
+                <apex:commandButton Value="Save & Assign" action="{!dummy}" oncomplete="saveAndAssignBAToCustForm(true)"/>
+                <apex:actionStatus id="pageStatus">
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <img src="/img/loading32.gif" width="20" height="20" />
+                            <apex:outputLabel value="Loading..."/>
+                        </apex:outputPanel>            
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageblockbuttons> 
+        </apex:pageBlock>
+        </apex:form>        
+        <apex:form id="form2">        
+        <apex:pageBlock id="assignmentTypePB" rendered="{!ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}">
+            <apex:outputLabel value="Assignment Type" style="font-weight: bold"/>
+            <apex:actionRegion >
+            <apex:selectRadio value="{!assignmentType}" id="assignmentTypeId" onchange="checkValue('{!$Component.assignmentTypeId}')" layout="pageDirection"> 
+                <apex:selectOptions value="{!AssignmentItems}"  />
+            </apex:selectRadio> 
+            <apex:actionFunction name="updateAssignmentType"  action="{!dummy}" rerender="form2" immediate="true" status="status">
+                <apex:param name="selectedRadioButtonValue" value="" assignTo="{!assignmentType}" />
+            </apex:actionFunction>
+            </apex:actionRegion>
+            <apex:actionStatus startStyle="color:red" startText="Loading..." id="status"/>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="baPB" title="BA Records" rendered="{!assignmentType == 'Benefit Agreement' && ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance'}" >
+            <apex:variable value="{!0}" var="baIdIncr" />
+            <apex:pageBlockTable value="{!listOfBARecords}" var="baIdWrapper" id="newBATable">
+                <apex:column headerValue="Select" width="3%" id="selectCol">
+                    <apex:variable value="{!baIdIncr+1}" var="baIdIncr" />
+                    <input type="checkbox" id="{!baIdIncr}" onclick="setSelectedValues('{!baIdIncr}','{!baIdWrapper.ba.Name}','Benefit Agreement')"/>
+                </apex:column>
+                <apex:column headerValue="BA No." width="5%">
+                    <apex:outputField value="{!baIdWrapper.ba.Name}"/>
+                </apex:column>
+                <apex:column headerValue="BA Product Type" value="{!baIdWrapper.ba.product__r.Name}" width="3%"/>
+                <apex:column headerValue="BA Description" value="{!baIdWrapper.ba.BA_Description__c}" width="7%"/>
+                <apex:column headerValue="BA Fund Type" value="{!baIdWrapper.ba.BA_Fund_Type__c}" width="7%"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="gsPB" title="Group Section Records" rendered="{!assignmentType == 'Group Section' && ParentCase.GEMS_Submission_Type__c != 'ID Card Maintenance' }">
+            <apex:variable value="{!0}" var="gsIdIncr" />
+            <apex:pageBlockTable value="{!listOfGSRecords}" var="gsIdWrapper" id="newGSTable">
+                <apex:column headerValue="Select" width="3%" id="selectCol">
+                    <apex:variable value="{!gsIdIncr+1}" var="gsIdIncr" />
+                    <input type="checkbox" id="{!gsIdIncr}" onclick="setSelectedValues('{!gsIdIncr}','{!gsIdWrapper.gs.Name}','Group Section')" />
+                </apex:column>
+                <apex:column headerValue="Group Section No." width="5%">
+                    <apex:outputField value="{!gsIdWrapper.gs.name}"/>
+                </apex:column>
+                <apex:column headerValue="Group No." value="{!gsIdWrapper.gs.Group_No__c}" width="3%"/>
+                <apex:column headerValue="Section No." value="{!gsIdWrapper.gs.Section_No__c}" width="7%"/>
+                <apex:column headerValue="Section Description   " value="{!gsIdWrapper.gs.Section_Description__c}" width="7%"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+            
+        </apex:form>
+       
+        
+        
+        <!--SFDC-5306 GEMS: Custom ID Request Form Enhancements - Adding Attachements Option -->
+        <apex:pageBlock mode="maindetail"  >
+            <apex:relatedList list="CombinedAttachments"/>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Custom ID Card Case History">
+            <apex:pageBlockTable value="{!GEMS_Custom_ID_Request_Form__c.Histories}" var="h">
+                <apex:column headerValue="Date"  value="{!h.createddate}"/>
+                <apex:column headerValue="User"   value="{!h.CreatedById}"/>
+                <apex:column headerValue="Field Changed" value="{!h.field}"/>
+                <apex:column headerValue="From" value="{!h.oldvalue}"/>
+                <apex:column headerValue="To"   value="{!h.newvalue}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+</apex:page>

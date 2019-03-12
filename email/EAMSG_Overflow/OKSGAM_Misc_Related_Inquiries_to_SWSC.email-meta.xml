@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Used by client reps working the overflow queue when sending items to SWSC for processing.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>OK Misc Related Inquiries to SWSC</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: [Type of Submission]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

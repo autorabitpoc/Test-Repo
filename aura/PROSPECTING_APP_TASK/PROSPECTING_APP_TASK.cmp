@@ -1,0 +1,50 @@
+<aura:component controller="ProspectingAppTaskController">
+    <aura:attribute name="curTask" type="Task" 
+                    default="{'sobjectType':'Task', 'WhatId':'', 'Description':'', 'Subject':'', 'OwnerId':'', 'CreatedDate':'', 'Status':'', 'Type':'Call', 'Priority':'High'}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}"/>
+    
+    <li>
+        <span class="slds-assistive-text">Task</span>
+        <div class="slds-media">
+            <div class="slds-media__body">
+                <div class="slds-media slds-media--timeline slds-timeline__media--task">
+                    <div class="slds-media__figure slds-timeline__icon">
+                        <div class="slds-icon_container">
+                            <lightning:icon iconName="standard:task" size="small" alternativeText="Account Icon"/>
+                        </div>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <label class="slds-checkbox">
+                                	<ui:inputCheckbox aura:id="taskDoneBox" change="{!c.updateTaskStatus}"/>
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label slds-assistive-text">mark-complete</span>
+                                </label>
+                            </div>
+                            <div class="slds-media__body">
+                                <h3 class="slds-truncate" title="Test Title"><a href="javascript:void(0);" onclick="{!c.openTaskModal}">{!v.curTask.Subject}</a></h3>
+                                <p class="slds-truncate">{!v.curTask.Description}</p>
+                                <ul class="slds-list--horizontal slds-wrap slds-truncate slds-m-top--xx-small">
+                                    <li class="slds-m-right--large">
+                                        <span class="slds-text-title slds-text-body--regular">Assigned to: </span>
+                                        <span class="slds-text-body--regular"> <a href="javascript:void(0);">{!v.curTask.Owner.Name}</a></span>
+                                    </li>
+                                </ul>
+                                <p class="slds-text-body--small">Date Created: {!v.curTask.CreatedDate}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-media__figure slds-media__figure--reverse">
+                <div class="slds-timeline__actions">
+                </div>
+            </div>
+        </div>
+    </li>
+    
+    <div aura:id="taskDetails"/>
+    <div><lightning:spinner aura:id="taskSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

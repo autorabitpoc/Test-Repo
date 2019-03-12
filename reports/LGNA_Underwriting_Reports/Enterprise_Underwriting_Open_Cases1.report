@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_87699950</developerName>
+        <masterLabel>Underwriting Director</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.Owner_s_Manager_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Donna E Rankin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emma G Jeffery</sourceValue>
+            </sourceValues>
+            <value>Ed Mount</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Eric R Gundersen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dustin Dewald</sourceValue>
+            </sourceValues>
+            <value>John McAdams</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Kurt V Heims</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>David E Whitman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Donald Smetko</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dana L. Peterson</sourceValue>
+            </sourceValues>
+            <value>Megan Hadley</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Case.Owner_s_Manager_Name__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Requested_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Total_Covered__c</field>
+    </columns>
+    <columns>
+        <field>Case.Sales_Executive__c</field>
+    </columns>
+    <columns>
+        <field>Case.Date_Assigned_to_Underwriting__c</field>
+    </columns>
+    <columns>
+        <field>Case.Underwriting_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Total_of_Days_with_Underwriting__c</field>
+    </columns>
+    <columns>
+        <field>Case.Funding_Type_Multiselect__c</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>OPEN</field>
+    </columns>
+    <description>Listing of all Open Cases in Underwriting</description>
+    <filter>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed,Closed - No Response,Closed - No Response,Closed (Marked for Delete),Declined</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Chou,Dingle,Forth,Hale,Mortenson,Pearson,Pentz,Stanger,Truong,Mishra,Szostak,Norkus,Silva,Kennedy,Charvat,Schmidt,Treleven,Palasz,Kafka,Gansallo,Cummings,Mok,Birnbaum,Hill,Merritello,Surmaj,Perry,Ruzicka,Paton,Stewart,Virtel,French,Gibson,Drakontaidis,Fulk,Said,Robbins,Guerrero,Tanveer,Seo,McFaul Raabe,Wilkins,Rodela,Sutton,Stryk,Reynolds Jr,Cornelison,Mori,Garza,Nally,Juroch,Tove,Nguyen,Davila,Cavin,Tariq,Thibaut,Franklin,Hagan,Lopez,Giglotta,Hatton,Buzecky,Joyce,Kuehl</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.Underwriting</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_87699950</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Enterprise Underwriting Open Cases</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Case.Owner_s_Manager_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Case.Requested_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,325 @@
+<apex:page showHeader="true" sidebar="false" doctype="html-5.0" standardController="Rate__c" extensions="RatingMatrixHCAController">
+
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}"/>
+
+    <style>
+
+    #firstColumn{      
+        float:left;     
+    }
+    #secondColumn{ 
+        float:right;
+    }   
+    #wrap{
+        height:175px;
+    }
+    @media (max-width: 1270px) {
+        #wrap{
+            height:225px;
+        }
+        #secondColumn{   
+            float:left;
+        }
+    }
+    #firstColumn td{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+    #firstColumn th{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+    #secondColumn td{
+        padding-bottom: 5px;
+    }   
+    #secondColumn th{
+        padding-bottom: 5px;
+    }   
+    input[type="text"] {
+        width:85px;
+        height:18px;
+    }
+    .errorAcct {
+
+        color:red;  
+        font-size:12px;     
+    }
+    .buttons {
+        margin:0 auto;
+    }
+    .section1HCA{
+        
+        display:inline-block;
+    }
+    .section2HCA{
+        
+        padding-left: 50px;
+        display:inline-block;
+    }
+    .section1Only{
+        
+        display:inline-block;
+    }
+    .section2Only{
+        
+        padding-left: 50px;
+        display:inline-block;
+    }
+    .section1Max{
+        
+        display:inline-block;
+    }
+    .section2Max{
+        
+        padding-left: 50px;
+        display:inline-block;
+    }
+    .buttonSection {
+        height:25px;
+        padding-right:150px;
+        float:right;
+    }
+    .space{
+        height:50px;
+    }
+    h1{
+        font-size:14px;
+    }
+    .addlInforSection1{
+    
+        display:inline-block;
+    }
+    .hcaClass{
+        height:825px;
+    }
+    .border{
+        border: 2px solid #00335b;
+        border-radius: 8px;
+    }
+    .spacing2{
+        height:110px;
+    }
+    .spacing3{
+        height:225px;
+    }
+    .buttonSpacing{
+        height:25px;
+    }
+    .textArea{
+        width:500px !important;
+    }
+
+    </style>
+
+
+     <script>
+
+    </script>
+
+    <apex:form >
+        <apex:pagemessages />
+        <apex:outputpanel rendered="{!hasAccess}">
+            <apex:pageblock id="rateBackground" title="Rate Background">
+                <div id="wrap">
+                    <table id="firstColumn">
+                        <tr>
+                            <th>HCA Account Structure</th>
+                            <td><apex:inputfield value="{!rate.HCA_Account_Structure_ASO__c}" styleclass="multiSelect" id="struct"/><div class="errorAcct"></div></td>
+                        </tr>
+                        <tr>
+                            <th>Select State</th>
+                            <td><apex:inputfield value="{!rate.HCSC_Division__c}" id="state" required="true" /></td>
+                        </tr>                    
+                    </table>
+                    <apex:outputPanel rendered="{!OR(hcscDivision == 'IL', hcscDivision == 'MT')}">
+                    <table id="secondColumn">
+                        <tr>
+                            <th>Applicable Group Number(s)</th>
+                            <td><apex:inputfield value="{!rate.Applicable_Group_Number_s__c}" id="number" /></td>
+                        </tr>
+                    </table>
+                    </apex:outputPanel>
+                </div>
+                <br />
+                <div class="buttons">
+          
+                    <apex:commandbutton value="Generate Rate Chart" action="{!saveRateBackground}" rerender="rateBackground, rateChart">                                                            
+                         <apex:param name="accountStructure" value="{!rate.HCA_Account_Structure_ASO__c}" assignTo="{!newAccountStructure}"/>   
+                    </apex:commandbutton>    
+                    <apex:commandbutton value="Cancel" action="{!cancel}" />
+              
+                </div>
+            </apex:pageblock>       
+            <apex:pageBlock id="rateChart" title="Rate Chart">  
+                  <apex:outputpanel rendered="{!renderRateChart}"> 
+                      <apex:repeat value="{!rateHCAs}" var="rateHCA"> 
+                            <div class="hcaClass">
+                                <br />
+                                <h1 style="text-decoration: underline;">{!rateHCA.Name}</h1>
+                                <br />
+                                <br />
+                                <h1>Health Care Account: </h1>
+                                <br />
+                                <p>
+                             <!--   <apex:outputPanel rendered="{!hcscDivision != 'OK'}">-->
+                                BlueEdge Direct HCA: <apex:inputfield value="{!rateHCA.BlueEdge_Direct_HCA__c}" />
+                           <!--     BlueEdge FSAFirst: <apex:inputfield value="{!rateHCA.BlueEdge_FSAFirst__c}" />  -->
+                           <!--     </apex:outputPanel> -->
+                                BlueEdge HCA: <apex:inputfield value="{!rateHCA.BlueEdge_HCA__c}" /></p>
+                                <p> 
+                                BlueEdge Limited Purpose HCA: <apex:inputfield value="{!rateHCA.BlueEdge_Limited_Purpose_HCA__c}" />    
+                                BlueEdge Vitality HCA: <apex:inputfield value="{!rateHCA.BlueEdge_Vitality_HCA__c}" />      
+                                BlueEdge Wellness Rewards HCA: <apex:inputfield value="{!rateHCA.BlueEdge_Wellness_Rewards_HCA__c}" /> </p>
+                                <br />
+                                <h1>Employer HCA Contribution Amounts: </h1>
+                                <br />
+                                <div class="section1HCA">
+                                <apex:outputpanel rendered="{!OR(accountStructure == 'Employee and Family', accountStructure == 'Employee, +1 Dependent, +2 Dependents', accountStructure == 'Employee, + Spouse, + Child(ren)')}">
+                                    <p>Employee Only:&nbsp; <apex:inputfield value="{!rateHCA.Employee_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Spouse:&nbsp; <apex:inputfield value="{!rateHCA.Employee_Spouse_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Child(ren):&nbsp; <apex:inputfield value="{!rateHCA.Employee_Child_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                </div>
+                                <div class="section2HCA">
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee and Family'}">
+                                    <p>Family:&nbsp; <apex:inputfield value="{!rateHCA.Family_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">
+                                    <p>Employee + 1 Dependent:&nbsp; <apex:inputfield value="{!rateHCA.Employee_1_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">                                                                    
+                                    <p>Employee + 2 or more depends:&nbsp; <apex:inputfield value="{!rateHCA.Employee_2_HCA__c}" /></p>
+                                </apex:outputpanel>
+                                </div>                           
+                                <br />
+                                <br />
+                                <apex:outputPanel rendered="{!hcscDivision != 'MT'}">
+                                <h1>Direct HCA Only: Self-Pay Corridor: </h1>   
+                                <br />             
+                                <div class="section1Only">   
+                                <apex:outputpanel rendered="{!OR(accountStructure == 'Employee and Family', accountStructure == 'Employee, +1 Dependent, +2 Dependents', accountStructure == 'Employee, + Spouse, + Child(ren)')}">
+                                    <p>Employee Only: &nbsp;<apex:inputfield value="{!rateHCA.Employee_Only__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Spouse:&nbsp; <apex:inputfield value="{!rateHCA.Employee_Spouse_Only__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Child(ren): &nbsp;<apex:inputfield value="{!rateHCA.Employee_Child_Only__c}" /></p>
+                                </apex:outputpanel>
+                                </div>
+                                <div class="section2Only">
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee and Family'}">
+                                    <p>Family: &nbsp;<apex:inputfield value="{!rateHCA.Family_Only__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">
+                                    <p>Employee + 1 Dependent:&nbsp; <apex:inputfield value="{!rateHCA.Employee_1_Only__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">                                                                   
+                                    <p>Employee + 2 or more depends:&nbsp; <apex:inputfield value="{!rateHCA.Employee_2_Only__c}" /></p>
+                                </apex:outputpanel>
+                                </div>
+                                <br />
+                                <br />
+                                </apex:outputPanel>
+                                <h1>HCA Maximum: </h1>   
+                                <br />
+                                <div class="section1Max">
+                                <apex:outputpanel rendered="{!OR(accountStructure == 'Employee and Family', accountStructure == 'Employee, +1 Dependent, +2 Dependents', accountStructure == 'Employee, + Spouse, + Child(ren)')}">
+                                    <p>Employee Only:&nbsp; <apex:inputfield value="{!rateHCA.Employee_Max__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Spouse:&nbsp; <apex:inputfield value="{!rateHCA.Employee_Spouse_Max__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, + Spouse, + Child(ren)'}">
+                                    <p>Employee + Child(ren):&nbsp; <apex:inputfield value="{!rateHCA.Employee_Child_Max__c}" /></p>
+                                </apex:outputpanel>
+                                </div>
+                                <div class="section2Max">
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee and Family'}">
+                                    <p>Family: &nbsp;<apex:inputfield value="{!rateHCA.Family_Max__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">
+                                    <p>Employee + 1 Dependent:&nbsp; <apex:inputfield value="{!rateHCA.Employee_1_Max__c}" /></p>
+                                </apex:outputpanel>
+                                <apex:outputpanel rendered="{!accountStructure == 'Employee, +1 Dependent, +2 Dependents'}">                                                                    
+                                    <p>Employee + 2 or more depends: &nbsp;<apex:inputfield value="{!rateHCA.Employee_2_Max__c}" /></p>  
+                                </apex:outputpanel>
+                                </div>
+                                <br />                  
+                                <br />
+                        
+                            <div class="addlInforSection1">
+                                <h1>Additional Information</h1>                         
+                                    <br />
+                                    <br />          
+                                    <h2>HCA Roll Over Amount</h2>
+                                        <p>The amount of participant’s balance to be carried forward to the next 12-month plan period. Rollover must be 100% if Rx expenses are integrated with a PBM and eligible for HCA reimbursement.</p> 
+                                        <p>Roll Over Amount: &nbsp; <apex:inputField value="{!rateHCA.HCA_Roll_Over_Amount__c}">
+                                                <apex:actionSupport event="onchange" reRender="otherAmount" /> 
+                                            </apex:inputField>
+                                            <apex:outputpanel id="otherAmount"> 
+                                                <apex:outputPanel rendered="{!rateHCA.HCA_Roll_Over_Amount__c == 'Other'}"> &nbsp;&nbsp;&nbsp;
+                                                Other: &nbsp;<apex:inputfield value="{!rateHCA.Other_Roll_over__c}" rendered="{!rateHCA.HCA_Roll_Over_Amount__c == 'Other'}"/>
+                                                </apex:outputpanel>
+                                            </apex:outputpanel>
+                                        </p>
+                                        <br />
+                                    <h2>For new subscribers and changes in coverage (e.g., from single to family)</h2>
+                                        <p>New/Changed Subscriber HCA Proration:&nbsp; <apex:inputField value="{!rateHCA.New_Changed_Subscriber_HCA_Proration__c}" /></p>
+                                        <br />
+                                    <h2>For subscribers terminating coverage and those who have a gap in coverage (e.g., rehires)</h2>
+                                        <p>Funds will be removed upon member cancelation:&nbsp; <apex:inputField value="{!rateHCA.Funds_will_be_removed_on_Cancelation__c}" /></p>
+                                        <br />
+                                    <h2>HCA Annual Contribution Frequency</h2>
+                                        <p>The employer has the option to stagger funding over the course of the year. If Frequency is other than annual, it must match the Proration period selected</p>
+                                        <p>HCA Annual Contribution Frequency: &nbsp;<apex:inputField value="{!rateHCA.HCA_Annual_Contribution_Frequency__c}" /></p>
+                                        <br />
+                                    <h2>Incentives applied to HCA:&nbsp; <apex:inputField value="{!rateHCA.Incentives_applied_to_HCA__c}" /></h2>
+                                    <br />
+                                    <br />
+                                    <h2>Additional Spending Account(s) Paired with the Product:&nbsp; <apex:inputField value="{!rateHCA.Add_l_Spend_Account_s_paired_w_product__c}" />  &nbsp;&nbsp;&nbsp; Order:&nbsp; <apex:inputField value="{!rateHCA.Order__c}" /></h2>
+                                    <br />
+                                    <br />
+                                    <h2>Do you have an existing HCA (HRA) that will require credit of ending HCA balances?:&nbsp; <apex:inputField value="{!rateHCA.Existing_HCA_HRA_needing_ending_credit__c}" /> &nbsp;&nbsp;&nbsp; Date prior to carrier credit: &nbsp;<apex:inputField value="{!rateHCA.Date_prior_to_carrier_credit__c}" /></h2>
+                                    <br />
+                                    <br />
+                                    <h2>HCA Account Yearly Claim Payment Options:&nbsp; <apex:inputField value="{!rateHCA.HCA_Account_Yearly_Claim_Options__c}" /></h2>
+                                    <br />  
+                                    <br />
+                                    <h2>Additional Provisions:&nbsp; <apex:inputField value="{!rateHCA.Additional_Provisions_HCA__c}" styleClass="textArea"/></h2>
+                                </div>
+                            </div>
+                            <apex:outputPanel rendered="{!OR(accountStructure == 'Employee, + Spouse, + Child(ren)', accountStructure == 'Employee, +1 Dependent, +2 Dependents')}">
+                                <div class="spacing3">
+                                </div>
+                            </apex:outputPanel>
+                            <div class="border">
+                            </div>
+
+                            </apex:repeat>
+                            <div class="buttonSpacing">
+                            </div>
+                            <apex:outputPanel rendered="{!OR(hcscDivision == 'IL', hcscDivision == 'MT')}">
+                            <div class="buttonSection">
+                                <apex:commandbutton value="Create New HCA" action="{!addNewHCA}" rerender="rateChart"/>                          
+                            </div>  
+                            </apex:outputPanel>
+                            <div class="space">
+                            </div>
+                             <center>
+                            <apex:commandbutton value="Save" action="{!saveNewRateRecord}" />
+                            <apex:commandbutton value="Cancel" action="{!cancel}" />
+                        </center>
+                  </apex:outputpanel>
+                 </apex:pageblock>          
+            </apex:outputpanel>       
+    </apex:form>        
+</apex:page>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$Body</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CommentCount</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$MemberCount</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>CollaborationGroup$Name</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>What&apos;s Buzzin&apos; in Healthcare</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CollaborationGroup.FeedItems$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CollaborationGroup.FeedItems$LikeCount</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Social Studio Adoption Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ch_dashboards__Chatter_Groups_Activity_1_0__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

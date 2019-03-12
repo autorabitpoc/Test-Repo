@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplicationComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buttonIconUrl>https://na2.salesforce.com/resource/1418063311000/ConsoleSearchIcon</buttonIconUrl>
+    <buttonText>Search</buttonText>
+    <height>350</height>
+    <isHeightFixed>false</isHeightFixed>
+    <isHidden>false</isHidden>
+    <isWidthFixed>false</isWidthFixed>
+    <visualforcePage>SearchPage</visualforcePage>
+    <width>350</width>
+</CustomApplicationComponent>

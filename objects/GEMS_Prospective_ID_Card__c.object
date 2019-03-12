@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>GEMSProspectiveIDCardBAAssignment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>GEMSProspectiveIDCardBAAssignment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Setup_OSS_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Setup/OSS User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Prospective_ID_Cards</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Actual_Owner__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Owner</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Applicable_BAs__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable BAs</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Applicable_GSs__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable GSs</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Assignment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Assignment Type</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>Benefit Agreement</label>
+                </value>
+                <value>
+                    <fullName>Group Section</fullName>
+                    <default>false</default>
+                    <label>Group Section</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Attachment__c</fullName>
+        <defaultValue>&apos;No&apos;</defaultValue>
+        <description>Used to indicate if there are attachments on the id card</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there attachments?</inlineHelpText>
+        <label>Attachment</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID_Card_Mailed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>ID Card Mailed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ID_Card_Mailed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>ID Card Mailed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ID_Card_Suppression_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>ID Card Suppression Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Parent_ID_Card_Case_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Parent_ID_Card_Case__r.CaseNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Parent ID Card Case Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_ID_Card_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent ID Card Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Prospective ID Card Request</relationshipLabel>
+        <relationshipName>GEMS_Prospective_ID_Cards</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Prospective_ID_Card_Approved_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prospective ID Card Approved Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prospective_ID_Card_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Prospective ID Card Approved?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Prospective_ID_card_Requested_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prospective ID Card Requested date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prospective_ID_sent_for_approval_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prospective ID Sent for Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Removal_of_ID_Card_Suppression_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Removal of ID Card Suppression Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>true</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Request for prospective ID</fullName>
+                    <default>false</default>
+                    <label>Request for prospective ID</label>
+                </value>
+                <value>
+                    <fullName>Prospective ID Card Completed</fullName>
+                    <default>false</default>
+                    <label>Prospective ID Card Completed</label>
+                </value>
+                <value>
+                    <fullName>Removal of Suppression Completed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Removal of Suppression Completed</label>
+                </value>
+                <value>
+                    <fullName>Request for Removal of Suppression</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Request for Removal of Suppression</label>
+                </value>
+                <value>
+                    <fullName>Request for Suppression</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Request for Suppression</label>
+                </value>
+                <value>
+                    <fullName>Suppression Completed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Suppression Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>GEMS Prospective ID Card</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PID#{0000000}</displayFormat>
+        <label>Prospective ID Card Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>GEMS Prospective ID Cards</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Applicable_BAs__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account_Setup_OSS_User__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ID_Card_Suppression_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Removal_of_ID_Card_Suppression_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Prospective_ID_Card_Approved__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Prospective_ID_Card_Approved_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Prospective_ID_card_Requested_date__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/GEMSProspectiveIDCardBAAssignment?caseId={!Case.Id}</url>
+    </webLinks>
+</CustomObject>

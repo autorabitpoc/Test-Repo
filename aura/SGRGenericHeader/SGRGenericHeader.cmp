@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="iconName" type="String" default="standard:opportunity"/>
+    <aura:attribute name="recordLabel" type="String" default=""/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="{!v.fieldsToQuery}"
+                      targetFields="{!v.simpleRecord}"
+                      targetError="{!v.recordError}"
+                      layoutType="FULL"
+    />
+
+    <lightning:card iconName="{!v.iconName}" title="{!v.simpleRecord.Name}">
+
+    </lightning:card>
+
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+            {!v.recordError}</div>
+    </aura:if>
+</aura:component>

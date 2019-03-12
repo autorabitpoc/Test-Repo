@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Case.Days_Open__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 or 4) AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>CREATED</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Jennifer Gauna,Jan Deluna,Jennifer Woods,Deidra Tucker,Katie Canada,Marcia Allison,Paula Pepper,Shayla Rickgauer,Sheren Azimi,Michele Woods,Vivian Rojas</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED_DATE</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.External_ID__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TX147687,TX187089,TX149554,TX169904,TX140883,TX190926,TX118708,TX017820,TX169076,TX099516,TX029547,TX153208,TX088856,TX090115,TX043432,TX091664,TX118149,TX005681,TX154309,TX026028,TX150621,TX041826,TX019788,TX153594,TX151454,TX167161,TX028752,TX028869,TX116443,TX093474,TX079163,TX174772,TX107008,TX098946,TX099187,TX016252,TX055656,TX015852,TX087019,TX152318,TX097486,TX002154,TX191139,TX167045,TX017790,TX189899,TX122053,TX041187,TX013349</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Jennifer Gauna,Jan Deluna,Jennifer Woods,Deidra Tucker,Katie Canada,Marcia Allison,Paula Pepper,Shayla Rickgauer,Sheren Azimi,Michele Woods,Vivian Rojas</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Ivie CSS Closed Cases</name>
+    <params>
+        <name>units</name>
+        <value>d</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>CLOSED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CLOSED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

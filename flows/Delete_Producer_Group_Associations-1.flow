@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <constants>
+        <name>DraftProducer_Recordtype</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>01233000000QMPT</stringValue>
+        </value>
+    </constants>
+    <interviewLabel>Delete Producer Group Associations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Delete Producer Group Associations</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Producer_Account_Deletion</name>
+        <label>Producer Account Deletion</label>
+        <locationX>232</locationX>
+        <locationY>210</locationY>
+        <filters>
+            <field>Group_Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GroupAccount</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>DraftProducer_Recordtype</elementReference>
+            </value>
+        </filters>
+        <object>Producer_Group_Association__c</object>
+    </recordDeletes>
+    <startElementReference>Producer_Account_Deletion</startElementReference>
+    <variables>
+        <description>Recordtype of draft producer group association</description>
+        <name>DraftProducers</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>012190000000AoZ</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>ID of the group account</description>
+        <name>GroupAccount</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

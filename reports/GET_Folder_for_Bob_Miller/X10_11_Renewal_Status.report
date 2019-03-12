@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_21243339</developerName>
+        <masterLabel>GET Lead</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case$Owner</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Emily Kennedy</sourceValue>
+            </sourceValues>
+            <value>Emily Kennedy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Allison Mayberry</sourceValue>
+            </sourceValues>
+            <value>Allie Mayberry</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_81473980</developerName>
+        <masterLabel>SAE</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case$Account_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>DYNEGY INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>KIRKLAND &amp; ELLIS LLP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>FERMI RESEARCH ALLIANCE, LLC</sourceValue>
+            </sourceValues>
+            <value>Danielle</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>ILLINOIS COMPREHENSIVE HEALTH INS PLAN</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHICAGO TEACHERS PENSION FUND</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>METROPOLITAN WATER RECLAMATION DISTRICT OF GR</sourceValue>
+            </sourceValues>
+            <value>Sandy</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CHICAGO PUBLIC SCHOOLS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHICAGO HOUSING AUTHORITY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CHICAGO PARK DISTRICT</sourceValue>
+            </sourceValues>
+            <value>Miles</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>CITY OF CHICAGO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CITY COLLEGES OF CHICAGO</sourceValue>
+            </sourceValues>
+            <value>Annette</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>THE UNIVERSITY OF CHICAGO</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>S&amp;C ELECTRIC COMPANY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WIRTZ CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SP+</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PARK DISTRICT RISK MANAGEMENT AGENCY (PDRMA)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PACE SUBURBAN BUS SERVICES</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CITIZENS EQUITY FIRST CREDIT UNION</sourceValue>
+            </sourceValues>
+            <value>Rico</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case$Case_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Ready_to_release_to_screening_Calc__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Sub_Type__c</field>
+    </columns>
+    <description>High level status overview by SAE</description>
+    <filter>
+        <criteriaItems>
+            <column>Case$Owner</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>emily kennedy,allison mayberry</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$Type</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Submission</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_21243339</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_81473980</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>10.11 Renewal Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_with_Case_Comments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Case_Effective_Date__c</dateColumn>
+        <endDate>2018-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

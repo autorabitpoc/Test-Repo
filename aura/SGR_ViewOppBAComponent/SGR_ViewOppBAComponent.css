@@ -1,0 +1,19 @@
+.THIS .iba-text{
+    padding-left: 10px;
+    padding-right: 0px;
+    padding-top: 2px;
+}
+.THIS .ba-title {
+    padding-left: 0px;
+    padding-right: 900px;
+    padding-top: 2px;
+}
+.THIS .grey-section{
+    
+}
+
+.THIS  .slds-accordion__summary-heading
+{
+   flex-grow: 0;
+   flex-shrink: 0;
+}

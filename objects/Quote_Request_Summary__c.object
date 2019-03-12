@@ -1,0 +1,4750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to store the request summary of the quote request data after is sent to UW.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AFA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AFA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ASL_Fee_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>ASL Fee Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Annual</fullName>
+                    <default>false</default>
+                    <label>Annual</label>
+                </value>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                    <fullName>PEPM</fullName>
+                    <default>false</default>
+                    <label>PEPM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ASO_Commissions_Annual__c</fullName>
+        <externalId>false</externalId>
+        <label>ASO Commissions (Annual) ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ASO_Commissions_PCPM__c</fullName>
+        <externalId>false</externalId>
+        <label>ASO Commissions (PCPM) ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Access_Fee_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Fee Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>% of ADP</fullName>
+                    <default>false</default>
+                    <label>% of ADP</label>
+                </value>
+                <value>
+                    <fullName>Per Capita</fullName>
+                    <default>false</default>
+                    <label>Per Capita</label>
+                </value>
+                <value>
+                    <fullName>Built into Admin</fullName>
+                    <default>false</default>
+                    <label>Built into Admin</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Account_Executive1_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Sales_Executive1__r.FirstName +&apos; &apos;+Account_Sales_Executive1__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Executive1 Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Executive1__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Executive1</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Executive2_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Sales_Executive2__r.FirstName +&apos; &apos;+ Account_Sales_Executive2__r.LastName</formula>
+        <label>Account Executive2 Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Executive2__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Executive2</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name_tx__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Number</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Sales_Executive1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>this field is auto populated from the Account &apos;Account Executive1&apos; during the Quote process.</description>
+        <externalId>false</externalId>
+        <label>Account/Sales Executive1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_Sales_Executive2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is auto populated from Account&apos;s Account Executive 2 during the Quote process.</description>
+        <externalId>false</externalId>
+        <label>Account/Sales Executive2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Active_Health_Contracts__c</fullName>
+        <externalId>false</externalId>
+        <label>Active Health Contracts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Active_Health_Members__c</fullName>
+        <externalId>false</externalId>
+        <label>Active Health Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Administrative_Fee_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Administrative Fee Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Per Capita</fullName>
+                    <default>false</default>
+                    <label>Per Capita</label>
+                </value>
+                <value>
+                    <fullName>% of Net Claims</fullName>
+                    <default>false</default>
+                    <label>% of Net Claims</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Are_commissions_included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Are commissions included?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Dental_Underwriter_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Dental_Underwriter__r.FirstName + &apos; &apos;+ Dental_Underwriter__r.LastName</formula>
+        <label>Assigned Dental Underwriter Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blue_Star_Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Blue Star Account Number</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bull_s_Eye__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Bull&apos;s Eye</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>COBRA__c</fullName>
+        <externalId>false</externalId>
+        <label>COBRA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Claim_Exceeded_Amt_Future__c</fullName>
+        <description>2. Is any treatment expected in the next 12 months in excess of $10000 or more?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>2. Is any treatment expected in the next 12 months in excess of $10000 or more?</inlineHelpText>
+        <label>Claim in excess of $10,000 in Future?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Claim_Exceeded_Amt_Past__c</fullName>
+        <description>1. In the past 12 months, has a claim been submitted in excess of $10,000?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>1. In the past 12 months, has a claim been submitted in excess of $10,000?</inlineHelpText>
+        <label>Claim Exceeded $10,000 in the Past?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Claims_Target_Guarantee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Claims Target Guarantee</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Comment__c</fullName>
+        <externalId>false</externalId>
+        <label>Comment</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Commissions_Billed_Separately__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Commissions Billed Seperately</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Competitor_3rd_PartyVendor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Competitor/3rd Party Vendor</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>contains</operation>
+                <value>Competitor</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>contains</operation>
+                <value>Vendor</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Quote_Request_Summarys1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Consultant__c</fullName>
+        <externalId>false</externalId>
+        <label>Consultant</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact Name</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>Quote_Request_Summarys</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Looking the user of the person</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Term_Aggregate__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Term - Aggregate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>24/12</fullName>
+                    <default>false</default>
+                    <label>24/12</label>
+                </value>
+                <value>
+                    <fullName>18/12</fullName>
+                    <default>false</default>
+                    <label>18/12</label>
+                </value>
+                <value>
+                    <fullName>15/12</fullName>
+                    <default>false</default>
+                    <label>15/12</label>
+                </value>
+                <value>
+                    <fullName>12/12</fullName>
+                    <default>false</default>
+                    <label>12/12</label>
+                </value>
+                <value>
+                    <fullName>12/15</fullName>
+                    <default>false</default>
+                    <label>12/15</label>
+                </value>
+                <value>
+                    <fullName>PAID</fullName>
+                    <default>false</default>
+                    <label>PAID</label>
+                </value>
+                <value>
+                    <fullName>12/18</fullName>
+                    <default>false</default>
+                    <label>12/18</label>
+                </value>
+                <value>
+                    <fullName>12/24</fullName>
+                    <default>false</default>
+                    <label>12/24</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contract_Term_Individual__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Term - Individual</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>24/12</fullName>
+                    <default>false</default>
+                    <label>24/12</label>
+                </value>
+                <value>
+                    <fullName>18/12</fullName>
+                    <default>false</default>
+                    <label>18/12</label>
+                </value>
+                <value>
+                    <fullName>15/12</fullName>
+                    <default>false</default>
+                    <label>15/12</label>
+                </value>
+                <value>
+                    <fullName>12/12</fullName>
+                    <default>false</default>
+                    <label>12/12</label>
+                </value>
+                <value>
+                    <fullName>12/15</fullName>
+                    <default>false</default>
+                    <label>12/15</label>
+                </value>
+                <value>
+                    <fullName>PAID</fullName>
+                    <default>false</default>
+                    <label>PAID</label>
+                </value>
+                <value>
+                    <fullName>12/18</fullName>
+                    <default>false</default>
+                    <label>12/18</label>
+                </value>
+                <value>
+                    <fullName>12/24</fullName>
+                    <default>false</default>
+                    <label>12/24</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Covered_ElseWhere__c</fullName>
+        <externalId>false</externalId>
+        <label>Covered ElseWhere</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Account_Funding_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Funding Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Agent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Current Agent</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Current_Contribution_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Contribution Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Currency</fullName>
+                    <default>false</default>
+                    <label>Currency</label>
+                </value>
+                <value>
+                    <fullName>Percent</fullName>
+                    <default>false</default>
+                    <label>Percent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Current_Dependent_Contribution__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Dependent Contribution</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Employee_Contribution__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Employee Contribution</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DHMO_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>DHMO Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Declined_to_Quote_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Declined to Quote Reason</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Dental_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>Dental Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dental_Underwriter_Queue__c</fullName>
+        <externalId>false</externalId>
+        <label>Dental Underwriter Queue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dental Underwriting &gt;200</fullName>
+                    <default>false</default>
+                    <label>Dental Underwriting &gt;200</label>
+                </value>
+                <value>
+                    <fullName>Dental Underwriting</fullName>
+                    <default>false</default>
+                    <label>Dental Underwriting</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Dental_Underwriter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned Dental Underwriter</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Dental_Underwriter_txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Dental Underwriter</label>
+        <length>225</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dental__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>for carrier</description>
+        <externalId>false</externalId>
+        <label>Dental</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Dental_days__c</fullName>
+        <externalId>false</externalId>
+        <label>Dental(days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department_for_Underwriting__c</fullName>
+        <externalId>false</externalId>
+        <label>Department for Underwriting</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>HCSC_Division__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>National/Major/Special Accounts</fullName>
+                    <default>false</default>
+                    <label>National/Major/Special Accounts</label>
+                </value>
+                <value>
+                    <fullName>Downers Grove Large Group Accounts</fullName>
+                    <default>false</default>
+                    <label>Downers Grove Large Group Accounts</label>
+                </value>
+                <value>
+                    <fullName>Major National Accounts</fullName>
+                    <default>false</default>
+                    <label>Major National Accounts</label>
+                </value>
+                <value>
+                    <fullName>Mid Market Accounts</fullName>
+                    <default>false</default>
+                    <label>Mid Market Accounts</label>
+                </value>
+                <value>
+                    <fullName>Large Group Accounts</fullName>
+                    <default>false</default>
+                    <label>Large Group Accounts</label>
+                </value>
+                <value>
+                    <fullName>Mid Market(51-100)</fullName>
+                    <default>false</default>
+                    <label>Mid Market(51-100)</label>
+                </value>
+                <value>
+                    <fullName>National Accounts</fullName>
+                    <default>false</default>
+                    <label>National Accounts</label>
+                </value>
+                <value>
+                    <fullName>Small Group Accounts</fullName>
+                    <default>false</default>
+                    <label>Small Group Accounts</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>IL</controllingFieldValue>
+                <valueName>National/Major/Special Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IL</controllingFieldValue>
+                <valueName>Downers Grove Large Group Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MT</controllingFieldValue>
+                <controllingFieldValue>NM</controllingFieldValue>
+                <controllingFieldValue>OK</controllingFieldValue>
+                <controllingFieldValue>TX</controllingFieldValue>
+                <valueName>Large Group Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NM</controllingFieldValue>
+                <valueName>National Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NM</controllingFieldValue>
+                <valueName>Small Group Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>OK</controllingFieldValue>
+                <controllingFieldValue>TX</controllingFieldValue>
+                <valueName>Major National Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>TX</controllingFieldValue>
+                <valueName>Mid Market Accounts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>TX</controllingFieldValue>
+                <valueName>Mid Market(51-100)</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ERISA_Plan_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>ERISA Plan Year</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Dental_Contracts__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Dental Contracts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Health_Contracts__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Health Contracts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Health_Members__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Health Members</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Funding_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Funding Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACAP</fullName>
+                    <default>false</default>
+                    <label>ACAP</label>
+                </value>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>COST</fullName>
+                    <default>false</default>
+                    <label>COST</label>
+                </value>
+                <value>
+                    <fullName>Cost Plus</fullName>
+                    <default>false</default>
+                    <label>Cost Plus</label>
+                </value>
+                <value>
+                    <fullName>Insured</fullName>
+                    <default>false</default>
+                    <label>Insured</label>
+                </value>
+                <value>
+                    <fullName>Minimum Premium</fullName>
+                    <default>false</default>
+                    <label>Minimum Premium</label>
+                </value>
+                <value>
+                    <fullName>MPP</fullName>
+                    <default>false</default>
+                    <label>MPP</label>
+                </value>
+                <value>
+                    <fullName>NDSS</fullName>
+                    <default>false</default>
+                    <label>NDSS</label>
+                </value>
+                <value>
+                    <fullName>PAR</fullName>
+                    <default>false</default>
+                    <label>PAR</label>
+                </value>
+                <value>
+                    <fullName>PREM</fullName>
+                    <default>false</default>
+                    <label>PREM</label>
+                </value>
+                <value>
+                    <fullName>Prospective Premium</fullName>
+                    <default>false</default>
+                    <label>Prospective Premium</label>
+                </value>
+                <value>
+                    <fullName>RSR</fullName>
+                    <default>false</default>
+                    <label>RSR</label>
+                </value>
+                <value>
+                    <fullName>SERV</fullName>
+                    <default>false</default>
+                    <label>SERV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Funding_Type_multi__c</fullName>
+        <externalId>false</externalId>
+        <label>Funding Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACAP</fullName>
+                    <default>false</default>
+                    <label>ACAP</label>
+                </value>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>Cost Plus</fullName>
+                    <default>false</default>
+                    <label>Cost Plus</label>
+                </value>
+                <value>
+                    <fullName>Minimum Premium</fullName>
+                    <default>false</default>
+                    <label>Minimum Premium</label>
+                </value>
+                <value>
+                    <fullName>Prem</fullName>
+                    <default>false</default>
+                    <label>Prem</label>
+                </value>
+                <value>
+                    <fullName>Prospective Premium</fullName>
+                    <default>false</default>
+                    <label>Prospective Premium</label>
+                </value>
+                <value>
+                    <fullName>COST</fullName>
+                    <default>false</default>
+                    <label>COST</label>
+                </value>
+                <value>
+                    <fullName>MPP</fullName>
+                    <default>false</default>
+                    <label>MPP</label>
+                </value>
+                <value>
+                    <fullName>PAR</fullName>
+                    <default>false</default>
+                    <label>PAR</label>
+                </value>
+                <value>
+                    <fullName>SERV</fullName>
+                    <default>false</default>
+                    <label>SERV</label>
+                </value>
+                <value>
+                    <fullName>Premium</fullName>
+                    <default>false</default>
+                    <label>Premium</label>
+                </value>
+                <value>
+                    <fullName>RSR</fullName>
+                    <default>false</default>
+                    <label>RSR</label>
+                </value>
+                <value>
+                    <fullName>Insured</fullName>
+                    <default>false</default>
+                    <label>Insured</label>
+                </value>
+                <value>
+                    <fullName>NDSS</fullName>
+                    <default>false</default>
+                    <label>NDSS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>GA_Override__c</fullName>
+        <externalId>false</externalId>
+        <label>GA Override (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>General_Agent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>General Agent</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HCSC_Division__c</fullName>
+        <externalId>false</externalId>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IL</fullName>
+                    <default>false</default>
+                    <label>IL</label>
+                </value>
+                <value>
+                    <fullName>MT</fullName>
+                    <default>false</default>
+                    <label>MT</label>
+                </value>
+                <value>
+                    <fullName>NM</fullName>
+                    <default>false</default>
+                    <label>NM</label>
+                </value>
+                <value>
+                    <fullName>OK</fullName>
+                    <default>false</default>
+                    <label>OK</label>
+                </value>
+                <value>
+                    <fullName>TX</fullName>
+                    <default>false</default>
+                    <label>TX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HMO_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>HMO Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Health_Commissions_PCPM__c</fullName>
+        <externalId>false</externalId>
+        <label>Health Commissions PCPM</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Health_Commissions__c</fullName>
+        <externalId>false</externalId>
+        <label>Health Commissions(%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Health_days__c</fullName>
+        <externalId>false</externalId>
+        <label>Health(days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_many_HMO_plans_are_there__c</fullName>
+        <externalId>false</externalId>
+        <label>How many HMO plans are there?</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_many_current_health_plans__c</fullName>
+        <externalId>false</externalId>
+        <label>How many current health plans?</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_many_non_HMO_health_plans_are_there__c</fullName>
+        <externalId>false</externalId>
+        <label>How many non-HMO health plans are there?</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>In_Network_Utilization_Guarantee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>In Network Utilization Guarantee</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Integration_Error_Message__c</fullName>
+        <description>the actually error message received from backend</description>
+        <externalId>false</externalId>
+        <label>Integration Error Message</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Integration_Response_Message__c</fullName>
+        <description>capture the response message from outbound call to heron.</description>
+        <externalId>false</externalId>
+        <label>Integration Response</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Intergration_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Integration Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sent Rate Request To Heron</fullName>
+                    <default>false</default>
+                    <label>Sent Rate Request To Heron</label>
+                </value>
+                <value>
+                    <fullName>Received Initial Rate</fullName>
+                    <default>false</default>
+                    <label>Received Initial Rate</label>
+                </value>
+                <value>
+                    <fullName>Received Final Rate</fullName>
+                    <default>false</default>
+                    <label>Received Final Rate</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_this_a_Duplicate_Quote__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is this a Duplicate Quote?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_this_a_Formal_Bid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is this a Formal Bid?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Note_Attachment_Modify_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Capture the user who modified the Note &amp; Attachment from the trigger.</description>
+        <externalId>false</externalId>
+        <label>Last Note &amp; Attachment Modify By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Late_Note_Attachment_Title__c</fullName>
+        <description>This field is used for email notification but is updated by the trigger, no showing to user on page.</description>
+        <externalId>false</externalId>
+        <label>Late Note &amp; Attachment Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Life_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>Life Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Life_days__c</fullName>
+        <externalId>false</externalId>
+        <label>Life(days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>List_contributions_that_vary_by_product__c</fullName>
+        <description>This field is used to capture the Proposed Dependent Health Contribution</description>
+        <externalId>false</externalId>
+        <label>List contributions that vary by product</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medicare_Retirees_Eligible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Medicare Retirees Eligible?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Network_Discount_Guarantees__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Network Discount Guarantees</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Non_HMO_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>Non-HMO Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Not_Insured__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Not Insured?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Note_Attachment_Created_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Capture the user who created the Note &amp; Attachment from trigger, for email notification not show to user on page.</description>
+        <externalId>false</externalId>
+        <label>Note &amp; Attachment Created By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Note_Count__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>this counter is updated by the Note and Attachment counter. this field is used to trigger notification whenever Note &amp; Attachment is added to Quote Request summary.</description>
+        <externalId>false</externalId>
+        <label>Note Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Name</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner_tx__c</fullName>
+        <description>Opportunity owner name pull from Opp</description>
+        <externalId>false</externalId>
+        <label>Opportunity Owner</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Commisions__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Commissions</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Service__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Service</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PUG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>PUG?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Part_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Part Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Participants_Diagonsed_Risk_Condition_Hi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>4. Has any participant been diagnosed as having a risk condition?</inlineHelpText>
+        <label>Participants Diagnosed Risk Condition?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Participants_Disabled__c</fullName>
+        <externalId>false</externalId>
+        <label>Participants Disabled</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Percent_Enrolled__c</fullName>
+        <externalId>false</externalId>
+        <label>Percent Enrolled</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Performance_Guarantee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Performance Guarantee</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Premium_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Premium Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PP</fullName>
+                    <default>false</default>
+                    <label>PP</label>
+                </value>
+                <value>
+                    <fullName>RP</fullName>
+                    <default>false</default>
+                    <label>RP</label>
+                </value>
+                <value>
+                    <fullName>RC</fullName>
+                    <default>false</default>
+                    <label>RC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Prior_HCSC_Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Prior HCSC Account Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prior_HCSC_Coverage__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Prior HCSC Coverage</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Producer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Producer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Quote_Request_Summarys</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Propose_Contribution_No_Explain_Box__c</fullName>
+        <externalId>false</externalId>
+        <label>Please Explain</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_Contribution_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Contribution Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Currency</fullName>
+                    <default>false</default>
+                    <label>Currency</label>
+                </value>
+                <value>
+                    <fullName>Percent</fullName>
+                    <default>false</default>
+                    <label>Percent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Proposed_Dependent_Contribution__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Dependent Contribution</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposal Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Proposed_Employee_Contribution__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Employee Contribution</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_Funding_Type_multi__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Funding Type (No use)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACAP</fullName>
+                    <default>false</default>
+                    <label>ACAP</label>
+                </value>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>COST</fullName>
+                    <default>false</default>
+                    <label>COST</label>
+                </value>
+                <value>
+                    <fullName>COST PLUS</fullName>
+                    <default>false</default>
+                    <label>COST PLUS</label>
+                </value>
+                <value>
+                    <fullName>Insured</fullName>
+                    <default>false</default>
+                    <label>Insured</label>
+                </value>
+                <value>
+                    <fullName>Minimum Premium</fullName>
+                    <default>false</default>
+                    <label>Minimum Premium</label>
+                </value>
+                <value>
+                    <fullName>MPP</fullName>
+                    <default>false</default>
+                    <label>MPP</label>
+                </value>
+                <value>
+                    <fullName>NDSS</fullName>
+                    <default>false</default>
+                    <label>NDSS</label>
+                </value>
+                <value>
+                    <fullName>PAR</fullName>
+                    <default>false</default>
+                    <label>PAR</label>
+                </value>
+                <value>
+                    <fullName>PREM</fullName>
+                    <default>false</default>
+                    <label>PREM</label>
+                </value>
+                <value>
+                    <fullName>Prospective Premium</fullName>
+                    <default>false</default>
+                    <label>Prospective Premium</label>
+                </value>
+                <value>
+                    <fullName>RSR</fullName>
+                    <default>false</default>
+                    <label>RSR</label>
+                </value>
+                <value>
+                    <fullName>SERV</fullName>
+                    <default>false</default>
+                    <label>SERV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proposed_Rx_Formulary__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Rx Formulary</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Basic</fullName>
+                    <default>false</default>
+                    <label>Basic</label>
+                </value>
+                <value>
+                    <fullName>Enhanced</fullName>
+                    <default>false</default>
+                    <label>Enhanced</label>
+                </value>
+                <value>
+                    <fullName>Performance</fullName>
+                    <default>false</default>
+                    <label>Performance</label>
+                </value>
+                <value>
+                    <fullName>Performance Select</fullName>
+                    <default>false</default>
+                    <label>Performance Select</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Proposed_Rx_Network__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Rx Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Advantage</fullName>
+                    <default>false</default>
+                    <label>Advantage</label>
+                </value>
+                <value>
+                    <fullName>Preferred/Value</fullName>
+                    <default>false</default>
+                    <label>Preferred/Value</label>
+                </value>
+                <value>
+                    <fullName>Traditional Select</fullName>
+                    <default>false</default>
+                    <label>Traditional Select</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Proposed_Rx_Pricing__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Rx Pricing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Traditional</fullName>
+                    <default>false</default>
+                    <label>Traditional</label>
+                </value>
+                <value>
+                    <fullName>Passthrough</fullName>
+                    <default>false</default>
+                    <label>Passthrough</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Proposed_contribution_same_as_current__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed contribution same as current?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>QuoteToQRDate__c</fullName>
+        <externalId>false</externalId>
+        <label>QuoteToQRDate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>QuoteToQRStatus__c</fullName>
+        <externalId>false</externalId>
+        <label>QuoteToQRStatus</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sold</fullName>
+                    <default>false</default>
+                    <label>Sold</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Quote_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quote Name</label>
+        <referenceTo>Quote</referenceTo>
+        <relationshipLabel>Quote Request</relationshipLabel>
+        <relationshipName>Quote_Request_Summarys</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Request_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Request Name</label>
+        <length>125</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_Structure__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Structure</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2 Tier</fullName>
+                    <default>false</default>
+                    <label>2 Tier</label>
+                </value>
+                <value>
+                    <fullName>3 Tier</fullName>
+                    <default>false</default>
+                    <label>3 Tier</label>
+                </value>
+                <value>
+                    <fullName>4 Tier</fullName>
+                    <default>false</default>
+                    <label>4 Tier</label>
+                </value>
+                <value>
+                    <fullName>5 Tier</fullName>
+                    <default>false</default>
+                    <label>5 Tier</label>
+                </value>
+                <value>
+                    <fullName>Composite</fullName>
+                    <default>false</default>
+                    <label>Composite</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rate_Version_Received__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( Status__c ,&apos;Received Initial&apos;, &apos;initial&apos;,&apos;Received Final&apos;, &apos;final&apos;,&apos;&apos;)</formula>
+        <label>Rate Version Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rates_Effective_for_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Rates Effective for (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Received_DateTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Received DateTime</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Received_From_Marketing__c</fullName>
+        <externalId>false</externalId>
+        <label>Received From Marketing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Reinsurer__c</fullName>
+        <externalId>false</externalId>
+        <label>Reinsurer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Release_To_Marketing__c</fullName>
+        <externalId>false</externalId>
+        <label>Release To Marketing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Request_Description__c</fullName>
+        <description>Required when Get Rate button is clicked to make callout to Heron.</description>
+        <externalId>false</externalId>
+        <label>Quote Req Desc</label>
+        <length>53</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Retirees__c</fullName>
+        <externalId>false</externalId>
+        <label>Retirees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Risk_Data_Comment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Comment for last question if answered Yes.</inlineHelpText>
+        <label>Please Explain</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STD_Current_Participation__c</fullName>
+        <externalId>false</externalId>
+        <label>STD Current Participation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STD_days__c</fullName>
+        <externalId>false</externalId>
+        <label>STD(days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Sales</fullName>
+                    <default>false</default>
+                    <label>New Sales</label>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                    <fullName>Up Sales</fullName>
+                    <default>false</default>
+                    <label>Up Sales</label>
+                </value>
+                <value>
+                    <fullName>Off-Cycle</fullName>
+                    <default>false</default>
+                    <label>Off-Cycle</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <color>#FF9966</color>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Sent</fullName>
+                    <default>false</default>
+                    <label>Sent</label>
+                </value>
+                <value>
+                    <fullName>Reviewed</fullName>
+                    <default>false</default>
+                    <label>Reviewed</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Received Initial</fullName>
+                    <default>false</default>
+                    <label>Received Initial</label>
+                </value>
+                <value>
+                    <fullName>Received Final</fullName>
+                    <default>false</default>
+                    <label>Received Final</label>
+                </value>
+                <value>
+                    <fullName>Lost</fullName>
+                    <default>false</default>
+                    <label>Lost</label>
+                </value>
+                <value>
+                    <fullName>Win</fullName>
+                    <default>false</default>
+                    <label>Win</label>
+                </value>
+                <value>
+                    <fullName>On Hold</fullName>
+                    <default>false</default>
+                    <label>On Hold</label>
+                </value>
+                <value>
+                    <fullName>Declined to Quote</fullName>
+                    <default>false</default>
+                    <label>Declined to Quote</label>
+                </value>
+                <value>
+                    <fullName>Sold</fullName>
+                    <default>false</default>
+                    <label>Sold</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Stoploss_Attachment_Points_Aggregate__c</fullName>
+        <externalId>false</externalId>
+        <label>Stoploss Attachment Points – Aggregate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Stoploss_Attachment_Points_Individual__c</fullName>
+        <externalId>false</externalId>
+        <label>Stoploss Attachment Points – Individual</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Subject_to_ERISA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Subject to ERISA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Submitted_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Submitted Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Total_Covered__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Covered</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Eligible__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Eligible</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Eligible_for_Dental__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Eligible for Dental</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Eligible_for_Health__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Eligible for Health</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_on_Payroll__c</fullName>
+        <externalId>false</externalId>
+        <label>Total on Payroll</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trend_Guarantee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Trend Guarantee</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UW_Queue__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>UW Queue</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Underwriter_Name_frm_owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( !ISBlank( TEXT(Underwriter_Queue__c )),TEXT(Underwriter_Queue__c), Underwriter__r.FirstName+&apos; &apos;+Underwriter__r.LastName   )</formula>
+        <label>Underwriter Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Underwriter_Queue__c</fullName>
+        <description>capture the underwriting queue name as it is given from UI</description>
+        <externalId>false</externalId>
+        <label>Underwriter Queue</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Underwriting_25_000_Exchange_Only_RFP</fullName>
+                    <default>false</default>
+                    <label>Underwriting:25,000+ &amp; Exchange Only RFP</label>
+                </value>
+                <value>
+                    <fullName>Underwriting_5_000_25_000</fullName>
+                    <default>false</default>
+                    <label>Underwriting: 5,000 – 25,000</label>
+                </value>
+                <value>
+                    <fullName>Underwriting_IL_LG_151_5_000</fullName>
+                    <default>false</default>
+                    <label>Underwriting: IL LG 151 - 5,000</label>
+                </value>
+                <value>
+                    <fullName>Underwriting_IL_NA_151_5_000</fullName>
+                    <default>false</default>
+                    <label>Underwriting: IL NA 151 - 5,000</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Underwriter__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Underwriter</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>User.Profile.Name</field>
+                <operation>equals</operation>
+                <value>Underwriter</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Quote_Request_Summarys5</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Underwriting_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Underwriting Due Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Waiting_For_Information_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiting For Information Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Close</fullName>
+                    <default>false</default>
+                    <label>Close</label>
+                </value>
+                <value>
+                    <fullName>Missing or inconsistent claims information</fullName>
+                    <default>false</default>
+                    <label>Missing or inconsistent claims information</label>
+                </value>
+                <value>
+                    <fullName>Large claim information</fullName>
+                    <default>false</default>
+                    <label>Large claim information</label>
+                </value>
+                <value>
+                    <fullName>Eligibility clarification</fullName>
+                    <default>false</default>
+                    <label>Eligibility clarification</label>
+                </value>
+                <value>
+                    <fullName>Census information</fullName>
+                    <default>false</default>
+                    <label>Census information</label>
+                </value>
+                <value>
+                    <fullName>Questions on proposed benefits</fullName>
+                    <default>false</default>
+                    <label>Questions on proposed benefits</label>
+                </value>
+                <value>
+                    <fullName>Current or prior carrier information missing</fullName>
+                    <default>false</default>
+                    <label>Current or prior carrier information missing</label>
+                </value>
+                <value>
+                    <fullName>Situs issues</fullName>
+                    <default>false</default>
+                    <label>Situs issues</label>
+                </value>
+                <value>
+                    <fullName>Information on RFP form doesn&apos;t match attachments</fullName>
+                    <default>false</default>
+                    <label>Information on RFP form doesn&apos;t match attachments</label>
+                </value>
+                <value>
+                    <fullName>Other missing information</fullName>
+                    <default>false</default>
+                    <label>Other missing information</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Waiting_Period__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiting Period</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Waive_on_Initial_Enrollment__c</fullName>
+        <externalId>false</externalId>
+        <label>Waive on Initial Enrollment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Waiving_Not_Covered_ElseWhere__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiving Not Covered ElseWhere</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>attachment_count__c</fullName>
+        <description>Attachment count is updated by the attachment trigger to indicate whether new attachment file is attached.</description>
+        <externalId>false</externalId>
+        <label>attachment count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Quote Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Dental_Request_Only_Quote_Request_Summary</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Dental Request Only (No Medical)</label>
+        <queue>Dental_Request_Only</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Underwriting_25_000_Exchange_Only_RFP_Quote_Request_Summary</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Underwriting:25,000+ &amp; Exchange Only RFP</label>
+        <queue>Underwriting_25_000_Exchange_Only_RFP</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Underwriting_5_000_25_000_Quote_Request_Summary</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Underwriting: 5,000 – 25,000</label>
+        <queue>Underwriting_5_000_25_000</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Underwriting_IL_LG_151_5_000_Quote_Request_Summary</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Underwriting: IL LG 151 - 5,000</label>
+        <queue>Underwriting_IL_LG_151_5_000</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Underwriting_IL_NA_151_5_000_Quote_Request_Summary</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Underwriting: IL NA 151 - 5,000</label>
+        <queue>Underwriting_IL_NA_151_5_000</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>QR-{0000}</displayFormat>
+        <label>Quote Request</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Quote Requests</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>New_Sale</fullName>
+        <active>true</active>
+        <label>New Sale</label>
+        <picklistValues>
+            <picklist>ASL_Fee_Type__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PEPM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Access_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of ADP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Built into Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Administrative_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of Net Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Future__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Past__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Aggregate__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Individual__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_Contribution_Type__c</picklist>
+            <values>
+                <fullName>Currency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Dental_Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Dental Underwriting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_for_Underwriting__c</picklist>
+            <values>
+                <fullName>Downers Grove Large Group Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large Group Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market%2851-100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National%2FMajor%2FSpecial Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small Group Accounts</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cost Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_Division__c</picklist>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Intergration_Status__c</picklist>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent Rate Request To Heron</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Diagonsed_Risk_Condition_Hi__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Disabled__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Premium_Type__c</picklist>
+            <values>
+                <fullName>PP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_Contribution_Type__c</picklist>
+            <values>
+                <fullName>Currency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST PLUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_contribution_same_as_current__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QuoteToQRStatus__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rate_Structure__c</picklist>
+            <values>
+                <fullName>2 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Composite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Type__c</picklist>
+            <values>
+                <fullName>New Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off-Cycle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Up Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined to Quote</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Underwriting_25_000_Exchange_Only_RFP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_5_000_25_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_LG_151_5_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_NA_151_5_000</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waiting_For_Information_Type__c</picklist>
+            <values>
+                <fullName>Census information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Close</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Current or prior carrier information missing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility clarification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information on RFP form doesn%27t match attachments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large claim information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing or inconsistent claims information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other missing information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Questions on proposed benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Situs issues</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waive_on_Initial_Enrollment__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>New_Sale_UW</fullName>
+        <active>false</active>
+        <description>NOT InUsed</description>
+        <label>New Sale UW</label>
+        <picklistValues>
+            <picklist>ASL_Fee_Type__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PEPM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Access_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of ADP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Built into Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Administrative_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of Net Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Future__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Past__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Aggregate__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Individual__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Current_Contribution_Type__c</picklist>
+            <values>
+                <fullName>Currency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Dental_Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Dental Underwriting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_for_Underwriting__c</picklist>
+            <values>
+                <fullName>Large Group Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market%2851-100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National%2FMajor%2FSpecial Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small Group Accounts</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cost Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_Division__c</picklist>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Intergration_Status__c</picklist>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent Rate Request To Heron</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Diagonsed_Risk_Condition_Hi__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Disabled__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Premium_Type__c</picklist>
+            <values>
+                <fullName>PP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_Contribution_Type__c</picklist>
+            <values>
+                <fullName>Currency</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Percent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST PLUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_contribution_same_as_current__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QuoteToQRStatus__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rate_Structure__c</picklist>
+            <values>
+                <fullName>2 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Composite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Type__c</picklist>
+            <values>
+                <fullName>New Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off-Cycle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Up Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined to Quote</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Win</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Underwriting_25_000_Exchange_Only_RFP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_5_000_25_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_LG_151_5_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_NA_151_5_000</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waiting_For_Information_Type__c</picklist>
+            <values>
+                <fullName>Census information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Close</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Current or prior carrier information missing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility clarification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information on RFP form doesn%27t match attachments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large claim information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing or inconsistent claims information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other missing information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Questions on proposed benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Situs issues</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waive_on_Initial_Enrollment__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Renewal</fullName>
+        <active>true</active>
+        <label>Renewal</label>
+        <picklistValues>
+            <picklist>ASL_Fee_Type__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PEPM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Access_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of ADP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Built into Admin</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Administrative_Fee_Type__c</picklist>
+            <values>
+                <fullName>%25 of Net Claims</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Capita</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Future__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Claim_Exceeded_Amt_Past__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Aggregate__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Contract_Term_Individual__c</picklist>
+            <values>
+                <fullName>12%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>24%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Dental_Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Dental Underwriting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_for_Underwriting__c</picklist>
+            <values>
+                <fullName>Downers Grove Large Group Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large Group Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mid Market%2851-100%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National%2FMajor%2FSpecial Accounts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small Group Accounts</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cost Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCSC_Division__c</picklist>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Intergration_Status__c</picklist>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial Rate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent Rate Request To Heron</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Diagonsed_Risk_Condition_Hi__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Participants_Disabled__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Premium_Type__c</picklist>
+            <values>
+                <fullName>PP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority__c</picklist>
+            <values>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Proposed_Funding_Type_multi__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST PLUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insured</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Minimum Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NDSS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospective Premium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QuoteToQRStatus__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rate_Structure__c</picklist>
+            <values>
+                <fullName>2 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Composite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Type__c</picklist>
+            <values>
+                <fullName>New Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off-Cycle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Up Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined to Quote</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received Initial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Underwriter_Queue__c</picklist>
+            <values>
+                <fullName>Underwriting_25_000_Exchange_Only_RFP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_5_000_25_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_LG_151_5_000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Underwriting_IL_NA_151_5_000</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waiting_For_Information_Type__c</picklist>
+            <values>
+                <fullName>Census information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Close</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Current or prior carrier information missing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eligibility clarification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information on RFP form doesn%27t match attachments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Large claim information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing or inconsistent claims information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other missing information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Questions on proposed benefits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Situs issues</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Waive_on_Initial_Enrollment__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>Dental_Underwriting_Member__c</fullName>
+        <label>Dental Underwriting Member</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Team_Member__c</fullName>
+        <label>Opportunity Team Member</label>
+    </sharingReasons>
+    <sharingReasons>
+        <fullName>Underwriting_Member__c</fullName>
+        <label>Underwriting Member</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Declined_to_Quote_Reason</fullName>
+        <active>true</active>
+        <description>Validate that when Declined to Quote is the Status, the Declined to Quote Reason is populated.</description>
+        <errorConditionFormula>OR(
+AND(ISPICKVAL(Status__c, &apos;Declined to Quote&apos;),ISBLANK(Declined_to_Quote_Reason__c))
+,
+AND(
+NOT(ISBLANK(Declined_to_Quote_Reason__c)),
+TEXT(Status__c) &lt;&gt; &apos;Declined to Quote&apos;)
+)</errorConditionFormula>
+        <errorMessage>Declined to Quote Reason must be populated with and only with Declined to Quote status.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Declined_to_Quote_from_New</fullName>
+        <active>true</active>
+        <description>Verifies that when changing status to Declined to Quote, the previous status was New.</description>
+        <errorConditionFormula>AND(ISCHANGED(Status__c), 
+TEXT(PRIORVALUE(Status__c)) &lt;&gt; &apos;New&apos;,
+ISPICKVAL(Status__c, &apos;Declined to Quote&apos;))</errorConditionFormula>
+        <errorMessage>Decline to Quote can only be selected when previous status was New.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_Fields_when_Status_Sold_or_Closed</fullName>
+        <active>true</active>
+        <description>This validation rule locks fields when status is sold or closed on  all QR</description>
+        <errorConditionFormula>OR 
+( 
+AND (NOT($Profile.Name = &quot;System Administrator&quot;), 
+ISPICKVAL(PRIORVALUE(Status__c),&quot;Sold&quot;), 
+ISPICKVAL(PRIORVALUE(QuoteToQRStatus__c),&quot;Sold&quot;)), 
+
+AND (NOT($Profile.Name = &quot;System Administrator&quot;), 
+ISPICKVAL(PRIORVALUE(Status__c),&quot;Closed&quot;), 
+ISPICKVAL(PRIORVALUE(QuoteToQRStatus__c),&quot;Sold&quot;)) 
+)</errorConditionFormula>
+        <errorMessage>Fields are locked and cannot be updated once Status is Closed or Sold</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_Underwriter_Can_change_Underwriter</fullName>
+        <active>false</active>
+        <description>not valid anymore as uw is no more owner</description>
+        <errorConditionFormula>AND (ISCHANGED( OwnerId ),!ISNEW(), $Profile.Name!=&apos;Underwriting&apos;, NOT(ISPICKVAL(Status__c, &apos;Declined to Quote&apos;)))</errorConditionFormula>
+        <errorMessage>Only Underwriter can change underwriter name.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sold_from_Receiveid_Final</fullName>
+        <active>true</active>
+        <description>Verifies that when changing status to Sold, the status was Sold</description>
+        <errorConditionFormula>AND(ISCHANGED(Status__c), 
+TEXT(PRIORVALUE(Status__c)) &lt;&gt; &apos;Received Final&apos;, 
+ISPICKVAL(Status__c, &apos;Sold&apos;))</errorConditionFormula>
+        <errorMessage>Sold can only be selected when previous status was Received Final.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Get_Rate</fullName>
+        <availability>online</availability>
+        <description>Click on this button will make a call out to Heron WS</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send to Heron</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/23.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot;)}
+
+var reqId=&apos;{!Quote_Request_Summary__c.Id}&apos;;
+var reqStatus = &apos;{!Quote_Request_Summary__c.Status__c}&apos;;
+var desc=&apos;{!JSENCode(Quote_Request_Summary__c.Request_Description__c)}&apos;;
+var rateEffDate=&apos;{!Quote_Request_Summary__c.Request_Effective_Date__c}&apos;;
+var accountName=&apos;{!JSENCODE(Quote_Request_Summary__c.Account_Name_tx__c)}&apos;;
+var accountNumber=&apos;{!Quote_Request_Summary__c.Account_Number__c}&apos;;
+var hcscDivision=&apos;{!Quote_Request_Summary__c.HCSC_Division__c}&apos;;
+var requestType=&apos;{!Quote_Request_Summary__c.Sales_Type__c}&apos;;
+
+var now=new Date();
+var yearOldDate = new Date();
+yearOldDate.setFullYear(yearOldDate.getFullYear()-1);
+
+//alert(yearOldDate+&apos; &apos;+rateEffDate);
+
+var resulte=null;
+var reqRecord;
+
+if(reqStatus!=null &amp;&amp; reqStatus !=&apos;New&apos; &amp;&amp; reqStatus!=&apos;&apos;){
+  alert(&apos;Error! This Quote Request Has been Sent. Only New Quote Request will be accepted.&apos;);
+
+}else if(desc==null || desc.length&lt;16){
+ alert(&apos;Please provide Quote Request Description with minimal 16 characters.&apos;);
+  
+}else if(hcscDivision==null ||hcscDivision==&apos;&apos;){
+  alert(&apos;Error! HCSC Division is missed!&apos;);
+}else if(rateEffDate==null || rateEffDate==&apos;&apos;){
+  alert(&apos;Error! Request Effective Date is missed.&apos;);
+}else if(rateEffDate&lt;yearOldDate){
+  alert(&apos;Request Effective Date can not be older than 1 year.&apos;);
+}else if(requestType==null || requestType==&apos;&apos;){
+  alert(&apos;Error! Request Type is missed. New Sale or Renewal?&apos;);
+}else if(requestType==&apos;New Sale&apos;&amp;&amp; (accountName==null||accountName==&apos;&apos;)){
+  alert(&apos;Error! Account Name is missed.&apos;);
+}else if(requestType==&apos;Renewal&apos; &amp;&amp; (accountNumber==null || accountNumber==&apos;&apos;)){
+  alert(&apos;Error! Account Number is missed.&apos;);
+}else{
+  
+ var retStr = sforce.apex.execute(&apos;QuoteRequestWebServiceHelper&apos;, &apos;CreateGetRateWSCallout&apos;,{quoteReqId :reqId}); 
+
+ // alert(&apos; ws call result:&apos;+retStr);
+
+//update the status after WS  call out is made
+   
+
+   //reqRecord = new sforce.SObject(&quot;Quote_Request_Summary__c&quot;);
+   //reqRecord.id=reqId;
+   //reqRecord.Status__c = &apos;Sent&apos;;
+   //reqRecord.Intergration_Status__c=&apos;Sent Rate Request To Heron&apos;;
+   //reqRecord.Submitted_Date_Time__c=now;
+
+  // result = sforce.connection.update([reqRecord]);
+   alert(&apos;Your Request is sending to Heron. Please check status for result.&apos;);
+  location.reload(true);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Request</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Create new request</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/OpportunityQuoteRequest?quoteRequestId={!Quote_Request_Summary__c.Id} &amp;id={!Quote_Request_Summary__c.Opportunity_Id__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>ViewInPDF</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View In PDF</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/QuoteRequestPDF?id={!Quote_Request_Summary__c.Id}</url>
+    </webLinks>
+</CustomObject>

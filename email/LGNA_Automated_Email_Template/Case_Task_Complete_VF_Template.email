@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="{!relatedTo.Subject} is completed for {!relatedTo.What.Name}" recipientType="User" relatedToType="Task" >
+<messaging:htmlEmailBody >
+<c:TaskEmailTemplateComponent record="{!relatedTo.Id}" relatedrecord="{!relatedTo.WhatId}" name="{!relatedTo.What.Name}" subject="{!relatedTo.Subject}"/>
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

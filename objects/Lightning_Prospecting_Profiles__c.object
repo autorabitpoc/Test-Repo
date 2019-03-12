@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>List of profiles that have access to lightning PROSPECTING_APP</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Lightning Prospecting Profiles</label>
+    <visibility>Public</visibility>
+</CustomObject>

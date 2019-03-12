@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$RecordType</field>
+    </columns>
+    <columns>
+        <field>Account$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account$Industry</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Expected_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$StageName</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Type</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities$Owner</field>
+    </columns>
+    <columns>
+        <field>Account.Opportunities.Producer_Association_For_Opportunity__r$Producer_Consultant__c</field>
+    </columns>
+    <columns>
+        <field>Account$SicDesc</field>
+    </columns>
+    <description>Open Gov&apos;t and Education Opportunities with Producers</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Industry</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Education,Government</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Active,In Communication,Actively Engaged,Actively Purchasing,Sold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities$Type</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>RFI,RFP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Opportunities$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Closed Won,Closed Lost,Won,Lost,Declined,No Further Action</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Open Govt &amp; Educ Opps w Producer Info</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Opportunities_Maybe_Producer__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Opportunities$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,12 @@
+Account structure retrieval  from BlueSTAR Failed
+
+Content:
+Status : {!FW_Service_Status_Log__c.Status__c}
+Error Code: {!FW_Service_Status_Log__c.ErrorCode__c}
+Error Description : {!FW_Service_Status_Log__c.ErrorDescription__c}
+
+Account Name : {!FW_Service_Status_Log__c.Account_Name__c}
+Case Number : {!FW_Service_Status_Log__c.Case__c} 
+Case Details : {!$Label.OrgUrl}/{!FW_Service_Status_Log__c.UID__c} 
+
+Thanks

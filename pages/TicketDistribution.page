@@ -1,0 +1,1969 @@
+<apex:page standardController="Ticket_Event__c" extensions="TicketDistributionController" showHeader="true" sidebar="false" Id="ticketDistro">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'bootstrap-3.3.4-dist/css/bootstrap.min.css')}"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/makeusabrew/bootbox/f3a04a57877cab071738de558581fbc91812dce9/bootbox.js"></script>
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" />
+    
+    <style>
+        
+        .dateFormat{
+        visibility:hidden;
+        }
+        
+        .lookupInput a{
+        display:block !important;
+        position: relative !important;
+        top: -34px !important;
+        width: 30px;
+        float:right;
+        }
+        
+        .lookupInput img{
+        float: right !important;
+        }
+        
+        span.lookupInput{
+        position: relative !important;
+        display: inherit !important;
+        }
+        
+        .lookupInput a, .lookup a{
+        border: none !important;
+        background: none !important;
+        }
+        
+        .margin{
+        margin-left:2%;
+        margin-right:2%;
+        }
+        
+        .space{
+        height:5px;
+        }
+        
+        .widthSpace{
+        width:10px;
+        }
+        
+        .deleteLink{
+        float: left;
+        }
+        
+        .ajax_loader{
+        position:absolute;
+        width:100%;
+        height:100%;
+        left:0;
+        top:0;       
+        }
+        .ajax_loader img{
+        position:absolute;    
+        left:50%;
+        top:50%;
+        }
+        
+        .unassigned{
+        background-color: #f2dede !important;
+        }
+    </style>
+    
+    <script>
+    
+    $(document).ready(function(){   
+        //on load of the page the correct checkboxes and input fields are rendered in the ticket accordion section based on the selections being pulled in from the ticket object
+        $('[id*= "businessUse"]').each(function(index,data) { 
+            var className = $(this).attr('class');
+            var rowNumber = className.split(',')[1];
+            var businessUse = $(this).val();
+            
+            if(businessUse == 'Business'){        
+                
+                $('.clientAssigneeCheckbox' + rowNumber).show();
+                $('.producerAssigneeCheckbox' + rowNumber).show();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).show();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).show();
+                $('.vendorAssigneeCheckbox' + rowNumber).show();
+                //UnusedTicketCheckbox
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    if (checkBox) {
+                        if(checkBoxClass == 'client'){
+                            $('.clientEntry' + rowNumber).show();
+                            $('.clientSpecificEntry' + rowNumber).show();
+                            //  $('.GuestNameEntry'+rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide(); // prospectSpecificEntry
+                            $('.vendorSpecificEntry' + rowNumber).hide(); 
+                          
+                            //--------Client Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.clientSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------Client Business Guest Free Form Text Show or hide-----------//
+                        } else if(checkBoxClass == 'producer'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).show();
+                            $('.producerSpecificEntry' + rowNumber).show();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide(); 
+                            
+                            //--------producer Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.producerSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------producer Business Guest Free Form Text Show or hide-----------//
+                            
+                        } else if(checkBoxClass == 'host'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide(); 
+                            //--------Host Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.employeeEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------Host Business Guest Free Form Text Show or hide-----------// 
+                            
+                        } else if(checkBoxClass == 'prospect'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).show();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).show();
+                            $('.vendorSpecificEntry' + rowNumber).hide(); 
+                           
+                           //--------prospect Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.prospectSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------prospect Business Guest Free Form Text Show or hide-----------//
+                            
+                        } else if(checkBoxClass == 'vendor'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).show();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).show(); 
+                           
+                            //--------vendor Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.vendorSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------vendor Business Guest Free Form Text Show or hide-----------// 
+                            
+                        } 
+                        else if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide(); 
+                            $('.GuestNameEntry' + rowNumber).hide();  
+                                                        
+                        } 
+                        
+                    }
+                });   
+                
+            } else if(businessUse == 'Charities'){               
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).show();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();   
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                $('.GuestNameEntry'+rowNumber).hide();
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    if (checkBox) {
+                        if(checkBoxClass == 'charity'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();                            
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();                            
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                    }
+                });
+                
+            } else if(businessUse == 'Employee Incentive'){              
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).show(); 
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    if (checkBox) {
+                        if(checkBoxClass == 'incentive'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                           
+                            
+                        }
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                           
+                            
+                        } 
+                    }
+                });
+                
+            } else if(businessUse == 'Personal'){             
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).show();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    if (checkBox) {
+                        if(checkBoxClass == 'employee'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        }
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        }
+                    }
+                });
+                
+            }else {              
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                $('.clientEntry' + rowNumber).hide();
+                $('.clientSpecificEntry' + rowNumber).hide();
+                $('.producerEntry' + rowNumber).hide();
+                $('.producerSpecificEntry' + rowNumber).hide();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).hide();
+                $('.vendorEntry' + rowNumber).hide();
+                $('.prospectSpecificEntry' + rowNumber).hide();
+                $('.vendorSpecificEntry' + rowNumber).hide();
+                $('.GuestNameEntry'+rowNumber).hide();
+               
+            }              
+        });  
+    });
+    //handles the checkbox actions to make sure only one checkbox is checked at a time for each ticket and renders the input boxes for the ticket accordion section
+    function checkboxChanged(checkbox, rowNumber){
+        
+        var input = 'input';
+        var checked = checkbox.checked;
+        var changedCheckboxId = $(checkbox).attr('name'); 
+        var checkBoxClass = $(checkbox).attr('class');   
+        
+        $('.title' + rowNumber).addClass('unassigned');        
+        
+        $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+            if (changedCheckboxId != $(this).attr('name')) {
+                $(this).attr('checked', false);
+            }
+        });     
+        
+        if (checked) {
+            
+            if(checkBoxClass == 'client'){         
+                
+                $('.clientEntry' + rowNumber).show();
+                $('.clientSpecificEntry' + rowNumber).show();
+                $('.GuestNameEntry'+rowNumber).hide();
+                
+                $('.producerEntry' + rowNumber).hide();
+                $('.producerSpecificEntry' + rowNumber).hide();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).hide();
+                $('.vendorEntry' + rowNumber).hide();
+                $('.prospectSpecificEntry' + rowNumber).hide();
+                $('.vendorSpecificEntry' + rowNumber).hide();
+                
+                $("[data-cbType='" + input + rowNumber + "']").each(function(index) {                        
+                    $(this).val('');        
+                });    
+                
+            } else if(checkBoxClass == 'producer'){
+                
+                $('.clientEntry' + rowNumber).hide();
+                $('.clientSpecificEntry' + rowNumber).hide();
+                $('.GuestNameEntry'+ rowNumber).hide();
+                $('.producerEntry' + rowNumber).show();
+                $('.producerSpecificEntry' + rowNumber).show();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).hide();
+                $('.vendorEntry' + rowNumber).hide();
+                $('.prospectSpecificEntry' + rowNumber).hide();
+                $('.vendorSpecificEntry' + rowNumber).hide();
+               
+                $("[data-cbType='" + input + rowNumber + "']").each(function(index) {          
+                    $(this).val('');      
+                });
+                
+            } else if(checkBoxClass == 'prospect'){
+                
+                $('.clientEntry' + rowNumber).hide();
+                $('.clientSpecificEntry' + rowNumber).hide();
+                $('.GuestNameEntry'+ rowNumber).hide();
+                $('.producerEntry' + rowNumber).hide();
+                $('.producerSpecificEntry' + rowNumber).hide();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).show();
+                $('.vendorEntry' + rowNumber).hide();
+                $('.prospectSpecificEntry' + rowNumber).show();
+                $('.vendorSpecificEntry' + rowNumber).hide();               
+                
+                $("[data-cbType='" + input + rowNumber + "']").each(function(index) {          
+                    $(this).val('');      
+                });
+                
+            } else if(checkBoxClass == 'vendor'){
+                
+                $('.clientEntry' + rowNumber).hide();
+                $('.clientSpecificEntry' + rowNumber).hide();
+                $('.GuestNameEntry'+ rowNumber).hide();
+                $('.producerEntry' + rowNumber).hide();
+                $('.producerSpecificEntry' + rowNumber).hide();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).hide();
+                $('.vendorEntry' + rowNumber).show();
+                $('.prospectSpecificEntry' + rowNumber).hide();
+                $('.vendorSpecificEntry' + rowNumber).show();              
+                
+                $("[data-cbType='" + input + rowNumber + "']").each(function(index) {          
+                    $(this).val('');      
+                }); 
+                
+            } 
+            
+                else if(checkBoxClass == 'host'){
+                    
+                    $('.clientEntry' + rowNumber).hide();
+                    $('.clientSpecificEntry' + rowNumber).hide();
+                    $('.GuestNameEntry'+ rowNumber).hide();
+                    $('.producerEntry' + rowNumber).hide();
+                    $('.producerSpecificEntry' + rowNumber).hide();
+                    $('.employeeEntry' + rowNumber).show();
+                    $('.prospectEntry' + rowNumber).hide();
+                    $('.vendorEntry' + rowNumber).hide();
+                    $('.prospectSpecificEntry' + rowNumber).hide();
+                    $('.vendorSpecificEntry' + rowNumber).hide();                   
+                                       
+                    $("[data-cbType='" + input + rowNumber + "']").each(function(index) {           
+                        $(this).val('');         
+                    });               
+                }
+        } else {
+            $('.clientEntry' + rowNumber).hide();
+            $('.clientSpecificEntry' + rowNumber).hide();
+            $('.GuestNameEntry'+ rowNumber).hide();
+            $('.producerEntry' + rowNumber).hide();
+            $('.producerSpecificEntry' + rowNumber).hide();
+            $('.employeeEntry' + rowNumber).hide();
+            $('.prospectEntry' + rowNumber).hide();
+            $('.vendorEntry' + rowNumber).hide();
+            $('.prospectSpecificEntry' + rowNumber).hide();
+            $('.vendorSpecificEntry' + rowNumber).hide();          
+            
+            
+            $("[data-cbType='" + input + rowNumber + "']").each(function(index) {           
+                $(this).val('');         
+            });
+        }
+    }
+    //validation for the creating tickets modal
+    function validateTickets(){
+        
+        var allowSubmit = true;         
+        var totalAssignedTickets = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.numberOfTicketsInGroup}').value;         
+        var requester = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.requester}').value;
+        var ticketPrice = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketPrice}').value; 
+        var ticketType = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketType}').value;       
+        
+        if(totalAssignedTickets <= 0){
+            allowSubmit = false;
+            $('.ticketsError').html('Please enter the number of tickets you would like to create').addClass('alert alert-danger');
+        } else {
+            $('.ticketsError').html('').removeClass('alert alert-danger');
+        }
+        
+        if(ticketPrice.length == 0){
+            allowSubmit = false;
+            $('.ticketPriceError').html('Please enter the price for the ticket(s) being created').addClass('alert alert-danger');
+        } else {
+            $('.ticketPriceError').html('').removeClass('alert alert-danger');
+        }    
+        
+        if(ticketType.length == 0){
+            allowSubmit = false;
+            $('.ticketTypeError').html('Please enter the type for the ticket(s) being created').addClass('alert alert-danger');
+        } else {
+            $('.ticketTypeError').html('').removeClass('alert alert-danger');
+        } 
+        
+        if(requester.length == 0){
+            allowSubmit = false;
+            $('.requesterError').html('Please enter a ticket requester').addClass('alert alert-danger');
+        } else {
+            $('.requesterError').html('').removeClass('alert alert-danger');
+        }
+        
+        if(allowSubmit){
+            generateTickets();
+        }
+    }
+    
+    var groupingIdForAssignment = 0;
+    //handles the id of the ticket grouping to assign
+    function grabGroupingId(groupingId){
+        
+        groupingIdForAssignment = groupingId; 
+    }
+    //validation for the assigning tickets modal
+    function validateAssignedTickets(){
+        
+        var allowSubmit = true;    
+        var businessUse = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.assignBusinessUseOfTicket}').value;
+        var client = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketContactModal}').value;
+        var producer = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketProducerModal}').value;
+        var employee = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketUserModal}').value; 
+        var vendor = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketVendorModal}').value;   
+        var prospect = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.ticketProspectModal}').value; 
+        
+        if(businessUse.length == 0){
+            allowSubmit = false;
+            $('.businessUseError').html('Please enter the business use for the ticket(s) being created').addClass('alert alert-danger');
+        } else {
+            $('.businessUseError').html('').removeClass('alert alert-danger');
+        }
+        
+        if(client.length == 0 && producer.length == 0 && employee.length == 0 && prospect.length==0 && vendor.length==0){
+            allowSubmit = false;
+            $('.assigneeError').html('Please enter an assignee for the ticket grouping').addClass('alert alert-danger');
+        } else {
+            $('.assigneeError').html('').removeClass('alert alert-danger');
+        }
+        
+        if(allowSubmit){
+            assignTickets(groupingIdForAssignment);
+        }
+    }    
+      //Change Ticket Requestor for Assigned Group 
+   function validateAssignedTicketRequestor(){ 
+     
+        var allowSubmit = true; 
+        var requester = document.getElementById('{!$Component.ticketDistro.eventTickets.tickets.changeRequestor}').value;
+       
+        if(requester.length == 0){
+            allowSubmit = false;
+            $('.requesterError').html('Please enter a ticket requester').addClass('alert alert-danger');
+        } else {
+            $('.requesterError').html('').removeClass('alert alert-danger');
+        }
+         if(allowSubmit){             
+            changeTicketRequestor(groupingIdForAssignment);
+        }
+       }
+    //creates pop up to make sure delete was intentional 
+    function deleteWarning(rowToDelete, groupingId){
+        
+        bootbox.confirm({
+            message: "<div class='alert alert-danger'>Are you sure you want to delete this ticket group?</div><div class='deleteModal'></div>",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn'
+                }
+            },
+            callback: function (result) {          
+                if(result){           
+                    deleteTickets(rowToDelete, groupingId);               
+                }
+            }
+        });   
+    } 
+    //handles the rendering of the checkboxes and input fields in the ticket accordion section after a change has occured to the Business use field in a certain row
+    function renderTicketAssigneeOptions(businessUse, groupingNumber, ticketNumber){
+        
+        var input= 'input';
+        
+        $('.title' + groupingNumber + ticketNumber).addClass('unassigned');
+        
+        if(businessUse == 'Business'){
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.producerAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.employeeAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.hostAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            
+            $('.charityAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.incentiveAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.prospectAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.vendorAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.UnusedTicketAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            //UnusedTicketAssigneeCheckbox
+            $("[data-cbType='" + input + groupingNumber + ticketNumber + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientEntry' + groupingNumber + ticketNumber).hide();
+            $('.clientSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.GuestNameEntry'+ groupingNumber + ticketNumber).hide();
+            $('.producerEntry' + groupingNumber + ticketNumber).hide();
+            $('.producerSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.employeeEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorSpecificEntry' + groupingNumber + ticketNumber).hide();         
+           
+            
+            
+        } else if(businessUse == 'Charities'){
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.producerAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.employeeAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.hostAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.charityAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.incentiveAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            
+            $('.prospectAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.vendorAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+             $('.UnusedTicketAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {   
+                name = $(this).attr('class');
+                if(name == 'charity'){
+                    $(this).prop('checked', true);     
+                }      
+            });
+            
+            $("[data-cbType='" + input + groupingNumber + ticketNumber + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientEntry' + groupingNumber + ticketNumber).hide();
+            $('.clientSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.GuestNameEntry'+ groupingNumber + ticketNumber).hide();
+            $('.producerEntry' + groupingNumber + ticketNumber).hide();
+            $('.producerSpecificEntry' + groupingNumber + ticketNumber).hide();            
+            $('.employeeEntry' + groupingNumber + ticketNumber).show();
+            $('.prospectEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorSpecificEntry' + groupingNumber + ticketNumber).hide();                      
+            
+        } else if(businessUse == 'Employee Incentive'){
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.producerAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.employeeAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.hostAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.charityAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.incentiveAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            
+            $('.prospectAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.vendorAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+             $('.UnusedTicketAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {   
+                name = $(this).attr('class');
+                if(name == 'incentive'){
+                    $(this).prop('checked', true);     
+                }      
+            });
+            
+            $("[data-cbType='" + input + groupingNumber + ticketNumber + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientEntry' + groupingNumber + ticketNumber).hide();
+            $('.clientSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.GuestNameEntry'+ groupingNumber + ticketNumber).hide();
+            $('.producerEntry' + groupingNumber + ticketNumber).hide();
+            $('.producerSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.employeeEntry' + groupingNumber + ticketNumber).show();
+            $('.prospectEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorSpecificEntry' + groupingNumber + ticketNumber).hide();
+                        
+            
+        } else if(businessUse == 'Personal'){
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.producerAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.employeeAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            $('.hostAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.charityAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.incentiveAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            
+            $('.prospectAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.vendorAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+             $('.UnusedTicketAssigneeCheckbox' + groupingNumber + ticketNumber).show();
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {   
+                name = $(this).attr('class');
+                if(name == 'employee'){
+                    $(this).prop('checked', true);     
+                }      
+            });
+            
+            $("[data-cbType='" + input + groupingNumber + ticketNumber + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientEntry' + groupingNumber + ticketNumber).hide();
+            $('.clientSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.GuestNameEntry'+ groupingNumber + ticketNumber).hide();
+            $('.producerEntry' + groupingNumber + ticketNumber).hide();
+            $('.producerSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.employeeEntry' + groupingNumber + ticketNumber).show();
+            $('.prospectEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorSpecificEntry' + groupingNumber + ticketNumber).hide();         
+            
+            
+        } else {
+            
+            $(":checkbox[data-cbType='" + groupingNumber + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.producerAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.employeeAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.hostAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.charityAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.incentiveAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.prospectAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.vendorAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            $('.UnusedTicketAssigneeCheckbox' + groupingNumber + ticketNumber).hide();
+            
+            $("[data-cbType='" + input + groupingNumber + ticketNumber + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientEntry' + groupingNumber + ticketNumber).hide();
+            $('.clientSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.GuestNameEntry'+ groupingNumber + ticketNumber).hide();
+            $('.producerEntry' + groupingNumber + ticketNumber).hide();
+            $('.producerSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.employeeEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorEntry' + groupingNumber + ticketNumber).hide();
+            $('.prospectSpecificEntry' + groupingNumber + ticketNumber).hide();
+            $('.vendorSpecificEntry' + groupingNumber + ticketNumber).hide();          
+            
+        }
+    }
+    //handles the rendering of the checkboxes and text boxes in the ticket accordion section after a create, assign, or delete action
+    function rerenderAssigneeOptionsAfterAction(){
+        $('[id*= "businessUse"]').each(function(index,data) { 
+            var className = $(this).attr('class');
+            var rowNumber = className.split(',')[1];
+            var businessUse = $(this).val();
+            
+            if($('.clientInput' + rowNumber).val().length == 0 && $('.producerInput' + rowNumber).val().length == 0 && $('.internalInput' + rowNumber).val().length == 0 && $('.prospectInput' + rowNumber).val().length == 0 && $('.vendorInput' + rowNumber).val().length == 0 ){
+                $('.title' + rowNumber).addClass('unassigned');
+            }
+            
+            if(businessUse == 'Business'){        
+                
+                $('.clientAssigneeCheckbox' + rowNumber).show();
+                $('.producerAssigneeCheckbox' + rowNumber).show();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).show();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).show();
+                $('.vendorAssigneeCheckbox' + rowNumber).show();
+                $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    
+                    if (checkBox) {
+                        if(checkBoxClass == 'client'){
+                            $('.clientEntry' + rowNumber).show();
+                            $('.clientSpecificEntry' + rowNumber).show();
+                            //  $('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                             //--------Client Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.clientSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------Client Business Guest Free Form Text Show or hide-----------//
+                           
+                            
+                            
+                        } else if(checkBoxClass == 'producer'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            // $('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).show();
+                            $('.producerSpecificEntry' + rowNumber).show();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            //--------producer Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.producerSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------producer Business Guest Free Form Text Show or hide-----------//
+                           
+                            
+                            
+                            
+                        } else if(checkBoxClass == 'host'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            //$('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' +rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();                                                       
+                             //--------Host Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.employeeEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------Host Business Guest Free Form Text Show or hide-----------// 
+
+                            
+                        }  else if(checkBoxClass == 'prospect'){
+                            
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            //$('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).show();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' +rowNumber).show();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            //--------prospect Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.prospectSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------prospect Business Guest Free Form Text Show or hide-----------//
+                          
+                            
+                            
+                        }  else if(checkBoxClass == 'vendor'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            //$('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).show();
+                            $('.prospectSpecificEntry' +rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).show();
+                            //--------vendor Business Guest Free Form Text Show or hide-----------//
+                            var ticketContactField = $('.vendorSpecificEntry'+rowNumber).find("span input");                          
+                            var guestName = $('.GuestNameEntry'+rowNumber).find("input");                        
+                            if(ticketContactField.val().indexOf('Guest') != -1 || ticketContactField.val().toLowerCase().indexOf('guest') != -1) {
+                                $('.GuestNameEntry' + rowNumber).show();
+                            } else {
+                                $('.GuestNameEntry' + rowNumber).hide();  
+                            }
+                            //--------vendor Business Guest Free Form Text Show or hide-----------// 
+                           
+                        } 
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                    }
+                });   
+                
+            } else if(businessUse == 'Charities'){               
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).show();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                 $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    
+                    if (checkBox) {
+                        if(checkBoxClass == 'charity'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();                            
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' +rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();                           
+                            
+                        } 
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                    }
+                });
+                
+            } else if(businessUse == 'Employee Incentive'){              
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).show();  
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                 $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    
+                    if (checkBox) {
+                        if(checkBoxClass == 'incentive'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+ rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' +rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                                                       
+                        } 
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                    }
+                });
+                
+            } else if(businessUse == 'Personal'){             
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).show();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                 $('.UnusedTicketAssigneeCheckbox' + rowNumber).show();
+                
+                
+                $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+                    var checkBox = $(this).is(':checked');   
+                    var checkBoxClass = $(this).attr('class');  
+                    
+                    if (checkBox) {
+                        if(checkBoxClass == 'employee'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).show();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' +rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();                            
+                            $('.GuestNameEntry'+ rowNumber).hide();
+                            
+                        }
+                        if(checkBoxClass == 'UnusedTicket'){
+                            $('.clientEntry' + rowNumber).hide();
+                            $('.clientSpecificEntry' + rowNumber).hide();
+                            $('.producerEntry' + rowNumber).hide();
+                            $('.producerSpecificEntry' + rowNumber).hide();
+                            $('.employeeEntry' + rowNumber).hide();
+                            $('.prospectEntry' + rowNumber).hide();
+                            $('.vendorEntry' + rowNumber).hide();
+                            $('.prospectSpecificEntry' + rowNumber).hide();
+                            $('.vendorSpecificEntry' + rowNumber).hide();
+                            $('.GuestNameEntry'+rowNumber).hide();                            
+                        } 
+                    }
+                });
+                
+            } else {              
+                
+                $('.clientAssigneeCheckbox' + rowNumber).hide();
+                $('.producerAssigneeCheckbox' + rowNumber).hide();
+                $('.employeeAssigneeCheckbox' + rowNumber).hide();
+                $('.hostAssigneeCheckbox' + rowNumber).hide();
+                $('.charityAssigneeCheckbox' + rowNumber).hide();
+                $('.incentiveAssigneeCheckbox' + rowNumber).hide();
+                $('.prospectAssigneeCheckbox' + rowNumber).hide();
+                $('.vendorAssigneeCheckbox' + rowNumber).hide();
+                // $('.UnusedTicketAssigneeCheckbox' + rowNumber).hide();
+                
+                
+                $('.clientEntry' + rowNumber).hide();
+                $('.clientSpecificEntry' + rowNumber).hide();
+                $('.GuestNameEntry'+rowNumber).hide();
+                $('.producerEntry' + rowNumber).hide();
+                $('.producerSpecificEntry' + rowNumber).hide();
+                $('.employeeEntry' + rowNumber).hide();
+                $('.prospectEntry' + rowNumber).hide();
+                $('.vendorEntry' + rowNumber).hide();
+                $('.prospectSpecificEntry' +rowNumber).hide();
+                $('.vendorSpecificEntry' + rowNumber).hide();
+               
+                
+            }              
+        });
+    }
+    //handles the rendering of the checkboxes and inputs for the assignee modal
+    function renderTicketAssigneeOptionsModal(businessUse, ticketNumber){
+        
+        var input= 'inputModal';
+        if(businessUse == 'Business'){
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientModalCheckbox').show();
+            $('.producerModalCheckbox').show();
+            $('.employeeModalCheckbox').hide();
+            $('.hostModalCheckbox').show();
+            $('.charityModalCheckbox').hide();
+            $('.incentiveModalCheckbox').hide();
+            $('.prospectModalCheckbox').show();
+            $('.vendorModalCheckbox').show();
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').hide();
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+            
+            
+        } else if(businessUse == 'Charities'){
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientModalCheckbox').hide();
+            $('.producerModalCheckbox').hide();
+            $('.employeeModalCheckbox').hide();
+            $('.hostModalCheckbox').hide();
+            $('.charityModalCheckbox').show();
+            $('.incentiveModalCheckbox').hide();
+            $('.prospectModalCheckbox').hide();
+            $('.vendorModalCheckbox').hide();
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {  
+                var name = $(this).attr('class');
+                if(name = 'charityModal'){       
+                    $(this).prop('checked', true);
+                }
+            });
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').show(); 
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+            
+        } else if(businessUse == 'Employee Incentive'){
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientModalCheckbox').hide();
+            $('.producerModalCheckbox').hide();
+            $('.employeeModalCheckbox').hide();
+            $('.hostModalCheckbox').hide();
+            $('.charityModalCheckbox').hide();
+            $('.incentiveModalCheckbox').show();
+            $('.prospectModalCheckbox').hide();
+            $('.vendorModalCheckbox').hide();
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {  
+                var name = $(this).attr('class');
+                if(name = 'incentiveModal'){       
+                    $(this).prop('checked', true);
+                }
+            });
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').show(); 
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+            
+        } else if(businessUse == 'Personal'){
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientModalCheckbox').hide();
+            $('.producerModalCheckbox').hide();
+            $('.employeeModalCheckbox').show();
+            $('.hostModalCheckbox').hide();
+            $('.charityModalCheckbox').hide();
+            $('.incentiveModalCheckbox').hide();
+            $('.prospectModalCheckbox').hide();
+            $('.vendorModalCheckbox').hide();
+            
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {  
+                var name = $(this).attr('class');
+                if(name = 'employeeModal'){       
+                    $(this).prop('checked', true);
+                }
+            });
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').show();
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+            
+        } else {
+            
+            $(":checkbox[data-cbType='" + ticketNumber + "']").each(function(index) {          
+                $(this).attr('checked', false);
+            });
+            
+            $('.clientModalCheckbox').hide();
+            $('.producerModalCheckbox').hide();
+            $('.employeeModalCheckbox').hide();
+            $('.hostModalCheckbox').hide();
+            $('.charityModalCheckbox').hide();
+            $('.incentiveModalCheckbox').hide();
+            $('.prospectModalCheckbox').hide();
+            $('.vendorModalCheckbox').hide();
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');       
+            });
+            
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').hide();
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+        }
+    }
+    //handles the checkbox changes and the rendering of text boxes for the assignee modal
+    function checkboxChangedModal(checkbox, rowNumber){
+        
+        var input = 'inputModal';
+        var checked = checkbox.checked;
+        var changedCheckboxId = $(checkbox).attr('name'); 
+        var checkBoxClass = $(checkbox).attr('class');           
+        
+        $(":checkbox[data-cbType='" + rowNumber + "']").each(function(index) {
+            if (changedCheckboxId != $(this).attr('name')) {
+                $(this).attr('checked', false);
+            }
+        });  
+        
+        if (checked) {
+            
+            if(checkBoxClass == 'clientModal'){         
+                
+                $('.clientInputModal').show();
+                $('.producerInputModal').hide();
+                $('.employeeInputModal').hide();
+                $('.prospectInputModal').hide();
+                $('.vendorInputModal').hide();
+                
+                
+                $("[data-cbType='" + input + "']").each(function(index) {                        
+                    $(this).val('');        
+                });    
+                
+            } else if(checkBoxClass == 'producerModal'){
+                
+                $('.clientInputModal').hide();
+                $('.producerInputModal').show();
+                $('.employeeInputModal').hide();
+                $('.prospectInputModal').hide();
+                $('.vendorInputModal').hide();
+                
+                $("[data-cbType='" + input + "']").each(function(index) {          
+                    $(this).val('');      
+                });
+                
+            } else if(checkBoxClass =='prospectModal'){
+                
+                $('.clientInputModal').hide();
+                $('.producerInputModal').hide();
+                $('.employeeInputModal').hide();
+                $('.prospectInputModal').show();
+                $('.vendorInputModal').hide();
+                
+                $("[data-cbType='" + input + "']").each(function(index) {          
+                    $(this).val('');      
+                });
+                
+            } else if(checkBoxClass == 'vendorModal'){
+                
+                $('.clientInputModal').hide();
+                $('.producerInputModal').hide();
+                $('.employeeInputModal').hide();
+                $('.prospectInputModal').hide();
+                $('.vendorInputModal').show();
+                
+                $("[data-cbType='" + input + "']").each(function(index) {          
+                    $(this).val('');      
+                });
+                
+            } else {
+                
+                $('.clientInputModal').hide();
+                $('.producerInputModal').hide();
+                $('.employeeInputModal').show();
+                $('.prospectInputModal').hide();
+                $('.vendorInputModal').hide();
+                
+                
+                $("[data-cbType='" + input + "']").each(function(index) {           
+                    $(this).val('');         
+                });
+            }
+        } else {
+            $('.clientInputModal').hide();
+            $('.producerInputModal').hide();
+            $('.employeeInputModal').hide();
+            $('.prospectInputModal').hide();
+            $('.vendorInputModal').hide();
+            
+            
+            $("[data-cbType='" + input + "']").each(function(index) {           
+                $(this).val('');         
+            });
+        }   
+    }
+    //Functions for showing/hiding the loading spinner when a delete action is called
+    function showLoadingDiv(){
+        $(".ajax_loader").show();
+    }
+    
+    function hideLoadingDiv(){
+        $(".ajax_loader").hide();
+    }
+    
+    function removeUnassignedFlag(value, rowNumber){
+        
+        if(value.length != 0){
+            $('.title'+ rowNumber).removeClass('unassigned');
+        }
+    }
+    //--------Client/Host Business Guest Free Form Text Show or hide-----------//
+    //-----Start----//
+    function checkClientContactGuest(value, rowNumber){   
+        var guestNameField = $('.GuestNameEntry'+rowNumber).find("input");                       
+        // var hostguestNameField = $('.hostSpecificEntry'+rowNumber).find("input");
+        
+        var hostcheckbox= $('.hostAssigneeCheckbox'+ rowNumber).find("input");
+        var hostcheckboxval = hostcheckbox.prop('checked');
+        
+        var clientcheckbox= $('.clientAssigneeCheckbox'+ rowNumber).find("input");
+        var clientcheckboxval = clientcheckbox.prop('checked');
+        
+        var producercheckbox= $('.producerAssigneeCheckbox'+ rowNumber).find("input");
+        var producercheckboxval = producercheckbox.prop('checked');
+        
+        var prospectcheckbox= $('.prospectAssigneeCheckbox'+ rowNumber).find("input");
+        var prospectcheckboxval = prospectcheckbox.prop('checked');
+        
+        var vendorcheckbox= $('.vendorAssigneeCheckbox'+ rowNumber).find("input");
+        var vendorcheckboxval = vendorcheckbox.prop('checked');   
+     
+     if((clientcheckboxval == true || producercheckboxval == true || prospectcheckboxval == true || vendorcheckboxval == true || hostcheckboxval == true) && value.length!=0 && (value.includes('Guest') || value.toLowerCase().includes('guest'))){
+         $('.GuestNameEntry'+rowNumber).show();            
+     }
+     else{ 
+         guestNameField.val('');
+         $('.GuestNameEntry'+rowNumber).hide(); 
+     }     
+ }
+    //-------END------------//
+    //--------Client/Host Business Guest Free Form Text Show or hide-----------// 
+    </script>
+    
+    <apex:form Id="eventTickets">
+        <apex:pagemessages id="pgmsgId"/>
+        <apex:outputpanel rendered="{!hasAccess}">
+            <apex:pageBlock id="eventInfo">
+                <div class="page-header text-center">
+                    <h1>Event Information</h1>
+                </div>
+                <br />
+                <apex:outputpanel rendered="{!ticketEvent.reportUrl__c != null}">
+                    <div class="text-center">
+                        <a href="/{!ticketEvent.reportUrl__c} " class="btn" role="button" target="_blank">
+                            <span class="glyphicon glyphicon-list-alt" />&nbsp;Guest List For Event</a>
+                    </div>
+                    <br />
+                </apex:outputpanel>
+                <apex:outputPanel >
+                    <div class="container" id="eventVenueName"  style="margin-Center:1%;">
+                        <div class="row">
+                            
+                            <div class="col-xs-4">
+                                <label for="eventNameInput">Event Name</label>
+                                <apex:inputField value="{!ticketEvent.Name}" styleClass="form-control" required="true" id="eventNameInput" html-placeholder="Hockey Game, Concert"/>                                                        
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="control-label" for="eventdateinput">Event Start Date</label>
+                                <apex:inputField value="{!ticketEvent.Event_Date__c}" required="true" id="eventdateinput" html-placeholder="01/01/2018"/>                            
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="control-label" for="eventTimeInput">Event Start Time</label>
+                                <apex:inputField value="{!ticketEvent.Event_Time__c}" styleClass="form-control" id="eventTimeInput" html-placeholder="10:30 AM"/>                                     
+                            </div>
+                            <div class="col-xs-4">
+                                <label for="eventDescriptionInput">Event Description</label>
+                                <apex:inputField value="{!ticketEvent.Event_Description__c}" styleClass="form-control" id="eventDescriptionInput" html-placeholder="Chicago Blackhawks vs Detroit Redwings...."/>
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <apex:actionRegion >
+                            <apex:outputPanel id="eventStateVenueName">
+                                <div class="row">
+                                    <div class="col-xs-3">                                      
+                                        <label for="eventStateInput">Event State</label>
+                                        <apex:inputField value="{!ticketEvent.Event_State__c}" required="true" styleClass="form-control" id="eventStateInput" html-placeholder="Illinois">
+                                            <apex:actionSupport event="onclick" action="{!EventStateChange}" reRender="eventVenueInput,eventStreetInput,eventCityInput,eventZipInput"/>
+                                        </apex:inputField>                                        
+                                    </div>
+                                    
+                                    <div class="col-xs-3">
+                                        <label for="eventVenueInput">Event Venue</label>
+                                        <apex:inputField value="{!ticketEvent.Event_Venue_Name__c}" required="true" styleClass="form-control" id="eventVenueInput" html-placeholder="United Center">
+                                            <apex:actionSupport event="onclick" action="{!EventVenueAddress}" reRender="eventStreetInput,eventCityInput,eventZipInput"/>                                       
+                                        </apex:inputField>                                       
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <br />
+                            <br />
+                            
+                            <apex:outputPanel id="eventStreetAddressId">
+                                <div class="row">
+                                    <div class="col-xs-3" id="eventStreetInput">                                        
+                                        <label for="eventStreetInput">Event Street Address</label>
+                                        <apex:inputField value="{!ticketEvent.Event_Street_Address__c}" styleClass="form-control" id="eventStreetInput" html-placeholder="1432 Wrightwood St"/>
+                                    </div>
+                                    
+                                    <div class="col-xs-3" id="eventCityInput">
+                                        <label for="eventCityInput">Event City</label>
+                                        <apex:inputField value="{!ticketEvent.Event_City__c}" styleClass="form-control" id="eventCityInput" html-placeholder="Chicago"/>
+                                    </div>
+                                    
+                                    <div class="col-xs-2" id="eventZipInput">                                        
+                                        <label class="control-label" for="eventZipInput">Event Zip Code</label>
+                                        <apex:inputField value="{!ticketEvent.Event_Zip_Postal_Code__c}" styleClass="form-control" id="eventZipInput" html-placeholder="60601"/>
+                                    </div>
+                                </div>                                
+                            </apex:outputPanel>
+                        </apex:actionRegion>                   
+                    </div>
+                    <br />
+                    <br />
+                    <div class="text-center">
+                        <div class="row">
+                            <apex:commandbutton value="Proceed To Ticket Assignment" action="{!renderTickets}" rerender="tickets, pgmsgId" />&nbsp;
+                            <apex:commandbutton value="Cancel" action="{!cancel}" />
+                        </div>
+                    </div>
+                </apex:outputPanel>          
+            </apex:pageBlock>   
+            <apex:pageBlock id="tickets">
+                <apex:outputPanel rendered="{!ticketCreation}">
+                    <!--delete spinner html element-->
+                    <div class="ajax_loader" style="display:none;"><apex:image url="{!$Resource.LoadingGif}" width="50" height="50"/></div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><div>
+                            <h3>Tickets</h3>
+                            <button type="button" data-toggle="modal" data-target="#myModal" style="float: right;">
+                                <span class="glyphicon glyphicon-plus-sign" /> Create Tickets
+                            </button>
+                            </div>
+                            <!--Modal for creating the tickets-->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">                             
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">Tickets</h4>
+                                        </div>                                                              
+                                        <div class="modal-body">                                            
+                                            <div class="row">                                                                                                                                           
+                                                <div class="col-xs-3"></div>                                                                                                                                                                        
+                                                <div class="col-xs-5">                                      
+                                                    <label>Number of Tickets To Create</label><br />
+                                                    <apex:inputField value="{!ticketEvent.incrementalNumberOfTickets__c}" styleClass="form-control" Id="numberOfTicketsInGroup"/><div class="numOfTicketsError"></div><div class="ticketsError"></div>                                         
+                                                </div>
+                                                <div class="col-xs-3">                                                   
+                                                </div>                                                 
+                                            </div>
+                                            <br />                                      
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <label>Price of Ticket</label><br />
+                                                    <apex:inputField value="{!singleTicket.Ticket_Price__c}" Id="ticketPrice" styleClass="form-control"/><div class="ticketPriceError"></div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <label>Ticket Type</label><br />
+                                                    <apex:inputField value="{!singleTicket.Ticket_Type__c}" Id="ticketType" styleClass="form-control"/><div class="ticketTypeError"></div>
+                                                </div>
+                                                <div class="col-xs-5">
+                                                    <label>Ticket Requester</label><br />
+                                                    <apex:inputField value="{!singleTicket.Requestor_contact__c}" Id="requester" styleClass="form-control"/><div class="requesterError"></div>                                                     
+                                                </div> 
+                                            </div>                                                                                                      
+                                        </div>                                                                                                                    
+                                        <div class="modal-footer">
+                                            <button type="button" data-dismiss="modal">Close</button> 
+                                            <button type="button" onclick="validateTickets();">Save</button>&nbsp;    
+                                            <apex:actionStatus id="addTicketsStatus">
+                                                <apex:facet name="start">
+                                                    <apex:image url="{!$Resource.LoadingGif}" width="25" height="25"/>                                                                                                       
+                                                </apex:facet>
+                                                <apex:facet name="stop">     
+                                                    <apex:actionFunction name="generateTickets" action="{!generateTickets}" reRender="tickets" status="addTicketsStatus" onComplete="$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove(); rerenderAssigneeOptionsAfterAction();"/>
+                                                </apex:facet>
+                                            </apex:actionStatus>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <apex:outputpanel rendered="{!ticketCreation}">
+                            <apex:commandbutton value="Save Event and Tickets" action="{!saveTickets}" />
+                        </apex:outputpanel>
+                    </div>
+                    <br />
+                    <div id="menu" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" id="menuchild">                            
+                            <apex:variable value="{!0}" var="rowNumberDelete" />                               
+                            <apex:repeat value="{!ticketGroupingWrapperList}" var="grouping">
+                                <apex:variable value="{!rowNumberDelete + 1}" var="rowNumberDelete" /> 
+                                <apex:variable value="{!grouping.ticketGroupingObject.groupingNumber__c}" var="groupingRowNumber" />                      
+                                <div id="{!grouping.ticketGroupingObject.Name}parent" class="panel-heading" role="tab">                                                                                     
+                                    <button type="button" data-toggle="modal" data-target="#myModalAssignee" onclick="grabGroupingId('{!grouping.ticketGroupingObject.groupingNumber__c}');">
+                                        <span class="glyphicon glyphicon-plus-sign" /> Assign Ticket Grouping                                                                                                            
+                                    </button>                              
+				    <button type="button" data-toggle="modal" data-target="#myModalChangeRequestor" onclick="grabGroupingId('{!grouping.ticketGroupingObject.groupingNumber__c}');">
+                                        <span class="glyphicon glyphicon-edit" /> Change Ticket Requester                                                                                                            
+                                    </button>
+                                    <div class="deleteLink">
+                                        <a onclick="deleteWarning('{!rowNumberDelete}', '{!grouping.ticketGroupingObject.Id}');"><span class="glyphicon glyphicon-trash" /></a>&nbsp;&nbsp;&nbsp;&nbsp;                                                                                                                                     
+                                    </div>                        
+                                    <div class="space"></div>                                                                                           
+                                    <h4 class="panel-title">
+                                        <a href="" class="list-group-item" data-toggle="collapse" data-target="#{!grouping.ticketGroupingObject.Name}" data-parent="#{!grouping.ticketGroupingObject.Name}parent"><label>Ticket Grouping {!grouping.ticketGroupingObject.groupingNumber__c} | Ticket Requester: {!grouping.ticketRequester}
+					</label></a>
+                                    </h4>
+                                    <div id="{!grouping.ticketGroupingObject.Name}" class="sublinks collapse" role="tab">                                      
+                                        <apex:variable value="{!0}" var="rowNumberTicket" />                             
+                                        <apex:repeat value="{!grouping.ticketWrappers}" var="tickets">                                           
+                                            <apex:variable var="rowNumberTicket" value="{!rowNumberTicket + 1}" />
+                                            <h4 class="panel-title">
+                                                <a style="margin-left:1%;" class="list-group-item small {!IF(tickets.ticketObject.isSelected__c == false, 'unassigned','')} title{!groupingRowNumber}{!rowNumberTicket}" data-toggle="collapse" data-target="#{!tickets.ticketObject.Ticket_Number__c}"><label>Ticket {!tickets.ticketObject.Ticket_Number__c}</label>
+                                                </a>                                              
+                                            </h4>
+                                            <div id="{!tickets.ticketObject.Ticket_Number__c}" class="sublinks collapse">
+                                                <div class ="margin">
+                                                    <br />
+                                                    <div class="row">                                                                                                          
+                                                        <div class="col-xs-3">
+                                                            <label for="businessUse">Ticket Use Category</label>
+                                                            <apex:inputField value="{!tickets.ticketObject.Business_Use_of_Ticket__c}" styleClass="form-control use,{!groupingRowNumber}{!rowNumberTicket}" id="businessUse" html-placeholder="Personal, ...." html-data-cbType="use-{!groupingRowNumber}{!rowNumberTicket}" onchange="renderTicketAssigneeOptions(this.value, '{!groupingRowNumber}', '{!rowNumberTicket}');">                                                           
+                                                            </apex:inputField>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <label for="ticketPrice">Ticket Price</label>
+                                                            <apex:inputField value="{!tickets.ticketObject.Ticket_Price__c}" styleClass="form-control" id="ticketPrice" />
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <label for="ticketPrice">Ticket Type</label>
+                                                            <apex:inputField value="{!tickets.ticketObject.Ticket_Type__c}" styleClass="form-control" id="ticketType" />
+                                                        </div>                                         
+                                                    </div>
+                                                    <br />                                                    
+                                                    <div class="row">                                          
+                                                        <div class="clientAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxContactModal">Assign to Client</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToClient__c}" id="checkboxContactModal" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="client" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                              
+                                                            </div>
+                                                        </div>
+                                                        <div class="producerAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxProducerModal">Assign to Producer</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToProducer__c}" id="checkboxProducerModal" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="producer" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="employeeAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxUserModal">Assign to Employee</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToEmployee__c}" id="checkboxUserModal" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="employee" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hostAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxHost">Assign to Host</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToHost__c}" id="checkboxHost" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="host" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div class="prospectAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxProspect">Assign to Prospect</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.AssignToProspect__c}" id="checkboxProspect" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="prospect" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div class="vendorAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxVendor">Assign to Vendor</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.AssignToVendor__c}" id="checkboxVendor" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="vendor" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                               
+                                                            </div>
+                                                        </div>                                                    
+                                                        <div class="charityAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxCharity">Assign to Charity</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToCharity__c}" id="checkboxCharity" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="charity" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div class="incentiveAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxIncentive">Assign to Incentive</label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.assignToEmployeeIncentive__c}" id="checkboxIncentive" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="incentive" onchange="checkboxChanged(this, {!groupingRowNumber}{!rowNumberTicket})"/>                                                                                                                              
+                                                            </div>
+                                                        </div>                                                        
+                                                        <div class="UnusedTicketAssigneeCheckbox{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">
+                                                            <div class="col-xs-2">
+                                                                <label for="checkboxUnusedTicket">
+                                                                    <font color="red">Unused Ticket</font>
+                                                                </label>&nbsp;
+                                                                <apex:inputField value="{!tickets.ticketObject.Unused_Ticket__c}" id="checkboxUnusedTicket" html-data-cbType="{!groupingRowNumber}{!rowNumberTicket}" styleClass="UnusedTicket;Color: #FF0000"/>                                                                                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />   
+                                                    <div class="row">                                                                            
+                                                        <div class="col-xs-6"> <!-- SFDC-7930 -->
+                                                            <div class="clientEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                         
+                                                                <label for="ticketContactCheckbox">Client</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Client__c}" styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} clientInput{!groupingRowNumber}{!rowNumberTicket}" id="ticketContactCheckbox" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}" onchange="removeUnassignedFlag(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>
+                                                            </div>
+                                                            <div class="producerEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                     
+                                                                <label for="ticketProducerCheckbox">Producer</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Producer_for_Event__c}" styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} producerInput{!groupingRowNumber}{!rowNumberTicket}" id="ticketProducerCheckbox" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}" onchange="removeUnassignedFlag(this.value, {!groupingRowNumber}{!rowNumberTicket});"/> 
+                                                            </div>                                                            
+                                                            <div class="employeeEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                 
+                                                                <div class="col-xs-6"> <!-- SFDC-7930 --> 
+                                                                    <apex:outputlabel for="ticketUserCheckbox" value="Specific Contact"/>
+                                                                    <apex:inputField value="{!tickets.ticketObject.Contact__c}"
+                                                                                     styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} internalInput{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                     id="ticketUserCheckbox" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                     onchange="removeUnassignedFlag(this.value, {!groupingRowNumber}{!rowNumberTicket});
+                                                                                               checkClientContactGuest(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>
+                                                                </div>
+                                                                <div class="col-xs-6"> <!-- SFDC-7930 --> 
+                                                                    <apex:outputlabel for="ticketUserCharityOrganization" value="Organization" rendered="{!AND(tickets.ticketObject.Charity_Organization__c != '', tickets.ticketObject.Charity_Organization__c != null)}"/>
+                                                                    <apex:outputText id="ticketUserCharityOrganization" value="{!tickets.ticketObject.Charity_Organization__c}" 
+                                                                                     styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} internalInput{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                     rendered="{!AND(tickets.ticketObject.Charity_Organization__c != '', tickets.ticketObject.Charity_Organization__c != null)}"/>                                                                       
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="prospectEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                          
+                                                                
+                                                                <label for="ticketProspectCheckbox">Prospect Name</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Prospect__c}" styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} prospectInput{!groupingRowNumber}{!rowNumberTicket}" id="ticketProspectCheckbox" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}" onchange="removeUnassignedFlag(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>
+                                                                
+                                                            </div>
+                                                            <div class="vendorEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                          
+                                                                
+                                                                <label for="ticketVendorCheckbox">Vendor Name</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Vendor__c}" styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket} vendorInput{!groupingRowNumber}{!rowNumberTicket}" id="ticketVendorCheckbox" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}" onchange="removeUnassignedFlag(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <div class="clientSpecificEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                 
+                                                                <label for="ticketContact">Specific Contact</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Contact_for_Event__c}"
+                                                                                 styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 id="ticketContact" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 onchange="checkClientContactGuest(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>                                                                                              
+                                                            </div>
+                                                            
+                                                            <div class="producerSpecificEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                     
+                                                                <label for="contactProducer">Specific Contact</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Producer_Contact__c}" 
+                                                                                 styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 id="contactProducer" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 onchange="checkClientContactGuest(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>                                                               
+                                                            </div>  
+                                                            <div class="prospectSpecificEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                     
+                                                                <label for="contactProspect">Specific Contact</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Specific_Prospect_Contact__c}"
+                                                                                 styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 id="contactProspect" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 onchange="checkClientContactGuest(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>                                                               
+                                                            </div>
+                                                            
+                                                            <div class="vendorSpecificEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                     
+                                                                <label for="contactVendor">Specific Contact</label>
+                                                                <apex:inputField value="{!tickets.ticketObject.Specific_Vendor_Contact__c}"
+                                                                                 styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 id="contactVendor" html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"
+                                                                                 onchange="checkClientContactGuest(this.value, {!groupingRowNumber}{!rowNumberTicket});"/>                                                               
+                                                            </div>                                                            
+                                                        </div>                                                          
+                                                    </div> 
+                                                    <div class="row">
+                                                        <div class="col-xs-3">
+                                                            <div class="GuestNameEntry{!groupingRowNumber}{!rowNumberTicket}" style="display:none;">                                                                 
+                                                                <label for="EventGuest">Guest Name</label>
+                                                                <apex:inputfield value="{!tickets.ticketObject.Guest_Name__c}" id="eventGuestName" 
+                                                                                 styleClass="form-control assignee,{!groupingRowNumber}{!rowNumberTicket}"  
+                                                                                 html-data-cbType="input{!groupingRowNumber}{!rowNumberTicket}"/>                                                           
+                                                            </div>
+                                                        </div>   
+                                                    </div>
+                                                   <br/> 
+                                                </div>
+                                            </div>
+                                        </apex:repeat>
+                                    </div>
+                                </div>
+                            </apex:repeat>            
+                        </div>                 
+                    </div>                   
+                    <!-- Start Story 7924 -->  
+                    <div class="text-center">
+                        <apex:outputpanel rendered="{!ticketCreation}">
+                            <apex:commandbutton value="Save Event and Tickets" action="{!saveTickets}" />
+                        </apex:outputpanel>
+                    </div>
+                    <!-- End Story 7924 -->                   
+                    <!--action status which displays a loading spinner during the delete action-->
+                    <apex:actionStatus id="deleteTickets" onstart="showLoadingDiv();" onstop="hideLoadingDiv();"/>                   
+                    <!--action function for deleting tickets that is called by the deleteWarning() javascript function-->                                                                                                                                                                                  
+                    <apex:actionFunction name="deleteTickets" action="{!deleteTickets}" rerender="tickets" status="deleteTickets" oncomplete="rerenderAssigneeOptionsAfterAction();">
+                        <apex:param name="ticketGroupingNum" value="" id="ticketGroupingNum" assignTo="{!ticketGroupingObjId}"/>              
+                        <apex:param name="ticketGroupingId" value="" id="ticketGroupingId" assignTo="{!recordToDelete}"/>
+                    </apex:actionFunction>                      
+                    <!--Modal for assigning tickets-->
+                    <div class="modal fade" id="myModalAssignee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <apex:variable value="{!0}" var="rowNumberModal" />  
+                                <apex:variable var="rowNumberModal" value="{!rowNumberModal + 1}" />     
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">Assign Tickets</h4>
+                                </div>                                                              
+                                <div class="modal-body">                                                                                                                                                    
+                                    <div class="row">
+                                        <div class="col-xs-4"></div>
+                                        <div class="col-xs-5">
+                                            <label>Ticket Use Category</label><br />
+                                            <apex:inputField value="{!assignTicket.Business_Use_of_Ticket__c}" Id="assignBusinessUseOfTicket" styleClass="form-control" onchange="renderTicketAssigneeOptionsModal(this.value, '{!rowNumberModal}')">
+                                                
+                                            </apex:inputField><div class="businessUseError"></div>                           
+                                        </div>
+                                         <br />  
+                                    </div>
+                                    <br />                                  
+                                    <div class="row">                         
+                                        <div class="clientModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxContactModal">Assign to Client</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToClient__c}" id="checkboxContactModal" styleClass="clientModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                            
+                                            </div>
+                                        </div>
+                                        <div class="producerModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxProducerModal">Assign to Producer</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToProducer__c}" id="checkboxProducerModal" styleClass="producerModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                            
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="hostModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxHostModalFull">Assign to Host</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToHost__c}" id="checkboxHostModalFull" styleClass="hostModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="employeeModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxUserModal">Assign to Employee</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToEmployee__c}" id="checkboxUserModal" styleClass="employeeModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>                                                                                      
+                                        </div>
+                                        
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        
+                                        <div class="prospectModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxProspectModalFull">Assign to Prospect</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.AssignToProspect__c}" id="checkboxProspectModalFull" styleClass="prospectModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>
+                                        </div>
+                                        <div class="vendorModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxVendorModalFull">Assign to Vendor</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.AssignToVendor__c}" id="checkboxVendorModalFull" styleClass="vendorModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="charityModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxCharityModalFull">Assign to Charity</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToCharity__c}" id="checkboxCharityModalFull" styleClass="charityModal" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>
+                                        </div>
+                                        <div class="incentiveModalCheckbox" style="display:none;">
+                                            <div class="col-xs-4">
+                                                <label for="checkboxEmployeeIncentiveModalFull">Assign to Incentive</label>&nbsp;
+                                                <apex:inputField value="{!assignTicket.assignToEmployeeIncentive__c}" styleClass="incentiveModal" id="checkboxEmployeeIncentiveModalFull" html-data-cbType="{!rowNumberModal}" onchange="checkboxChangedModal(this, '{!rowNumberModal}');"/>                                                                                             
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <br />   
+                                    <div class="row">                                                                               
+                                        <div class="col-xs-6">
+                                            <div class="clientInputModal" style="display:none;">
+                                                <label for="ticketContactModal">Client</label>
+                                                <apex:inputField value="{!assignTicket.Client__c}" styleClass="form-control assignee,{!rowNumberModal}" id="ticketContactModal" html-data-cbType="inputModal"/>
+                                            </div>
+                                            <div class="producerInputModal" style="display:none;">
+                                                <label for="ticketProducerModal">Producer</label>
+                                                <apex:inputField value="{!assignTicket.Producer_for_Event__c}" styleClass="form-control assignee,{!rowNumberModal}" id="ticketProducerModal" html-data-cbType="inputModal"/>
+                                            </div>
+                                            <div class="employeeInputModal" style="display:none;">
+                                                <label for="ticketUserModal">Specific Contact</label>
+                                                <apex:inputField value="{!assignTicket.Contact__c}" styleClass="form-control assignee,{!rowNumberModal}" id="ticketUserModal" html-data-cbType="inputModal"/>
+                                            </div>
+                                            
+                                            <div class="prospectInputModal" style="display:none;">
+                                                <label for="ticketProspectModal">Prospect Name</label>
+                                                <apex:inputField value="{!assignTicket.Prospect__c}" styleClass="form-control assignee,{!rowNumberModal}" id="ticketProspectModal" html-data-cbType="inputModal"/>
+                                            </div>
+                                            
+                                            <div class="vendorInputModal" style="display:none;">
+                                                <label for="ticketVendorModal">Vendor Name</label>
+                                                <apex:inputField value="{!assignTicket.Vendor__c}" styleClass="form-control assignee,{!rowNumberModal}" id="ticketVendorModal" html-data-cbType="inputModal"/>
+                                            </div>
+                                            
+                                        </div>                                                                                      
+                                    </div>
+                                    <div class="row">
+                                        <div class="assigneeError"></div>
+                                    </div>                  
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal">Close</button>   
+                                    <button type="button" onclick="validateAssignedTickets();">Save</button>&nbsp;
+                                    <apex:actionStatus id="assignTickets">
+                                        <apex:facet name="start">
+                                            <apex:image url="{!$Resource.LoadingGif}" width="25" height="25"/>                                         
+                                        </apex:facet>
+                                        <apex:facet name="stop">     
+                                            <apex:actionFunction name="assignTickets" action="{!assignTickets}" reRender="tickets" status="assignTickets" onComplete="$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove(); rerenderAssigneeOptionsAfterAction();">
+                                                <apex:param name="groupingId" value="" id="groupingId" assignTo="{!ticketGroupingId}"/>                                             
+                                            </apex:actionFunction> 
+                                        </apex:facet>
+                                    </apex:actionStatus>                                                                                                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>             
+		    <div class="modal fade" id="myModalChangeRequestor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <!--  <apex:variable value="{!0}" var="rowNumberModal" />  
+                                <apex:variable var="rowNumberModal" value="{!rowNumberModal + 1}" />-->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">Change Requestor</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-xs-4"></div>
+                                        <div class="col-xs-5">
+                                            <label>Ticket Requestor</label><br />
+                                            <apex:inputField value="{!assignTicket.Requestor_contact__c}" Id="changeRequestor" styleClass="form-control"/>
+                                        </div>                                         
+                                    </div>
+                                </div>
+                                <div class="modal-footer" rendered="{!ticketCreation}">
+                                    <button type="button" data-dismiss="modal">Close</button>   
+                                    <button type="button" onclick="validateAssignedTicketRequestor();" reRender="menuchild">Save</button>&nbsp;
+                                    <apex:actionStatus id="changeTicketRequestor">
+                                        <apex:facet name="start">
+                                            <apex:image url="{!$Resource.LoadingGif}" width="25" height="25"/>                                         
+                                        </apex:facet>
+                                        <apex:facet name="stop">     
+                                            <apex:actionFunction name="changeTicketRequestor" action="{!changeTicketRequestor}" reRender="tickets" status="changeTicketRequestor" onComplete="$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove();">
+                                               <apex:param name="requestorGroupingId" value="" id="requestorGroupingId" assignTo="{!ticketGroupingId}"/>                                             
+                                            </apex:actionFunction> 
+                                        </apex:facet>
+                                    </apex:actionStatus>                                                                                                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputpanel>
+    </apex:form>
+</apex:page>

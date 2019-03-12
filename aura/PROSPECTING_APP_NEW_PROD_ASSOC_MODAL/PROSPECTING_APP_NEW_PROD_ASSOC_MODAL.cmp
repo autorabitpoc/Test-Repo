@@ -1,0 +1,55 @@
+<aura:component controller="ProspectingAppNewProdGrpAssocController">
+    <aura:attribute name="newProducerGroupAssoc" type="Producer_Group_Association__c" default="{'sobjectType':'Producer_Group_Association__c', 'Group_Account__c':'', 'Producer_Account__c':'', 'Primary__c':'false'}"/>
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="groupAccFilter" type="String" default=" WHERE RecordType.DeveloperName='Group_Account' OR RecordType.DeveloperName='Group_Prospect_Account' OR RecordType.DeveloperName='Prospect_Non_BlueSTAR' OR RecordType.DeveloperName='Group_Account_Non_BlueSTAR'"/>
+    <aura:attribute name="prodAccFilter" type="String" default=" WHERE RecordType.DeveloperName='Consultant_Account' OR RecordType.DeveloperName='Producer_Account'"/>
+    <aura:attribute name="typeMap" type="Map" default="{}"/>
+    <aura:attribute name="idMap" type="Map" default="{}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler name="updateInfo" event="c:PROSPECTING_APP_LOOKUP_INFO_UPDATE_EVT" action="{!c.updateFieldInfo}"/>
+    <aura:registerEvent name="updateProdGroupAssocList" type="c:PROSPECTING_APP_UPDATE_PROD_GRP_LIST_EVT"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.close}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">New Competitor/Third Party Vendor</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium" style="height: 35vh;">
+                <h1 style="font-size: 130%">Main Information</h1>
+                <div class="slds-grid">
+                    <div class="slds-col slds-m-right--small">
+                        <div class="slds-text-align--left">
+                            <div style="font-size: 90%;" class="slds-m-top--xx-small">Group Account</div> 
+                            <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                <c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="groupAccountLookup" sobjectType="Account" sobjectName="Account" filter="{!v.groupAccFilter}" nameValue="{!v.curAccount.Name}" recordId="{!v.curAccount.Id}"/>
+                            </div>
+                            <div style="font-size: 90%;">Producer Account</div> 
+                            <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                <c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="producerAccountLookup" sobjectType="Account" sobjectName="Account" filter="{!v.prodAccFilter}"/>
+                            </div>
+                            <lightning:input type="date" name="effectiveDate" label="Effective Date" value="{!v.newProducerGroupAssoc.Effective_Date__c}"/>
+                        </div>
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-text-align--left">
+                            <lightning:input type="checkbox" name="primary" label="Primary" aura:id="primary"/>
+                            <lightning:input type="date" name="endDate" label="End Date" value="{!v.newProducerGroupAssoc.End_Date__c}"/>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.close}">Close</button>
+                <button class="slds-button slds-button--neutral" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="newProdGroupAssocSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

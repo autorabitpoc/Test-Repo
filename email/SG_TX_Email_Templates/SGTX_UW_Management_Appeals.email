@@ -1,0 +1,18 @@
+Hello,
+
+Below is a request for [Reinstatement of delinquent accounts / Payment plan requests / Membership exceptions] effective for [Enter Date].The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Renewal month: [Enter Renewal Month]
+- Requested effective date of change (for Membership Exceptions): [Enter Date]
+- Amounts and due dates (for Payment Plans, 6 weeks or less): [Enter Information]
+- Explanation of changes to prevent delinquency in the future: [Enter Information]
+- Amounts and dates paid of claims since cancel date (for retro cancellations): [Enter Information]
+- Justification for request: [Enter Information]
+
+If applicable, attached you will find the reinstatement quote (reinstatements and payment plan requests).
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

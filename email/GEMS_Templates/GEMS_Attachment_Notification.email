@@ -1,0 +1,6 @@
+Underwriting has approved the account in GEMS. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+
+Thanks

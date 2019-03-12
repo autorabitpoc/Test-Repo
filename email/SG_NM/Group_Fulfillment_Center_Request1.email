@@ -1,0 +1,14 @@
+Hello,
+
+Below is a request for [enter type of submission] effective for [enter date].  The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number:  {!Case.Group_Account_Number__c}
+- Benefit Agreement Number: [Enter Benefit Agreement Number]
+- Market Plan ID or Plan type: [Enter Market Plan ID]
+- Quantity: {Enter number]
+- Physical address (no PO Boxes): [Enter address]
+
+Please respond within 3 business days with the resolution of this request.  For your information, a copy of my email correspondence is included below. 
+
+Thank you for your help,

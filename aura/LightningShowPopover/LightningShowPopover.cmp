@@ -1,0 +1,130 @@
+<aura:component  controller="LightningShowPopoverController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+     <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="RecId" type="String" />
+    <aura:attribute name="opRecId" type="String"/>
+    <aura:attribute name="prod2Id" type="String" />
+    <aura:attribute name="accoutProductId" type="String" />
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="AccountProduct" type="Object"/>
+    <aura:attribute name="simpleAccountProduct" type="Object"/>
+    <aura:attribute name="oppoProduct" type="Object"/>
+    <aura:attribute name="simpleOppoProduct" type="Object"/>
+     <aura:attribute name="product" type="Object"/>
+    <aura:attribute name="simpleProduct" type="Object"/>
+    <aura:attribute name="displayPopup" type="Boolean"/>
+    <aura:attribute name="source" type="String" default="AccountProduct"/>
+    <aura:attribute name="loadError" type="String"/>
+    <!--<aura:registerEvent name="RemoveComponent" type="c:LightningShowPopoverEvent"/>-->
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+   <!-- <aura:handler event="aura:doneRendering" action="{!c.loadPopover}"/>-->
+    <!--
+    <aura:if isTrue="{!v.sObjectName=='Opportunity_Product__c'}" >
+     <force:recordData aura:id="oppProd"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      fields="Id,Name,Status__c,Product__c, Product2__c"
+                      targetRecord="{!v.oppoProduct}"
+                      targetFields="{!v.simpleOppoProduct}"
+                      targetError="{!v.loadError}"
+                    
+    />
+   </aura:if>-->
+    
+    
+    <aura:if isTrue="{!v.sObjectName=='Account_Products__c'}" >
+     <force:recordData aura:id="accountProd"
+                      recordId="{!v.RecId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      fields="Id,Name,Status__c,Product__c, Product2__c"
+                      targetRecord="{!v.AccountProduct}"
+                      targetFields="{!v.simpleAccountProduct}"
+                      targetError="{!v.loadError}"
+                    
+    />
+        <aura:set attribute="else">
+        
+         <force:recordData aura:id="oppProd"
+                      recordId="{!v.RecId}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      fields="Id,Name,Status__c,Product__c,Notes__c,Account__c,Split__c,Carve_Out__c "
+                      targetRecord="{!v.oppoProduct}"
+                      targetFields="{!v.simpleOppoProduct}"
+                      targetError="{!v.loadError}"
+                    
+             />
+        
+        </aura:set>
+   </aura:if>
+   
+     <force:recordData aura:id="prodload"
+                      recordId="{!v.prod2Id}"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      fields="Id,Name, Family,Description, ProductCode"
+                      targetRecord="{!v.product}"
+                      targetFields="{!v.simpleProduct}"
+                      targetError="{!v.loadError}"
+                    
+    />
+  
+   
+   
+   <aura:if isTrue="{!v.displayPopup}" >
+       
+       
+    <lightning:card variant="Narrow" title="{!'Product Name: '+v.simpleAccountProduct.Name+v.simpleOppoProduct.Name}" iconName="standard:product">
+       <aura:set attribute="actions">
+         <lightning:button label="X" accesskey="x" onclick="{!c.closePopover}"/>       
+        </aura:set>
+      <dl class="slds-list_horizontal slds-wrap">
+            
+          <aura:if isTrue="{!v.source=='OpportunityProduct'}" ><!--  request from opp prod table-->
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Product Name">&nbsp; &nbsp;Product Name: </dt>
+         	<dd class="slds-item_detail slds-truncate" title="Product Name"> <a target="_blank" href="{!'/one/one.app?#/sObject/'+ v.simpleProduct.Id}">{!v.simpleProduct.Name}</a></dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Winning Carrier">&nbsp; &nbsp;Winning Carrier: </dt>
+            <dd class="slds-item_detail slds-truncate" title="Winning Carrier"><a target="_blank" href="{!'/one/one.app?#/sObject/'+ v.simpleOppoProduct.Account__c}">{!v.simpleOppoProduct.Account__c}</a></dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Note">&nbsp; &nbsp;Notes:</dt>
+        	<dd class="slds-item_detail slds-truncate" title="Notes">{!v.simpleOppoProduct.Notes__c}</dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Carve Out?">&nbsp; &nbsp;Carve Out?</dt>
+        	<dd class="slds-item_detail slds-truncate" title="Description">{!v.simpleOppoProduct.Carve_Out__c}</dd>
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Split?">&nbsp; &nbsp;Split?</dt>
+        	<dd class="slds-item_detail slds-truncate" title="Split">{!v.simpleOppoProduct.Split__c}</dd>
+          
+          <aura:set attribute="else"> <!-- request from Account Prod table-->
+            <aura:if isTrue="{!v.sObjectName=='Account_Products__c'}" >
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Account Product Name">&nbsp; &nbsp;Account Product Name: </dt>
+            <dd class="slds-item_detail slds-truncate" title="Account Product Name"><a target="_blank" href="{!'/one/one.app?#/sObject/'+ v.simpleAccountProduct.Id}">{!v.simpleAccountProduct.Name}</a></dd>
+            
+              <aura:set attribute="else" >
+               <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Opportunity Product Name">&nbsp; &nbsp;Opportunity Product Name: </dt>
+            <dd class="slds-item_detail slds-truncate" title="Opportunity Product Name"><a target="_blank" href="{!'/one/one.app?#/sObject/'+ v.simpleOppoProduct.Id}">{!v.simpleOppoProduct.Name}</a></dd>
+           
+            </aura:set>
+          
+          </aura:if>
+       
+         	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Product Name">&nbsp; &nbsp;Product Name: </dt>
+         	<dd class="slds-item_detail slds-truncate" title="Product Name"> <a target="_blank" href="{!'/one/one.app?#/sObject/'+ v.simpleProduct.Id}">{!v.simpleProduct.Name}</a></dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Product Code">&nbsp; &nbsp;Product Code: </dt>
+        	<dd class="slds-item_detail slds-truncate" title="Product Code">{!v.simpleProduct.ProductCode}</dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Family">&nbsp; &nbsp;Family:</dt>
+        	<dd class="slds-item_detail slds-truncate" title="Family">{!v.simpleProduct.Family}</dd>
+        	<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Description">&nbsp; &nbsp;Description:</dt>
+        	<dd class="slds-item_detail slds-truncate" title="Description">{!v.simpleProduct.Description}</dd>
+           
+          </aura:set>
+              
+          </aura:if>
+          
+     </dl>
+         
+    </lightning:card>
+    </aura:if>
+    
+</aura:component>

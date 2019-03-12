@@ -1,0 +1,10 @@
+Hi, <br/><br/>
+
+Please note Custom ID Request Form is updated for <b>{!GEMS_Custom_ID_Request_Form__c.Account_Name__c}</b>. <br/><br/>
+
+ To review Case please click on <a href={!GEMS_Custom_ID_Request_Form__c.Parent_ID_Card_Case_Url__c}> {!GEMS_Custom_ID_Request_Form__c.Parent_ID_Card_Case_Number__c} </a><br/><br/>
+
+To review form please click on <a href={!GEMS_Custom_ID_Request_Form__c.Link} > {!GEMS_Custom_ID_Request_Form__c.Name} </a><br/><br/><br/>
+
+Regards,<br/>
+GEMS System<br/>

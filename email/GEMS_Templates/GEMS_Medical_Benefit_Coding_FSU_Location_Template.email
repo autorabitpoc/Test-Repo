@@ -1,0 +1,7 @@
+Medical Benefit Coding has been completed and the BA is Production Ready 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

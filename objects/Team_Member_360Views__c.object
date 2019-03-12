@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>team member roles which needs to be shown on the 360 views of account and opportunity</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Record_Types__c</fullName>
+        <description>Enter account record type developer names comma Separated like Group_Account,Group_Prospect_Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter account record type developer names comma Separated like Group_Account,Group_Prospect_Account</inlineHelpText>
+        <label>Account Record Types</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Record_Type__c</fullName>
+        <description>Enter opportunity record type developer  names comma Separated like New_Sale,Renewal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter opportunity record type developer names comma Separated like New_Sale,Renewal</inlineHelpText>
+        <label>Opportunity Record Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sort_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Role_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Team Role Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Team_Member_360Views</label>
+    <visibility>Public</visibility>
+</CustomObject>

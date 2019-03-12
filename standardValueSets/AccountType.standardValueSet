@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>General Agent</fullName>
+        <default>false</default>
+        <label>General Agent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Producer</fullName>
+        <default>true</default>
+        <label>Producer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sub Producer</fullName>
+        <default>false</default>
+        <label>Sub Producer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>HCSC Employee</fullName>
+        <default>false</default>
+        <label>HCSC Employee</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Competitor Account</fullName>
+        <default>false</default>
+        <label>Competitor Account</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,112 @@
+<aura:component controller="ProspectingAppNewCompVendModalController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.initComp}" />    
+    
+    <aura:attribute name="currentCompetitorInModal" type="Competitor_Relationship__c" default="{'sobjectType': 'Competitor_Relationship__c'}"/>  
+    <aura:attribute name="currentCompetitorCompleteInModal" type="Competitor_Relationship__c" default="{'sobjectType': 'Competitor_Relationship__c'}"/>
+    <aura:attribute name="selectedClaimsDataSharedValue" type="String" default="" />
+     <aura:attribute name="selectedEligibilityDataSharedValue" type="String" default="" />
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.closeComp}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">{!v.currentCompetitorCompleteInModal.Competitor_Account__r.Name}</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium" style="max-height: 65vh;">
+                <div class="slds-grid slds-grid--vertical">
+                    <div class="slds-col">
+                        <h1 style="font-size: 130%">Main Information</h1>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-m-right--small">
+                                <div class="slds-text-align--left">                                    
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <lightning:input type="text" name="competitorName" label="Competitor Name:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Competitor_Account__r.Name}" />                                    	
+                                    </div>
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <lightning:input type="text" name="groupAccount" label="Group Account:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Group_Account__r.Name}" />                                    	                                    	
+                                    </div>                                    
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <lightning:input type="text" name="producerFirm" label="Producer/Consultant Firm:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Producer_Consultant_Firm__r.Name}"/>                                    	                                    	                                        
+                                    </div>                                    
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <lightning:input type="text" name="producerConsultant" label="Producer/Consultant:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Producer_Consultant__r.Name}"/>                                    	                                    	                                                                                
+                                    </div>
+                            	</div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:input type="text" name="compVendStatus" label="Status:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Status__c}"/>                                    	                                    	                                                                                
+									<lightning:input type="date" name="contractStartDate" label="Contract Start Date:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Rate_Effective_Date__c}"/>                                    	                                    	                                                                                                                    
+                                    <lightning:input type="date" name="contractEndDate" label="Contract End Date:" readonly="true" value="{!v.currentCompetitorCompleteInModal.Contract_End_Date__c}"/>                                    	                                    	                                                                                                                    
+                                    <lightning:input type="number" name="totalContracts" label="Total Contracts:" maxlength="6" readonly="true" value="{!v.currentCompetitorCompleteInModal.Total_Contracts__c}" required="true"/>
+                                    <lightning:input type="number" name="totalMembers" label="Total Members" maxlength="6" readonly="true" value="{!v.currentCompetitorCompleteInModal.Total_Members__c}" required="true"/>
+                                    <lightning:input type="checkbox" name="notInsured" label="Not Insured?" readonly="true" checked="{!v.currentCompetitorCompleteInModal.Not_Insured__c}" aura:id="notInsuredField"/>
+                                    <lightning:input type="checkbox" name="afa" label="AFA" readonly="true" checked="{!v.currentCompetitorCompleteInModal.AFA__c}" aura:id="afaField"/>
+                                    <lightning:input type="text" name="reinsurer" label="Reinsurer" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Reinsurer__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Group Relationship Information</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                    <lightning:textarea name="relationshipLength" label="Length of Relationship with Group" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Length_of_Relationship_with_Group__c}"/>
+                                    <lightning:textarea name="compGrpSatisfaction" label="Group Satisfaction with Competitor" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Group_Satisfaction_with_Competitor__c}"/>	
+                                    <lightning:textarea name="slashRates" label="Slash rates to keep business?" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Does_Incumbent_slash_rates_to_keep_busin__c}"/>	 	 
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:textarea name="curWinFactors" label="Current Carrier Win Factors" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Current_Carrier_Win_Factors__c}"/>	
+                                    <lightning:textarea name="strengths" label="Strengths" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Strengths__c}"/>	
+                                    <lightning:textarea name="weaknesses" label="Weaknesses" maxlength="255" readonly="true" value="{!v.currentCompetitorCompleteInModal.Weaknesses__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Data Feeds</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                    <lightning:select name="claimsDataShared" label="Claims Data Shared" aura:id="claimsDataShared" disabled="true"/>
+                                    <lightning:select name="eligibilityDataShared" label="Eligibility Data Shared" aura:id="eligibilityDataShared" disabled="true" />
+                                    <lightning:select name="labDataShared" label="Lab Data Shared" aura:id="labDataShared" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:select name="dischargeDataShared" label="Discharge Data Shared" aura:id="dischargeDataShared" disabled="true"/>
+                                    <lightning:select name="accumsDataShared" label="Accums Data Shared" aura:id="accumsDataShared" disabled="true"/>
+                                    <lightning:select name="pharmacyDataShared" label="Pharmacy Data Shared" aura:id="pharmacyDataShared" disabled="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Additional Notes</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                	<lightning:textarea name="comments" label="Comments" maxlength="255" value="{!v.currentCompetitorCompleteInModal.Comments__c}"/> 	 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeComp}">Close</button>                
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="newCompVendSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_1040767</developerName>
+        <masterLabel>TX Region</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Account.Owner_s_Manager_Name__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Melissa Sanden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ben Suarez</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Donna Tucker</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Holly Herin</sourceValue>
+            </sourceValues>
+            <value>North</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Terry Villiva</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Heather Linton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jerry Berwick</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Robin Fowler</sourceValue>
+            </sourceValues>
+            <value>Southeast</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Abby Sterner</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Trey Smith</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cindee Soza</sourceValue>
+            </sourceValues>
+            <value>Southwest</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Melissa Tessier</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kellie Motsinger</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cami Martin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Russ Plum</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Carol Riley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Joe Braley</sourceValue>
+            </sourceValues>
+            <value>ENA</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account.Owner_s_Manager_Name__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Renewal_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Benefit_Agreement__c.Product_Category__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Benefit_Agreement__c.Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Benefit_Agreement__c.Cancellation_Date__c</field>
+    </columns>
+    <description>JG</description>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Group_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Benefit_Agreement__c.Product_Category__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Vitals VDM</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>Member Rewards - Current Accounts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Benefit_Agreement__c@Benefit_Agreement__c.Product__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

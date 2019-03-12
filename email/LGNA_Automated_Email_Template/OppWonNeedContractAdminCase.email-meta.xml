@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When Opp = WON this is sent to Account Executive requesting a Contract Admin Case</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>OppWonNeedContractAdminCase</name>
+    <style>none</style>
+    <subject>**For ASO Groups ONLY** Opportunity is Won, Please Create a Contract Admin case</subject>
+    <textOnly>The Opportunity {!Opportunity.Name} for Account {!Opportunity.Account} is now WON. 
+
+This is a reminder to submit a Contract Admin case. 
+
+Please follow the below instructions:
+
+1) Open the Opportunity in Salesforce:  {!Opportunity.Link}
+2) Click on the Account Name link on the Opportunity.
+3) On the Account Page click the &quot;Request Hub&quot; button located on the Account 360 View
+4) Select “Contract Admin&quot; under Request Category picklist.
+5) Complete the questionnaire and click continue.
+
+You will be directed to the respective Contract Admin Case. Please fill in the required details and save the Case. 
+
+Thank you.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

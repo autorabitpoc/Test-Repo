@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Account</field>
+        <field>Account_Number__c</field>
+        <field>CaseNumber</field>
+        <field>Owner</field>
+        <field>GEMS_Account_Submission_Info__c</field>
+        <field>GEMS_Type__c</field>
+        <field>GEMS_Case_Details_Link__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>GEMS_Submitter__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>GEMS SBC Peer Reviewer Approval</label>
+        <name>GEMS_SBC_Peer_Reviewer_Approval</name>
+    </approvalStep>
+    <description>GEMS SBC Peer Reviewer Approval Process</description>
+    <emailTemplate>GEMS_Templates/GEMS_SBC_PeerReviewer_Approval</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <finalApprovalActions>
+        <action>
+            <name>GEMS_SBC_Approved_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>GEMS_SBC_Peer_Reviewer_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>GEMS_SBC_Peer_Reviewer_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>GEMS_SBC_Reject_Alert</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>GEMS SBC Peer Reviewer Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

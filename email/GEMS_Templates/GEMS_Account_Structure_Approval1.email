@@ -1,0 +1,8 @@
+The Account Structure has been submitted and assigned to you for your approval.
+
+Access this Account Structure Case using the following link... 
+Case Details : {!Case.Link} 
+
+Thanks,
+{!Case.OwnerFullName}
+{!Case.Account}

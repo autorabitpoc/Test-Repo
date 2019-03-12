@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Email__c</field>
+    </columns>
+    <columns>
+        <field>Account$Phone</field>
+    </columns>
+    <columns>
+        <field>Account$Status__c</field>
+    </columns>
+    <columns>
+        <field>Account$Producer_Organization__c</field>
+    </columns>
+    <columns>
+        <field>Account$Type</field>
+    </columns>
+    <columns>
+        <field>Account$Preferred_Producer__c</field>
+    </columns>
+    <columns>
+        <field>Account$Tax_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$Producer_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account$National_Producer_Number__c</field>
+    </columns>
+    <description>MT Producers. Producer Contacts saved as Producer Accounts.</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Producer_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Producer_Organization__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>BCBS Montana</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Phone</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>406</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>MT Producer Reports_Accounts as Contacts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Account_Cluster_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

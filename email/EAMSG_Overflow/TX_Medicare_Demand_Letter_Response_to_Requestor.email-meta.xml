@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>To be used as a response to the submitter of a CMS Demand Letter after submission to processing unit</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TX Medicare Demand Letter Response to Requestor</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: Medicare Demand Letter</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

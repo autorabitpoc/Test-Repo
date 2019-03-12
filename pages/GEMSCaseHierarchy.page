@@ -1,0 +1,28 @@
+<apex:page controller="GEMS_Casehierarchy">  
+  <apex:form >  
+     <apex:pageBlock >  
+     
+     
+         <apex:pageblockSection columns="4" title="Hierarchy For {!CaseCategory}">  
+             <apex:repeat value="{!hierarchyItemList}" var="item">  
+                <apex:pageBlockSectionItem >  
+                    <apex:outputLabel value="{!item.category}" escape="false"/> 
+                </apex:pageBlockSectionItem>                       
+                <apex:pageBlockSectionItem >  
+                    <apex:outputLabel value="{!item.status}" escape="false"/>  
+                </apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem >                                      
+                    <apex:outputLabel value="{!item.owner}" escape="false"/>     
+                </apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem >                                                                           
+                    <apex:outputLabel value="{!item.daysopen}" escape="false"/>                                                              
+                </apex:pageBlockSectionItem>  
+             </apex:repeat>  
+         </apex:pageblockSection>  
+     </apex:pageBlock>  
+<apex:outputLink value="/apex/GEMSCaseHierarchy?caseid=50056000002cvQp" >
+<apex:image url="/resource/1461023244000/GEMS_TEST"/ >
+</apex:outputLink>
+     
+  </apex:form>  
+ </apex:page>

@@ -1,0 +1,54 @@
+<aura:component controller="ProspectingAppACRModalController">
+    <aura:attribute name="accountContactJunction" type="AccountContactRelation" default="{'sobjectType':'AccountContactRelation'}"/>
+    <aura:attribute name="currentContact" type="Contact" />
+    <aura:attribute name="typeMap" type="Map" default="{}"/>
+    <aura:attribute name="idMap" type="Map" default="{}"/>
+    <aura:attribute name="accountContactJunctionRoles" type="String[]" />`
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler name="updateInfo" event="c:PROSPECTING_APP_LOOKUP_INFO_UPDATE_EVT" action="{!c.updateFieldInfo}"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.closeComp}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">New Account Contact Relationship</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium" style="min-height: 30vh;">
+                <div class="slds-grid">
+                    <div class="slds-col slds-m-right--xx-small">
+                        <div class="slds-text-align--left slds-m-top--x-small">
+                            <div style="float: left;" class="slds-m-top--xx-small slds-m-right--xxx-small">Account:</div> 
+                            <div style="float: left;">
+                                <c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="accountLookup" sobjectType="Account" sobjectName="Account"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-col slds-m-left--xx-small">
+                        <div class="slds-text-align--left slds-m-top--x-small">
+                            <div style="float: left;" class="slds-m-top--xx-small slds-m-right--xxx-small">Roles:</div>
+                            <div style="float: left;">
+                                <select aura:id="contactRole" class="slds-select" multiple="true">
+                                    <aura:iteration items="{!v.accountContactJunctionRoles}" var="curRole">
+                                        <option value="{!curRole}">{!curRole}</option>
+                                    </aura:iteration>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeComp}">Close</button>
+                <button class="slds-button slds-button--neutral" onclick="{!c.addRelationship}">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="contactRelModalSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

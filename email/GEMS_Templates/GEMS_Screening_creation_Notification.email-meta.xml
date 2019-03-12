@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This Email template is used when screening case created.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Screening creation Notification</name>
+    <style>none</style>
+    <subject>Submission is Completed and Screening Cases are created</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

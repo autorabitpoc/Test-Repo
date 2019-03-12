@@ -1,0 +1,15 @@
+Hello,
+
+Below is a request for a Cancellation - Billing Profile. The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Billing Profile Number: [Enter Billing Profile Number]
+- Cancellation Code / Reason:  [ reason / code ]
+- Effective Date: [including month/day/year] 
+
+Effective Date Tip:  1st of the month accounts need to be listed with 1st of the month dates and 15th of the month accounts need to be listed that way, ect.  
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below. 
+
+Thank you for your help,

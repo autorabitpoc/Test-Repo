@@ -1,0 +1,8 @@
+Hi 
+Please note Custom ID Request Form is completed for {!Case.Account} 
+
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+
+Thanks

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template used to notify Business area that Account structure is ready for review</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS EEE Review approval Template</name>
+    <style>none</style>
+    <subject>Changes have been made to the account structure {!Case.CaseNumber} and waiting for approval</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

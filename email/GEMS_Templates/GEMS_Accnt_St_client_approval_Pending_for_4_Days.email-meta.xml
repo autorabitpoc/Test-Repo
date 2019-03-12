@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Accnt St. client approval Pending for 4 Days</name>
+    <style>none</style>
+    <subject>{!Case.Account_Name__c} - {!Case.Account_Number__c} - {!Case.GEMS_Effective_Date__c} - Account Structure Client Approval Pending</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

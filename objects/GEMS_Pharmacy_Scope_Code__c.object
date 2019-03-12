@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>GEMSViewScopeDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>GEMSViewScopeDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.Account.External_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Accums_Integration__c</fullName>
+        <externalId>false</externalId>
+        <label>Accums Integration</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes, Integrate Ded/OPX</fullName>
+                    <default>false</default>
+                    <label>Yes, Integrate Ded/OPX</label>
+                </value>
+                <value>
+                    <fullName>Yes, Integrate Ded Only</fullName>
+                    <default>false</default>
+                    <label>Yes, Integrate Ded Only</label>
+                </value>
+                <value>
+                    <fullName>Yes, Integrate OPX Only</fullName>
+                    <default>false</default>
+                    <label>Yes, Integrate OPX Only</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BET_Creation_Task_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>BET Creation Task End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BET_Creation_Task_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>BET Creation Task Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BET_Creation_Task_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>BET Creation Task Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>false</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Waiting on someone else</fullName>
+                    <default>false</default>
+                    <label>Waiting on someone else</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Case__r.Status )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>Cascade</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Pharmacy Scope Codes</relationshipLabel>
+        <relationshipName>Pharmacy_Scope_Codes</relationshipName>
+        <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>250</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Copay_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Copay Type</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Flat</fullName>
+                    <default>false</default>
+                    <label>Flat</label>
+                </value>
+                <value>
+                    <fullName>Percent</fullName>
+                    <default>false</default>
+                    <label>Percent</label>
+                </value>
+                <value>
+                    <fullName>Mixed</fullName>
+                    <default>false</default>
+                    <label>Mixed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Days_Business_Open__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.GEMS_Days_Business_Open__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days (Business) Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dummy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Dummy</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Formulary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Formulary Type</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Basic</fullName>
+                    <default>false</default>
+                    <label>Basic</label>
+                </value>
+                <value>
+                    <fullName>Enhanced</fullName>
+                    <default>false</default>
+                    <label>Enhanced</label>
+                </value>
+                <value>
+                    <fullName>Performance</fullName>
+                    <default>false</default>
+                    <label>Performance</label>
+                </value>
+                <value>
+                    <fullName>Performance Select</fullName>
+                    <default>false</default>
+                    <label>Performance Select</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GEMS_Peer_Review_In_Progress__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Peer Review In Progress</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Group_Pay_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Pay Code</label>
+        <length>4</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_BlueSTAR_Update_Request_Task_Cmpltd__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field will be checked once the &quot;BlueSTAR Update Request&quot; task is completed.</description>
+        <externalId>false</externalId>
+        <label>Is BlueSTAR Update Request Task Cmpltd?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Complete__c</fullName>
+        <externalId>false</externalId>
+        <formula>(ISPICKVAL(Scope_Status__c, &apos;No Scope Code Changes&apos;) &amp;&amp;  ISPICKVAL(Status__c, &apos;Peer Review Approved&apos;))
+ || (ISPICKVAL(Status__c, &apos;Update BlueSTAR &amp; AS400 Completed&apos;))</formula>
+        <label>Is Complete?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mail__c</fullName>
+        <externalId>false</externalId>
+        <label>Mail</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Flat</fullName>
+                    <default>false</default>
+                    <label>Flat</label>
+                </value>
+                <value>
+                    <fullName>Percent</fullName>
+                    <default>false</default>
+                    <label>Percent</label>
+                </value>
+                <value>
+                    <fullName>G=Flat/F=Flat/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G=Flat/F=Flat/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>G=Flat/F=Percent/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G=Flat/F=Percent/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>G = Percent/F=Flat/NF=Flat</fullName>
+                    <default>false</default>
+                    <label>G = Percent/F=Flat/NF=Flat</label>
+                </value>
+                <value>
+                    <fullName>G = Percent/F=Flat/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G = Percent/F=Flat/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>No Mail Benefits</fullName>
+                    <default>false</default>
+                    <label>No Mail Benefits</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Case_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.GEMS_Case_Effective_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Parent Case Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Peer_Review_Reject_Counter__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Peer Review Reject Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Peer_Review_Task_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Peer Review Task End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Peer_Review_Task_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Peer Review Task Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Peer_Review_Task_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Peer Review Task Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>false</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Waiting on someone else</fullName>
+                    <default>false</default>
+                    <label>Waiting on someone else</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Peer_Reviewer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Peer Reviewer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Pharmacy_Scope_Codes</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Pharmacy_Scope_Code_Task_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pharmacy Scope Code Task End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Pharmacy_Scope_Code_Task_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pharmacy Scope Code Task Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Pharmacy_Scope_Code_Task_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Pharmacy Scope Code Task Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>false</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Waiting on someone else</fullName>
+                    <default>false</default>
+                    <label>Waiting on someone else</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Prime_Build_Task_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Build Task End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Prime_Build_Task_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Build Task Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Prime_Build_Task_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Build Task Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Close</fullName>
+                    <default>false</default>
+                    <label>Close</label>
+                </value>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>false</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Waiting on someone else</fullName>
+                    <default>false</default>
+                    <label>Waiting on someone else</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Prime_Certify_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Certify Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prime_Plan_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Prime Plan ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Scope_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Related Scope Code</label>
+        <length>4</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related</label>
+        <referenceTo>GEMS_Pharmacy_Scope_Code__c</referenceTo>
+        <relationshipLabel>Temp Pharmacy Scope Codes</relationshipLabel>
+        <relationshipName>Temp_Pharmacy_Scope_Codes</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Report_Format_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Report Format Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>P</fullName>
+                    <default>false</default>
+                    <label>P</label>
+                </value>
+                <value>
+                    <fullName>Q</fullName>
+                    <default>false</default>
+                    <label>Q</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>R</label>
+                </value>
+                <value>
+                    <fullName>T</fullName>
+                    <default>false</default>
+                    <label>T</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Retail__c</fullName>
+        <externalId>false</externalId>
+        <label>Retail</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Flat</fullName>
+                    <default>false</default>
+                    <label>Flat</label>
+                </value>
+                <value>
+                    <fullName>Percent</fullName>
+                    <default>false</default>
+                    <label>Percent</label>
+                </value>
+                <value>
+                    <fullName>G=Flat/F=Percent/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G=Flat/F=Percent/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>G=Flat/F=Flat/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G=Flat/F=Flat/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>G = Percent/F=Flat/NF=Flat</fullName>
+                    <default>false</default>
+                    <label>G = Percent/F=Flat/NF=Flat</label>
+                </value>
+                <value>
+                    <fullName>G = Percent/F=Flat/NF=Percent</fullName>
+                    <default>false</default>
+                    <label>G = Percent/F=Flat/NF=Percent</label>
+                </value>
+                <value>
+                    <fullName>No Retail Benefits</fullName>
+                    <default>false</default>
+                    <label>No Retail Benefits</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rider_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Rider Code</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>00</fullName>
+                    <default>false</default>
+                    <label>00</label>
+                </value>
+                <value>
+                    <fullName>01</fullName>
+                    <default>false</default>
+                    <label>01</label>
+                </value>
+                <value>
+                    <fullName>02</fullName>
+                    <default>false</default>
+                    <label>02</label>
+                </value>
+                <value>
+                    <fullName>03</fullName>
+                    <default>false</default>
+                    <label>03</label>
+                </value>
+                <value>
+                    <fullName>04</fullName>
+                    <default>false</default>
+                    <label>04</label>
+                </value>
+                <value>
+                    <fullName>05</fullName>
+                    <default>false</default>
+                    <label>05</label>
+                </value>
+                <value>
+                    <fullName>06</fullName>
+                    <default>false</default>
+                    <label>06</label>
+                </value>
+                <value>
+                    <fullName>07</fullName>
+                    <default>false</default>
+                    <label>07</label>
+                </value>
+                <value>
+                    <fullName>08</fullName>
+                    <default>false</default>
+                    <label>08</label>
+                </value>
+                <value>
+                    <fullName>09</fullName>
+                    <default>false</default>
+                    <label>09</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>11</fullName>
+                    <default>false</default>
+                    <label>11</label>
+                </value>
+                <value>
+                    <fullName>12</fullName>
+                    <default>false</default>
+                    <label>12</label>
+                </value>
+                <value>
+                    <fullName>13</fullName>
+                    <default>false</default>
+                    <label>13</label>
+                </value>
+                <value>
+                    <fullName>14</fullName>
+                    <default>false</default>
+                    <label>14</label>
+                </value>
+                <value>
+                    <fullName>15</fullName>
+                    <default>false</default>
+                    <label>15</label>
+                </value>
+                <value>
+                    <fullName>16</fullName>
+                    <default>false</default>
+                    <label>16</label>
+                </value>
+                <value>
+                    <fullName>17</fullName>
+                    <default>false</default>
+                    <label>17</label>
+                </value>
+                <value>
+                    <fullName>18</fullName>
+                    <default>false</default>
+                    <label>18</label>
+                </value>
+                <value>
+                    <fullName>19</fullName>
+                    <default>false</default>
+                    <label>19</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scope_Code_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/apex/GEMSViewScopeDetail?Id=&quot;&amp;Id&amp;&quot;&amp;sfdc.override=1&quot; , &quot;View Scope Code&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scope Code Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scope_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Scope Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No Scope Code Changes</fullName>
+                    <default>false</default>
+                    <label>No Scope Code Changes</label>
+                </value>
+                <value>
+                    <fullName>Scope Change Only - NoBETSub</fullName>
+                    <default>false</default>
+                    <label>Scope Change Only - NoBETSub</label>
+                </value>
+                <value>
+                    <fullName>BET Submission Required</fullName>
+                    <default>false</default>
+                    <label>BET Submission Required</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Peer Review Pending</fullName>
+                    <default>false</default>
+                    <label>Peer Review Pending</label>
+                </value>
+                <value>
+                    <fullName>Peer Review Approved</fullName>
+                    <default>false</default>
+                    <label>Peer Review Approved</label>
+                </value>
+                <value>
+                    <fullName>Peer Review Rejected</fullName>
+                    <default>false</default>
+                    <label>Peer Review Rejected</label>
+                </value>
+                <value>
+                    <fullName>BET Creation Started</fullName>
+                    <default>false</default>
+                    <label>BET Creation Started</label>
+                </value>
+                <value>
+                    <fullName>BET Creation Completed</fullName>
+                    <default>false</default>
+                    <label>BET Creation Completed</label>
+                </value>
+                <value>
+                    <fullName>Prime Build Started</fullName>
+                    <default>false</default>
+                    <label>Prime Build Started</label>
+                </value>
+                <value>
+                    <fullName>Prime Build Completed</fullName>
+                    <default>false</default>
+                    <label>Prime Build Completed</label>
+                </value>
+                <value>
+                    <fullName>AS400 &amp; BlueStar Update Pending</fullName>
+                    <default>false</default>
+                    <label>AS400 &amp; BlueStar Update Pending</label>
+                </value>
+                <value>
+                    <fullName>AS400 &amp; BlueStar Update Completed</fullName>
+                    <default>false</default>
+                    <label>AS400 &amp; BlueStar Update Completed</label>
+                </value>
+                <value>
+                    <fullName>AS400 &amp; BlueStar Verification Pending</fullName>
+                    <default>false</default>
+                    <label>AS400 &amp; BlueStar Verification Pending</label>
+                </value>
+                <value>
+                    <fullName>AS400 &amp; BlueStar Verification Completed</fullName>
+                    <default>false</default>
+                    <label>AS400 &amp; BlueStar Verification Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Temp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Temp</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Permanent</fullName>
+                    <default>false</default>
+                    <label>Permanent</label>
+                </value>
+                <value>
+                    <fullName>Temp</fullName>
+                    <default>false</default>
+                    <label>Temp</label>
+                </value>
+                <value>
+                    <fullName>Dummy</fullName>
+                    <default>false</default>
+                    <label>Dummy</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Update_AS400__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Update AS400</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Update_BlueSTAR_AS400_Task_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Update BlueSTAR &amp; AS400 Task End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Update_BlueSTAR_AS400_Task_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Update BlueSTAR &amp; AS400 Task Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Update_BlueSTAR_AS400_Task_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Update BlueSTAR &amp; AS400 Task Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>false</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Waiting on someone else</fullName>
+                    <default>false</default>
+                    <label>Waiting on someone else</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Verify_BlueSTAR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Verify BlueSTAR</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>GEMS Pharmacy Scope Code</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Scope Code</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Pharmacy Scope Codes</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>GEMS_Accums_Integration</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISPICKVAL(Accums_Integration__c, &apos;&apos;), true, false)</errorConditionFormula>
+        <errorMessage>Please select Accums Integration</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Copay_Type</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISPICKVAL(Copay_Type__c, &apos;&apos;), true, false)</errorConditionFormula>
+        <errorMessage>Please select Copay Type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Formulary_Type</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISPICKVAL(Formulary_Type__c, &apos;&apos;), true, false)</errorConditionFormula>
+        <errorMessage>Please select Formulary Type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Group_Pay_Code</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(((ISPICKVAL(Case__r.HCSC_Division__c, &apos;NM&apos;) || ISPICKVAL(Case__r.HCSC_Division__c, &apos;IL&apos;))&amp;&amp; (LEN(Group_Pay_Code__c)&lt;2 || LEN(Group_Pay_Code__c)&gt;4)), true, false)</errorConditionFormula>
+        <errorMessage>Group Pay Code: Expecting at least 2 characters. Maximum allowed length is 4 characters.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Group_Pay_Code_MT</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( ((ISPICKVAL(Case__r.HCSC_Division__c, &apos;MT&apos;)) &amp;&amp;(Group_Pay_Code__c != &apos;XX&apos; &amp;&amp; Group_Pay_Code__c != &apos;00&apos;) ), true, false)</errorConditionFormula>
+        <errorMessage>Group Pay Code: Expecting either &apos;XX&apos; or &apos;00&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Group_Pay_Code_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( (((ISPICKVAL(Case__r.HCSC_Division__c, &apos;IL&apos;)) || (ISPICKVAL(Case__r.HCSC_Division__c, &apos;NM&apos;)) || (ISPICKVAL(Case__r.HCSC_Division__c, &apos;MT&apos;)) ) &amp;&amp;((Group_Pay_Code__c == &apos;&apos;)|| (Group_Pay_Code__c == Null))), true, false)</errorConditionFormula>
+        <errorMessage>Required fields are missing: [Group Pay Code]</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Group_Pay_Code_Zeroes</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF( ((NOT(ISPICKVAL(Case__r.HCSC_Division__c, &apos;MT&apos;))) &amp;&amp;(Group_Pay_Code__c == &apos;000&apos; || Group_Pay_Code__c == &apos;00&apos; || Group_Pay_Code__c == &apos;0000&apos;) ), true, false)</errorConditionFormula>
+        <errorMessage>Group Pay Code: &apos;00&apos; Or &apos;000&apos; Or &apos;0000&apos; is not allowed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Prime_Plan_ID</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF((LEN(Prime_Plan_ID__c)&lt;6 &amp;&amp; LEN(Prime_Plan_ID__c)&gt;0), true, false)</errorConditionFormula>
+        <errorMessage>Prime Plan ID: Expecting a minimum of 6 numeric characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Report_Format_Code</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(((ISPICKVAL(Case__r.HCSC_Division__c, &apos;MT&apos;))&amp;&amp; (ISPICKVAL(Report_Format_Code__c, &apos;&apos;))), true, false)</errorConditionFormula>
+        <errorMessage>Please select Report Format Code</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Rider_Code</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(((ISPICKVAL(Case__r.HCSC_Division__c, &apos;NM&apos;))&amp;&amp; (NOT(ISPICKVAL(Rider_Code__c, &apos;09&apos;) || ISPICKVAL(Rider_Code__c, &apos;10&apos;)))), true, false)</errorConditionFormula>
+        <errorMessage>Rider Code: Expecting either &apos;09&apos; or &apos;10&apos; for NM Division</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Rider_Code_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF((((ISPICKVAL(Case__r.HCSC_Division__c, &apos;NM&apos;)) || (ISPICKVAL(Case__r.HCSC_Division__c, &apos;IL&apos;)) )&amp;&amp; (ISPICKVAL(Rider_Code__c, &apos;&apos;))), true, false)</errorConditionFormula>
+        <errorMessage>Please select Rider Code</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Scope_Code</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF((LEN(Name)&lt;2 || LEN(Name)&gt;4), true, false)</errorConditionFormula>
+        <errorMessage>Scope Code: Expecting at least 2 characters. Maximum allowed length is 4 characters.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Scope_Status</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISPICKVAL(Scope_Status__c, &apos;&apos;), true, false)</errorConditionFormula>
+        <errorMessage>Please select Scope Status</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Add/Edit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/GEMSPharmcyScopeCoding?caseId={!Case.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_for_Peer_Review</fullName>
+        <availability>online</availability>
+        <description>Updates Status to Peer Review Pending</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send for Peer Review</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/31.0/connection.js&quot;)} 
+
+var ScopeCodeObj = new sforce.SObject(&quot;GEMS_Pharmacy_Scope_Code__c&quot;); 
+ScopeCodeObj.id = &apos;{!GEMS_Pharmacy_Scope_Code__c.Id}&apos;; /* Need Id field to update */
+ScopeCodeObj.Status__c = &quot;Peer Review Pending&quot;; /* Change status */ 
+
+if(&apos;{!GEMS_Pharmacy_Scope_Code__c.Peer_Reviewer__c}&apos; == &apos;&apos;) { 
+alert(&apos;Please enter Peer Reviewer before Sending for Approval&apos;); 
+} 
+else { 
+
+/* update method takes an array of Cases; init to 1 element - &apos;ScopeCodeObj&apos; */ 
+var result = sforce.connection.update([ScopeCodeObj]); 
+
+if (result[0].success == &apos;false&apos;) { 
+console.long(result[0]);
+alert(result[0].errors.message); 
+} 
+else { 
+
+location.reload(true); /* redisplay the detail page */ 
+} 
+}</url>
+    </webLinks>
+</CustomObject>

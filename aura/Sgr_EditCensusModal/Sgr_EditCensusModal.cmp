@@ -1,0 +1,205 @@
+<aura:component controller="Sgr_displayCensus" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="headerTxt" type="String" default="Edit Cesus Record" />
+    <aura:attribute name="CensusRecord" type="SGR_Opportunity_Census__c"/>
+    <aura:attribute name="planSelected" type = "String"/>
+    <aura:attribute name="groupSectionSelected" type="String"/>
+    <aura:attribute name= "relations" type = "String[]"/>
+    <aura:attribute name="tabName" type = "String"/>
+    <aura:attribute name="plans" type = "String[]"/>
+    <aura:attribute name="groupNumbers" type="String[]"/>
+    <aura:attribute name="groupSectionNumbers" type="String[]"/>
+    <aura:attribute name="groupSectionId" type="String"/>
+    <lightning:notificationsLibrary aura:id="notificationsLibrary"/>   
+    <aura:handler event="c:Sgr_DisplayCensusEditRow" action="{!c.editEventHandler}"/>  
+    <aura:registerEvent name="planIdValueEvent" type="c:SelectPlanRecordEvent"/>
+    <aura:handler name="planIdValueEvent" event="c:SelectPlanRecordEvent" action="{!c.handlePlanIdEvent}"/>
+    <aura:registerEvent name="appCloseEvent" type="c:SGR_SelectedOptyEvent"/>
+    
+    <div aura:id="editCensusModal" class="slds-m-around_xx-large">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                   
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                	<lightning:recordEditForm aura:id="form"
+                                  recordId="{!v.CensusRecord.Id}"
+                                  objectApiName="SGR_Opportunity_Census__c"     
+                                  onload="{!c.handleOnload}"
+                                  onsubmit="{!c.handleOnSubmit}"
+                                  onsuccess="{!c.handleOnSuccess}"
+                                  onerror="{!c.handleOnError}"
+                                  class="slds-card__body_inner">
+                        <lightning:messages/>
+                        <div class="slds-hide">
+                        	<lightning:outputField fieldName="Id" aura:id="id"/>
+                        </div>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">   
+                                <lightning:inputField fieldName="First_Name__c" aura:id="firstName"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-around_small">   
+                            	<lightning:inputField fieldName="Last_Name__c" aura:id="lastName"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                <lightning:inputField fieldName="Date_of_Birth__c" aura:id="dob"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                            	<lightning:inputField fieldName="Age_New__c" aura:id="age"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                            	<!--<lightning:inputField fieldName="Gender__c" aura:id="gender"/>-->
+                                <lightning:select label="Gender" required="true" value="{!v.CensusRecord.Gender__c}" messageWhenValueMissing="Please select a value" >
+                                    <option text="--None--"/>
+                                    <option text="M"/>
+                                    <option text="F"/>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">  
+                            	<aura:if isTrue="{!v.CensusRecord.Relationship__c=='Subscriber'}">
+                                    <lightning:outputField fieldName="Relationship__c" aura:id="relationship"/>
+                                    <aura:set attribute="else">
+                                        <!--<lightning:inputField fieldName="Relationship__c" aura:id="relationshipInput"/>-->
+                                        <lightning:select aura:id="relation" name="" label="Relationship" value="{!v.CensusRecord.Relationship__c}">
+                                            <option text="{!v.CensusRecord.Relationship__c}"/>
+                                            <aura:iteration items="{!v.relations}" var="rel">
+                                                <option value="{!rel}" text="{!rel}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!v.CensusRecord.Relationship__c=='Subscriber'}">
+                            <div class="slds-grid slds-wrap">
+                                <aura:if isTrue="{!v.tabName=='Health'}">
+                                    <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                        <!--<lightning:inputField fieldName="Health_Plan_ID__c" aura:id="healthPlan"/>-->
+                                        <lightning:select aura:id="PlanId" name="" label="Health Plan ID" value="{!v.planSelected}" onchange="{!c.getgroupData}">
+                                            <option text="{!v.CensusRecord.Health_Plan_ID__c}"/>
+                                            <aura:iteration items="{!v.plans}" var="plan">
+                                                <aura:iteration items="{!plan}" var="pln">
+                                                    <option text="{!pln}" value="{!pln}"/>
+                                                </aura:iteration>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                            		<lightning:inputField fieldName="Health_Tier__c" aura:id="healthTier"/>
+                            	</div>
+                            	</aura:if>
+                                <aura:if isTrue="{!v.tabName=='Dental'}">
+                                    <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                        <lightning:select aura:id="PlanId" name="" label="Dental Plan ID" value="{!v.planSelected}" onchange="{!c.getgroupData}">
+                                            <option text="{!v.CensusRecord.Dental_Plan_ID__c}"/>
+                                            <aura:iteration items="{!v.plans}" var="plan">
+                                                <aura:iteration items="{!plan}" var="pln">
+                                                    <option text="{!pln}" value="{!pln}"/>
+                                                </aura:iteration>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                        <lightning:inputField fieldName="Dental_Tier__c" aura:id="dentalTier"/>
+                                    </div>
+                                </aura:if>
+                                <aura:if isTrue="{!v.tabName=='Vision'}">
+                                    <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                        <lightning:select aura:id="PlanId" name="" label="Vision Plan ID" value="{!v.planSelected}" onchange="{!c.getgroupData}">
+                                            <option text="{!v.CensusRecord.Vision_Plan_ID__c}"/>
+                                            <aura:iteration items="{!v.plans}" var="plan">
+                                                <aura:iteration items="{!plan}" var="pln">
+                                                    <option text="{!pln}" value="{!pln}"/>
+                                                </aura:iteration>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                        <lightning:inputField fieldName="Vision_Tier__c" aura:id="visionTier"/>
+                                    </div>
+                                </aura:if>
+                                <div class="slds-col slds-size_1-of-4 slds-p-around_small">  
+                                    <!--<lightning:inputField fieldName="Group_Number__c" aura:id="groupNumber"/>-->
+                                    <lightning:select aura:id="GroupNumber" name="" label="Group Number" value="{!v.CensusRecord.Group_Number__c}" >
+                                        <option text="{!v.CensusRecord.Group_Number__c}"/>
+                                        <aura:iteration items="{!v.groupNumbers}" var="gnum">
+                                            <option value="{!gnum}" text="{!gnum}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-4 slds-p-around_small">  
+                                    <!--<lightning:inputField fieldName="Opportunity_Group_Section__c" aura:id="groupSection"/>-->
+                                    <lightning:select aura:id="GroupSectionNum" name="" label="Group Section Number" value="{!v.groupSectionSelected}" onchange="{!c.doSectionNum}">
+                                        <option text="{!v.CensusRecord.Opportunity_Group_Section__r.Opportunity_Group_Section_Number__c}"/>
+                                        <aura:iteration items="{!v.groupSectionNumbers}" var="groupSectionNum">
+                                            <option value="{!groupSectionNum}" text="{!groupSectionNum}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </aura:if>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                                <lightning:inputField fieldName="Zip_Code__c" aura:id="zip"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                            	<lightning:inputField fieldName="State__c" aura:id="state"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-around_small">   
+                            	<lightning:inputField fieldName="Tobacco_Use__c" aura:id="tobacco"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                            	<lightning:inputField fieldName="Medicare_Primary__c" aura:id="medPrimary"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-wrap">
+                        	<aura:if isTrue="{!v.CensusRecord.Relationship__c=='Subscriber'}">
+                                <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                                    <!--<lightning:inputField fieldName="Employee_StatusCode__c" aura:id="empStatus"/>-->
+                                    <lightning:select label="Employee Status Code" value="{!v.CensusRecord.Employee_Status_Code__c}" >
+                                        <option text="--None--"/>
+                                        <option text="Cobra"/>
+                                        <option text="Retired"/>
+                                        <option text="State Continuation"/>
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                                    <lightning:inputField fieldName="COBRA__c" aura:id="cobra"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                                    <lightning:inputField fieldName="State_Continuation__c" aura:id="stateCont"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                                    <lightning:inputField fieldName="Retiree__c" aura:id="retiree"/>
+                                </div>
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-size_1-of-5 slds-p-around_small">   
+                            	<lightning:inputField fieldName="Membership_Number__c" aura:id="memberNumber"/>
+                            </div>
+                        <div class="slds-m-top_medium slds-float_right">
+                            <lightning:button label="Cancel" type="reset" onclick="{!c.handleCancel}" class="slds-button slds-button_neutral" />
+                            <lightning:button variant="brand" label="Save" type="submit" />
+                        </div>
+                    </lightning:recordEditForm>
+
+                    
+                </div>
+                
+                <!--<footer class="slds-modal__footer">
+                    
+                    <lightning:button label="Cancel" type="reset" onclick="{!c.handleCancel}" class="slds-button slds-button_neutral" />
+                    
+                    <lightning:button variant="brand" 
+                                      label="Save"
+                                      type="submit"
+                                      onclick="{! c.handleSave}"/>
+                </footer>-->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</aura:component>

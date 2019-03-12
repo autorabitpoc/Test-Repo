@@ -1,0 +1,8 @@
+Hi ,
+AEP Account submission {!Case.CaseNumber} is completed .
+Below are more information:
+
+Account Name: {!Case.Account}
+Case Link : {!Case.Link}
+
+Thanks

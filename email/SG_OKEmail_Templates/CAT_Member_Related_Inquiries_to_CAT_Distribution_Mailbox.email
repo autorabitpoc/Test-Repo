@@ -1,0 +1,16 @@
+Hello,
+
+Below is a request for [Enter Type of Submission] effective for [Enter Date].The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+
+- Subscriber ID: [Enter Customer ID]
+- Subscriber Name: [Enter Member Name]
+
+- Type of Submission: [Reason for the email]
+- Detailed request for assistance:  [ type detailed notes here]
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

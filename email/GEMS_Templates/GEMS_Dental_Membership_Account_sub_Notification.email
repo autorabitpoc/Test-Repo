@@ -1,0 +1,10 @@
+Hi Dental Benefit Coder,
+
+Account submission {!Case.CaseNumber} has been completed .
+Below are more details:
+
+Case Number : {!Case.CaseNumber} 
+Account Name: {!Case.Account}
+Case Details : {!Case.Link}
+
+Thanks

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Account Level</fullName>
+        <default>false</default>
+        <label>Account Level</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Setup</fullName>
+        <default>false</default>
+        <label>Account Setup</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Structure Change</fullName>
+        <default>false</default>
+        <label>Account Structure Change</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Aggregate Totals</fullName>
+        <default>false</default>
+        <label>Aggregate Totals</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Alerts and Updates</fullName>
+        <default>false</default>
+        <label>Alerts and Updates</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Audits</fullName>
+        <default>false</default>
+        <label>Audits</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BCBSA</fullName>
+        <default>false</default>
+        <label>BCBSA</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Benefits</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>Benefits</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Billing</fullName>
+        <color>#78C953</color>
+        <default>false</default>
+        <label>Billing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Blue Balance Funding</fullName>
+        <default>false</default>
+        <label>Blue Balance Funding</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Blue Directions</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>Blue Directions</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Boilerplate/Shelf Proposal</fullName>
+        <default>false</default>
+        <label>Boilerplate/Shelf Proposal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancellation</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>Cancellation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Care Management and Wellness</fullName>
+        <default>false</default>
+        <label>Care Management and Wellness</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cede</fullName>
+        <default>false</default>
+        <label>Cede</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Claims</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>Claims</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ClaimsQuest (Milliman) Repricing</fullName>
+        <default>false</default>
+        <label>ClaimsQuest (Milliman) Repricing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CMS Demand Letters</fullName>
+        <default>false</default>
+        <label>CMS Demand Letters</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Consent and Participation</fullName>
+        <default>false</default>
+        <label>Consent and Participation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Contact Change</fullName>
+        <color>#A53711</color>
+        <default>false</default>
+        <label>Contact Change</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dearborn National</fullName>
+        <default>false</default>
+        <label>Dearborn National</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dental CSS</fullName>
+        <default>false</default>
+        <label>Dental CSS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Discounts</fullName>
+        <default>false</default>
+        <label>Discounts</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Discounts (ClaimsQuest)</fullName>
+        <default>false</default>
+        <label>Discounts (ClaimsQuest)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Discounts (Local)</fullName>
+        <default>false</default>
+        <label>Discounts (Local)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Disruption</fullName>
+        <default>false</default>
+        <label>Disruption</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DNoA</fullName>
+        <default>false</default>
+        <label>DNoA</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Evergreen</fullName>
+        <default>false</default>
+        <label>Evergreen</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Exceptions</fullName>
+        <default>false</default>
+        <label>Exceptions</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Executive Inquiry/DOI</fullName>
+        <default>false</default>
+        <label>Executive Inquiry/DOI</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fixed Term</fullName>
+        <default>false</default>
+        <label>Fixed Term</label>
+    </standardValue>
+    <standardValue>
+        <fullName>General Inquiry</fullName>
+        <color>#66E9BD</color>
+        <default>true</default>
+        <label>General Inquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GeoAccess</fullName>
+        <default>false</default>
+        <label>GeoAccess</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Group Level</fullName>
+        <color>#0B24BE</color>
+        <default>false</default>
+        <label>Group Level</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Maps</fullName>
+        <default>false</default>
+        <label>Maps</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Member</fullName>
+        <default>false</default>
+        <label>Member</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Membership</fullName>
+        <color>#419249</color>
+        <default>false</default>
+        <label>Membership</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Miscellaneous</fullName>
+        <default>false</default>
+        <label>Miscellaneous</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Misrouted/Transfer</fullName>
+        <default>false</default>
+        <label>Misrouted/Transfer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MSP Exception</fullName>
+        <default>false</default>
+        <label>MSP Exception</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Open Records Request</fullName>
+        <default>false</default>
+        <label>Open Records Request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Page Calculations</fullName>
+        <default>false</default>
+        <label>Page Calculations</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Par Plan Request</fullName>
+        <default>false</default>
+        <label>Par Plan Request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pre-Proposal Planning</fullName>
+        <default>false</default>
+        <label>Pre-Proposal Planning</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prime Therapeutics LLC</fullName>
+        <default>false</default>
+        <label>Prime Therapeutics LLC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Provider Counts</fullName>
+        <default>false</default>
+        <label>Provider Counts</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Questionnaire Support</fullName>
+        <default>false</default>
+        <label>Questionnaire Support</label>
+    </standardValue>
+    <standardValue>
+        <fullName>QVT</fullName>
+        <default>false</default>
+        <label>QVT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Radius Page</fullName>
+        <default>false</default>
+        <label>Radius Page</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Regulatory Data Acquisitions</fullName>
+        <default>false</default>
+        <label>Regulatory Data Acquisitions</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal</fullName>
+        <color>#641CCF</color>
+        <default>false</default>
+        <label>Renewal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reporting</fullName>
+        <default>false</default>
+        <label>Reporting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reports</fullName>
+        <default>false</default>
+        <label>Reports</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Request Examples</fullName>
+        <default>false</default>
+        <label>Request Examples</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFIs</fullName>
+        <default>false</default>
+        <label>RFIs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFP - Academic HealthPlan Student</fullName>
+        <default>false</default>
+        <label>RFP - Academic HealthPlan Student</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFP Follow Up Questions</fullName>
+        <default>false</default>
+        <label>RFP Follow Up Questions</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFP - Mercer Marketplace</fullName>
+        <default>false</default>
+        <label>RFP - Mercer Marketplace</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFPs</fullName>
+        <default>false</default>
+        <label>RFPs</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Rx</fullName>
+        <color>#F96FB7</color>
+        <default>false</default>
+        <label>Rx</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Service Area</fullName>
+        <default>false</default>
+        <label>Service Area</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Service Model</fullName>
+        <default>false</default>
+        <label>Service Model</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SHOP Exchange</fullName>
+        <color>#2F5D85</color>
+        <default>false</default>
+        <label>SHOP Exchange</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Site Match</fullName>
+        <default>false</default>
+        <label>Site Match</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Stop Loss</fullName>
+        <default>false</default>
+        <label>Stop Loss</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Subrogation</fullName>
+        <default>false</default>
+        <label>Subrogation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Summary Chart</fullName>
+        <default>false</default>
+        <label>Summary Chart</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Surveys</fullName>
+        <default>false</default>
+        <label>Surveys</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Toggle</fullName>
+        <default>false</default>
+        <label>Toggle</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Total Discount Measurement</fullName>
+        <default>false</default>
+        <label>Total Discount Measurement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Transfer</fullName>
+        <color>#AFCADF</color>
+        <default>false</default>
+        <label>Transfer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Underwriting Exceptions</fullName>
+        <default>false</default>
+        <label>Underwriting Exceptions</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ValueQuest Analysis</fullName>
+        <default>false</default>
+        <label>ValueQuest Analysis</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Vendor Integration and Vendor Data</fullName>
+        <default>false</default>
+        <label>Vendor Integration and Vendor Data</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Vendor Type</fullName>
+        <default>false</default>
+        <label>Vendor Type</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Verification of Benefits(verified)closed</fullName>
+        <default>false</default>
+        <label>Verification of Benefits(verified)closed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Setup Process</fullName>
+        <default>false</default>
+        <label>Account Setup Process</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Submission</fullName>
+        <default>false</default>
+        <label>Account Submission</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Additional Underwriting</fullName>
+        <default>false</default>
+        <label>Additional Underwriting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dental Benefit Coding</fullName>
+        <default>false</default>
+        <label>Dental Benefit Coding</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dental Underwriting</fullName>
+        <default>false</default>
+        <label>Dental Underwriting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Eligibility Process</fullName>
+        <default>false</default>
+        <label>Eligibility Process</label>
+    </standardValue>
+    <standardValue>
+        <fullName>FSU Claims</fullName>
+        <default>false</default>
+        <label>FSU Claims</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GEMS Dental BA Level Benefit Coding</fullName>
+        <default>false</default>
+        <label>GEMS Dental BA Level Benefit Coding</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GET</fullName>
+        <default>false</default>
+        <label>GET</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ID Card</fullName>
+        <default>false</default>
+        <label>ID Card</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Manual Eligibility</fullName>
+        <default>false</default>
+        <label>Manual Eligibility</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Benefit Coding</fullName>
+        <default>false</default>
+        <label>Medical Benefit Coding</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Underwriting</fullName>
+        <default>false</default>
+        <label>Medical Underwriting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pharmacy Coding</fullName>
+        <default>false</default>
+        <label>Pharmacy Coding</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SBC</fullName>
+        <default>false</default>
+        <label>SBC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Screening</fullName>
+        <default>false</default>
+        <label>Screening</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Structure</fullName>
+        <default>false</default>
+        <label>Account Structure</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account</fullName>
+        <default>false</default>
+        <label>Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Opportunity</fullName>
+        <default>false</default>
+        <label>Opportunity</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Case</fullName>
+        <default>false</default>
+        <label>Case</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Gate</fullName>
+        <default>false</default>
+        <label>Gate</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal date Configuration</fullName>
+        <default>false</default>
+        <label>Renewal date Configuration</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SGRRenewalBatches</fullName>
+        <default>false</default>
+        <label>SGRRenewalBatches</label>
+    </standardValue>
+</StandardValueSet>

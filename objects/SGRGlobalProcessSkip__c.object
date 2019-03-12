@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This is used to skip the opportunity business validations</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SGR Global Process Skip</label>
+    <visibility>Protected</visibility>
+</CustomObject>

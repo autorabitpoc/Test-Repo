@@ -1,0 +1,56 @@
+<aura:component controller="ProspectingAppActivitiesListController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="notes" type="Note[]" default="[]"/>
+    <aura:attribute name="tasks" type="Task[]" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler event="c:PROSPECTING_APP_REFRESH_NOTES_TASKS_LIST_EVT" action="{!c.updateList}"/>
+    
+    <div>
+        <div aura:id="activityListLabel" class="slds-text-color--weak slds-show" style="float: left; font-size: 120%;">Notes and Tasks</div>
+        <a aura:id="collapseActivityList" class="slds-hide" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevronup" size="x-small" alternativeText="Collapse List"/>
+        </a> 
+        <a aura:id="expandActivityList" class="slds-show" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevrondown" size="x-small" alternativeText="Expand List"/>
+        </a>
+    </div>
+    
+    <!-- SFDC-3799 - 07/2017 - Begin -->
+    <div aura:id="TaskNoteHeader" class="slds-is-collapsed">
+        <div class="slds-grid">
+            <header class="slds-size--1-of-2 slds-m-right--x-small">
+                <div class="slds-media__figure slds-text-heading--small">
+                    <h1>
+                        Notes ({!v.notes.length})
+                    </h1>                    
+                </div>
+            </header>
+            <header class="slds-size--1-of-2 slds-m-left--x-small">
+                <div class="slds-media__figure slds-text-heading--small">
+                    <h1>
+                        Tasks ({!v.tasks.length})
+                    </h1>                    
+                </div>
+            </header>
+        </div>   
+    </div>
+    <!-- SFDC-3799 - 07/2017 - End -->
+    
+    <div class="slds-grid" style="max-height: 35vh;">
+        <div class="slds-col slds-size--1-of-2 slds-scrollable--y slds-m-right--x-small" style="max-height: 33vh;">
+            <ul aura:id="noteList" class="slds-is-collapsed">
+                <aura:iteration items="{!v.notes}" var="note" indexVar="idx">
+                    <c:PROSPECTING_APP_NOTE curNote="{!note}"/>
+                </aura:iteration>
+            </ul>
+        </div>
+        <div class="slds-col slds-size--1-of-2 slds-scrollable--y slds-m-left--x-small" style="max-height: 33vh;">
+            <ul aura:id="taskList" class="slds-is-collapsed">
+                <aura:iteration items="{!v.tasks}" var="task" indexVar="idx">
+                    <c:PROSPECTING_APP_TASK curTask="{!task}"/>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+</aura:component>

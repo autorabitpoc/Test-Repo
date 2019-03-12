@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>GEMS SBC/BB Form Cancellation Email Template</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS SBC Cancellation Email Template</name>
+    <style>none</style>
+    <subject>Account Submission Case has been cancelled for {!Case.Account_Name__c} - {!Case.Account_Number__c} - {!Case.Opportunity_Name__c} - {!Case.GEMS_Case_Effective_Date__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

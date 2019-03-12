@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global"
+                controller="SGR_ViewOppBAController">
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="sortedBy" type="String" default="Group_Name__c"/>
+    <aura:attribute name="sortedDirection" type="String" default="ASC"/>
+    <aura:attribute name="err" type="Boolean"/>
+    <aura:attribute name="errMsg" type="String"/>
+    <aura:attribute name="baId" type="Id"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="gsRec" type="Object"/>
+
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-1">
+
+            <span>{!v.errMsg}</span>
+
+
+            <div width="100%">
+
+                <lightning:dataTable
+                        columns="{!v.columns}"
+                        data="{!v.gsRec}"
+                        keyField="id"
+                        hideCheckboxColumn="true"
+                        onsort="{!c.sortRow}"
+                        sortedBy="{!v.sortedBy}"
+                        sortedDirection="{!v.sortedDirection}"
+                />
+
+            </div>
+
+
+        </div>
+    </div>
+
+</aura:component>

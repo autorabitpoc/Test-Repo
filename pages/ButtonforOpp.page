@@ -1,0 +1,5 @@
+<apex:page standardController="Opportunity"
+           extensions="MyCalloutExtension"
+           action="{!makeCallout}">
+    <apex:pageMessages />
+</apex:page>

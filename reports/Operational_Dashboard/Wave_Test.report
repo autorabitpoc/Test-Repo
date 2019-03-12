@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>BucketField_39018453</acrossGroupingContext>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Summary</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <acrossGroupingContext>BucketField_39018453</acrossGroupingContext>
+        <calculatedFormula>25</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Forecast Value</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_4079896</developerName>
+        <masterLabel>Wave LOB</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.GEMS_Line_of_Business__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Major National GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA GET</sourceValue>
+            </sourceValues>
+            <value>ENA &amp; Major National</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Municipal GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Student Health</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SCP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Large/Mid Market</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Major National</sourceValue>
+            </sourceValues>
+            <value>Key Markets</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_39018453</developerName>
+        <masterLabel>Wave Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case.GEMS_Ready_to_release_to_screening__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Released</sourceValue>
+            </sourceValues>
+            <value>Released to Screening</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Not Ready for release</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ready to Release</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Not Released</sourceValue>
+            </sourceValues>
+            <value>Structure Created</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA2</column>
+        </chartSummaries>
+        <chartType>VerticalColumnLine</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_39018453</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Case.GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Ready_to_release_to_screening__c</field>
+    </columns>
+    <columns>
+        <field>Case.HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>Case.Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Line_of_business__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Case.Opportunity_Name__c</field>
+    </columns>
+    <description>Testing chart with forecast numbers</description>
+    <filter>
+        <criteriaItems>
+            <column>TYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1/1/2018</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>New,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.HCSC_Division__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_4079896</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Key Markets</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_39018453</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.GEMS_Line_of_Business__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Wave Test</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

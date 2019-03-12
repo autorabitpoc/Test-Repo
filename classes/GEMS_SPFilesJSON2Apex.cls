@@ -1,0 +1,694 @@
+public class GEMS_SPFilesJSON2Apex {
+    public static void consumeObject(JSONParser parser) {
+        Integer depth = 0;
+        do {
+            JSONToken curr = parser.getCurrentToken();
+            if (curr == JSONToken.START_OBJECT || 
+                curr == JSONToken.START_ARRAY) {
+                depth++;
+            } else if (curr == JSONToken.END_OBJECT ||
+                curr == JSONToken.END_ARRAY) {
+                depth--;
+            }
+        } while (depth > 0 && parser.nextToken() != null);
+    }
+
+    public class Properties_Z {
+        public metadata metadata {get;set;} 
+        public Integer vti_x005f_internalversion {get;set;} 
+        public String SFIdTagging {get;set;} 
+        public String vti_x005f_metadatanextbsn {get;set;} 
+        public String SalesforceId {get;set;} 
+        public String DocumentLevel {get;set;} 
+        public String vti_x005f_replid {get;set;} 
+        public Integer vti_x005f_level {get;set;} 
+        public String ContentTypeId {get;set;} 
+        public Integer vti_x005f_setuppathversion {get;set;} 
+        public String BAInfo {get;set;} 
+        public String vti_x005f_rtag {get;set;} 
+        public String vti_x005f_sourcecontrolversion {get;set;} 
+        public String vti_x005f_sourcecontrolcookie {get;set;} 
+        public Integer vti_x005f_filesize {get;set;} 
+        public String vti_x005f_modifiedby {get;set;} 
+        public String vti_x005f_title {get;set;} 
+        public Integer vti_x005f_docstoretype {get;set;} 
+        public String vti_x005f_etag {get;set;} 
+        public String vti_x005f_nextbsn {get;set;} 
+        public Integer vti_x005f_virusstatus {get;set;} 
+        public String vti_x005f_parserversion {get;set;} 
+        public Integer vti_x005f_docstoreversion {get;set;} 
+        public Integer vti_x005f_virusvendorid {get;set;} 
+        public String vti_x005f_author {get;set;} 
+        public Integer vti_x005f_foldersubfolderitemcount {get;set;} 
+        public String vti_x005f_contentversionisdirty {get;set;} 
+        public String vti_x005f_timelastwritten {get;set;} 
+        public Integer vti_x005f_metainfoversion {get;set;} 
+        public String vti_x005f_contenttag {get;set;} 
+        public String vti_x005f_canmaybeedit {get;set;} 
+        public String ODatax005f_dlc_x005f_DocIdUrl {get;set;} 
+        public String vti_x005f_nextbsnallocated {get;set;} 
+        public Integer vti_x005f_folderitemcount {get;set;} 
+        public String ODatax005f_dlc_x005f_DocId {get;set;} 
+        public String vti_x005f_timelastmodified {get;set;} 
+        public String vti_x005f_bsn {get;set;} 
+        public String vti_x005f_writevalidationtoken {get;set;} 
+        public String ODatax005f_dlc_x005f_DocIdItemGuid {get;set;} 
+        public String vti_x005f_parentid {get;set;} 
+        public String DocumentType {get;set;} 
+        public String vti_x005f_candeleteversion {get;set;} 
+        public String vti_x005f_streamhash {get;set;} 
+        public String vti_x005f_nexttolasttimemodified {get;set;} 
+        public String CaseDescription {get;set;} 
+        public Integer vti_x005f_contentversion {get;set;} 
+        public String vti_x005f_timecreated {get;set;} 
+        public Integer vti_x005f_streamschema {get;set;} 
+
+        public Properties_Z(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'metadata') {
+                            metadata = new metadata(parser);
+                        } else if (text == 'vti_x005f_internalversion') {
+                            vti_x005f_internalversion = parser.getIntegerValue();
+                        } else if (text == 'SFIdTagging') {
+                            SFIdTagging = parser.getText();
+                        } else if (text == 'vti_x005f_metadatanextbsn') {
+                            vti_x005f_metadatanextbsn = parser.getText();
+                        } else if (text == 'SalesforceId') {
+                            SalesforceId = parser.getText();
+                        } else if (text == 'DocumentLevel') {
+                            DocumentLevel = parser.getText();
+                        } else if (text == 'vti_x005f_replid') {
+                            vti_x005f_replid = parser.getText();
+                        } else if (text == 'vti_x005f_level') {
+                            vti_x005f_level = parser.getIntegerValue();
+                        } else if (text == 'ContentTypeId') {
+                            ContentTypeId = parser.getText();
+                        } else if (text == 'vti_x005f_setuppathversion') {
+                            vti_x005f_setuppathversion = parser.getIntegerValue();
+                        } else if (text == 'BAInfo') {
+                            BAInfo = parser.getText();
+                        } else if (text == 'vti_x005f_rtag') {
+                            vti_x005f_rtag = parser.getText();
+                        } else if (text == 'vti_x005f_sourcecontrolversion') {
+                            vti_x005f_sourcecontrolversion = parser.getText();
+                        } else if (text == 'vti_x005f_sourcecontrolcookie') {
+                            vti_x005f_sourcecontrolcookie = parser.getText();
+                        } else if (text == 'vti_x005f_filesize') {
+                            vti_x005f_filesize = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_modifiedby') {
+                            vti_x005f_modifiedby = parser.getText();
+                        } else if (text == 'vti_x005f_title') {
+                            vti_x005f_title = parser.getText();
+                        } else if (text == 'vti_x005f_docstoretype') {
+                            vti_x005f_docstoretype = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_etag') {
+                            vti_x005f_etag = parser.getText();
+                        } else if (text == 'vti_x005f_nextbsn') {
+                            vti_x005f_nextbsn = parser.getText();
+                        } else if (text == 'vti_x005f_virusstatus') {
+                            vti_x005f_virusstatus = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_parserversion') {
+                            vti_x005f_parserversion = parser.getText();
+                        } else if (text == 'vti_x005f_docstoreversion') {
+                            vti_x005f_docstoreversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_virusvendorid') {
+                            vti_x005f_virusvendorid = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_author') {
+                            vti_x005f_author = parser.getText();
+                        } else if (text == 'vti_x005f_foldersubfolderitemcount') {
+                            vti_x005f_foldersubfolderitemcount = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_contentversionisdirty') {
+                            vti_x005f_contentversionisdirty = parser.getText();
+                        } else if (text == 'vti_x005f_timelastwritten') {
+                            vti_x005f_timelastwritten = parser.getText();
+                        } else if (text == 'vti_x005f_metainfoversion') {
+                            vti_x005f_metainfoversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_contenttag') {
+                            vti_x005f_contenttag = parser.getText();
+                        } else if (text == 'vti_x005f_canmaybeedit') {
+                            vti_x005f_canmaybeedit = parser.getText();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocIdUrl') {
+                            ODatax005f_dlc_x005f_DocIdUrl = parser.getText();
+                        } else if (text == 'vti_x005f_nextbsnallocated') {
+                            vti_x005f_nextbsnallocated = parser.getText();
+                        } else if (text == 'vti_x005f_folderitemcount') {
+                            vti_x005f_folderitemcount = parser.getIntegerValue();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocId') {
+                            ODatax005f_dlc_x005f_DocId = parser.getText();
+                        } else if (text == 'vti_x005f_timelastmodified') {
+                            vti_x005f_timelastmodified = parser.getText();
+                        } else if (text == 'vti_x005f_bsn') {
+                            vti_x005f_bsn = parser.getText();
+                        } else if (text == 'vti_x005f_writevalidationtoken') {
+                            vti_x005f_writevalidationtoken = parser.getText();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocIdItemGuid') {
+                            ODatax005f_dlc_x005f_DocIdItemGuid = parser.getText();
+                        } else if (text == 'vti_x005f_parentid') {
+                            vti_x005f_parentid = parser.getText();
+                        } else if (text == 'DocumentType') {
+                            DocumentType = parser.getText();
+                        } else if (text == 'vti_x005f_candeleteversion') {
+                            vti_x005f_candeleteversion = parser.getText();
+                        } else if (text == 'vti_x005f_streamhash') {
+                            vti_x005f_streamhash = parser.getText();
+                        } else if (text == 'vti_x005f_nexttolasttimemodified') {
+                            vti_x005f_nexttolasttimemodified = parser.getText();
+                        } else if (text == 'CaseDescription') {
+                            CaseDescription = parser.getText();
+                        } else if (text == 'vti_x005f_contentversion') {
+                            vti_x005f_contentversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_timecreated') {
+                            vti_x005f_timecreated = parser.getText();
+                        } else if (text == 'vti_x005f_streamschema') {
+                            vti_x005f_streamschema = parser.getIntegerValue();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'Properties_Z consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class d {
+        public List<Results> results {get;set;} 
+
+        public d(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'results') {
+                            results = new List<Results>();
+                            while (parser.nextToken() != JSONToken.END_ARRAY) {
+                                results.add(new Results(parser));
+                            }
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'd consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public d d {get;set;} 
+
+    public GEMS_SPFilesJSON2Apex(JSONParser parser) {
+        while (parser.nextToken() != JSONToken.END_OBJECT) {
+            if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                String text = parser.getText();
+                if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                    if (text == 'd') {
+                        d = new d(parser);
+                    } else {
+                        System.debug(LoggingLevel.WARN, 'Root consuming unrecognized property: '+text);
+                        consumeObject(parser);
+                    }
+                }
+            }
+        }
+    }
+    
+    public class Results {
+        public metadata metadata {get;set;} 
+        public Author Author {get;set;} 
+        public Groups CheckedOutByUser {get;set;} 
+        public Groups EffectiveInformationRightsManagementSettings {get;set;} 
+        public Groups InformationRightsManagementSettings {get;set;} 
+        public Groups ListItemAllFields {get;set;} 
+        public Groups LockedByUser {get;set;} 
+        public Groups ModifiedBy {get;set;} 
+        public Properties Properties {get;set;} 
+        public Groups VersionEvents {get;set;} 
+        public Groups Versions {get;set;} 
+        public String CheckInComment {get;set;} 
+        public Integer CheckOutType {get;set;} 
+        public String ContentTag {get;set;} 
+        public Integer CustomizedPageStatus {get;set;} 
+        public String ETag {get;set;} 
+        public Boolean Exists {get;set;} 
+        public Boolean IrmEnabled {get;set;} 
+        public String Length {get;set;} 
+        public Integer Level {get;set;} 
+        public String LinkingUrl {get;set;} 
+        public Integer MajorVersion {get;set;} 
+        public Integer MinorVersion {get;set;} 
+        public String Name {get;set;} 
+        public String ServerRelativeUrl {get;set;} 
+        public String TimeCreated {get;set;} 
+        public String TimeLastModified {get;set;} 
+        public String Title {get;set;} 
+        public Integer UIVersion {get;set;} 
+        public String UIVersionLabel {get;set;} 
+        public String UniqueId {get;set;} 
+
+        public Results(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'metadata') {
+                            metadata = new metadata(parser);
+                        } else if (text == 'Author') {
+                            Author = new Author(parser);
+                        } else if (text == 'CheckedOutByUser') {
+                            CheckedOutByUser = new Groups(parser);
+                        } else if (text == 'EffectiveInformationRightsManagementSettings') {
+                            EffectiveInformationRightsManagementSettings = new Groups(parser);
+                        } else if (text == 'InformationRightsManagementSettings') {
+                            InformationRightsManagementSettings = new Groups(parser);
+                        } else if (text == 'ListItemAllFields') {
+                            ListItemAllFields = new Groups(parser);
+                        } else if (text == 'LockedByUser') {
+                            LockedByUser = new Groups(parser);
+                        } else if (text == 'ModifiedBy') {
+                            ModifiedBy = new Groups(parser);
+                        } else if (text == 'Properties') {
+                            Properties = new Properties(parser);
+                        } else if (text == 'VersionEvents') {
+                            VersionEvents = new Groups(parser);
+                        } else if (text == 'Versions') {
+                            Versions = new Groups(parser);
+                        } else if (text == 'CheckInComment') {
+                            CheckInComment = parser.getText();
+                        } else if (text == 'CheckOutType') {
+                            CheckOutType = parser.getIntegerValue();
+                        } else if (text == 'ContentTag') {
+                            ContentTag = parser.getText();
+                        } else if (text == 'CustomizedPageStatus') {
+                            CustomizedPageStatus = parser.getIntegerValue();
+                        } else if (text == 'ETag') {
+                            ETag = parser.getText();
+                        } else if (text == 'Exists') {
+                            Exists = parser.getBooleanValue();
+                        } else if (text == 'IrmEnabled') {
+                            IrmEnabled = parser.getBooleanValue();
+                        } else if (text == 'Length') {
+                            Length = parser.getText();
+                        } else if (text == 'Level') {
+                            Level = parser.getIntegerValue();
+                        } else if (text == 'LinkingUrl') {
+                            LinkingUrl = parser.getText();
+                        } else if (text == 'MajorVersion') {
+                            MajorVersion = parser.getIntegerValue();
+                        } else if (text == 'MinorVersion') {
+                            MinorVersion = parser.getIntegerValue();
+                        } else if (text == 'Name') {
+                            Name = parser.getText();
+                        } else if (text == 'ServerRelativeUrl') {
+                            ServerRelativeUrl = parser.getText();
+                        } else if (text == 'TimeCreated') {
+                            TimeCreated = parser.getText();
+                        } else if (text == 'TimeLastModified') {
+                            TimeLastModified = parser.getText();
+                        } else if (text == 'Title') {
+                            Title = parser.getText();
+                        } else if (text == 'UIVersion') {
+                            UIVersion = parser.getIntegerValue();
+                        } else if (text == 'UIVersionLabel') {
+                            UIVersionLabel = parser.getText();
+                        } else if (text == 'UniqueId') {
+                            UniqueId = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'Results consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class Groups {
+        public deferred deferred {get;set;} 
+
+        public Groups(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'deferred') {
+                            deferred = new deferred(parser);
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'Groups consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class UserId {
+        public metadata_Z metadata {get;set;} 
+        public String NameId {get;set;} 
+        public String NameIdIssuer {get;set;} 
+
+        public UserId(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'metadata') {
+                            metadata = new metadata_Z(parser);
+                        } else if (text == 'NameId') {
+                            NameId = parser.getText();
+                        } else if (text == 'NameIdIssuer') {
+                            NameIdIssuer = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'UserId consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class Author {
+        public metadata metadata {get;set;} 
+        public Groups Groups {get;set;} 
+        public Integer Id {get;set;} 
+        public Boolean IsHiddenInUI {get;set;} 
+        public String LoginName {get;set;} 
+        public String Title {get;set;} 
+        public Integer PrincipalType {get;set;} 
+        public String Email {get;set;} 
+        public Boolean IsShareByEmailGuestUser {get;set;} 
+        public Boolean IsSiteAdmin {get;set;} 
+        public UserId UserId {get;set;} 
+
+        public Author(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'metadata') {
+                            metadata = new metadata(parser);
+                        } else if (text == 'Groups') {
+                            Groups = new Groups(parser);
+                        } else if (text == 'Id') {
+                            Id = parser.getIntegerValue();
+                        } else if (text == 'IsHiddenInUI') {
+                            IsHiddenInUI = parser.getBooleanValue();
+                        } else if (text == 'LoginName') {
+                            LoginName = parser.getText();
+                        } else if (text == 'Title') {
+                            Title = parser.getText();
+                        } else if (text == 'PrincipalType') {
+                            PrincipalType = parser.getIntegerValue();
+                        } else if (text == 'Email') {
+                            Email = parser.getText();
+                        } else if (text == 'IsShareByEmailGuestUser') {
+                            IsShareByEmailGuestUser = parser.getBooleanValue();
+                        } else if (text == 'IsSiteAdmin') {
+                            IsSiteAdmin = parser.getBooleanValue();
+                        } else if (text == 'UserId') {
+                            UserId = new UserId(parser);
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'Author consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class deferred {
+        public String uri {get;set;} 
+
+        public deferred(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'uri') {
+                            uri = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'deferred consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class metadata {
+        public String id {get;set;} 
+        public String uri {get;set;} 
+        public String type_Z {get;set;} // in json: type
+
+        public metadata(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'id') {
+                            id = parser.getText();
+                        } else if (text == 'uri') {
+                            uri = parser.getText();
+                        } else if (text == 'type') {
+                            type_Z = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'metadata consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class metadata_Z {
+        public String type_Z {get;set;} // in json: type
+
+        public metadata_Z(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'type') {
+                            type_Z = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'metadata_Z consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public class Properties {
+        public metadata metadata {get;set;} 
+        public Integer vti_x005f_internalversion {get;set;} 
+        public String DocumentType {get;set;} 
+        public Integer vti_x005f_docstoreversion {get;set;} 
+        public String vti_x005f_metadatanextbsn {get;set;} 
+        public String SalesforceId {get;set;} 
+        public String DocumentLevel {get;set;} 
+        public String vti_x005f_replid {get;set;} 
+        public Integer vti_x005f_level {get;set;} 
+        public String vti_x005f_bsn {get;set;} 
+        public String ContentTypeId {get;set;} 
+        public Integer vti_x005f_setuppathversion {get;set;} 
+        public String BAInfo {get;set;} 
+        public String ODatax005f_Comments {get;set;} 
+        public String vti_x005f_sourcecontrolversion {get;set;} 
+        public String vti_x005f_sourcecontrolcookie {get;set;} 
+        public String Subject {get;set;} 
+        public Integer vti_x005f_filesize {get;set;} 
+        public String vti_x005f_modifiedby {get;set;} 
+        public String vti_x005f_title {get;set;} 
+        public Integer vti_x005f_streamschema {get;set;} 
+        public Integer vti_x005f_contentversion {get;set;} 
+        public String vti_x005f_nextbsn {get;set;} 
+        public Integer vti_x005f_virusstatus {get;set;} 
+        public String vti_x005f_parserversion {get;set;} 
+        public String Keywords {get;set;} 
+        public String ODatax005f_dlc_x005f_DocIdUrl {get;set;} 
+        public Integer vti_x005f_virusvendorid {get;set;} 
+        public String vti_x005f_previewexists {get;set;} 
+        public String vti_x005f_author {get;set;} 
+        public String vti_x005f_thumbnailexists {get;set;} 
+        public String vti_x005f_contentversionisdirty {get;set;} 
+        public String vti_x005f_pluggableparserversion {get;set;} 
+        public String vti_x005f_timelastwritten {get;set;} 
+        public Integer vti_x005f_metainfoversion {get;set;} 
+        public String vti_x005f_stickycachedpluggableparserprops {get;set;} 
+        public String vti_x005f_contenttag {get;set;} 
+        public Integer vti_x005f_docstoretype {get;set;} 
+        public String vti_x005f_canmaybeedit {get;set;} 
+        public String ODatax005f_ip_x005f_UnifiedCompliancePolicyProperties {get;set;} 
+        public String ODatax005f_Status {get;set;} 
+        public String vti_x005f_nextbsnallocated {get;set;} 
+        public Integer vti_x005f_foldersubfolderitemcount {get;set;} 
+        public Integer vti_x005f_folderitemcount {get;set;} 
+        public String ODatax005f_dlc_x005f_DocId {get;set;} 
+        public String ODatax005f_Author {get;set;} 
+        public String vti_x005f_rtag {get;set;} 
+        public String ContentType {get;set;} 
+        public String SFIdTagging {get;set;} 
+        public String vti_x005f_writevalidationtoken {get;set;} 
+        public String ODatax005f_dlc_x005f_DocIdItemGuid {get;set;} 
+        public String vti_x005f_parentid {get;set;} 
+        public String ODatax005f_Category {get;set;} 
+        public String vti_x005f_candeleteversion {get;set;} 
+        public String vti_x005f_streamhash {get;set;} 
+        public String vti_x005f_nexttolasttimemodified {get;set;} 
+        public String CaseDescription {get;set;} 
+        public String vti_x005f_timelastmodified {get;set;} 
+        public String ODatax005f_ip_x005f_UnifiedCompliancePolicyUIAction {get;set;} 
+        public String vti_x005f_etag {get;set;} 
+        public String vti_x005f_timecreated {get;set;} 
+
+        public Properties(JSONParser parser) {
+            while (parser.nextToken() != JSONToken.END_OBJECT) {
+                if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
+                    String text = parser.getText();
+                    if (parser.nextToken() != JSONToken.VALUE_NULL) {
+                        if (text == 'metadata') {
+                            metadata = new metadata(parser);
+                        } else if (text == 'vti_x005f_internalversion') {
+                            vti_x005f_internalversion = parser.getIntegerValue();
+                        } else if (text == 'DocumentType') {
+                            DocumentType = parser.getText();
+                        } else if (text == 'vti_x005f_docstoreversion') {
+                            vti_x005f_docstoreversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_metadatanextbsn') {
+                            vti_x005f_metadatanextbsn = parser.getText();
+                        } else if (text == 'SalesforceId') {
+                            SalesforceId = parser.getText();
+                        } else if (text == 'DocumentLevel') {
+                            DocumentLevel = parser.getText();
+                        } else if (text == 'vti_x005f_replid') {
+                            vti_x005f_replid = parser.getText();
+                        } else if (text == 'vti_x005f_level') {
+                            vti_x005f_level = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_bsn') {
+                            vti_x005f_bsn = parser.getText();
+                        } else if (text == 'ContentTypeId') {
+                            ContentTypeId = parser.getText();
+                        } else if (text == 'vti_x005f_setuppathversion') {
+                            vti_x005f_setuppathversion = parser.getIntegerValue();
+                        } else if (text == 'BAInfo') {
+                            BAInfo = parser.getText();
+                        } else if (text == 'ODatax005f_Comments') {
+                            ODatax005f_Comments = parser.getText();
+                        } else if (text == 'vti_x005f_sourcecontrolversion') {
+                            vti_x005f_sourcecontrolversion = parser.getText();
+                        } else if (text == 'vti_x005f_sourcecontrolcookie') {
+                            vti_x005f_sourcecontrolcookie = parser.getText();
+                        } else if (text == 'Subject') {
+                            Subject = parser.getText();
+                        } else if (text == 'vti_x005f_filesize') {
+                            vti_x005f_filesize = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_modifiedby') {
+                            vti_x005f_modifiedby = parser.getText();
+                        } else if (text == 'vti_x005f_title') {
+                            vti_x005f_title = parser.getText();
+                        } else if (text == 'vti_x005f_streamschema') {
+                            vti_x005f_streamschema = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_contentversion') {
+                            vti_x005f_contentversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_nextbsn') {
+                            vti_x005f_nextbsn = parser.getText();
+                        } else if (text == 'vti_x005f_virusstatus') {
+                            vti_x005f_virusstatus = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_parserversion') {
+                            vti_x005f_parserversion = parser.getText();
+                        } else if (text == 'Keywords') {
+                            Keywords = parser.getText();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocIdUrl') {
+                            ODatax005f_dlc_x005f_DocIdUrl = parser.getText();
+                        } else if (text == 'vti_x005f_virusvendorid') {
+                            vti_x005f_virusvendorid = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_previewexists') {
+                            vti_x005f_previewexists = parser.getText();
+                        } else if (text == 'vti_x005f_author') {
+                            vti_x005f_author = parser.getText();
+                        } else if (text == 'vti_x005f_thumbnailexists') {
+                            vti_x005f_thumbnailexists = parser.getText();
+                        } else if (text == 'vti_x005f_contentversionisdirty') {
+                            vti_x005f_contentversionisdirty = parser.getText();
+                        } else if (text == 'vti_x005f_pluggableparserversion') {
+                            vti_x005f_pluggableparserversion = parser.getText();
+                        } else if (text == 'vti_x005f_timelastwritten') {
+                            vti_x005f_timelastwritten = parser.getText();
+                        } else if (text == 'vti_x005f_metainfoversion') {
+                            vti_x005f_metainfoversion = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_stickycachedpluggableparserprops') {
+                            vti_x005f_stickycachedpluggableparserprops = parser.getText();
+                        } else if (text == 'vti_x005f_contenttag') {
+                            vti_x005f_contenttag = parser.getText();
+                        } else if (text == 'vti_x005f_docstoretype') {
+                            vti_x005f_docstoretype = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_canmaybeedit') {
+                            vti_x005f_canmaybeedit = parser.getText();
+                        } else if (text == 'ODatax005f_ip_x005f_UnifiedCompliancePolicyProperties') {
+                            ODatax005f_ip_x005f_UnifiedCompliancePolicyProperties = parser.getText();
+                        } else if (text == 'ODatax005f_Status') {
+                            ODatax005f_Status = parser.getText();
+                        } else if (text == 'vti_x005f_nextbsnallocated') {
+                            vti_x005f_nextbsnallocated = parser.getText();
+                        } else if (text == 'vti_x005f_foldersubfolderitemcount') {
+                            vti_x005f_foldersubfolderitemcount = parser.getIntegerValue();
+                        } else if (text == 'vti_x005f_folderitemcount') {
+                            vti_x005f_folderitemcount = parser.getIntegerValue();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocId') {
+                            ODatax005f_dlc_x005f_DocId = parser.getText();
+                        } else if (text == 'ODatax005f_Author') {
+                            ODatax005f_Author = parser.getText();
+                        } else if (text == 'vti_x005f_rtag') {
+                            vti_x005f_rtag = parser.getText();
+                        } else if (text == 'ContentType') {
+                            ContentType = parser.getText();
+                        } else if (text == 'SFIdTagging') {
+                            SFIdTagging = parser.getText();
+                        } else if (text == 'vti_x005f_writevalidationtoken') {
+                            vti_x005f_writevalidationtoken = parser.getText();
+                        } else if (text == 'ODatax005f_dlc_x005f_DocIdItemGuid') {
+                            ODatax005f_dlc_x005f_DocIdItemGuid = parser.getText();
+                        } else if (text == 'vti_x005f_parentid') {
+                            vti_x005f_parentid = parser.getText();
+                        } else if (text == 'ODatax005f_Category') {
+                            ODatax005f_Category = parser.getText();
+                        } else if (text == 'vti_x005f_candeleteversion') {
+                            vti_x005f_candeleteversion = parser.getText();
+                        } else if (text == 'vti_x005f_streamhash') {
+                            vti_x005f_streamhash = parser.getText();
+                        } else if (text == 'vti_x005f_nexttolasttimemodified') {
+                            vti_x005f_nexttolasttimemodified = parser.getText();
+                        } else if (text == 'CaseDescription') {
+                            CaseDescription = parser.getText();
+                        } else if (text == 'vti_x005f_timelastmodified') {
+                            vti_x005f_timelastmodified = parser.getText();
+                        } else if (text == 'ODatax005f_ip_x005f_UnifiedCompliancePolicyUIAction') {
+                            ODatax005f_ip_x005f_UnifiedCompliancePolicyUIAction = parser.getText();
+                        } else if (text == 'vti_x005f_etag') {
+                            vti_x005f_etag = parser.getText();
+                        } else if (text == 'vti_x005f_timecreated') {
+                            vti_x005f_timecreated = parser.getText();
+                        } else {
+                            System.debug(LoggingLevel.WARN, 'Properties consuming unrecognized property: '+text);
+                            consumeObject(parser);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    public static GEMS_SPFilesJSON2Apex parse(String json) {
+        return new GEMS_SPFilesJSON2Apex(System.JSON.createParser(json));
+    }
+}

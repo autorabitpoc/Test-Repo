@@ -1,0 +1,39 @@
+<apex:page standardController="Case" extensions="GEMS_GetPageController" sidebar="false" showHeader="false">
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+
+<title> HTML5 page </title>
+
+</head>
+<body>
+
+<apex:form >
+<apex:outputLabel value="Comments" for="comment" />
+<br/>
+<apex:inputTextarea id="comment" value="{!comments}" rows="4" cols="50"/>
+<br/>
+<!--<textarea id="words" rows="4" cols="50" placeholder="Enter your comments here..." value="{!comments}" ></textarea><br/><br/>-->
+
+ <apex:commandButton value="Submit" action="{!Save}" status="closer" oncomplete="window.top.close()" /> <br/>
+ <apex:actionStatus startText="(Saving...)" id="closer"></apex:actionStatus>
+<p id="para"></p>
+</apex:form>
+
+<script type="text/javascript"  language="JavaScript" >
+function getwords() {
+  text = words.value;
+  document.getElementById("para").innerHTML += '<p>'+text
+  document.getElementById("words").value="name"
+}
+
+    
+  
+  
+ 
+
+</script> 
+
+</body>
+</html>
+</apex:page>

@@ -1,0 +1,7 @@
+<aura:component >
+    
+     <aura:attribute name="res" type="Map" />
+     
+    The result is {!v.res}
+	
+  </aura:component>

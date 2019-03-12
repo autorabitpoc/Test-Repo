@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Call</fullName>
+        <default>false</default>
+        <label>Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meeting</fullName>
+        <default>false</default>
+        <label>Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Send Letter/Quote</fullName>
+        <default>false</default>
+        <label>Send Letter/Quote</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Meeting</fullName>
+        <default>false</default>
+        <label>Client Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Call</fullName>
+        <default>false</default>
+        <label>Client Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email sent to Client</fullName>
+        <default>false</default>
+        <label>Email sent to Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow up Call in picklist</fullName>
+        <default>false</default>
+        <label>Follow up Call in picklist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow up Call</fullName>
+        <default>false</default>
+        <label>Follow up Call</label>
+    </standardValue>
+</StandardValueSet>

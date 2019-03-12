@@ -1,0 +1,96 @@
+<!-- **************************************************************************************************************************
+* Lightnigng Component Name: BatchAccountsRenewals
+* Version                  : 1.0
+* Function                 : This Component gives Actuary Users a form with set of fields which furthur starts the Batch Renewal.
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Akhil Goud Kuna                     09/06/2018         Original Version
+****************************************************************************************************************************** -->
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SGR_RenewalProcessor" >
+   
+    <aura:attribute name="selectedMonth" type="String" default="Month"/>
+    <aura:attribute name="selectedYear" type="String" default="Year"/>
+    <aura:attribute name="selectedRenType" type="String" default = "" />
+    <aura:attribute name="selectedDivision" type="String" default=""/>
+    <aura:attribute name="selectedMarketSeg" type="String" default="SG" />
+    <aura:attribute name="selectedFundingType" type="String" default="PREM" />
+    <aura:attribute name="isMultMarkSegs" type="Boolean" default="false" />
+    <aura:attribute name="Triggerdisable" type="Boolean" default="false" />
+    <aura:attribute name="spinner" type="Boolean" default="false" />
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}" />
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="closeTrigRenEvent" type="c:SGR_TriggerRenewalCloseEvent"/>
+    <aura:registerEvent name="navigate" type="c:SGR_ResultEvent"/>
+    <aura:dependency resource="markup://c:SGR_ModalPopup"/>
+   <aura:if isTrue="{!v.spinner}">
+          <div class="slds-align_absolute-center">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            
+             <div
+                 class="slds-spinner--brand  slds-spinner slds-spinner_small  slds-is-relative "
+                 role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+          </div>    
+        
+    </aura:if> 
+    
+    
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <div class="slds-form-element">
+                <label for="selectMonth">Renewal Effective Date                
+                    <abbr class="slds-required" title="required">*</abbr></label>
+                <div class="slds-form-element__control">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-size--2-of-4">
+                            <!--<lightning:Select class="single" aura:id="selectMonth" value="{!v.selectedMonth}" required= "true" /> -->
+                            <ui:inputSelect class="single" aura:id="selectMonth" change="{!c.onMonthSelectChange}" />
+                        </div>
+                        <div class="slds-size--2-of-4">
+                            <ui:inputSelect class="single" aura:id="selectYear" change="{!c.onYearSelectChange}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col" style ="margin-top: -5px;">
+                    <lightning:Select class="single" label="Renewal Type" aura:id="selectRenType" value="{!v.selectedRenType}" required= "true" messageWhenValueMissing="Please select Renewal type">    
+                        <Option value="">--None--</Option>
+                        <Option value="Production">Production</Option>
+                        <Option value="Analytical">Analytical</Option>
+                    </lightning:Select>
+        </div>
+    </div>       
+       <div class="slds-form-element">
+            <label for="startMonth">Division
+                <abbr class="slds-required" title="required">*</abbr></label>
+            <div class="slds-form-element__control"> 
+                <ui:inputSelect multiple="true" class="single" aura:id="selectDivision" change="{!c.onDivisionSelectChange}">                    
+                    
+                    <ui:inputSelectOption text="IL"/>
+                    <ui:inputSelectOption text="MT"/>
+                    <ui:inputSelectOption text="NM"/>
+                    <ui:inputSelectOption text="OK"/>
+                    <ui:inputSelectOption text="TX"/>
+                </ui:inputSelect>                             
+            </div>           
+        </div>
+        <lightning:Select class="single" disabled="True" label="Market Segment" aura:id="selectmarketSeg" value="{!v.selectedMarketSeg}" required= "true" messageWhenValueMissing = "Please select Market Segment"> 
+                <Option value="SG" >SG</Option>
+        </lightning:Select>    
+        <lightning:Select class="single" disabled="True" label="Funding Type" aura:id="selectfundingType" value="{!v.selectedFundingType}" required= "true" messageWhenValueMissing = "Please select Funding Type"> 
+                <Option value="PREM" >PREM</Option>
+        </lightning:Select>              
+            
+    <div class="slds-float--right" style="margin-top:24px;">
+        <lightning:button variant="brand" aura:id="cancelButtId" label="Cancel" onclick="{! c.handleCancel }"  />
+        <lightning:button variant="brand" aura:id="nextButtId" label="Trigger"   onclick="{! c.handleNext}" disabled="{!v.Triggerdisable}" />
+    </div>  
+    <div aura:id="ModalPopupPlaceholder" />
+</aura:component>

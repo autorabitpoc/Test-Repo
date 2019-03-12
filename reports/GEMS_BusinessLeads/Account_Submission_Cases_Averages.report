@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$GEMS_Account_Submission_Info__c.Status</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed,In Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Account_Submission_Info__c.GEMS_Case_Effective_Date__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>9/1/2016</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Setup_Process,Case.GEMS_Account_Structure,Case.GEMS_Additional_Underwriting,Case.GEMS_BA_Level_Account_Setup,Case.GEMS_BA_Level_Dental_Benefit_Coding_Process,Case.GEMS_BA_Level_ID_Card,Case.GEMS_BA_Level_SBC,Case.GEMS_BA_Level_Screening,Case.GEMS_Dental_Benefit_Coding_Process,Case.GEMS_Dental_Underwriting,Case.GEMS_EPO_BA_Level_Screening_Process,Case.GEMS_Eligibility_Process,Case.GEMS_FSUClaims,Case.GEMS_GET,Case.GEMS_ID_Card,Case.GEMS_Manual_Eligibility,Case.GEMS_Medical_Benefit_Coding,Case.GEMS_Medical_Benefit_Coding_Child,Case.GEMS_Membership,Case.GEMS_Pharmacy_Coding,Case.GEMS_Request_Implementer,Case.GEMS_Request_Resource,Case.GEMS_SBC,Case.GEMS_Screening,Case.Medical_Underwriting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Account_Submission_Info__c.GEMS_Submission_Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_Case_Effective_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_Submission_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Account Submission Cases Averages</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Cases_Average_Summary__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Accums_file_received_date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,7 @@
+The account structure has been approved by the client and transferred to BlueSTAR.
+
+Account Name : {!Account.Name} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

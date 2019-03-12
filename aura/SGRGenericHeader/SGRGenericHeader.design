@@ -1,0 +1,4 @@
+<design:component>
+	<design:attribute name="recordLabel" label="Record Name" />
+    <design:attribute name="iconName" label="Standard icon" />
+</design:component>

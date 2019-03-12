@@ -1,0 +1,5 @@
+Quote Request Owner,
+
+Quote Request {!Quote_Request_Summary__c.Name} has been Declined.  
+
+To resolve, please review the comments on the Quote Request through this link: {!Quote_Request_Summary__c.Link}

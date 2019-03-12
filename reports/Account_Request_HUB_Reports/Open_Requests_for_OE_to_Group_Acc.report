@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Service_Request__c.Account_Executive__c</field>
+    </columns>
+    <columns>
+        <field>Service_Request__c.Alternative_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Service_Request__c.Date_of_Meeting__c</field>
+    </columns>
+    <description>No of Open Enrollments for Group Accounts.</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_ACC_ID</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>001c0000019qy7o</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Service_Request__c.Date_of_Meeting__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Service_Request__c.Open_Enrollment</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Open Requests for OE to Group Acc</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Service_Request__c@Service_Request__c.Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Service_Request__c.Date_of_Meeting__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

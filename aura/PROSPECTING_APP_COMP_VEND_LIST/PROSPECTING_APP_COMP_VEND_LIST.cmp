@@ -1,0 +1,118 @@
+<aura:component controller="ProspectingAppCompVendListController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="accountCompetitorsAndVendors" type="Competitor_Relationship__c[]" default="[]"/>
+    
+    <aura:handler name="updateCompVendList" event="c:PROSPECTING_APP_UPDATE_COMP_VEND_LIST_EVT" action="{!c.updateCompVendList}"/>
+    
+    <!-- SFDC-4497 - 06/2017 - Shuyler - Begin -->
+     <aura:attribute name="emptyCompetitor" type="Competitor_Relationship__c[]" default="[]"/>    
+    <aura:attribute name="competitorModalLinkValue" type="String" default="Competitor Details"/>  
+        
+    <aura:handler name="modalReturnValueExistingCompetitorFromLink" event="c:PROSPECTING_APP_SHOW_MODAL_EVT" action="{!c.showCompetitorDetails}"/>    
+    <!-- SFDC-4497 - 06/2017 - Shuyler - End   -->    
+    
+    <div>
+        <div aura:id="compVendListLabel" class="slds-text-color--weak slds-show" style="float: left; font-size: 120%;">Competitors and Third Party Vendors</div>
+        <a aura:id="collapseCompVendList" class="slds-hide" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevronup" size="x-small" alternativeText="Collapse List"/>
+        </a> 
+        <a aura:id="expandCompVendList" class="slds-show" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevrondown" size="x-small" alternativeText="Expand List"/>
+        </a>
+    </div>
+    
+    <div aura:id="compVendList" class="slds-card slds-hide">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="custom:custom15" alternativeText="Account Icon"/>
+                </div>
+                <div class="slds-media__body slds-truncate">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-text-link--reset">
+                            <span class="slds-text-heading--small">Competitors/Third Party Vendors ({!v.accountCompetitorsAndVendors.length})</span>
+                        </a>
+                    </h2>
+                </div>
+                <div>
+                    <button class="slds-button slds-button--neutral" onclick="{!c.openNewCompVendModal}">New Competitor/3rd Party Vendor</button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col" style="width: 21%;">
+                            <div class="slds-truncate" title="Competitor/3rd Party Vendor">Competitor/3rd Party Vendor</div>
+                        </th>
+                        <th scope="col" style="width: 5.35%;">
+                            <div class="slds-truncate" title="Status">Status</div>
+                        </th>
+                        <th scope="col" style="width: 4.9%;">
+                            <div class="slds-truncate" title="Split?">Split?</div>
+                        </th>
+                        <th scope="col" style="width: 17.15%;">
+                            <div class="slds-truncate" title="Number of Split Products">Number of Split Products</div>
+                        </th>
+                        <th scope="col" style="width: 7.9%;">
+                            <div class="slds-truncate" title="Carve Out?">Carve Out?</div>
+                        </th>
+                        <th scope="col" style="width: 20.2%;">
+                            <div class="slds-truncate" title="Number of Carve Out Products">Number of Carve Out Products</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Total Contracts">Total Contracts</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Total Members">Total Members</div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="slds-scrollable--y" style="max-height: 25vh;">
+            <div class="slds-card__body">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                    <thead>
+                        <aura:iteration items="{!v.accountCompetitorsAndVendors}" var="currentCompVend" indexVar="idx">
+                            <tr>
+                                <th scope="col" style="width: 21%;">
+                                    <div class="slds-truncate" title="Competitor/3rd Party Vendor"><c:PROSPECTING_APP_MODAL_LINK sobjectRecord="{!currentCompVend}" textValue="{!currentCompVend.Competitor_Account__r.Name}" calledFrom="{!v.competitorModalLinkValue}"/></div>
+                                </th>
+                                <th scope="col" style="width: 5.25%;">
+                                    <div class="slds-truncate" title="Status">{!currentCompVend.Status__c}</div>
+                                </th>
+                                <th scope="col" style="width: 5%;">
+                                    <center><ui:outputCheckbox value="{!currentCompVend.Sliced__c}"/></center>
+                                </th>
+                                <th scope="col" style="width: 17.25%;">
+                                    <div class="slds-truncate" title="Number of Split Products">{!currentCompVend.Number_of_Sliced_Products__c}</div>
+                                </th>
+                                <th scope="col" style="width: 8.25%;">
+                                    <center><ui:outputCheckbox value="{!currentCompVend.Carve_Out__c}"/></center>
+                                </th>
+                                <th scope="col" style="width: 20.5%;">
+                                    <div class="slds-truncate" title="Number of Carve Out Products">{!currentCompVend.Number_of_Carve_Out_Products__c}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Total Contracts">{!currentCompVend.Total_Contracts__c}</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Total Members">{!currentCompVend.Total_Members__c}</div>
+                                </th>
+                            </tr>
+                        </aura:iteration>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="slds-card__footer"><p></p></div>
+    </div>
+    
+    <div aura:id="newCompAndVendsModal" />
+    <!-- SFDC-4497 - 06/2017 - Shuyler - Begin -->
+    <div aura:id="competitorDetailsModal" />
+    <!-- SFDC-4497 - 06/2017 - Shuyler - End   -->    
+    <div><lightning:spinner aura:id="compVendListSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

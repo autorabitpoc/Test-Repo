@@ -1,0 +1,24 @@
+<apex:page standardController="Case" extensions="GEMS_WhereIsMyCaseExt" action="{!getReportDet}">
+<apex:form >
+    <script src="/soap/ajax/27.0/connection.js" />
+    <apex:includeScript value="{!$Resource.resetRelease}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Customer360,'styles/main.css')}" />
+    <!-- SFDC-4202. Changes to use the report links built in controller extension; styling changes -->
+    <table style="width:100%">
+        <tr>
+            <td style="text-align:left;width:auto;">
+                <a href="{!caseDetailReportUrl}" target="_blank" > <b> Where's my case? Click here for details </b> </a>
+            </td>
+            <td style="text-align:left;width:auto;">
+                <a href="{!commentsReportUrl}" target="_blank"><b>View all case comments</b></a>
+            </td>
+            <td style="text-align:left;width:auto;">
+                <apex:commandLink style="color: #CC0000" value="Reset Release" onclick="resetRelease('{!subCaseId}','{!$User.FirstName}')" rendered="{!AND(OR(CONTAINS($Label.ResetRelease,$User.Lan_ID__c),CONTAINS('System Administrator',$Profile.Name)),typeCheck)}" oncomplete="" />
+            </td>
+            <td style="text-align:left;width:auto;font-weight:bold;">
+                <apex:commandLink value="Complete" action="{!autoUpdAccSubCaseBPA}" rendered="{!AND(OR(CONTAINS($Label.ResetRelease,$User.Lan_ID__c),CONTAINS('System Administrator',$Profile.Name)),typeCheck)}" oncomplete="if('{!errorMsg}'){alert('{!errorMsg}');}else{window.top.location.href='/'+'{!subCaseId}';}"/>
+            </td>
+         </tr>        
+    </table>
+    </apex:form>
+</apex:page>

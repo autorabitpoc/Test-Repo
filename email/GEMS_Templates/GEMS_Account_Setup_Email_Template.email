@@ -1,0 +1,7 @@
+Screening have been completed for the account. Please proceed with Account setup process.
+
+ Account Name: {!Case.Account}
+ Case Number : {!Case.CaseNumber} 
+ Case Details : {!Case.Link} 
+  
+Thanks

@@ -1,0 +1,148 @@
+<apex:page id="pageId" standardController="GEMS_Pharmacy_Scope_Code__c" extensions="GEMS_ScopeCodeDetailController">
+   <script type='text/javascript'>
+    
+    function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+            
+                        
+            function validate() {
+             var word = document.getElementById('{!$Component.TheForm.ScopeCodeBlock.ScopeCodeTable.ScopeCodeRecord.Name}').value;
+             alert('value is ');
+             if (word.length > 4) {
+                 alert('Scope Code length');
+               return false; // keep form from submitting
+             }
+             return true;
+            }   
+    </script>
+    <apex:form id="TheForm">
+        <!--
+         <apex:pageBlock mode="maindetail">
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Parent Case"/>
+                    <apex:outputField value="{!ScopeCodeRecord.Case__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Peer Reviwer"/>
+                    <apex:outputField value="{!ScopeCodeRecord.Peer_Reviewer__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Owner"/>
+                    <apex:outputField value="{!ScopeCodeRecord.Owner.Name}"/>
+                </apex:pageBlockSectionItem>
+                
+                    </apex:pageBlockSection>
+        </apex:pageBlock>
+-->
+          <apex:pageBlock id="scopeCodeBlock" title="Scope Code">
+              
+            <apex:pageBlockTable id="ScopeCodeTable" value="{!ScopeCodeRecord}" var="c" title="Scope Code">
+            
+                <apex:column id="BANos" headerValue="Scope Code" width="10%">
+                    <apex:inputField id="BANo" value="{!c.Name}" OnkeyPress="return inputLimiter(event, 'Numbers');" onkeydown="return validate();" required="true" style="width:60px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Type" width="10%">
+                    <apex:outputText value="{!c.Type__c}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Related Scope Code" width="10%">
+                    <apex:inputText value="{!c.Related_Scope_Code__c}"  disabled="{!IF(c.Type__c = 'Permanent','true', 'false')}" />
+                </apex:column>
+                
+                <apex:column headerValue="Group Pay Code" width="10%">
+                    <apex:inputText value="{!c.Group_Pay_Code__c}" />
+                </apex:column>
+                                                                        
+                <apex:column headerValue="Rider Code" width="5%">
+                    <apex:inputField value="{!c.Rider_Code__c}"/>
+                </apex:column>
+ 
+                <apex:column headerValue="Copay Type" width="10%">
+                    <apex:inputField value="{!c.Copay_Type__c}">
+                        <apex:actionSupport event="onchange" rerender="scopeCodeBlock"/>
+                    </apex:inputField>
+                </apex:column>
+
+                <apex:column headerValue="Retail" width="10%">
+                    <apex:inputField value="{!c.Retail__c}"  rendered="{!IF(c.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Mail" width="10%">
+                    <apex:inputField value="{!c.Mail__c}" rendered="{!IF(c.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Scope Status" width="15%">
+                    <apex:inputField value="{!c.Scope_Status__c}"/>
+                </apex:column>  
+                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="RelatedscopeCodeBlock" title="Related Scope Code" rendered="{!IF(RelatedScopeCodeRecord.size>0,true,false)}">
+            
+            <apex:pageBlockTable id="RelatedScopeCodeTable" value="{!RelatedScopeCodeRecord}" var="c" title="Related Scope Code">
+            
+                <apex:column id="BANos" headerValue="Scope Code" width="10%">
+                    <apex:inputField id="BANo" value="{!c.Name}" OnkeyPress="return inputLimiter(event, 'Numbers');" onkeydown="return validate();" required="true" style="width:60px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Type" width="10%">
+                    <apex:outputText value="{!c.Type__c}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Related Scope Code" width="10%">
+                    <apex:inputText value="{!c.Related_Scope_Code__c}"  disabled="{!IF(c.Type__c = 'Permanent','true', 'false')}" />
+                </apex:column>
+                
+                <apex:column headerValue="Group Pay Code" width="10%">
+                    <apex:inputText value="{!c.Group_Pay_Code__c}" />
+                </apex:column>
+                                                                        
+                <apex:column headerValue="Rider Code" width="5%">
+                    <apex:inputField value="{!c.Rider_Code__c}"/>
+                </apex:column>
+ 
+                <apex:column headerValue="Copay Type" width="10%">
+                    <apex:inputField value="{!c.Copay_Type__c}">
+                        <apex:actionSupport event="onchange" rerender="scopeCodeBlock"/>
+                    </apex:inputField>
+                </apex:column>
+
+                <apex:column headerValue="Retail" width="10%">
+                    <apex:inputField value="{!c.Retail__c}"  rendered="{!IF(c.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Mail" width="10%">
+                    <apex:inputField value="{!c.Mail__c}" rendered="{!IF(c.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Scope Status" width="15%">
+                    <apex:inputField value="{!c.Scope_Status__c}"/>
+                </apex:column>  
+                
+            </apex:pageBlockTable>
+            
+    </apex:pageBlock>
+        </apex:form>
+</apex:page>

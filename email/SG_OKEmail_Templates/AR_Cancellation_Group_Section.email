@@ -1,0 +1,13 @@
+Hello,
+
+Below is a request for a Cancellation - Group Section. The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Applicable Group Section Number(s): [Enter Group Section Numbers]
+- Effective Date: [including month/day/year]
+
+
+Please respond within 3 business days with the resolution of this request. 
+
+Thank you for your help,

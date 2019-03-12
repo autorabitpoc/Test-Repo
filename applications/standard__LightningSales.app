@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Opportunity_Record_Page_default</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+    </actionOverrides>
+    <formFactors>Small</formFactors>
+    <formFactors>Medium</formFactors>
+    <formFactors>Large</formFactors>
+    <label>Sales</label>
+    <navType>Standard</navType>
+    <tab>standard-home</tab>
+    <tab>standard-Opportunity</tab>
+    <tab>standard-Quote</tab>
+    <tab>standard-Task</tab>
+    <tab>standard-File</tab>
+    <tab>standard-Account</tab>
+    <tab>standard-Contact</tab>
+    <tab>standard-Dashboard</tab>
+    <tab>standard-report</tab>
+    <tab>standard-CollaborationGroup</tab>
+    <tab>standard-Event</tab>
+    <tab>standard-Case</tab>
+    <tab>standard-News</tab>
+    <tab>Request_Hub_Items__c</tab>
+    <tab>FW_Service_Status_Log__c</tab>
+    <tab>SGR_Opportunity_Plan_Rate__c</tab>
+    <tab>SGR_Opportunity_Census__c</tab>
+    <tab>Group_Section__c</tab>
+    <tab>SGR_Plan_Age_Rate_Detail__c</tab>
+    <tab>SGR_Product_Group__c</tab>
+    <tab>Integration_Status__c</tab>
+    <tab>Benefit_Header_Detail_Association__c</tab>
+    <tab>Benefit_Header_Association__c</tab>
+    <tab>Product_Note_Detail_Association__c</tab>
+    <tab>Plan_Note_Association__c</tab>
+    <tab>EventAuditTrail__c</tab>
+    <uiType>Lightning</uiType>
+</CustomApplication>

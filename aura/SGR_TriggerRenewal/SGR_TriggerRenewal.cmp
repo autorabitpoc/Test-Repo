@@ -1,0 +1,73 @@
+<!-- **************************************************************************************************************************
+* Lightnigng Component Name: TriggerRenewal
+* Version                  : 1.0
+* Function                 : This is the Modal for Trigger Renewal Button, where users have the Tabvisibility based on the Profile.
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Keerthi Navya Poornima Motupalli   08/31/2018         Original Version 
+* Landry Harris                      09/05/2018			SFDC-12389 Added Trigger Renewal button for open/close popup functionality
+* Akhil Goud Kuna                     09/06/2018        Added Component Event Handler to close the Modal/popup
+****************************************************************************************************************************** -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="SGR_TriggerRenewal" extensible ="true">
+    <aura:attribute name="userinfo" type="user" />
+    
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+   <aura:handler name="closeTrigRenEvent" event="c:SGR_TriggerRenewalCloseEvent" action="{!c.closeModal}" />
+   <aura:handler name="closeTrigRenEvent" value= "{!This}" action="{!c.closeModal}" />
+    <aura:handler  event="c:SGR_SelectedOptyEvent" action="{!c.UpdateStatus}"/>
+    
+    <aura:if isTrue="{!v.userinfo.Profile.Name == 'System Administrator' ||  
+                     v.userinfo.Profile.Name == 'SGR Actuary User' ||
+                     v.userinfo.Profile.Name == 'SGR UW User'}" >
+        <lightning:layout horizontalAlign="center">
+            <lightning:layoutItem class="slds-p-vertical_medium">
+                <lightning:button variant="brand" label="Trigger Renewal" 
+                                  title="Trigger Renewal" 
+                                  onclick="{!c.openModal}"/>
+            </lightning:layoutItem>
+        </lightning:layout>   
+    </aura:if>
+    
+    <aura:if isTrue="{!v.isOpen}" >
+        <div class="demo-only" style="height: 640px; position: absolute;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.closeModal}"
+                                              alternativeText="Close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Trigger Renewal</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning:tabset variant="scoped">
+                            <aura:if isTrue="{!v.userinfo.Profile.Name == 'System Administrator' ||  
+                     							v.userinfo.Profile.Name == 'SGR Actuary User'}" >
+                                <lightning:tab label="BATCH">
+                                    <c:SGR_BatchAccountsRenewalsComponent/>
+                                </lightning:tab>
+                                <lightning:tab label="ON DEMAND">
+                                    <c:SGR_OndemandAccountsRenewalComponent />
+                                </lightning:tab>
+                            </aura:if>
+                            <aura:if isTrue="{!v.userinfo.Profile.Name == 'SGR UW User'}" >
+                                <lightning:tab label="ON DEMAND"> 
+                                    <c:SGR_OndemandAccountsRenewalComponent />
+                                </lightning:tab>
+                            </aura:if>
+                        </lightning:tabset>    
+                    </div>
+                    <footer class="slds-modal__footer">
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+    
+</aura:component>

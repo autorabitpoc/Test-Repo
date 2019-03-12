@@ -1,0 +1,7 @@
+The account structure is ready for review and approval. 
+
+ Account Name : {!Case.Account_Name__c} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

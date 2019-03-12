@@ -1,0 +1,110 @@
+<!-- **************************************************************************************************************************
+* Lightning Component Name: SGR_OndemandAccountsRenewalComponent
+* Version                  : 1.0
+* Function                 : This Component gives Actuary & UW Users a form with set of fields which furthur starts the Ondemand Renewal Process.
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Akhil Goud Kuna                     09/18/2018         Original Version
+* Phani Kommareddy					  09/19/2018		 SFDC-11979	SGR: Trigger Renewals: On-Demand Account Search/Preview
+* Santosh Kumar                       24/09/2018         SFDC-12086
+****************************************************************************************************************************** -->
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="SGR_RenewalProcessor" access="global" >
+    <aura:attribute name="selectedRenType" type="String" default ="" />
+    <aura:attribute name="selectedDivision" type="String" default=""/>
+    <aura:attribute name="selectedAccNum" type="String" default=""/>
+    <aura:attribute name="accountObj" type="Account" />
+    <aura:attribute name="Triggerdisable" type="Boolean" default="false" />
+     <aura:attribute name="Triggerdisable1" type="Boolean" default="false" />
+    <aura:registerEvent name="closeTrigRenEvent" type="c:SGR_TriggerRenewalCloseEvent"/>
+     <aura:attribute name="spinner" type="Boolean" default="false" />
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}" />
+    <aura:attribute name="ShowPopup" type="boolean" default="false" />
+     <aura:handler event="c:SGR_SelectedOptyEvent" action="{!c.UpdateStatus}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}" />
+    <!-- <aura:dependency resource="markup://c:SGR_ModalPopup"/> -->
+      <aura:if isTrue="{!v.spinner}">
+          <div class="slds-align_absolute-center">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            
+             <div
+                 class="slds-spinner--brand  slds-spinner slds-spinner_small  slds-is-relative "
+                 role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+          </div>    
+        
+    </aura:if>
+   
+    <aura:if isTrue="{!v.accountObj == null}" >
+        <div class="slds-col" style ="margin-top: -5px;">
+            <lightning:Select class="single" label="Renewal Type" aura:id="selectRenType" value="{!v.selectedRenType}" required= "true" messageWhenValueMissing="Please select Renewal type">
+                <Option value="">--None--</Option>
+                <Option value="Production">Production</Option>
+                <Option value="Analytical">Analytical</Option>
+            </lightning:Select>
+        </div>                          
+        
+        <div class="slds-form-element">
+            <label for="accNumber">
+                <abbr class="slds-required" title="required">*</abbr></label>
+            Account Number
+            <div class="slds-form-element__control"> 
+                <ui:inputText aura:id="selectedAccNum" class="field" value="{!v.selectedAccNum}" size="15" maxlength="40" />                           
+            </div>           
+        </div> 
+        <div class="slds-form-element">   
+            <lightning:Select class="single" label="Division" aura:id="selectDivision" value="{!v.selectedDivision}" required= "true" messageWhenValueMissing="Please select Division">
+                <Option value="">--None--</Option>
+                <Option value="IL">IL</Option>
+                <Option value="MT">MT</Option>
+                <Option value="NM">NM</Option>
+                <Option value="OK">OK</Option>
+                <Option value="TX">TX</Option>
+            </lightning:Select>                            
+        </div>          
+        
+        <div class="slds-float--right" style="margin-top:24px;">
+            <lightning:button variant="brand" aura:id="cancelButtId" label="Cancel" onclick="{!c.handleCancel }"  />
+            <lightning:button variant="brand" aura:id="nextButtId" label="Next" onclick="{! c.handleNext }"  disabled="{!v.Triggerdisable}" />
+        </div>  
+    </aura:if>
+    <div aura:id="ModalPopupPlaceholder" />
+    <aura:if isTrue="{!v.accountObj != null}" >
+        <div class="slds-grid slds-wrap">
+            <img  src="{!$Resource.failure_icon}"  height="20" width="20"/>
+            <div class="colorRed"><span>Please Confirm all information below is correct before triggering a renewal</span></div>
+            
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Renewal Date*</span></div>
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Renewal Type*</span></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-4">
+                    <ui:inputDate aura:id="rDate" required="true" class="field slds-input"  value="{!v.accountObj.Renewal_Date__c}" displayDatePicker="true" format="MM/dd/yyyy"/>
+            </div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-4"></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-4"><span>{!v.selectedRenType}</span></div>
+            
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Division*</span></div>
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Account Name*</span></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-2"><span>{!v.selectedDivision}</span></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-2"><span>{!v.accountObj.Name}</span></div>
+            
+            
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Market Segment*</span></div>
+            <div class="slds-p-top_large slds-col slds-size_1-of-2"><span>Account Number*</span></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-2"><span>{!v.accountObj.Market_Segment__c}</span></div>
+            <!--Nidhi: replaced accountnumber with external_ID__c-->
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_1-of-2"><span>{!v.accountObj.External_ID__c}</span></div>
+            
+            <div class="slds-p-top_large slds-col slds-size_2-of-2"><span>Funding Type*</span></div>
+            <div class="slds-p-top_x_small slds-text-title_bold slds-col slds-size_2-of-2"><span>{!v.accountObj.Funding_Type__c}</span></div>
+        </div>
+        <div class="slds-float--right" style="margin-top:24px;">
+            <lightning:button variant="brand" aura:id="cancelButtId1" label="Back" onclick="{!c.handleBack }"  />
+            <lightning:button variant="brand" aura:id="nextButtId" label="Trigger" onclick="{!c.handleTrigger }" disabled="{!v.Triggerdisable1}"  />
+        </div>  
+        
+    </aura:if>
+</aura:component>

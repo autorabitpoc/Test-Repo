@@ -1,0 +1,13 @@
+<apex:page showHeader="false" controller="SharePointRefreshTokenController" sidebar="false" action="{!persistTokens}">
+
+<div style="width:100%">
+	<div style="width:250px;margin-left:auto;margin-right:auto;margin-top:20%;text-align: center">
+	
+	<img src="https://rickzeleznik.files.wordpress.com/2014/04/sharepoint-2013-logo-large.jpg" style="width:250px" />
+	<span style="color:green;font-size:20px"><b>Success!</b></span>
+	<p>Sharepoint access and refresh tokens have been successfully stored in Salesforce.</p>
+	
+ 	<input type="submit" value="Close Window" class="btn" onclick="window.close()" style="width:100%" />
+ 	</div>
+ </div>
+</apex:page>

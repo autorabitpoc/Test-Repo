@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>textJson</name>
+            <value>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;&lt;div&gt;{![Account].Name} is scheduled to renew on {![Account].Renewal_Date__c}, in just {![Account].Remaining_Days_from_Renewal_Date__c} day(s)! Follow this link to access the Account: &lt;br&gt;&lt;/div&gt;&lt;div&gt;{![Account].LinkedIn__c}.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&quot;}</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Chatter Notification to User for Renewal</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>{!myVariable_current.Name} is scheduled to renew on {!myVariable_current.Renewal_Date__c}, in just {!myVariable_current.Remaining_Days_from_Renewal_Date__c} day(s)! Follow this link to access the Account: 
+{!myVariable_current.LinkedIn__c}.
+
+</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <decisions>
+        <name>myDecision</name>
+        <label>Primary Decision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Chatter 90/30/7 days before Renewal Date</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>rocess Builder workflow that creates Chatter notification that alerts the Account Executive and Account Manager related to a Group Account X days prior to the Renewal of a Group Account.</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue> IF (([Account].Account_Renewal_Notification_Indicator__c = &apos;90_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 90) || ([Account].Account_Renewal_Notification_Indicator__c = &apos;30_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 30) || ([Account].Account_Renewal_Notification_Indicator__c = &apos;7_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 7), true, false)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>IF (({!myVariable_current.Account_Renewal_Notification_Indicator__c} = &apos;90_Days_Before&apos; &amp;&amp; {!myVariable_current.Renewal_Date__c} - TODAY() = 90) || ({!myVariable_current.Account_Renewal_Notification_Indicator__c} = &apos;30_Days_Before&apos; &amp;&amp; {!myVariable_current.Renewal_Date__c} - TODAY() = 30) || ({!myVariable_current.Account_Renewal_Notification_Indicator__c} = &apos;7_Days_Before&apos; &amp;&amp; {!myVariable_current.Renewal_Date__c} - TODAY() = 7), true, false)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue> IF (([Account].Account_Renewal_Notification_Indicator__c = &apos;90_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 90) || ([Account].Account_Renewal_Notification_Indicator__c = &apos;30_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 30) || ([Account].Account_Renewal_Notification_Indicator__c = &apos;7_Days_Before&apos; &amp;&amp; [Account].Renewal_Date__c - TODAY() = 7), true, false)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>IF (({!myVariable_old.Account_Renewal_Notification_Indicator__c} = &apos;90_Days_Before&apos; &amp;&amp; {!myVariable_old.Renewal_Date__c} - TODAY() = 90) || ({!myVariable_old.Account_Renewal_Notification_Indicator__c} = &apos;30_Days_Before&apos; &amp;&amp; {!myVariable_old.Renewal_Date__c} - TODAY() = 30) || ({!myVariable_old.Account_Renewal_Notification_Indicator__c} = &apos;7_Days_Before&apos; &amp;&amp; {!myVariable_old.Renewal_Date__c} - TODAY() = 7), true, false)</expression>
+    </formulas>
+    <interviewLabel>Group_Account_Renewal_Process-1_Account</interviewLabel>
+    <label>Group Account Renewal Process</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Account</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>RecursiveCountVariable</name>
+        <value>
+            <elementReference>RecursiveCountVariable</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>RecursiveCountVariable</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

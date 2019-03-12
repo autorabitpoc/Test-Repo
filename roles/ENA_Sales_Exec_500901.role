@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ENA Sales Exec 500901</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ENA Sales Exec 500901</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>ENA_Executive_Sales_Acct_Mgmt</parentRole>
+</Role>

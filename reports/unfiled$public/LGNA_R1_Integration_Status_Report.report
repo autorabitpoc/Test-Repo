@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Parent_External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.ObjectType__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.ObjectID__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Parent_Object_ID__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Integration_Action__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Error_Code__c</field>
+    </columns>
+    <columns>
+        <field>Integration_Status__c.Error_Message__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>LGNA R1 - Integration Status Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Integration_Status__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

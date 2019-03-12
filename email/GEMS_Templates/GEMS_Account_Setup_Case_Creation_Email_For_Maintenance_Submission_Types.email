@@ -1,0 +1,7 @@
+The following Account Setup Process case has been assigned to you for review. Please take appropriate action to complete.
+
+ Account Name: {!Case.Account}
+ Case Number : {!Case.CaseNumber} 
+ Case Details : {!Case.Link} 
+  
+Thank you

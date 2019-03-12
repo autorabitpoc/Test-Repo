@@ -1,0 +1,63 @@
+<apex:page StandardController="Quote_Request_Summary__c" extensions="OpportunityQuoteRequestController" sideBar="false" cache="fale" action="{!initialLoadForCarrier}">
+
+<apex:form id="frmId">
+        <apex:pageMessages id="pgMsgId"/>
+        <head>
+            <style>
+                .row{
+                    margin-right:0px !important;
+                    margin-left:0px !important;
+                }
+            </style>
+        </head>
+          <apex:outputPanel rendered="{!If(carrierHistoryList.size==0, true, false)}">
+           There is No Carrier History Data Available. <br/>
+        </apex:outputPanel>
+        
+        
+        <apex:outputPanel rendered="{!If(carrierHistoryList.size>0, true, false)}">
+            <apex:pageBlock id="pbId" >
+           
+                <apex:pageBlockSection columns="1" rendered="{!If(carrierHistoryList.size>=1, true, false)}">
+                
+                    <apex:pageBlockTable value="{!carrierHistoryList}" var="ch">
+                  <!--        <apex:column headerValue="Action">
+                            <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold" reRender="frmId" immediate="true" >
+                                <apex:param name="p1" value="{!ch.recordNumber}" assignTo="{!rowToRemove}"/>
+                                
+                            </apex:commandLink>
+                        </apex:column> -->
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Not_Insured__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.Not_Insured__c}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Dental__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.Dental__c}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Competitor_Account__c.label}">
+                         
+                        <apex:outPutLink value="#" onclick="window.open('/{!ch.carrierHistory.Competitor_Account__c}')" target="_self" >
+                            <apex:outputText value="{!ch.carrierHistory.Competitor_Account__r.name}"/>
+                       </apex:outputlink>
+                        </apex:column>
+                        
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Rate_Effective_Date__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.Rate_Effective_Date__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Contract_End_Date__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.Contract_End_Date__c}"/>
+                        </apex:column>
+                        
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.AFA__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.AFA__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Competitor_Relationship__c.fields.Reinsurer__c.label}">
+                            <apex:outputField value="{!ch.carrierHistory.Reinsurer__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                    
+                    
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel> 
+    </apex:form>
+</apex:page>

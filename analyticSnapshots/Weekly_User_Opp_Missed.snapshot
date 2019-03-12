@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mappings>
+        <sourceField>FULL_NAME</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>User_Opp_Track__c.Name</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>User.Last_Opp_Activity_Date__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>User_Opp_Track__c.Last_Opp_Activity_Date__c</targetField>
+    </mappings>
+    <name>Weekly User Opp Missed</name>
+    <runningUser>hayest@bcbsil.com.samprod</runningUser>
+    <sourceReport>Monthly_Reports/Users_Last_Opp_Activity</sourceReport>
+    <targetObject>User_Opp_Track__c</targetObject>
+</AnalyticSnapshot>

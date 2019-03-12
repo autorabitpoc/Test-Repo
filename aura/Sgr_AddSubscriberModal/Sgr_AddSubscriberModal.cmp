@@ -1,0 +1,289 @@
+<aura:component access="global" controller="Sgr_displayCensus" implements="flexipage:availableForRecordHome,force:hasRecordId">
+	<aura:attribute name="oppId" type="String" access="global"/>
+    <aura:attribute name="tabName" type="String" access="global"/>
+    <aura:attribute name="context" type="String" access="global"/>
+	<aura:attribute name="CensusRecord" type="SGR_Opportunity_Census__c" default="{'sobjectType' : 'SGR_Opportunity_Census__c'}"/>
+    <aura:attribute name="isDisabled" type="Map" default="{'modalDisabled':'slds-hide','healthTier':'slds-hide','dentalTier':'slds-hide','visionTier':'slds-hide'}"/>
+    <aura:attribute name="HPlanIds" type="List"/>
+    <aura:attribute name="VPlanIds" type="List"/>
+    <aura:attribute name="DPlanIds" type="List"/>
+    <aura:attribute name="NMString" type="String"/>
+    <aura:attribute name="Opportunity" type="Object"/>
+    <aura:attribute name="CensusValidation" type="boolean" default="true" />
+    <aura:attribute name="RetireValidation" type="boolean" default="true" />
+    <aura:attribute name="RetireValidationcheck" type="boolean" default="true" />
+    <aura:attribute name="RetireValidationMT" type="boolean" default="true" />
+    <aura:attribute name="allStates" type="String[]"/>
+    <aura:attribute name="HgroupNumbers" type="String[]"/>
+    <aura:attribute name="HgroupSectionNumbers" type="String[]"/>
+    <aura:attribute name="DgroupNumbers" type="String[]"/>
+    <aura:attribute name="DgroupSectionNumbers" type="String[]"/>
+    <aura:attribute name="VgroupNumbers" type="String[]"/>
+    <aura:attribute name="VgroupSectionNumbers" type="String[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="HplanIdEvent" type="c:SelectPlanRecordEvent"/>
+    <aura:registerEvent name="DplanIdEvent" type="c:SelectPlanRecordEvent"/>
+	<aura:registerEvent name="VplanIdEvent" type="c:SelectPlanRecordEvent"/>
+    <aura:registerEvent name="Censussubtab" type="c:SGR_Census_Tab"/>
+     <aura:registerEvent name="RatingStatusRefresh" type="c:RatingStatusRefresh"/>
+    <aura:handler name="HplanIdEvent" event="c:SelectPlanRecordEvent" action="{!c.handleHPlanEvent}"/>
+    <aura:handler name="DplanIdEvent" event="c:SelectPlanRecordEvent" action="{!c.handleDPlanEvent}"/>
+    <aura:handler name="VplanIdEvent" event="c:SelectPlanRecordEvent" action="{!c.handleVPlanEvent}"/>
+    <aura:handler name="change" value="{!v.CensusRecord.Date_of_Birth__c}" action="{!c.doChangeDOB}"/> 
+    <aura:handler name="change" value="{!v.groupSectionSelected}" action="{!c.doChangeSectionNum}"/>
+    <aura:attribute name="ShowPopup" type="boolean" default="false" />
+    <aura:attribute name="headerTxt" type="String"/>
+    <aura:attribute name="buttonName" type="String"/>
+    <aura:handler event="c:SGR_CensusAgeCheckEvent" action="{!c.handleSavenew}"/>
+     <aura:handler event="c:SGR_CensusSubRetireeTrue" action="{!c.handleSaveRetire}"/>
+   <aura:attribute name="Testing" type="boolean" default="true" />
+     <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="NoToClose" type="boolean" default="false"/>
+    <aura:attribute name="YesToClose" type="boolean" default="false"/>
+    
+ <div class="demo-only">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.context}</h2>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium">
+		<div class="slds-card__body slds-p-around_medium">
+			<div class="slds-grid slds-wrap">
+				<div class="slds-col slds-p-around_small  slds-size_4-of-12">
+					<lightning:select aura:id="HealthPlanId" name="" label="Health Plan ID" value="{!v.CensusRecord.Health_Plan_ID__c}" required="{!if(v.tabName == 'Health',true,false)}" onchange="{!c.handleChangeHealthPlan}">
+                        <option value="{!v.CensusRecord.Health_Plan_ID__c}" text="{!v.CensusRecord.Health_Plan_ID__c}"></option>
+                        <aura:iteration items="{!v.HPlanIds}" var="plan">
+                            <aura:iteration items="{!plan}" var="pln">
+                            	<option text="{!pln}" value="{!pln}" selected="{!pln == v.CensusRecord.Health_Plan_ID__c}"/>
+                            </aura:iteration>
+                        </aura:iteration>
+                    </lightning:select>
+				</div>
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                    <lightning:select aura:id="GroupNumber" name="" label="Health Group Number" required="{!if(v.tabName == 'Health',true,false)}" value="{!v.CensusRecord.Health_Group_Number__c}" messageWhenValueMissing="Please select a value" >
+                        <option value="{!v.CensusRecord.Health_Group_Number__c}" text="{!v.CensusRecord.Health_Group_Number__c}"></option>
+                        <aura:iteration items="{!v.HgroupNumbers}" var="gnum">
+                            <option text="{!gnum}" value="{!gnum}" selected="{!gnum == v.CensusRecord.Health_Group_Number__c}"/>
+                        </aura:iteration>
+                    </lightning:select>
+				</div>
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+					<lightning:select aura:id="GroupSectionNum" name="" label="Health Group Section Number" required="{!if(v.tabName == 'Health',true,false)}" value="{!v.CensusRecord.Health_Group_Section__c}" messageWhenValueMissing="Please select a value">
+                        <option value="{!v.CensusRecord.Health_Group_Section__c}" text="{!v.CensusRecord.Health_Group_Section__c}"></option>
+                        <aura:iteration items="{!v.HgroupSectionNumbers}" var="groupSectionNum">
+                            <option value="{!groupSectionNum}" text="{!groupSectionNum}" selected="{!v.CensusRecord.Health_Group_Section__c == groupSectionNum}"/>
+                        </aura:iteration>
+                    </lightning:select>
+				</div>
+			</div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                        <lightning:select aura:id="DentalPlanId" name="" label="Dental Plan ID" value="{!v.CensusRecord.Dental_Plan_ID__c}" required="{!if(v.tabName == 'Dental',true,false)}" onchange="{!c.handleChangeDentalPlan}">
+                            <option value="{!v.CensusRecord.Dental_Plan_ID__c}" text="{!v.CensusRecord.Dental_Plan_ID__c}"></option>
+                            <aura:iteration items="{!v.DPlanIds}" var="plan">
+                                <aura:iteration items="{!plan}" var="pln">
+                                    <option value="{!pln}" text="{!pln}" selected="{!pln == v.CensusRecord.Dental_Plan_ID__c}"/>
+                                </aura:iteration>
+                            </aura:iteration>
+                        </lightning:select>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                    <lightning:select aura:id="DGroupNumber" name="" label="Dental Group Number" required="{!if(v.tabName == 'Dental',true,false)}" value="{!v.CensusRecord.Dental_Group_Number__c}" messageWhenValueMissing="Please select a value" >
+                        <option value="{!v.CensusRecord.Dental_Group_Number__c}" text="{!v.CensusRecord.Dental_Group_Number__c}"></option>
+                        <aura:iteration items="{!v.DgroupNumbers}" var="gnum">
+                            <option value="{!gnum}" text="{!gnum}" selected="{!gnum == v.CensusRecord.Dental_Group_Number__c}"/>
+                        </aura:iteration>
+                    </lightning:select>
+				</div>
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                    <lightning:select aura:id="DGroupSectionNum" name="" label="Dental Group Section Number" required="{!if(v.tabName == 'Dental',true,false)}" value="{!v.CensusRecord.Dental_Group_Section__c}" messageWhenValueMissing="Please select a value">
+                        <option value="{!v.CensusRecord.Dental_Group_Section__c}" text="{!v.CensusRecord.Dental_Group_Section__c}"></option>
+                        <aura:iteration items="{!v.DgroupSectionNumbers}" var="groupSectionNum">
+                            <option value="{!groupSectionNum}" text="{!groupSectionNum}" selected="{!groupSectionNum == v.CensusRecord.Dental_Group_Section__c}"/>
+                        </aura:iteration>
+                    </lightning:select>
+				</div>
+            </div>
+            <aura:if isTrue="{!or(v.Opportunity.HCSC_Division__c=='MT',v.Opportunity.HCSC_Division__c=='NM')}">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                        <lightning:select aura:id="VisionPlanId" name="" label="Vision Plan ID" value="{!v.CensusRecord.Vision_Plan_ID__c}" required="{!if(v.tabName == 'Vision',true,false)}" onchange="{!c.handleChangeVisionPlan}" disabled="true">
+                            <option value="{!v.CensusRecord.Vision_Plan_ID__c}" text="{!v.CensusRecord.Vision_Plan_ID__c}"></option>
+                            <aura:iteration items="{!v.VPlanIds}" var="plan">
+                                <aura:iteration items="{!plan}" var="pln">
+                                    <option value="{!pln}" text="{!pln}" selected="{!pln == v.CensusRecord.Vision_Plan_ID__c}"/>
+                                </aura:iteration>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                        <lightning:select aura:id="VGroupNumber" name="" label="Vision Group Number" required="{!if(v.tabName == 'Vision',true,false)}" value="{!v.CensusRecord.Vision_Group_Number__c}" messageWhenValueMissing="Please select a value" disabled="true">
+                            <option value="{!v.CensusRecord.Vision_Group_Number__c}" text="{!v.CensusRecord.Vision_Group_Number__c}"></option>
+                            <aura:iteration items="{!v.VgroupNumbers}" var="gnum">
+                                <option value="{!gnum}" text="{!gnum}" selected="{!gnum == v.CensusRecord.Vision_Group_Number__c}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                        <lightning:select aura:id="VGroupSectionNum" name="" label="Vision Group Section Number" required="{!if(v.tabName == 'Vision',true,false)}" value="{!v.CensusRecord.Vision_Group_Section__c}" messageWhenValueMissing="Please select a value" disabled="true">
+                            <option value="{!v.CensusRecord.Vision_Group_Section__c}" text="{!v.CensusRecord.Vision_Group_Section__c}"></option>
+                            <aura:iteration items="{!v.VgroupSectionNumbers}" var="groupSectionNum">
+                                <option value="{!groupSectionNum}" text="{!groupSectionNum}" selected="{!groupSectionNum == v.CensusRecord.Vision_Group_Section__c}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                </div>
+            </aura:if>
+            <div class="slds-grid slds-wrap">
+				<div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                    <lightning:input label="First Name" value="{!v.CensusRecord.First_Name__c}" />
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_4-of-12">
+                    <lightning:input label="Last Name" value="{!v.CensusRecord.Last_Name__c}" />
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+				<div class="slds-col slds-p-around_small  slds-size_3-of-12">
+                    <ui:inputDate label="Date of Birth(mm/dd/yyyy)" value="{!v.CensusRecord.Date_of_Birth__c}" displayDatePicker="true" format="MM/dd/yyyy" required="true" disabled="{!if(and(v.CensusRecord.Age_New__c!='',v.CensusRecord.Age_New__c!=null,v.CensusRecord.Age_New__c!=undefined),if(or(v.CensusRecord.Date_of_Birth__c=='',v.CensusRecord.Date_of_Birth__c==null,v.CensusRecord.Date_of_Birth__c==undefined),true,false),false)}"/>    
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:input label="Age" value="{!v.CensusRecord.Age_New__c}" disabled="{!if(and(v.CensusRecord.Date_of_Birth__c!='',v.CensusRecord.Date_of_Birth__c!=null,v.CensusRecord.Date_of_Birth__c!=undefined),true,false)}" required="true"/>    
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:select label="Gender" required="true" value="{!v.CensusRecord.Gender__c}" messageWhenValueMissing="Please select a value" >
+                        <option text="--None--"/>
+                        <option text="M"/>
+                        <option text="F"/>
+                    </lightning:select>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:input disabled="true" label="Relationship" value="Subscriber" required="true"/>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+				<div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:input label="Zip Code" value="{!v.CensusRecord.Zip_Code__c}" required="true"/>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_1.5-of-12">
+                	<!--<lightning:input label="State" value="{!v.CensusRecord.State__c}" disabled="true" />-->
+                    <lightning:select label="State" value="{!v.CensusRecord.State__c}" >
+                        <option value="{!v.CensusRecord.State__c}" text="{!v.CensusRecord.State__c}"/>
+                        <aura:iteration items="{!v.allStates}" var="stat">
+                            <option value="{!stat}" text="{!stat}"/>
+                        </aura:iteration>
+                    </lightning:select>
+                </div>
+                
+                <div class="slds-col slds-p-around_small  slds-size_1.5-of-12">
+                    <aura:if isTrue="{!v.context=='Add New Subscriber'}" >
+                    	<lightning:input disabled="true" label="Tier" value="EO" required="true"/>
+                        <aura:set attribute="else">
+                            <lightning:input disabled="true" label="Tier" value="{!if(v.tabName=='Health',v.CensusRecord.Health_Tier__c,if(v.tabName=='Dental',v.CensusRecord.Dental_Tier__c,v.CensusRecord.Vision_Tier__c))}" required="true"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+               
+            </div>
+            <div class="slds-grid slds-wrap">
+				
+                 <div class="slds-col slds-p-around_small  slds-size_3-of-10">
+                	<lightning:select label="Employee Status Code" value="{!v.CensusRecord.Employee_Status_Code__c}" onchange="{!c.handleEmpChnge}">
+                        <option text="None" value="None"/>
+                        <option text="Cobra" value="Cobra"/>
+                        <option text="Retired" value="Retired"/>
+                        <option text="State Continuation" value="State Continuation"/>
+                    </lightning:select>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:select label="COBRA" value="{!v.CensusRecord.COBRA__c}" disabled="true">
+                        <option text="N"/>
+                        <option text="Y"/>
+                    </lightning:select>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:select label="Retiree" value="{!v.CensusRecord.Retiree__c}" disabled="true">
+                        <option text="N"/>
+                        <option text="Y"/>
+                    </lightning:select>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<lightning:select label="State Continuation" value="{!v.CensusRecord.State_Continuation__c}" required="true" disabled="true">
+                        <option text="N"/>
+                        <option text="Y"/>
+                    </lightning:select>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap">
+			<div class="slds-col slds-p-around_small  slds-size_2-of-12">
+                	<!--<lightning:input label="Tobacco{Y/N}" value="{!v.CensusRecord.Tobacco_Y_N__c}" />-->
+                    <lightning:input type="checkbox" label="Tobacco" checked="{!v.CensusRecord.Tobacco_Use__c}"/>
+                </div>
+                <div class="slds-col slds-p-around_small  slds-size_3-of-12">
+                	<!--<lightning:select label="Medicare Primary" value="{!v.CensusRecord.Medicare_Primary__c}" >
+                        <option text="N"/>
+                        <option text="Y"/>
+                    </lightning:select>-->
+                    <lightning:input type="checkbox" label="Medicare Primary" checked="{!v.CensusRecord.Medicare_Primary__c}"/>
+                </div>
+			</div>
+           
+		</div>
+      </div>
+      <footer class="slds-modal__footer">
+        <lightning:button label="Cancel" onclick="{!c.handleCancel}" type="reset" class="slds-button slds-button_neutral" />
+        <lightning:button label="Save" onclick="{!c.handleSave}" type="reset" class="slds-button slds-button_brand" />
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+     <aura:if isTrue="{!v.isOpen}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"></h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>Under 19 census will not be enrolled into vision and will only be enrolled into Health. Do you wish to proceed? Yes/No
+                            </b>
+                        </p>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="brand" 
+                                          label="No"
+                                          title="No"
+                                          onclick="{! c.NotoClose }"/>
+                        <lightning:button variant="brand" 
+                                          label="Yes"
+                                          title="Yes"
+                                          onclick="{! c.YestoClose }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+</div>
+     <div > 
+        <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                           confirmLabel="Cancel" 
+                           actionLabel="Change Status"
+                           isOpen = "{!v.ShowPopup}"
+                           buttonName="{!v.buttonName}"/>
+    </div>
+
+</aura:component>

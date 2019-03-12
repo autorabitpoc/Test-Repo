@@ -1,0 +1,13 @@
+<apex:page standardController="Case" extensions="GEMS_OpportunityProductInfoController" sidebar="false" showHeader="false" showChat="false">
+<apex:form >
+<apex:outputPanel >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!oliList}" var="productList">
+<apex:column value="{!productList.Product__c}"/ >
+<apex:column value="{!productList.Product_Category__c }"/>
+<apex:column value="{!productList.Funding_Type__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:outputPanel>
+</apex:form>
+</apex:page>

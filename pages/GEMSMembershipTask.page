@@ -1,0 +1,53 @@
+<apex:page id="pageId" standardController="Case" extensions="GEMS_MembershipController">
+    <script>
+    
+    function enableCompleteButton() {        
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = false;
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = false;       
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').className = 'btn';
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').className = 'btn';
+    }
+    
+    function disableCommandButton() {
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = true;
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = true;          
+    }
+    
+    function setSelectedButton(selectedTask,taskSubject) {
+        setSelectedVal(selectedTask);
+    }
+    
+    function refreshEntirePage()
+    { 
+        var currentURL = "/{!membershipCase.id}"; 
+        top.location.href = currentURL;
+    }
+    
+    </script>
+    
+    <apex:form id="formId">
+        <apex:pageBlock id="pbId">
+            <apex:pageblockButtons location="top" id="pButtons">
+                <apex:commandButton id="completeButton" action="{!changeTaskStatus}" value="Complete"  title="Complete" oncomplete="refreshEntirePage()" disabled="{!disableCompleteButton}" />
+            </apex:pageblockButtons>
+            <apex:pageblockTable value="{!membershipTaskList}" var="memTaskRec" id="pbTable">
+                <apex:column id="radioId"> 
+                    <apex:outputPanel rendered="{!memTaskRec.Status != 'Completed'}">
+                        <input type="radio" name="radioTask" onclick="setSelectedButton()"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!memTaskRec.Status == 'Completed'}">
+                        <input type="radio" name="radioTask" disabled="true" rendered="{!memTaskRec.Status == 'Completed'}"/>
+                    </apex:outputPanel>
+                </apex:column>
+                <apex:column value="{!memTaskRec.Subject}"/>
+                <apex:column value="{!memTaskRec.Status}"/>
+                <apex:column headerValue="Start Date">                  
+                    <apex:outputField value="{!memTaskRec.GEMS_Start_Date__c}" />
+                </apex:column>
+                <apex:column headerValue="End Date">                  
+                    <apex:outputField value="{!memTaskRec.GEMS_End_Date__c}" />
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

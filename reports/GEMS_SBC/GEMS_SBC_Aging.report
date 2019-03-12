@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Days_Business_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Executive_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$Status</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_SBC_Request_Forms__r$GEMS_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_SBC_Request_Forms__r$GEMS_Number_of_SBCs_Being_Requested__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_SBC_Request_Forms__r$GEMS_Number_of_BAs__c</field>
+    </columns>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS SBC Aging</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Case_Lifecycle_and_SBC__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Act_Send_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

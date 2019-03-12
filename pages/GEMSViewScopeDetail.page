@@ -1,0 +1,341 @@
+<apex:page id="pageId" standardController="GEMS_Pharmacy_Scope_Code__c" extensions="GEMS_ViewScopeCodeDetailController" action="{!redirectToPerm}">
+    
+    <style>
+        .activeTab {background-color: white; color:black; background-image:none; font-size:130%;}
+        .inactiveTab {background-color: #F8F8F8 ; color:black; background-image:none; font-size:130%;}
+    </style>
+
+    <apex:tabPanel switchType="client" selectedTab="name2" id="AccountTabPanel"
+        tabClass="activeTab" inactiveTabClass="inactiveTab" contentStyle="font-size: 12px;">
+        <apex:tab label="Feed" name="name1" id="tabOne" ><chatter:feedWithFollowers entityId="{!PermScopeCodeRecord.Id}"/></apex:tab>
+        <apex:tab label="Details" name="name2" id="tabTwo" >
+
+        <script type='text/javascript'>
+            var taskSub = '';
+            
+            function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+            
+                        
+            function validate() {
+                 var word = document.getElementById('{!$Component.TheForm.ScopeCodeBlock.ScopeCodeTable.ScopeCodeRecord.Name}').value;
+                 alert('value is ');
+                 if (word.length > 4) {
+                    alert('Scope Code length');
+                    return false; // keep form from submitting
+                 }
+                 return true;
+            } 
+        
+        
+       
+            function enableCompleteButton() {        
+                document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = false;
+                document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = false;       
+                document.getElementById('pageId:formId:pbId:pButtons:completeButton').className = 'btn';
+                document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').className = 'btn';
+            }
+            
+            function disableCommandButton() {
+                document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = true;
+                document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = true;          
+            }
+        
+            function setSelectedButton(selectedTask,taskSubject) {
+                taskSub  = taskSubject;
+                if(taskSubject == 'Paperwork Review') {
+                    showYesOrNoPage(selectedTask);
+                } else {
+                    setSelectedVal(selectedTask);
+                }
+            }
+        </script>
+    
+    <style>        
+        .radioClass { margin-left: 80px;}
+    </style>
+    
+    <apex:form id="TheForm">
+    <apex:pageMessages id="pgMsgId"/>
+    <apex:actionFunction name="AccountSpecialistBlueStarUpdate" action="{!CreateAccountSpecialistTask}"/>
+          <apex:pageBlock id="scopeCodeBlock" title="Pharmacy Scope Coding Details">
+          <apex:pageblockButtons >
+          <apex:commandButton value="Save" action="{!SaveScopeCode}" reRender="TheForm" />
+          <apex:commandButton value="Cancel" action="{!CancelScopeCode}"/>
+          </apex:pageblockButtons>
+               
+               <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Parent Case"/>
+                    <apex:outputField value="{!PermScopeCodeRecord.Case__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Status"/>
+                    <apex:outputField value="{!PermScopeCodeRecord.Status__c}"/>
+                </apex:pageBlockSectionItem>                               
+                                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Owner"/>
+                    <apex:outputField value="{!PermScopeCodeRecord.Owner.Name}"/>
+                </apex:pageBlockSectionItem>
+               
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Peer Reviewer"/>
+                    <apex:inputField value="{!PermScopeCodeRecord.Peer_Reviewer__c}"/>
+                </apex:pageBlockSectionItem>
+
+                   <!-- 5101 Removed Verify BlueSTAR and Update AS400 checkboxes -->
+
+               <apex:pageBlockSectionItem rendered="{!IF(PermScopeCodeRecord.Status__c != 'Prime Build Started' && PermScopeCodeRecord.Status__c != 'Prime Build Completed','true', 'false')}">
+                    <apex:outputLabel value="Prime Certify Date"/>
+                    <apex:outputField value="{!PermScopeCodeRecord.Prime_Certify_Date__c}"  />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem rendered="{!IF(PermScopeCodeRecord.Status__c = 'Prime Build Started' || PermScopeCodeRecord.Status__c = 'Prime Build Completed','true', 'false')}" >
+                    <apex:outputLabel value="Prime Certify Date"/>
+                    <apex:inputField value="{!PermScopeCodeRecord.Prime_Certify_Date__c}" />
+                </apex:pageBlockSectionItem>
+                
+               
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Comments"/>
+                    <apex:inputField value="{!PermScopeCodeRecord.Comments__c}"/>
+                </apex:pageBlockSectionItem>
+  
+              </apex:pageBlockSection>
+              
+            <br/>
+            <apex:pageBlockTable id="ScopeCodeTable" value="{!AllScopeCodes}" var="c" title="Scope Code">
+            
+                <apex:column id="BANos" headerValue="Scope Code" width="10%">
+                    <apex:inputField id="BANo" value="{!c.Name}" style="width:50px" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" onkeydown="return validate();" required="true"  rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                    <apex:outputField id="BANo2" value="{!c.Name}" style="width:50px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                </apex:column>
+                
+                <apex:column headerValue="Type" width="10%">
+                    <apex:outputText value="{!c.Type__c}" style="width:80px" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed' || PermScopeCodeRecord.Status__c == 'Prime Build Started') && (C.Type__c == 'Temp'))),true,false)}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Group Pay Code" width="10%" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" rendered="{!IF(PermScopeCodeRecord.Case__r.HCSC_Division__c = 'NM' || PermScopeCodeRecord.Case__r.HCSC_Division__c = 'IL' || PermScopeCodeRecord.Case__r.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:inputText style="width:50px" value="{!c.Group_Pay_Code__c}" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                    <apex:outputText style="width:50px" value="{!c.Group_Pay_Code__c}" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                </apex:column>
+                                                                        
+                <apex:column headerValue="Rider Code" width="5%" rendered="{!IF(PermScopeCodeRecord.Case__r.HCSC_Division__c = 'NM' || PermScopeCodeRecord.Case__r.HCSC_Division__c = 'IL','true', 'false')}">
+                    <apex:inputField value="{!c.Rider_Code__c}" style="width:50px" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                     <apex:outputField value="{!c.Rider_Code__c}" style="width:50px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                </apex:column>
+                
+                <apex:column headerValue="Report Format Code" width="5%" rendered="{!IF(PermScopeCodeRecord.Case__r.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:outputField value="{!c.Report_Format_Code__c}" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />                
+                    <apex:inputField value="{!c.Report_Format_Code__c}" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                </apex:column>
+ 
+                <apex:column headerValue="Copay Type" width="10%" id="CopayColumn">
+                    <apex:outputField value="{!c.Copay_Type__c}" style="Width:150px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                    <apex:inputField value="{!c.Copay_Type__c}" style="Width:150px" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}">
+                         <apex:actionSupport event="onchange" rerender="ScopeCodeTable" /> 
+                    </apex:inputField>
+                    <apex:outputPanel rendered="{!IF(c.Copay_Type__c= 'Mixed','true', 'false')}">
+                    <div>
+                    <table>
+                    <tr>
+                        <td><apex:outputlabel value="Retail"  rendered="{!IF((c.Copay_Type__c= 'Mixed' && (c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started')),'true', 'false')}" style="width:60px"/></td>
+                        <td><apex:inputField label="Retail" value="{!c.Retail__c}"   rendered="{!IF((c.Copay_Type__c= 'Mixed' && (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp')))),'true', 'false')}" style="width:100px"/></td>
+                    </tr>
+                    <tr>
+                        <td><apex:outputlabel value="Mail"  rendered="{!IF((c.Copay_Type__c= 'Mixed' && (c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started')),'true', 'false')}" style="width:60px"/></td>
+                        <td><apex:inputField label="Mail" value="{!c.Mail__c}" rendered="{!IF((c.Copay_Type__c= 'Mixed' && (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp')))),'true', 'false')}" style="width:100px"/></td>
+                    </tr>
+                    </table>
+                    </div>
+                    </apex:outputPanel>                   
+                </apex:column> 
+                 
+                <apex:column headerValue="Formulary Type" width="10%">
+                    <apex:inputField value="{!c.Formulary_Type__c}" style="width:80px" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                    <apex:outputField value="{!c.Formulary_Type__c}" style="width:80px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                </apex:column> 
+                 
+                <apex:column headerValue="Accums Integration" width="10%">
+                    <apex:outputField value="{!c.Accums_Integration__c}" style="width:80px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                    <apex:inputField value="{!c.Accums_Integration__c}" style="width:80px" rendered="{!If( (c.Type__c=='Permanent'||((PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress' || PermScopeCodeRecord.Status__c == 'Peer Review Pending' || PermScopeCodeRecord.Status__c == 'Peer Review Rejected' || PermScopeCodeRecord.Status__c == 'Peer Review Approved' || PermScopeCodeRecord.Status__c == 'BET Creation Started' || PermScopeCodeRecord.Status__c == 'BET Creation Completed') && (C.Type__c == 'Temp'))),true,false)}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Prime Plan ID" width="10%">
+                    <apex:outputField value="{!c.Prime_Plan_ID__c}" style="width:80px" rendered="{!If(c.Type__c=='Temp' && PermScopeCodeRecord.Status__c == 'Prime Build Started', true, false)}" />
+                    <apex:inputField value="{!c.Prime_Plan_ID__c}" style="width:80px" rendered="{!If( c.Type__c=='Permanent',true,false)}" OnkeyPress="return inputLimiter(event, 'Numbers');"/>
+                </apex:column>  
+                  
+                  
+                <apex:column headerValue="Scope Status" width="15%">
+                    <!-- SFDC 6660 lock scope status field if its not In Progress  -->
+                    <apex:inputField value="{!c.Scope_Status__c}"  rendered="{!If( (PermScopeCodeRecord.Status__c == Null || PermScopeCodeRecord.Status__c == 'In Progress'),true,false)}"/>
+                    <apex:outputField value="{!c.Scope_Status__c}" rendered="{!If( (PermScopeCodeRecord.Status__c != Null && PermScopeCodeRecord.Status__c != 'In Progress'),true,false)}"/>
+                    </apex:column>  
+                  
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+   
+        <apex:pageBlock title=" Related Benefit Agreements">
+         
+         <apex:outputPanel rendered="{!IF(ListOfBACases.size==0,true,false)}">
+            <apex:outputText >No records to display</apex:outputText>
+         </apex:outputPanel>  
+            
+        <apex:pageBlockTable value="{!ListOfBACases}" var="C" rendered="{!IF(ListOfBACases.size>0,true,false)}">
+            <apex:column headerValue="Case Number">
+                <apex:outputtext value="{!C.CaseNumber}"/>
+            </apex:column>
+            <apex:column headerValue="Status">
+                <apex:outputtext value="{!C.Status}"/>
+            </apex:column>
+            <apex:column headerValue="BA No.">
+                <apex:outputtext value="{!C.GEMS_Benefit_Agreement__r.Name}"/>
+            </apex:column>
+            <apex:column headerValue="BA Product Type">
+                <apex:outputtext value="{!C.GEMS_Benefit_Agreement__r.Product_Type__c}"/>
+            </apex:column>
+            <apex:column headerValue="BA Product Name">
+                <apex:outputtext value="{!C.GEMS_Benefit_Agreement__r.Product_Name__c}"/>
+            </apex:column>
+            <apex:column headerValue="BA Description">
+                <apex:outputtext value="{!C.GEMS_Benefit_Agreement__r.BA_Description__c}"/>
+            </apex:column>
+            <apex:column headerValue="BA Fund Type">
+                <apex:outputtext value="{!C.GEMS_Benefit_Agreement__r.BA_Fund_Type__c}"/>
+            </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="pbId" title="Tasks" >
+            <apex:variable value="{!0}" var="taskIncr" />           
+            
+            <apex:pageBlockButtons id="pButtons" rendered="{!if(taskList.size>0,true, False)}">
+                <apex:commandButton id="completeButton"  action="{!UpdateTasks}" value="Complete" title="Complete" />
+            </apex:pageBlockButtons>  
+            
+            <apex:outputPanel rendered="{!if(taskList.size==0,true,false)}">
+            <apex:outputText >No records to display</apex:outputText>
+            </apex:outputPanel>     
+                
+            <apex:pageBlockTable id="pbTable" value="{!taskList}" var="taskk" columns="7" rendered="{!IF(taskList.size>0,true,false)}">       
+                <apex:column id="radioId" > 
+                    <apex:outputPanel rendered="{!if(taskk.Status == 'In Progress' && taskk.subject != 'Peer Review', true, False)}">
+                        <input type="radio" name="radioTask"   onclick="setSelectedButton('{!taskIncr}','{!taskk.subject}');" />                              
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!if(taskk.Status != 'In Progress' || taskk.subject == 'Peer Review', true, false)}">
+                        <input type="radio" name="radioTask" disabled="true"  />                
+                    </apex:outputPanel>
+                </apex:column>
+
+                <apex:column headerValue="Subject"> 
+                    <apex:variable value="{!taskIncr+1}" var="taskIncr" />                 
+                    <apex:outputText >{!taskk.subject}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Status">  
+                    <apex:outputText >{!taskk.status}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Start Date">                  
+                    <apex:outputfield value="{!taskk.GEMS_Start_Date__c}"  /> 
+                </apex:column>
+                <apex:column headerValue="End Date">     
+                    <apex:outputfield value="{!taskk.GEMS_End_Date__c}"  /> 
+                </apex:column>
+                
+                <apex:column headerValue="Action">                  
+                    <apex:commandbutton id="StartPrimeButton" action="{!StartPrimeBuild}" value="Start" title="Start Prime Build" rendered="{!IF(taskk.subject='Prime Build',true, false)}" 
+                                        disabled="{!IF(PermScopeCodeRecord.Status__c != 'Peer Review Approved',true,false)}"/>               
+                </apex:column>
+                
+              <apex:column headerValue="Account Specialist Action">
+                   <apex:outputPanel id="yesOrNoBlock" rendered="{!IF((taskk.Status == 'In Progress' && (taskk.Subject == 'Prime Build' || taskk.Subject == 'Update BlueSTAR & AS400') && listOfAccountSpecialistTasks[NumberOfAccSpecTasks-1].status != 'In Progress'), true, false)}">
+                        <apex:outputText rendered="{!IF((taskk.Status == 'In Progress' && (taskk.Subject == 'Prime Build' || taskk.Subject == 'Update BlueSTAR & AS400') && listOfAccountSpecialistTasks[NumberOfAccSpecTasks-1].status != 'In Progress'), true, false)}">BlueStar Update required?</apex:outputText>
+                        <apex:selectRadio styleClass="radioClass" value="{!selectParamVal}" id="radioBtns" rendered="{!IF((taskk.Status == 'In Progress' && (taskk.Subject == 'Prime Build'||     taskk.Subject == 'Update BlueSTAR & AS400') && listOfAccountSpecialistTasks[NumberOfAccSpecTasks-1].status != 'In Progress'), true, false)}" onclick="AccountSpecialistBlueStarUpdate">
+                            <apex:selectOptions value="{!options}" id="radioValue"/>                                
+                        </apex:selectRadio>              
+                   </apex:outputPanel>
+              </apex:column>
+                
+  
+            </apex:pageBlockTable>
+
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="AccSpecId" title="Account Specialist Tasks" >
+            <apex:variable value="{!0}" var="taskIncr" />           
+            <apex:pageBlockButtons id="pButtons" rendered="{!IF(ListofAccountSpecialistTasks.size>0 && !allAsTaskComplete, true, False)}">
+                <apex:commandButton id="AccSpeccompleteButton"  action="{!UpdateAccountSpecialistTasks}" value="Complete" style="margin:5px"
+                                    title="{!if((assignedAsTask==null && CurrentUserId == AccountSpecialist.MemberID) || (assignedAsTask!=null && CurrentUserId ==assignedAsTask.OwnerId ),"Complete","Only the Account Specialist Assigned is allowed to complete the Account Specialist Tasks")}" 
+                                    oncomplete="window.location.reload()" disabled="{!if((assignedAsTask==null && CurrentUserId == AccountSpecialist.MemberID) || (assignedAsTask!=null && CurrentUserId ==assignedAsTask.OwnerId ),false, true)}"  status="statusId"/>
+                <apex:commandButton id="ReassignButton"  action="{!UpdateAccountSpecialistTaskOwner}" value="Reassign" style="margin:5px"
+                                    title="Save reassigned Account Specialist" 
+                                    oncomplete="window.location.reload()" status="statusId"/>   <!--  SFDC-6944 -->        
+            <apex:actionStatus id="statusId">
+                <apex:facet name="start">
+                  <img src="/img/loading.gif" title="Please wait..." />                    
+                </apex:facet>                
+            </apex:actionStatus>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection >
+                <!--  apex:pageBlockSectionItem -->
+                    <!--  apex:outputLabel value="Account Specialist"/ -->
+                    <apex:outputField value="{!AccountSpecialist.MemberID}" label="Account Specialist" rendered="{!IF(assignedAsTask==null,true,false) }"/>
+                    <apex:inputField value="{!assignedAsTask.OwnerId}" label="Account Specialist" rendered="{!IF(assignedAsTask!=null,true,false) }"/> <!-- SFDC-6944 -->
+                <!--  /apex:pageBlockSectionItem -->                 
+            </apex:pageBlockSection>
+            <br/>
+            <apex:outputPanel rendered="{!IF(ListOfAccountSpecialistTasks.size==0,true,false)}">
+                <apex:outputText >No records to display</apex:outputText>
+            </apex:outputPanel>     
+            <apex:pageBlockTable id="AccSpecTable" value="{!ListOfAccountSpecialistTasks}" var="taskk" columns="6" rendered="{!IF(ListOfAccountSpecialistTasks.size>0,true,false)}">       
+                <apex:column id="radioId"  > 
+                    <apex:outputPanel rendered="{!IF(taskk.Status == 'In Progress', true, False)}">
+                        <input type="radio" name="radioTask" onclick="setSelectedButton('{!taskIncr}','{!taskk.subject}');" />                              
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!IF(taskk.Status != 'In Progress', true, false)}">
+                        <input type="radio" name="radioTask" disabled="true"   />                
+                    </apex:outputPanel>
+                </apex:column>
+                <apex:column headerValue="Subject"> 
+                    <apex:variable value="{!taskIncr+1}" var="taskIncr" />                 
+                    <apex:outputText >{!taskk.subject}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Status">  
+                    <apex:outputText >{!taskk.status}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Start Date">                  
+                    <apex:outputfield value="{!taskk.GEMS_Start_Date__c}"  /> 
+                </apex:column>
+                <apex:column headerValue="End Date">                  
+                    <apex:outputfield value="{!taskk.GEMS_End_Date__c}"  /> 
+                </apex:column>
+                <apex:column headerValue="Account Specialist Assigned">                  
+                    <apex:outputfield value="{!taskk.ownerid}"  /> 
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        </apex:form>
+        <apex:relatedList list="ProcessSteps" ></apex:relatedList>
+       </apex:tab>
+    </apex:tabPanel>
+</apex:page>

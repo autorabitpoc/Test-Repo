@@ -1,0 +1,19 @@
+Hello,
+
+Below is a request for [Enter Member Level Request Type] effective for [Enter Date].  The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Current information to be replaced: [Enter Current Information]
+- Replacement information: [Enter Replacement Information]
+- Subscriber ID / SSN: [Enter Subscriber ID]
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,
+
+OK Small Group Account Management Team
+Phone: (800) 722-4890 | Fax: (918) 549-3214
+Email: OKMarketingOperations@bcbsok.com
+
+This communication is intended for informational purposes only. It is not intended to provide, does not constitute, and cannot be relied upon as legal, tax or compliance advice. Furthermore, this communication is not intended to provide tax advice, and any tax-related statements that may be contained herein is not intended or written to be used, and cannot be used, for the purposes of (i) avoiding penalties under the Internal Revenue Code or (ii) promoting, marketing, or recommending to another parity any transaction or matters herein. Please consult with your legal, compliance and tax professionals to understand your legal, compliance and tax obligations under the law.

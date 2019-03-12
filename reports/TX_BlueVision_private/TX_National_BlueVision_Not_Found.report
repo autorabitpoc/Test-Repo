@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Cluster_Name__c</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <description>&quot;Not Found&quot; list of contacts for BlueVision newsletter email list for TX National Accounts</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.External_ID__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IL738300,TX025010,TX103886,TX008539,TX084126,TX002200,TX012905,TX043373,TX057159,IL015939,TX084065,TX060392,TX169904,TX066444,TX030774,TX007622,TX009123,TX099215,TX053539,TX121697,TX149143,TX006129,TX029547,TX079581,TX153208,TX043432,TX008123,TX118149,TX005681,TX024625,TX140134,TX165361,TX122056,TX106218,TX007676,TX150621,TX079899,TX007798,TX003991,TX019500,TX041826,TX076193,TX153594,TX093341,TX010858,TX151871,TX151454,TX028752,TX090374,TX116443,TX093474,TX091964,TX079163,TX067490,TX008049,TX123026,TX121225,TX143863,TX121867,TX015852,TX002154,TX167045,TX118257,TX104068,TX015311,TX038921,TX012801,TX028437,TX120756,TX013349,TX151632,TX061075</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TX National - BlueVision &quot;Not Found&quot;</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account.Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

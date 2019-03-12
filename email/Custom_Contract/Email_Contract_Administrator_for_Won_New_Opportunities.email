@@ -1,0 +1,8 @@
+*** Opportunity Notification *** 
+
+The following new Opportunity has been won: 
+
+Account: {!Opportunity.Account} 
+Opportunity Name: {!Opportunity.Name} 
+
+Follow this link to access the Opportunity: {!Opportunity.Link}

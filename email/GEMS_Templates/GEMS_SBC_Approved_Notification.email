@@ -1,0 +1,5 @@
+Hi 
+The SBC is approved for case Number- {!Case.CaseNumber}. Please send the final version to the Submitter.
+
+Case Details : {!Case.Link}
+Thanks

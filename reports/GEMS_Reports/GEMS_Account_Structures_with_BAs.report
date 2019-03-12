@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$Name</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$BA_Fund_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$Plan__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$Product__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$BA_Description__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Benefit_Agreements__r$IsNew__c</field>
+    </columns>
+    <description>GEMS Account Structure cases with Benefit Agreement details</description>
+    <filter>
+        <criteriaItems>
+            <column>Case$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Structure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Renewal,New Account</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>GEMS Account Structures with BAs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Cases_with_Benefit_Agreements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Case_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Ticket_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AssignToProspect__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AssignToProspect</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AssignToVendor__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AssignToVendor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_To__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (assignToClient__c = TRUE, &quot;Client&quot;, 
+IF (assignToEmployee__c = TRUE, &quot;Employee&quot;, 
+IF (assignToProducer__c = TRUE, &quot;Producer&quot;, 
+IF (assignToHost__c = TRUE, &quot;Host&quot;, 
+IF (assignToCharity__c = TRUE, &quot;Charity&quot;, 
+IF (assignToEmployeeIncentive__c = TRUE, &quot;Employee Incentive&quot;, 
+IF (AssignToProspect__c = TRUE, &quot;Prospect&quot;, 
+IF (AssignToVendor__c = TRUE, &quot;Vendor&quot;,&quot;&quot; ))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Assigned To</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attendee__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (  Contact_for_Event__c &lt;&gt; &quot;&quot;,Contact_for_Event__r.FirstName &amp; &quot; &quot; &amp;  Contact_for_Event__r.LastName,  IF (Producer_Contact__c &lt;&gt; &quot;&quot;,  Producer_Contact__r.FirstName &amp; &quot; &quot; &amp; Producer_Contact__r.LastName,  IF (Contact__c &lt;&gt; &quot;&quot;,  Contact__r.FirstName &amp; &quot; &quot; &amp; Contact__r.LastName, &quot;Unassigned&quot;)))</formula>
+        <label>Attendee</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Use_of_Ticket__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Use Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business</fullName>
+                    <default>false</default>
+                    <label>Business</label>
+                </value>
+                <value>
+                    <fullName>Charities</fullName>
+                    <default>false</default>
+                    <label>Charities</label>
+                </value>
+                <value>
+                    <fullName>Employee Incentive</fullName>
+                    <default>false</default>
+                    <label>Employee Incentive</label>
+                </value>
+                <value>
+                    <fullName>Personal</fullName>
+                    <default>false</default>
+                    <label>Personal</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Charity_Organization__c</fullName>
+        <description>Formula retrieves the Organization Name for the Contact if that Contact is a Charity Contact</description>
+        <externalId>false</externalId>
+        <formula>IF(
+Contact__r.RecordType.DeveloperName = &apos;Charity_Contact&apos;,
+Contact__r.Organization_Name__c, 
+&apos;&apos;)</formula>
+        <label>Charity Organization</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Producer_Name__c</fullName>
+        <description>Shows the Client or Producer name if there are a designated Client or Producer. If not the ticket is denoted as being assigned internally.</description>
+        <externalId>false</externalId>
+        <formula>IF( Client__c &lt;&gt; &quot;&quot;,  Client__r.Name, 
+     IF( Producer_for_Event__c &lt;&gt; &quot;&quot;,  Producer_for_Event__r.Name,
+         IF ( Contact__c &lt;&gt; &quot;&quot;, &quot;Internal&quot;, 
+           IF(Prospect__c&lt;&gt;&quot;&quot;, Specific_Prospect_Contact__r.FirstName +Specific_Prospect_Contact__r.LastName ,
+              IF(Vendor__c&lt;&gt;&quot;&quot;, Specific_Vendor_Contact__r.FirstName+Specific_Vendor_Contact__r.LastName,&quot;Unassigned&quot;)))))</formula>
+        <label>Client/Producer Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Tickets (Client)</relationshipLabel>
+        <relationshipName>Tickets1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Specific Contact</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <filterItems>
+                <field>Contact.RecordType.Name</field>
+                <operation>equals</operation>
+                <value>Internal Contact</value>
+            </filterItems>
+            <filterItems>
+                <field>Contact.RecordType.Name</field>
+                <operation>equals</operation>
+                <value>Charity Contact</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets (Internal Contact)</relationshipLabel>
+        <relationshipName>Tickets2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact_for_Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets</relationshipLabel>
+        <relationshipName>Tickets</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Days_to_Event_Starts__c</fullName>
+        <description>calculate the number of days from today to Event Starts</description>
+        <externalId>false</externalId>
+        <formula>(Ticket_Event__r.Event_Date__c -today())</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days to Event Starts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Event_Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Start Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Event_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Time</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guest_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Guest Name</label>
+        <length>55</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Personal_Non_taxable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Last Minute Change</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Producer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Producer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets (Producer Contact)</relationshipLabel>
+        <relationshipName>Tickets1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Producer_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Producer Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Producer_for_Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Producer for Event</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Producer_Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Tickets</relationshipLabel>
+        <relationshipName>Tickets</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Prospect__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Prospect</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>contains</operation>
+                <value>Prospect</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Tickets (Prospect)</relationshipLabel>
+        <relationshipName>Tickets3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Requester_Call_Center__c</fullName>
+        <externalId>false</externalId>
+        <label>Requester Cost Center</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Requester Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requestor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Requester (Old)</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Tickets1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Requestor_contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Requester</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Internal Contact</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets (Requestor)</relationshipLabel>
+        <relationshipName>Tickets3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Row__c</fullName>
+        <externalId>false</externalId>
+        <label>Row</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seat__c</fullName>
+        <externalId>false</externalId>
+        <label>Seat</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Section__c</fullName>
+        <externalId>false</externalId>
+        <label>Section</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Specific_Prospect_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Specific Contact</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.RecordTypeId</field>
+                <operation>notEqual</operation>
+                <value>Internal Contact</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets (Specific Contact)</relationshipLabel>
+        <relationshipName>Tickets4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Specific_Vendor_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>look up all contact</description>
+        <externalId>false</externalId>
+        <label>Specific Vendor Contact</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Vendor Contact</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Tickets (Specific Vendor Contact)</relationshipLabel>
+        <relationshipName>Tickets5</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ticket_Event__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Event</label>
+        <referenceTo>Ticket_Event__c</referenceTo>
+        <relationshipLabel>Tickets</relationshipLabel>
+        <relationshipName>Tickets</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Ticket_Grouping__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ticket Grouping</label>
+        <referenceTo>Ticket_Grouping__c</referenceTo>
+        <relationshipLabel>Tickets</relationshipLabel>
+        <relationshipName>Tickets</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ticket_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ticket_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Ticket_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Box Seats</fullName>
+                    <default>false</default>
+                    <label>Box Seats</label>
+                </value>
+                <value>
+                    <fullName>Terrace Seats</fullName>
+                    <default>false</default>
+                    <label>Terrace Seats</label>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                    <label>Standard</label>
+                </value>
+                <value>
+                    <fullName>Suite</fullName>
+                    <default>false</default>
+                    <label>Suite</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Unused_Ticket__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field used to calculate Unused Tickets of each category for the Event.</description>
+        <externalId>false</externalId>
+        <label>Unused Ticket</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Update_Made_Within_48_hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(ROUND(Ticket_Event__r.Event_Start_Date_Time__c - NOW(),2))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Update Made Within 48 hours</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_for_Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>User for Event</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Tickets</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Vendor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>contains</operation>
+                <value>Vendor</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>contains</operation>
+                <value>Competitor</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Tickets (Vendor)</relationshipLabel>
+        <relationshipName>Tickets2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>assignToCharity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToCharity</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>assignToClient__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToClient</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>assignToEmployeeIncentive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToEmployeeIncentive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>assignToEmployee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToEmployee</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>assignToHost__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToHost</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>assignToProducer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>assignToProducer</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isSelected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>isSelected</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Ticket</label>
+    <listViews>
+        <fullName>All_UpcomingTickets</fullName>
+        <columns>Event_Start_Date_Time__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Ticket_Event__c</columns>
+        <columns>Requestor_contact__c</columns>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Upcoming Tickets</label>
+    </listViews>
+    <nameField>
+        <displayFormat>T-{0000}</displayFormat>
+        <label>Ticket Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Tickets</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Charity_Ticket_Use_Contact_Required</fullName>
+        <active>true</active>
+        <description>For Charity Tickets a Charity Contact is Required.</description>
+        <errorConditionFormula>(AND(ISPICKVAL(Business_Use_of_Ticket__c , &apos;Charities&apos;), 
+ISBLANK(Contact__c))) 
+|| 
+(AND(ISPICKVAL(Business_Use_of_Ticket__c , &apos;Charities&apos;), 
+NOT(ISBLANK(Contact__c)), 
+Contact__r.RecordType.DeveloperName&lt;&gt;&apos;Charity_Contact&apos;))</errorConditionFormula>
+        <errorDisplayField>Contact__c</errorDisplayField>
+        <errorMessage>For Charity tickets, a Charity Specific Contact MUST be selected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Event_Time</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(!(ISBLANK (Event_Time__c)), NOT(REGEX( Event_Time__c ,
+&quot;(\\d([0-1]|[1-9]):\\d([0-1]|[1-60]) (AM|am|PM|pm))&quot;)))</errorConditionFormula>
+        <errorDisplayField>Event_Time__c</errorDisplayField>
+        <errorMessage>Please enter validate Event time! for example: 11:23 AM</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

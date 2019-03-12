@@ -1,0 +1,5 @@
+Hi 
+Account Submission -{!Case.CaseNumber}  has been completed and CDHP Product has been selected 
+during the submission.
+Case Link : {!Case.Link}
+Thanks,

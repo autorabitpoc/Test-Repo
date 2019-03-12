@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Read Access to OK Article Types for access to OK non-knowledge users to attach articles to Cases</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>SG OK Knowledge Article Permissions</label>
+    <license>Salesforce</license>
+</PermissionSet>

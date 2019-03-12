@@ -1,0 +1,363 @@
+<!-- 
+ * Author:  Rakesh Nunna
+ * Initial Version: V1.0
+ * Created date: 03/22/2018
+ * Modified date:04/13/2018 
+ * Discription :Client side Component to redirect new (Insatallation(GEMS), SAM REquests) Page
+*/
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global" controller="LGNA_Lightning_GPAccCasesWithTabCotoller">
+    <aura:attribute name="Cases" type="Case[]"/>
+    <aura:attribute name="SamCases" type="Case[]"/>
+    <aura:attribute name="rID" type="Id"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="key" type="String" default="one" />
+    <aura:attribute name="sortAsc" type="Boolean" default="false"/>
+    <aura:attribute name="keyword" type="String"/>
+    <aura:attribute name="samkeyword" type="String"/>
+    <aura:attribute name="currentRecordId" type="String"/>
+    <aura:attribute name="del" type="boolean"/>
+    <aura:attribute name="objectType" type="String"/>
+    
+    <aura:handler name="delGemRelListRecEvent" event="c:LGNA_DeleteCaseRecords" action="{!c.showdialog}"/>
+    <aura:method name="initMethod" action="{!c.doInit}"/>   
+    <aura:method name="searchGemMethod" action="{!c.searchGemCase}"/> 
+    <aura:method name="searchSamMethod" action="{!c.searchSamRequestCase}"/>   
+    
+    <!-- PAGE HEADER -->
+    <div class="slds-page-header">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <aura:if isTrue="{!v.objectType == 'Account'}">
+                <div>
+                    <div class="OpportunityName">
+                        <a title="Account" href="javascript:void(0);" onclick="{!c.goToParentHomePage}">Account</a>
+                    </div>
+                    <lightning:icon class="OpportunityName" iconName="utility:chevronright" size="xx-small" alternativeText="edit"/>
+                    <aura:if isTrue="{!v.Cases[0].Account.Name != null}">
+                        <div class="OpportunityName">
+                            <a title="Account" href="javascript:void(0);" onclick="{! c.goToParentRecord }">{!v.Cases[0].Account.Name}</a>
+                        </div>
+                        <aura:set attribute="else">
+                            <div class="OpportunityName">
+                                <a title="Account" href="javascript:void(0);" onclick="{! c.goToParentRecord }">{!v.Cases[0].Account.Name}</a>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <aura:set attribute="else">
+                <div>
+                    <div class="OpportunityName">
+                        <a title="Opportunity" href="javascript:void(0);" onclick="{!c.goToParentHomePage}">Opportunity</a>
+                    </div>
+                    <lightning:icon class="OpportunityName" iconName="utility:chevronright" size="xx-small" alternativeText="edit"/>
+                    <aura:if isTrue="{!v.Cases[0].Opportunity_Name__r.Name != null}">
+                        <div class="OpportunityName">
+                            <a title="Opportunity" href="javascript:void(0);" onclick="{! c.goToParentRecord }">{!v.Cases[0].Opportunity_Name__r.Name}</a>
+                        </div>
+                        <aura:set attribute="else">
+                            <div class="OpportunityName">
+                                <a title="Opportunity" href="javascript:void(0);" onclick="{! c.goToParentRecord }">{!v.Cases[0].Opportunity_Name_r.Name}</a>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                </aura:set>
+                </aura:if>
+                <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Cases">Cases</h1>
+            </div>
+            <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                <div class="slds-button-group" role="group">
+                    <lightning:button variant="brand" label="Back" onclick="{! c.navigateToRecordPage }" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <lightning:card >
+        <lightning:tabset title="Cases" selectedTabId="{!v.key}">
+            <lightning:tab label="INSTALLATIONS(GEMS)" id="one">
+                <body>
+                    <div class="slds">
+                        
+                        <div class="slds-table--header-fixed_container" style="height:450px;margin-top:-17px ; padding-top:0px">
+                                <div class="slds-p-top_small" style="height: 3.5rem;padding-top:0px">
+                                    <div class="slds-float_right" style="margin: 10px 10px 0 0"><ui:inputText placeholder="Search" value="{!v.keyword}" updateOn="keyup" keyup="{!c.searchGemCase}"/></div>
+                                </div>
+                                <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                                    <thead>
+                                        <tr class="slds-line-height_reset"> 
+                                            <th scope="col" style="width: 3.75rem;">
+                                                <div class="slds-th__action">
+                                                    <span class="slds-assistive-text">Errors</span>
+                                                </div>
+                                            </th>
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Case Number" scope="col" onclick="{!c.sortByCaseNumber}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Case Number">Case Number</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col" onclick="{!c.sortByCaseSubject}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Subject">Subject</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col" onclick="{!c.sortByCaseStatus}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Subject">Status</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!-- <th scope="col">-->                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col" onclick="{!c.sortByCaseOwner}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Owner">Owner</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                                
+                                            </th>
+                                            
+                                            <!-- <th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Record Type" scope="col" onclick="{!c.sortByCaseRecordType}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Record Type">Record Type</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->                                            
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Date Opened" scope="col" onclick="{!c.sortByCaseCreatedDate}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Date Opened">Date Opened</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <aura:iteration items="{!v.Cases}" var="item" indexVar="index">
+                                            <tr>
+                                                <!--<td>-->
+                                                <th scope="row">
+                                                    <ui:outputText value="{!index+1}"/>
+                                                </th>
+                                                <td>
+                                                    <div class="slds-truncate" title="{!item.CaseNumber}">
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.CaseNumber}</a>
+                                                    </div>                                          
+                                                </td>
+                                                <td data-label="Subject">
+                                                    <div class="slds-truncate" title="{!item.Subject}">{!item.Subject}</div>	                    
+                                                </td>
+                                                <td data-label="Status">
+                                                    <div class="slds-truncate" title="{!item.Status}">{!item.Status}</div>	                    
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate" title="{!item.Owner.Name}">	
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.OwnerId}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Owner.Name}</a>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Record Type">
+                                                    <div class="slds-truncate" title="{!item.RecordTpe.Name}">{!item.RecordType.Name}</div>	                    
+                                                </td>
+                                                <td class="slds-truncate" data-label="Created Date">
+                                                    <lightning:formattedDateTime value="{!item.CreatedDate}" year="numeric" month="numeric" day="numeric"  hour="2-digit" minute="2-digit" />
+                                                </td>
+                                                <td>
+                                                    <c:LGNA_CaseEditDelete curentRecord="{!item.Id}"/>
+                                                </td>						
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            
+                        </div>
+                    </div>
+                </body>
+            </lightning:tab>
+            <lightning:tab label="SAM REQUESTS" id="two">
+                <body>
+                    <div class="slds">
+                        <div class="slds-table--header-fixed_container" style="height:450px;margin-top:-17px ; padding-top:0px">
+                                <div class="slds-p-top_small" style="height: 3.5rem;padding-top:0px">
+                                    <div class="slds-float_right" style="margin: 10px 10px 0 0"><ui:inputText placeholder="Search" value="{!v.samkeyword}" updateOn="keyup" keyup="{!c.searchSamRequestCase}"/></div>
+                                </div>
+                                <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed_layout" role="grid">
+                                    <thead>
+                                        <tr class="slds-line-height_reset"> 
+                                            <th scope="col" style="width: 3.75rem;">
+                                                <div class="slds-th__action">
+                                                    <span class="slds-assistive-text">Errors</span>
+                                                </div>
+                                            </th>
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Case Number" scope="col" onclick="{!c.sortByCaseNumber}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Case Number">Case Number</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Subject" scope="col" onclick="{!c.sortByCaseSubject}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Subject">Subject</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Status" scope="col" onclick="{!c.sortByCaseStatus}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Status">Status</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!-- <th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Owner" scope="col" onclick="{!c.sortByCaseOwner}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Owner">Owner</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!-- <th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="recordtype" scope="col" onclick="{!c.sortByCaseRecordType}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Record Type">Record Type</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                            <!--<th scope="col">-->
+                                            <th aria-sort="none" class="slds-is-sortable slds-is-resizable slds-text-title_caps slds-has-button-menu" aria-label="Date Opened" scope="col" onclick="{!c.sortByCaseCreatedDate}">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="-1">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <span class="slds-truncate" title="Date Opened">Date Opened</span>
+                                                </a>
+                                                <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Sorted none</span>
+                                                <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" tabindex="-1" title="Show Name column actions">
+                                                    <lightning:icon iconName="utility:chevrondown" size="xx-small"/>
+                                                    <span class="slds-assistive-text">Show Name column actions</span>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <aura:iteration items="{!v.SamCases}" var="item" indexVar="index">
+                                            <tr>
+                                                <!--<td>-->
+                                                <th scope="row">
+                                                    <ui:outputText value="{!index+1}"/>
+                                                </th>
+                                                <td>
+                                                    <div class="slds-truncate" title="{!item.CaseNumber}">
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.Id}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.CaseNumber}</a>
+                                                    </div>                                          
+                                                </td>
+                                                <td data-label="Subject">
+                                                    <div class="slds-truncate" title="{!item.Subject}">{!item.Subject}</div>	                    
+                                                </td>
+                                                <td data-label="Status">
+                                                    <div class="slds-truncate" title="{!item.Status}">{!item.Status}</div>	                    
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate" title="{!item.Owner.Name}">	
+                                                        <a target="_blank" href="{!'/one/one.app?#/sObject/'+ item.OwnerId}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">{!item.Owner.Name}</a>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Record Type">
+                                                    <div class="slds-truncate" title="{!item.RecordTpe.Name}">{!item.RecordType.Name}</div>	                    
+                                                </td>
+                                                <td class="slds-truncate" data-label="Created Date">
+                                                    <lightning:formattedDateTime value="{!item.CreatedDate}" year="numeric" month="numeric" day="numeric"  hour="2-digit" minute="2-digit" />
+                                                </td>
+                                                <td>
+                                                    <c:LGNA_CaseEditDelete curentRecord="{!item.Id}"/>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </body>
+            </lightning:tab>
+        </lightning:tabset>
+        <aura:if isTrue="{!v.del}">
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.closeDialog}">
+                                <lightning:icon iconName="utility:close" size="medium" alternativeText="Indicates approval"/>    
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Delete Case</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p class="slds-align_absolute-center">Are you sure you want to delete this Case?</p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick="{!c.cancelDialog}">Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick="{!c.deleteRecord}">Delete</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </aura:if>
+    </lightning:card>
+</aura:component>

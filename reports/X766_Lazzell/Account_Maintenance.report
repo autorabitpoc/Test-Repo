@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$RecordType</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$Status</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$ClosedDate</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>Account.Cases$IsClosed</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Cases$Account_Number__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IL074686,IL256822,IL014510,IL189735,IL014171,IL015462,IL016772,IL972700,IL081354,IL785486,IL197162,IL016878,IL160114,IL022333,IL717057,IL092016,IL016936,IL629600,IL081711,IL023855,IL866500,IL014477,IL099609,IL912339,IL120804,IL120317,IL172849,IL262029,IL855800,IL022300,IL053622,IL010469</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Cases$GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Cosmetic Account Maintenance,Account Structure Maintenance,Account Eligibility Maintenance,Rate Change/Stop Loss Maintenance,AEP File Maintenance,ID Card Maintenance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Cases$CreatedDate</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2018 12:00 AM</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Account Maintenance</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Cases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account$Renewal_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTY</interval>
+    </timeFrameFilter>
+</Report>

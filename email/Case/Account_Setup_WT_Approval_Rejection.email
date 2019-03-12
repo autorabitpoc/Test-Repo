@@ -1,0 +1,9 @@
+Your case's GEMS Account Setup WT Approval has been rejected. Please access the case below
+and address the rejection to move your case forward.
+
+Account Name : {!Case.Account}
+Account Setup Case Number : {!Case.CaseNumber}
+
+Case Details: {!Case.Link}
+
+Thank you

@@ -1,0 +1,164 @@
+<apex:page sidebar="false" doctype="html-5.0" showheader="true" controller="ConfirmProgressOnLostProductsController">
+
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    
+    <style>
+
+        table.oppFieldTable {
+            position: center;
+            float: left;
+            width:40%;
+        }
+
+        table.rollUpTable {
+            position: center;
+            float: right;
+            width: 40%;
+        }
+
+        #wrap {
+            width: 625px;
+            margin: 0 auto;
+        }
+
+        #section {
+            height:150px;
+        }
+
+        .inputBox {
+            width:65px;
+        }
+        
+        .rollUpTable td {
+            padding-bottom: 7.5px;
+        }
+
+        .rollUpTable th{
+            padding-bottom: 7.5px;
+        }
+
+        caption {
+            padding-bottom: 10px;
+            font-size: 13px;
+            font-weight:bold;
+        }
+
+        h1 {
+            font-size:14px;
+            font-weight:bold;
+        }
+
+    </style>
+
+    <script>
+
+     $(document).ready(function(){
+
+         $('.healthMembers').attr('readonly', 'readonly');
+         $('.dentalMembers').attr('readonly', 'readonly');
+     });   
+
+        function calculateMembership(value, fieldType){
+            if(fieldType == 'health'){
+                $('.healthMembers').val(value * 2);
+            } else {
+                $('.dentalMembers').val(value * 2);
+            }
+        }
+
+    </script>
+
+    <apex:form >
+        <apex:outputpanel rendered="{!IF(opProducts.size > 0, True, False)}">
+            <apex:pageblock title="Confirm Progress On Lost Products">
+                <apex:pageblocktable value="{!opProducts}" id="productsTable" var="opProduct">
+                    <apex:repeat value="{!fields}" var="f">
+                        <apex:column headervalue="{!f.label}">
+                            <apex:outputfield value="{!opProduct[f]}" />
+                        </apex:column>
+                    </apex:repeat>
+                    <apex:column headervalue="Furthest Product Stage Reached">
+                        <apex:inputfield value="{!opProduct.Product_Stage__c}" required="true" />
+                    </apex:column>
+                </apex:pageblocktable>
+            </apex:pageblock>
+        </apex:outputpanel>
+            <apex:pageblock title="Expected Product Member/Contract Fields" id="pgBlock">
+                <center>
+                    <h1>{!$Label.Confirm_Progress_Expected_Amount}</h1>
+                </center>
+                <br /><br />
+                <div id="wrap">
+                    <apex:outputPanel rendered="{!oppRecType == 'New Sale'}">
+                        <table class="oppFieldTable">
+                            <caption>{!$Label.Confirm_Progress_Expected_Member_Fields}</caption>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Health_Members}</th>
+                                <td><apex:input value="{!projectedHealthMembers}" styleclass="healthMembers inputBox" /></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Health_Contracts}</th>
+                                <td><apex:input value="{!projectedHealthContracts}" styleclass="healthContracts inputBox" onkeyup="calculateMembership(this.value, 'health');"/></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Dental_Members}</th>
+                                <td><apex:input value="{!projectedDentalMembers}" styleclass="dentalMembers inputBox" /></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Dental_Contracts}</th>
+                                <td><apex:input value="{!projectedDentalContracts}" styleclass="dentalContracts inputBox" onkeyup="calculateMembership(this.value, 'dental');"/></td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!oppRecType != 'New Sale'}">
+                        <table class="oppFieldTable">
+                            <caption>{!$Label.Confirm_Progress_Expected_Member_Fields}</caption>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Health_Members}</th>
+                                <td><apex:input value="{!projectedHealthMembers}" styleclass="inputBox" /></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Health_Contracts}</th>
+                                <td><apex:input value="{!projectedHealthContracts}" styleclass="inputBox" /></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Dental_Members}</th>
+                                <td><apex:input value="{!projectedDentalMembers}" styleclass="inputBox" /></td>
+                            </tr>
+                            <tr>
+                                <th>{!$Label.Confirm_Progress_Expected_Dental_Contracts}</th>
+                                <td><apex:input value="{!projectedDentalContracts}" styleclass="inputBox" /></td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    <table class="rollUpTable">
+                        <caption>{!$Label.Confirm_Progress_Recommended_Value}</caption>                      
+                        <tr>
+                            <th>{!$Label.Confirm_Progress_Total_Medical_Members}</th>
+                            <td><apex:outputtext value="{!projectedHealthMembersRollup}" /></td>
+                        </tr>
+                        <tr>
+                            <th>{!$Label.Confirm_Progress_Total_Medical_Contracts}</th>
+                            <td><apex:outputtext value="{!projectedHealthContractsRollup}" /></td>
+                        </tr>
+                        <tr>
+                            <th>{!$Label.Confirm_Progress_Total_Dental_Members}</th>
+                            <td><apex:outputtext value="{!projectedDentalMembersRollup}" /></td>
+                        </tr>
+                        <tr>
+                            <th>{!$Label.Confirm_Progress_Total_Dental_Contracts}</th>
+                            <td><apex:outputtext value="{!projectedDentalContractsRollup}" /></td>
+                        </tr>                    
+                    </table>
+                    <div id="section">
+                    </div>               
+                    <center>
+                        <apex:commandbutton value="Save" action="{!save}" />
+                        <apex:commandbutton value="Cancel" action="{!cancel}" />
+                    </center>
+                </div>
+            </apex:pageblock>
+    </apex:form>
+</apex:page>

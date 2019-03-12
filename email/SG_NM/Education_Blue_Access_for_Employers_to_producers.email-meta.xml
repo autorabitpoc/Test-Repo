@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending group information about the Blue Access for Employers (BAE) portal.  You&apos;ll need to go to Knowledge and attach: BAE AutoSecurity Training Guide; BAE Forgot Password &amp; User ID &amp; User Profile Reference Guide.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Education - Blue Access for Employers (to producers)</name>
+    <style>none</style>
+    <subject>Blue Access for Employers (BAE) {!Case.Group_Account_Number__c} - {!Case.Account} Case #: {!Case.Id}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,8 @@
+The following case status has been "{!Case.Status}" for 5 Business Days. Please follow up with "{!Case.Assigned_Partner__c}".
+
+Company: {!Account.Name} 
+Case #: {!Case.CaseNumber} 
+Case Subject: {!Case.Subject}
+Owner: {!Case.OwnerFullName} 
+
+Click on the link to access the case: {!Case.Link}

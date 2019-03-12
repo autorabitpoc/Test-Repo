@@ -1,0 +1,48 @@
+<aura:component controller="SGRCensusWidgetLtngController" implements="force:hasRecordId,flexipage:availableForAllPageTypes" description="SGR_CensusWidget">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="recordOpp" type="Object"/>
+    <aura:attribute name="editCapabilitiesMap" type="Object"/>
+    <aura:attribute name="censusList" type="SGR_Opportunity_Census__c[]" default="[]"/>
+    <aura:attribute name="planDataList" type="List" default="[]"/>
+    <aura:attribute name="formattedCensusData" type="Object"/>
+    <aura:attribute name="currentTabId" type="String" default="health"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="displayHealthTab" type="boolean" default="false" />
+    <aura:attribute name="displayDentalTab" type="boolean" default="false" />
+    <aura:attribute name="displayVisionTab" type="boolean" default="false" />
+    <aura:attribute name="deleteDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="selectedIds" type="List" default="[]"/>
+
+    <aura:attribute name="showPopup" type="boolean" default="false" />
+    <aura:attribute name="headerTxt" type="String"/>
+    <aura:attribute name="buttonName" type="String"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="censusTableEvent" event="c:SGR_CensusTableEvent" action="{!c.handleTableAction}"/>
+    <aura:handler event="c:SGR_DeleteHealthCensus" action="{!c.deleteHealthCensus}"/>
+    <aura:handler event="c:SGR_DeleteDentalCensus" action="{!c.deleteDentalCensus}"/>
+    <aura:handler event="c:SGR_ModalClickEvent" action="{!c.handleModalEvent}"/>
+
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner variant="brand" size="large" alternativeText="Loading"/>
+        <aura:set attribute="else">
+            <lightning:tabset>
+                <aura:if isTrue="{!v.displayHealthTab}">
+                    <lightning:tab onactive="{!c.onTabActive}" label="Health" id="health" aura:id="health"/>
+                </aura:if>
+                <aura:if isTrue="{!v.displayDentalTab}">
+                    <lightning:tab onactive="{!c.onTabActive}" label="Dental" id="dental" aura:id="dental"/>
+                </aura:if>
+                <aura:if isTrue="{!v.displayVisionTab}">
+                    <lightning:tab onactive="{!c.onTabActive}" label="Vision" id="vision" aura:id="vision"/>
+                </aura:if>
+            </lightning:tabset>
+        </aura:set>
+    </aura:if>
+    <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                       confirmLabel="Cancel"
+                       actionLabel="Change Status"
+                       isOpen = "{!v.showPopup}"
+                       buttonName="{!v.buttonName}"/>
+</aura:component>

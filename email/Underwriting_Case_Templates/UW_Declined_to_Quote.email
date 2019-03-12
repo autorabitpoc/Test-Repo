@@ -1,0 +1,10 @@
+*** Case Notification ***
+<br><br>
+Underwriting has declined to quote Opportunity {!Case.Opportunity_Name__c}. Please contact the Case Owner for further details, and follow the provided link to access the opportunity and update the stage accordingly.
+<br><br>
+Account: {!Case.Account_Name__c}<br>
+Case #: {!Case.CaseNumber}<br>
+Subject: {!Case.Subject} <br>
+Description: {!Case.Description} <br> 
+<br>
+Follow this link to access the Opportunity:  {!Case.Opportunity_Detail_Link__c}

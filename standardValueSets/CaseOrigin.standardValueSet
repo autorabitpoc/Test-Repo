@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Phone</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>Phone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound</fullName>
+        <color>#78C953</color>
+        <default>false</default>
+        <label>Outbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Walk-in</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>Walk-in</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fax</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>Fax</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Business Rule Validation Fallout</fullName>
+        <default>false</default>
+        <label>Business Rule Validation Fallout</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,7 @@
+Hi
+Underwriting has approved and account is Active in BlueSTAR.
+
+Case Details: {!Case.Link}
+Account Name : {!Case.Account}
+
+Thanks

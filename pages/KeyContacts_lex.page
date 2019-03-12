@@ -1,0 +1,220 @@
+<apex:page showHeader="false" sidebar="false" standardController="Account" extensions="LGNA_KeyContactController_Lex" standardStylesheets="false" applyHTmlTag="false">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<apex:stylesheet value="/resource/SLDS0102/assets/styles/salesforce-lightning-design-system-ltng.css"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.Customer360,'styles/main.css')}" />
+        <apex:includeScript value="{!URLFOR($Resource.Customer360,'scripts/vendor/modernizr.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.Customer360,'scripts/vendor/jquery-1.8.3.min.js')}" />
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            
+            var thisTab;
+            google.load("visualization", "1", {packages:["table"]});
+            $(document).ready(function(){
+                $('.tab-content').hide();
+                $('.tab-content.active').show();
+                $('.item-container').find("a").attr("target","_blank");
+                
+                $('.tab').click(function () {
+                    $('.tab').removeClass('active');
+                    $('.tab-content').removeClass('active').hide();
+                    $(this).addClass('active');
+ 
+                    thisTab = $(this).attr('data-name');
+ 
+                    $('.tab-content.' + thisTab).show().addClass('active');
+                });
+                
+           
+                var keyContactsData = new google.visualization.DataTable();
+                keyContactsData.addColumn('string', '');
+                keyContactsData.addColumn('string', '');
+                
+                keyContactsData.addRows([
+                <apex:repeat value="{!accountContactRoleList}" var="accountContactRoleObj">
+                        ['<img src="{!accountContactRoleObj.Contact.PhotoUrl}" width="50" height="50"/>',
+                        '<div class="slds""><a href="/{!accountContactRoleObj.ContactId}" target="_blank">{!accountContactRoleObj.Contact.Name}</a></div><div class="slds"><apex:outputText value="{!accountContactRoleObj.Role}"/></div><div class="slds">Office:<br/><apex:outputText value="{!accountContactRoleObj.Contact.Phone}"/></div><div class="slds"><a href="/_ui/core/email/author/EmailAuthor?p2_lkid={!accountContactRoleObj.Contact.Id}&rtype=003&p3_lkid={!accountContactRoleObj.AccountId}&retURL=/{!accountContactRoleObj.AccountId}" target="_blank"><apex:outputText value="{!accountContactRoleObj.Contact.Email}"/></a></div>'],
+                </apex:repeat>
+                ]);
+                
+ 
+                var keyContactsCssClassNames = {
+                    headerCell: 'headerCellHidden',
+                    tableCell: 'tableCellNoBorder'
+                };
+                
+                var keyContactsOptions = {
+                    'showRowNumber': false,
+                    'cssClassNames': keyContactsCssClassNames,
+                    'page':'enable',
+                    'pageSize':2,
+                    'allowHtml':true,
+                    'width':'100%'
+                };
+                  
+                var table = new google.visualization.Table(document.getElementById('keyContacts_Table'));
+ 
+                table.draw(keyContactsData, keyContactsOptions);
+                
+                
+                var teamMembersData = new google.visualization.DataTable();
+                teamMembersData.addColumn('string', '');
+                
+                
+                teamMembersData.addRows([
+                   
+                    <apex:repeat value="{!teamMembersList}" var="accountTeamMemberObj">
+                        ['<div class="slds">{!accountTeamMemberObj.teamRoleName}:<br/><a href="/{!accountTeamMemberObj.teamMemberId}" target="_blank">{!accountTeamMemberObj.teamMemberName}</a></div>'],
+                    </apex:repeat>
+                ]);
+ 
+                var teamMembersCssClassNames = {
+                    headerCell: 'headerCellHidden',
+                    tableCell: 'tableCellNoBorder'
+                };
+                
+                var teamMembersOptions = {
+                    'showRowNumber': false,
+                    'cssClassNames': teamMembersCssClassNames,
+                    'page':'enable',
+                    'pageSize':3,
+                    'allowHtml':true,
+                    'width':'100%'
+                };
+                  
+                var table = new google.visualization.Table(document.getElementById('teamMembers_Table'));
+ 
+                table.draw(teamMembersData, teamMembersOptions);
+                
+                
+                <!-- Prmary Contact table creation !-->
+                
+                        
+                var primaryContactsData = new google.visualization.DataTable();
+                primaryContactsData.addColumn('string', '');
+                primaryContactsData.addColumn('string', '');
+                
+                primaryContactsData.addRows([
+                <apex:repeat value="{!primaryContactList}" var="accountContactRoleObj">
+                        ['<img src="{!accountContactRoleObj.Contact.PhotoUrl}" width="50" height="50"/>',
+                        '<div class="slds"><a href="/{!accountContactRoleObj.ContactId}" target="_blank">{!accountContactRoleObj.Contact.Name}</a></div><div class="slds"><apex:outputText value="{!accountContactRoleObj.Role}"/></div><div>Office:<br/><apex:outputText value="{!accountContactRoleObj.Contact.Phone}"/></div><div><a href="/_ui/core/email/author/EmailAuthor?p2_lkid={!accountContactRoleObj.Contact.Id}&rtype=003&p3_lkid={!accountContactRoleObj.AccountId}&retURL=/{!accountContactRoleObj.AccountId}" target="_blank"><apex:outputText value="{!accountContactRoleObj.Contact.Email}"/></a></div>'],
+                </apex:repeat>
+                ]);
+                
+ 
+                var primaryContactCssClassNames = {
+                    headerCell: 'headerCellHidden',
+                    tableCell: 'tableCellNoBorder'
+                };
+                
+                var primaryContactsOptions = {
+                    'showRowNumber': false,
+                    'cssClassNames': primaryContactCssClassNames ,
+                    'page':'enable',
+                    'pageSize':2,
+                    'allowHtml':true,
+                    'width':'100%'
+                };
+                  
+                var table = new google.visualization.Table(document.getElementById('primarycontact_Table'));
+ 
+                table.draw(primaryContactsData, primaryContactsOptions);
+                
+
+                
+            });
+            
+            
+ 
+        </script>
+        
+        
+        <apex:form >
+        <div class="slds">
+            <table style="width:100%">
+                 <td class="Containertd">                            
+                            <div>
+                                External:
+                            </div>
+                            <div class="item-container h5">
+                                <apex:outputPanel rendered="{!IF(accountContactRoleList.size == 0,true,false)}">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:10%;">
+                                                <apex:image value="{!$Resource.WarningImage}" style="width:16px; height:auto;"/>
+                                            </td>
+                                            <td style="text-align:left;width:90%;">
+                                                <label class="item-container h5">
+                                                    No External Contacts available
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </apex:outputPanel>
+                            </div>
+                             <apex:outputPanel rendered="{!IF(accountContactRoleList != null,true,false)}">
+                                <div class="item-container h5">
+                                    <div id="keyContacts_Table" style="width:100%"/>
+                                </div>
+                            </apex:outputPanel>                                                 
+                        
+                         
+ 
+                            <div>
+                                Internal:
+                            </div>
+ 
+                            <div class="item-container h5">
+                                <apex:outputPanel rendered="{!IF(AND(teamMembersList.size == 0),true,false)}">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:10%;">
+                                                <apex:image value="{!$Resource.WarningImage}" style="width:16px; height:auto;"/>
+                                            </td>
+                                            <td style="text-align:left;width:90%;">
+                                                <label>
+                                                    No internal contacts available.
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </apex:outputPanel>
+                            </div>
+                            
+                            <div class="item-container h5">
+                                <div id="teamMembers_Table" style="width:100%"/>
+                            </div>
+                            
+                            <div>
+                                Primary:
+                            </div>
+                            
+                            <!-- Primary contact !-->
+                            <div class="item-container h5">
+                                <apex:outputPanel rendered="{!IF(AND(primaryContactList.size == 0),true,false)}">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:10%;">
+                                                <apex:image value="{!$Resource.WarningImage}" style="width:16px; height:auto;"/>
+                                            </td>
+                                            <td style="text-align:left;width:90%;">
+                                                <label>
+                                                    No Primary contacts available.
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </apex:outputPanel>
+                            </div>
+                            
+                            <div class="item-container h5">
+                                <div id="primarycontact_Table" style="width:100%"/>
+                            </div>
+                            </td>
+                            
+            </table>
+            </div>
+        </apex:form>
+        </html>
+</apex:page>

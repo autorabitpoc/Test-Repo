@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account$External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$Market_Segment__c</field>
+    </columns>
+    <description>All Active accounts, listed by Division, Name, Number, and Market Segment, with current subs/mbrs, OED, and future Cancel date.</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Group_Account</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>HCSC Account Listing</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account.Contacts__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

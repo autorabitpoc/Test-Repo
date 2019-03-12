@@ -1,0 +1,70 @@
+<!-- **************************************************************************************************************************
+* Lightning Component Name : SGR_OpportunityHeader
+* Version                  : 1.0
+* Function                 : This is the header for the SGR Opportunity (created to display more fields than compact layout allows)
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Landry Harris                      10/15/2018			SFDC-12953 Created component
+****************************************************************************************************************************** -->
+<aura:component  implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="opportunity" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+
+    <!-- Lightning Data Service to retrieve and display Opportunity fields -->
+    <force:recordData aura:id="recordLoader"
+      recordId="{!v.recordId}"
+      targetFields="{!v.opportunity}"
+      targetError="{!v.recordError}"
+      fields="Id,External_ID__c,Renewal_Date__c,Funding_Type__c,HCSC_Division__c,
+              Account_Market_Segment__c,sgrAccountHoldReason__c,Rating_Status__c,
+              SGR_Workflow_Activity__c,RecordType.Name,Current_Tier_Billing__c,SGR_Opportunity_Auto_Number__c"/>
+    
+    <!-- SLDS column layout/styling to ensure CSS matches Salesforce default for header fields -->
+    <div class="slds-grid slds-scrollable_x slds-p-vertical_medium slds-p-horizontal_small">
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Opportunity Number">Opportunity Number</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.SGR_Opportunity_Auto_Number__c}</p>
+            <!--<p class="slds-text-body_regular slds-truncate">{!v.opportunity.External_Id__c}</p>-->
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Renewal Effective Date" >Renewal Effective Date </p>
+           <lightning:formattedDateTime value="{!v.opportunity.Renewal_Date__c}" year="numeric" month="numeric" day="numeric" />
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Funding Type">Funding Type</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.Funding_Type__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Division">Division</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.HCSC_Division__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Market Segment">Market Segment</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.Account_Market_Segment__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Account Hold Status">Account Hold Status</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.sgrAccountHoldReason__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Workflow Activity">Workflow Activity</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.SGR_Workflow_Activity__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Rating Status">Rating Status</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.Rating_Status__c}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Opportunity Type">Opportunity Type</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.RecordType.Name}</p>
+        </div>
+        <div class="slds-col slds-page-header__detail-block ">
+            <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Current Tier/Billing">Current Tier/Billing</p>
+            <p class="slds-text-body_regular slds-truncate">{!v.opportunity.Current_Tier_Billing__c}</p>
+        </div>
+        <div class="slds-col"></div>
+        
+    </div>
+</aura:component>

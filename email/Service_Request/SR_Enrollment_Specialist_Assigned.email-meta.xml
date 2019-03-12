@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SR - Enrollment Specialist Assigned</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SR - Enrollment Specialist Assigned</name>
+    <style>none</style>
+    <subject>Enrollment Specialist {!Service_Request__c.Enrollment_Specialist__c} has been assigned</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

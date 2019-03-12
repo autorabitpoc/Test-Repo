@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+The Opportunity {!Opportunity.Name} for Account {!Opportunity.Account} is now <strong>WON</strong>. 
+<br><br>
+This is a reminder to submit a Contract Admin case. 
+<br><br>
+Please follow the below instructions:
+<dl>
+<dt>1) Open the Opportunity in Salesforce: {!Opportunity.Link}</dt>
+<dt>2)  Click on the Account Name link on the Opportunity.</dt>
+<dt>3) On the Account Page click the "Request Hub" button located on the Account 360 View</dt>
+<dt>4) Select “Contract Admin" under Request Category picklist.</dt>
+<dt>5) Complete the questionnaire and click continue. </dt>
+</dl>
+<br><br>
+You will be directed to the respective Contract Admin Case. Please fill in the required details and save the Case.
+<br><br>
+Thank you.
+</body>
+</html>

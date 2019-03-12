@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <tab>standard-Chatter</tab>
+    <tab>standard-UserProfile</tab>
+    <tab>standard-CollaborationGroup</tab>
+    <tab>standard-File</tab>
+    <tab>standard-Lead</tab>
+    <tab>standard-Account</tab>
+    <tab>standard-Contact</tab>
+    <tab>standard-Opportunity</tab>
+    <tab>standard-report</tab>
+    <tab>standard-Dashboard</tab>
+    <tab>standard-Product2</tab>
+    <tab>standard-Forecasting3</tab>
+    <tab>Ideas__c</tab>
+    <tab>Form_Library__c</tab>
+    <tab>Strategic_Plan__c</tab>
+    <tab>Ticket__c</tab>
+    <tab>standard-Quote</tab>
+    <tab>standard-WaveHome</tab>
+    <tab>SGR_Opportunity_Plan_Rate__c</tab>
+    <tab>SGR_Opportunity_Census__c</tab>
+    <tab>SGR_Plan_Age_Rate_Header__c</tab>
+    <tab>SGR_Plan_Age_Rate_Detail__c</tab>
+    <tab>Benefit_Header_Detail_Association__c</tab>
+    <tab>Benefit_Header_Association__c</tab>
+    <tab>Product_Note_Detail_Association__c</tab>
+    <tab>Plan_Note_Association__c</tab>
+    <tab>EventAuditTrail__c</tab>
+</CustomApplication>

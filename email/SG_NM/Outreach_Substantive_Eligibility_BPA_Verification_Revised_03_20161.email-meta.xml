@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when reaching out to broker / group to clarify their selection when completing the Substantive Eligibility information on the Benefit Plan Application (BPA).</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Outreach - Substantive Eligibility BPA Verification - Revised 03 2016</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Substantive Eligibility Clarification Case Number: {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

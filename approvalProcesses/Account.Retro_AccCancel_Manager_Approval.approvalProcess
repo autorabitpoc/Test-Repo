@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Update_Manager_Approval_checkBox</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Cancellation_Status__c,&apos;Pending Approval&apos;) 
+&amp;&amp; 
+Today() - Requested_Cancellation_Date__c &gt; 60 
+&amp;&amp; 
+($Profile.Name &lt;&gt; &apos;SG - Service Center User&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;SG Service Center_LEX&apos;
+        &amp;&amp; Small_Group_Cancellation__c = false )</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Retro Account Cancel Manager Approval</label>
+        <name>Retro_Account_Cancel_Manager_Approval</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Cancellation_Status_to_Requested_Cancel</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Underwriter__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Cancellation_Status__c, 
+&apos;Pending Approval&apos;) 
+&amp;&amp; Today() - Requested_Cancellation_Date__c &gt; 60  
+&amp;&amp; Manager_Approval__c = true 
+&amp;&amp; ($Profile.Name &lt;&gt; &apos;SG - Service Center User&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;SG Service Center_LEX&apos;
+        &amp;&amp; Small_Group_Cancellation__c = false)</formula>
+        </entryCriteria>
+        <label>Retro Account Cancel Manager Approval UW</label>
+        <name>Retro_Account_Cancel_Manager_Approval_UW</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>(
+  ISPICKVAL(Cancellation_Status__c, &apos;Pending Approval&apos;) 
+  &amp;&amp; 
+  Today() - Requested_Cancellation_Date__c &gt; 60 
+  &amp;&amp;  ($Profile.Name &lt;&gt; &apos;SG - Service Center User&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;SG Service Center_LEX&apos; 
+        &amp;&amp; Small_Group_Cancellation__c = false)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Cancellation_Status_to_Requested_Cancel</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Account_Cancellation_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>AR_Cancellation_Flag_to_Blank</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Retro AccCancel Manager And UW Approval</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,146 @@
+<apex:page standardController="Case" tabstyle="Case" extensions="GEMS_UploadAttachmentController" id="pageid">
+    <apex:sectionHeader title="{!case.subject}" subtitle="Attachment File"/>
+
+    <apex:form id="form_upload" >
+        <apex:pageBlock id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:CommandButton action="{!back}" value="Back to Case" style="align:right;"/>
+                <apex:CommandButton action="{!back}" value="Cancel"/>
+                
+            </apex:pageBlockButtons>
+            <apex:pageMessages />
+            
+            <apex:pageBlocksection columns="1" id="pbs1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="File" for="file_File"/>
+
+                    <apex:inputFile id="file_File" value="{!fileBody}" filename="{!fileName}"/>
+
+                </apex:pageBlockSectionItem>
+                
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Document Type" for="type" />
+                    <apex:selectList id="countries" value="{!selectedtype}" size="1" required="true">
+                        <apex:selectOptions value="{!TypeOptions}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+               <!-- <apex:pageBlockSection columns="2" id="pb2">             
+                <apex:pageBlockSectionItem id="pbsi1">
+                    <apex:outputLabel value="Level" for="Level" style="position:relative;right:23%;" /> 
+                    <apex:selectList id="countries" value="{!selectedLevel }" size="1" required="true" style="position: absolute;left:272px;" onchange="hideField(this)">
+                        <apex:selectOptions value="{!LevelOptions}"/>
+                    </apex:selectList>
+                     </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbsi2">
+                    <apex:inputtext value="{!BAInfo}" style="position: absolute;left:450px;" id="bainfo"/>
+                </apex:pageBlockSectionItem>
+               </apex:pageBlockSection>     -->
+
+               <!-- <apex:pageBlockSection columns="2" id="pb2">             
+                <apex:pageBlockSectionItem id="pbsi1">
+                    <apex:outputLabel value="Level" for="Level" style="position:relative;right:23%;" /> 
+                    <apex:selectList id="countries" value="{!selectedLevel }" size="1" required="true" style="position: absolute;left:272px;" onchange="hideField(this)">
+                        <apex:selectOptions value="{!LevelOptions}"/>
+                    </apex:selectList>
+                     </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbsi2">
+                    <apex:inputtext value="{!BAInfo}" style="position: absolute;left:450px;" id="bainfo"/>
+                </apex:pageBlockSectionItem>
+               </apex:pageBlockSection>     -->
+
+                <apex:pageBlockSectionItem id="pbsi1">
+                    <apex:outputLabel value="Level" for="Level" /> 
+                    <apex:selectList id="countries" value="{!selectedLevel }" size="1" required="true" onchange="hideField(this)">
+                        <apex:selectOptions value="{!LevelOptions}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:PageBlockSectionItem id="pbsi2">
+                    <apex:outputLabel value="BA Info" for="BAINfo"/>
+                    <apex:inputText id="BAInfo" value="{!BAInfo}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:PageBlockSectionItem >
+                    <apex:outputLabel value="Description" for="description"/>
+                    <apex:inputTextarea id="description" value="{!description}" rows="4" cols="50"/>
+                </apex:pageBlockSectionItem>
+                
+
+
+           
+                <apex:pageBlockSectionItem >
+                 <apex:actionregion >
+                    <apex:commandButton id="uploadBtn" value="Save & Add More"  action="{!processUpload}" style="position: relative;left: 225px;width:96px;height:22px;font-size: 11px;" />
+                    <apex:commandButton id="doneBtn" value="Done" action="{!back}" style="position: relative;left: 245px;" />
+                     </apex:actionregion>
+                </apex:pageBlockSectionItem>
+               
+     </apex:pageBlockSection>
+          <!-- 
+      <apex:pageBlockSection columns="1" title="Attachments">
+     <apex:pageblockTable value="{!gemsAttachmentList}" var="document" id="myPanel">
+                <apex:column headerClass="Action" />
+                <apex:column headerValue="File Name" value="{!document.name}"/>
+                <apex:column headerValue="Document Type" value="{!document.Type__c}"/>
+                <apex:column headerValue="Description" value="{!document.Description__c}"/>                
+                <apex:column headerValue="View" >
+                    <apex:outputlink value="/servlet/servlet.FileDownload?file={!document.Attachment__c}" target="_blank"> {!document.name}  </apex:outputlink>
+
+                </apex:column>
+                <apex:column headerValue="Created By" value="{!document.CreatedBy.name}"/>
+                
+            </apex:pageblockTable>
+       </apex:pageBlockSection>
+       -->
+       <apex:pageBlockSection columns="1" title="Attachments">
+       <apex:pageblockTable value="{!listWrapper}" var="document" id="myPanel">
+                <apex:column headerValue="Action"> 
+                <!--
+                   <apex:facet name="header">
+                        <apex:inputCheckbox value="{!allBool}">
+                           <apex:actionSupport reRender="pg" action="{!selectAll}" event="onchange"/>
+                       </apex:inputCheckbox>
+                       </apex:facet>
+                   <apex:inputCheckbox value="{!document.checked}"/>
+                   -->
+                   <apex:inputCheckbox value="{!document.checked}"/>
+               </apex:column>
+               <apex:column headerValue="File Name" >
+               <apex:outputlink value="/servlet/servlet.FileDownload?file={!document.gemAtt.Attachment__c}" target="_blank"> {!document.gemAtt.name}  </apex:outputlink>
+                </apex:column>
+                <apex:column headerValue="Document Type" value="{!document.gemAtt.Type__c}"/>
+                <apex:column headerValue="Level" value="{!document.gemAtt.Level__c}"/>
+                <apex:column headerValue="BA Info" value="{!document.gemAtt.BA_Info__c}"/>
+                <apex:column headerValue="Description" value="{!document.gemAtt.Description__c}"/>                
+            </apex:pageblockTable>
+            </apex:pageBlockSection>
+       <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Delete" action="{!del}"/>
+                </apex:pageBlockButtons>
+        </apex:PageBlock>
+<apex:pagemessages />
+    </apex:form>
+    <script>
+    function hideField(bainfo) {
+        var bainfo = bainfo.value;//document.getElementById('pageid:form_upload:pb:pbs1:pb2:pbsi1:countries').value;
+        if(bainfo == 'Account Submission'||bainfo == '--None--') {
+        document.getElementById('pageid:form_upload:pb:pbs1:pbsi2:BAInfo').value= "";
+        document.getElementById('pageid:form_upload:pb:pbs1:pbsi2:BAInfo').disabled= true;
+        }
+        else
+        document.getElementById('pageid:form_upload:pb:pbs1:pbsi2:BAInfo').disabled= false;
+    }
+    </script>
+    <script>
+ window.onload = function () { 
+ var bainfo = document.getElementById('pageid:form_upload:pb:pbs1:pbsi1:countries').value;
+         if(bainfo == 'Account Submission'||bainfo == '--None--')
+        document.getElementById('pageid:form_upload:pb:pbs1:pbsi2:BAInfo').disabled= true;
+        else
+        document.getElementById('pageid:form_upload:pb:pbs1:pbsi2:BAInfo').disabled= false;
+ }
+    </script>
+
+</apex:page>

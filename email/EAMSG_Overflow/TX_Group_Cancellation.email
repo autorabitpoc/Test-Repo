@@ -1,0 +1,16 @@
+Hello, 
+
+Below is a request for Cancellation. The following information can be used to process this request: 
+
+- Group Name: {!Case.Account} 
+- BlueStar Account Number: {!Case.Group_Account_Number__c} 
+- Applicable Group Section Number(s): ALL 
+- Benefit Agreement Number: ALL 
+- Billing Profile Number: ALL 
+- Coverage Type for Benefit Agreement: ALL 
+- Cancellation Reason / Code: [Cancellation Code] 
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below. 
+
+Thank you,
+BCBS Account Management

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Account</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Account$External_ID__c</field>
+        </columns>
+        <columns>
+            <field>Account.Benefit_Agreements__r$Name</field>
+        </columns>
+        <columns>
+            <field>Account.Benefit_Agreements__r$Plan__c</field>
+        </columns>
+        <columns>
+            <field>Account.Benefit_Agreements__r$Product__c</field>
+        </columns>
+        <columns>
+            <field>Account.Benefit_Agreements__r$Effective_Date__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Account.Benefit_Agreements__r.BA_GS_Assignments__r$Number_Of_GS_Active_Health_Members__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Account$Name</column>
+                <isUnlocked>false</isUnlocked>
+                <operator>equals</operator>
+                <value>TENET HEALTHSYSTEM MEDICAL INC.</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Accounts with Benefit Agreements block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Accounts_with_Benefit_Agreements_and_Group_Section__c</reportType>
+        <scope>organization</scope>
+        <sortColumn>Account.Benefit_Agreements__r$Effective_Date__c</sortColumn>
+        <sortOrder>Desc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Account$Effective_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>a</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>Group_Section__c.Effective_Date__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Group_Section__c.Total_Active_Subscribers__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Group_Section__c.Name__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>TENET HEALTHSYSTEM MEDICAL INC.</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Accounts with Group Sections block 2</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>AccountCustomEntity$Group_Section__c</reportType>
+        <scope>organization</scope>
+        <sortColumn>Group_Section__c.Effective_Date__c</sortColumn>
+        <sortOrder>Desc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Account.Effective_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Account</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <name>Laura&apos;s Subscriber Report</name>
+    <reportType>Accounts_with_Benefit_Agreements_and_Group_Section__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

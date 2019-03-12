@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>GA Add - Service Only Request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GA Add Service Only Request</name>
+    <style>none</style>
+    <subject>GA Add - Service Only Request</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

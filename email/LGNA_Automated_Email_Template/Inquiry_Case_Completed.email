@@ -1,0 +1,6 @@
+Hello {!Case.GEMS_Submitter__c},
+
+Your Inquiry (Case #: {!Case.CaseNumber} ) has successfully been resolved. Please reach out to your Sales Solutions Liaison with any additional questions.
+
+Thank you,
+Sales Solutions Team

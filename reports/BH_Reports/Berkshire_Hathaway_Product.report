@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Parent</field>
+    </columns>
+    <columns>
+        <field>Account.Current_Products__r$Product__c.Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Current_Products__r$Simplified_Product__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>((1 OR 2 OR 3 OR 4 OR 6)) AND 5 AND 7</booleanFilter>
+        <criteriaItems>
+            <column>Account$Parent</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Berkshire Hathaway</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Parent</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Marmon Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Parent</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Mclane company</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Parent</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>scott fetzer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Name</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>scott fetzer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Description</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Berkshire Hathaway</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Name</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>kraft heinz</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Berkshire Hathaway Product</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Products_ENA__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

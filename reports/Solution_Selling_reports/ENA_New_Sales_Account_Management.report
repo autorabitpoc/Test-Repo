@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Total_Projected_Health_Contracts__c</field>
+    </columns>
+    <columns>
+        <field>Account$Total_Projected_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Account$Description</field>
+    </columns>
+    <columns>
+        <field>Account$Status__c</field>
+    </columns>
+    <columns>
+        <field>Account$Number_Of_Open_Opportunities__c</field>
+    </columns>
+    <description>This is an ENA Prospect Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Prospect_Non_BlueSTAR,Account.Group_Prospect_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Enterprise_National_Account__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Inactive,In Communication,Actively Engaged,Actively Purchasing,In Negotiations,Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Owner</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Melissa Tessier</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>ENA New Sales Account Management</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Account$Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account$LastActivityDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,291 @@
+<apex:page standardController="GEMS_Benefit_Agreement__c" extensions="GEMSCaptureBAsController" recordSetVar="v" sidebar="False" id="pg">
+   <script> 
+
+function setFocusOnLoad() {
+//alert('here');
+document.getElementById("TheForm").focus();
+
+
+}
+function setFocus() {
+//alert('here');
+document.getElementById("TheForm").focus();
+
+
+}
+
+</script>
+    <style type="text/css">
+    .dateFormat{
+       visibility:hidden;
+    }
+    </style>
+        <script type='text/javascript'>
+        
+       
+        function inputLimiter(e,allow) {
+                    var AllowableCharacters = '';
+        
+                    if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                    if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                    if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                    if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+        
+                    var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                    if (k!=13 && k!=8 && k!=0){
+                        if ((e.ctrlKey==false) && (e.altKey==false)) {
+                        return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                        } else {
+                        return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                } 
+                
+                
+                            
+                function validate() {
+                 var word = document.getElementById('{!$Component.TheForm.BA.newBATable.BANos.BANo}').value;
+                 alert('value is ');
+                 if (word.length > 4) {
+                     alert('BA No. length');
+                   return false; // keep form from submitting
+                 }
+                 return true;
+                }
+                
+               function checkCancel(rowNum,baId,CancelDate11){
+               // alert('here');
+                  var rowNumm = rowNum - 1;
+                  var ddDate = document.getElementById('pg:TheForm:BA:newBATable:'+rowNumm+':cDate').value ;
+                 // alert(''+ddDate);
+                  if(ddDate == null || ddDate == '') {
+                     alert('Please Enter Cancel Date.');
+                     
+                   //  document.getElementById('pg:TheForm:BA:newBATable:'+rowNumm +':CancelLink').addEventListener('click', checkCancel, false);
+                    return false;
+                }
+            else{
+                //nothing javascript: confirm('Are you sure you want to Cancel this BA?');
+                var r =confirm("Are you sure you want to Cancel this BA?");
+                if(r == true){
+                jsCancelRecord(rowNum,baId,CancelDate11);
+                return true;
+                
+                  // document.getElementById('pg:TheForm:BA:newBATable:'+rowNumm +':CancelLink').addEventListener('click', checkCancel, true);
+                     }
+                     
+                     else{
+                     return false;
+                     //   document.getElementById('pg:TheForm:BA:newBATable:'+rowNumm +':CancelLink').addEventListener('click', checkCancel, false);
+
+                     
+                     } 
+                  }
+                      
+                    
+                
+                
+                } 
+                
+                function jsCancelRecord(rowNum,id, dDate ){
+                   
+                  // alert(rowNum);
+                    var rowNumm = rowNum - 1 ;
+                   // alert(rowNumm);
+                    var ddDate = document.getElementById('pg:TheForm:BA:newBATable:'+rowNumm+':cDate').value ;
+                   // pg:TheForm:BA:newBATable:0:cDate
+                   // alert(ddDate);                       
+                    
+                   // alert(id);
+                     if(ddDate == null || ddDate == '') {
+                     //alert('Please enter Cancel Date');
+                     return null ;
+                    
+                    }
+                    else{
+                        ajaxCancelRecord(rowNum ,id, ddDate);
+                        
+                    }
+                    // alert(ddDate);
+                    
+                    
+                }
+                
+                function comp(){
+                hitme2();
+                }
+                function comp1(){
+                
+               //hitme();
+                }
+                
+        </script>
+        
+      <apex:form id="TheForm"> 
+              <apex:actionfunction name="hitme"  rerender="newBATable,panelWithVar"   >
+              
+              </apex:actionfunction>
+              
+               <apex:actionfunction name="hitme2" rerender="newBATable,panelWithVar"  >
+             
+              </apex:actionfunction>      
+                    
+            <apex:Actionfunction name="ajaxCancelRecord"  rerender="newBATable,panelWithVar" action="{!CancelRecord}"  oncomplete="comp1();" >
+                <apex:Param value=""  name="RN" />
+                <apex:Param value=""  name="RecordCan" />
+                <apex:param value=""  name="dDate" />
+               
+             </apex:Actionfunction>
+             
+            <apex:pageMessages id="pgMsgId"/>
+            <apex:pageBlock id="thePageBlock" title="Account Structure Case" >
+                <apex:pageBlockSection >
+                    <apex:outputField value="{!ParCase.Account.Name}" />
+                    <apex:outputField value="{!ParCase.Account.External_ID__c}"/>  
+                    <apex:outputField value="{!ParCase.GEMS_Case_Effective_Date__c}"/>
+                    <apex:outputField value="{!ParCase.HCSC_Division__c}"/>                
+                    <apex:outputField value="{!ParCase.GEMS_Submission_Type__c}"/>
+                    <apex:outputField value="{!ParCase.GEMS_Submission_Sub_Type__c}"/> 
+                    <apex:outputField value="{!ParCase.Market_Segment__c}"/>                               
+                    <apex:outputField value="{!ParCase.GEMS_Line_of_Business__c}"/>                
+                    <apex:outputField value="{!ParCase.Status}"/>
+                    <apex:outputField value="{!ParCase.GEMS_Account_Submission_Info__c}"/>
+                </apex:pageBlockSection>
+          </apex:pageBlock>
+         
+         <apex:commandLink value="Back to Account Structure Case" action="{!gotoCase}" style="color:blue" />
+         <br/>
+         
+          <apex:pageBlock id="BA" title="Benefit Agreement Details">
+                <apex:variable value="{!0}" var="rowNumber" />          
+                <apex:outputPanel id="panelWithVar">
+                    <apex:variable value="{!0}" var="rowNumber" />
+                </apex:outputPanel>
+                <apex:outputpanel id="pnl">
+                <apex:pageBlockTable id="newBATable" value="{!listOfBAs}" var="c" >
+                
+                    <apex:column headerValue="Assign" width="10px" >
+                        <apex:inputCheckbox value="{!c.isSelected}" style="display:{!IF((c.BA.IsCancelled__c == true   ),'none', 'inline')};" disabled="{!IF((c.BA.Has_Group_Sections__c == false && c.BA.IsNew__c == false ),'true', 'false')}"  />
+                    </apex:column>
+                    
+                    
+                    <apex:column headerValue="Action" width="10px">
+                        <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                        <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold" reRender="newBATable,panelWithVar" immediate="true" rendered="{!IF((c.BA.IsNew__c == true ),'true', 'false')}" >
+                            <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}"/>
+                            <apex:param name="p2" value="{!c.BA.Id}" assignTo="{!recordToDelete}"/>
+                        
+                        </apex:commandLink>
+    
+                        <apex:commandLink id="CancelLink" value="Cancel" status="loadstatus" style="color: #015BA7;font-weight:bold"  onclick="return checkCancel('{!rowNumber}','{!c.BA.Id}','{!c.BA.Cancel_Date__c}'); "   rendered="{!IF((c.BA.IsNew__c == false && c.BA.IsCancelled__c == false && c.BA.Has_Group_Sections__c == true),'true', 'false')}"   >
+                        <apex:param name="p4" value="true" assignTo="{!c.BA.IsCancelled__c}"/> 
+                        <apex:param name="p5" value="false" assignTo="{!c.isSelected}"/> 
+                        
+                          </apex:commandLink>  
+
+                    </apex:column>
+                
+                    <apex:column id="BANos" headerValue="BA No." width="10px">
+                        <apex:inputText id="BANo" value="{!c.BA.Name}" maxlength="4"   disabled="{!IF((c.BA.IsNew__c == false ),'true', 'false')}"  OnkeyPress="return inputLimiter(event, 'Numbers');" onkeydown="return validate();" style="width:30px"  />
+                    </apex:column>
+                    
+                    <apex:column headerValue="Product Type" width="35px">
+                        <apex:outputText value="{!c.BA.Product__r.Name}"    style="width:100px; display:{!IF((c.BA.IsNew__c == false ),'inline', 'none')};"/>
+                        
+                          <apex:inputField value="{!c.BA.Product__c}"    style="width:100px ; display:{!IF((c.BA.IsNew__c == true ),'inline', 'none')};"/>
+                        
+                    </apex:column>
+                    
+                    <!-- SFDC-9952 Added product code -->
+                    <apex:column headerValue="Product Code" width="35px">
+                        <apex:outputText value="{!c.BA.Product__r.ProductCode}"    style="width:100px; "/>                                               
+                    </apex:column>
+                                    
+                    <!-- SFDC-5071 Added element to display error message for BA Product type if required -->
+                    <apex:column headerValue="BA Product" width="20px">
+                        <apex:outputText value="{!c.BA.Product_Name__c}"  style="width:100px ; display:{!IF((c.BA.IsNew__c == false ),'inline', 'none')};"/>
+                        <apex:inputField value="{!c.BA.Plan__c}"    style="width:100px ; display:{!IF((c.BA.IsNew__c == true ),'inline', 'none')};"/>
+                        <apex:outputPanel rendered="{!c.prodTypeErr != null}">
+                        <div class="errorMsg"><strong>Error:</strong>{!c.prodTypeErr}</div>
+                        </apex:outputPanel>
+                    </apex:column>
+                   
+                   <!-- SFDC-3641 Enabled Description input box for both new and existing BAs -->
+                    <!--<apex:column headerValue="BA Description" width="30px">
+                        <apex:outputText value="{!c.BA.BA_Description__c}"   style="width:100px; display:{!IF((c.BA.IsNew__c == false ),'inline', 'none')}; "/>
+                        <apex:inputField value="{!c.BA.BA_Description__c}"  style="width:100px; display:{!IF((c.BA.IsNew__c == false ),'none', 'inline')}; "/>
+                    </apex:column> -->
+                    <apex:column headerValue="BA Description" width="30px">                       
+                          <apex:inputField value="{!c.BA.BA_Description__c}"  style="width:100px; "/>
+                    </apex:column>
+                    <apex:column headerValue="Eff Date" width="30px">
+                        
+                        <apex:outputText value="{0,date,MM/dd/yy}"  style="width:100px">
+                        <apex:Param value="{!c.BA.Effective_Date__c}" /> </apex:OutputText>
+                    </apex:column>
+    
+                    <apex:column headerValue="BAs for Downstream Processing" width="10px" rendered="{!If(ParCase.GEMS_Special_Handling__c == true,true,false)}">
+                        <apex:inputCheckbox value="{!c.BA.GEMS_BAs_SpHandling__c}" style="display:{!IF((c.BA.IsCancelled__c == true   ),'none', 'inline')};" disabled="{!IF((ParCase.Status == 'Client Approval Received' ),'true','false')}" rendered="{!If(ParCase.GEMS_Special_Handling__c == true,true,false)}"  />                                                                   
+                    </apex:column>
+                    
+                    <apex:column headerValue="Cancel Date" width="30px">
+                    
+                     <apex:outputText value="{0,date,MM/dd/yy}" style="width:100px; display:{!IF(( c.BA.IsCancelled__c == true  )  ,'inline', 'none')};" >
+                     <apex:Param value="{!c.BA.Cancel_Date__c}" /> </apex:OutputText> 
+                        <apex:inputField value="{!c.BA.Cancel_Date__c}" style="width:100px; display:{!IF(c.BA.IsCancelled__c == false    ,'inline', 'none')};" id="cDate" rendered="{! ((NOT(c.BA.IsNew__c)) && (NOT(c.BA.isCancelled__c))&& c.BA.Has_Group_Sections__c == true)}"  />
+                       
+                    </apex:column>
+                    
+                    <apex:column headerValue="BA Fund Type" width="15px">
+                        <apex:outputText value="{!c.BA.BA_Fund_Type__c}"  style="width:70px;  display:{!IF((c.BA.IsNew__c == false ),'inline', 'none')};" />
+                          <apex:inputField value="{!c.BA.BA_Fund_Type__c}" style="width:70px; display:{!IF((c.BA.IsNew__c == false ),'none', 'inline')};" >  
+                          <apex:actionSupport event="onchange"   oncomplete="setFocus();" reRender="newBATable,panelWithVar"  >
+                          </apex:actionSupport> 
+                          </apex:inputField>
+                        
+                    </apex:column>
+                    <apex:column headerValue="Schedule" width="3%"  rendered="{!If(ParCase.HCSC_Division__c == 'TX',true,false)}" >
+                        <apex:inputText value="{!c.BA.Schedule__c}" style="width:50px; display:{!IF((c.BA.IsNew__c == true),'inline', 'none')};"/>
+                        <apex:outputText value="{!c.BA.Schedule__c}" style="width:50px; display:{!IF((c.BA.IsNew__c == false),'inline', 'none')};"/>
+                    </apex:column>
+                                
+                    
+                    <apex:column headerValue="ID Card Type" width="3%" rendered="{!If((ParCase.HCSC_Division__c == 'IL'  )  ,true,false)}">
+                        <apex:inputText value="{!c.BA.ID_Card_Type__c}"  style="width:70px;display:{!IF((c.BA.IsNew__c == true),'inline', 'none')};"/>
+                        <apex:outputText value="{!c.BA.ID_Card_Type__c}"  style="width:70px;display:{!IF((c.BA.IsNew__c == false),'inline', 'none')};"/>
+                    </apex:column>
+                    
+                    <!--<apex:column headerValue="Billing Association" width="3%" >-->
+                <apex:column headerValue="Billing Association" width="3%" >
+                    <apex:inputField value="{!c.BA.Billing_Assoc__c}" style="width:100px" rendered="{!IF((c.BA.BA_Fund_Type__c != 'PREM' && c.BA.BA_Fund_Type__c != null), true, false)}"/> <!-- SFDC-6942
+                    <apex:outputText value="{!c.BA.Billing_Assoc__c}" style="width:100px" rendered="{!IF(( c.BA.IsNew__c == false ), true, false)}" / -->
+                </apex:column> 
+                    
+    
+                             </apex:pageBlockTable> 
+                </apex:outputpanel>            
+                <div id="AddNewButton">
+                        <apex:commandButton value="Add New" action="{!addBA}"  reRender="newBATable,panelWithVar"  >
+                        <apex:actionSupport event="onchange" oncomplete="setFocus();"  />
+                        </apex:commandButton>
+                </div>
+                
+                <center>
+                    <!--<apex:commandButton value="Save" action="{!saveBAs}"  reRender="newBATable,panelWithVar" />-->
+                    <apex:commandButton value="Save" action="{!saveBAs}" style="width:89px;margin: 10px;"  status="loadStatus" oncomplete="window.location.reload();" />
+                    <apex:commandButton value="Cancel" action="{!gotoCase}"  style="width:89px;margin: 10px;" immediate="true"/>                    
+                    <apex:commandButton style="float: right;width:120px;"   value="Assign Category" action="{!assignBAs}" />                    
+    
+                </center>
+               
+            </apex:pageBlock>
+            
+            <apex:commandLink value="Back to Account Structure Case" action="{!gotoCase}" style="color:blue"/>
+            
+        </apex:form>
+        <c:Gems_loader />
+         
+        
+    </apex:page>

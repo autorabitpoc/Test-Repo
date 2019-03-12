@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Account</field>
+        <field>Account_Number__c</field>
+        <field>CaseNumber</field>
+        <field>Owner</field>
+        <field>Account_Structure_Link__c</field>
+        <field>GEMS_Is_Eligibility_Required_Link__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>EEE_Queue</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>GEMS_CDHP_Operations_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <label>EEE + CDHP Approval</label>
+        <name>EEE_CDHP_Approval</name>
+    </approvalStep>
+    <description>GEMS Account Structure Approval process kicked off when both EEE &amp; CDHP are populated</description>
+    <emailTemplate>GEMS_Templates/GEMS_Account_Structure_Internal_Approval_Pending</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Internal Approval Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordType</field>
+            <operation>equals</operation>
+            <value>GEMS Account Structure</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>GEMS_Approval_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>GEMS_Update_Internal_Appd_Received_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>GEMS_Reject_Status_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>GEMS Acc Struct EEE+CDHP Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

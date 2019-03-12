@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object  is used to store request hub items that are showing from Lightning Request Hub UI. Each request hub item is a record of this object, there should be no more than 50 records. All fields defined in this object are ready only except Admin or Super Users as this object is only used in back end. Initial data will be loaded by dataloader and add  as needed after the initial load.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the request Item is active then checked, otherwise unchecked.</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Closed_YTD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if the request Item need to show Closed YTD count.</description>
+        <externalId>false</externalId>
+        <label>Closed YTD</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>provide information description about what is the request hub item.</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FavoriteColor__c</fullName>
+        <externalId>false</externalId>
+        <label>FavoriteColor</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>OrangeColor</fullName>
+                    <default>false</default>
+                    <label>OrangeColor</label>
+                </value>
+                <value>
+                    <fullName>GreyColor</fullName>
+                    <default>true</default>
+                    <label>GreyColor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LG_Group_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if Request Item is for LGNA Group Account. the label name is matching with Group Account record type name, do please don&apos;t change except the record type name is also changed from account.</description>
+        <externalId>false</externalId>
+        <label>LG Group Account</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Label__c</fullName>
+        <description>Label name of the request hub item that display on UI</description>
+        <externalId>false</externalId>
+        <label>Label</label>
+        <length>125</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Sale_Opp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checked if the request item is for New Sale opportunity. Label name is matching with New Sale Opportunity record type. so no change on field label.</description>
+        <externalId>false</externalId>
+        <label>New Sale</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Off_Cycle_Opp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if the request hub item is for Off Cycle Opportunity.  label name is matching with Off-Cycle opportunity record type name, so don&apos;t change the label field label except when opportunity record type name is changed.</description>
+        <externalId>false</externalId>
+        <label>Off-Cycle Change</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Open_Request__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>check if the request Item require open request count.</description>
+        <externalId>false</externalId>
+        <label>Open Request</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Prospect_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if the request hub item is needed to display for Prospect account. Label name is matching with prospect account record type. so no change on field label.</description>
+        <externalId>false</externalId>
+        <label>Prospect</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Opp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if the request item is for Renewal Opportunity. The label name is matching the renewal opp record type name &apos;Renewal&apos;, so please don&apos;t change except the record type name from opportunity is changed.</description>
+        <externalId>false</externalId>
+        <label>Renewal</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SG_Group_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>checked if the request hub item is needed to display for SG Group Account. The label name is matching with Group Account record type name, so please don&apos;t change except if the record type name is also changed from Account.</description>
+        <externalId>false</externalId>
+        <label>SG Group Account</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>The Object Name that the request is associated with. like Cancellation is from Account object.</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <length>125</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isFavorited__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>this field is used on UI as cache to mark the request Item to be favorite/unfavorite. It is not used to store data in table, so this field will be always empty.</description>
+        <externalId>false</externalId>
+        <label>isFavorited?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Request Hub Items</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Label__c</columns>
+        <columns>Closed_YTD__c</columns>
+        <columns>Open_Request__c</columns>
+        <columns>LG_Group_Account__c</columns>
+        <columns>Prospect_Account__c</columns>
+        <columns>New_Sale_Opp__c</columns>
+        <columns>Off_Cycle_Opp__c</columns>
+        <columns>Renewal_Opp__c</columns>
+        <columns>SG_Group_Account__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Group_Account</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Label__c</columns>
+        <columns>Closed_YTD__c</columns>
+        <columns>Open_Request__c</columns>
+        <columns>LG_Group_Account__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Active__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>LG_Group_Account__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Group Account</label>
+    </listViews>
+    <nameField>
+        <label>Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Request Hub Items</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

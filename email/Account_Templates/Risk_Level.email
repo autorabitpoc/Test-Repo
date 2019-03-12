@@ -1,0 +1,12 @@
+***Account Notification*** 
+
+Account Details 
+Account Name: {!Account.Name} 
+Risk Level: {!Account.Current_Risk_Level__c} 
+Risk Type: {!Account.Risk_Type__c} 
+Risk Reason: {!Account.Risk_Reason__c} 
+
+All of these three fields "Risk Level, Risk Type, and Risk Reason" should be updated within 90 days so they have the up-to-date information.
+
+
+Account Link: {!Account.Link}

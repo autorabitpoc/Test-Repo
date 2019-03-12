@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Competitor_Relationships1__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Competitor_Relationships1__r$Sliced_with__c</field>
+    </columns>
+    <columns>
+        <field>Account.Competitor_Relationships1__r.Competitor_Products__r$Sliced_Carveout__c</field>
+    </columns>
+    <columns>
+        <field>Account.Competitor_Relationships1__r.Competitor_Products__r$Product__c</field>
+    </columns>
+    <columns>
+        <field>Account.Competitor_Relationships1__r.Competitor_Products__r$Status__c</field>
+    </columns>
+    <description>Shows the amount of membership at each of your accounts that are currently with another carrier. Includes the associated product(s) that are with the carrier</description>
+    <filter>
+        <booleanFilter>(1 or 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>Account$District__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>240,407,754</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$External_ID__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IL240639,TX168101,TX178000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Competitor_Relationships1__r$Competitor_Account__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>J.P. General Split Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Carriers__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Account_Cluster_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

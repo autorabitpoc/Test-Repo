@@ -1,0 +1,92 @@
+<aura:component controller="ProspectingAppProducersListController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="accountProducers" type="Producer_Group_Association__c[]" default="[]"/>
+    
+    <aura:handler name="updateProdGroupAssocList" event="c:PROSPECTING_APP_UPDATE_PROD_GRP_LIST_EVT" action="{!c.updateProducerGroupAssocList}"/>
+    
+    <div>
+        <div aura:id="producerListLabel" class="slds-text-color--weak slds-show" style="float: left; font-size: 120%;">Producers Associated to Group</div>
+        <a aura:id="collapseProducerList" class="slds-hide" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevronup" size="x-small" alternativeText="Collapse List"/>
+        </a> 
+        <a aura:id="expandProducerList" class="slds-show" style="text-align: right;" onclick="{!c.toggleList}">
+            <lightning:icon iconName="utility:chevrondown" size="x-small" alternativeText="Expand List"/>
+        </a>
+    </div>
+    
+    <div aura:id="producerList" class="slds-card slds-hide">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning:icon iconName="standard:groups" alternativeText="Account Icon"/>
+                </div>
+                <div class="slds-media__body slds-truncate">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-text-link--reset">
+                            <span class="slds-text-heading--small">Producers Associated to Group ({!v.accountProducers.length})</span>
+                        </a>
+                    </h2>
+                </div>
+                <div style="display: none;">
+                   <button class="slds-button slds-button--neutral" onclick="{!c.openNewProdGrpAssocModal}">New Producer Association</button> 
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col" >
+                            <div class="slds-truncate" title="Producer Account">Producer Account</div>
+                        </th>
+                        <th scope="col" >
+                            <div class="slds-truncate" title="Producers Type">Producers Type</div>
+                        </th>
+                        <th scope="col" >
+                            <div class="slds-truncate" title="Producers Effective Date">Effective Date</div>
+                        </th>
+                        <th scope="col" >
+                            <div class="slds-truncate" title="Producers End Date">End Date</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Primary">Primary</div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="slds-scrollable--y" style="max-height: 25vh;">
+            <div class="slds-card__body">
+                <div class="slds-scrollable--y" style="height: 30%;">
+                    <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout">
+                        <thead>
+                            <aura:iteration items="{!v.accountProducers}" var="currentProd" indexVar="idx">
+                                <tr>
+                                    <th scope="col" >
+                                        <div class="slds-truncate" title="Producer Account">{!currentProd.Producer_Account__r.Name}</div>
+                                    </th>
+                                    <th scope="col" >
+                                        <div class="slds-truncate" title="Producer Type">{!currentProd.Producer_Type__c}</div>
+                                    </th>
+                                    <th scope="col" >
+                                        <div class="slds-truncate" title="Producer Effective Date">{!currentProd.Effective_Date__c}</div>
+                                    </th>
+                                    <th scope="col" >
+                                        <div class="slds-truncate" title="Producer End Date">{!currentProd.End_Date__c}</div>
+                                    </th>
+                                    <th scope="col" >
+                                        <ui:outputCheckbox value="{!currentProd.Primary__c}"/>
+                                    </th>
+                                </tr>
+                            </aura:iteration>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="slds-card__footer"><p></p></div>
+    </div>
+    
+    <div aura:id="prodGroupAssocModal"/>
+    <div><lightning:spinner aura:id="producerListSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

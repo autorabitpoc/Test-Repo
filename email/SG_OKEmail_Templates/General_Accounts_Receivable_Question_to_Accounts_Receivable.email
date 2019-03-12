@@ -1,0 +1,13 @@
+Hello,
+
+Below is a request for [Enter Type of Submission] effective for [Enter Date].The following information can be used to process this request:
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Applicable Group Section Number(s): [Enter Group Section Numbers]
+- If copy of bill, date from: [Enter Date From]
+- If copy of bill, date to: [Enter Date To]
+
+Please respond within 3 business days with the resolution of this request. For your information, a copy of my email correspondence is included below.
+
+Thank you for your help,

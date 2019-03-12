@@ -1,0 +1,6 @@
+Hi, 
+A new comment has been added to Quote Request {!Quote_Request_Summary__c.Name}.  Please review and respond if needed. 
+
+{!Quote_Request_Comment__c.Comment_box__c}
+
+For more detail, go to {!Quote_Request_Comment__c.Link}

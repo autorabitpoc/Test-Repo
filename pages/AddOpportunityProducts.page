@@ -1,0 +1,205 @@
+<apex:page sidebar="true" showheader="true" standardcontroller="Opportunity_Product__c" extensions="AddOpportunityProductsController" recordsetvar="v">
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js">
+        </script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('[class*= "Status__c"]').each(function(index,data) {
+                var feeName = $(this).attr('class');            
+                var rowNumber = feeName.split('-')[1];
+                var status = $(this).val();
+                if(status == 'Won'){
+                    $(".Account__c-" + rowNumber).attr('readonly', 'readonly');
+                    $(".Account__c-" + rowNumber).eq(1).attr('onclick','return false;');
+                } else if(status == 'Lost'){
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');                   
+                } else {
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');                     
+                }             
+            });
+
+            var oppRecType = "{!opportunityObj.RecordType.Name}";
+            if(oppRecType == 'New Sale'){
+                $('[class*= "Projected_Contracts__c"]').each(function(index,data) {
+                    var feeName = $(this).attr('class');             
+                    var rowNumber = feeName.split('-')[1];
+                    var value = $(this).val();                     
+                    var projmembrs = value.replace(',','').replace(',','').replace(',',''); 
+                     var valueparse = Number(projmembrs);                   
+                    $(".Projected_Members__c-" + rowNumber).attr('readonly', 'readonly');
+                    $(".Projected_Members__c-" + rowNumber).val(valueparse * 2);                   
+                });
+            }
+
+        });   
+        
+        var oppRecType = "{!opportunityObj.RecordType.Name}";
+
+        function checkStatusForWinningCompetitor(){
+
+             $('[class*= "Status__c"]').each(function(index,data) {
+                var feeName = $(this).attr('class');             
+                var rowNumber = feeName.split('-')[1];
+                var status = $(this).val();
+                if(status == 'Won'){
+                    $(".Account__c-" + rowNumber).attr('readonly', 'readonly');
+                    $(".Account__c-" + rowNumber).eq(1).attr('onclick','return false;');
+                } else if(status == 'Lost'){
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');
+                } else {
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');
+                }            
+            });
+
+            if(oppRecType == 'New Sale'){
+                $('[class*= "Projected_Contracts__c"]').each(function(index,data) {
+                    var feeName = $(this).attr('class');             
+                    var rowNumber = feeName.split('-')[1];
+                    var value = $(this).val();                    
+                    var projmembrs = value.replace(',','').replace(',','').replace(',',''); 
+                     var valueparse = Number(projmembrs);
+                    $(".Projected_Members__c-" + rowNumber).attr('readonly', 'readonly');
+                    $(".Projected_Members__c-" + rowNumber).val(valueparse * 2);               
+                });
+            }
+        }
+
+        function checkForBenefitAgreementCondition(fieldName,rowNumber,recordId){
+
+            if(fieldName == 'Benefit_Agreement__c'){
+                getTheUpdatedMembersCount(rowNumber,recordId);
+            }
+
+            if(fieldName == 'Status__c'){
+                if(recordId == 'Won'){
+                    $(".Win_Probability__c-" + rowNumber).val('100');
+                    $(".Account__c-" + rowNumber).attr('readonly', 'readonly').val('');
+                    $(".Account__c-" + rowNumber).eq(1).attr("onclick","return false;");
+                } else if (recordId == 'Lost'){
+                    $(".Win_Probability__c-" + rowNumber).val('0');
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');
+                } else {
+                    $(".Win_Probability__c-" + rowNumber).val({!winProb});
+                    $(".Account__c-" + rowNumber).removeAttr('readonly onclick');
+                }
+            }
+
+            if(oppRecType == 'New Sale'){
+                if(fieldName == 'Projected_Contracts__c'){                    
+                    var projmembrs = recordId.replace(',','').replace(',','').replace(',',''); 
+                     var valueparse = Number(projmembrs);
+                    $(".Projected_Members__c-" + rowNumber).attr('readonly', 'readonly');
+                    $(".Projected_Members__c-" + rowNumber).val(valueparse * 2);         
+                }
+            }
+        }
+
+        function openLookup(baseURL, width, modified, searchParam){
+            var originalbaseURL = baseURL;
+            var originalwidth = width;
+            var originalmodified = modified;
+            var originalsearchParam = searchParam;
+
+            var lookupType = baseURL.substr(baseURL.length-3, 3);
+            var isCustomLookup = false;
+  
+            if(lookupType != "001"){
+                isCustomLookup = true;
+                var urlArr = baseURL.split("?")[1];
+                var urlParams = urlArr.split('&');
+                //Reset baseURL
+                baseURL = "/apex/SimplifiedProductLookup?"
+                //Extract and transform urlParams
+                for(i = 0; i < urlParams.length; i++){
+                    var param = urlParams[i].split('=');
+                    baseURL = baseURL + '&' + param[0] + '=' + param[1];
+                }
+                //Add recordType as a param
+                baseURL = baseURL + "&id=" + escapeUTF("{!opportunityId}");
+                //If the user types something in the lookup, modified will be 1
+                //If so, add the entered searchParam to the URL
+                if (modified == '1') {
+                    baseURL = baseURL + searchParam;
+                }
+            }
+            //Open the URL as a lookup-type window
+            if(isCustomLookup == true){
+                openPopup(baseURL, "lookup", 350, 480, "width="+width+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=yes", true);
+            } else {
+                if(modified == '1'){
+                    originalbaseURL = originalbaseURL + originalsearchParam;
+                }
+                openPopup(originalbaseURL, "lookup", 350, 480, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+            }
+        }
+
+    </script>
+    <apex:form >
+        <apex:actionfunction name="getTheUpdatedMembersCount" action="{!getTheUpdatedMembersCount}" immediate="true" rerender="thePageBlock,pgMsgId">
+            <apex:param name="rowCount" assignto="{!rowCount}" value="" />
+            <apex:param name="BARecordId" assignto="{!BARecordId}" value="" />
+        </apex:actionfunction>
+        <apex:pagemessages id="pgMsgId" />
+
+        <apex:pageblock rendered="{!hasEditAccess}" id="thePageBlock" title="Add Opportunity Products">
+
+
+            <apex:variable value="{!0}" var="rowNumber" />
+
+            <apex:outputpanel id="panelWithVar">
+                <apex:variable value="{!0}" var="rowNumber" />
+            </apex:outputpanel>
+
+            <apex:pageblocktable id="newOppProductTable" value="{!listOfOpportunityProducts}" var="newOpportunityProductObj">
+
+                <apex:column headervalue="Select" width="3%">
+                    <apex:inputcheckbox value="{!newOpportunityProductObj.isSelected}" />
+                </apex:column>
+
+                <apex:column headervalue="Action" width="3%">
+                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                    <apex:commandlink action="{!removeRow}" oncomplete="checkStatusForWinningCompetitor();" value="Del" style="color: #015BA7;font-weight:bold" rerender="newOppProductTable,panelWithVar,pgMsgId" immediate="true" rendered="{!NOT(newOpportunityProductObj.benefitAgreementCheck)}">
+                        <apex:param name="p1" value="{!rowNumber}" assignto="{!numberOfRowToRemove}" />
+                        <apex:param name="p2" value="{!newOpportunityProductObj.opportunityProductObj.Id}" assignto="{!recordToDelete}" />
+                    </apex:commandlink>
+                </apex:column>
+
+                <apex:repeat value="{!fields}" var="f">
+                    <apex:column headervalue="{!f.label}">
+                        <apex:outputfield value="{!newOpportunityProductObj.opportunityProductObj[f]}" rendered="{!IF(AND(f.Label =='Benefit Agreement',newOpportunityProductObj.benefitAgreementCheck),true,false)}" />
+                        <apex:inputfield onchange="checkForBenefitAgreementCondition('{!f.FieldPath}',{!rowNumber},this.value);" rendered="{!IF(OR(AND(f.Label =='Benefit Agreement',!newOpportunityProductObj.benefitAgreementCheck),f.Label !='Benefit Agreement'),true,false)}" value="{!newOpportunityProductObj.opportunityProductObj[f]}" required="{!f.required}" styleclass="{!f.FieldPath}-{!rowNumber}" />                       
+                    </apex:column>                     
+                </apex:repeat>
+                
+                <!-- SFDC-5217 - 07/2017 - BEGIN -->
+                <apex:column headerValue="Product Tracking" >                  
+                    <!-- BUTTON TO CREATE A NEW PRODUCT TRACKING RECORD : EITHER/OR AS ONLY 1 WILL DISPLAY -->
+                    <apex:commandButton value="Pharmacy Tracking" action="{!URLFOR($Action.Product_Tracking__c.New,null,[retURL=$Page.AddOpportunityProducts+'?opportunityId='+newOpportunityProductObj.opportunityProductObj.Opportunity_Name__c, CF00N0b000003CxTl=newOpportunityProductObj.opportunityProductObj.RX__c, CF00N0b000003CxTl_lkid= newOpportunityProductObj.opportunityProductObj.Id])}" title="Pharmacy Tracking" rendered="{!AND((newOpportunityProductObj.opportunityProductObj.Status__c=='Lost'),($Setup.RX_Tracking_Button_Access__c.Is_Visible__c),(CONTAINS(newOpportunityProductObj.opportunityProductObj.RX_Tracking_Id__c,'NONE')),OR(CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'RX'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'Rx'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'rX'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'rx')))}"/>
+                    <!-- BUTTON TO EDIT AN EXISTING PRODUCT TRACKING RECORD : EITHER/OR AS ONLY 1 WILL DISPLAY -->
+                    <apex:commandButton value="Pharmacy Tracking" action="{!URLFOR($Action.Product_Tracking__c.Edit,newOpportunityProductObj.opportunityProductObj.RX_Tracking_Id__c,[saveURL='/'+newOpportunityProductObj.opportunityProductObj.RX_Tracking_Id__c,retURL=$Page.AddOpportunityProducts+'?opportunityId='+newOpportunityProductObj.opportunityProductObj.Opportunity_Name__c, CF00N0b000003CxTl=newOpportunityProductObj.opportunityProductObj.RX__c, CF00N0b000003CxTl_lkid= newOpportunityProductObj.opportunityProductObj.Id])}" title="Pharmacy Tracking" rendered="{!AND((newOpportunityProductObj.opportunityProductObj.Status__c=='Lost'),($Setup.RX_Tracking_Button_Access__c.Is_Visible__c),(NOT(CONTAINS(newOpportunityProductObj.opportunityProductObj.RX_Tracking_Id__c,'NONE'))),OR(CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'RX'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'Rx'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'rX'),CONTAINS(newOpportunityProductObj.opportunityProductObj.RX__c,'rx')))}"/>
+                </apex:column>
+                <!-- SFDC-5217 - 07/2017 - END -->
+
+            </apex:pageblocktable>
+
+            <div id="AddNewButton">
+                <apex:commandbutton value="Add New" action="{!AddNewOpportunityProduct}" oncomplete="checkStatusForWinningCompetitor();" rerender="newOppProductTable,panelWithVar, pgMsgId" />
+            </div>
+            <br />
+            <center>
+                <apex:commandbutton value="Save" action="{!saveOpportunityProducts}" />
+                <apex:commandbutton value="Cancel" action="{!gotoOpportunity}" immediate="true" />
+            </center>
+
+        </apex:pageblock>
+
+        <apex:outputpanel rendered="{!NOT(hasEditAccess)}">
+            <apex:commandlink action="{!gotoOpportunity}" value="<< Back to Opportunity" />
+        </apex:outputpanel>
+        
+    </apex:form>
+</apex:page>

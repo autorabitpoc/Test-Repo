@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Account</field>
+        <field>Account_Number__c</field>
+        <field>CaseNumber</field>
+        <field>Owner</field>
+        <field>GEMS_Account_Submission_Info__c</field>
+        <field>GEMS_Type__c</field>
+        <field>GEMS_Case_Details_Link__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>GEMS_Quality_Reviewer__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Case.GEMS_Quality_Reviewer__c</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>GEMS Account Setup QR Approval</label>
+        <name>GEMS_Account_Setup_QR_Approval</name>
+    </approvalStep>
+    <description>GEMS Account setup quality reviewer approval process</description>
+    <emailTemplate>GEMS_Templates/GEMS_Account_Setup_QR_Approval</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Case.RecordType</field>
+            <operation>equals</operation>
+            <value>GEMS Account Setup</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>QR Approval Pending</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>GEMS_Account_Setup_QR_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>GEMS_QR_Approved_checkbox_Update</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Account_Setup_QR_Approval_Rejection</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>GEMS_Account_Setup_QR_Rejection</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>GEMS Account Setup QR Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

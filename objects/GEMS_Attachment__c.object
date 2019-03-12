@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AttachmentUrl__c</fullName>
+        <externalId>false</externalId>
+        <label>AttachmentUrl</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Attachment__c</fullName>
+        <externalId>false</externalId>
+        <label>Attachment</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BA_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>BA Info</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>GEMS  Attachments</relationshipLabel>
+        <relationshipName>GEMS_Attachments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>File_Creation_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>File Creation Date</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Last_Modified_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>File Last Modified Date</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Modified_By__c</fullName>
+        <externalId>false</externalId>
+        <label>File Modified By</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>File Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>File URL</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Level__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The Level tells user whether account level or Benefit agreement level</inlineHelpText>
+        <label>Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Submission</fullName>
+                    <default>true</default>
+                    <label>Account Submission</label>
+                </value>
+                <value>
+                    <fullName>Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>Benefit Agreement</label>
+                </value>
+                <value>
+                    <fullName>--None--</fullName>
+                    <default>false</default>
+                    <label>--None--</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SharePointExtId__c</fullName>
+        <externalId>false</externalId>
+        <label>SharePointExtId</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ABS</fullName>
+                    <default>false</default>
+                    <label>ABS</label>
+                </value>
+                <value>
+                    <fullName>ACA CALCULATORS</fullName>
+                    <default>false</default>
+                    <label>ACA CALCULATORS</label>
+                </value>
+                <value>
+                    <fullName>ACCOUNT CHANGE REQUEST FORM</fullName>
+                    <default>false</default>
+                    <label>ACCOUNT CHANGE REQUEST FORM</label>
+                </value>
+                <value>
+                    <fullName>ACCOUNT STRUCTURE</fullName>
+                    <default>false</default>
+                    <label>ACCOUNT STRUCTURE</label>
+                </value>
+                <value>
+                    <fullName>ACH/WIRE FORM</fullName>
+                    <default>false</default>
+                    <label>ACH/WIRE FORM</label>
+                </value>
+                <value>
+                    <fullName>ADDENDUM TO BPA FOR AFFILIATES</fullName>
+                    <default>false</default>
+                    <label>ADDENDUM TO BPA FOR AFFILIATES</label>
+                </value>
+                <value>
+                    <fullName>ADMINISTRATIVE SERVICE AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>ADMINISTRATIVE SERVICE AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>ASO AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>ASO AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>ASO BENEFIT PROG APP (BPA)</fullName>
+                    <default>false</default>
+                    <label>ASO BENEFIT PROG APP (BPA)</label>
+                </value>
+                <value>
+                    <fullName>ASO MANDATE CHECKLIST</fullName>
+                    <default>false</default>
+                    <label>ASO MANDATE CHECKLIST</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ADHOC MEETING MINUTES</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ADHOC MEETING MINUTES</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT BOOKLETS / CERTIFICATES</fullName>
+                    <default>false</default>
+                    <label>BENEFIT BOOKLETS / CERTIFICATES</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT EDIT TOOL</fullName>
+                    <default>false</default>
+                    <label>BENEFIT EDIT TOOL</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT MATRIX</fullName>
+                    <default>false</default>
+                    <label>BENEFIT MATRIX</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT PROG DESCRIPTION-DENTAL</fullName>
+                    <default>false</default>
+                    <label>BENEFIT PROG DESCRIPTION-DENTAL</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT PROGRAM DESCRIPTION-BPD</fullName>
+                    <default>false</default>
+                    <label>BENEFIT PROGRAM DESCRIPTION-BPD</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT WALLET DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>BENEFIT WALLET DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>BINDER CHECK</fullName>
+                    <default>false</default>
+                    <label>BINDER CHECK</label>
+                </value>
+                <value>
+                    <fullName>BPA - ASO SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - ASO SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - ASO UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - ASO UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - DENTAL SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - DENTAL SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - DENTAL UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - DENTAL UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HCA SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HCA SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HCA UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HCA UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HEALTH SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HEALTH SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - HEALTH UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - HEALTH UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - SIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPA - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>BPA - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>BPS</fullName>
+                    <default>false</default>
+                    <label>BPS</label>
+                </value>
+                <value>
+                    <fullName>BROKER TRANS/AOR</fullName>
+                    <default>false</default>
+                    <label>BROKER TRANS/AOR</label>
+                </value>
+                <value>
+                    <fullName>BUILD A PLAN-BAP</fullName>
+                    <default>false</default>
+                    <label>BUILD A PLAN-BAP</label>
+                </value>
+                <value>
+                    <fullName>BUSINESS ASSOC AGREEMENT-BAA</fullName>
+                    <default>false</default>
+                    <label>BUSINESS ASSOC AGREEMENT-BAA</label>
+                </value>
+                <value>
+                    <fullName>CANCELLATION FORM</fullName>
+                    <default>false</default>
+                    <label>CANCELLATION FORM</label>
+                </value>
+                <value>
+                    <fullName>CANCELLATION LETTER</fullName>
+                    <default>false</default>
+                    <label>CANCELLATION LETTER</label>
+                </value>
+                <value>
+                    <fullName>CBSR</fullName>
+                    <default>false</default>
+                    <label>CBSR</label>
+                </value>
+                <value>
+                    <fullName>CLAIMS EXPERIENCE ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>CLAIMS EXPERIENCE ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>COBRA ADMINISTRATOR CONTRACTS</fullName>
+                    <default>false</default>
+                    <label>COBRA ADMINISTRATOR CONTRACTS</label>
+                </value>
+                <value>
+                    <fullName>COBRA FULL SERVICE CONTRACT</fullName>
+                    <default>false</default>
+                    <label>COBRA FULL SERVICE CONTRACT</label>
+                </value>
+                <value>
+                    <fullName>COBRA TRANSMITTAL FORM</fullName>
+                    <default>false</default>
+                    <label>COBRA TRANSMITTAL FORM</label>
+                </value>
+                <value>
+                    <fullName>COMMISSION FORM</fullName>
+                    <default>false</default>
+                    <label>COMMISSION FORM</label>
+                </value>
+                <value>
+                    <fullName>DISPOSITION SUMMARY</fullName>
+                    <default>false</default>
+                    <label>DISPOSITION SUMMARY</label>
+                </value>
+                <value>
+                    <fullName>EMAIL DOCUMENTATION</fullName>
+                    <default>false</default>
+                    <label>EMAIL DOCUMENTATION</label>
+                </value>
+                <value>
+                    <fullName>EMPLOYER GROUP INFO (EGI) MSP</fullName>
+                    <default>false</default>
+                    <label>EMPLOYER GROUP INFO (EGI) MSP</label>
+                </value>
+                <value>
+                    <fullName>ENROLLMENT CENSUS</fullName>
+                    <default>false</default>
+                    <label>ENROLLMENT CENSUS</label>
+                </value>
+                <value>
+                    <fullName>E-REVIEW FORMS / APPROVAL</fullName>
+                    <default>false</default>
+                    <label>E-REVIEW FORMS / APPROVAL</label>
+                </value>
+                <value>
+                    <fullName>ERISA</fullName>
+                    <default>false</default>
+                    <label>ERISA</label>
+                </value>
+                <value>
+                    <fullName>EXCESS LOSS AGREEMENT COST</fullName>
+                    <default>false</default>
+                    <label>EXCESS LOSS AGREEMENT COST</label>
+                </value>
+                <value>
+                    <fullName>EXCESS LOSS POLICY APPLICATION</fullName>
+                    <default>false</default>
+                    <label>EXCESS LOSS POLICY APPLICATION</label>
+                </value>
+                <value>
+                    <fullName>EXPLANATION OF PAPERWORK</fullName>
+                    <default>false</default>
+                    <label>EXPLANATION OF PAPERWORK</label>
+                </value>
+                <value>
+                    <fullName>FEAK REQUEST SHEET</fullName>
+                    <default>false</default>
+                    <label>FEAK REQUEST SHEET</label>
+                </value>
+                <value>
+                    <fullName>FILINGS</fullName>
+                    <default>false</default>
+                    <label>FILINGS</label>
+                </value>
+                <value>
+                    <fullName>FLEX HSA EMPLOYER DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>FLEX HSA EMPLOYER DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>FLEX HSA SETUP FORM</fullName>
+                    <default>false</default>
+                    <label>FLEX HSA SETUP FORM</label>
+                </value>
+                <value>
+                    <fullName>FULLTIME STATUS CERT OWN/PART/PR</fullName>
+                    <default>false</default>
+                    <label>FULLTIME STATUS CERT OWN/PART/PR</label>
+                </value>
+                <value>
+                    <fullName>GRANDFATHERED CERT FORM - SIGNED</fullName>
+                    <default>false</default>
+                    <label>GRANDFATHERED CERT FORM - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>GRANDFATHERED CERT FORM - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>GRANDFATHERED CERT FORM - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>GROUP ADMINISTRATION DOC-GAD</fullName>
+                    <default>false</default>
+                    <label>GROUP ADMINISTRATION DOC-GAD</label>
+                </value>
+                <value>
+                    <fullName>GROUP PROCESSING FORM</fullName>
+                    <default>false</default>
+                    <label>GROUP PROCESSING FORM</label>
+                </value>
+                <value>
+                    <fullName>HCA ASA FORM</fullName>
+                    <default>false</default>
+                    <label>HCA ASA FORM</label>
+                </value>
+                <value>
+                    <fullName>HIGHLIGHT SHEET</fullName>
+                    <default>false</default>
+                    <label>HIGHLIGHT SHEET</label>
+                </value>
+                <value>
+                    <fullName>HIPAA EXEMPTION</fullName>
+                    <default>false</default>
+                    <label>HIPAA EXEMPTION</label>
+                </value>
+                <value>
+                    <fullName>HIPAA FORMS</fullName>
+                    <default>false</default>
+                    <label>HIPAA FORMS</label>
+                </value>
+                <value>
+                    <fullName>HMO PROVIDER SELECTION FORM</fullName>
+                    <default>false</default>
+                    <label>HMO PROVIDER SELECTION FORM</label>
+                </value>
+                <value>
+                    <fullName>HOLD HARMLESS AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>HOLD HARMLESS AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>H-REVIEW FORMS / APPROVAL</fullName>
+                    <default>false</default>
+                    <label>H-REVIEW FORMS / APPROVAL</label>
+                </value>
+                <value>
+                    <fullName>HSA BANK DISCOVERY FORM</fullName>
+                    <default>false</default>
+                    <label>HSA BANK DISCOVERY FORM</label>
+                </value>
+                <value>
+                    <fullName>ICCA</fullName>
+                    <default>false</default>
+                    <label>ICCA</label>
+                </value>
+                <value>
+                    <fullName>IL SG COVER SHEET FOR NEW BUS</fullName>
+                    <default>false</default>
+                    <label>IL SG COVER SHEET FOR NEW BUS</label>
+                </value>
+                <value>
+                    <fullName>INCENTIVE MATRIX VBID</fullName>
+                    <default>false</default>
+                    <label>INCENTIVE MATRIX VBID</label>
+                </value>
+                <value>
+                    <fullName>INIT PREM PAYMENT FORM</fullName>
+                    <default>false</default>
+                    <label>INIT PREM PAYMENT FORM</label>
+                </value>
+                <value>
+                    <fullName>MEMBERSHIP FILE</fullName>
+                    <default>false</default>
+                    <label>MEMBERSHIP FILE</label>
+                </value>
+                <value>
+                    <fullName>MHPAEA FORM</fullName>
+                    <default>false</default>
+                    <label>MHPAEA FORM</label>
+                </value>
+                <value>
+                    <fullName>MSP</fullName>
+                    <default>false</default>
+                    <label>MSP</label>
+                </value>
+                <value>
+                    <fullName>MSP/EGI FORM</fullName>
+                    <default>false</default>
+                    <label>MSP/EGI FORM</label>
+                </value>
+                <value>
+                    <fullName>NETWORK DISCOUNT EXHIBIT</fullName>
+                    <default>false</default>
+                    <label>NETWORK DISCOUNT EXHIBIT</label>
+                </value>
+                <value>
+                    <fullName>NEW GROUP ACTIVITY SHEET</fullName>
+                    <default>false</default>
+                    <label>NEW GROUP ACTIVITY SHEET</label>
+                </value>
+                <value>
+                    <fullName>NEW GROUP SALES CHECKLIST</fullName>
+                    <default>false</default>
+                    <label>NEW GROUP SALES CHECKLIST</label>
+                </value>
+                <value>
+                    <fullName>NON-HMO CERTIFICATION FORM</fullName>
+                    <default>false</default>
+                    <label>NON-HMO CERTIFICATION FORM</label>
+                </value>
+                <value>
+                    <fullName>NON PLAN LETTER</fullName>
+                    <default>false</default>
+                    <label>NON PLAN LETTER</label>
+                </value>
+                <value>
+                    <fullName>OTHER DOCUMENTATION</fullName>
+                    <default>false</default>
+                    <label>OTHER DOCUMENTATION</label>
+                </value>
+                <value>
+                    <fullName>PARTIAL BENEFIT MATRIX</fullName>
+                    <default>false</default>
+                    <label>PARTIAL BENEFIT MATRIX</label>
+                </value>
+                <value>
+                    <fullName>PERFORMANCE GUARANTEE - SIGNED</fullName>
+                    <default>false</default>
+                    <label>PERFORMANCE GUARANTEE - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>PERFORMANCE GUARANTEE - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>PERFORMANCE GUARANTEE - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>PREMIUM RECEIPT FORM</fullName>
+                    <default>false</default>
+                    <label>PREMIUM RECEIPT FORM</label>
+                </value>
+                <value>
+                    <fullName>PRESCREEN COVERSHEET</fullName>
+                    <default>false</default>
+                    <label>PRESCREEN COVERSHEET</label>
+                </value>
+                <value>
+                    <fullName>PRIOR CARRIER BILL</fullName>
+                    <default>false</default>
+                    <label>PRIOR CARRIER BILL</label>
+                </value>
+                <value>
+                    <fullName>PRODUCT CONFIRM GRP ELIGIBILITY</fullName>
+                    <default>false</default>
+                    <label>PRODUCT CONFIRM GRP ELIGIBILITY</label>
+                </value>
+                <value>
+                    <fullName>PROPOSAL</fullName>
+                    <default>false</default>
+                    <label>PROPOSAL</label>
+                </value>
+                <value>
+                    <fullName>PROXY CARD</fullName>
+                    <default>false</default>
+                    <label>PROXY CARD</label>
+                </value>
+                <value>
+                    <fullName>RATE ONLY RENEWAL ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>RATE ONLY RENEWAL ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>RATE PAGE (ASO FEE EXHIB)</fullName>
+                    <default>false</default>
+                    <label>RATE PAGE (ASO FEE EXHIB)</label>
+                </value>
+                <value>
+                    <fullName>RATES PAGE</fullName>
+                    <default>false</default>
+                    <label>RATES PAGE</label>
+                </value>
+                <value>
+                    <fullName>RDS AGREEMENT</fullName>
+                    <default>false</default>
+                    <label>RDS AGREEMENT</label>
+                </value>
+                <value>
+                    <fullName>RECAP FORM</fullName>
+                    <default>false</default>
+                    <label>RECAP FORM</label>
+                </value>
+                <value>
+                    <fullName>RELIGIOUS EMPLOYER EXEMPT FORM</fullName>
+                    <default>false</default>
+                    <label>RELIGIOUS EMPLOYER EXEMPT FORM</label>
+                </value>
+                <value>
+                    <fullName>RENEWAL ACTIVITY SHEET</fullName>
+                    <default>false</default>
+                    <label>RENEWAL ACTIVITY SHEET</label>
+                </value>
+                <value>
+                    <fullName>SBC</fullName>
+                    <default>false</default>
+                    <label>SBC</label>
+                </value>
+                <value>
+                    <fullName>SBC ADDENDUM</fullName>
+                    <default>false</default>
+                    <label>SBC ADDENDUM</label>
+                </value>
+                <value>
+                    <fullName>SSOB/BENEFIT HIGHLIGHT/MATRIX</fullName>
+                    <default>false</default>
+                    <label>SSOB/BENEFIT HIGHLIGHT/MATRIX</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS AGREEMENT - SIGNED</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS AGREEMENT - SIGNED</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS AGREEMENT - UNSIGNED</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS AGREEMENT - UNSIGNED</label>
+                </value>
+                <value>
+                    <fullName>STOP LOSS APPLICATION</fullName>
+                    <default>false</default>
+                    <label>STOP LOSS APPLICATION</label>
+                </value>
+                <value>
+                    <fullName>SUMMARY OF BENEFIT</fullName>
+                    <default>false</default>
+                    <label>SUMMARY OF BENEFIT</label>
+                </value>
+                <value>
+                    <fullName>TDI REPORTS</fullName>
+                    <default>false</default>
+                    <label>TDI REPORTS</label>
+                </value>
+                <value>
+                    <fullName>VOLUNTARY GROUP DENTAL CONTRACT</fullName>
+                    <default>false</default>
+                    <label>VOLUNTARY GROUP DENTAL CONTRACT</label>
+                </value>
+                <value>
+                    <fullName>WAGE &amp; TAX</fullName>
+                    <default>false</default>
+                    <label>WAGE &amp; TAX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>View__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Attachment__c) , HYPERLINK(AttachmentUrl__c,&quot;View&quot;) , HYPERLINK (&quot;/servlet/servlet.FileDownload?file=&quot;+Attachment__c,&quot;View&quot;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>View</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>GEMS Attachments</label>
+    <nameField>
+        <label>Attachment Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>GEMS  Attachments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Attachment</fullName>
+        <availability>online</availability>
+        <description>Display in existing window without sidebar or header</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Add Attachment</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!URLFOR(&quot;/apex/GEMSUploadAttachment?Id=&quot;+Case.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_File</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>View File</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var url = &apos;{!GEMS_Attachment__c.File_URL__c}&apos;;
+if(url){
+window.open(url,&apos;_blank&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

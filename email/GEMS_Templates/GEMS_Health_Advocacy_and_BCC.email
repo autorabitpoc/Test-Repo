@@ -1,0 +1,10 @@
+An Account Submission case is active for {!Case.Account} - {!Case.Account_Number__c} and Health Advocacy Solutions was selected as a product. Please take appropriate action to complete. 
+
+Account Name : {!Case.Account} - {!Case.Account_Number__c} 
+
+Case Owner : {!Case.OwnerFullName} 
+
+Case Number : {!Case.CaseNumber} 
+
+
+Thank you.

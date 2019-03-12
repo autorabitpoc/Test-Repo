@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <columns>
+        <field>Contact.AccountContactRelations$Name</field>
+    </columns>
+    <columns>
+        <field>Contact.AccountContactRelations.Producer_Association__r$Name</field>
+    </columns>
+    <columns>
+        <field>Contact$Account_Address_Sequence_Number__c</field>
+    </columns>
+    <description>Account Address Sequence Number</description>
+    <format>Tabular</format>
+    <name>Contacts - Account Sequence</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contacts_with_Producer_Accounts_and_Groups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Contact$Account_Address_Sequence_Number__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Contact$LastActivityDate</dateColumn>
+        <endDate>2017-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-09-01</startDate>
+    </timeFrameFilter>
+</Report>

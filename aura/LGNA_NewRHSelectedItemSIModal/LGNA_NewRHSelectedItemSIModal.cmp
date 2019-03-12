@@ -1,0 +1,56 @@
+<aura:component controller="LGNA_NewRequestHubItemController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="openModelConfirm" type="boolean" default="false"/>
+    <aura:attribute name="selectedItem" type="String" access="public"/>
+    <aura:attribute name="recordId" type="String" access="public"/>
+    <aura:attribute name="SIRecordTypeId" type="String" access="public"/>
+    <aura:attribute name="oppDetails" type="Opportunity" default="{'sobjectType':'Opportunity', 
+                                                                  'Name':'Opp123'}"/>
+    
+    <aura:attribute name="sObjectName" type="String" access="public"/>
+    <aura:attribute name="SIRecordTypePickList" type="List" default=""/>
+    <!-- <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component to get account details"/>-->
+    
+    <aura:Method name="setModel" action="{!c.openSIModal}">
+        <aura:attribute name="showConfirmModel" type="boolean" default="false"/>
+        <aura:attribute name="recordId" type="String"/>
+        <aura:attribute name="selected" type="String"/>
+        <aura:attribute name="objectName" type="String"/>        
+    </aura:Method>
+    <aura:Method name="loadInitialData" action="{!c.doInit}"/> 
+    
+    <div class="slds customBackground">	 
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [openModelConfirm boolean attribute] -->   
+        <aura:if isTrue="{!v.openModelConfirm}">
+            <!--###### MODAL BOX Start From Here ######--> 
+            <div role="dialog" style="padding-top:120px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                <div class="slds-modal__container" style="width:50%; height:300px max-width:90rem;" >
+                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModelpopup}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="header99" class="slds-text-heading--medium">Client Forms</h2>                       
+                    </div>
+                    <!--###### MODAL BOX BODY Part Start From Here ######-->
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <div class="slds-modal__content slds-p-around--medium slds-align_absolute-center" id="modal-content-id-1">
+                            <ui:inputSelect required="true" label="Client Form Record Type" aura:id="siRecType"><sup style="font-size:13px; font-weight: bold;">*</sup>
+                                <ui:inputSelectOption label="--None--" value="--None--"/>	
+                                <aura:iteration items="{!v.SIRecordTypePickList}" var="silist" >                                                
+                                    <ui:inputSelectOption text="{!silist.SI_Request_Hub_UI_Label__c}" label="{!silist.SI_Request_Hub_UI_Label__c}"/>                                                   
+                                </aura:iteration>
+                            </ui:inputSelect>
+                        </div>                     
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                    <div class="slds-modal__footer">
+                        <lightning:button class=" slds-align_absolute-center" variant="brand"  onclick="{!c.createRecord}">Continue</lightning:button>                                     
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>           
+            <!--###### MODAL BOX Part END Here ######-->
+        </aura:if>        
+    </div>    
+</aura:component>

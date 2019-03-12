@@ -1,0 +1,28 @@
+<apex:page standardController="Case"  sidebar="false" showChat="false" showHeader="false" id="pageId">
+    <apex:form >
+        <apex:pageBlock id="thePageBlock">
+            <apex:actionRegion >
+                <apex:pageBlockSection id="pbs1" title="Additional Details" columns="2"> 
+                    <apex:inputField value=" {!Case.GEMS_Implementation_Audit_Required__c}">
+                        <apex:actionSupport event="onchange" reRender="thePageBlock" status="status"/>
+                    </apex:inputField>
+                  </apex:pageBlockSection>
+            </apex:actionRegion>
+                <apex:pageBlockSection id="Section" columns="2"  collapsible="false" rendered="{!Case.GEMS_Implementation_Audit_Required__c==true}"> 
+                    <apex:inputField value="{!Case.GEMS_Auditor__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Audit_Location__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Date_Audit_Scope_Letter_Received__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Date_Audit_Agreement_Issued__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Date_Audit_Agreement_Signed__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Audit_Claims_Scenarios_Provided_by__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Private_Exchange__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Implementation_Audit_Types__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Status_of_Audit_Claim_Scenarios__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Audit_Status__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Account_Copied_into_Test_Region__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Dummy_Membership__c}"/>
+                    <apex:inputField value="{!Case.GEMS_Audit_Testing_Platform__c}"/>
+                </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

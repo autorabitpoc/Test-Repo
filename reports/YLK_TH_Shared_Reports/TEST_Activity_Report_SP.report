@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Account.Activities$Activity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Activities$GEMS_Type__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 OR 2) AND 3 AND 4) AND 5 AND 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <column>Account$Owner_s_Manager_Name__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>cami martin,russ plum,joe braley,cyrus walker</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$External_ID__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IL002921,IL192498,IL192607</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Group_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Cancellation_Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Activities$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Event.LGNA_Strategic_Plans_Event,Task.LGNA_Strategic_Plans_Task</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Activities$What</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>strategic plan</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>TEST Activity Report (SP)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_Activity_v2_ENA__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Renewal_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTFY</interval>
+    </timeFrameFilter>
+</Report>

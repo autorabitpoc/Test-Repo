@@ -1,0 +1,7 @@
+<aura:component controller="LGNA_CreateCase_RequestHub" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="OpptyId" type="String" /> 
+    <aura:attribute name="AccountId" type="String" /> 
+    <div class="slds-m-around--x-large">
+        <lightning:button onclick="{!c.createRecord}" label="Custom Contract" />
+  	</div>
+</aura:component>

@@ -1,0 +1,3 @@
+<aura:component  implements="force:lightningQuickAction">
+    <p>Please Write logic for re-rate here.</p>
+</aura:component>

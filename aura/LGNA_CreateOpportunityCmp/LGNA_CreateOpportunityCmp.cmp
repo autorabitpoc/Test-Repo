@@ -1,0 +1,199 @@
+<aura:component controller="LGNA_OpportunityController" access="global" implements="force:appHostable,force:hasSObjectName,force:lightningQuickAction,lightning:actionOverride,force:hasRecordId,flexipage:availableForAllPageTypes">
+    <aura:attribute name="accountId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:attribute name="newopp" type="Opportunity" default="{ 'sobjectType': 'Opportunity',
+                                                              'Name': '',
+                                                              'AccountId':'',
+                                                              'Type': '',
+                                                              'Exchange_Offering_Type__c': '',
+                                                              'Probability': '',
+                                                              'Status__c': '',
+                                                              'RecordTypeId': '01233000000QMPD',
+                                                              'StageName': '',
+                                                              'Finalist__c': '',
+                                                              'CloseDate':'',
+                                                              'Due_Date_Notification_in_Days__c':'',
+                                                              'Expected_RFP_Release_Date__c':'',
+                                                              'RFI_RFP_Received_Date__c':'',
+                                                              'Requested_Effective_Date__c': '',
+                                                              'Rate_End_Date__c': '',
+                                                              'Client_Received_Paperwork__c': '',
+                                                              'Kick_Off_Date__c': '',
+                                                              'Expected_Decision_Date__c':'',
+                                                              'Finalist_Meeting__c':'',
+                                                              'Date_Closed__c':'',
+                                                              'Projected_Membership_Gain_Loss__c': '',
+                                                              'Expected_Dental_Members__c': '',
+                                                              'Expected_Dental_Contracts__c': '',
+                                                              'Description':'',
+                                                              'Primary_Closed_Reason__c':'',
+                                                              'Weekly_Activity_Report__c':'',
+                                                              'Initial_Comments__c':'',
+                                                              'Weekly_Activity_Added_Date__c': '',
+                                                              'Weekly_Activity_Modified_Date__c':'',
+                                                              'Closed_Comments__c':''
+                                                              }"/>
+    
+    <aura:attribute name="type" type="String[]"/>
+    <aura:attribute name="stage" type="String[]"/>
+    <aura:attribute name="finalist" type="String[]"/>
+    <aura:attribute name="pclosedlist" type="String[]"/>
+    <aura:attribute name="eoftype" type="String[]"/>
+    <aura:attribute name="accDetails" type="Account"/>
+  
+    <div class="">
+        <div role="dialog" tabindex="-1" class="slds-modal--form slds-modal slds-fade-in-open" style="margin-top:5%;">
+            <div class="slds-modal__container modalstyle ">
+                <div class="slds-modal__header mobileViewHeader ">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.cancel}">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading--medium slds-truncate" title="New Opportunity">Create Renewal Opportunity</h2>
+                    <button class="slds-button slds-button--icon-inverse slds-modal__close" onclick="{!c.close}"> 
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+                <div class="slds-modal__content"> <!-- Opportunity information Section !-->
+                    <h3 class="slds-section-title--divider">Opportunity Information</h3>
+                    <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                        <div class="slds-m-top--medium ">
+                            <ui:outputText class="slds-form-element__label" value="{!v.accDetails.Name}" /> <br/>
+                        </div>	
+
+                        <div class="slds-m-top--medium ">
+                            <lightning:input messageWhenValueMissing="Opportunity Name Required" label="Opportunity Name" name="oppName" required="true"
+                                             value="{!v.newopp.Name}" aura:id="opname" />
+                        </div>
+                        <div class="slds-m-top--medium ">
+                            <lightning:select messageWhenValueMissing="Opportunity Type Required" value="{!v.newopp.Type}" name="type" label="Type" required="true" aura:id="opname">
+                                   <option value="">--None--</option>
+                                <aura:iteration items="{!v.type}"  var="typeval" >
+                                    <ui:inputSelectOption text="{!typeval}" label="{!typeval}"/>  
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                        
+                        <div class="slds-m-top--medium ">
+                            <lightning:select messageWhenValueMissing="Opportunity Exchange Offering Type Required" value="{!v.newopp.Exchange_Offering_Type__c}" name="exchangeOffer" label="Exchange Offering Type" required="true" aura:id="opname">
+                                 <option value="">--None--</option>
+                                <aura:iteration items="{!v.eoftype}"  var="eoftypeval" >
+                                    <ui:inputSelectOption text="{!eoftypeval}" label="{!eoftypeval}"/>  
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+  
+                        <div class="slds-m-top--medium ">
+                            <lightning:input messageWhenValueMissing="Opportunity Probability Required" label="Probability" name="Pbty" required="true"
+                                             value="{!v.newopp.Probability}" aura:id="opname" />
+                        </div>
+                        
+                        <div class="slds-m-top--medium ">
+                            <lightning:select messageWhenValueMissing="Opportunity Stage Required" name="Stage" value="{!v.newopp.StageName}" label="Stage" required="true" aura:id="opname">
+                                <option value="">--None--</option>   
+                                  <aura:iteration items="{!v.stage}"  var="stageval" >
+                                    <ui:inputSelectOption text="{!stageval}" label="{!stageval}" />
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                        
+                        <div class="slds-m-top--medium ">
+                            <lightning:select messageWhenValueMissing="Opportunity Finalist Required" value="{!v.newopp.Finalist__c}" name="Finalist" label="Finalist" required="true" aura:id="opname">
+                                <option value="">--None--</option>
+                                <aura:iteration items="{!v.finalist}"  var="finalistval" >
+                                    <ui:inputSelectOption text="{!finalistval}" label="{!finalistval}"/>  
+                                </aura:iteration> 
+                            </lightning:select>
+                        </div>
+
+                        <div class="slds-m-top--medium ">
+                        <ui:inputDate label="Client Due Date" required="true" value="{!v.newopp.CloseDate}" format="MM/dd/yyyy" displayDatePicker="true" aura:id="cddDate" blur="{!c.cdddatevalidateblur}"/>
+                        </div>
+                        
+                        <div class="slds-m-top--medium ">
+                            <lightning:input label="Due Date Notification (in Days)" name="DueDatenotification" 
+                                             value="{!v.newopp.Due_Date_Notification_in_Days__c}" aura:id="opname" />
+                        </div>
+                        
+                    </div>
+                    <h3 class="slds-section-title--divider">Key Dates</h3>
+                    <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small"> <!-- Key Date Section !-->
+                        <ui:inputDate label="Expected In Date" class="slds-input slds-form-element__label" aura:id="eiDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Expected_RFP_Release_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>
+                        <ui:inputDate required="true" label="RFI/RFP Received Date" class="slds-input slds-form-element__label" aura:id="rfiDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.RFI_RFP_Received_Date__c}" blur="{!c.rfidatevalidateblur}"/>	
+                        <ui:inputDate required="true" label="Opportunity Effective Date" class="slds-input slds-form-element__label" aura:id="oeDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Requested_Effective_Date__c}" blur="{!c.oedatevalidateblur}"/>
+                        <ui:inputDate label="Contract End Date" class="slds-input slds-form-element__label" aura:id="ceDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Rate_End_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>
+                        <ui:inputDate label="Client Received Paperwork" class="slds-input slds-form-element__label" aura:id="crpDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Client_Received_Paperwork__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>	
+                        <ui:inputDate label="Kick Off Date" class="slds-input slds-form-element__label" aura:id="koDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Kick_Off_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>
+                        <ui:inputDate label="Expected Decision Date" class="slds-input slds-form-element__label" aura:id="edDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Expected_Decision_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}" />	
+                        <ui:inputDate label="Finalist Meeting" class="slds-input slds-form-element__label" aura:id="fmDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Finalist_Meeting__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>
+                       <!-- <ui:inputDate label="Date Closed" class="slds-input slds-form-element__label" aura:id="dcDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Date_Closed__c}" />-->
+                        <ui:inputDate label="Finalist Named" class="slds-input slds-form-element__label" aura:id="dcDate" format="MM/dd/yyyy" displayDatePicker="true" value="{!v.newopp.Finalist_Named__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/>
+                    </div>
+                    
+                    <h3 class="slds-section-title--divider">Expected Membership</h3>
+                    <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small"> <!-- Expected Membership Section !-->
+                        
+                        <lightning:input label="Projected Membership Gain/Loss" name="healthMemLG" 
+                                         value="{!v.newopp.Projected_Membership_Gain_Loss__c}" aura:id="opname" />
+                        <lightning:input label="Expected Dental Members" name="healthMemLG" 
+                                         value="{!v.newopp.Expected_Dental_Members__c}" aura:id="opname" />
+                        <lightning:input label="Expected Dental Contracts" name="expDentalMem" 
+                                         value="{!v.newopp.Expected_Dental_Contracts__c}" aura:id="opname" />
+                    </div>
+                    
+                    <h3 class="slds-section-title--divider">Additional Information</h3>
+                    <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small"> <!-- Expected Membership Section !-->
+                        <lightning:textarea label="Description" name="description" 
+                                         value="{!v.newopp.Description}" aura:id="opname" />
+                        
+                        
+                        <div class="slds-m-top--medium ">
+                            <lightning:select value="{!v.newopp.Primary_Closed_Reason__c}" name="Finalist" label="Primary Closed Reason" aura:id="opname">
+                                <option value="">--None--</option>
+                                <aura:iteration items="{!v.pclosedlist}"  var="pclosedval" >
+                                    <ui:inputSelectOption text="{!pclosedval}" label="{!pclosedval}"/>  
+                                </aura:iteration> 
+                            </lightning:select>
+                        </div>
+                        
+                        <!--<lightning:input label="Primary Closed Reason" name="ClosingReason" 
+                                         value="{!v.newopp.Primary_Closed_Reason__c}" aura:id="opname" />-->
+                        
+                        <!--<lightning:input label="Weekly Activity Report?" name="ActivityReport" 
+                                        value="{!v.newopp.Weekly_Activity_Report__c}" aura:id="ActivityReportid" />-->
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Weekly Activity Report?</label><br/>
+                            <ui:inputcheckbox value="{!v.newopp.Weekly_Activity_Report__c}"/> 	
+                        </div>
+                        
+                        <lightning:textarea label="Initial Comments" name="Comments" 
+                                         value="{!v.newopp.Initial_Comments__c}" aura:id="opname" />
+                        
+                        <ui:inputDate label="Weekly Activity Added Date" format="MM/dd/yyyy" class="slds-input slds-form-element__label" aura:id="waaDate" displayDatePicker="true" value="{!v.newopp.Weekly_Activity_Added_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}" />
+                        <ui:inputDate label="Weekly Activity Modified Date" format="MM/dd/yyyy" class="slds-input slds-form-element__label" aura:id="wamDate" displayDatePicker="true" value="{!v.newopp.Weekly_Activity_Modified_Date__c}" focus="{!c.myFunction}" blur="{!c.blurFunction}"/> 
+                        
+                        <lightning:textarea label="Closed Comments" name="CloseComments" 
+                                         value="{!v.newopp.Closed_Comments__c}" aura:id="opname" />
+                        <lightning:textarea label="Special Exceptions" name="SpecialException" 
+                                         value="{!v.newopp.Special_Exceptions__c}" aura:id="opname" />
+                        <lightning:textarea label="Concerns/Issues" name="ConcernsIssues" 
+                                         value="{!v.newopp.Concerns_Issues__c}" aura:id="opname" />
+                        <lightning:textarea label="Perceived Vulnerabilities/Threats" name="Perceivedvul" 
+                                         value="{!v.newopp.Perceived_Vulnerabilities_Threats__c}" aura:id="opname" />
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+            
+            
+            <div class="slds-modal__footer mobileViewHeader">
+                <lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.cancel}"   />
+                <lightning:button class="slds-button" variant="brand" label="Save" onclick="{!c.validationandsave}"   />
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>

@@ -1,0 +1,11 @@
+***Account Notification*** 
+
+Sales Solution Prep Team, 
+There has been a new Prospect created for Group Account: {!Account.Name}, which was cancelled 30 days ago. 
+
+Account Details 
+Account Name: {!Account.Name} 
+Account Number: {!Account.AccountNumber}
+Account Owner: {!Account.OwnerFullName} 
+HCSC Division: {!Account.HCSC_Division__c} 
+Billing Address: {!Account.BillingAddress}

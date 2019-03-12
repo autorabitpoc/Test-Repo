@@ -1,0 +1,7 @@
+<aura:component controller="ProspectingAppController">    
+
+  <ui:message title="Error" severity="error" closable="true">
+	Access denied due to insufficient privileges.
+  </ui:message>
+	
+</aura:component>

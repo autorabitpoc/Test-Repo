@@ -1,0 +1,600 @@
+<apex:page showheader="true" sidebar="false" doctype="html-5.0" standardcontroller="Rate__c" extensions="RatingMatrixASOController">
+
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}" />
+    <style>
+        #firstColumn {
+            display: inline-block;
+            float: left;
+        }
+
+        #secondColumn {
+            display: inline-block;
+            float: right;
+            padding-right: 100px;
+        }
+
+        #wrap {
+            height: 50px;
+        }
+
+        #firstColumn td {
+            padding-bottom: 20px;        
+        }
+
+        #firstColumn th {
+            padding-bottom: 20px;         
+        }
+
+        #secondColumn td {
+            padding-top: 10px;
+            padding-bottom: 30px;
+        }
+
+        #secondColumn th {
+            padding-top: 10px;
+            padding-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 95px;
+            height: 18px;
+        }
+
+        .tab-title {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .data-table thead th {
+            background-color: #72A9D3 !important;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .accordion-row {
+            background-color: #EAF5FE !important;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        table.dataTable tbody th, table.dataTable tbody td {
+            border-bottom: 1px solid #CFEEF8 !important;
+            padding: 10px !important;
+        }
+
+        .dataTables_filter {
+            display: none;
+        }
+
+        .buttons {
+            margin:0 auto;
+        }
+
+        .newButton {
+            width:120px;   
+            height:30px;
+            font-size:14px;
+            float:right;
+        }
+
+        .buttonSection {
+            height:25px;
+        }
+
+        h1 {
+            padding-right: 10px;
+            font-size:13px;
+        }
+        .administrativeProviderClass {
+            display:block;
+            margin:auto 0;
+        }
+
+        .newButtonCharge {
+            width: 215px;
+            height: 30px;
+            font-size: 14px;
+            float: right;
+        }
+
+        .groupNumer1 {
+            width:300px !important;
+        }
+
+        .groupNumer2 {
+            width: 300px !important;
+        }
+
+        .errorFee {
+            color: red;
+            font-size: 12px;
+        }
+
+        .otherAdminCharge{
+            width:250px !important;
+        }
+
+        .textBox{
+            width:180px !important;
+        }
+
+        .total{
+            font-size:14px; 
+            font-weight:bold
+        }
+
+        .addlComments{
+            width:600px;
+            height:25px;
+            vertical-align: middle;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#yearOne').DataTable({
+                   "paging": false,
+                   "order": [[ 0, 'asc' ]],
+                   "ordering": false
+
+            });
+
+            $('#administrative').DataTable({
+                   "paging": false,
+                   "order": [[ 0, 'asc' ]],
+                   "ordering": false
+
+            });
+
+            $('#yearOneTerm').DataTable({
+                   "paging": false,
+                   "order": [[ 0, 'asc' ]],
+                   "ordering": false
+
+            });     
+
+            var numberOfColumnsInTable = 7;
+
+            for (var i = 3; i < numberOfColumnsInTable; i++){
+               
+                var sum = 0;
+  
+                $('#yearOne>tbody>tr>td:nth-child(' + i + ')').each( function(){   
+
+                    var fee = $(this).find('input').val();
+                    var feeName = $(this).find('input').attr('class');
+ 
+                    if(feeName == '\*Prescription Drug Program - Rebate Credit'){
+
+                        if(!isNaN(fee) && fee.length != 0) {
+                            sum -= parseFloat(fee);
+                        } 
+                    } else {
+
+                        if(!isNaN(fee) && fee.length != 0) {
+                            sum += parseFloat(fee);
+                        } 
+                    }                      
+            
+                });
+ 
+                $('#yearOne>tfoot>tr>td:nth-child(' + i + ')').last().html('$' + sum.toFixed(2));
+
+                var group = 'total1Group';
+
+                $('[id*= "' + group + i + '"]').val(sum.toFixed(2));
+                
+            }
+
+            for (var i = 3; i < numberOfColumnsInTable; i++){
+               
+                var sum = 0;
+
+                $('#yearOneTerm>tbody>tr>td:nth-child(' + i + ')').each( function(){   
+
+                    var fee = $(this).find('input').val();
+                                 
+                    if(!isNaN(fee) && fee.length != 0) {
+                        sum += parseFloat(fee);
+                    }                              
+           
+                });
+
+                $('#yearOneTerm>tfoot>tr>td:nth-child(' + i + ')').last().html('$' + sum.toFixed(2));
+
+                var group = 'total1GroupTerm';
+
+                $('[id*= "' + group + i + '"]').val(sum.toFixed(2));
+
+            }
+
+            var sumOne = 0;
+            var sumMonth = 0;
+            var sumYear = 0;
+            var sumOther = 0;
+
+            $('[class*= "Frequency"]').each(function(index,data) {
+                var feeName = $(this).attr('class');             
+                var rowNumber = feeName.split('-')[1];
+                var freq = $(this).val();
+                if(freq == 'One-Time'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumOne += parseFloat(charge);
+                    }
+                } else if(freq == 'Monthly'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumMonth += parseFloat(charge);
+                    }
+                } else if(freq == 'Annually'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumYear += parseFloat(charge);
+                    }
+                } else {
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumOther += parseFloat(charge);
+                    }
+                }            
+            });
+
+            $('.sumOutputOne').val(sumOne.toFixed(2));
+            $('.sumOutputMonth').val(sumMonth.toFixed(2));
+            $('.sumOutputYear').val(sumYear.toFixed(2));
+            $('.sumOutputOther').val(sumOther.toFixed(2));
+
+            $('[id*= "totalOne"]').val(sumOne.toFixed(2));
+            $('[id*= "totalMonth"]').val(sumMonth.toFixed(2));
+            $('[id*= "totalYear"]').val(sumYear.toFixed(2));
+            $('[id*= "totalOther"]').val(sumOther.toFixed(2));
+
+        });
+
+        function grabValues(){
+
+            var sumOne = 0;
+            var sumMonth = 0;
+            var sumYear = 0;
+            var sumOther = 0;
+
+            $('[class*= "Frequency"]').each(function(index,data) {
+                var feeName = $(this).attr('class');             
+                var rowNumber = feeName.split('-')[1];
+                var freq = $(this).val();
+                if(freq == 'One-Time'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumOne += parseFloat(charge);
+                    }
+                } else if(freq == 'Monthly'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumMonth += parseFloat(charge);
+                    }
+                } else if(freq == 'Annually'){
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumYear += parseFloat(charge);
+                    }
+                } else {
+                    var charge = $(".sum-" + rowNumber).val();
+                    if (!isNaN(charge) && charge.length !== 0) {
+                        sumOther += parseFloat(charge);
+                    }
+                }            
+            });
+
+            $('.sumOutputOne').val(sumOne.toFixed(2));
+            $('.sumOutputMonth').val(sumMonth.toFixed(2));
+            $('.sumOutputYear').val(sumYear.toFixed(2));
+            $('.sumOutputOther').val(sumOther.toFixed(2));
+
+            $('[id*= "totalOne"]').val(sumOne.toFixed(2));
+            $('[id*= "totalMonth"]').val(sumMonth.toFixed(2));
+            $('[id*= "totalYear"]').val(sumYear.toFixed(2));
+            $('[id*= "totalOther"]').val(sumOther.toFixed(2));
+        }
+
+        function grabRateValues(){
+
+            var numberOfColumnsInTable = 7;
+
+            for (var i = 3; i < numberOfColumnsInTable; i++){
+               
+                var sum = 0;
+
+                $('#yearOne>tbody>tr>td:nth-child(' + i + ')').each( function(){   
+
+                    var fee = $(this).find('input').val();
+                    var feeName = $(this).find('input').attr('class');
+ 
+                    if(feeName == '\*Prescription Drug Program - Rebate Credit'){
+
+                        if(!isNaN(fee) && fee.length != 0) {
+                            sum -= parseFloat(fee);
+                        } 
+                    } else {
+
+                        if(!isNaN(fee) && fee.length != 0) {
+                            sum += parseFloat(fee);
+                        } 
+                    }           
+           
+                });
+
+                $('#yearOne>tfoot>tr>td:nth-child(' + i + ')').last().html('$' + sum.toFixed(2));
+
+                var group = 'total1Group';
+
+                $('[id*= "' + group + i + '"]').val(sum.toFixed(2));
+
+            }
+
+        }
+
+        function grabRateValuesTerm(){
+
+            var numberOfColumnsInTable = 7;
+
+            for (var i = 3; i < numberOfColumnsInTable; i++){
+               
+                var sum = 0;
+
+                $('#yearOneTerm>tbody>tr>td:nth-child(' + i + ')').each( function(){   
+
+                    var fee = $(this).find('input').val();
+                                 
+                    if(!isNaN(fee) && fee.length != 0) {
+                        sum += parseFloat(fee);
+                    }                              
+           
+                });
+
+                $('#yearOneTerm>tfoot>tr>td:nth-child(' + i + ')').last().html('$' + sum.toFixed(2));
+
+                var group = 'total1GroupTerm';
+
+                $('[id*= "' + group + i + '"]').val(sum.toFixed(2));
+
+            }
+
+        }
+
+    </script>
+
+    <apex:form >
+
+    <apex:inputHidden value="{!rate.Total_Group_1_Year_1__c}" id="total1Group3"/>
+    <apex:inputHidden value="{!rate.Total_Group_2_Year_1__c}" id="total1Group4"/>
+    <apex:inputHidden value="{!rate.Total_Group_3_Year_1__c}" id="total1Group5"/>
+    <apex:inputHidden value="{!rate.Total_Group_4_Year_1__c}" id="total1Group6"/>
+
+    <apex:inputHidden value="{!rate.Total_One_Time__c}" id="totalOne"/>
+    <apex:inputHidden value="{!rate.Total_Monthly__c}" id="totalMonth"/>
+    <apex:inputHidden value="{!rate.Total_Yearly__c}" id="totalYear"/>
+    <apex:inputHidden value="{!rate.Total_Other__c}" id="totalOther"/>
+
+    <apex:inputHidden value="{!rate.Total_Group_1_Term__c}" id="total1GroupTerm3"/>
+    <apex:inputHidden value="{!rate.Total_Group_2_Term__c}" id="total1GroupTerm4"/>
+    <apex:inputHidden value="{!rate.Total_Group_3_Term__c}" id="total1GroupTerm5"/>
+    <apex:inputHidden value="{!rate.Total_Group_4_Term__c}" id="total1GroupTerm6"/>
+
+        <apex:pagemessages />
+        <apex:outputpanel rendered="{!IF(hasAccess == true, true, false)}">
+            <apex:pageblock id="rateBackground" title="{!$Label.Rate_Matrix_Rate_Background}">
+                <div id="wrap">
+                    <table id="firstColumn">                
+                        <tr>
+                            <th>&nbsp;{!$Label.Rate_Matrix_Select_State}&nbsp;</th>
+                            <td>&nbsp;<apex:inputfield value="{!rate.HCSC_Division__c}" id="state" required="true"/>&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+               <div class="buttons">
+                   <apex:commandbutton value="Generate Rate Chart" action="{!saveRateBackground}" />
+                   <apex:commandbutton value="Cancel" action="{!cancel}" />
+              </div>
+            </apex:pageblock>
+            <apex:pageblock id="rateChart" title="{!$Label.Rate_Matrix_Rate_Chart_Detail}">
+                <apex:outputpanel rendered="{!IF(renderRateChart == true, true, false)}">
+                        <div class="tab-title">Administrative Per Employee Per Month (PEPM) Charges</div>
+                        <apex:outputpanel id="yearOnePanel">
+                            <table id="yearOne" class="data-table">                              
+                                <thead>
+                                    <tr>
+                                        <th><apex:inputCheckbox value="{!rate.No_Changes_Claim_Admin_Provider_Access__c}"/>No Changes</th>
+                                        <th><apex:inputCheckbox value="{!rate.Additional_provisions_Claim_Admin_Pro__c}"/>See Additional Provisions</th>
+                                        <th><apex:inputfield value="{!rate.Group_Name_1__c}" styleClass="textBox" /></th>                                        
+                                        <th><apex:inputfield value="{!rate.Group_Name_2__c}" styleClass="textBox" /></th>                                 
+                                        <th><apex:inputfield value="{!rate.Group_Name_3__c}" styleClass="textBox" /></th>
+                                        <th><apex:inputfield value="{!rate.Group_Name_4__c}" styleClass="textBox" /></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!rateGroups}" var="group">
+                                        <tr>
+                                            <td><apex:outputField value="{!group.groupNumber__c}" /></td> 
+                                            <apex:outputPanel rendered="{!CONTAINS(group.Name,'Other')}"> 
+                                                <td>Other:&nbsp; <apex:inputField value="{!group.Service_Category__c}" /> <br /><br />
+                                                    List Service:&nbsp; <apex:inputField value="{!group.List_Service__c}" />
+                                                </td>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!CONTAINS(group.Name,'Miscellaneous')}">
+                                                <td>Miscellaneous:&nbsp;<apex:inputField value="{!group.Miscellaneous__c}" styleClass="textBox" /></td>
+                                            </apex:outputPanel>   
+                                            <apex:outputPanel rendered="{!AND(NOT(CONTAINS(group.Name,'Other')), NOT(CONTAINS(group.Name,'Miscellaneous')))}">
+                                                <td>{!group.Name}</td>
+                                            </apex:outputPanel>                                                                                  
+                                            <td><apex:inputfield value="{!group.Group_1_Amount__c}" onkeyup="grabRateValues();" styleClass="{!group.Name}"/></td>
+                                            <td><apex:inputfield value="{!group.Group_2_Amount__c}" onkeyup="grabRateValues();" styleClass="{!group.Name}"/></td>
+                                            <td><apex:inputfield value="{!group.Group_3_Amount__c}" onkeyup="grabRateValues();" styleClass="{!group.Name}"/></td>
+                                            <td><apex:inputfield value="{!group.Group_4_Amount__c}" onkeyup="grabRateValues();" styleClass="{!group.Name}"/></td>
+                                        </tr>
+                                    </apex:repeat>                                  
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td class = "total">Total:</td>                                    
+                                        <td class = "total"></td>  
+                                        <td class = "total"></td>   
+                                        <td class = "total"></td>                                 
+                                        <td class = "total"></td>
+                                    </tr>
+                                </tfoot>      
+                            </table>
+                    </apex:outputpanel> 
+                    </apex:outputpanel>             
+                    <br />
+            </apex:pageblock>
+            <apex:pageblock id="adminChart" title="{!$Label.Rate_Matrix_ASO_Administrative_Charges}">
+                <apex:outputpanel rendered="{!IF(renderRateChart == true, true, false)}">
+                    <apex:outputpanel id="administrativeCharges">
+                        <table id="administrative" class="data-table">     
+                          <apex:variable value="{!0}" var="rowNumber" />        
+                            <thead>
+                                <tr>
+                                    <th></th>  
+                                    <th>{!$Label.Rate_Matrix_ASO_Administrative_Line_Item_Charges}</th>                                       
+                                    <th>{!$Label.Rate_Matrix_ASO_Frequency}</th>                                                              
+                                    <th>{!$Label.Rate_Matrix_ASO_Amount}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!rateAdminCharges}" var="rateCharge">       
+                                  <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                    <tr>
+                                        <td>{!rateCharge.adminNumber__c}</td>
+                                        <apex:outputPanel rendered="{!CONTAINS(rateCharge.Name,'Other')}"> 
+                                                <td>
+                                                    Other:&nbsp; <apex:inputField value="{!rateCharge.Service_Charges__c}" /> <br /><br />
+                                                    List Service:&nbsp; <apex:inputField value="{!rateCharge.List_Service__c}" />
+                                                </td>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!CONTAINS(rateCharge.Name,'Miscellaneous')}">
+                                                <td>
+                                                    Miscellaneous:&nbsp;<apex:inputField value="{!rateCharge.Miscellaneous__c}" styleClass="textBox" />
+                                                </td>
+                                        </apex:outputPanel>                                                                                                               
+                                        <td>
+                                            <apex:inputField value="{!rateCharge.Frequency__c}" styleclass="Frequency-{!rowNumber}" onchange="grabValues();"/> <br /><br />                                     
+                                            If applicable, describe other:&nbsp; <apex:inputField value="{!rateCharge.Other_Frequency__c}" styleclass="OtherFreq-{!rowNumber}"/>
+                                        </td>                                                                              
+                                        <td><apex:inputfield value="{!rateCharge.Amount__c}" onkeyup="grabValues();" styleclass="sum-{!rowNumber}" style="width:100px !important;"/></td>
+                                    </tr>
+                                </apex:repeat>                          
+                            </tbody>  
+                            <tfoot>
+                                <tr>                                                                                            
+                                    <td></td>  
+                                    <td></td>   
+                                    <td></td>                                 
+                                    <td class = "total">
+                                        One-Time Total:&nbsp;$<output class="sumOutputOne" /><br /><br />
+                                        Monthly Total:&nbsp;$<output class="sumOutputMonth" /><br /><br />
+                                        Annual Total:&nbsp;$<output class="sumOutputYear" /><br /><br />
+                                        Other Total:&nbsp;$<output class="sumOutputOther" />
+                                    </td>
+                               </tr>
+                            </tfoot>                
+                        </table>                     
+                    </apex:outputpanel> 
+                    <br />
+                    Additional Comments:&nbsp;<apex:inputField value="{!rate.Additional_Comments_Admin_Charge__c}" styleClass="addlComments"/><br /><br />
+                    Group Number(s):&nbsp;<apex:inputField value="{!rate.Group_Number_s__c}" styleClass="addlComments"/><br /><br />
+                    % of ADP savings:&nbsp;<apex:inputField value="{!rate.of_ADP_savings__c}" styleClass="addlComments"/><br /><br />
+                    $ per covered employee per month:&nbsp;<apex:inputField value="{!rate.per_covered_employee_per_month__c}" styleClass="addlComments"/><br /><br />
+                    Group with multiple Provider Access Fees by services :&nbsp;<apex:inputField value="{!rate.Group_Numbers_With_Multiple__c}" styleClass="addlComments"/><br /><br /> 
+                    % of ADP savings #2 (IL only)   :&nbsp;<apex:inputField value="{!rate.of_ADP_savings_2__c}" styleClass="addlComments"/><br /><br />
+                    $ per covered employee / month (IL only):&nbsp;<apex:inputField value="{!rate.per_covered_employee_per_month_2__c}" styleClass="addlComments"/><br /><br />               
+                    BlueCard Program/Network access fees:&nbsp;<apex:inputField value="{!rate.BlueCard_Program_Network_access_fees__c}" styleClass="addlComments"/>
+                </apex:outputpanel>
+            </apex:pageblock>
+            <apex:outputpanel rendered="{!IF(renderRateChart == true, true, false)}">
+                <!-- Start SFDC-8323 -->
+                <apex:outputpanel id="administrativeProvider" rendered="{!IF(rate.HCSC_Division__c == 'IL' && rate.HCSC_Division__c == 'OK', true, false)}"> 
+                <!-- End SFDC-8323 -->  
+                    <apex:pageblock id="adminProviderChart" title="{!$Label.Rate_Matrix_ASO_Administrative_Provider}">
+                        <div class="administrativeProviderClass">
+                            <h1>{!$Label.Rate_Matrix_ASO_Claim_Administrator_Provider_Access_Fee_s} </h1><apex:inputfield value="{!rate.No_Changes_Claim_Admin_Provider_Access__c}" />{!$Label.Rate_Matrix_ASO_No_Changes}<apex:inputfield value="{!rate.Additional_provisions_Claim_Admin_Pro__c}" />{!$Label.Rate_Matrix_ASO_See_Aditional_Provisions}
+                            <p>{!$Label.Rate_Matrix_ASO_Group_Number_s} <apex:inputfield value="{!rate.Group_Number_s__c}" styleclass="groupNumer1"/></p>
+                            <p><apex:inputfield value="{!rate.of_ADP_savings__c}" /> {!$Label.Rate_Matrix_ASO_of_ADP_Savings}</p>
+                            <p><apex:inputfield value="{!rate.per_covered_employee_per_month__c}" /> {!$Label.Rate_Matrix_ASO_per_Covered_Employee_per_Month}</p>
+                            <p>{!$Label.Rate_Matrix_ASO_Group_with_multiple_Provider_Products}</p>
+                            <p>{!$Label.Rate_Matrix_ASO_Group_Number_s} <apex:inputfield value="{!rate.Group_Numbers_With_Multiple__c}" styleclass="groupNumer2" /></p>                                              
+                            <p><apex:inputfield value="{!rate.of_ADP_savings_2__c}" /> {!$Label.Rate_Matrix_ASO_of_ADP_Savings}</p>                                                   
+                            <p><apex:inputfield value="{!rate.per_covered_employee_per_month_2__c}" /> {!$Label.Rate_Matrix_ASO_per_Covered_Employee_per_Month}</p>                         
+                            <p>{!$Label.Rate_Matrix_ASO_Blue_Card_Program_Network_access_fee} <apex:inputfield value="{!rate.BlueCard_Program_Network_access_fees__c}" /></p>
+                        </div>
+                        <br />
+                </apex:pageblock>
+             </apex:outputpanel>
+             </apex:outputpanel>
+            <apex:outputpanel rendered="{!IF(renderRateChart == true, true, false)}">
+                <!-- Start SFDC-8323 -->
+                <apex:outputpanel id="termCharges" rendered="{!IF(rate.HCSC_Division__c != 'IL' && rate.HCSC_Division__c != 'OK', true, false)}">      
+                <!-- End SFDC-8323 -->  
+                    <apex:pageblock id="termAdminCharge" title="Termination Administrative Charges">
+                        <div class="tab-title">Termination Administrative Charges</div>
+                        <apex:outputpanel id="yearOneTermPanel">
+                            <table id="yearOneTerm" class="data-table">                              
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Service</th>
+                                        <th><apex:inputfield value="{!rate.Group_Name_1_Term__c}" styleClass="textBox" /></th>                                        
+                                        <th><apex:inputfield value="{!rate.Group_Name_2_Term__c}" styleClass="textBox" /></th>                                 
+                                        <th><apex:inputfield value="{!rate.Group_Name_3_Term__c}" styleClass="textBox" /></th>
+                                        <th><apex:inputfield value="{!rate.Group_Name_4_Term__c}" styleClass="textBox" /></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!rateTermCharges}" var="term">
+                                        <tr>
+                                            <td><apex:outputField value="{!term.termNumber__c}" /></td> 
+                                            <apex:outputPanel rendered="{!CONTAINS(term.Name,'Miscellaneous')}">
+                                                <td>Miscellaneous:&nbsp;<apex:inputField value="{!term.Miscellaneous__c}" styleClass="textBox" /></td>
+                                            </apex:outputPanel>   
+                                            <apex:outputPanel rendered="{!NOT(CONTAINS(term.Name,'Miscellaneous'))}">
+                                                <td>{!term.Name}</td>
+                                            </apex:outputPanel>                                                                                  
+                                            <td><apex:inputfield value="{!term.Group_1_Amount__c}" onkeyup="grabRateValuesTerm();" /></td>
+                                            <td><apex:inputfield value="{!term.Group_2_Amount__c}" onkeyup="grabRateValuesTerm();" /></td>
+                                            <td><apex:inputfield value="{!term.Group_3_Amount__c}" onkeyup="grabRateValuesTerm();" /></td>
+                                            <td><apex:inputfield value="{!term.Group_4_Amount__c}" onkeyup="grabRateValuesTerm();" /></td>
+                                        </tr>
+                                    </apex:repeat>                                  
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td class = "total">Total:</td>                                    
+                                        <td class = "total"></td>  
+                                        <td class = "total"></td>   
+                                        <td class = "total"></td>                                 
+                                        <td class = "total"></td>
+                                    </tr>
+                                </tfoot>      
+                            </table>
+                    </apex:outputpanel>              
+                    <br />                   
+                    Additional Comments:&nbsp;<apex:inputField value="{!rate.Additional_Comments_Term_Charge__c}" styleClass="addlComments"/>
+                </apex:pageblock>
+            </apex:outputpanel>
+            </apex:outputpanel>
+            <center>
+                <apex:commandbutton value="Save" action="{!saveNewRateRecord}" />             
+                <apex:commandbutton value="Cancel" action="{!cancel}" />
+            </center>
+            </apex:outputpanel>
+        </apex:form>
+</apex:page>

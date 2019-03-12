@@ -1,0 +1,12 @@
+BlueSTAR has created a partial account structure shell. The following have not been created in the shell. Please update BlueSTAR accordingly:
+
+Addresses : {!Case.GEMS_Failed_Addresses__c}
+BAs : {!Case.GEMS_Failed_Benefit_Agreements__c}
+Categories : {!Case.GEMS_Failed_Categories__c}
+Group Sections : {!Case.GEMS_Failed_Group_Sections__c}
+
+Account Name : {!Case.Account_Name__c}
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

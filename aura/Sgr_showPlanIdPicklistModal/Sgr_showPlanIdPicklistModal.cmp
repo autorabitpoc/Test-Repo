@@ -1,0 +1,76 @@
+<aura:component controller="Sgr_displayCensus" implements="flexipage:availableForRecordHome,force:hasRecordId">
+  <aura:attribute name= "oppId" type = "String"/>
+  <aura:attribute name= "tabName" type = "String"/>
+  <aura:attribute name= "typ" type = "String"/>
+  <aura:attribute name= "currentPlanId" type = "String"/>
+  <aura:attribute name= "planID" type = "String"/>
+  <aura:attribute name= "plans" type = "String[]"/>
+  <aura:attribute name= "relations" type = "String[]"/>
+  <aura:attribute name= "groupSectionNumbers" type = "String[]"/>
+  <aura:attribute name= "groupNumbers" type = "String[]"/>
+  <aura:attribute name="isDisabled" type="Map" default="{'modalDisabled':'slds-hide'}" />
+  <aura:attribute name= "healthPlanSelected" type = "String"/>
+  <aura:attribute name= "groupSectionSelected" type = "String"/>
+  <aura:attribute name="CensusList" type="SGR_Opportunity_Census__c" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <div class="demo-only">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Please select a value</h2>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium">
+		<div class="slds-card__body slds-p-around_medium">
+			<div class="slds-grid slds-wrap">
+				<div class="slds-col slds-p-around_small  slds-size_6-of-12">
+                    <aura:if isTrue="{!v.typ=='Plan'}">
+                    <lightning:select aura:id="PlanId" name="" label="{!v.tabName+' Plan ID'}" value="{!v.healthPlanSelected}">
+                        <option text="{!v.currentPlanId}"/>
+                        <aura:iteration items="{!v.plans}" var="plan">
+                            <aura:iteration items="{!plan}" var="pln">
+                            	<option text="{!pln}" value="{!pln}"/>
+                            </aura:iteration>
+                        </aura:iteration>
+                    </lightning:select>
+                    </aura:if>
+                    <aura:if isTrue="{!v.typ=='GrpSection'}">
+                    <lightning:select aura:id="GrpSection" name="" label="Group Section #" value="{!v.groupSectionSelected}">
+                        <option text="{!v.currentPlanId}"/>
+                        <aura:iteration items="{!v.groupSectionNumbers}" var="num">
+                            <option value="{!num}" text="{!num}"/>
+                        </aura:iteration>
+                    </lightning:select>
+                    </aura:if>
+                    <aura:if isTrue="{!v.typ=='GrpNumber'}">
+                    <lightning:select aura:id="GrpNumber" name="" label="Group #" value="{!v.CensusList.Group_Number__c}">
+                        <option text="{!v.currentPlanId}"/>
+                        <aura:iteration items="{!v.groupNumbers}" var="gnum">
+                            <option value="{!gnum}" text="{!gnum}"/>
+                        </aura:iteration>
+                    </lightning:select>
+                    </aura:if>
+                    <aura:if isTrue="{!v.typ=='Relationship'}">
+                    <lightning:select aura:id="relation" name="" label="Relationship" value="{!v.CensusList.Relationship__c}">
+                        <option text="{!v.currentPlanId}"/>
+                        <aura:iteration items="{!v.relations}" var="rel">
+                            <option value="{!rel}" text="{!rel}"/>
+                        </aura:iteration>
+                    </lightning:select>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+      </div>
+      <footer class="slds-modal__footer">
+          <lightning:button label="Cancel" onclick="{!c.handleCancel}" type="reset" class="slds-button slds-button_neutral" />
+          <lightning:button label="Save" onclick="{!c.handleSave}" type="reset" class="slds-button slds-button_brand" />
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</div>
+          
+</aura:component>

@@ -1,0 +1,130 @@
+<aura:component controller="ProspectingAppNewCompVendModalController">
+    <aura:attribute name="newCompVendRel" type="Competitor_Relationship__c" 
+                    default="{'sobjectType':'Competitor_Relationship__c', 'Competitor_Account__c':'', 'Group_Account__c':'', 'Producer_Consultant__c':'',
+                              'Producer_Consultant_Firm__c':'', 'Status__c':'', 'Claims_Data_Shared__c':'', 'Eligibility_Data_Shared__c':'', 'Lab_Data_Shared__c':'',
+                              'Discharge_Data_Shared__c':'', 'Accums_Data_Shared__c':'', 'Pharmacy_Data_Shared__c':'', 'Total_Members__c':'', 'Not_Insured__c' : 'false',
+                              'AFA__c':'false'}"/>
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="typeMap" type="Map" default="{}"/>
+    <aura:attribute name="idMap" type="Map" default="{}"/>
+    <aura:attribute name="compVendSearchFilter" type="String" 
+                    default=" WHERE (RecordType.DeveloperName='Competitor' AND Type='Competitor Account') OR RecordType.DeveloperName='Vendor'"/>
+    <aura:attribute name="groupAccSearchFilter" type="String" 
+                    default=" WHERE RecordType.DeveloperName='Group_Account' OR RecordType.DeveloperName='Group_Prospect_Account' OR RecordType.DeveloperName='Prospect_Non_BlueSTAR' OR RecordType.DeveloperName='Group_Account_Non_BlueSTAR'"/>
+    <aura:attribute name="prodConsFirmSearchFilter" type="String" 
+                    default=" WHERE RecordType.DeveloperName='Consultant_Account' OR RecordType.DeveloperName='Producer_Account'"/>
+    <aura:attribute name="prodConsSearchFilter" type="String" 
+                    default=" WHERE RecordType.DeveloperName='Producer_Contact' OR RecordType.DeveloperName='Consultant_Contact'"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:handler name="updateInfo" event="c:PROSPECTING_APP_LOOKUP_INFO_UPDATE_EVT" action="{!c.updateFieldInfo}"/>
+    <aura:registerEvent name="updateCompVendList" type="c:PROSPECTING_APP_UPDATE_COMP_VEND_LIST_EVT"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.closeComp}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">New Competitor/Third Party Vendor</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium" style="max-height: 65vh;">
+                <div class="slds-grid slds-grid--vertical">
+                    <div class="slds-col">
+                        <h1 style="font-size: 130%">Main Information</h1>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-m-right--small">
+                                <div class="slds-text-align--left">
+                                    <div style="font-size: 90%;" class="slds-m-top--xx-small">Competitor/3rd Party Vendor </div> 
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                    	<c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="compVendAccountLookup" sobjectType="Account" sobjectName="Account" filter="{!v.compVendSearchFilter}"/>
+                                    </div>
+                                    <div style="font-size: 90%;">Group Account: </div> 
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                    	<c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="groupAccountLookup" sobjectType="Account" sobjectName="Account" filter="{!v.groupAccSearchFilter}" nameValue="{!v.curAccount.Name}" recordId="{!v.curAccount.Id}"/>
+                                    </div>
+                                    <div style="font-size: 90%;">Producer/Consultant Firm </div> 
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="prodConsFirmLookup" sobjectType="Account" sobjectName="Account" filter="{!v.prodConsFirmSearchFilter}"/>
+                                    </div>
+                                    <div style="font-size: 90%;">Producer/Consultant </div> 
+                                    <div class="slds-m-bottom--x-small slds-m-top--xx-small">
+                                        <c:PROSPECTING_APP_LOOKUP_COMPONENT uniqueName="prodConsLookup" sobjectType="Contact" sobjectName="Contact" filter="{!v.prodConsSearchFilter}"/>
+                                    </div>
+                            	</div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:select name="compVendStatus" label="Status" aura:id="compVendStatus" required="true" onchange="{!c.updateStatusPicklistChosenValue}"/>
+                                    <lightning:input type="date" name="contractStartDate" label="Contract Start Date" value="{!v.newCompVendRel.Rate_Effective_Date__c}"/>
+                                    <lightning:input type="date" name="contractEndDate" label="Contract End Date" value="{!v.newCompVendRel.Contract_End_Date__c}"/>
+                                    <lightning:input type="number" name="totalContracts" label="Total Contracts" maxlength="6" value="{!v.newCompVendRel.Total_Contracts__c}" required="true"/>
+                                    <lightning:input type="number" name="totalMembers" label="Total Members" maxlength="6" value="{!v.newCompVendRel.Total_Members__c}" required="true"/>
+                                    <lightning:input type="checkbox" name="notInsured" label="Not Insured?" aura:id="notInsuredField"/>
+                                    <lightning:input type="checkbox" name="afa" label="AFA" aura:id="afaField"/>
+                                    <lightning:input type="text" name="reinsurer" label="Reinsurer" maxlength="255" value="{!v.newCompVendRel.Reinsurer__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Group Relationship Information</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                    <lightning:textarea name="relationshipLength" label="Length of Relationship with Group" maxlength="255" value="{!v.newCompVendRel.Length_of_Relationship_with_Group__c}"/>
+                                    <lightning:textarea name="compGrpSatisfaction" label="Group Satisfaction with Competitor" maxlength="255" value="{!v.newCompVendRel.Group_Satisfaction_with_Competitor__c}"/>	
+                                    <lightning:textarea name="slashRates" label="Slash rates to keep business?" maxlength="255" value="{!v.newCompVendRel.Does_Incumbent_slash_rates_to_keep_busin__c}"/>	 	 
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:textarea name="curWinFactors" label="Current Carrier Win Factors" maxlength="255" value="{!v.newCompVendRel.Current_Carrier_Win_Factors__c}"/>	
+                                    <lightning:textarea name="strengths" label="Strengths" maxlength="255" value="{!v.newCompVendRel.Strengths__c}"/>	
+                                    <lightning:textarea name="weaknesses" label="Weaknesses" maxlength="255" value="{!v.newCompVendRel.Weaknesses__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Data Feeds</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                    <lightning:select name="claimsDataShared" label="Claims Data Shared" aura:id="claimsDataShared" onchange="{!c.updateClaimsPicklistChosenValue}"/>
+                                    <lightning:select name="eligibilityDataShared" label="Eligibility Data Shared" aura:id="eligibilityDataShared" onchange="{!c.updateEligibilityPicklistChosenValue}"/>
+                                    <lightning:select name="labDataShared" label="Lab Data Shared" aura:id="labDataShared" onchange="{!c.updateLabPicklistChosenValue}"/>
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align--left">
+                                    <lightning:select name="dischargeDataShared" label="Discharge Data Shared" aura:id="dischargeDataShared" onchange="{!c.updateDischargePicklistChosenValue}"/>
+                                    <lightning:select name="accumsDataShared" label="Accums Data Shared" aura:id="accumsDataShared" onchange="{!c.updateAccumsPicklistChosenValue}"/>
+                                    <lightning:select name="pharmacyDataShared" label="Pharmacy Data Shared" aura:id="pharmacyDataShared" onchange="{!c.updatePharmacyPicklistChosenValue}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-m-top--small">
+                        <h1 style="font-size: 130%">Additional Notes</h1>
+                    	<div class="slds-grid">
+                        	<div class="slds-col slds-m-right--xx-small">
+                                <div class="slds-text-align--left">
+                                	<lightning:textarea name="comments" label="Comments" maxlength="255" value="{!v.newCompVendRel.Comments__c}"/> 	 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeComp}">Close</button>
+                <button class="slds-button slds-button--neutral" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="newCompVendSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

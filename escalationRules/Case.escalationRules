@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EscalationRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <escalationRule>
+        <fullName>SG - Service Center - R1</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <businessHours>Oklahoma</businessHours>
+            <businessHoursSource>Static</businessHoursSource>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>In Progress</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>SG - General Case</value>
+            </criteriaItems>
+            <escalationAction>
+                <minutesToEscalation>540</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Notify_Supervisor</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>3780</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Salesforce_Critical_Priority</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>3750</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Notify_Supervisor_Critical</notifyToTemplate>
+            </escalationAction>
+            <escalationStartTime>CaseLastModified</escalationStartTime>
+        </ruleEntry>
+        <ruleEntry>
+            <businessHours>Oklahoma</businessHours>
+            <businessHoursSource>Static</businessHoursSource>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>Pending - Partner</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Execute_Rule__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>SG - General Case</value>
+            </criteriaItems>
+            <escalationAction>
+                <minutesToEscalation>1080</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Notify_Supervisor_Priority</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>2160</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Salesforce_Critical_Priority</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>2130</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Notify_Supervisor_Critical</notifyToTemplate>
+            </escalationAction>
+            <escalationStartTime>CaseLastModified</escalationStartTime>
+        </ruleEntry>
+        <ruleEntry>
+            <businessHours>Oklahoma</businessHours>
+            <businessHoursSource>Static</businessHoursSource>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>Pending - Partner</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>SG - General Case</value>
+            </criteriaItems>
+            <escalationAction>
+                <minutesToEscalation>1620</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Salesforce_Priority_Escalation</notifyToTemplate>
+            </escalationAction>
+            <escalationStartTime>CaseLastModified</escalationStartTime>
+        </ruleEntry>
+        <ruleEntry>
+            <businessHours>Oklahoma</businessHours>
+            <businessHoursSource>Static</businessHoursSource>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>Waiting for Information</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>SG - General Case</value>
+            </criteriaItems>
+            <escalationAction>
+                <minutesToEscalation>1620</minutesToEscalation>
+                <notifyCaseOwner>true</notifyCaseOwner>
+                <notifyToTemplate>SG_Escalation_Email_Templates/Escalated_Case_Notification_Waiting_for_Info</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>2700</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+                <notifyEmail>case_field_update@w-k9hgrv2dbp01s2d66l0leuxzp1sgpd66i3m19vugxqdv0kiz7.4-n3toeac.na2.apex.salesforce.com</notifyEmail>
+                <notifyToTemplate>SG_System_Emails/Salesforce_status_update_to_Closed_No_Response</notifyToTemplate>
+            </escalationAction>
+            <escalationAction>
+                <minutesToEscalation>2670</minutesToEscalation>
+                <notifyCaseOwner>true</notifyCaseOwner>
+                <notifyToTemplate>SG_Escalation_Email_Templates/Escalated_Case_Notification_Critical_Waiting_for_Info_Closed</notifyToTemplate>
+            </escalationAction>
+            <escalationStartTime>CaseLastModified</escalationStartTime>
+        </ruleEntry>
+    </escalationRule>
+</EscalationRules>

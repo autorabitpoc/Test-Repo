@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>System Email - To Notify Supervisor about priority to critical</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Notify Supervisor Priority</name>
+    <style>none</style>
+    <subject>Mail: {!Case.OwnerId}: {!Case.Id}: Escalated_Case_Notification_Pending_Partner</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

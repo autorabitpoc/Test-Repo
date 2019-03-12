@@ -1,0 +1,7 @@
+DTU has provided their disposition. Please take appropriate action.
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

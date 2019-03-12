@@ -1,0 +1,105 @@
+<aura:component access="global" implements="force:appHostable,force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes" >
+    							
+
+    <aura:attribute name="operationTabSelected" type="Boolean"/>
+    <aura:attribute name="cancelTabSelected" type="Boolean"/>
+    <aura:attribute name="amTabSelected" type="Boolean"/>
+    <aura:attribute name="asTabSelected" type="Boolean"/>
+    <aura:attribute name="cfTabSelected" type="Boolean"/>
+    <aura:attribute name="crTabSelected" type="Boolean"/>
+    <aura:attribute name="recordId" type="String" />
+      <aura:attribute name="accountDetails" type="Account"/>
+     <aura:attribute name="accountname" type="String"/>
+     <aura:attribute name="UserContext" type="String" access="Global"/>
+    <aura:attribute name="recordtype" type="Service_Request__c"/>
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds customBackground requesttabheight">
+  		<div class="slds-form slds-form_compound requesttabheight">
+        <div style="width: 320px;" class="slds-float--left">
+            <nav class="slds-nav-vertical" aria-label="Sub page">
+                <div class="slds-nav-vertical__section">
+                    <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps"></h2>
+                    <div id="Tablistdiv">
+                        <ul>
+                            <li aura:id="osTab" class="slds-nav-vertical__item" onclick="{!c.onClickOperationSupport}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.operationTabSelected}" aria-controls="operation-tab" aria-describedby="entity-header" aria-current="page">Operation Support</a>
+                            </li>
+                            <li aura:id="cancelTab" class="slds-nav-vertical__item" onclick="{!c.onClickCancellation}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.cancelTabSelected}" aria-controls="cancel-tab" aria-describedby="entity-header">Cancellation</a>
+                            </li>
+                            <li aura:id="amTab" class="slds-nav-vertical__item" onclick="{!c.onClickAccMaintanance}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.amTabSelected}" aria-controls="amainatnance-tab" aria-describedby="entity-header">Account Maintenance</a>
+                            </li>
+                            <li aura:id="asTab" class="slds-nav-vertical__item" onclick="{!c.onClickAccSupport}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.asTabSelected}" aria-controls="asupport-tab" aria-describedby="entity-header">Account Support</a>
+                            </li>
+                            <li aura:id="cfTab" class="slds-nav-vertical__item" onclick="{!c.onClickCleentForms}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.cfTabSelected}" aria-controls="cleentforms-tab" aria-describedby="entity-header">Client Forms</a>
+                            </li>
+                            <li aura:id="crTab" class="slds-nav-vertical__item" onclick="{!c.onClickClientRequest}">
+                                <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-selected="{!v.crTabSelected}" aria-controls="clientrequest-tab" aria-describedby="entity-header">Client Request</a>
+                            </li>
+                        </ul>
+                    </div >
+                </div>
+            </nav>
+        </div>
+        <!-- Tabs Starts Here-->
+        <div style="width: 50%;" class=" slds-float--left">
+            <!-- Operation support Tab Starts Here-->
+            <div id="operation-tab" aura:id="osTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">          
+                
+                <div style="width:100% ; float:left;">
+					<div style="width:32% ; float:left;"><c:LGNA_CEDECase AccountId="{!v.recordId}" />                  </div>
+                    <div style="width:32% ; float:left;"><c:LGNA_CustomContractCase AccountId="{!v.recordId}" /></div>
+                    <div style="width:32% ; float:left;"><c:LGNA_NetworkInformationCase AccountId="{!v.recordId}" /></div>
+                    <div style="width:32% ; float:left;"><c:LGNA_PerformanceGuaranteeCase AccountId="{!v.recordId}" /></div>
+                </div>
+            </div>
+            <!-- Operation support Tab End Here-->
+            <!-- Operation Cancellation Tab Starts Here-->
+            <div id="cancel-tab" aura:id="cancelTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">         
+              
+                <b>Operation Cancellation request</b> <br></br><br></br>
+                (place holder for future component.........)  <br></br>
+                
+            </div>
+            <!-- Operation Cancellation Tab End Here-->
+            <!-- Operation Account Maintanance Tab Starts Here-->
+            <div id="amaintenance-tab" aura:id="amTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">         
+               <b>Operation Account Maintanance request</b> <br></br><br></br>
+                (place holder for future component.........)  <br></br>
+            </div>
+             <!-- Operation Account Maintanance Tab End Here-->
+            <!-- Account Support Tab Start Here-->
+            <div id="asupport-tab" aura:id="asTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">         
+                 <div style="width:100% ; float:left;">
+					<div style="width:32% ; float:left;"><c:LGNA_OpenEnrolmentServiceRequest AccountId="{!v.recordId}" /></div>
+                    <div style="width:32% ; float:left;"><c:LGNA_TicketTrackerCase /></div>
+                </div>    
+            </div>
+            <!-- Account Support Tab End Here-->
+             <!-- Operation Client Forms Tab Start Here-->
+            <div id="cleent-tab" aura:id="cfTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">         
+               <ol>
+                  <b>Client Forms</b> <br></br><br></br>
+                	(place holder for BAA,BPA)  <br></br>
+				</ol>  
+            </div>
+             <!-- Operation Client Forms Tab End Here-->
+             <!-- Operation Client Request Tab Start Here-->
+            <div id="clientRequest-tab" aura:id="crTabData" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">         
+
+                   
+                   
+                	(place holder for CBSR Requests)  
+  
+            </div>
+             <!-- Operation Client request Tab End Here-->
+        </div>
+        <!-- Ends Tabs Here-->
+        </div>
+    </div>
+</aura:component>

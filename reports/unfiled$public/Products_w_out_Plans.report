@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Product2$Name</field>
+    </columns>
+    <columns>
+        <field>Product2$External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Id</field>
+    </columns>
+    <columns>
+        <field>Product2.Plans__r$Id</field>
+    </columns>
+    <columns>
+        <field>Product2.Plans__r$External_Id__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Plans__r$Marketing_Plan_Number__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Plans__r$Name</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Products w/out Plans</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Plans__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Product2.Plans__r$Marketing_Plan_Number__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Product2$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

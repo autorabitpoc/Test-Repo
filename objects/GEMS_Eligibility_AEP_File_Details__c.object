@@ -1,0 +1,1884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AD_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>AD Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>01/01</fullName>
+                    <default>false</default>
+                    <label>01/01</label>
+                </value>
+                <value>
+                    <fullName>01/15</fullName>
+                    <default>false</default>
+                    <label>01/15</label>
+                </value>
+                <value>
+                    <fullName>02/01</fullName>
+                    <default>false</default>
+                    <label>02/01</label>
+                </value>
+                <value>
+                    <fullName>02/15</fullName>
+                    <default>false</default>
+                    <label>02/15</label>
+                </value>
+                <value>
+                    <fullName>03/01</fullName>
+                    <default>false</default>
+                    <label>03/01</label>
+                </value>
+                <value>
+                    <fullName>03/15</fullName>
+                    <default>false</default>
+                    <label>03/15</label>
+                </value>
+                <value>
+                    <fullName>04/01</fullName>
+                    <default>false</default>
+                    <label>04/01</label>
+                </value>
+                <value>
+                    <fullName>04/15</fullName>
+                    <default>false</default>
+                    <label>04/15</label>
+                </value>
+                <value>
+                    <fullName>05/01</fullName>
+                    <default>false</default>
+                    <label>05/01</label>
+                </value>
+                <value>
+                    <fullName>05/15</fullName>
+                    <default>false</default>
+                    <label>05/15</label>
+                </value>
+                <value>
+                    <fullName>06/01</fullName>
+                    <default>false</default>
+                    <label>06/01</label>
+                </value>
+                <value>
+                    <fullName>06/15</fullName>
+                    <default>false</default>
+                    <label>06/15</label>
+                </value>
+                <value>
+                    <fullName>07/01</fullName>
+                    <default>false</default>
+                    <label>07/01</label>
+                </value>
+                <value>
+                    <fullName>07/15</fullName>
+                    <default>false</default>
+                    <label>07/15</label>
+                </value>
+                <value>
+                    <fullName>08/01</fullName>
+                    <default>false</default>
+                    <label>08/01</label>
+                </value>
+                <value>
+                    <fullName>08/15</fullName>
+                    <default>false</default>
+                    <label>08/15</label>
+                </value>
+                <value>
+                    <fullName>09/01</fullName>
+                    <default>false</default>
+                    <label>09/01</label>
+                </value>
+                <value>
+                    <fullName>09/15</fullName>
+                    <default>false</default>
+                    <label>09/15</label>
+                </value>
+                <value>
+                    <fullName>10/01</fullName>
+                    <default>false</default>
+                    <label>10/01</label>
+                </value>
+                <value>
+                    <fullName>10/15</fullName>
+                    <default>false</default>
+                    <label>10/15</label>
+                </value>
+                <value>
+                    <fullName>11/01</fullName>
+                    <default>false</default>
+                    <label>11/01</label>
+                </value>
+                <value>
+                    <fullName>11/15</fullName>
+                    <default>false</default>
+                    <label>11/15</label>
+                </value>
+                <value>
+                    <fullName>12/01</fullName>
+                    <default>false</default>
+                    <label>12/01</label>
+                </value>
+                <value>
+                    <fullName>12/15</fullName>
+                    <default>false</default>
+                    <label>12/15</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ASP_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>ASP Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Eligibility_Process_Case__r.Account_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Eligibility_Process_Case__r.Account_Number__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Active_AEP__c</fullName>
+        <externalId>false</externalId>
+        <label>Active AEP?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Allow_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Allow Contact?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Eligibility_Process_Case__r.GEMS_Account_Submission_Info__r.GEMS_Case_Effective_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Dataset_In__c</fullName>
+        <externalId>false</externalId>
+        <label>Dataset In</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dataset_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Dataset Out</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Day_of_the_Week__c</fullName>
+        <externalId>false</externalId>
+        <label>Day of the Week</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Monday</fullName>
+                    <default>false</default>
+                    <label>Monday</label>
+                </value>
+                <value>
+                    <fullName>Tuesday</fullName>
+                    <default>false</default>
+                    <label>Tuesday</label>
+                </value>
+                <value>
+                    <fullName>Wednesday</fullName>
+                    <default>false</default>
+                    <label>Wednesday</label>
+                </value>
+                <value>
+                    <fullName>Thursday</fullName>
+                    <default>false</default>
+                    <label>Thursday</label>
+                </value>
+                <value>
+                    <fullName>Friday</fullName>
+                    <default>false</default>
+                    <label>Friday</label>
+                </value>
+                <value>
+                    <fullName>Saturday</fullName>
+                    <default>false</default>
+                    <label>Saturday</label>
+                </value>
+                <value>
+                    <fullName>Sunday</fullName>
+                    <default>false</default>
+                    <label>Sunday</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Eligibility_Process_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Eligibility Process Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Eligibility AEP File Details</relationshipLabel>
+        <relationshipName>GEMS_Eligibility_AEP_File_Details</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FSU_Location__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Eligibility_Process_Case__r.GEMS_Account_Submission_Info__r.FSU_Location__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Center Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>File Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Layout__c</fullName>
+        <externalId>false</externalId>
+        <label>File Layout</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>OTL</fullName>
+                    <default>false</default>
+                    <label>OTL</label>
+                </value>
+                <value>
+                    <fullName>AON HEWITT</fullName>
+                    <default>false</default>
+                    <label>AON HEWITT</label>
+                </value>
+                <value>
+                    <fullName>EDI 834 4010</fullName>
+                    <default>false</default>
+                    <label>EDI 834 4010</label>
+                </value>
+                <value>
+                    <fullName>EDI 834 5010</fullName>
+                    <default>false</default>
+                    <label>EDI 834 5010</label>
+                </value>
+                <value>
+                    <fullName>BLUESTAR</fullName>
+                    <default>false</default>
+                    <label>BLUESTAR</label>
+                </value>
+                <value>
+                    <fullName>CUSTOM</fullName>
+                    <default>false</default>
+                    <label>CUSTOM</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Frequency</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HCSC_Division__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Eligibility_Process_Case__r.GEMS_Account_Submission_Info__r.HCSC_Division__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HCSC Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Implement_Target_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Implement Target Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Setup_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Setup End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Setup_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Setup Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Key_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Key Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BlueStar Derivation</fullName>
+                    <default>false</default>
+                    <label>BlueStar Derivation</label>
+                </value>
+                <value>
+                    <fullName>Group/Section</fullName>
+                    <default>false</default>
+                    <label>Group/Section</label>
+                </value>
+                <value>
+                    <fullName>Map Derivation</fullName>
+                    <default>false</default>
+                    <label>Map Derivation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Labor__c</fullName>
+        <externalId>false</externalId>
+        <label>Labor?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Membership_Specialist__c</fullName>
+        <externalId>false</externalId>
+        <label>Membership Specialist</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_AD_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Other AD Date</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Day_of_the_Week__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Day of the Week</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Vendor__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Vendor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_EEE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Primary EEE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>GEMS_Eligibility_AEP_File_Details</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Production_Ready_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Production Ready End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Production_Ready_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Production Ready Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Programmer__c</fullName>
+        <externalId>false</externalId>
+        <label>Programmer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Secondary_EEE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Secondary EEE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>GEMS_Eligibility_AEP_File_Details1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Split_File__c</fullName>
+        <externalId>false</externalId>
+        <label>Split File?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Initial Setup In Progress</fullName>
+                    <default>false</default>
+                    <label>Initial Setup In Progress</label>
+                </value>
+                <value>
+                    <fullName>Pending First Test File</fullName>
+                    <default>false</default>
+                    <label>Pending First Test File</label>
+                </value>
+                <value>
+                    <fullName>Testing In Progress</fullName>
+                    <default>false</default>
+                    <label>Testing In Progress</label>
+                </value>
+                <value>
+                    <fullName>Testing Production File</fullName>
+                    <default>false</default>
+                    <label>Testing Production File</label>
+                </value>
+                <value>
+                    <fullName>Pending Prod</fullName>
+                    <default>false</default>
+                    <label>Pending Prod</label>
+                </value>
+                <value>
+                    <fullName>Production In Progress</fullName>
+                    <default>false</default>
+                    <label>Production In Progress</label>
+                </value>
+                <value>
+                    <fullName>On Hold</fullName>
+                    <default>false</default>
+                    <label>On Hold</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Submitter_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Submitter ID</label>
+        <length>12</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Testing_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Testing End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Testing_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Testing Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Transmission_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Transmission Method</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SFTP</fullName>
+                    <default>false</default>
+                    <label>SFTP</label>
+                </value>
+                <value>
+                    <fullName>AS2</fullName>
+                    <default>false</default>
+                    <label>AS2</label>
+                </value>
+                <value>
+                    <fullName>EMCNet</fullName>
+                    <default>false</default>
+                    <label>EMCNet</label>
+                </value>
+                <value>
+                    <fullName>FTP</fullName>
+                    <default>false</default>
+                    <label>FTP</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>SFTP with PGP</fullName>
+                    <default>false</default>
+                    <label>SFTP with PGP</label>
+                </value>
+                <value>
+                    <fullName>SSH Key Authentication</fullName>
+                    <default>false</default>
+                    <label>SSH Key Authentication</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>UID_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>UID Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Generated</fullName>
+                    <default>false</default>
+                    <label>Account Generated</label>
+                </value>
+                <value>
+                    <fullName>System Generated</fullName>
+                    <default>false</default>
+                    <label>System Generated</label>
+                </value>
+                <value>
+                    <fullName>SSN</fullName>
+                    <default>false</default>
+                    <label>SSN</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Vendor__c</fullName>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ABPA</fullName>
+                    <default>false</default>
+                    <label>ABPA</label>
+                </value>
+                <value>
+                    <fullName>ACADEMIC HEALTH PLAN</fullName>
+                    <default>false</default>
+                    <label>ACADEMIC HEALTH PLAN</label>
+                </value>
+                <value>
+                    <fullName>ACCORDWARE</fullName>
+                    <default>false</default>
+                    <label>ACCORDWARE</label>
+                </value>
+                <value>
+                    <fullName>ADP</fullName>
+                    <default>false</default>
+                    <label>ADP</label>
+                </value>
+                <value>
+                    <fullName>ALAQUINT</fullName>
+                    <default>false</default>
+                    <label>ALAQUINT</label>
+                </value>
+                <value>
+                    <fullName>ALLEGIANCE</fullName>
+                    <default>false</default>
+                    <label>ALLEGIANCE</label>
+                </value>
+                <value>
+                    <fullName>ALLIED BENEFIT SERVICES</fullName>
+                    <default>false</default>
+                    <label>ALLIED BENEFIT SERVICES</label>
+                </value>
+                <value>
+                    <fullName>AMERIBEN</fullName>
+                    <default>false</default>
+                    <label>AMERIBEN</label>
+                </value>
+                <value>
+                    <fullName>AON HEWITT/ALIGHT</fullName>
+                    <default>false</default>
+                    <label>AON HEWITT/ALIGHT</label>
+                </value>
+                <value>
+                    <fullName>APPIRIO</fullName>
+                    <default>false</default>
+                    <label>APPIRIO</label>
+                </value>
+                <value>
+                    <fullName>APPRIZE TECHNOLOGY</fullName>
+                    <default>false</default>
+                    <label>APPRIZE TECHNOLOGY</label>
+                </value>
+                <value>
+                    <fullName>ASCENTIS</fullName>
+                    <default>false</default>
+                    <label>ASCENTIS</label>
+                </value>
+                <value>
+                    <fullName>B SWIFT</fullName>
+                    <default>false</default>
+                    <label>B SWIFT</label>
+                </value>
+                <value>
+                    <fullName>BAKER TILLY VANTAGEN</fullName>
+                    <default>false</default>
+                    <label>BAKER TILLY VANTAGEN</label>
+                </value>
+                <value>
+                    <fullName>BASYS (SUN SYSTEM)</fullName>
+                    <default>false</default>
+                    <label>BASYS (SUN SYSTEM)</label>
+                </value>
+                <value>
+                    <fullName>BAYBRIDGE ADMIN</fullName>
+                    <default>false</default>
+                    <label>BAYBRIDGE ADMIN</label>
+                </value>
+                <value>
+                    <fullName>BEACON</fullName>
+                    <default>false</default>
+                    <label>BEACON</label>
+                </value>
+                <value>
+                    <fullName>BENAWARE</fullName>
+                    <default>false</default>
+                    <label>BENAWARE</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ADMIN</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ADMIN</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ADVANTAGE</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ADVANTAGE</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ALLOCATION SYSTEMS</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ALLOCATION SYSTEMS</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT CONCEPTS</fullName>
+                    <default>false</default>
+                    <label>BENEFIT CONCEPTS</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT FIRST</fullName>
+                    <default>false</default>
+                    <label>BENEFIT FIRST</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT FOCUS</fullName>
+                    <default>false</default>
+                    <label>BENEFIT FOCUS</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT HARBOR</fullName>
+                    <default>false</default>
+                    <label>BENEFIT HARBOR</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT MALL</fullName>
+                    <default>false</default>
+                    <label>BENEFIT MALL</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT ONE</fullName>
+                    <default>false</default>
+                    <label>BENEFIT ONE</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT OUTSOURCING SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>BENEFIT OUTSOURCING SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT PARTNERS</fullName>
+                    <default>false</default>
+                    <label>BENEFIT PARTNERS</label>
+                </value>
+                <value>
+                    <fullName>BENEFIT SYSTEMS &amp; SERVICES (BSSI)</fullName>
+                    <default>false</default>
+                    <label>BENEFIT SYSTEMS &amp; SERVICES (BSSI)</label>
+                </value>
+                <value>
+                    <fullName>BENEFITS CONNECT / BENEFIT EXPRESS</fullName>
+                    <default>false</default>
+                    <label>BENEFITS CONNECT / BENEFIT EXPRESS</label>
+                </value>
+                <value>
+                    <fullName>BENEFITS ON LINE</fullName>
+                    <default>false</default>
+                    <label>BENEFITS ON LINE</label>
+                </value>
+                <value>
+                    <fullName>BENEFITS TECHNOLOGIES</fullName>
+                    <default>false</default>
+                    <label>BENEFITS TECHNOLOGIES</label>
+                </value>
+                <value>
+                    <fullName>BENEFITVISION</fullName>
+                    <default>false</default>
+                    <label>BENEFITVISION</label>
+                </value>
+                <value>
+                    <fullName>BENELOGIC</fullName>
+                    <default>false</default>
+                    <label>BENELOGIC</label>
+                </value>
+                <value>
+                    <fullName>BENETRAC / PAYCHEX</fullName>
+                    <default>false</default>
+                    <label>BENETRAC / PAYCHEX</label>
+                </value>
+                <value>
+                    <fullName>BICC</fullName>
+                    <default>false</default>
+                    <label>BICC</label>
+                </value>
+                <value>
+                    <fullName>BLOOM HEALTH - PRIVATE EXCHANGE</fullName>
+                    <default>false</default>
+                    <label>BLOOM HEALTH - PRIVATE EXCHANGE</label>
+                </value>
+                <value>
+                    <fullName>BOON CHAPMAN</fullName>
+                    <default>false</default>
+                    <label>BOON CHAPMAN</label>
+                </value>
+                <value>
+                    <fullName>BRIDGELINE</fullName>
+                    <default>false</default>
+                    <label>BRIDGELINE</label>
+                </value>
+                <value>
+                    <fullName>BRMS-BENEFIT &amp; RISK MGMT SERVICES</fullName>
+                    <default>false</default>
+                    <label>BRMS-BENEFIT &amp; RISK MGMT SERVICES</label>
+                </value>
+                <value>
+                    <fullName>BROKER BUILDER SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>BROKER BUILDER SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>BUCK CONSULTANTS</fullName>
+                    <default>false</default>
+                    <label>BUCK CONSULTANTS</label>
+                </value>
+                <value>
+                    <fullName>BUSINESSOLVER</fullName>
+                    <default>false</default>
+                    <label>BUSINESSOLVER</label>
+                </value>
+                <value>
+                    <fullName>CBCINS (CBC BENEFIT &amp; INSURANCE SVCS)</fullName>
+                    <default>false</default>
+                    <label>CBCINS (CBC BENEFIT &amp; INSURANCE SVCS)</label>
+                </value>
+                <value>
+                    <fullName>CCMSI MIDLAND, LLC.</fullName>
+                    <default>false</default>
+                    <label>CCMSI MIDLAND, LLC.</label>
+                </value>
+                <value>
+                    <fullName>CERIDIAN</fullName>
+                    <default>false</default>
+                    <label>CERIDIAN</label>
+                </value>
+                <value>
+                    <fullName>CIGNA</fullName>
+                    <default>false</default>
+                    <label>CIGNA</label>
+                </value>
+                <value>
+                    <fullName>CITISTREET</fullName>
+                    <default>false</default>
+                    <label>CITISTREET</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATIVE SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>COLLABORATIVE SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>COMPUSYS</fullName>
+                    <default>false</default>
+                    <label>COMPUSYS</label>
+                </value>
+                <value>
+                    <fullName>CONDUENT</fullName>
+                    <default>false</default>
+                    <label>CONDUENT</label>
+                </value>
+                <value>
+                    <fullName>CONEXIS</fullName>
+                    <default>false</default>
+                    <label>CONEXIS</label>
+                </value>
+                <value>
+                    <fullName>CONNECT SOURCE</fullName>
+                    <default>false</default>
+                    <label>CONNECT SOURCE</label>
+                </value>
+                <value>
+                    <fullName>CORESOURCE</fullName>
+                    <default>false</default>
+                    <label>CORESOURCE</label>
+                </value>
+                <value>
+                    <fullName>COVANTAGE</fullName>
+                    <default>false</default>
+                    <label>COVANTAGE</label>
+                </value>
+                <value>
+                    <fullName>CREATIVA ASSOCIATES</fullName>
+                    <default>false</default>
+                    <label>CREATIVA ASSOCIATES</label>
+                </value>
+                <value>
+                    <fullName>CSERISA</fullName>
+                    <default>false</default>
+                    <label>CSERISA</label>
+                </value>
+                <value>
+                    <fullName>DELOITTE</fullName>
+                    <default>false</default>
+                    <label>DELOITTE</label>
+                </value>
+                <value>
+                    <fullName>DISCOVERY BENEFITS</fullName>
+                    <default>false</default>
+                    <label>DISCOVERY BENEFITS</label>
+                </value>
+                <value>
+                    <fullName>EBENEFITS NETWORK (EBN)</fullName>
+                    <default>false</default>
+                    <label>EBENEFITS NETWORK (EBN)</label>
+                </value>
+                <value>
+                    <fullName>EBIX</fullName>
+                    <default>false</default>
+                    <label>EBIX</label>
+                </value>
+                <value>
+                    <fullName>EBS BENEFITS</fullName>
+                    <default>false</default>
+                    <label>EBS BENEFITS</label>
+                </value>
+                <value>
+                    <fullName>EDS</fullName>
+                    <default>false</default>
+                    <label>EDS</label>
+                </value>
+                <value>
+                    <fullName>E-EXCHANGE</fullName>
+                    <default>false</default>
+                    <label>E-EXCHANGE</label>
+                </value>
+                <value>
+                    <fullName>EHRO</fullName>
+                    <default>false</default>
+                    <label>EHRO</label>
+                </value>
+                <value>
+                    <fullName>ELECTRONIC COMMERCE INC</fullName>
+                    <default>false</default>
+                    <label>ELECTRONIC COMMERCE INC</label>
+                </value>
+                <value>
+                    <fullName>ELITE ADMIN</fullName>
+                    <default>false</default>
+                    <label>ELITE ADMIN</label>
+                </value>
+                <value>
+                    <fullName>EMPLOYEASE</fullName>
+                    <default>false</default>
+                    <label>EMPLOYEASE</label>
+                </value>
+                <value>
+                    <fullName>EMPLOYEE NAVIGATOR</fullName>
+                    <default>false</default>
+                    <label>EMPLOYEE NAVIGATOR</label>
+                </value>
+                <value>
+                    <fullName>EMPOWERED BENEFITS</fullName>
+                    <default>false</default>
+                    <label>EMPOWERED BENEFITS</label>
+                </value>
+                <value>
+                    <fullName>EMPYREAN</fullName>
+                    <default>false</default>
+                    <label>EMPYREAN</label>
+                </value>
+                <value>
+                    <fullName>ENCORE</fullName>
+                    <default>false</default>
+                    <label>ENCORE</label>
+                </value>
+                <value>
+                    <fullName>ENROLLMENT ADVISORS</fullName>
+                    <default>false</default>
+                    <label>ENROLLMENT ADVISORS</label>
+                </value>
+                <value>
+                    <fullName>EOI SERVICE CO</fullName>
+                    <default>false</default>
+                    <label>EOI SERVICE CO</label>
+                </value>
+                <value>
+                    <fullName>ERISA</fullName>
+                    <default>false</default>
+                    <label>ERISA</label>
+                </value>
+                <value>
+                    <fullName>EVERYTHING BENEFITS</fullName>
+                    <default>false</default>
+                    <label>EVERYTHING BENEFITS</label>
+                </value>
+                <value>
+                    <fullName>EXPONENTHR</fullName>
+                    <default>false</default>
+                    <label>EXPONENTHR</label>
+                </value>
+                <value>
+                    <fullName>FFGA</fullName>
+                    <default>false</default>
+                    <label>FFGA</label>
+                </value>
+                <value>
+                    <fullName>FIDELITY</fullName>
+                    <default>false</default>
+                    <label>FIDELITY</label>
+                </value>
+                <value>
+                    <fullName>FINANCIAL BENEFIT SERVICES</fullName>
+                    <default>false</default>
+                    <label>FINANCIAL BENEFIT SERVICES</label>
+                </value>
+                <value>
+                    <fullName>FLEXIBLE BENEFITS - PRIVATE EXCHANGE</fullName>
+                    <default>false</default>
+                    <label>FLEXIBLE BENEFITS - PRIVATE EXCHANGE</label>
+                </value>
+                <value>
+                    <fullName>FRIEND-EDI</fullName>
+                    <default>false</default>
+                    <label>FRIEND-EDI</label>
+                </value>
+                <value>
+                    <fullName>FUNDOFFICE</fullName>
+                    <default>false</default>
+                    <label>FUNDOFFICE</label>
+                </value>
+                <value>
+                    <fullName>GALLAGHER</fullName>
+                    <default>false</default>
+                    <label>GALLAGHER</label>
+                </value>
+                <value>
+                    <fullName>GROUP ADMINISTRATORS</fullName>
+                    <default>false</default>
+                    <label>GROUP ADMINISTRATORS</label>
+                </value>
+                <value>
+                    <fullName>HALE BENEFIT SERVICES</fullName>
+                    <default>false</default>
+                    <label>HALE BENEFIT SERVICES</label>
+                </value>
+                <value>
+                    <fullName>HANNA GLOBAL</fullName>
+                    <default>false</default>
+                    <label>HANNA GLOBAL</label>
+                </value>
+                <value>
+                    <fullName>HCH ADMINISTRATION</fullName>
+                    <default>false</default>
+                    <label>HCH ADMINISTRATION</label>
+                </value>
+                <value>
+                    <fullName>HEALTHSMART</fullName>
+                    <default>false</default>
+                    <label>HEALTHSMART</label>
+                </value>
+                <value>
+                    <fullName>HODGES MACE</fullName>
+                    <default>false</default>
+                    <label>HODGES MACE</label>
+                </value>
+                <value>
+                    <fullName>HRXCEL</fullName>
+                    <default>false</default>
+                    <label>HRXCEL</label>
+                </value>
+                <value>
+                    <fullName>HUB INTERNATIONAL</fullName>
+                    <default>false</default>
+                    <label>HUB INTERNATIONAL</label>
+                </value>
+                <value>
+                    <fullName>INFINITY SOFTWARE SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>INFINITY SOFTWARE SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>INFO SYNC</fullName>
+                    <default>false</default>
+                    <label>INFO SYNC</label>
+                </value>
+                <value>
+                    <fullName>IPROCESS</fullName>
+                    <default>false</default>
+                    <label>IPROCESS</label>
+                </value>
+                <value>
+                    <fullName>IPS ADVISOR</fullName>
+                    <default>false</default>
+                    <label>IPS ADVISOR</label>
+                </value>
+                <value>
+                    <fullName>INNOVATIVE SOFTWARE SOLUTIONS (ISSI)</fullName>
+                    <default>false</default>
+                    <label>INNOVATIVE SOFTWARE SOLUTIONS (ISSI)</label>
+                </value>
+                <value>
+                    <fullName>JLT SERVICES</fullName>
+                    <default>false</default>
+                    <label>JLT SERVICES</label>
+                </value>
+                <value>
+                    <fullName>KELLY ADMINISTRATIVE SERVICES</fullName>
+                    <default>false</default>
+                    <label>KELLY ADMINISTRATIVE SERVICES</label>
+                </value>
+                <value>
+                    <fullName>KIRTLEY TECHNOLOGY</fullName>
+                    <default>false</default>
+                    <label>KIRTLEY TECHNOLOGY</label>
+                </value>
+                <value>
+                    <fullName>KPMG</fullName>
+                    <default>false</default>
+                    <label>KPMG</label>
+                </value>
+                <value>
+                    <fullName>KRONOS</fullName>
+                    <default>false</default>
+                    <label>KRONOS</label>
+                </value>
+                <value>
+                    <fullName>LACERTE</fullName>
+                    <default>false</default>
+                    <label>LACERTE</label>
+                </value>
+                <value>
+                    <fullName>LAWSON</fullName>
+                    <default>false</default>
+                    <label>LAWSON</label>
+                </value>
+                <value>
+                    <fullName>LIAZON</fullName>
+                    <default>false</default>
+                    <label>LIAZON</label>
+                </value>
+                <value>
+                    <fullName>MASS GROUP MARKETING</fullName>
+                    <default>false</default>
+                    <label>MASS GROUP MARKETING</label>
+                </value>
+                <value>
+                    <fullName>MAXWELL HEALTH</fullName>
+                    <default>false</default>
+                    <label>MAXWELL HEALTH</label>
+                </value>
+                <value>
+                    <fullName>MELIORA TECHNOLOGY</fullName>
+                    <default>false</default>
+                    <label>MELIORA TECHNOLOGY</label>
+                </value>
+                <value>
+                    <fullName>MERCER</fullName>
+                    <default>false</default>
+                    <label>MERCER</label>
+                </value>
+                <value>
+                    <fullName>MERRILL LYNCH</fullName>
+                    <default>false</default>
+                    <label>MERRILL LYNCH</label>
+                </value>
+                <value>
+                    <fullName>METEORIX</fullName>
+                    <default>false</default>
+                    <label>METEORIX</label>
+                </value>
+                <value>
+                    <fullName>MGIS (BAS)</fullName>
+                    <default>false</default>
+                    <label>MGIS (BAS)</label>
+                </value>
+                <value>
+                    <fullName>MILLIMAN</fullName>
+                    <default>false</default>
+                    <label>MILLIMAN</label>
+                </value>
+                <value>
+                    <fullName>MORNEAU SHEPELL</fullName>
+                    <default>false</default>
+                    <label>MORNEAU SHEPELL</label>
+                </value>
+                <value>
+                    <fullName>MORRIS</fullName>
+                    <default>false</default>
+                    <label>MORRIS</label>
+                </value>
+                <value>
+                    <fullName>MR. MICROCHIP</fullName>
+                    <default>false</default>
+                    <label>MR. MICROCHIP</label>
+                </value>
+                <value>
+                    <fullName>NETASPX, INC.</fullName>
+                    <default>false</default>
+                    <label>NETASPX, INC.</label>
+                </value>
+                <value>
+                    <fullName>NFP CORPORATE SERVICES</fullName>
+                    <default>false</default>
+                    <label>NFP CORPORATE SERVICES</label>
+                </value>
+                <value>
+                    <fullName>NGA</fullName>
+                    <default>false</default>
+                    <label>NGA</label>
+                </value>
+                <value>
+                    <fullName>NOBLUSOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>NOBLUSOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>NORMAN-SPENCER</fullName>
+                    <default>false</default>
+                    <label>NORMAN-SPENCER</label>
+                </value>
+                <value>
+                    <fullName>NUVIEW</fullName>
+                    <default>false</default>
+                    <label>NUVIEW</label>
+                </value>
+                <value>
+                    <fullName>OBA</fullName>
+                    <default>false</default>
+                    <label>OBA</label>
+                </value>
+                <value>
+                    <fullName>ONE SOURCE VIRTUAL (OSV)</fullName>
+                    <default>false</default>
+                    <label>ONE SOURCE VIRTUAL (OSV)</label>
+                </value>
+                <value>
+                    <fullName>PAYCOM</fullName>
+                    <default>false</default>
+                    <label>PAYCOM</label>
+                </value>
+                <value>
+                    <fullName>PAYCOR</fullName>
+                    <default>false</default>
+                    <label>PAYCOR</label>
+                </value>
+                <value>
+                    <fullName>PAYFLEX</fullName>
+                    <default>false</default>
+                    <label>PAYFLEX</label>
+                </value>
+                <value>
+                    <fullName>PAYLOCITY</fullName>
+                    <default>false</default>
+                    <label>PAYLOCITY</label>
+                </value>
+                <value>
+                    <fullName>PBA</fullName>
+                    <default>false</default>
+                    <label>PBA</label>
+                </value>
+                <value>
+                    <fullName>PEOPLESOFT</fullName>
+                    <default>false</default>
+                    <label>PEOPLESOFT</label>
+                </value>
+                <value>
+                    <fullName>PLANSOURCE / NEXT GENERATION ENROLLMENT</fullName>
+                    <default>false</default>
+                    <label>PLANSOURCE / NEXT GENERATION ENROLLMENT</label>
+                </value>
+                <value>
+                    <fullName>PLATFORM ONE</fullName>
+                    <default>false</default>
+                    <label>PLATFORM ONE</label>
+                </value>
+                <value>
+                    <fullName>PLEXUS GROUP</fullName>
+                    <default>false</default>
+                    <label>PLEXUS GROUP</label>
+                </value>
+                <value>
+                    <fullName>PRINCIPAL/EBENEFITS EDGE</fullName>
+                    <default>false</default>
+                    <label>PRINCIPAL/EBENEFITS EDGE</label>
+                </value>
+                <value>
+                    <fullName>PRISM HR</fullName>
+                    <default>false</default>
+                    <label>PRISM HR</label>
+                </value>
+                <value>
+                    <fullName>PROFESSIONAL ENROLLMENT CONCEPTS  (PEC)</fullName>
+                    <default>false</default>
+                    <label>PROFESSIONAL ENROLLMENT CONCEPTS  (PEC)</label>
+                </value>
+                <value>
+                    <fullName>PROPAY</fullName>
+                    <default>false</default>
+                    <label>PROPAY</label>
+                </value>
+                <value>
+                    <fullName>RDS SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>RDS SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>REALLIFE HR</fullName>
+                    <default>false</default>
+                    <label>REALLIFE HR</label>
+                </value>
+                <value>
+                    <fullName>RIMS</fullName>
+                    <default>false</default>
+                    <label>RIMS</label>
+                </value>
+                <value>
+                    <fullName>SANDEN</fullName>
+                    <default>false</default>
+                    <label>SANDEN</label>
+                </value>
+                <value>
+                    <fullName>SANTEON</fullName>
+                    <default>false</default>
+                    <label>SANTEON</label>
+                </value>
+                <value>
+                    <fullName>SECOVA</fullName>
+                    <default>false</default>
+                    <label>SECOVA</label>
+                </value>
+                <value>
+                    <fullName>SELERIX</fullName>
+                    <default>false</default>
+                    <label>SELERIX</label>
+                </value>
+                <value>
+                    <fullName>SELF-SUPPORTED</fullName>
+                    <default>false</default>
+                    <label>SELF-SUPPORTED</label>
+                </value>
+                <value>
+                    <fullName>SHIPPS</fullName>
+                    <default>false</default>
+                    <label>SHIPPS</label>
+                </value>
+                <value>
+                    <fullName>SHPS</fullName>
+                    <default>false</default>
+                    <label>SHPS</label>
+                </value>
+                <value>
+                    <fullName>SMARTBEN</fullName>
+                    <default>false</default>
+                    <label>SMARTBEN</label>
+                </value>
+                <value>
+                    <fullName>SOUTHWEST SERVICE ADMIN</fullName>
+                    <default>false</default>
+                    <label>SOUTHWEST SERVICE ADMIN</label>
+                </value>
+                <value>
+                    <fullName>SPECTRUMHR</fullName>
+                    <default>false</default>
+                    <label>SPECTRUMHR</label>
+                </value>
+                <value>
+                    <fullName>STRATEX</fullName>
+                    <default>false</default>
+                    <label>STRATEX</label>
+                </value>
+                <value>
+                    <fullName>THE BENEFIT COMPANY</fullName>
+                    <default>false</default>
+                    <label>THE BENEFIT COMPANY</label>
+                </value>
+                <value>
+                    <fullName>THE BENEFITS HUB</fullName>
+                    <default>false</default>
+                    <label>THE BENEFITS HUB</label>
+                </value>
+                <value>
+                    <fullName>THE COMPUTER DEPT</fullName>
+                    <default>false</default>
+                    <label>THE COMPUTER DEPT</label>
+                </value>
+                <value>
+                    <fullName>TIC</fullName>
+                    <default>false</default>
+                    <label>TIC</label>
+                </value>
+                <value>
+                    <fullName>TOWERS PERRIN</fullName>
+                    <default>false</default>
+                    <label>TOWERS PERRIN</label>
+                </value>
+                <value>
+                    <fullName>TOWERS WATSON</fullName>
+                    <default>false</default>
+                    <label>TOWERS WATSON</label>
+                </value>
+                <value>
+                    <fullName>TRANSCEND TECH GROUP</fullName>
+                    <default>false</default>
+                    <label>TRANSCEND TECH GROUP</label>
+                </value>
+                <value>
+                    <fullName>TRION GROUP</fullName>
+                    <default>false</default>
+                    <label>TRION GROUP</label>
+                </value>
+                <value>
+                    <fullName>TRIONFO</fullName>
+                    <default>false</default>
+                    <label>TRIONFO</label>
+                </value>
+                <value>
+                    <fullName>TRI-STAR</fullName>
+                    <default>false</default>
+                    <label>TRI-STAR</label>
+                </value>
+                <value>
+                    <fullName>TRIZETTO</fullName>
+                    <default>false</default>
+                    <label>TRIZETTO</label>
+                </value>
+                <value>
+                    <fullName>TROODON GROUP</fullName>
+                    <default>false</default>
+                    <label>TROODON GROUP</label>
+                </value>
+                <value>
+                    <fullName>TYLER TECHNOLOGIES</fullName>
+                    <default>false</default>
+                    <label>TYLER TECHNOLOGIES</label>
+                </value>
+                <value>
+                    <fullName>UHC</fullName>
+                    <default>false</default>
+                    <label>UHC</label>
+                </value>
+                <value>
+                    <fullName>ULTIMATE SOFTWARE</fullName>
+                    <default>false</default>
+                    <label>ULTIMATE SOFTWARE</label>
+                </value>
+                <value>
+                    <fullName>ULTRALINK</fullName>
+                    <default>false</default>
+                    <label>ULTRALINK</label>
+                </value>
+                <value>
+                    <fullName>UNKNOWN</fullName>
+                    <default>false</default>
+                    <label>UNKNOWN</label>
+                </value>
+                <value>
+                    <fullName>UPSHAW INSURANCE</fullName>
+                    <default>false</default>
+                    <label>UPSHAW INSURANCE</label>
+                </value>
+                <value>
+                    <fullName>USB/USEBSG</fullName>
+                    <default>false</default>
+                    <label>USB/USEBSG</label>
+                </value>
+                <value>
+                    <fullName>VERISOURCE SERVICES</fullName>
+                    <default>false</default>
+                    <label>VERISOURCE SERVICES</label>
+                </value>
+                <value>
+                    <fullName>VERITY NATIONAL</fullName>
+                    <default>false</default>
+                    <label>VERITY NATIONAL</label>
+                </value>
+                <value>
+                    <fullName>VISUAL BENEFIT</fullName>
+                    <default>false</default>
+                    <label>VISUAL BENEFIT</label>
+                </value>
+                <value>
+                    <fullName>VITECH</fullName>
+                    <default>false</default>
+                    <label>VITECH</label>
+                </value>
+                <value>
+                    <fullName>WAGEWORKS</fullName>
+                    <default>false</default>
+                    <label>WAGEWORKS</label>
+                </value>
+                <value>
+                    <fullName>WATSONWYATT</fullName>
+                    <default>false</default>
+                    <label>WATSONWYATT</label>
+                </value>
+                <value>
+                    <fullName>WEB BENEFITS DESIGN</fullName>
+                    <default>false</default>
+                    <label>WEB BENEFITS DESIGN</label>
+                </value>
+                <value>
+                    <fullName>WELLPOINT PBM</fullName>
+                    <default>false</default>
+                    <label>WELLPOINT PBM</label>
+                </value>
+                <value>
+                    <fullName>WESTLAKE FINANCIAL GROUP</fullName>
+                    <default>false</default>
+                    <label>WESTLAKE FINANCIAL GROUP</label>
+                </value>
+                <value>
+                    <fullName>WILLIS</fullName>
+                    <default>false</default>
+                    <label>WILLIS</label>
+                </value>
+                <value>
+                    <fullName>WILSON MCSHANE</fullName>
+                    <default>false</default>
+                    <label>WILSON MCSHANE</label>
+                </value>
+                <value>
+                    <fullName>WINSTON BENEFITS</fullName>
+                    <default>false</default>
+                    <label>WINSTON BENEFITS</label>
+                </value>
+                <value>
+                    <fullName>WL BENEFITS GROUP</fullName>
+                    <default>false</default>
+                    <label>WL BENEFITS GROUP</label>
+                </value>
+                <value>
+                    <fullName>WORKDAY</fullName>
+                    <default>false</default>
+                    <label>WORKDAY</label>
+                </value>
+                <value>
+                    <fullName>WORKPLACE SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>WORKPLACE SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>WORKSCAPE</fullName>
+                    <default>false</default>
+                    <label>WORKSCAPE</label>
+                </value>
+                <value>
+                    <fullName>XCELICOR</fullName>
+                    <default>false</default>
+                    <label>XCELICOR</label>
+                </value>
+                <value>
+                    <fullName>XEROX</fullName>
+                    <default>false</default>
+                    <label>XEROX</label>
+                </value>
+                <value>
+                    <fullName>ZENITH</fullName>
+                    <default>false</default>
+                    <label>ZENITH</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <label>OTHER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>of_AEP_Prod_File_Details__c</fullName>
+        <externalId>false</externalId>
+        <label># of AEP Prod File Details</label>
+        <summaryForeignKey>GEMS_Eligibility_Production__c.Eligibility_AEP_File_Details__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>of_AEP_Test_File_Details__c</fullName>
+        <externalId>false</externalId>
+        <label># of AEP Test File Details</label>
+        <summaryForeignKey>GEMS_Eligibility_Testing__c.Eligibility_AEP_File_Details__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Eligibility AEP File Details</label>
+    <nameField>
+        <displayFormat>AEP-{0000}</displayFormat>
+        <label>GEMS Eligibility AEP Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Eligibility AEP File Details</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>GEMS_Eligibility_AEP_File_Detail_AD_Date</fullName>
+        <active>true</active>
+        <description>When selecting &quot;Other&quot; you must enter a value in &quot;Other AD Date&quot;.</description>
+        <errorConditionFormula>(ISPICKVAL( AD_Date__c , &apos;Other&apos;)  &amp;&amp;  ISBLANK( Other_AD_Date__c ))</errorConditionFormula>
+        <errorMessage>When selecting &quot;Other&quot; you must enter a value in &quot;Other AD Date&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Eligibility_AEP_File_Detail_Vendor</fullName>
+        <active>true</active>
+        <description>When selecting &quot;Other&quot; you must enter a value in &quot;Other Vendor&quot;.</description>
+        <errorConditionFormula>(ISPICKVAL(  Vendor__c , &apos;Other&apos;)  &amp;&amp;  ISBLANK(  Other_Vendor__c ))</errorConditionFormula>
+        <errorMessage>When selecting &quot;Other&quot; you must enter a value in &quot;Other Vendor&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GEMS_Eligibility_AEP_File_Details_Other</fullName>
+        <active>true</active>
+        <description>When selecting &quot;Other&quot; you must enter a value in &quot;Other Day of the week&quot;.</description>
+        <errorConditionFormula>(INCLUDES(Day_of_the_Week__c , &apos;Other&apos;)  &amp;&amp;  ISBLANK(Other_Day_of_the_Week__c))</errorConditionFormula>
+        <errorMessage>When selecting &quot;Other&quot; you must enter a value in &quot;Other Day of the week&quot;.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

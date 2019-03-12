@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Opportunity_Team_Non_SF_Standard_Compact</fullName>
+        <fields>Opportunity_Team_Member__c</fields>
+        <fields>Member_Role__c</fields>
+        <label>Opportunity Team Non SF Standard Compact</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Contains the team members who do not use Salesforce</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Member_Role__c</fullName>
+        <description>Role of the member</description>
+        <externalId>false</externalId>
+        <label>Member Role</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Accountant</fullName>
+                    <default>false</default>
+                    <label>Accountant</label>
+                </value>
+                <value>
+                    <fullName>Account Executive</fullName>
+                    <default>false</default>
+                    <label>Account Executive</label>
+                </value>
+                <value>
+                    <fullName>Account Management Support</fullName>
+                    <default>false</default>
+                    <label>Account Management Support</label>
+                </value>
+                <value>
+                    <fullName>Account Manager</fullName>
+                    <default>false</default>
+                    <label>Account Manager</label>
+                </value>
+                <value>
+                    <fullName>Account Specialist</fullName>
+                    <default>false</default>
+                    <label>Account Specialist</label>
+                </value>
+                <value>
+                    <fullName>Accounts Receivable</fullName>
+                    <default>false</default>
+                    <label>Accounts Receivable</label>
+                </value>
+                <value>
+                    <fullName>AEP Processor</fullName>
+                    <default>false</default>
+                    <label>AEP Processor</label>
+                </value>
+                <value>
+                    <fullName>Analytics</fullName>
+                    <default>false</default>
+                    <label>Analytics</label>
+                </value>
+                <value>
+                    <fullName>Behavioral Health CAC</fullName>
+                    <default>false</default>
+                    <label>Behavioral Health CAC</label>
+                </value>
+                <value>
+                    <fullName>Benefit Coder</fullName>
+                    <default>false</default>
+                    <label>Benefit Coder</label>
+                </value>
+                <value>
+                    <fullName>Billing</fullName>
+                    <default>false</default>
+                    <label>Billing</label>
+                </value>
+                <value>
+                    <fullName>Client Consulting Contact</fullName>
+                    <default>false</default>
+                    <label>Client Consulting Contact</label>
+                </value>
+                <value>
+                    <fullName>Clinical Account Consultant</fullName>
+                    <default>false</default>
+                    <label>Clinical Account Consultant</label>
+                </value>
+                <value>
+                    <fullName>Cobra</fullName>
+                    <default>false</default>
+                    <label>Cobra</label>
+                </value>
+                <value>
+                    <fullName>Dearborn Sales Executive</fullName>
+                    <default>false</default>
+                    <label>Dearborn Sales Executive</label>
+                </value>
+                <value>
+                    <fullName>Director Account Management</fullName>
+                    <default>false</default>
+                    <label>Director Account Management</label>
+                </value>
+                <value>
+                    <fullName>Director Sales</fullName>
+                    <default>false</default>
+                    <label>Director Sales</label>
+                </value>
+                <value>
+                    <fullName>DVP Account Management</fullName>
+                    <default>false</default>
+                    <label>DVP Account Management</label>
+                </value>
+                <value>
+                    <fullName>DVP Sales</fullName>
+                    <default>false</default>
+                    <label>DVP Sales</label>
+                </value>
+                <value>
+                    <fullName>EHCM Presenter</fullName>
+                    <default>false</default>
+                    <label>EHCM Presenter</label>
+                </value>
+                <value>
+                    <fullName>EHCM RFP SME</fullName>
+                    <default>false</default>
+                    <label>EHCM RFP SME</label>
+                </value>
+                <value>
+                    <fullName>Electronic Eligibility Specialist</fullName>
+                    <default>false</default>
+                    <label>Electronic Eligibility Specialist</label>
+                </value>
+                <value>
+                    <fullName>Full Service Unit</fullName>
+                    <default>false</default>
+                    <label>Full Service Unit</label>
+                </value>
+                <value>
+                    <fullName>GPD Director</fullName>
+                    <default>false</default>
+                    <label>GPD Director</label>
+                </value>
+                <value>
+                    <fullName>GPD Group Benefit Specialist</fullName>
+                    <default>false</default>
+                    <label>GPD Group Benefit Specialist</label>
+                </value>
+                <value>
+                    <fullName>GPD Marketing Service Representative</fullName>
+                    <default>false</default>
+                    <label>GPD Marketing Service Representative</label>
+                </value>
+                <value>
+                    <fullName>GPD Sales Executive/AE</fullName>
+                    <default>false</default>
+                    <label>GPD Sales Executive/AE</label>
+                </value>
+                <value>
+                    <fullName>Group Benefit Specialist</fullName>
+                    <default>false</default>
+                    <label>Group Benefit Specialist</label>
+                </value>
+                <value>
+                    <fullName>Implementation Manager</fullName>
+                    <default>false</default>
+                    <label>Implementation Manager</label>
+                </value>
+                <value>
+                    <fullName>Manager Account Management</fullName>
+                    <default>false</default>
+                    <label>Manager Account Management</label>
+                </value>
+                <value>
+                    <fullName>Manager Sales</fullName>
+                    <default>false</default>
+                    <label>Manager Sales</label>
+                </value>
+                <value>
+                    <fullName>Marketing Communications</fullName>
+                    <default>false</default>
+                    <label>Marketing Communications</label>
+                </value>
+                <value>
+                    <fullName>Marketing Operations</fullName>
+                    <default>false</default>
+                    <label>Marketing Operations</label>
+                </value>
+                <value>
+                    <fullName>Marketing Service Rep</fullName>
+                    <default>false</default>
+                    <label>Marketing Service Rep</label>
+                </value>
+                <value>
+                    <fullName>Medical Director</fullName>
+                    <default>false</default>
+                    <label>Medical Director</label>
+                </value>
+                <value>
+                    <fullName>Membership Specialist</fullName>
+                    <default>false</default>
+                    <label>Membership Specialist</label>
+                </value>
+                <value>
+                    <fullName>New Business Coordinator</fullName>
+                    <default>false</default>
+                    <label>New Business Coordinator</label>
+                </value>
+                <value>
+                    <fullName>Proposal Manager</fullName>
+                    <default>false</default>
+                    <label>Proposal Manager</label>
+                </value>
+                <value>
+                    <fullName>Proposal Writer</fullName>
+                    <default>false</default>
+                    <label>Proposal Writer</label>
+                </value>
+                <value>
+                    <fullName>Sales Executive</fullName>
+                    <default>false</default>
+                    <label>Sales Executive</label>
+                </value>
+                <value>
+                    <fullName>Sales Strategist</fullName>
+                    <default>false</default>
+                    <label>Sales Strategist</label>
+                </value>
+                <value>
+                    <fullName>Senior Director Subscriber Services</fullName>
+                    <default>false</default>
+                    <label>Senior Director Subscriber Services</label>
+                </value>
+                <value>
+                    <fullName>Senior Manager Subscriber Services</fullName>
+                    <default>false</default>
+                    <label>Senior Manager Subscriber Services</label>
+                </value>
+                <value>
+                    <fullName>Underwriter</fullName>
+                    <default>false</default>
+                    <label>Underwriter</label>
+                </value>
+                <value>
+                    <fullName>VP Account Management</fullName>
+                    <default>false</default>
+                    <label>VP Account Management</label>
+                </value>
+                <value>
+                    <fullName>VP Sales</fullName>
+                    <default>false</default>
+                    <label>VP Sales</label>
+                </value>
+                <value>
+                    <fullName>Wellness Consultant</fullName>
+                    <default>false</default>
+                    <label>Wellness Consultant</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Name__c</fullName>
+        <description>Name of the Opportunity the Non SF User Team member is related</description>
+        <externalId>false</externalId>
+        <label>Opportunity Name</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunity Team (Non-Salesforce.com Users)</relationshipLabel>
+        <relationshipName>Opportunity_Team_Non_SF</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Team_Member__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity Team member who doesnt have access with salesforce</description>
+        <externalId>false</externalId>
+        <label>Opportunity Team Member</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Please select Internal Contact to HCSC who doesnt have access to Salesforce</errorMessage>
+            <filterItems>
+                <field>Contact.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Internal_Contact</value>
+            </filterItems>
+            <filterItems>
+                <field>Contact.In_Active__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunity Team Non SF</relationshipLabel>
+        <relationshipName>Opportunity_Team_Non_SF</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Opportunity Team Non SF</label>
+    <nameField>
+        <displayFormat>OT-{000}</displayFormat>
+        <label>OT #</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Opportunity Team Non SF</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

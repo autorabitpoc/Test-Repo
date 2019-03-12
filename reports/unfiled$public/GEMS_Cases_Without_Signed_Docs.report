@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_55274740</developerName>
+        <masterLabel>Signed_Unsigned</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Case.GEMS_Attachments__r$Type__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>BPA - ASO SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - DENTAL SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - HCA SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - HEALTH SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GRANDFATHERED CERT FORM - SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PERFORMANCE GUARANTEE - SIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>STOP LOSS AGREEMENT - SIGNED</sourceValue>
+            </sourceValues>
+            <value>Signed</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>BPA - ASO UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - DENTAL UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - HCA UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - HEALTH UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>BPA - UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GRANDFATHERED CERT FORM - UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PERFORMANCE GUARANTEE - UNSIGNED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>STOP LOSS AGREEMENT - UNSIGNED</sourceValue>
+            </sourceValues>
+            <value>UnSigned</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Type__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Attachments__r$Name</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>BPA - ASO SIGNED,BPA - DENTAL SIGNED,BPA - HCA SIGNED,BPA - HEALTH SIGNED,BPA - SIGNED,GRANDFATHERED CERT FORM - SIGNED,PERFORMANCE GUARANTEE - SIGNED,STOP LOSS AGREEMENT - SIGNED,SIGNED BPA,SIGNED GRANDFATHERED CERT FORM,SIGNED PERFORMANCE GUARANTEE,SIGNED STOP LOSS AGREEMENT</value>
+        </criteriaItems>
+        <operation>without</operation>
+        <primaryTableColumn>Case$Id</primaryTableColumn>
+        <relatedTable>GEMS_Attachment__c</relatedTable>
+        <relatedTableJoinColumn>Case__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>BPA - ASO UNSIGNED,BPA - DENTAL UNSIGNED,BPA - HCA UNSIGNED,BPA - HEALTH UNSIGNED,BPA - UNSIGNED,GRANDFATHERED CERT FORM - UNSIGNED,PERFORMANCE GUARANTEE - UNSIGNED,STOP LOSS AGREEMENT - UNSIGNED</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Case$Id</primaryTableColumn>
+        <relatedTable>GEMS_Attachment__c</relatedTable>
+        <relatedTableJoinColumn>Case__c</relatedTableJoinColumn>
+    </crossFilters>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_55274740</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case$CaseNumber</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS Cases Without Signed Docs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_With_Attachment__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Account_Setup_Opened_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

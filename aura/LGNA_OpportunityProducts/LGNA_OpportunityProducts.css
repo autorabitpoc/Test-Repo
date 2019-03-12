@@ -1,0 +1,130 @@
+.THIS .custombackground{
+     background: #E8E8E8;
+     color: black; 
+     height: 50px;
+ }
+.THIS .slds-accordion__summary{
+    background: #f7f8f9;
+    min-height :29px;
+}
+.THIS .slds-page-header{
+    background: white;
+}
+.THIS.slds-card{
+    border: 5px solid rgb(179, 191, 214);
+}
+.THIS.no-border{
+    border: 0px;
+}
+.THIS .globalError{
+    color:#C80000;
+    font-size:15px;
+}
+
+.THIS .select-auto-width > .slds-form-element__control > .slds-select_container{
+    display: inline-block;
+}
+.THIS .headerFont{
+    font-size:12px;
+}
+.THIS.spinnerBGInverse {
+    position: relative;
+    background-color: #16325c;
+    height: 80px;
+}
+
+
+.THIS.root {
+    padding: 2em;
+}
+.THIS .ta {
+    position: relative;
+}
+.THIS .fixedTable {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+}
+.THIS .numRow {
+    width: 5%;
+}
+  .THIS .typeRow {
+    width: 5%;
+}  
+.THIS .nameRow{
+    width:20%;
+}
+
+.THIS .ta:hover + .ta-text {
+    display: inherit;
+    position: fixed;
+    background: #ff8;
+    border: 1px solid red;
+    width: 25rel;
+    height: 10rel;
+    z-index: 9999;
+}
+.THIS .HidePopover{
+     display: none;
+}
+
+.THIS .HoverPopup {
+    position: relative;
+    z-index: 0;
+    }
+
+.THIS .HoverPopup:hover {
+    background-color: #eeeeee;
+    Text-decoration: none;
+    z-index: 50;
+    }
+
+.THIS .HoverPopup div {
+    position: absolute;
+    visibility: hidden;
+    }
+
+.THIS .HoverPopup:hover div {
+    visibility: visible;
+    top: 20px;
+    left: 0px;
+    border: 1px solid black;
+    background-color: #eeeeee;
+    padding: 10px;
+    color: black;
+    Text-decoration: none;
+    white-space: pre;
+    }
+.THIS .ms-help-popup-body {
+    white-space: unset !important;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    width: 200px;
+}
+.THIS .ms-help-popup-in-header {
+    display: inline-block;
+    position: absolute !important;
+    top: -10px !important;
+    left: 55px !important;
+    margin-left: -1rem !important;
+    max-width: 20rem !important;
+    overflow: visible !important;
+    text-transform: none !important;
+}
+
+.THIS .ms-help-popup-in-header:before, .THIS .ms-help-popup-in-header:after {
+    width: 0.8rem !important;
+    height: 0.8rem !important;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: '';
+    background-color: inherit;
+    top: 50%;
+    left: -0.4rem !important;
+    margin-top: -.8rem !important;
+}
+ .THIS.toggle {
+   display: none;
+ }

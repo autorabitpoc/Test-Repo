@@ -1,0 +1,8 @@
+Hi ,
+ Accoutn submission {!Case.CaseNumber} is completed  and Blue direction products is selected in the submitted case.
+Below are more information:
+
+Accoutn Name: {!Case.Account}
+Case Link : {!Case.Link}
+
+Thanks

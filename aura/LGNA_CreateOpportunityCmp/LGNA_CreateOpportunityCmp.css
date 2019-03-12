@@ -1,0 +1,17 @@
+.THIS .slds-select_container:after{
+    border-top:0;
+}
+.THIS .slds-select_container:before{
+    border-bottom:0;
+}
+
+.THIS .customModal{
+    max-width:80rem;
+    height:85%;
+    margin-top:10%;
+    margin-bottom:10%;
+}
+.THIS .slds-modal__container{
+	width:100% !important;
+	height:90% !important;
+}

@@ -1,0 +1,13 @@
+<!--
+*Author:  Rakesh Nunna
+ * Initial Version: V1.0
+ * Created date: 04/10/2018
+ * Discription : Client side Event for Insatallation(GEMS), SAM REquests Tabs
+*/
+-->
+
+
+<aura:event type="COMPONENT" description="Event template" >
+    <aura:attribute name="del" type="boolean" default="false"/>
+    <aura:attribute name="rId" type="String"/>
+</aura:event>

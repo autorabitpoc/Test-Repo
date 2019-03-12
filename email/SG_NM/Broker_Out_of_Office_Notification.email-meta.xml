@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending a notice to key NM brokers that we&apos;ll be out of the office for an all day meeting.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Broker - Out of Office Notification</name>
+    <style>none</style>
+    <subject>Small Group Account Management Team Unavailable Wednesday, July 27 Case #: {!Case.Id}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

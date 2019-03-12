@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Case.GEMS_Account_Submission_Info__c.GEMS_Days_bw_Screening_and_Closed_date__c:AVG</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Average Cycle Time</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_20722888</developerName>
+        <masterLabel>Return Counter</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Case$GEMS_Return_Counter__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>Clean</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+            </sourceValues>
+            <value>Unclean</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_40189371</developerName>
+        <masterLabel>Standard/Custom Product Type</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case$GEMS_Account_Submission_Info__c.GEMS_StdCust_Product__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Standard Products only</sourceValue>
+            </sourceValues>
+            <value>Standard Product</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Standard and Custom Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Custom Products only</sourceValue>
+            </sourceValues>
+            <value>Custom Product</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>BucketField_40189371</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_Days_bw_Screening_and_Closed_date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Case$GEMS_Account_Submission_Info__c.GEMS_StdCust_Product__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Standard Products only</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Flag__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$GEMS_Submission_Type__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_20722888</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Case$GEMS_Account_Submission_Info__c.GEMS_Case_Effective_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS Cycle Time by Accuracy - Std_New</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Actual_Date_Production_OE_File__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

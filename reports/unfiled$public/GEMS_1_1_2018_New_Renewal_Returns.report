@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_13039892</developerName>
+        <masterLabel>Wave LOB</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Case$GEMS_Line_of_Business__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ENA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ENA GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Major National GET</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal GET</sourceValue>
+            </sourceValues>
+            <value>ENA/Major National</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Student Health</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SCP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Municipal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Large/Mid Market</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Major National</sourceValue>
+            </sourceValues>
+            <value>Key Markets</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Case$GEMS_Account_Submission_Info__c</field>
+    </columns>
+    <columns>
+        <field>Case$CaseNumber</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>Case$Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submission_Sub_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$Type</field>
+    </columns>
+    <columns>
+        <field>Case$Sub_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Case$Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_13039892</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Case_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Benefit_Agreement__c</field>
+    </columns>
+    <columns>
+        <field>Case$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Case$ClosedDate</field>
+    </columns>
+    <columns>
+        <field>Case$Days_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Days_Business_Open__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Return_Reasons__r$Name</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Return_Reasons__r$Return_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Case.GEMS_Return_Reasons__r$GEMS_Type__c</field>
+    </columns>
+    <columns>
+        <field>Case$GEMS_Submitter__c</field>
+    </columns>
+    <description>No Underwriting</description>
+    <filter>
+        <criteriaItems>
+            <column>Case$GEMS_Submission_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Account,Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case$Status</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>GEMS 1/1/2018 New/Renewal Returns</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Cases_with_Return_Reasons__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Case$GEMS_Case_Effective_Date__c</dateColumn>
+        <endDate>2018-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
+    </timeFrameFilter>
+</Report>

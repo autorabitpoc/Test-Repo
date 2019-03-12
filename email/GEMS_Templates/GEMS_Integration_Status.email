@@ -1,0 +1,24 @@
+Hi,
+ 
+Interface Error details :
+
+UID -> {!FW_Service_Status_Log__c.UID__c}
+ 
+Service Name -> {!FW_Service_Status_Log__c.Name}
+
+Status - I
+
+Error Code -> {!FW_Service_Status_Log__c.ErrorCode__c}
+ 
+Error Description -> {!FW_Service_Status_Log__c.ErrorDescription__c}
+
+Service Time -> {!FW_Service_Status_Log__c.ElapsedTime__c}
+
+Error Record Id ->   {!FW_Service_Status_Log__c.Id}
+
+Org Name ->   {!Organization.Id}
+
+Thanks,
+{!User.Name}
+{!User.Username}
+{!User.Id}

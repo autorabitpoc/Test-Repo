@@ -1,0 +1,115 @@
+<apex:page id="pageId" standardController="Case"  extensions="GEMS_TaskEligibilityController">
+    <script>
+    var taskSub = '';
+    function enableCompleteButton() {        
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = false;
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = false;       
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').className = 'btn';
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').className = 'btn';
+    }
+    
+    function disableCommandButton() {
+        document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = true;
+        document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = true;          
+    }
+    
+    function setSelectedButton(selectedTask,taskSubject) {
+        taskSub  = taskSubject;
+        if(taskSubject == 'Paperwork Review') {
+            showYesOrNoPage(selectedTask);
+        }else {
+            setSelectedVal(selectedTask);
+        }
+        
+    }
+    
+    function refreshEntirePage(check)
+    { 
+        var currentURL = "/{!caseRecord.id}"; 
+        if(!check)
+        top.location.href = currentURL;
+
+       // else { window.location.reload( true ); }
+
+    }
+    
+    function refreshPage()
+    { 
+        if(taskSub == 'Paperwork Review') {
+            var currentURL = "/{!caseRecord.id}"; 
+            top.location.href = currentURL; 
+            return true;
+        }else {
+            setSelectedVal();
+        }
+    }
+    
+    function setFocusOnLoad() {}
+        
+    </script>
+    <style>        
+        .radioClass { margin-left: 80px;}
+    </style>
+    <apex:form id="formId" >
+
+            <apex:messages style="color:red" />
+        <apex:actionFunction action="{!assignSelectedVal}" name="setSelectedVal" rerender="" >
+            <apex:param name="selectedTask" assignTo="{!selectedVal}" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction action="{!showYesOrNoPage}" name="showYesOrNoPage" rerender="yesOrNoBlock" >
+            <apex:param name="selectedTask" assignTo="{!selectedVal}" value=""/>
+        </apex:actionFunction>
+        
+        <apex:pageBlock id="pbId"  >
+            <apex:variable value="{!0}" var="taskIncr" />           
+            
+            <apex:pageBlockButtons id="pButtons" >
+                <apex:commandButton id="completeButton"  action="{!changeTaskStatus}" value="Complete"  title="Complete" oncomplete="refreshEntirePage({!combineFlag})"  disabled="{!disableCompleteButton}" reRender="op1"/>
+                <apex:commandButton id="cancellButton"  action="{!cancelProject}" value="Project Cancel"  title="Cancel" rendered="{!renderCancelProjectButton}"  oncomplete="refreshEntirePage({!combineFlag})"  disabled="{!disableCompleteButton}" reRender="op1"/>
+            </apex:pageBlockButtons>       
+            <apex:pageBlockTable id="pbTable" value="{!taskList}" var="taskk" columns="5" >            
+               
+                <apex:column id="radioId" > 
+                    <apex:outputPanel rendered="{!currentTask == taskIncr }">
+                        <input type="radio" name="radioTask"   onclick="setSelectedButton('{!taskIncr}','{!taskk.subject}');" />                              
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! currentTask != taskIncr }">
+                        <input type="radio" name="radioTask" disabled="true" rendered="{! currentTask != taskIncr }" />                
+                    </apex:outputPanel>
+                </apex:column>
+                <apex:column headerValue="Subject">              
+                    <apex:outputText >{!taskk.subject}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Status">                  
+                    <apex:outputText >{!taskk.status}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Start Date">
+                    <apex:Inputfield value="{!taskk.GEMS_Start_Date__c}"  showDatePicker="{!currentTask == taskIncr }"  />      
+                    <!--<apex:outputText value="{0,date,MM/dd/yyyy h:mm}" ><apex:param value="{!taskk.GEMS_Start_Date__c +offset}" /></apex:outputText>-->
+                </apex:column>
+                <apex:column headerValue="End Date">
+                    <apex:Inputfield value="{!taskk.GEMS_End_Date__c}"  showDatePicker="{!currentTask == taskIncr }" />                   
+                    <!--<apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"><apex:param value="{!taskk.GEMS_End_Date__c+offset}" /></apex:outputText> -->
+                    <apex:variable value="{!taskIncr+1}" var="taskIncr" /> 
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            <br/>
+            <apex:outputPanel id="op1">
+            <apex:pageMessage summary="Please select at least one task" severity="error" strength="1" rendered="{!taskNotSelected}"/>
+            <apex:pageMessage summary="Please select Quality Reviewer proir completing Select quality reviewer Task." severity="error" strength="1" rendered="{!qrReviewerError}" id="qrid"/>
+            <apex:pageMessage summary="Please create at least one test record to complete the task"  severity="error" strength="1" rendered="{!fileTestingErrorFlag}" id="testid"/>
+            <apex:pageMessage summary="Please create at least one prod record to complete the task" severity="error" strength="1" rendered="{!eligibilityFileToProd}"/>
+            <apex:pageMessage summary="The start date/time cannot be after the end date/time!" severity="error" strength="1" rendered="{!isDatesError}"/>
+            <apex:pageMessage summary="The AEP Testing start date/time cannot fall before the AEP Initial Setup end date/time!" severity="error" strength="1" rendered="{!isDatesErrorSetupTesting}"/>
+            </apex:outputPanel>
+            <apex:outputPanel id="yesOrNoBlock"    >
+                <apex:outputText rendered="{!options != null}">Paperwork review required?</apex:outputText>
+                <apex:selectRadio styleClass="radioClass" value="{!selectParamVal}" id="radioBtns" rendered="{!options != null}" >
+                    <apex:selectOptions value="{!options}" id="radioValue" />                                
+                </apex:selectRadio>              
+            </apex:outputPanel>
+         
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

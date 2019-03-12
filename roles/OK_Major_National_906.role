@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>OK Major National 906</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>OK Acct Mgmt Major National 906</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>OK_Sr_Dir_Acct_Mgmt_900</parentRole>
+</Role>

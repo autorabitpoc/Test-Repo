@@ -1,0 +1,7 @@
+Account Structure has been internally approved. Please change the case status to Client Approval Pending. 
+
+Account Name : {!Case.Account_Name__c} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

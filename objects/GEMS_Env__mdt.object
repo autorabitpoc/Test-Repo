@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>GEMS environment lookup: PROD, UAT, SIT, GEM4, GEM1, etc.</description>
+    <fields>
+        <fullName>Abbr__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Abbr</label>
+        <length>2</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>URL_Keyword__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>URL Keyword</label>
+        <length>30</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>GEMS Env</label>
+    <pluralLabel>GEMS Envs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

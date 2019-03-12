@@ -1,0 +1,9 @@
+*** Account Action Required *** 
+
+The following Account's Parent has been updated. If this account is a Producer Account, this update may have been made due to an update of the National Producer Number field.
+
+Account: {!Account.Name} 
+Previous Parent Account: {PRIORVALUE(!Account.Parent)} 
+New Parent Account: {!Account.Parent}
+
+Please review and correct if necessary. Follow this link to access the Account: {!Account.Link}

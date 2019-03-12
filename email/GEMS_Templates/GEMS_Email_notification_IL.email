@@ -1,0 +1,7 @@
+Hi,
+
+The account is ready for Screening. Please review and provide approval.
+Account Name : {!Case.Account}
+Case Number :  {!Case.CaseNumber}
+
+Thanks

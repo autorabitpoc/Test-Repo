@@ -1,0 +1,33 @@
+<apex:page standardcontroller="Case" extensions="GEMS_EligibilityProcessController" action="{!checkCurrentUserisACDHPQueMember}" showHeader="false" sidebar="false" title="Account Submission">
+    
+        <apex:form >
+        <apex:outputPanel id="ceckCDHP" rendered="{!!isCDHPGroupMember}">
+            <script>
+                alert('This link is applicable only for EEE team');
+                window.close();
+            </script>
+        </apex:outputPanel>
+        <apex:pageBlock id="thePageBlock" title="Account Structure" rendered="{!isCDHPGroupMember}">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save & Close" action="{!save}" onComplete="window.top.close();"/>
+        </apex:pageBlockButtons>
+            
+        <apex:pageBlockSection >
+            <apex:outputField value="{!caseRec.Account.Name}" />
+            <apex:outputField value="{!caseRec.Account.External_ID__c}"/>  
+            <apex:outputField value="{!caseRec.GEMS_Case_Effective_Date__c}"/>
+            <apex:outputField value="{!caseRec.HCSC_Division__c}"/>                
+            <apex:outputField value="{!caseRec.GEMS_Submission_Type__c}"/>
+            <apex:outputField value="{!caseRec.GEMS_Submission_Sub_Type__c}"/> 
+            <apex:outputField value="{!caseRec.Market_Segment__c}"/>                               
+            <apex:outputField value="{!caseRec.GEMS_Line_of_Business__c}"/>                
+            <apex:outputField value="{!caseRec.Status}"/>
+            <apex:outputField value="{!caseRec.GEMS_Account_Submission_Info__c}"/>
+     </apex:pageBlockSection>  
+     <apex:pageBlockSection title="Eligibility Info">
+         <apex:inputField value="{!caserec.GEMS_Is_Eligibility_Required__c}"/>
+     </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+    </apex:form> 
+</apex:page>

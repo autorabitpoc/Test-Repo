@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>To be used as a reply to request for copy of TX billing statement</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TX Request for Copy of Billing Statement</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: Billing Statement for [MM/YYYY]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

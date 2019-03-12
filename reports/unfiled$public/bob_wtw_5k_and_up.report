@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Group_Associated__r$Producer_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Group_Associated__r$Primary__c</field>
+    </columns>
+    <columns>
+        <field>Account$Active_Health_Subscribers__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_Cluster_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account$BillingStateCode</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account$Active_Health_Subscribers__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>5000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Group_Associated__r$Producer_Account__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>WILLIS OF,TOWERS,TOWERS WATSON,ONE EXCHANGE</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>bob wtw 5k and up</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Producer_group_assoc__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$LastActivityDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

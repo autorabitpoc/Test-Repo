@@ -1,0 +1,9 @@
+*** Opportunity Notification ***
+
+The following {!Opportunity.RecordType} Opportunity has been moved to Renewal Initiated stage.
+
+Account: {!Opportunity.Account}
+Opportunity Name: {!Opportunity.Name}
+Contact Name: {!Opportunity.OwnerFullName}
+
+Follow this link to access the Opportunity: {!Opportunity.Link}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Steps to follow when group moves from NRSG or Large Local to RSG</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>NRSG to RSG Required Paperwork</name>
+    <style>none</style>
+    <subject>NRSG to RSG Required Paperwork and Notes</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

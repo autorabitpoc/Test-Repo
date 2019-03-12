@@ -1,0 +1,9 @@
+<apex:page standardController="Rate__c"   action="{!URLFOR(CASE(Rate__c.RecordType.Name, 
+'Fully Insured BPA', '/apex/RatingMatrix?rateId='+ Rate__c.Id,
+'ASO - Rate', '/apex/RatingMatrixASO?rateId='+Rate__c.Id,
+'HCA', '/apex/RatingMatrixHCA?rateId='+Rate__c.Id, 
+'/' + Rate__c.Id + '/e?nooverride=1' +'&retURL=' + Rate__c.Id), Rate__c.Id)}" >
+
+     <apex:variable value="{!Rate__c.RecordType.Name}" var="recTypeName"/>    
+
+</apex:page>

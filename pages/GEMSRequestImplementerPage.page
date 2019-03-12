@@ -1,0 +1,90 @@
+<apex:page standardController="Case" extensions="GEMS_RequestImplementerController" id="pageId">
+    <script>
+        function submitStatus(check) //data,id
+        {
+            
+            
+            
+            
+            var radioButtonSelectedVal = null;
+            var theRadioButtonSet = document.getElementsByName('{!$Component.pageId:formId:pageBlockId:radioBtns}');
+            
+            for (var x = 0; x < theRadioButtonSet.length; x++) 
+            {
+                if (theRadioButtonSet[x].checked) {
+                    radioButtonSelectedVal = theRadioButtonSet[x].value;
+                }
+            }
+            if(radioButtonSelectedVal=='Approve') {
+            var implementerValue = document.getElementById('{!$Component.pageId:formId:pageBlockId:implementerId}').value;
+            var implementerValueSize = implementerValue.length;
+            }
+            
+            if(radioButtonSelectedVal=='Approve' && implementerValueSize==0)
+            {
+                alert('Please select Implementer before approving record');
+            }
+            else if(check) 
+            {
+                 alert('Request Resource already exist in Case Team');
+            }
+            else
+            {
+                SaveAction();
+            }
+        }
+        
+        function implementerFun(data,id)
+        {
+            renderSelectImplementer();
+        }
+        
+        function refreshPage()
+        { 
+            var currentURL = "/{!caseRec.id}"; 
+            top.location.href = currentURL; 
+        }
+    </script>
+    
+    <style>
+        input[type=radio] { margin-left: 154px;}
+        .radioClass { margin-left: -10px;}
+    </style>
+    <apex:form id="formId">
+        <apex:pagemessages />
+        <apex:actionFunction name="SaveAction" action="{!Save}" oncomplete="refreshPage()" rerender="none"/>
+        <apex:actionFunction name="renderSelectImplementer" action="{!enableSelectImplementer}" rerender="formId" />
+        <apex:pageBlock id="pageBlockId">
+        <br/><br/>
+            <apex:selectRadio styleClass="radioClass" value="{!approveOrRejectStatus}" onchange="implementerFun(this.value,id)" disabled="{!caserec.Status='Completed'}" id="radioBtns">  <!-- onchange="submitStatus(this.value,id)"  -->
+                <apex:selectOptions value="{!items}" id="radioValue"/>
+                <apex:actionSupport event="onchange" reRender="outPutPannel" />
+            </apex:selectRadio>
+            
+            <br/>
+            <apex:outputPanel id="outPutPannel">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b>Select Implementer </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:inputField value="{!caseRec.GEMS_Assign_Resource__c}" rendered="{!displayImplementer}" id="implementerId"/>
+            <apex:outputField value="{!caseRec.GEMS_Assign_Resource__c}" rendered="{!!displayImplementer}" id="implementerId1"/>
+            </apex:outputPanel>
+
+            <br/><br/>
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b>
+                <apex:outputLabel value="Comments " />
+            </b>
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:inputField value="{!caseRec.GEMS_Additional_Comments__c}"  rendered="{!displayImplementer}" />
+            <apex:inputField value="{!caseRec.GEMS_Additional_Comments__c}" rendered="{!!displayImplementer}"/>
+            <br/>
+            
+            <br/>
+            <div style="padding-left: 35%;">
+                <apex:commandButton onclick="submitStatus({!resourceCheck})" value="Submit" disabled="{!caserec.Status='Completed'}" reRender="none"/>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

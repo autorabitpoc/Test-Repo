@@ -1,0 +1,48 @@
+<!-- **************************************************************************************************************************
+* Lightnigng Component Name: SGR_PostToBlueSTAR
+* Version                  : 1.0
+* Function                 : This is the Modal for Post To Blue STAR Button, where users will have the access based on the Profile.
+* Modification Log         :
+* Developer                           Date               Description
+* _____________________________________________________________________________________________________________________________
+* Vijaya Channamsetti               12/10/2018         Original Version 
+****************************************************************************************************************************** -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="SGR_BlueStarButtonAccess">	
+    <aura:attribute name="userInfo" type="user" />
+    <aura:attribute name="userPermission" type="Boolean" default="false"/>
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <aura:handler name="closeTrigRenEvent" event="c:SGR_TriggerRenewalCloseEvent" action="{!c.closeModal}" />
+    <aura:handler name="closeTrigRenEvent" value= "{!This}" action="{!c.closeModal}" />
+    <!--<aura:if isTrue="{!or(and(v.userInfo.Profile.Name == 'SGR Operations User', v.userInfo.UserRole.Name == 'SGR Operations Manager') , 
+                     v.userInfo.Profile.Name == 'System Administrator') }" >-->
+    <aura:if isTrue="{!v.userPermission == true}">
+    	<lightning:layout horizontalAlign="center">
+            <lightning:layoutItem class="slds-p-vertical_medium">
+                <lightning:button variant="brand" label="Post To BlueSTAR" 
+                                  title="Post To BlueSTAR" 
+                                  onclick="{!c.openModal}"/>
+            </lightning:layoutItem>
+        </lightning:layout> 
+    </aura:if>
+    <aura:if isTrue="{!v.isOpen}" >
+        <div class="demo-only" style="height: 640px; position: absolute;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                       
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Post To BlueSTAR</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                         <c:SGR_BlueStarInitiation/>
+                    </div>
+                    <footer class="slds-modal__footer">
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>    
+</aura:component>

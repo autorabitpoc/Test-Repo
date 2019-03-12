@@ -1,0 +1,4 @@
+<apex:page standardController="Case" extensions="CustomContractCases" action="{!redirect}">
+    
+    
+</apex:page>

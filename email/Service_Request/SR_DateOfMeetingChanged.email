@@ -1,0 +1,24 @@
+***Service Request Notification***
+
+The following {!Service_Request__c.RecordType} Date of Meeting changed to  {!Service_Request__c.Date_of_Meeting__c}.
+
+Request #: {!Service_Request__c.Name} 
+Account: {!Service_Request__c.Account__c}
+Event Location: {!Service_Request__c.Site_Location_of_event__c}
+Type of Event: {!Service_Request__c.Type_of_Event__c}
+Date of Meeting: {!Service_Request__c.Date_of_Meeting__c}
+Start Time:  {!Service_Request__c.Start_Time__c}
+End Time : {!Service_Request__c.End_Time__c} 
+Addition Time Comments : {!Service_Request__c.Additional_Time_Comments__c} 
+
+BENEFIT INFORMATION 
+---------------------------------------------------------------------------------- 
+Products : {!Service_Request__c.Products__c} 
+
+Carve Outs : {!Service_Request__c.Carve_Outs__c} 
+
+Follow this link to access the Case: {!Service_Request__c.Link}
+
+
+
+***EOM***

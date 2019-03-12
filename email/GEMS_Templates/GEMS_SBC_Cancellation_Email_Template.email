@@ -1,0 +1,9 @@
+Submission case for {!Case.Account_Name__c} has been cancelled. Please take appropriate action and cancel your request form for the submission
+
+Account Name : {!Case.Account_Name__c} 
+
+{!Case.RecordType} Case Number : {!Case.CaseNumber} 
+
+{!Case.RecordType} Case Details : {!Case.Link} 
+
+Thank You.

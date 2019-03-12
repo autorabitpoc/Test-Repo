@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template: Member level to NM Memb. / NM Mem. Coord</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Member level to NM Memb. / WFGA / OK Mem. Coord</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: [Type of Submission] for [Effective Date of Change] Please Parse</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

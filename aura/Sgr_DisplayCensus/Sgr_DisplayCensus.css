@@ -1,0 +1,38 @@
+.THIS table thead th{
+    color:red;
+    font-weight:bold;
+}
+.THIS {
+     zoom:85%;
+}
+.THIS .slds-button_icon-bare{
+    display: none;
+}
+.THIS table thead th{
+    color:red;
+    font-weight:bold;
+}
+
+.THIS .row-style td{
+    font-size:1rem;
+}
+
+.THIS .slds-accordion__content > div.slds-grid{
+    font-weight:bold;
+    color:#87acde;
+}
+
+.THIS .slds-text-title_caps{
+    font-size:1rem;
+    font-weight:bold;
+    color:#87acde;
+}
+
+.THIS .slds-accordion__summary-heading{
+    font-weight:bold;
+    color:#87acde;
+}
+
+.THIS .slds-table:not(.slds-no-row-hover) tbody tr:hover>td, .THIS .slds-table tbody tr.slds-is-selected>td{
+    background-color:rgba(54, 160, 254, 0.32941176470588235);
+}

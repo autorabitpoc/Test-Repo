@@ -1,0 +1,22 @@
+/* 
+ * Author:  Rakesh Nunna
+ * Initial Version: V1.0
+ * Created Date: 03/24/2018
+ * Modified Date: 04/10/2018
+ * Discription : Styles for setting the Component Header
+*/
+
+.THIS {
+}
+
+.THIS .headerArrow{
+    display:inline-block;
+    margin-right: 20px; 
+    float:left;
+}
+
+.THIS .OpportunityName{
+    box-sizing: border-box;
+    display:inline-block;
+    margin-right: 10px;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Requested_Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Account</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Expected_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Competitor_Relationships__r$Competitor_Account__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$Owner</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Dan Kennedy,Rodrigo Castilleja,Rudy Sotelo,Stephen Schimmel,Nora Rodriguez,Gina Stidham,Nancy Donovan,Julie McAlister (Dieter)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed Won,Closed Lost,Expected In,RFP Expected In,RFI Received,RFI Delivered,RFP Received,RFP Delivered,In Negotiation,Finalist Named,Won,Lost,Declined,No Further Action</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Expected_Health_Members__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Opportunities with Competitor</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Competitor_s_Opportunities__c</reportType>
+    <roleHierarchyFilter>Executive_Management</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Requested_Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CURNEXTY</interval>
+    </timeFrameFilter>
+</Report>

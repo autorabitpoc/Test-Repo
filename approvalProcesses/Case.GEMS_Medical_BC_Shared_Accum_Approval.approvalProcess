@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Account</field>
+        <field>Account_Number__c</field>
+        <field>CaseNumber</field>
+        <field>Owner</field>
+        <field>GEMS_Account_Submission_Info__c</field>
+        <field>GEMS_Type__c</field>
+        <field>GEMS_Case_Details_Link__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>DTU_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <label>GEMS Medical BC Shared Accum Approval</label>
+        <name>GEMS_Medical_BC_Shared_Accum_Approval</name>
+    </approvalStep>
+    <description>GEMS Medical Benefit Coding Shared Accums - DTU Testing approval process</description>
+    <emailTemplate>GEMS_Templates/GEMS_Medical_BC_Shared_Accums_Approval</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Case.RecordType</field>
+            <operation>equals</operation>
+            <value>GEMS BA Level Medical Benefit Coding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Shared Accum Approval Pending</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>GEMS_Medical_BC_Shared_Accum_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>GEMS_Shared_Accum_Approve_Or_Reject_Email_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>GEMS_Shared_Accum_Testing_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>GEMS_Medical_BC_Shared_Accum_Rejection</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>GEMS_Shared_Accum_Approve_Or_Reject_Email_Alert</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>GEMS Medical BC Shared Accum Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

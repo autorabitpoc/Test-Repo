@@ -1,0 +1,9 @@
+Hi,
+Shared Accums Details been created / edited 
+Details are as follows:
+
+Case number : {!Case.CaseNumber}
+Account Name : {!Case.Account}
+Case details :  {!Case.Link}
+
+Thanks,

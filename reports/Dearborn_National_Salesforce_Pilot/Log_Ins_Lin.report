@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>LOGIN_DATETIME</field>
+    </columns>
+    <columns>
+        <field>LAST_LOGIN</field>
+    </columns>
+    <columns>
+        <field>LOGIN_STATUS</field>
+    </columns>
+    <columns>
+        <field>PROFILE</field>
+    </columns>
+    <description>Listing of last successful log ins for Patricia Lin&apos;s area (Dearborn Users)</description>
+    <filter>
+        <criteriaItems>
+            <column>LOGIN_STATUS</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Success</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>EMPNO</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>309172,344899,273495,311692,367180,330251,358311,367604,367655,309108,309155,347726,363099,351751,0F1530,340595,329034,309224,138773,354506,353724,344376,336551,300955</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>EMPNO</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Log Ins ~ Lin</name>
+    <params>
+        <name>active</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LOGIN_DATE</dateColumn>
+        <interval>INTERVAL_LASTMONTH</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <comment>Redirects user to the TicketDistribution visualforce page to edit the tickets and event they created.</comment>
+        <content>TicketRedirect</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <comment>Redirects user to TicketDistribution page when new button is clicked</comment>
+        <content>TicketNewRedirect</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>TicketEventHomePage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Assigned_Tickets__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned Tickets</label>
+        <summaryFilterItems>
+            <field>Ticket__c.isSelected__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Ticket__c.Ticket_Event__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Business_Use_Of_Ticket__c</fullName>
+        <externalId>false</externalId>
+        <label>Ticket Use Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Event City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Event_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Description</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Event_End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Event End Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Event_Organizer_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Organizer Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Organizer_Phone_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Organizer Phone Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Event_Organizer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Event Organizer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Ticket_Events</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Event_Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Start Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Event_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Event State</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Illinois</fullName>
+                    <default>false</default>
+                    <label>Illinois</label>
+                </value>
+                <value>
+                    <fullName>Montana</fullName>
+                    <default>false</default>
+                    <label>Montana</label>
+                </value>
+                <value>
+                    <fullName>New Mexico</fullName>
+                    <default>false</default>
+                    <label>New Mexico</label>
+                </value>
+                <value>
+                    <fullName>Oklahoma</fullName>
+                    <default>false</default>
+                    <label>Oklahoma</label>
+                </value>
+                <value>
+                    <fullName>Texas</fullName>
+                    <default>false</default>
+                    <label>Texas</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Event_Street_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Street Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Event_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Time</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Venue_Name__c</fullName>
+        <description>Event Venue Name dependent on State picklist</description>
+        <externalId>false</externalId>
+        <label>Event Venue</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Event_State__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>true</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Alamodome</fullName>
+                    <default>false</default>
+                    <label>Alamodome</label>
+                </value>
+                <value>
+                    <fullName>American Airlines Center</fullName>
+                    <default>false</default>
+                    <label>American Airlines Center</label>
+                </value>
+                <value>
+                    <fullName>Amon G. Carter Stadium</fullName>
+                    <default>false</default>
+                    <label>Amon G. Carter Stadium</label>
+                </value>
+                <value>
+                    <fullName>AT &amp; T Center</fullName>
+                    <default>false</default>
+                    <label>AT &amp; T Center</label>
+                </value>
+                <value>
+                    <fullName>AT &amp; T Stadium</fullName>
+                    <default>false</default>
+                    <label>AT &amp; T Stadium</label>
+                </value>
+                <value>
+                    <fullName>BBVA Compass Stadium</fullName>
+                    <default>false</default>
+                    <label>BBVA Compass Stadium</label>
+                </value>
+                <value>
+                    <fullName>Boone Pickens Stadium</fullName>
+                    <default>false</default>
+                    <label>Boone Pickens Stadium</label>
+                </value>
+                <value>
+                    <fullName>Chesapeake Energy Arena</fullName>
+                    <default>false</default>
+                    <label>Chesapeake Energy Arena</label>
+                </value>
+                <value>
+                    <fullName>Chickasaw Bricktown Ballpark</fullName>
+                    <default>false</default>
+                    <label>Chickasaw Bricktown Ballpark</label>
+                </value>
+                <value>
+                    <fullName>Darrell K. Royal-TX Memorial Stadium</fullName>
+                    <default>false</default>
+                    <label>Darrell K. Royal-TX Memorial Stadium</label>
+                </value>
+                <value>
+                    <fullName>Dell Diamond</fullName>
+                    <default>false</default>
+                    <label>Dell Diamond</label>
+                </value>
+                <value>
+                    <fullName>Dr. Pepper Arena</fullName>
+                    <default>false</default>
+                    <label>Dr. Pepper Arena</label>
+                </value>
+                <value>
+                    <fullName>Gallagher Iba Arena</fullName>
+                    <default>false</default>
+                    <label>Gallagher Iba Arena</label>
+                </value>
+                <value>
+                    <fullName>Gaylord Family-OK Memorial Stadium</fullName>
+                    <default>false</default>
+                    <label>Gaylord Family-OK Memorial Stadium</label>
+                </value>
+                <value>
+                    <fullName>Globe Life Park</fullName>
+                    <default>false</default>
+                    <label>Globe Life Park</label>
+                </value>
+                <value>
+                    <fullName>Guaranteed Rate Field</fullName>
+                    <default>false</default>
+                    <label>Guaranteed Rate Field</label>
+                </value>
+                <value>
+                    <fullName>Isotopes Park (Baseball)</fullName>
+                    <default>false</default>
+                    <label>Isotopes Park (Baseball)</label>
+                </value>
+                <value>
+                    <fullName>Jones AT &amp; T Stadium</fullName>
+                    <default>false</default>
+                    <label>Jones AT &amp; T Stadium</label>
+                </value>
+                <value>
+                    <fullName>Kyle Field</fullName>
+                    <default>false</default>
+                    <label>Kyle Field</label>
+                </value>
+                <value>
+                    <fullName>Lloyd Noble Center</fullName>
+                    <default>false</default>
+                    <label>Lloyd Noble Center</label>
+                </value>
+                <value>
+                    <fullName>McLane Stadium</fullName>
+                    <default>false</default>
+                    <label>McLane Stadium</label>
+                </value>
+                <value>
+                    <fullName>Minute Maid Park</fullName>
+                    <default>false</default>
+                    <label>Minute Maid Park</label>
+                </value>
+                <value>
+                    <fullName>NRG Stadium</fullName>
+                    <default>false</default>
+                    <label>NRG Stadium</label>
+                </value>
+                <value>
+                    <fullName>ONEOK Field</fullName>
+                    <default>false</default>
+                    <label>ONEOK Field</label>
+                </value>
+                <value>
+                    <fullName>Soldier Field - (Chicago Bears)</fullName>
+                    <default>false</default>
+                    <label>Soldier Field - (Chicago Bears)</label>
+                </value>
+                <value>
+                    <fullName>Toyota Center</fullName>
+                    <default>false</default>
+                    <label>Toyota Center</label>
+                </value>
+                <value>
+                    <fullName>Toyota Stadium</fullName>
+                    <default>false</default>
+                    <label>Toyota Stadium</label>
+                </value>
+                <value>
+                    <fullName>United Center</fullName>
+                    <default>false</default>
+                    <label>United Center</label>
+                </value>
+                <value>
+                    <fullName>University Stadium (Football)</fullName>
+                    <default>false</default>
+                    <label>University Stadium (Football)</label>
+                </value>
+                <value>
+                    <fullName>Wise Pies Basketball Arena</fullName>
+                    <default>false</default>
+                    <label>Wise Pies Basketball Arena</label>
+                </value>
+                <value>
+                    <fullName>Wrigley Field - (Chicago Cubs)</fullName>
+                    <default>false</default>
+                    <label>Wrigley Field - (Chicago Cubs)</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Illinois</controllingFieldValue>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <controllingFieldValue>Montana</controllingFieldValue>
+                <controllingFieldValue>New Mexico</controllingFieldValue>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Illinois</controllingFieldValue>
+                <valueName>Guaranteed Rate Field</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Illinois</controllingFieldValue>
+                <valueName>Soldier Field - (Chicago Bears)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Illinois</controllingFieldValue>
+                <valueName>United Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Illinois</controllingFieldValue>
+                <valueName>Wrigley Field - (Chicago Cubs)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Boone Pickens Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Chesapeake Energy Arena</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Chickasaw Bricktown Ballpark</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Gallagher Iba Arena</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Gaylord Family-OK Memorial Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>Lloyd Noble Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Oklahoma</controllingFieldValue>
+                <valueName>ONEOK Field</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Mexico</controllingFieldValue>
+                <valueName>Isotopes Park (Baseball)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Mexico</controllingFieldValue>
+                <valueName>University Stadium (Football)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New Mexico</controllingFieldValue>
+                <valueName>Wise Pies Basketball Arena</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Alamodome</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>American Airlines Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Amon G. Carter Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>AT &amp; T Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>AT &amp; T Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>BBVA Compass Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Darrell K. Royal-TX Memorial Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Dell Diamond</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Dr. Pepper Arena</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Globe Life Park</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Jones AT &amp; T Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Kyle Field</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>McLane Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Minute Maid Park</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>NRG Stadium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Toyota Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Texas</controllingFieldValue>
+                <valueName>Toyota Stadium</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Event_Venue__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Venue(old)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Zip_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Zip/Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Number_of_Tickets__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Number of Tickets</label>
+        <summaryForeignKey>Ticket__c.Ticket_Event__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Unassigned_Tickets__c</fullName>
+        <externalId>false</externalId>
+        <label>Unassigned Tickets</label>
+        <summaryFilterItems>
+            <field>Ticket__c.isSelected__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Ticket__c.Ticket_Event__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>incrementalNumberOfTickets__c</fullName>
+        <externalId>false</externalId>
+        <label>incrementalNumberOfTickets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>reportUrl__c</fullName>
+        <externalId>false</externalId>
+        <label>reportUrl</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Ticket Event</label>
+    <listViews>
+        <fullName>All_Events_with_Unassigned_Tickets</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Unassigned_Tickets__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </filters>
+        <label>All Events with Unassigned Tickets</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Texas_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <columns>Event_Venue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Texas</value>
+        </filters>
+        <label>All Texas Events</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Ticket_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Ticket Events</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Upcoming_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>All Upcoming Events</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Upcoming_IL_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Illinois</value>
+        </filters>
+        <label>All Upcoming IL Events</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Upcoming_TX_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Texas</value>
+        </filters>
+        <label>All Upcoming TX Events</label>
+    </listViews>
+    <listViews>
+        <fullName>IL_Events</fullName>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Illinois</value>
+        </filters>
+        <label>All Illinois Events</label>
+    </listViews>
+    <listViews>
+        <fullName>Mgr_All_Illinois_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Illinois</value>
+        </filters>
+        <label>2 Mgr All Illinois Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X1_Mgr_All_Events_with_Unassigned_Tickets</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Unassigned_Tickets__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </filters>
+        <label>1 Mgr All Events with Unassigned Tickets</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X3_Mrg_All_Texas_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <columns>Event_Venue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Texas</value>
+        </filters>
+        <label>3 Mrg All Texas Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X4_Mgr_All_Ticket_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>4 Mgr All Ticket Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X5_Mgr_All_Upcoming_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Total_Number_of_Tickets__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>5 Mgr All Upcoming Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X6_Mgr_All_Upcoming_IL_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Illinois</value>
+        </filters>
+        <label>6 Mgr All Upcoming IL Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X7_Mgr_All_Upcoming_TX_Events</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Description__c</columns>
+        <columns>Assigned_Tickets__c</columns>
+        <columns>Unassigned_Tickets__c</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <columns>Event_Start_Date_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_State__c</field>
+            <operation>equals</operation>
+            <value>Texas</value>
+        </filters>
+        <filters>
+            <field>Event_Start_Date_Time__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>7 Mgr All Upcoming TX Events</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X8_Mgr_TODAY</fullName>
+        <columns>NAME</columns>
+        <columns>Event_Date__c</columns>
+        <columns>Event_Time__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>8 Mgr TODAY</label>
+        <sharedTo>
+            <group>Ticket_Managers</group>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Ticket Event Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Ticket Events</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Ticket_Event_Address_Required_Fields</fullName>
+        <active>true</active>
+        <description>Selecting upon Other from Event Venue picklist, Street, city, Zip Code should not be empty.</description>
+        <errorConditionFormula>ISPICKVAL(Event_Venue_Name__c, &apos;Other&apos;) &amp;&amp; ( Event_City__c = null ||  Event_Street_Address__c = null ||  Event_Zip_Postal_Code__c = null)</errorConditionFormula>
+        <errorMessage>Event Street, Event City, Event Zip Code are required when Event Venue is Other</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Event_Time</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(!(ISBLANK (Event_Time__c)), NOT(REGEX( Event_Time__c ,
+&quot;(\\d([0-1]|[1-9]):\\d([0-1]|[1-60]) (AM|am|PM|pm))&quot;)))</errorConditionFormula>
+        <errorDisplayField>Event_Time__c</errorDisplayField>
+        <errorMessage>Event Time should be enter in format HH:MM PM/AM</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>New_Ticket_Event</fullName>
+        <availability>online</availability>
+        <description>Redirects user to visualforce page to create event and distribute tickets for that event</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Ticket Event</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/TicketDistribution?acct={!Account.Id}</url>
+    </webLinks>
+</CustomObject>

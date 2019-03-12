@@ -1,0 +1,13 @@
+Hi,
+
+A new note or attachment has been added to the quote request summary for the opportunity: {!Quote_Request_Summary__c.Link}
+
+Opportunity Name: {!Quote_Request_Summary__c.Opportunity_Name__c}
+
+Quote Name: {!Quote_Request_Summary__c.Quote_Name__c}
+
+Note/Attachment Title:{!Quote_Request_Summary__c.Late_Note_Attachment_Title__c}
+
+Created by: {!Quote_Request_Summary__c.Note_Attachment_Created_By__c}
+
+Last Modified:{!Quote_Request_Summary__c.Last_Note_Attachment_Modify_By__c}

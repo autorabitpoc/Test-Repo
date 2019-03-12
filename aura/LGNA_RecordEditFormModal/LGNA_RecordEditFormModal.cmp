@@ -1,0 +1,125 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="prod2Id" type="String"/>
+    <aura:attribute name="editMode" type="Boolean" default="false" />
+    <aura:attribute name="oppProdLost" type="Boolean" default="false" />
+    <aura:attribute name="saved" type="Boolean" default="false" />
+    <aura:attribute name="showSpinner" type="Boolean" default="true" />
+    <aura:attribute name="ObjectName" type="String" />
+    <aura:attribute name="OppProdDetail" type="Object"/>
+    <aura:attribute name="OppProdData" type="Object"/>
+    <aura:attribute name="ProdDetail" type="Object"/>
+    <aura:attribute name="ProdData" type="Object"/>
+    <aura:attribute name="loadError" type="String" />
+    <aura:attribute name="currentMaptable" type="List"/>
+    <aura:attribute name="WinninCarrier" type="String" />
+    <aura:attribute name="isInitial" type="Boolean" default="true" />
+    
+    
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner />
+    </aura:if>
+    
+    <force:recordData aura:id="OppProdLoad"
+        recordId="{!v.recordId}"
+        layoutType="{!v.layout}"
+        fields="Id,Name,Account__c,Product__c,Winning_Carrier_Vendor__c, Status__c,Funding_Type__c,Account__r.Name"
+        mode="VIEW"
+        targetRecord="{!v.OppProdDetail}"
+        targetFields="{!v.OppProdData}"
+        targetError="{!v.loadError}" />
+    
+      <force:recordData aura:id="ProdLoad"
+        recordId="{!v.prod2Id}"
+        layoutType="{!v.layout}"
+        fields="Id,Name,Product_Type__c"
+        mode="VIEW"
+        targetRecord="{!v.ProdDetail}"
+        targetFields="{!v.ProdData}"
+        targetError="{!v.loadError}" />
+    
+    <aura:if isTrue="{!!v.saved}">
+      <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+        <lightning:recordEditForm  aura:id="editForm"
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.handleSubmit}"
+            onsuccess="{!c.handleSuccess}"
+            recordId="{!v.recordId}"
+            objectApiName="Opportunity_Product__c">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+            
+           <div class="slds-form slds-form_horizontal">
+             
+             <a target="_blank" href="{!'/one/one.app?#/sObject/'+v.OppProdData.Product__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                 <lightning:outputField fieldName="Product__c" />
+             </a>
+            
+            <br/>
+            <aura:if isTrue="{!v.OppProdData.Status__c=='Lost'}">
+              
+                  <label class="slds-form-element__label" for="carrierField">Winning Carrier / Vendor</label>
+               
+                   <div class="slds-form-element__control" aura:id="carrierFieldDiv">
+                       
+                       <c:LGNA_OppProductLookup isCarrier="true" objectAPIName="Account" IconName="standard:Account"  isInitial="{!v.isInitial}" selectedRecordId="{!v.OppProdData.Account__r.Name}" selectedRecord="{!v.WinninCarrier}" label=""/>
+                           <span class="slds-hide slds-required" aura:id="cfErrorMessage">This Field is Required</span> 
+                    
+                         <aura:if isTrue="{! v.isInitial}" >  <!-- from search-->
+                         
+                            <lightning:inputField fieldName="Account__c" class="hidden" aura:id="carrierField1"  value="{!v.OppProdData.Account__c}"/>
+                         
+                            <aura:set attribute="else"><!--default-->
+                             <lightning:inputField fieldName="Account__c" class="hidden" aura:id="carrierField"  value="{!v.WinninCarrier}"/>
+                              
+                           </aura:set>
+                        
+                       </aura:if>
+                       </div>
+                
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.OppProdData.Account__c !=null}" >
+                         <a target="_blank" href="{!'/one/one.app?#/sObject/'+v.OppProdData.Account__c}" class="textUnderline outputLookupLink slds-truncate forceOutputLookup">
+                          <lightning:outputField aura:id="carrierField2" fieldName="Account__c" /> 
+                         </a> <!-- winning Carrier -->
+                        
+                      <aura:set attribute="else"> <!--without the link -->
+                           <lightning:outputField aura:id="carrierField2" fieldName="Account__c" /> 
+                      </aura:set>
+                    </aura:if> 
+                   
+                      
+               </aura:set>
+            </aura:if>
+             <br/>
+             <lightning:inputField class="{!(v.OppProdData.Status__c=='Lost' ? 'customRequired':'')}" aura:id='noteField' fieldName="Notes__c" />
+             <span class="slds-hide slds-required" aura:id="errorMessage">This Field is Required</span> 
+             
+             <aura:if isTrue="{!v.ProdData.Product_Type__c=='Non-Medical'}" >
+               <aura:if isTrue="{!v.OppProdData.Funding_Type__c=='ASO' || v.OppProdData.Funding_Type__c=='ACAP'}">
+                   <lightning:inputField class="customRequired" aura:id='carveField' fieldName="Carve_Out__c" />
+                   <span class="slds-hide slds-required" aura:id="carveErrorMessage">This Field is Required</span> 
+                   </aura:if>
+             </aura:if>
+             
+              <aura:if isTrue="{!v.ProdData.Product_Type__c=='Medical'}" >
+                 <lightning:inputField fieldName="Split__c" />
+             </aura:if>
+           
+            </div>
+            <br/>
+            <div class="slds-m-bottom_medium">
+               <lightning:button variant="Neutral" label="Cancel" title="Cancel" onclick="{! c.CancelEdit}" />
+              <lightning:button  variant="brand" label="Save" title ="Save" name="Save" onclick="{!c.onSubmit}" />
+             
+            </div>
+           
+        </lightning:recordEditForm>
+      </div>
+        
+    </aura:if>
+    
+</aura:component>

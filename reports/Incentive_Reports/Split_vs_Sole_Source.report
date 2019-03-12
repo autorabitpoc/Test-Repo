@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Snapshot_Comparison_Result__c.Account__c</field>
+    </columns>
+    <columns>
+        <field>Snapshot_Comparison_Result__c.Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Snapshot_Comparison_Result__c.Sole_Source__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>UNM HOSPITALS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ONYX COMPANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>a1bf0000000H5W7</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>CITY OF AURORA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THE BOEING COMPANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ANESTHESIA PAIN SERVICES LLC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>FORT DEARBORN COMPANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>AmandaTestAccount</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Split vs Sole Source</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Snapshot_Comparison_Result__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

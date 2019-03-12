@@ -1,0 +1,60 @@
+<aura:component  implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="headerTxt" type="String" default="" />
+    <aura:attribute name="contentTxt" type="String[]"  required="true" />
+    <aura:attribute name="status-icon" type="String"  required="true" />
+    <aura:attribute name="row-icon" type="String"  default="" />
+    <aura:attribute name="status-id" type="String"  default="" />
+    <aura:attribute name="row-id" type="String"  default="" />
+    <aura:attribute name="dataList" type="String[]"  default="" />
+    <aura:attribute name="confirmLabel" type="String" default ="Close" />
+    <aura:attribute name="actionLabel" type="String" default ="Okay" />
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="appEvent" type="c:SGR_SelectedOptyEvent"/>
+    
+    <div class="slds-m-around_xx-large">
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.defaultCloseAction }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                         <aura:iteration items="{!v.dataList}" var = "s">
+                             <aura:if isTrue="{!s.flag == 'e'}">
+                                 <img src="{!$Resource.failure_icon}"   height="40" width="40" />
+                             </aura:if>
+                             <aura:if isTrue="{!s.flag == 's'}">
+                                 <img src="{!$Resource.success_icon}"   height="40" width="40" />
+                             </aura:if>
+                             <aura:if isTrue="{!s.flag == 'r'}">
+                                 <img src="{!$Resource.row_icon}"  height="40" width="40"/>
+                             </aura:if>
+                             <aura:unescapedHtml value="{!s.txt}" /><br/>
+                         </aura:iteration>
+                             
+                    </div> 
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                      
+                        <lightning:button variant="brand" 
+                                          label="{!v.confirmLabel}"
+                                          title="{!v.confirmLabel}"
+                                          onclick="{! c.defaultCloseAction }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+    </div>
+</aura:component>

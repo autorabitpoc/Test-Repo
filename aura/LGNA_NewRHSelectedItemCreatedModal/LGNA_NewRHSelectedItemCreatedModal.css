@@ -1,0 +1,31 @@
+.THIS .slds-form-element {
+    padding-right:20rem;
+    padding-left:1rem;
+    margin-bottom:15px;
+}
+.THIS .textarea{
+    width:200%;
+}
+.THIS .slds-listbox_vertical .slds-listbox__option_plain
+{
+    padding:0.09rem;
+}
+.THIS .slds-dueling-list{
+    height:200px;
+}
+.THIS .slds-form-element__label
+{
+    font-size:0.90rem;
+    font-weight:600;
+}
+.THIS .slds-text{
+    font-size:0.90rem;
+    font-weight:600;
+}
+.THIS .slds-text-heading--medium{
+    font-weight:bold;
+}
+.THIS .globalError{
+    color:#C80000;
+    font-size:15px;
+}

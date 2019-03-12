@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Administrative_Line_Item__c</fullName>
+        <externalId>false</externalId>
+        <label>Administrative Line Item</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Data Exchanges – General</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – General</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Reverse Eligibility</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Reverse Eligibility</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Shared Accumulators</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Shared Accumulators</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – 3rd Party Stop Loss Reports</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – 3rd Party Stop Loss Reports</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Claim Data Extracts sent to 3rd Party Vendor</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Claim Data Extracts sent to 3rd Party Vendor</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Load External Rx Data for Medical Management</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Load External Rx Data for Medical Management</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Load biometric data to MMDB for Medical Management</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Load biometric data to MMDB for Medical Management</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Claim data extract from outside vendor</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Claim data extract from outside vendor</label>
+                </value>
+                <value>
+                    <fullName>Data Exchanges – Automated Eligibility Processing (AEP)</fullName>
+                    <default>false</default>
+                    <label>Data Exchanges – Automated Eligibility Processing (AEP)</label>
+                </value>
+                <value>
+                    <fullName>Other Services – AIM Consulting Services</fullName>
+                    <default>false</default>
+                    <label>Other Services – AIM Consulting Services</label>
+                </value>
+                <value>
+                    <fullName>Other Services – AIM Retiree Drug Subsidy Support</fullName>
+                    <default>false</default>
+                    <label>Other Services – AIM Retiree Drug Subsidy Support</label>
+                </value>
+                <value>
+                    <fullName>Other Services – AIM Standard Package Buy Ups</fullName>
+                    <default>false</default>
+                    <label>Other Services – AIM Standard Package Buy Ups</label>
+                </value>
+                <value>
+                    <fullName>Other Services – Custom Website</fullName>
+                    <default>false</default>
+                    <label>Other Services – Custom Website</label>
+                </value>
+                <value>
+                    <fullName>Other Services – Hard Copy Benefit Booklets</fullName>
+                    <default>false</default>
+                    <label>Other Services – Hard Copy Benefit Booklets</label>
+                </value>
+                <value>
+                    <fullName>Other Services – Provider Directories</fullName>
+                    <default>false</default>
+                    <label>Other Services – Provider Directories</label>
+                </value>
+                <value>
+                    <fullName>Products – BlueEdge FSA Employer Fee for approved Carve Out Vendor</fullName>
+                    <default>false</default>
+                    <label>Products – BlueEdge FSA Employer Fee for approved Carve Out Vendor</label>
+                </value>
+                <value>
+                    <fullName>Products – OnSite Wellness Coordinators</fullName>
+                    <default>false</default>
+                    <label>Products – OnSite Wellness Coordinators</label>
+                </value>
+                <value>
+                    <fullName>Products – Health Worksite Wellness Consulting</fullName>
+                    <default>false</default>
+                    <label>Products – Health Worksite Wellness Consulting</label>
+                </value>
+                <value>
+                    <fullName>Products – Fitness Works (Corporate Onsite Fitness Center)</fullName>
+                    <default>false</default>
+                    <label>Products – Fitness Works (Corporate Onsite Fitness Center)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Frequency</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Annually</fullName>
+                    <default>false</default>
+                    <label>Annually</label>
+                </value>
+                <value>
+                    <fullName>One-Time</fullName>
+                    <default>false</default>
+                    <label>One-Time</label>
+                </value>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>List_Service__c</fullName>
+        <externalId>false</externalId>
+        <label>List Service</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Miscellaneous__c</fullName>
+        <externalId>false</externalId>
+        <label>Miscellaneous</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Administrative_Line_Item__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Administrative Line Item</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Frequency</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Rate</label>
+        <referenceTo>Rate__c</referenceTo>
+        <relationshipLabel>Rate Admin Charges</relationshipLabel>
+        <relationshipName>Rate_Admin_Charges</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Charges__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Charges</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Data Exchange</fullName>
+                    <default>false</default>
+                    <label>Data Exchange</label>
+                </value>
+                <value>
+                    <fullName>Non-Standard Services</fullName>
+                    <default>false</default>
+                    <label>Non-Standard Services</label>
+                </value>
+                <value>
+                    <fullName>Other Services</fullName>
+                    <default>false</default>
+                    <label>Other Services</label>
+                </value>
+                <value>
+                    <fullName>Product-Related Services</fullName>
+                    <default>false</default>
+                    <label>Product-Related Services</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>adminNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>adminNumber</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Rate Admin Charge</label>
+    <nameField>
+        <label>Rate Admin Charge Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Rate Admin Charges</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

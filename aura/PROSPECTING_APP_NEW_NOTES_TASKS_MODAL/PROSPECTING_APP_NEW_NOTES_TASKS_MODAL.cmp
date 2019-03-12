@@ -1,0 +1,45 @@
+<aura:component controller="ProspectingAppNewNotesTasksController">
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="newNote" type="Note" default="{'sobjectType':'Note', 'ParentId':'', 'Title':'', 'Body':''}"/>
+    <aura:attribute name="newTask" type="Task" default="{'sobjectType':'Task', 'WhatId':'', 'Description':'', 'Subject':'', 'Type':'Call', 'Priority':'High'}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}"/>
+    <aura:registerEvent name="activityCreated" type="c:PROSPECTING_APP_REFRESH_NOTES_TASKS_LIST_EVT"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.close}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">Add Note/Task</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <div class="slds-scrollable--y">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size--2-of-2">
+                                <lightning:select aura:id="objType" class="slds-size--1-of-4" name="objType" label="Type" value="Note" onchange="{!c.togglePicklistFields}">
+                                    <option value="Note">Note</option>
+                                    <option value="Task">Task</option>
+                                </lightning:select>
+                                <lightning:input aura:id="objTitle" class="slds-size--1-of-2" type="text" name="title" label="Title"/>
+                                <lightning:textarea aura:id="objContent" name="content" label="Content"/>
+                                <lightning:select class="slds-hide" name="taskType" label="Type" aura:id="taskType"/>
+                                <lightning:select class="slds-hide" name="taskPriority" label="Priority" aura:id="taskPriority"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.close}">Close</button>
+                <button class="slds-button slds-button--brand" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    <div><lightning:spinner aura:id="notesAndTasksModalSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

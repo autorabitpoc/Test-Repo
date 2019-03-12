@@ -1,0 +1,309 @@
+<apex:page standardController="GEMS_Pharmacy_Scope_Code__c" extensions="GEMS_PharmacyScopeCodingController" sidebar="false" recordSetVar="v">
+    <!--------------SFDC-5100--------------->
+    <head>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <!--------------SFDC-5100--------------->
+    <script type='text/javascript'>
+    
+     function refreshEntirePage()
+    { 
+        var currentURL = "/apex/GEMSPharmcyScopeCoding?caseId={!caseId}"; 
+        top.location.href = currentURL;
+
+        //window.location.reload( true );
+
+    }
+    
+    function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+            
+                        
+            function validate() {
+             var word = document.getElementById('{!$Component.TheForm.BA.newBATable.BANos.BANo}').value;
+             alert('value is ');
+             if (word.length > 4) {
+                 alert('BA No. length');
+               return false; // keep form from submitting
+             }
+             return true;
+            }
+            
+            
+    </script>
+    
+  <apex:form id="TheForm">       
+  
+        <apex:pageMessages id="pgMsgId"/>
+        <apex:pageBlock id="thePageBlock" title="Pharmacy Coding Case">
+            <apex:pageBlockSection >
+                <apex:outputField value="{!ParentCase.Account.Name}" />
+                <apex:outputField value="{!ParentCase.Account.External_ID__c}"/>  
+                <apex:outputField value="{!ParentCase.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!ParentCase.HCSC_Division__c}"/>                
+                <apex:outputField value="{!ParentCase.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!ParentCase.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!ParentCase.Market_Segment__c}"/>                               
+                <apex:outputField value="{!ParentCase.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!ParentCase.Status}"/>
+                <apex:outputField value="{!ParentCase.GEMS_Account_Submission_Info__c}"/>
+            </apex:pageBlockSection>
+      </apex:pageBlock>
+      <apex:commandLink value="Back to Pharmacy Scope Coding Case" action="{!gotoCase}"/>
+      <apex:pageBlock id="scopeCodeBlock" title="Pharmacy Scope Coding Details">
+            <apex:variable value="{!0}" var="rowNumber" />          
+            <apex:outputPanel id="panelWithVar">
+                <apex:variable value="{!0}" var="rowNumber" />
+            </apex:outputPanel>
+            <apex:pageBlockTable id="newBATable" value="{!listOfPCs}" var="c">
+            
+                <apex:column headerValue="Select">
+                    <apex:inputCheckbox value="{!c.isSelected}" rendered="{!IF(c.scopeCode.Type__c == 'Permanent','true', 'false')}" disabled="{!disableNew}">
+                        <apex:actionSupport event="onchange" rerender="scopeCodeBlock" action="{!setSelected}">
+                            <apex:param name="selScopeCode" value="{!c.scopeCode.id}" assignTo="{!selectedPSCId}"/>
+                        </apex:actionSupport>
+                    </apex:inputCheckbox>
+                </apex:column>
+                
+                <!--<apex:column headerValue="Action">
+                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                    <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold" reRender="newBATable,panelWithVar" immediate="true" >
+                        <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}"/>
+                        <apex:param name="p2" value="{!c.scopeCode.Id}" assignTo="{!recordToDelete}"/>
+                    </apex:commandLink>
+                </apex:column>-->
+            
+                <apex:column id="BANos" headerValue="Scope Code" width="6%">
+                    <apex:inputField id="BANo" value="{!c.scopeCode.Name}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" onkeydown="return validate();" style="width:50px"/>
+                </apex:column>
+                
+                <!----------------------SFDC-5100----------------------->
+                <!--------------Display the BA column in the table using Map------->
+                <apex:column id="BAName" headerValue="BA No" width="10%">
+                <apex:repeat value="{!codeBAcolmn}" var="key"> 
+                  <apex:outputText value="{!codeBAcolmn[key]}" style="width:60px" rendered="{!IF(key == c.scopeCode.Name,true,false)}" id="BAtx"/>
+                </apex:repeat>
+                <apex:repeat value="{!codeBAhover}" var="key">
+                 <apex:outputText rendered="{!IF(key == c.scopeCode.Name,true,false)}"><span title="{!codeBAhover[key]}" id="BAspan"><b>(...)</b></span></apex:outputText>
+                 </apex:repeat>
+                </apex:column>
+                 <!----------------------SFDC-5100----------------------->
+                 
+                <apex:column headerValue="Type" width="7%">
+                    <apex:outputText value="{!c.scopeCode.Type__c}" style="width:40px">
+                        <!--<apex:actionSupport event="onchange" rerender="scopeCodeBlock"/>-->
+                    </apex:outputText>
+                </apex:column>
+                
+                <apex:column headerValue="Related" width="10%" rendered="false">
+                    <apex:inputText value="{!c.scopeCode.Related__c}" style="width:60px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Group Pay Code" width="8%" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL' || ParentCase.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:inputText value="{!c.scopeCode.Group_Pay_Code__c}" style="width:60px"/>
+                </apex:column>
+                                                                        
+                <apex:column headerValue="Rider Code" width="8%" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL','true', 'false')}">
+                    <apex:inputField value="{!c.scopeCode.Rider_Code__c}" style="width:40px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Report Format Code" width="10%" rendered="{!IF(ParentCase.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:inputField value="{!c.scopeCode.Report_Format_Code__c}" style="width:80px"/>
+                </apex:column>
+ 
+                <apex:column headerValue="Copay Type" width="6%">
+                    <apex:inputField value="{!c.scopeCode.Copay_Type__c}" style="width:80px">
+                        <apex:actionSupport event="onchange" rerender="scopeCodeBlock"/>
+                    </apex:inputField>
+                    <apex:outputPanel rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}">
+                    <div>
+                    <table>
+                    <tr>
+                        <td><apex:outputlabel value="Retail"  rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}" style="width:60px"/></td>
+                        <td><apex:inputField label="Retail" value="{!c.scopeCode.Retail__c}"   rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}" style="width:80px"/></td>
+                    </tr>
+                    <tr>
+                        <td><apex:outputlabel value="Mail"  rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}" style="width:60px"/></td>
+                        <td><apex:inputField label="Mail" value="{!c.scopeCode.Mail__c}" rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}" style="width:80px"/></td>
+                    </tr>
+                    </table>
+                    </div>
+                    </apex:outputPanel>
+                </apex:column>
+<!--
+                <apex:column headerValue="Retail" width="10%">
+                    <apex:inputField value="{!c.scopeCode.Retail__c}"  rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Mail" width="10%">
+                    <apex:inputField value="{!c.scopeCode.Mail__c}" rendered="{!IF(c.scopeCode.Copay_Type__c= 'Mixed','true', 'false')}"/>
+                </apex:column>                
+                -->
+                
+                 <apex:column headerValue="Formulary Type" width="10%">
+                    <apex:inputField value="{!c.ScopeCode.Formulary_Type__c}" style="width:80px"/>
+                </apex:column> 
+                 
+                <apex:column headerValue="Accums Integration" width="13%">
+                    <apex:inputField value="{!c.ScopeCode.Accums_Integration__c}" style="width:170px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Prime Plan ID" width="10%">
+                    <apex:inputField value="{!c.ScopeCode.Prime_Plan_ID__c}" rendered="{!IF(c.ScopeCode.Type__c == 'Permanent',true,false)}" OnkeyPress="return inputLimiter(event, 'Numbers');" style="width:70px"/>
+                </apex:column>  
+                
+                 <apex:column headerValue="Comments" width="10%">
+                    <apex:inputField value="{!c.ScopeCode.Comments__c}" rendered="{!IF(c.ScopeCode.Type__c == 'Permanent',true,false)}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="width:120px"/>
+                </apex:column>  
+                  
+                <apex:column headerValue="Scope Status" width="10%">
+                    <apex:outputField value="{!c.scopeCode.Scope_Status__c}" rendered="{!IF((c.scopeCode.id != null && c.scopeCode.Type__c == 'Permanent'),'true', 'false')}"/>
+                    <apex:inputField value="{!c.scopeCode.Scope_Status__c}" rendered="{!IF((c.scopeCode.id == null && c.scopeCode.Type__c == 'Permanent'),'true', 'false')}">
+                        <!--<apex:actionSupport event="onchange" rerender="scopeCodeBlock">-->
+                        <apex:actionSupport event="onchange" action="{!HideTempPC}" >
+                        </apex:actionSupport>
+                    </apex:inputField>
+                </apex:column>
+                
+                
+                <apex:column headerValue="Temp Scope" width="5%">
+                    <apex:inputCheckbox value="{!c.scopeCode.Temp__c}" rendered="{!IF(c.scopeCode.Type__c == 'Permanent','true', 'false')}" disabled="{!IF(c.isSelected && (c.scopeCode.Scope_Status__c == 'No Scope Code Changes'|| c.scopeCode.Scope_Status__c == 'Scope Change Only - NoBETSub' ),'true', 'false')}" >
+                         <apex:actionSupport event="onchange" action="{!addTemp}" rerender="scopeCodeBlock" oncomplete="hoverfunction();">
+                              <apex:param name="selPermTemp" value="{!c.scopeCode.Temp__c}" assignTo="{!PermTemp}"/>
+                        </apex:actionSupport>
+                    </apex:inputCheckbox>
+                </apex:column>
+     
+                <!--disabled="{!IF(c.scopeCode.id != null,'true', 'false')}"-->
+                
+            </apex:pageBlockTable>
+                        
+            <div id="AddNewButton">
+                    <apex:commandButton value="Add New" action="{!addPC}" reRender="newBATable,panelWithVar,scopeCodeBlock" disabled="{!disableNew}" oncomplete="hoverfunction();"/>
+            </div>
+            
+            <center>
+                <!--<apex:commandButton value="Save" action="{!saveBAs}"  reRender="newBATable,panelWithVar" />-->
+                <apex:commandButton value="Cancel" action="{!gotoCase}" immediate="true"/>
+                <apex:commandButton value="Delete" action="{!deletePC}" oncomplete="refreshEntirePage();"/>
+                <apex:commandButton value="Save & Assign BAs" action="{!savePCs}"/>
+            </center>
+           
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="thePageBlock1" title="BA Cases">
+            
+ 
+            <apex:pageBlockTable id="newCatTable" value="{!listOfBACases}" var="c">
+            
+                <apex:column headerValue="Select" width="3%">
+                    <apex:inputCheckbox value="{!c.isSelected}"/>
+                </apex:column>
+                
+                <apex:column headerValue="BA No.">
+                    <apex:outputField value="{!c.baCase.GEMS_Benefit_Agreement__r.Name}" />
+                </apex:column>
+                
+                <apex:column headerValue="Scope Code" width="5%">
+                    <apex:outputField value="{!c.baCase.GEMS_Pharmacy_Scope_Code__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="Temp Scope Code" width="5%">
+                    <apex:outputField value="{!c.baCase.GEMS_Temp_Scope_Code__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="Group Pay Code" width="5%" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL' || ParentCase.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:outputField value="{!c.baCase.GEMS_Pharmacy_Group_Pay_Code__c}" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL' || ParentCase.HCSC_Division__c = 'MT','true', 'false')}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Temp Group Pay Code" width="5%" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL' || ParentCase.HCSC_Division__c = 'MT','true', 'false')}">
+                    <apex:outputField value="{!c.baCase.GEMS_Pharmacy_Temp_Group_Pay_Code__c}" rendered="{!IF(ParentCase.HCSC_Division__c = 'NM' || ParentCase.HCSC_Division__c = 'IL' || ParentCase.HCSC_Division__c = 'MT','true', 'false')}"/>
+                </apex:column>
+                
+                
+                <apex:column headerValue="BA Product Type">
+                    <apex:outputField value="{!c.baCase.GEMS_Benefit_Agreement__r.Product_Type__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="BA Product Name">
+                    <apex:outputField value="{!c.baCase.GEMS_Benefit_Agreement__r.Product_Name__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="BA Description">
+                    <apex:outputField value="{!c.baCase.GEMS_Benefit_Agreement__r.BA_Description__c}" />
+                </apex:column>
+                
+                <apex:column headerValue="BA Fund Type">
+                    <apex:outputField value="{!c.baCase.GEMS_Benefit_Agreement__r.BA_Fund_Type__c}" />
+                </apex:column>
+               
+                <apex:column headerValue="Case Number">
+                    <apex:outputField value="{!c.baCase.CaseNumber}" />
+                </apex:column>       
+                
+                <apex:column headerValue="Status">
+                    <apex:outputField value="{!c.baCase.Status}" />
+                </apex:column>      
+                
+            </apex:pageBlockTable>
+           
+        </apex:pageBlock>
+        <apex:commandLink value="Back to Pharmacy Scope Coding Case" action="{!gotoCase}"/>
+    </apex:form>
+    
+<!--------------SFDC-5100--------------->
+<!--------------Jquery used to animate the hover using Jquery------->
+    <script type='text/javascript'>
+      var jq = $.noConflict();
+      jq(document).ready(function(){
+        hoverfunction();
+      });
+      
+      function hoverfunction(){
+      jq("[id$=BAspan]").on({
+          "mouseover": function() {
+            jq(this).css('cursor', 'pointer');
+            jq(this).tooltip({
+              position: { my: "left+10 center", at: "right center" },
+              classes: {
+                "ui-tooltip": "highlight"
+              },
+              show:{
+                   delay:200
+              }
+            });
+            jq(this).tooltip("open");
+          },
+          "mouseout": function() {
+            jq(this).css('cursor', 'none'); 
+            jq(this).tooltip({
+              hide:{
+                   delay:200
+              }
+            });
+            jq(this).tooltip("close");  
+          }
+        }); 
+      }
+   </script>
+<!--------------SFDC-5100--------------->
+</apex:page>

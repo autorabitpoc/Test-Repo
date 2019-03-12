@@ -1,0 +1,8 @@
+<aura:component controller="LGNA_CreateCase_RequestHub"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="OpptyId" type="String" /> 
+    <aura:attribute name="AccountId" type="String" /> 
+     <aura:attribute name="AcctDetails" type="Account" /> 
+    <div class="slds-m-around--x-large">
+    	<lightning:button label="Performance Guarantee" onclick="{!c.createRecord}" />
+  	</div>
+</aura:component>

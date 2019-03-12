@@ -1,0 +1,25 @@
+Hello,
+
+Below is a request for a billing date change.
+
+- Group Name: {!Case.Account}
+- BlueStar Account Number: {!Case.Group_Account_Number__c}
+- Billing Profile Number:  
+- Group Number/Sect: 
+(if applicable to Current Membership Accounts)
+- Account Representative Name: IL SG Acct Mgmt Unit
+- District Cluster Number:  876/600 
+
+Billing Date Information:
+
+Change Billing Date to: 1st or 15th day of the month (you must denote which)
+Effective Date of Change: xx/xx/xxxx year is a must
+Renewal Date Changed to: xx/xx/xxxx year is a must
+
+
+Reason:  Group seeking to change billing date so the renewal date will be on (insert renewal date) instead of (insert prior renewal date)
+
+Underwriter and Approval Date:
+(copy U/W email here)
+
+Thank you for your help,

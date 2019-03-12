@@ -1,0 +1,12 @@
+*** Case Notification *** 
+
+This email is to notify you that the following {!if (!Case.Exchange_Sub_Case__c=TRUE, "Parent", "Sub")} Case's Status has been changed:
+
+Account: {!Case.Account_Name__c} 
+Case #: {!Case.CaseNumber} 
+New Status: {!Case.Status}
+Subject: {!Case.Subject} 
+Description: {!Case.Description} 
+{!if (!Case.Exchange_Sub_Case__c=TRUE, "", "Parent Case #:")} {!Case.Parent}
+
+Follow this link to access the Case: {!Case.Link}

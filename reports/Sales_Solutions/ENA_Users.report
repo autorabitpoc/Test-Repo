@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>User$Name</field>
+    </columns>
+    <columns>
+        <field>User$EmployeeNumber</field>
+    </columns>
+    <columns>
+        <field>User*User$Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>User$Manager</field>
+    </columns>
+    <columns>
+        <field>User$Profile</field>
+    </columns>
+    <columns>
+        <field>User$UserRole</field>
+    </columns>
+    <columns>
+        <field>User$IsActive</field>
+    </columns>
+    <columns>
+        <field>User$LastLoginDate</field>
+    </columns>
+    <description>Janet&apos;s Report 10-6-17</description>
+    <filter>
+        <criteriaItems>
+            <column>User$Profile</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>GEMS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User$Manager</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rosael Sanchez,Joe LeSaily,Russ Plum,Cami Martin,Gayle Burchard,Cyrus Walker,Sandra Skinner,Steve Emmons,Yves-Laurent Khoury,Joe Braley,Elena Lathrop</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>User$Manager.Manager</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ENA Users</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Users_with_Managers__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

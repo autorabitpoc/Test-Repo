@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Snapshot_Comparison_Result__c.Account__c</field>
+    </columns>
+    <columns>
+        <field>Snapshot_Comparison_Result__c.Sole_Source__c</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8</booleanFilter>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Ralph Group Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Another Group Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Nick Test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>SOUTHERN OKLAHOMA PHYSICIANS ASSOCIATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>LONE STAR STATE CONCRETE PUMPING</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>SKYLINE PAYMENT SYSTEMS LLC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>HHG FRISCO LLC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Snapshot_Comparison_Result__c.Account__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PIERSON RETAIL ADVISORS</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Snapshot Comparison Result Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Snapshot_Comparison_Result__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

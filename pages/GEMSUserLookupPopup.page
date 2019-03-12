@@ -1,0 +1,54 @@
+<apex:page standardController="case" extensions="GEMS_CaseTeamMembersController"  sidebar="false" showheader="false" id="thisPage">
+<script language="javascript">
+   function fillIn(name,id){
+      var winMain=window.opener;
+      if (null==winMain){
+         winMain=window.parent.opener;
+      }
+      var nameFieldParam=winMain.document.getElementById('{!$CurrentPage.parameters.namefield}');
+      nameFieldParam.value=name;
+      var idFieldParam=winMain.document.getElementById('{!$CurrentPage.parameters.idfield}');
+      idFieldParam.value=id;
+      var rowNumParam='{!$CurrentPage.parameters.rowNum}';
+      CloseWindow(id,name,rowNumParam);       
+   }
+
+    function CloseWindow(nameid,name,rowNum) {
+        var winMain=window.opener;
+        if (null==winMain){
+            winMain=window.parent.opener;
+        }
+        winMain.closeLookupPopup(nameid,name,rowNum);
+    }
+</script>
+    <apex:form id="form" >  
+        <apex:pageBlock id="block"  >
+            <apex:facet name="header" >
+                <font size="5">User Lookup (Active Users)</font>
+            </apex:facet>
+            <apex:pageBlockSection id="errorMsgs" columns="1"> 
+                <apex:messages style="color:red" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:actionStatus startText=" (Searching...)" stopText="" id="search-status"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="section" columns="3">
+                Search User Name : <br/>
+                <apex:inputText value="{!searchString}" id="searchString1" /> 
+                <apex:commandButton value="Go" action="{!searchUsers}" status="search-status"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1">
+                <apex:outputText value="*Search limited to 20 rows"  />
+                    
+                    <apex:pageBlockTable value="{!users}" var="user" rendered="{!if(users!=null,true,false)}">
+                    <apex:column headerValue="Team Member(Click to select)" rendered="{!if(users.size > 0,true,false)}">
+                        <apex:outputLink value="#" onclick="fillIn('{!user.Name}','{!user.Id}')">{!user.Name}</apex:outputLink>       
+                    </apex:column>
+                    <apex:column headerValue="No Active Users Found" rendered="{!if(users!=null&&users.size=0,true,false)}" />
+                    </apex:pageBlockTable>    
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+   </apex:form>
+</apex:page>

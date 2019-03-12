@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use this template when sending MAPD Auto Renewal Letters</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Medicare Auto Renew Letter</name>
+    <style>none</style>
+    <subject>PHI Medicare Auto Renew - {!Case.Account}; {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

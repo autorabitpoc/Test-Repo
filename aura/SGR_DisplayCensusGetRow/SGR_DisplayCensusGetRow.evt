@@ -1,0 +1,8 @@
+<aura:event type="APPLICATION" description="Event template">
+<aura:attribute name ="OptyCensus" type="SGR_Opportunity_Census__c"/>
+<aura:attribute name="NumberOfDependents" type="Integer" default="0"/>
+<aura:attribute name="context" type="String" />
+<aura:attribute name="tabName" type="String" />
+
+
+</aura:event>

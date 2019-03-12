@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://myfyi.sharepoint.com/teams/phi_GrpSFDocs/_layouts/15/OauthAuthorize.aspx</authorizeUrl>
+    <consumerKey>0c92f8a0-320c-4962-8738-ef663e439dee</consumerKey>
+    <consumerSecret>fDlVgjpmlTe73KLhGFQBabD7iaNTzSqxb36AGMIQI8XkhTlCDomRAdVAWsRSyXXt</consumerSecret>
+    <friendlyName>SharePoint LGNADocs</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>MicrosoftACS</providerType>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <tokenUrl>https://accounts.accesscontrol.windows.net/myfyi.onmicrosoft.com/tokens/OAuth/2?resource=00000003-0000-0ff1-ce00-000000000000/myfyi.sharepoint.com@myfyi.onmicrosoft.com</tokenUrl>
+</AuthProvider>

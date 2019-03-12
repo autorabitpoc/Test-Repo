@@ -1,0 +1,313 @@
+<!-- 
+// Name             : GEMSAccountStructureDocument
+// -----------------------------------------------------------------------------------
+// Date             Developer           Description
+// -----------------------------------------------------------------------------------
+// 4/9/2017         Ranjit Gandhi        Cancelled Ba's added to Grid output
+// 4/17/2017        Ranjit Gandhi        SFDC-3770- Account Structure - Display correct Usage Types in the title of Category No. column
+// 3/25/2017        Phani Kommareddy     SFDC-7859 GEMS: Acct Structure - Redesign of GEMS Account Structure Excel Output
+// 4/30/2018        Luke Chen            SFDC-6942 GEMS: Acct Structure - Move Billing Association to the Group Section level in the "Create Account Structure" view.
+// 05/29/2018       Gokul Bharati        SFDC-9866 GEMS: Auto fit column width to data in rows on Account Structure output
+// 05/30/2018       Malathi.K            SFDC-9952 Add Product code to Grid,Excel and VF Page.
+-->
+<apex:page standardcontroller="GEMS_Benefit_Agreement__c" extensions="GEMS_AccountStructureOutputController" recordSetVar="C" contentType="txt/xml#AccountStructureSheet.xls" cache="true" readOnly="true">
+    <apex:variable value="" var="prev" />
+	   
+    <apex:outputText value="{!xlsHeader}"/>    
+    
+    <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+              xmlns:o="urn:schemas-microsoft-com:office:office"
+              xmlns:x="urn:schemas-microsoft-com:office:excel"
+              xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+              xmlns:html="http://www.w3.org/TR/REC-html40">
+        
+        <Styles>
+            <Style ss:ID="s1">
+                <Alignment/>
+                <Borders/>                    
+                <Font ss:Bold="1"/>                 
+                <Interior/>
+                <NumberFormat/>
+                <Protection/>
+            </Style>
+            
+            <Style ss:ID="s1heading">
+                <Alignment/>
+                <Borders>
+                    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+                </Borders>
+                <Font ss:Bold="1"/>                 
+                <Interior ss:Color="#c0c3c6" ss:Pattern="Solid"/>
+                <NumberFormat/>
+                <Protection/>
+            </Style>
+            <Style ss:ID="s1cancelled">
+                <Alignment/>
+                <Borders>
+                    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+                </Borders>
+                <Font/>                 
+                <Interior ss:Color="pink" ss:Pattern="Solid"/>
+                <NumberFormat/>
+                <Protection/>
+            </Style>
+            
+            <Style ss:ID="s1active">
+                <Alignment/>
+                <Borders>
+                    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+                </Borders>
+                <Font/>                 
+                <Interior/>
+                <NumberFormat/>
+                <Protection/>
+            </Style>
+            
+        </Styles>
+        
+        <Worksheet ss:Name="Account Information">    
+            <Table x:FullColumns="1" x:FullRows="1" >
+                <Column ss:Width="300"/>
+                <Column ss:Width="300"/>
+                <!--<Row>
+<Cell ss:StyleID="s1"><Data ss:Type="String" >Account Name</Data></Cell>
+</Row>-->
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Account Name</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.Account.Name}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Account Number</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.Account.External_ID__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Case Effective Date</Data></Cell>
+                    <Cell> <Data ss:Type="String"> <apex:outputText value="{0,date,MM/dd/yyyy}">
+                        <apex:param value="{!accSetUp.asCase.GEMS_Case_Effective_Date__c}" /> 
+                        </apex:outputText> </Data></Cell>             </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">HCSC Division</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.HCSC_Division__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Submission Type</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.GEMS_Submission_Type__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Submission Sub Type</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.GEMS_Submission_Sub_Type__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Market Segment</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.Market_Segment__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Line of Business</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.GEMS_Line_of_Business__c}</Data></Cell>
+                </Row>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String">Status</Data></Cell>
+                    <Cell><Data ss:Type="String">{!accSetUp.asCase.Status}</Data></Cell>
+                </Row>
+            </Table>
+        </Worksheet>
+        
+        <Worksheet ss:Name="Account Structure"> 
+            <Table x:FullColumns="1" x:FullRows="1">
+                <Column ss:Width="{!BANoWidth}" />
+                <Column ss:Width="{!BACancelDateWidth}"/>
+                <Column ss:Width="{!BAProductCodeWidth}"/>
+                <Column ss:Width="{!BAProductWidth}"/>                
+                <Column ss:Width="{!BADescriptionWidth}"/>
+                <Column ss:Width="{!BAFundTypeWidth}"/>
+                <Column ss:Hidden="{!IF(isBillingNumber, 0, 1)}" ss:Width="{!BillingCategoryNoWidth}"/>
+                <Column ss:Hidden="{!IF(isBillingDescription, 0, 1)}" ss:Width="{!BillingCategoryDescriptionWidth}"/>   
+                <Column ss:Hidden="{!IF(isMailingNumber, 0, 1)}" ss:Width="{!MailingCategoryNoWidth}"/>
+                <Column ss:Hidden="{!IF(isMailingDescription, 0, 1)}" ss:Width="{!MailingCategoryDescriptionWidth}"/>
+                <Column ss:Hidden="{!IF(isReportingNumber, 0, 1)}" ss:Width="{!ReportingCategoryNoWidth}"/>
+                <Column ss:Hidden="{!IF(isReportingDescription, 0, 1)}" ss:Width="{!ReportingCategoryDescriptionWidth}"/>
+                <Column ss:Hidden="{!IF(isProductNumber, 0, 1)}" ss:Width="{!ProductCategoryNoWidth}"/>
+                <Column ss:Hidden="{!IF(isProductDescription, 0, 1)}" ss:Width="{!ProductCategoryDescriptionWidth}"/>
+                <Column ss:Width="{!GroupNoWidth}"/>
+                <Column ss:Width="{!SectionNoWidth}"/>
+                <Column ss:Width="{!SectionDescriptionWidth}"/>
+                <Column ss:Width="{!SectionEffDateWidth}"/>
+                <Column ss:Width="{!SectionCanDateWidth}"/>
+                <Column ss:Width="{!BillingProfileWidth}"/>
+                <Column ss:Width="{!BillingAssociationWidth}"/>
+                <Column ss:Width="{!AlphaPrefixWidth}"/>
+                <Column ss:Width="{!IDCardTypeWidth}"/>
+                <Column ss:Width="{!SPICodesWidth}"/>
+                <Column ss:Width="{!ParPlanCodesWidth}"/>
+                <Row ss:StyleID="s1heading">
+                    <Cell ss:StyleID="s1heading" ><Data ss:Type="String">{!BANoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BACancelDateLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BAProductCodeLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BAProductLabel}</Data></Cell>                    
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BADescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BAFundTypeLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BillingCategoryNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BillingCategoryDescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!MailingCategoryNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!MailingCategoryDescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!ReportingCategoryNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!ReportingCategoryDescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!ProductCategoryNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!ProductCategoryDescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!GroupNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!SectionNoLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!SectionDescriptionLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!SectionEffDateLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!SectionCanDateLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BillingProfileLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">{!BillingAssociationLabel}</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!AlphaPrefixLabel}</apex:outputPanel></Data></Cell>          
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String"> <apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!IDCardTypeLabel}</apex:outputPanel></Data></Cell>    
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!SPICodesLabel}</apex:outputPanel></Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!ParPlanCodesLabel}</apex:outputPanel></Data></Cell>
+                    <Cell ss:StyleID="s1heading"></Cell><Cell ss:StyleID="s1heading"></Cell><Cell ss:StyleID="s1heading"></Cell>
+                </Row>  
+                
+                <apex:repeat value="{!accSetUp.cancelledbenefitAgreements}" var="pbRecord">
+                    
+                    <Row ss:StyleID="s1cancelled">
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">{!pbRecord.ba.Name}</Data></Cell>
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!pbRecord.ba.Cancel_Date__c}" /> 
+                            </apex:outputText>
+                            </Data></Cell>
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">{!pbRecord.ba.Product__r.ProductCode}</Data></Cell>
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">{!pbRecord.ba.Plan__r.Name}</Data></Cell>                        
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">{!SUBSTITUTE(SUBSTITUTE(pbRecord.ba.BA_Description__c,'>' ,' > '), '<', ' < ')}</Data></Cell>
+                        <Cell ss:StyleID="s1cancelled"><Data ss:Type="String">{!pbRecord.ba.BA_Fund_Type__c}</Data></Cell>
+                        <Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell>
+                        <Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell>
+                        <Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell>
+                        <Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell><Cell ss:StyleID="s1cancelled"></Cell>
+                    </Row>-->
+                    <Row ss:StyleID="s1heading">
+                        
+                    </Row> 
+                </apex:repeat>
+                
+                <apex:repeat value="{!accSetUp.reportData}" var="reportVal">
+                    <apex:outputText rendered="{!IF((reportVal.baName != prev && prev != null), true, false)}">
+                    <Row ss:StyleID="s1heading">
+                        
+                    </Row>
+                    </apex:outputText> 
+                    <Row ss:StyleID="s1active">
+                        <Cell ><Data ss:Type="String">{!reportVal.baName}</Data></Cell>
+                        <Cell></Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.baProductCode}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.baProduct}</Data></Cell>                            
+                        <Cell><Data ss:Type="String">{!SUBSTITUTE(SUBSTITUTE(reportVal.baDescription,'>' ,' > '), '<', ' < ')}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.baFundType}</Data></Cell>
+                        <Cell><Data ss:Type="String"> <apex:outputText value="{!reportVal.catBillingNumber}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catBillingDescription}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catMailingNumber}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catMailingDescription}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catReportingNumber}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catReportingDescription}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catProductNumber}"/></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{!reportVal.catProductDescription}"/></Data></Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.groupNumber}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.sectionNumber}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!SUBSTITUTE(SUBSTITUTE(reportVal.sectionDesc,'>' ,' > '), '<', ' < ')} </Data></Cell>
+                        <Cell><Data ss:Type="String"> 
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!reportVal.sEffDate}" /> 
+                            </apex:outputText>
+                            </Data>
+                        </Cell>
+                        <Cell> <Data ss:Type="String"> 
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!reportVal.sCanDate}" /> 
+                            </apex:outputText>
+                            </Data>
+                        </Cell>
+                        <Cell><Data ss:Type="String">{!reportVal.billingProfile}</Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(reportVal.baFundType != 'PREM' && reportVal.baFundType != null, true, false)}">{!reportVal.billingAssociation}</apex:outputPanel></Data></Cell>  <!-- SFDC-6942 -->                     
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!reportVal.alphaPrefix}</apex:outputPanel></Data></Cell> 
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!reportVal.idCardType}</apex:outputPanel></Data></Cell> 
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!reportVal.spiCodes}</apex:outputPanel></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(accSetUp.asCase.HCSC_Division__c == 'IL', true, false)}">{!reportVal.parPlanCodes}</apex:outputPanel></Data></Cell>
+                        
+                    </Row>
+                    
+                    <apex:variable value="{!reportVal.baName}" var="prev"/>
+                    
+                </apex:repeat>
+                <!--</apex:repeat>-->
+            </Table>      
+        </Worksheet>
+        
+        <Worksheet ss:Name="Characteristics"> 
+            <Table x:FullColumns="1" x:FullRows="1">
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                
+                <Column ss:Width="200"/>
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                <Column ss:Width="150"/>
+                <Row ss:StyleID="s1heading">
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Characteristic Description</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Corp Characteristic Code </Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Usage</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Mandatory</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Characteristic Value Description</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Characteristic Value Code</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Characteristic Value Effective Date</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Characteristic Effective Date</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">End Date</Data></Cell>
+                    <Cell ss:StyleID="s1heading"><Data ss:Type="String">Comments</Data></Cell>
+                    
+                </Row>  
+                <apex:repeat value="{!CharValsDocument}" var="cVal">
+                    <Row>
+                        <Cell><Data ss:Type="String">{!cVal.Characteristic__r.Corp_Characteristic_Code__r.Name}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!cVal.Char_Code__c} </Data></Cell>
+                        <!--<Cell><Data ss:Type="String">{!cVal.Characteristic__r.Usage__c}</Data></Cell>-->
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Billing__c == true, true, false)}"> Billing/</apex:outputPanel><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Mailing__c == true, true, false)}"> Mailing/</apex:outputPanel><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Reporting__c == true, true, false)}"> Reporting/</apex:outputPanel><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Product__c == true, true, false)}"> Product/</apex:outputPanel><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Other__c == true, true, false)}"> Other</apex:outputPanel></Data></Cell> 
+                        <Cell><Data ss:Type="String"><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Mandatory__c == true, true, false)}"> Y </apex:outputPanel><apex:outputPanel rendered="{!IF(cVal.Characteristic__r.Mandatory__c == false, true, false)}"> N </apex:outputPanel></Data></Cell> 
+                        <Cell><Data ss:Type="String" >{!SUBSTITUTE(SUBSTITUTE(cVal.Name,'>' ,' > '), '<', ' < ')} 
+                            </Data></Cell>
+                        
+                        <Cell><Data ss:Type="String">{!cVal.Code__c}</Data></Cell>
+                        <Cell> <Data ss:Type="String"> 
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!cVal.Effective_Date__c}" /> 
+                            </apex:outputText>
+                            </Data></Cell>                             
+                        <Cell> <Data ss:Type="String"> 
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!cVal.Characteristic__r.Effective_Date__c}" /> 
+                            </apex:outputText>
+                            </Data></Cell>                   
+                        <Cell> <Data ss:Type="String"> 
+                            <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                <apex:param value="{!cVal.Characteristic__r.End_Date__c}" /> 
+                            </apex:outputText>
+                            </Data></Cell>
+                        <Cell><Data ss:Type="String">{!cVal.Characteristic__r.Comments__c}</Data></Cell>
+                    </Row>
+                </apex:repeat>
+            </Table>      
+        </Worksheet>       
+    </Workbook>
+    
+</apex:page>

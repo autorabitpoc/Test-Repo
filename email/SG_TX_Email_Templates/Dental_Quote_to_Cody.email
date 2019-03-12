@@ -1,0 +1,12 @@
+Hello, 
+Please provide a dental only quote for the following account:
+
+State: TX
+Account: {!Case.Group_Account_Number__c} 
+Account Name: {!Case.Account}
+Account Size: (enter number of subscribers from account's current renewal exhibit)
+Zip Code: 
+County: 
+
+Thank you.
+TXSGAM

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://myfyi.sharepoint.com/teams/phi_rqsthub/_layouts/15/OauthAuthorize.aspx</authorizeUrl>
+    <consumerKey>d5998ce8-23df-4e11-a352-b0d93803e733</consumerKey>
+    <consumerSecret>WqvGqsU/gHShfRGsTiEG5JnX+zE3GBTtgY7k5z10c6nqWcz0iJfcK5iHAal+mxtB</consumerSecret>
+    <friendlyName>RequestHubProduction</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>MicrosoftACS</providerType>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <tokenUrl>https://accounts.accesscontrol.windows.net/myfyi.onmicrosoft.com/tokens/OAuth/2?resource=00000003-0000-0ff1-ce00-000000000000/myfyi.sharepoint.com@myfyi.onmicrosoft.com</tokenUrl>
+</AuthProvider>

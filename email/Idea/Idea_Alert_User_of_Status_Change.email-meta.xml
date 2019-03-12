@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify user when their idea status changes</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Idea Alert User of Status Change</name>
+    <style>none</style>
+    <subject>Idea Status has Changed: {!Ideas__c.Name}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

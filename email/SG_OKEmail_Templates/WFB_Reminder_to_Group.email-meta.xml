@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending reminders to Group Directly that Workforce Blue Group Size Certifications Forms are Due</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WFB Reminder to Group</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account} Courtesy e-mail: Renewal WFB Group Size Certification Due (Response needed)</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

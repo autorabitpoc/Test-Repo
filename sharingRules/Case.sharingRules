@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Case_Edit_Share_for</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This gives all users edit access to the case records based on the following recordtypes : Mid-Market Underwriting
+Performance Guarantee
+SG - General Case
+Custom Benefit/Service
+CBSR Issue</description>
+        <label>Case Edit Share for All users</label>
+        <sharedTo>
+            <roleAndSubordinates>Executive_Management</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Custom Benefit/Service,Mid-Market Underwriting,SG - General Case,CBSR Issue,Performance Guarantee</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>GEMS_UW_Case_Edit_Share_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This gives all UW users edit access to the case records based on the following recordtypes : GEMS Medical and DentalUnderwriting</description>
+        <label>GEMS UW Case Edit Share Access</label>
+        <sharedTo>
+            <group>GEMS_Underwriting_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Dental Underwriting,GEMS Medical Underwriting,GEMS Additional Underwriting</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Small_Group_Case_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all the Small Group cases with all of the small group users</description>
+        <label>Small Group Case Share</label>
+        <sharedTo>
+            <roleAndSubordinates>Small_Group</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>SG - General Case</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>sgr_tets</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>sgr tets</label>
+        <sharedTo>
+            <role>SGR_Operations_Manager</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>SGR-Renewals</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

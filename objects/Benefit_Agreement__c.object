@@ -1,0 +1,2470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Benefit_Agreement_Standard_Compact</fullName>
+        <fields>Benefit_Agreement_Number__c</fields>
+        <fields>Product__c</fields>
+        <fields>Product_Category__c</fields>
+        <fields>Status__c</fields>
+        <label>Benefit Agreement Standard Compact</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Benefit Agreement information offered to the employees for the Group Account will be stored using this object</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>ACA_Fee__c</fullName>
+        <externalId>false</externalId>
+        <label>ACA Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ACA_Indicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>ACA Indicator</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Account_Census__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Census</label>
+        <referenceTo>SGR_Account_Census__c</referenceTo>
+        <relationshipLabel>Benefit Agreements</relationshipLabel>
+        <relationshipName>Benefit_Agreements</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_data_load__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Created to load the relationship using the dataloader</description>
+        <externalId>false</externalId>
+        <label>Account data load</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Benefit Agreements (Account data load)</relationshipLabel>
+        <relationshipName>Benefit_Agreements1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Age_Bracket_Meth_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Age Bracket Meth Code</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Automated_Eligibility_Process__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture if a Benefit Agreement falls under the Automated Eligibility Process.</description>
+        <externalId>false</externalId>
+        <label>Automated Eligibility Process</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BA_USER_DISPL_NBR__c</fullName>
+        <externalId>false</externalId>
+        <label>BA USER DISPL NBR</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Benefit_Agreement_Number__c</fullName>
+        <description>This field is used to capture the number of the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Benefit Agreement Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Type__c</fullName>
+        <description>This field is used to capture the business type for the Benefit Agreement.</description>
+        <externalId>false</externalId>
+        <label>Business Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                    <label>Standard</label>
+                </value>
+                <value>
+                    <fullName>Cede</fullName>
+                    <default>false</default>
+                    <label>Cede</label>
+                </value>
+                <value>
+                    <fullName>Slice</fullName>
+                    <default>false</default>
+                    <label>Slice</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Code__c</fullName>
+        <description>This field is used to capture the BlueStar - Code indicating the reason for a cancellation or reinstatement initiated at the Benefit Agreement level.</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CBA – Cancel Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>CBA – Cancel Benefit Agreement</label>
+                </value>
+                <value>
+                    <fullName>RBA - Reinstatement Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>RBA - Reinstatement Benefit Agreement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Date__c</fullName>
+        <description>This field is used to capture the cancellation or reinstatement date of the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Explanation__c</fullName>
+        <description>This field is used to capture the explanation for cancellation or reinstatement request.</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Explanation</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <description>This field is used to capture the reason why a Benefit Agreement is being cancelled or reinstated.</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>404 Misc - Grp Moved Out of State</fullName>
+                    <default>false</default>
+                    <label>404 Misc - Grp Moved Out of State</label>
+                </value>
+                <value>
+                    <fullName>452 Acct Moving Ind Prod</fullName>
+                    <default>false</default>
+                    <label>452 Acct Moving Ind Prod</label>
+                </value>
+                <value>
+                    <fullName>45 - Rate Increase</fullName>
+                    <default>false</default>
+                    <label>45 - Rate Increase</label>
+                </value>
+                <value>
+                    <fullName>707 Rates - General</fullName>
+                    <default>false</default>
+                    <label>707 Rates - General</label>
+                </value>
+                <value>
+                    <fullName>709 Rates - Large Rate Increase</fullName>
+                    <default>false</default>
+                    <label>709 Rates - Large Rate Increase</label>
+                </value>
+                <value>
+                    <fullName>401 Misc - Below Percentage</fullName>
+                    <default>false</default>
+                    <label>401 Misc - Below Percentage</label>
+                </value>
+                <value>
+                    <fullName>402 Misc - Reason/Unknown</fullName>
+                    <default>false</default>
+                    <label>402 Misc - Reason/Unknown</label>
+                </value>
+                <value>
+                    <fullName>403 Misc - Non-Payment of Dues</fullName>
+                    <default>false</default>
+                    <label>403 Misc - Non-Payment of Dues</label>
+                </value>
+                <value>
+                    <fullName>405 Misc - Never Effective</fullName>
+                    <default>false</default>
+                    <label>405 Misc - Never Effective</label>
+                </value>
+                <value>
+                    <fullName>406 Misc - New Group Number</fullName>
+                    <default>false</default>
+                    <label>406 Misc - New Group Number</label>
+                </value>
+                <value>
+                    <fullName>408 Misc - Other UW Requirements</fullName>
+                    <default>false</default>
+                    <label>408 Misc - Other UW Requirements</label>
+                </value>
+                <value>
+                    <fullName>409 Misc - Acct has 0 Subs</fullName>
+                    <default>false</default>
+                    <label>409 Misc - Acct has 0 Subs</label>
+                </value>
+                <value>
+                    <fullName>410 Misc - Coverage Discontinued</fullName>
+                    <default>false</default>
+                    <label>410 Misc - Coverage Discontinued</label>
+                </value>
+                <value>
+                    <fullName>411 Misc - New Decision Maker</fullName>
+                    <default>false</default>
+                    <label>411 Misc - New Decision Maker</label>
+                </value>
+                <value>
+                    <fullName>412 Misc - Trans to Existing Acct</fullName>
+                    <default>false</default>
+                    <label>412 Misc - Trans to Existing Acct</label>
+                </value>
+                <value>
+                    <fullName>413 Misc - Broker Recommendation</fullName>
+                    <default>false</default>
+                    <label>413 Misc - Broker Recommendation</label>
+                </value>
+                <value>
+                    <fullName>414 Misc - Cons Cov w/1+ Carrier</fullName>
+                    <default>false</default>
+                    <label>414 Misc - Cons Cov w/1+ Carrier</label>
+                </value>
+                <value>
+                    <fullName>415 Moved to Other BCBS Plan</fullName>
+                    <default>false</default>
+                    <label>415 Moved to Other BCBS Plan</label>
+                </value>
+                <value>
+                    <fullName>416 Misc - Owner Chg/Merg/Acq</fullName>
+                    <default>false</default>
+                    <label>416 Misc - Owner Chg/Merg/Acq</label>
+                </value>
+                <value>
+                    <fullName>417 Misc - Parent Co Decision</fullName>
+                    <default>false</default>
+                    <label>417 Misc - Parent Co Decision</label>
+                </value>
+                <value>
+                    <fullName>418 Misc - Absorbed by ParentGrp</fullName>
+                    <default>false</default>
+                    <label>418 Misc - Absorbed by ParentGrp</label>
+                </value>
+                <value>
+                    <fullName>419 Misc - Out-of-Business</fullName>
+                    <default>false</default>
+                    <label>419 Misc - Out-of-Business</label>
+                </value>
+                <value>
+                    <fullName>427 Misc - Political</fullName>
+                    <default>false</default>
+                    <label>427 Misc - Political</label>
+                </value>
+                <value>
+                    <fullName>433 Misc - Trans Due to Ben Chg</fullName>
+                    <default>false</default>
+                    <label>433 Misc - Trans Due to Ben Chg</label>
+                </value>
+                <value>
+                    <fullName>436 Misc - Changed Brokers</fullName>
+                    <default>false</default>
+                    <label>436 Misc - Changed Brokers</label>
+                </value>
+                <value>
+                    <fullName>501 Claims - Service/Problems</fullName>
+                    <default>false</default>
+                    <label>501 Claims - Service/Problems</label>
+                </value>
+                <value>
+                    <fullName>502 Mbrship - Billing Serv/Prob</fullName>
+                    <default>false</default>
+                    <label>502 Mbrship - Billing Serv/Prob</label>
+                </value>
+                <value>
+                    <fullName>503 Service - Local Office</fullName>
+                    <default>false</default>
+                    <label>503 Service - Local Office</label>
+                </value>
+                <value>
+                    <fullName>504 Service - Customer Service</fullName>
+                    <default>false</default>
+                    <label>504 Service - Customer Service</label>
+                </value>
+                <value>
+                    <fullName>608 Network - PPO/POS Hospital</fullName>
+                    <default>false</default>
+                    <label>608 Network - PPO/POS Hospital</label>
+                </value>
+                <value>
+                    <fullName>609 Network - PPO/POS Phys</fullName>
+                    <default>false</default>
+                    <label>609 Network - PPO/POS Phys</label>
+                </value>
+                <value>
+                    <fullName>612 Network - HMO Hospital</fullName>
+                    <default>false</default>
+                    <label>612 Network - HMO Hospital</label>
+                </value>
+                <value>
+                    <fullName>613 Network - HMO Phys Network</fullName>
+                    <default>false</default>
+                    <label>613 Network - HMO Phys Network</label>
+                </value>
+                <value>
+                    <fullName>614 Prod Design - Prescription</fullName>
+                    <default>false</default>
+                    <label>614 Prod Design - Prescription</label>
+                </value>
+                <value>
+                    <fullName>701 Rates - Emp Extremely High</fullName>
+                    <default>false</default>
+                    <label>701 Rates - Emp Extremely High</label>
+                </value>
+                <value>
+                    <fullName>702 Rates - Dep Extremely High</fullName>
+                    <default>false</default>
+                    <label>702 Rates - Dep Extremely High</label>
+                </value>
+                <value>
+                    <fullName>703 Rates - All Extremely High</fullName>
+                    <default>false</default>
+                    <label>703 Rates - All Extremely High</label>
+                </value>
+                <value>
+                    <fullName>704 Rates - Agg Stop Loss HIgh</fullName>
+                    <default>false</default>
+                    <label>704 Rates - Agg Stop Loss HIgh</label>
+                </value>
+                <value>
+                    <fullName>705 Rates - Spec Stop Loss High</fullName>
+                    <default>false</default>
+                    <label>705 Rates - Spec Stop Loss High</label>
+                </value>
+                <value>
+                    <fullName>706 Rates - AdminCharge Too High</fullName>
+                    <default>false</default>
+                    <label>706 Rates - AdminCharge Too High</label>
+                </value>
+                <value>
+                    <fullName>801 Reports - NA Due to Grp Size</fullName>
+                    <default>false</default>
+                    <label>801 Reports - NA Due to Grp Size</label>
+                </value>
+                <value>
+                    <fullName>802 Reports - Spcl Rpts Not Avail</fullName>
+                    <default>false</default>
+                    <label>802 Reports - Spcl Rpts Not Avail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Status__c</fullName>
+        <description>This field is used to capture the status of a cancellation or reinstatement request for the Benefit Agreement.</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Approval</fullName>
+                    <default>false</default>
+                    <label>Pending Approval</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Cancellation Rejected</fullName>
+                    <default>false</default>
+                    <label>Cancellation Rejected</label>
+                </value>
+                <value>
+                    <fullName>Requested Cancellation</fullName>
+                    <default>false</default>
+                    <label>Requested Cancellation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Submitted_Date__c</fullName>
+        <description>This field is used to capture the date when the cancellation or reinstatement request was submitted.</description>
+        <externalId>false</externalId>
+        <label>Cancellation/Reinstatement Submitted Dt</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ComplexityScoreCoverage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Hidden Complexity Score field to hold the point value for related Coverages</description>
+        <externalId>false</externalId>
+        <label>ComplexityScoreCoverage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contracts__c</fullName>
+        <description>This field is no longer used.</description>
+        <externalId>false</externalId>
+        <label>Contracts</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corp_Product_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Corp Product Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corp_Tier_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Corp Tier Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Coverages__c</fullName>
+        <description>This field is used to capture the coverages associated to the Benefit Agreement as listed in BlueStar (all coverages are separated by a space)</description>
+        <externalId>false</externalId>
+        <label>Coverages</label>
+        <length>131072</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Dental_Rate_Structure_Type__c</fullName>
+        <description>This field is used to capture the dental rate structure type.</description>
+        <externalId>false</externalId>
+        <label>Dental Rate Structure Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department_Number__c</fullName>
+        <description>This field is used to capture the department number associated to the Benefit Agreement.</description>
+        <externalId>false</externalId>
+        <label>Department Number</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>This field is used to capture a description for the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Domestic_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture if domestic partner applies to the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Domestic Partner</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_Blue_Script__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture if a Benefit Agreement does not offer Rx (&quot;Y&quot; indicates that it does not offer Rx).</description>
+        <externalId>false</externalId>
+        <label>Drug Blue Script</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ERISA_Code_Effective_Date__c</fullName>
+        <description>This field is used to capture the date the ERISA code is effective as listed in BlueStar (defaults to the new group effective date)</description>
+        <externalId>false</externalId>
+        <label>ERISA Code Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ERISA_Code__c</fullName>
+        <description>This field is used to capture the ERISA Status as listed in BlueStar: AP = ERISA applies to plan, EX = Exempt, PE = Pre-exempt for benefit only, N = ERISA information not collected.</description>
+        <externalId>false</externalId>
+        <label>ERISA Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AP = ERISA applies to plan</fullName>
+                    <default>false</default>
+                    <label>AP = ERISA applies to plan</label>
+                </value>
+                <value>
+                    <fullName>EX = Exempt from</fullName>
+                    <default>false</default>
+                    <label>EX = Exempt from</label>
+                </value>
+                <value>
+                    <fullName>PE = Pre-exempt for benefit only</fullName>
+                    <default>false</default>
+                    <label>PE = Pre-exempt for benefit only</label>
+                </value>
+                <value>
+                    <fullName>N = ERISA information not collected</fullName>
+                    <default>false</default>
+                    <label>N = ERISA information not collected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <description>This field is used to capture the date the Benefit Agreement was effective as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Exchange_Indicator__c</fullName>
+        <description>This field is used to capture the Exchange Indicator (BLM if Bloom Benefit Agreement) as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Exchange Indicator</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BLM if Bloom Benefit Agreement</fullName>
+                    <default>false</default>
+                    <label>BLM if Bloom Benefit Agreement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field is used to capture the unique identifier for the Benefit Agreement</description>
+        <externalId>true</externalId>
+        <label>Benefit Agreement ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Extra_Teritorial_ET_Rule_Code__c</fullName>
+        <description>This field is used to capture whether ET Rules apply.  ET rules are laws that apply to residence of a state, even when the contract is situated outside of the state.  The basis for these laws is the state the subscriber lives in.</description>
+        <externalId>false</externalId>
+        <label>Extra Teritorial (ET) Rule Code</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Extra_Teritorial_Rule_Code_Date__c</fullName>
+        <description>This field is used to capture the first date the ET regulations are in effect.</description>
+        <externalId>false</externalId>
+        <label>Extra Teritorial Rule Code Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>From_Age__c</fullName>
+        <externalId>false</externalId>
+        <label>From Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Funding_Type__c</fullName>
+        <description>This field is used to capture the financial billing arrangement that an account designates for the Benefit Agreement.</description>
+        <externalId>false</externalId>
+        <label>Funding Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACAP</fullName>
+                    <default>false</default>
+                    <label>ACAP</label>
+                </value>
+                <value>
+                    <fullName>ASO</fullName>
+                    <default>false</default>
+                    <label>ASO</label>
+                </value>
+                <value>
+                    <fullName>COST</fullName>
+                    <default>false</default>
+                    <label>COST</label>
+                </value>
+                <value>
+                    <fullName>MPP</fullName>
+                    <default>false</default>
+                    <label>MPP</label>
+                </value>
+                <value>
+                    <fullName>PAR</fullName>
+                    <default>false</default>
+                    <label>PAR</label>
+                </value>
+                <value>
+                    <fullName>PREM</fullName>
+                    <default>false</default>
+                    <label>PREM</label>
+                </value>
+                <value>
+                    <fullName>SERV</fullName>
+                    <default>false</default>
+                    <label>SERV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GS_Assigned_Indicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GS Assigned Indicator</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Account__c</fullName>
+        <description>This field is used to capture the Group Account associated to the Benefit Agreement</description>
+        <externalId>false</externalId>
+        <label>Group Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Benefit Agreements</relationshipLabel>
+        <relationshipName>Benefit_Agreements</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Assigned_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Section Assigned Count</label>
+        <summaryForeignKey>BA_GS_Assignment__c.Benefit_Agreement__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Assigned_Effective_Date__c</fullName>
+        <description>This field is used to capture the date that the Benefit Agreement was assigned to a Group Section.</description>
+        <externalId>false</externalId>
+        <label>Group Section Assigned Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Group_Section_Assigned_End_Date__c</fullName>
+        <description>This field is used to capture the date that the Benefit Agreement is no longer assigned to a Group Section.</description>
+        <externalId>false</externalId>
+        <label>Group Section Assigned End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HCR_Compliance_Date__c</fullName>
+        <description>This field is used to capture the Health Care Reform grandfathering date as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>HCR Compliance Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HCR_Compliance_Indicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture the Health Care Reform grandfathering Indicator as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>HCR Compliance Indicator</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HIPPAA_Change_Effective_Date__c</fullName>
+        <description>This field is used to capture the first date a HIPPAA change becomes effective.</description>
+        <externalId>false</externalId>
+        <label>HIPPAA Change Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HIPPAA_Complience_Date__c</fullName>
+        <description>This field is used to capture the first date the HIPPAA requirements were met.</description>
+        <externalId>false</externalId>
+        <label>HIPPAA  Compliance Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HIPPAA_Status_Code__c</fullName>
+        <description>This field is used to capture compliance with the HIPPAA requirements.</description>
+        <externalId>false</externalId>
+        <label>HIPPAA Status Code</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Health_Benefit_SITUS_Code__c</fullName>
+        <description>This field is used to capture the state having the primary authority for regulating and governing the account&apos;s Insurance contract.  Knowing a group&apos;s SITUS allows for determination of extraterritorial requirements.</description>
+        <externalId>false</externalId>
+        <label>Health Benefit SITUS-Code</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Health_Rating_Area_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Health Rating Area Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Insurance_Type_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Insurance Type Code</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>D</fullName>
+                    <default>false</default>
+                    <label>D</label>
+                </value>
+                <value>
+                    <fullName>H</fullName>
+                    <default>false</default>
+                    <label>H</label>
+                </value>
+                <value>
+                    <fullName>V</fullName>
+                    <default>false</default>
+                    <label>V</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Invitro_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <label>Invitro Indicator</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Market_Plan_Number__c</fullName>
+        <description>This field is used to capture the market plan number for the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Market Plan Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maternity_Indicator__c</fullName>
+        <externalId>false</externalId>
+        <label>Maternity Indicator</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Member_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Member Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Members_Cancelling__c</fullName>
+        <description>This field is no longer used.</description>
+        <externalId>false</externalId>
+        <label>Members Cancelling</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Members__c</fullName>
+        <description>This field is no longer used.</description>
+        <externalId>false</externalId>
+        <label>Members</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Migration_Source__c</fullName>
+        <description>This field is used to capture the source from where the record gets created through migrations.</description>
+        <externalId>false</externalId>
+        <label>Migration Source</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Network__c</fullName>
+        <description>This field is used to capture the Network code for the ID format as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Network</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NAT</fullName>
+                    <default>false</default>
+                    <label>NAT</label>
+                </value>
+                <value>
+                    <fullName>PPO</fullName>
+                    <default>false</default>
+                    <label>PPO</label>
+                </value>
+                <value>
+                    <fullName>EPP</fullName>
+                    <default>false</default>
+                    <label>EPP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Original_HCR_Compliance_Date__c</fullName>
+        <description>This field is used to capture the earliest date the grandfather status = &apos;Y&apos; as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Original HCR Compliance Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used to capture the plan associated to the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Plan</label>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Benefit Agreements</relationshipLabel>
+        <relationshipName>Benefit_Agreements</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Premium_Type_Effective_Date__c</fullName>
+        <description>This field is used to capture the first day that the premium funding type is effective as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Premium Type Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Premium_Type__c</fullName>
+        <description>This field is used to capture the specific code for the Benefit Agreement&apos;s premium financial arrangement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Premium Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Funding_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PP</fullName>
+                    <default>false</default>
+                    <label>PP</label>
+                </value>
+                <value>
+                    <fullName>RP</fullName>
+                    <default>false</default>
+                    <label>RP</label>
+                </value>
+                <value>
+                    <fullName>RC</fullName>
+                    <default>false</default>
+                    <label>RC</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>PREM</controllingFieldValue>
+                <valueName>PP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PREM</controllingFieldValue>
+                <valueName>RP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PREM</controllingFieldValue>
+                <valueName>RC</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Category__c</fullName>
+        <description>This field is used to capture the category of the product associated to the Benefit Agreement</description>
+        <externalId>false</externalId>
+        <formula>Text(Product__r.Product_Category__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Compliance_Date__c</fullName>
+        <description>This field is used to capture the Product Compliance Date as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Product Compliance Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Product_Family__c</fullName>
+        <description>This field is used to capture the broader family of the product associated to the Benefit Agreement</description>
+        <externalId>false</externalId>
+        <formula>text(Product__r.Family)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Family</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Old__c</fullName>
+        <description>This field is no longer used</description>
+        <externalId>false</externalId>
+        <label>Product Old</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Type_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used to capture the name of the product associated to the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Product2.IsActive</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>HCSC_Non_BlueStar_Product</value>
+            </filterItems>
+            <filterItems>
+                <field>Product2.NotSimple__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <infoMessage>You must add only Non BlueSTAR products</infoMessage>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Benefit Agreements</relationshipLabel>
+        <relationshipName>Benefit_Agreements</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rate_Seq_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Seq Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_Structure_Type_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Structure Type Code</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_Type_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Type Code</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Region_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Region Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Date__c</fullName>
+        <description>This field is used to capture the date the Benefit Agreement will renew as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Renewal Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Month__c</fullName>
+        <description>This field is used to capture the month the Benefit Agreement will renew as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Renewal Month</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                    <label>9</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>11</fullName>
+                    <default>false</default>
+                    <label>11</label>
+                </value>
+                <value>
+                    <fullName>12</fullName>
+                    <default>false</default>
+                    <label>12</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Requested_Cancellation_Date__c</fullName>
+        <description>This field is used to capture the date when the Benefit Agreement has been requested to be cancelled or reinstated</description>
+        <externalId>false</externalId>
+        <label>Requested Cancellation/Reinstatemen Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Shared_Accum_Effective_Date__c</fullName>
+        <description>This field is used to capture the first day that Sharing Accums are effective as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Shared Accum Effective Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Shared_Accum_Vender_Code__c</fullName>
+        <description>This field is used to capture the HSA Vendor code as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Shared Accum Vender Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shared_Accum__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture if HSA is applicable to the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Shared Accum</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>This field is used to capture if the Benefit Agreement is active or cancelled as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Stop_Loss_Type__c</fullName>
+        <description>This field is used to capture whether the claim payment level when the paid claim exceed a specific limit over a set period of time as listed in BlueStar. This normally applies on ASO and Cost plus Accounts.</description>
+        <externalId>false</externalId>
+        <label>Stop Loss Type</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stop_Loss__c</fullName>
+        <description>This field is used to capture whether Stop Loss applies to the Benefit Agreement as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Stop Loss</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Y</fullName>
+                    <default>false</default>
+                    <label>Y</label>
+                </value>
+                <value>
+                    <fullName>N</fullName>
+                    <default>false</default>
+                    <label>N</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscriber_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscriber Number</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Aggregate_Seq__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier Aggregate Seq</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Age__c</fullName>
+        <externalId>false</externalId>
+        <label>To Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Original_Contribution_Count__c</fullName>
+        <description>This field is used to capture the Total Dental Original Contribution Count as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Total Dental Original Contribution Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Dental_Renewal_Contribution_Count__c</fullName>
+        <description>This field is used to capture the Total Dental Renewal Contribtuion Count as listed in BlueStar</description>
+        <externalId>false</externalId>
+        <label>Total Dental Renewal Contribution Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Benefit Agreement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>BA-{000000}</displayFormat>
+        <label>Benefit Agreement Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Benefit Agreements</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>BlueStar</fullName>
+        <active>true</active>
+        <description>Records that are sent from Bluestar</description>
+        <label>BlueStar</label>
+        <picklistValues>
+            <picklist>Business_Type__c</picklist>
+            <values>
+                <fullName>Cede</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Code__c</picklist>
+            <values>
+                <fullName>CBA %E2%80%93 Cancel Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RBA - Reinstatement Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Reason__c</picklist>
+            <values>
+                <fullName>401 Misc - Below Percentage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>402 Misc - Reason%2FUnknown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>403 Misc - Non-Payment of Dues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>404 Misc - Grp Moved Out of State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>405 Misc - Never Effective</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>406 Misc - New Group Number</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>408 Misc - Other UW Requirements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>409 Misc - Acct has 0 Subs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>410 Misc - Coverage Discontinued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>411 Misc - New Decision Maker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>412 Misc - Trans to Existing Acct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>413 Misc - Broker Recommendation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>414 Misc - Cons Cov w%2F1%2B Carrier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>415 Moved to Other BCBS Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>416 Misc - Owner Chg%2FMerg%2FAcq</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>417 Misc - Parent Co Decision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>418 Misc - Absorbed by ParentGrp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>419 Misc - Out-of-Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>427 Misc - Political</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>433 Misc - Trans Due to Ben Chg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>436 Misc - Changed Brokers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45 - Rate Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>452 Acct Moving Ind Prod</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>501 Claims - Service%2FProblems</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>502 Mbrship - Billing Serv%2FProb</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>503 Service - Local Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>504 Service - Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>608 Network - PPO%2FPOS Hospital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>609 Network - PPO%2FPOS Phys</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>612 Network - HMO Hospital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>613 Network - HMO Phys Network</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>614 Prod Design - Prescription</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>701 Rates - Emp Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>702 Rates - Dep Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>703 Rates - All Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>704 Rates - Agg Stop Loss HIgh</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>705 Rates - Spec Stop Loss High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>706 Rates - AdminCharge Too High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>707 Rates - General</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>709 Rates - Large Rate Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>801 Reports - NA Due to Grp Size</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>802 Reports - Spcl Rpts Not Avail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Status__c</picklist>
+            <values>
+                <fullName>Cancellation Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requested Cancellation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ERISA_Code__c</picklist>
+            <values>
+                <fullName>AP %3D ERISA applies to plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EX %3D Exempt from</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N %3D ERISA information not collected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PE %3D Pre-exempt for benefit only</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Exchange_Indicator__c</picklist>
+            <values>
+                <fullName>BLM if Bloom Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Insurance_Type_Code__c</picklist>
+            <values>
+                <fullName>D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>V</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Network__c</picklist>
+            <values>
+                <fullName>EPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Premium_Type__c</picklist>
+            <values>
+                <fullName>PP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Renewal_Month__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stop_Loss__c</picklist>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Non_BlueStar</fullName>
+        <active>true</active>
+        <description>Benefit Agreements created in Salesforce for Non BlueStar products</description>
+        <label>Non BlueStar</label>
+        <picklistValues>
+            <picklist>Business_Type__c</picklist>
+            <values>
+                <fullName>Cede</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Code__c</picklist>
+            <values>
+                <fullName>CBA %E2%80%93 Cancel Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RBA - Reinstatement Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Reason__c</picklist>
+            <values>
+                <fullName>401 Misc - Below Percentage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>402 Misc - Reason%2FUnknown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>403 Misc - Non-Payment of Dues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>404 Misc - Grp Moved Out of State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>405 Misc - Never Effective</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>406 Misc - New Group Number</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>408 Misc - Other UW Requirements</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>409 Misc - Acct has 0 Subs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>410 Misc - Coverage Discontinued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>411 Misc - New Decision Maker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>412 Misc - Trans to Existing Acct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>413 Misc - Broker Recommendation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>414 Misc - Cons Cov w%2F1%2B Carrier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>415 Moved to Other BCBS Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>416 Misc - Owner Chg%2FMerg%2FAcq</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>417 Misc - Parent Co Decision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>418 Misc - Absorbed by ParentGrp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>419 Misc - Out-of-Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>427 Misc - Political</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>433 Misc - Trans Due to Ben Chg</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>436 Misc - Changed Brokers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45 - Rate Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>452 Acct Moving Ind Prod</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>501 Claims - Service%2FProblems</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>502 Mbrship - Billing Serv%2FProb</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>503 Service - Local Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>504 Service - Customer Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>608 Network - PPO%2FPOS Hospital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>609 Network - PPO%2FPOS Phys</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>612 Network - HMO Hospital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>613 Network - HMO Phys Network</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>614 Prod Design - Prescription</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>701 Rates - Emp Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>702 Rates - Dep Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>703 Rates - All Extremely High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>704 Rates - Agg Stop Loss HIgh</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>705 Rates - Spec Stop Loss High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>706 Rates - AdminCharge Too High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>707 Rates - General</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>709 Rates - Large Rate Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>801 Reports - NA Due to Grp Size</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>802 Reports - Spcl Rpts Not Avail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Status__c</picklist>
+            <values>
+                <fullName>Cancellation Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requested Cancellation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ERISA_Code__c</picklist>
+            <values>
+                <fullName>AP %3D ERISA applies to plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EX %3D Exempt from</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N %3D ERISA information not collected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PE %3D Pre-exempt for benefit only</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Exchange_Indicator__c</picklist>
+            <values>
+                <fullName>BLM if Bloom Benefit Agreement</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Funding_Type__c</picklist>
+            <values>
+                <fullName>ACAP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COST</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PREM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SERV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Insurance_Type_Code__c</picklist>
+            <values>
+                <fullName>D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>V</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Network__c</picklist>
+            <values>
+                <fullName>EPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Premium_Type__c</picklist>
+            <values>
+                <fullName>PP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Renewal_Month__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stop_Loss__c</picklist>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

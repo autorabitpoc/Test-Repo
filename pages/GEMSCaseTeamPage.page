@@ -1,0 +1,10 @@
+<apex:page standardController="Case" extensions="GEMS_CaseTeamPageController">
+<apex:form >
+<apex:pageblock >
+<apex:pageblockSection >
+<apex:inputfield value="{!caserec.GEMS_Request_Resource__c }"/>
+<apex:commandButton action="{!Save}" value="Request Resource"/>
+</apex:pageblockSection>
+</apex:pageblock>
+</apex:form>
+</apex:page>

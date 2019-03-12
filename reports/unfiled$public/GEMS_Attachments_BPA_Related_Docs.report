@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GEMS_Attachment__c.Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>FK_CASE_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.SharePointExtId__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Type__c</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Level__c</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Description__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>GEMS_Attachment__c.Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>BPA,BPA - ASO,BPA - DENTAL,BPA - HCA,BPA - HEALTH,SIGNED BPA,GRANDFATHERED STATUS CERTIF FORM,PERFORMANCE GUARANTEE,SIGNED GRANDFATHERED CERT FORM,SIGNED PERFORMANCE GUARANTEE,SIGNED STOP LOSS AGREEMENT,STOP LOSS AGREEMENT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_CASE_RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Case.GEMS_Account_Submission</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>GEMS Attachments - BPA Related Docs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GEMS_Attachment__c@GEMS_Attachment__c.Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

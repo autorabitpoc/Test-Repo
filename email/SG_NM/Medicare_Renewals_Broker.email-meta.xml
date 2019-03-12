@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>2018 Group Medicare renewals - broker template</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Medicare Renewals - Broker</name>
+    <style>none</style>
+    <subject>PHI: Medicare Renewal Information for {!Account.AccountNumber} {!Account.Name}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

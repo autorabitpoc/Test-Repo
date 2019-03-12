@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Outstanding Grandfather Health Plan Certification Form</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GF Follow Up Broker Notification</name>
+    <style>none</style>
+    <subject>URGENT Action Needed 2017 Grandfather Form</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

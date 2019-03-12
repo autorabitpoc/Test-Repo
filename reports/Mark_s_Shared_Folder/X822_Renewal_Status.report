@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Clusters__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Region__c</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>Type</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Submission</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Opportunity.Requests__r$Id</primaryTableColumn>
+        <relatedTable>Case</relatedTable>
+        <relatedTableJoinColumn>Related_Case__c</relatedTableJoinColumn>
+    </crossFilters>
+    <description>Ralph&apos;s Team Renewal Planning Status</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>RFP Expected In,Renewal Planning,Renewal Initiated,Renewal Delivered,Renewal In Negotiation,Finalist Named,Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$RecordType</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$HCSC_Division__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$District__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>822</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$StageName</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Renewal Planning</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>Opportunity$Requested_Effective_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>822 Renewal Planning Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>GEMS_Opportunity_with_Cases__c</reportType>
+    <roleHierarchyFilter>Executive_Management</roleHierarchyFilter>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$Requested_Effective_Date__c</dateColumn>
+        <endDate>2017-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-02-01</startDate>
+    </timeFrameFilter>
+</Report>

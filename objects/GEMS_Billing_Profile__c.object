@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Cascade</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>GEMS Billing Profiles</relationshipLabel>
+        <relationshipName>GEMS_Billing_Profiles</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Billing_Address__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Billing Address</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>GEMS_Address__c.Billing_Usage__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>GEMS_Address__c.Account__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Account__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>GEMS_Address__c</referenceTo>
+        <relationshipLabel>Billing Profiles</relationshipLabel>
+        <relationshipName>Billing_Profiles</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Billing_Profile_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Profile Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CBF – Cancel Billing Profile</fullName>
+                    <default>false</default>
+                    <label>CBF – Cancel Billing Profile</label>
+                </value>
+                <value>
+                    <fullName>CBG – Cancel BlueStar Group</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CBG – Cancel BlueStar Group</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Date__c</fullName>
+        <description>Cancellation Date is auto displayed upon receiving secondary response from B* after cancellation process from Salesforce.</description>
+        <externalId>false</externalId>
+        <label>Cancellation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Explanation__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Explanation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>401 Misc - Below Percentage</fullName>
+                    <default>false</default>
+                    <label>401 Misc - Below Percentage</label>
+                </value>
+                <value>
+                    <fullName>402 Misc - Reason/Unknown</fullName>
+                    <default>false</default>
+                    <label>402 Misc - Reason/Unknown</label>
+                </value>
+                <value>
+                    <fullName>403 Misc - Non-Payment of Dues</fullName>
+                    <default>false</default>
+                    <label>403 Misc - Non-Payment of Dues</label>
+                </value>
+                <value>
+                    <fullName>404 Misc - Grp Moved Out of State</fullName>
+                    <default>false</default>
+                    <label>404 Misc - Grp Moved Out of State</label>
+                </value>
+                <value>
+                    <fullName>405 Misc - Never Effective</fullName>
+                    <default>false</default>
+                    <label>405 Misc - Never Effective</label>
+                </value>
+                <value>
+                    <fullName>406 Misc - New Group Number</fullName>
+                    <default>false</default>
+                    <label>406 Misc - New Group Number</label>
+                </value>
+                <value>
+                    <fullName>408 Misc - Other UW Requirements</fullName>
+                    <default>false</default>
+                    <label>408 Misc - Other UW Requirements</label>
+                </value>
+                <value>
+                    <fullName>409 Misc - Acct has 0 Subs</fullName>
+                    <default>false</default>
+                    <label>409 Misc - Acct has 0 Subs</label>
+                </value>
+                <value>
+                    <fullName>410 Misc - Coverage Discontinued</fullName>
+                    <default>false</default>
+                    <label>410 Misc - Coverage Discontinued</label>
+                </value>
+                <value>
+                    <fullName>411 Misc - New Decision Maker</fullName>
+                    <default>false</default>
+                    <label>411 Misc - New Decision Maker</label>
+                </value>
+                <value>
+                    <fullName>412 Misc - Trans to Existing Acct</fullName>
+                    <default>false</default>
+                    <label>412 Misc - Trans to Existing Acct</label>
+                </value>
+                <value>
+                    <fullName>413 Misc - Broker Recommendation</fullName>
+                    <default>false</default>
+                    <label>413 Misc - Broker Recommendation</label>
+                </value>
+                <value>
+                    <fullName>414 Misc - Cons Cov w/1+ Carrier</fullName>
+                    <default>false</default>
+                    <label>414 Misc - Cons Cov w/1+ Carrier</label>
+                </value>
+                <value>
+                    <fullName>415 Moved to Other BCBS Plan</fullName>
+                    <default>false</default>
+                    <label>415 Moved to Other BCBS Plan</label>
+                </value>
+                <value>
+                    <fullName>416 Misc - Owner Chg/Merg/Acq</fullName>
+                    <default>false</default>
+                    <label>416 Misc - Owner Chg/Merg/Acq</label>
+                </value>
+                <value>
+                    <fullName>417 Misc - Parent Co Decision</fullName>
+                    <default>false</default>
+                    <label>417 Misc - Parent Co Decision</label>
+                </value>
+                <value>
+                    <fullName>418 Misc - Absorbed by ParentGrp</fullName>
+                    <default>false</default>
+                    <label>418 Misc - Absorbed by ParentGrp</label>
+                </value>
+                <value>
+                    <fullName>419 Misc - Out-of-Business</fullName>
+                    <default>false</default>
+                    <label>419 Misc - Out-of-Business</label>
+                </value>
+                <value>
+                    <fullName>427 Misc - Political</fullName>
+                    <default>false</default>
+                    <label>427 Misc - Political</label>
+                </value>
+                <value>
+                    <fullName>433 Misc - Trans Due to Ben Chg</fullName>
+                    <default>false</default>
+                    <label>433 Misc - Trans Due to Ben Chg</label>
+                </value>
+                <value>
+                    <fullName>436 Misc - Changed Brokers</fullName>
+                    <default>false</default>
+                    <label>436 Misc - Changed Brokers</label>
+                </value>
+                <value>
+                    <fullName>501 Claims - Service/Problems</fullName>
+                    <default>false</default>
+                    <label>501 Claims - Service/Problems</label>
+                </value>
+                <value>
+                    <fullName>502 Mbrship - Billing Serv/Prob</fullName>
+                    <default>false</default>
+                    <label>502 Mbrship - Billing Serv/Prob</label>
+                </value>
+                <value>
+                    <fullName>503 Service - Local Office</fullName>
+                    <default>false</default>
+                    <label>503 Service - Local Office</label>
+                </value>
+                <value>
+                    <fullName>504 Service - Customer Service</fullName>
+                    <default>false</default>
+                    <label>504 Service - Customer Service</label>
+                </value>
+                <value>
+                    <fullName>608 Network - PPO/POS Hospital</fullName>
+                    <default>false</default>
+                    <label>608 Network - PPO/POS Hospital</label>
+                </value>
+                <value>
+                    <fullName>609 Network - PPO/POS Phys</fullName>
+                    <default>false</default>
+                    <label>609 Network - PPO/POS Phys</label>
+                </value>
+                <value>
+                    <fullName>612 Network - HMO Hospital</fullName>
+                    <default>false</default>
+                    <label>612 Network - HMO Hospital</label>
+                </value>
+                <value>
+                    <fullName>613 Network - HMO Phys Network</fullName>
+                    <default>false</default>
+                    <label>613 Network - HMO Phys Network</label>
+                </value>
+                <value>
+                    <fullName>614 Prod Design - Prescription</fullName>
+                    <default>false</default>
+                    <label>614 Prod Design - Prescription</label>
+                </value>
+                <value>
+                    <fullName>701 Rates - Emp Extremely High</fullName>
+                    <default>false</default>
+                    <label>701 Rates - Emp Extremely High</label>
+                </value>
+                <value>
+                    <fullName>702 Rates - Dep Extremely High</fullName>
+                    <default>false</default>
+                    <label>702 Rates - Dep Extremely High</label>
+                </value>
+                <value>
+                    <fullName>703 Rates - All Extremely High</fullName>
+                    <default>false</default>
+                    <label>703 Rates - All Extremely High</label>
+                </value>
+                <value>
+                    <fullName>704 Rates - Agg Stop Loss HIgh</fullName>
+                    <default>false</default>
+                    <label>704 Rates - Agg Stop Loss HIgh</label>
+                </value>
+                <value>
+                    <fullName>705 Rates - Spec Stop Loss High</fullName>
+                    <default>false</default>
+                    <label>705 Rates - Spec Stop Loss High</label>
+                </value>
+                <value>
+                    <fullName>706 Rates - AdminCharge Too High</fullName>
+                    <default>false</default>
+                    <label>706 Rates - AdminCharge Too High</label>
+                </value>
+                <value>
+                    <fullName>707 Rates - General</fullName>
+                    <default>false</default>
+                    <label>707 Rates - General</label>
+                </value>
+                <value>
+                    <fullName>709 Rates - Large Rate Increase</fullName>
+                    <default>false</default>
+                    <label>709 Rates - Large Rate Increase</label>
+                </value>
+                <value>
+                    <fullName>801 Reports - NA Due to Grp Size</fullName>
+                    <default>false</default>
+                    <label>801 Reports - NA Due to Grp Size</label>
+                </value>
+                <value>
+                    <fullName>802 Reports - Spcl Rpts Not Avail</fullName>
+                    <default>false</default>
+                    <label>802 Reports - Spcl Rpts Not Avail</label>
+                </value>
+                <value>
+                    <fullName>451 - Acct Moving SHOP Ex</fullName>
+                    <default>false</default>
+                    <label>451 - Acct Moving SHOP Ex</label>
+                </value>
+                <value>
+                    <fullName>452 - Acct Moving Ind Prod</fullName>
+                    <default>false</default>
+                    <label>452 - Acct Moving Ind Prod</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Status__c</fullName>
+        <description>Status of the Cancelled Billing</description>
+        <externalId>false</externalId>
+        <label>Cancellation Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Approval</fullName>
+                    <default>false</default>
+                    <label>Pending Approval</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Cancellation Rejected</fullName>
+                    <default>false</default>
+                    <label>Cancellation Rejected</label>
+                </value>
+                <value>
+                    <fullName>Requested Cancellation</fullName>
+                    <default>false</default>
+                    <label>Requested Cancellation</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Failure</fullName>
+                    <default>false</default>
+                    <label>Failure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Submitted_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Submitted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>Cascade</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Billing Profiles</relationshipLabel>
+        <relationshipName>Billing_Profiles</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>IsDescUpdate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsDescUpdate</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsNew__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>IsNew</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsUpdated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsUpdated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Requested_Cancellation_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Requested Cancellation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>GEMS Billing Profile</label>
+    <nameField>
+        <label>Billing Profile Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>GEMS Billing Profiles</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Billing_Address__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Case__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Effective_Date__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>Case__c</lookupFilterFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Billing_Profile_Number__c</searchFilterFields>
+        <searchFilterFields>Billing_Address__c</searchFilterFields>
+        <searchFilterFields>Effective_Date__c</searchFilterFields>
+        <searchFilterFields>Case__c</searchFilterFields>
+        <searchResultsAdditionalFields>Billing_Profile_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Effective_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Billing_Address__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>New_Record_Check</fullName>
+        <active>true</active>
+        <description>If IsNew__c = false, we should not allow to modify below (except admin)
+1.	Billing Profile Number
+2.	Effective Date
+3.	Billing Address lookup
+4.	Account lookup
+5.	Case lookup</description>
+        <errorConditionFormula>AND(NOT( Case__r.RecordType.DeveloperName=&apos;Account_Cancellation&apos;),IsNew__c = false ,NOT($Profile.Name=&apos;System Administrator&apos;),NOT($Profile.Name=&apos;Integration Profile&apos;),NOT(ISCHANGED( IsUpdated__c)),NOT(ISCHANGED( Name)))</errorConditionFormula>
+        <errorMessage>Cannot update old Record</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Billing_Profile_Cancellation</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Billing Profile Cancellation</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/21.0/connection.js&quot;)}
+var ValidCase = &apos;{!Case.GEMS_Integration_Message__c}&apos;
+if(ValidCase == null || ValidCase == &apos;&apos;){
+    alert(&apos;Please Retrieve Account Structure first before clicking on this button&apos;);
+}
+else if(ValidCase != &apos;Account Structure details retrieved successfully from BlueSTAR&apos;){
+    alert(&apos;Either Account Structure has been retrieved partially OR This case has been previously used for a cancellation. Please initiate a new Cancellation from Request Hub.&apos;);
+}
+
+else{
+    window.open(&apos;/apex/BillingProfileCancellation?id={!Account.Id}&amp;Case={!Case.Id}&amp;selectedValue=Billing&apos;,&apos;_self&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Billing_Profile_Cancellation_Lex</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Billing Profile Cancellation</masterLabel>
+        <openType>sidebar</openType>
+        <page>AccountBillingProfileCancellation</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Billing_Profile1</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Billing Profile</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a2Q/e?CF00N33000003RiRD={!Case.CaseNumber}&amp;CF00N33000003RiRD_lkid={!Case.Id}&amp;CF00N33000003RiRA={!Case.Account}&amp;saveURL=/{!Case.Id}&amp;retURL=/{!Case.Id}</url>
+    </webLinks>
+</CustomObject>

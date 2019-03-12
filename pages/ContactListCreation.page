@@ -1,0 +1,211 @@
+<!--
+**************************************************************************************
+  Visualforce Page Name     : ContactListCreation
+  Version                   : 1.0
+  Function                  : This is a page that handles the selection of contacts that are then sent to Conga Composer which renders a 
+                              pdf document for download of the selected contacts
+
+* Developer                        Date                  
+* ----------------------------------------------------------------------------                 
+* Nick Serafin/Slalom             5/09/2016
+*************************************************************************************
+-->
+
+<apex:page sidebar="true" showheader="true" standardcontroller="Account" extensions="ContactListCreationController">
+
+<style>
+    .title{
+        margin:10px 0;
+        font-size:12px;
+        font-weight:bold; 
+    }  
+    .data-table thead th {
+        background-color:#72A9D3 !important;
+        color:#fff;
+        font-weight:bold;
+    }
+    .accordion-row {
+        background-color:#EAF5FE !important;
+        cursor:pointer;
+        font-weight:bold;   
+    }
+    table.dataTable tbody th, table.dataTable tbody td {
+      
+      border-bottom: 1px solid #CFEEF8 !important;
+      padding: 10px !important;
+    }
+    .dataTables_filter {
+        display: none; 
+    }
+</style>
+
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" /> 
+<apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}"/>
+
+ <script>
+    $(document).ready(function(){
+
+        $('#accountTeamMembers').DataTable({           
+                   "paging": false  
+                                   
+        });
+
+        $('#accountTeamNonSFMembers').DataTable({           
+                   "paging": false  
+                                
+        });
+
+     });
+
+ </script>
+
+    <apex:form >
+        <apex:pageblock title="{!$Label.Contact_List_Creation_Account_Team_For} {!Account.Name}">
+        <apex:pagemessages id="pgMsgId" />
+         
+        <apex:pagemessage title="Warning" strength="3" severity="warning" rendered="{!AND(listOfAccountTeamMembers.size < 1, listOfAccountTeamNonSFMembers.size < 1)}">{!$Label.Contact_List_Creation_No_Contact_Records_On_Account}</apex:pagemessage>
+       
+        <apex:outputpanel rendered="{!IF(listOfAccountTeamMembers.size > 0, true, false)}">
+
+        <div class="title">{!$Label.Contact_List_Creation_Account_Team_Members}</div>
+
+         <table id="accountTeamMembers" class="data-table">
+            <thead>
+                <tr>
+                    <th>{!$Label.Contact_List_Creation_Select}</th>
+                    <th>{!$Label.Contact_List_Creation_Name}</th>
+                    <th>{!$Label.Contact_List_Creation_Role}</th>
+                    <th>{!$Label.Contact_List_Creation_Email}</th>
+                    <th>{!$Label.Contact_List_Creation_Phone}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!listOfAccountTeamMembers}" var="accountTeamMember">
+                    <tr>
+                        <td><apex:inputcheckbox value="{!accountTeamMember.isSelected}" /></td>
+                        <td>{!accountTeamMember.accountTeamMemberObj.User.Name}</td>
+                        <td>{!accountTeamMember.accountTeamMemberObj.TeamMemberRole}</td>
+                        <td>{!accountTeamMember.accountTeamMemberObj.User.Email}</td>
+                        <td>{!accountTeamMember.accountTeamMemberObj.User.Phone}</td>                                                     
+                    </tr>
+                </apex:repeat>
+            </tbody>            
+        </table>
+
+        </apex:outputpanel>
+        <apex:outputpanel rendered="{!IF(listOfAccountTeamNonSFMembers.size > 0, true, false)}">
+
+        <div class="title">{!$Label.Contact_List_Creation_Account_Team_Non_SF}</div>
+
+         <table id="accountTeamNonSFMembers" class="data-table">
+            <thead>
+                <tr>
+                    <th>{!$Label.Contact_List_Creation_Select}</th>
+                    <th>{!$Label.Contact_List_Creation_Name}</th>
+                    <th>{!$Label.Contact_List_Creation_Role}</th>
+                    <th>{!$Label.Contact_List_Creation_Email}</th>
+                    <th>{!$Label.Contact_List_Creation_Phone}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!listOfAccountTeamNonSFMembers}" var="accountTeamNonSFMember">
+                    <tr>
+                        <td><apex:inputcheckbox value="{!accountTeamNonSFMember.isSelected}" /></td>
+                        <td>{!accountTeamNonSFMember.accountTeamNonSFObj.Team_Member_Name__r.Name}</td>
+                        <td>{!accountTeamNonSFMember.accountTeamNonSFObj.Member_Role__c}</td>
+                        <td>{!accountTeamNonSFMember.accountTeamNonSFObj.Team_Member_Name__r.Email}</td>
+                        <td>{!accountTeamNonSFMember.accountTeamNonSFObj.Team_Member_Name__r.Phone}</td>                                                     
+                    </tr>
+                </apex:repeat>
+            </tbody>            
+        </table>
+
+        </apex:outputpanel>
+
+        <br />
+        <apex:outputpanel id="scriptPanel">
+        <script>
+
+        var congaWindow;
+
+        function openWindow(){
+
+          var blankWindow = window.open('', '_blank', 'width=700,height=550,menubar=0');
+          congaWindow = blankWindow;
+        }
+
+        function openConga() { 
+        
+            var mainWindow = congaWindow;
+            var accountTeam = new Array();
+            var accountTeamNonSF = new Array();
+            var templateId = '{!templateId}';
+            var accountTeamQueryId = '{!acccountTeamQueryId}';
+            var accountTeamNonSFQueryId = '{!acccountTeamNonSFQueryId}';
+            var congaMainUrl = '{!congaUrl}';
+            var defaualtPDF = '{!congaDefaultPDF}';
+            var DS7 = '{!congaDS7}';
+            var defaultPDFLabel = '{!defaultPDFLabel}';
+            var ds7Label = '{!ds7Label}';
+
+          <apex:repeat value="{!accountTeamMemberIds}" var="team">
+            accountTeam.push('\'{!team}\'');
+          </apex:repeat>
+          <apex:repeat value="{!accountTeamNonSFMemberIds}" var="teamNonSF">
+            accountTeamNonSF.push('\'{!teamNonSF}\'');
+          </apex:repeat> 
+
+          var accountTeamIdsQuery = accountTeam.join("|");     
+          var accountTeamNonSFIdsQuery = accountTeamNonSF.join("|");
+   
+          var congaURL = congaMainUrl + 
+            "?sessionId={!$Api.Session_ID}" +
+            "&ServerUrl={!$Api.Partner_Server_URL_80}" +
+            "&Id={!accountId}" +
+            "&" + defaultPDFLabel + "=" + defaualtPDF +
+            "&" + ds7Label + "=" + DS7 +
+            "&TemplateId=" + templateId;
+ 
+          if(accountTeamIdsQuery.length > 0 && accountTeamNonSFIdsQuery.length > 0){
+
+              var urlMain = congaURL + "&QueryId=[AccountTeam]" + accountTeamQueryId + "?pv0=" + accountTeamIdsQuery + "~pv1=" + '{!accountId}' + "," +
+              "[AccountTeamNonSF]" + accountTeamNonSFQueryId + "?pv0=" + accountTeamNonSFIdsQuery + "~pv1=" + '{!accountId}';
+        
+              mainWindow.location = urlMain; 
+              back();              
+
+          } else if (accountTeamIdsQuery.length > 0 && accountTeamNonSFIdsQuery.length < 1){
+
+              var urlMain = congaURL + "&QueryId=[AccountTeam]" + accountTeamQueryId + "?pv0=" + accountTeamIdsQuery + "~pv1=" + '{!accountId}';
+        
+              mainWindow.location = urlMain;            
+              back();
+
+          } else if (accountTeamIdsQuery.length < 1 && accountTeamNonSFIdsQuery.length > 0){
+      
+              var urlMain = congaURL + "&QueryId=[AccountTeamNonSF]" + accountTeamNonSFQueryId + "?pv0=" + accountTeamNonSFIdsQuery + "~pv1=" + '{!accountId}';
+
+              mainWindow.location = urlMain;
+              back();
+          }
+
+        }
+
+        </script>
+        
+        <apex:outputPanel rendered="{!OR(listOfAccountTeamMembers.size > 0, listOfAccountTeamNonSFMembers.size > 0)}">
+         <center>
+                <apex:commandbutton id="Export" value="{!$Label.Contact_List_Creation_Export}" action="{!sendContactsToConga}" rerender="pgMsgId, scriptPanel" onclick="openWindow();" oncomplete="openConga();"/>
+                <apex:commandbutton id="Cancel" value="{!$Label.Contact_List_Creation_Cancel}" action="{!backToAccount}"/>
+         </center>
+         </apex:outputPanel>
+
+         </apex:outputPanel>
+         <apex:actionFunction name="back" action="{!backToAccount}" />
+         <apex:commandLink value="{!$Label.Contact_List_Creation_Back}" action="{!backToAccount}" />
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

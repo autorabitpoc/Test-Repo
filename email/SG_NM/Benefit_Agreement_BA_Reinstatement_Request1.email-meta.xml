@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template: Benefit Agreement (BA) Reinstatement Request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Benefit Agreement (BA) Reinstatement Request</name>
+    <style>none</style>
+    <subject>* * RUSH * * BA Reinstatement Request: {!Case.Group_Account_Number__c} - {!Case.Account}: Effective Date [MM/DD/YY]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,29 @@
+<apex:page standardController="GEMS_Group_Section__c" showHeader="false" standardStylesheets="false" sidebar="false" recordsetvar="v">
+    <apex:slds />
+    <apex:includeLightning />
+    <div id="loading">        
+        <div id="LoadingvfDIV" class="slds-spinner_container" style="display:block;">
+            <div class="slds-spinner slds-spinner--large" aria-hidden="false" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>    
+    </div>
+    <div style="width:100%;height:100%;" id="FlipcardContainer" />
+    
+    <script>
+    $Lightning.use("c:AccountCancellationApp", function() {
+        $Lightning.createComponent("c:AccountCancellation",
+                                   { 
+                                       "recordId" : "{!$CurrentPage.parameters.id}",
+                                       "CancellationType" : "Group",
+                                       "CancellationPage" : "AccountCancellationGroupSection",
+                                   },
+                                   "FlipcardContainer",
+                                   function(cmp) {
+                                       var loadingDivElt = document.getElementById("LoadingvfDIV");
+                                       loadingDivElt.style.display = 'none';
+                                   });
+    });
+    </script>
+</apex:page>

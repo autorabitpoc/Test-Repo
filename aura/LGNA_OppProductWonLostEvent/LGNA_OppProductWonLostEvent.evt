@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event template">
+     <aura:attribute name="WinLoseOperation" type="string" default="" />  
+</aura:event>

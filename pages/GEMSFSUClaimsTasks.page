@@ -1,0 +1,97 @@
+<!--
+/**************************************************************************************
+  Visulaforce Page Name : GEMSFSUClaimsTasks
+  Version               : 1.0
+  Function              : This Page is for Completing the selected task on FSU Claims Case. Page is avaialable on FSU Claims case page(For GEMS Project).
+  Modification Log      :
+* Developer           Date                   Description
+* ----------------------------------------------------------------------------                 
+* Offshore            05/30/2016             Original Version
+*************************************************************************************/
+-->
+<apex:page standardController="Case" extensions="GEMS_FSUClaimsTaskController" id="pageId">
+    
+    <script>
+        var taskSub = '';
+        function enableCompleteButton() {        
+            document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = false;
+            document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = false;       
+            document.getElementById('pageId:formId:pbId:pButtons:completeButton').className = 'btn';
+            document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').className = 'btn';
+        }
+        
+        function disableCommandButton() {
+            document.getElementById('pageId:formId:pbId:pButtons:bottom:completeButton').disabled = true;
+            document.getElementById('pageId:formId:pbId:pButtons:completeButton').disabled = true;          
+        }
+        
+        function refreshEntirePage(check)
+        { 
+            var currentURL = "/{!caseRecord.id}"; 
+            if(!check)
+            top.location.href = currentURL;
+        }
+        
+        function setSelectedButton(selectedTask,taskSubject) {
+           setSelectedVal(selectedTask);
+        }
+    
+    </script>
+    
+    <style>        
+        .radioClass { margin-left: 80px;}
+    </style>
+    
+    <apex:form id="formId">
+    <apex:outputPanel id="errorPanelId">
+            <apex:pageMessage summary="Please select the task" severity="error" strength="1" rendered="{!noTaskSelectedError}" id="noTaskSelectedErrorId"/>
+            <apex:pageMessage summary="Please update 'Accums received date' prior completing 'Load and Test Benefit Accums'" severity="error" strength="1" rendered="{!loadTestBenfAccRecvDateError}" id="confirmAccRecDateErrorId"/>
+            <apex:pageMessage summary="Please update 'Accums Volume' prior completing 'Load and Test Benefit Accums'" severity="error" strength="1" rendered="{!loadTestBenfAccVolError}" id="confirmAccVolErrorId"/>
+            <apex:pageMessage summary="Please update 'Accums loaded date' prior completing 'Load and Test Benefit Accums'" severity="error" strength="1" rendered="{!loadTestBenfAccloadDateError}" id="confirmAccLoadDatErrorId"/>
+            <apex:pageMessage summary="Please update 'Accums file received date' prior completing 'Confirm Accums Tested'" severity="error" strength="1" rendered="{!accumsFileReceivedDateError}" id="confirmAccDateErrorId"/>
+            <apex:pageMessage summary="Please update 'Are All Temporary Cliam Locks Released?' prior completing 'Release Claims Hold'" severity="error" strength="1" rendered="{!tempLocksReleased}" id="tempLockReleaseId"/>
+        </apex:outputPanel>
+    
+        <apex:messages style="color:red"/>
+        
+        <apex:actionFunction action="{!assignSelectedVal}" name="setSelectedVal" rerender="" >
+            <apex:param name="selectedTask" assignTo="{!selectedVal}" value=""/>
+        </apex:actionFunction>
+    
+        <apex:pageBlock id="pbId">
+        
+            <apex:variable value="{!0}" var="taskIncr"/>
+            
+            <apex:pageBlockButtons id="pButtons">
+                <apex:commandButton id="completeButton" action="{!changeTaskStatus}" value="Complete"  title="Complete" oncomplete="refreshEntirePage({!combineFlag})"  disabled="{!disableCompleteButton}" reRender="errorPanelId"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageblockTable value="{!taskList}" var="taskk" columns="5">
+                <apex:column id="radioId" > 
+                    <apex:outputPanel rendered="{!currentTask == taskIncr }">
+                        <input type="radio" name="radioTask"   onclick="setSelectedButton('{!taskIncr}','{!taskk.subject}');" />                              
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! currentTask != taskIncr }">
+                        <input type="radio" name="radioTask" disabled="true" rendered="{! currentTask != taskIncr }" />                
+                    </apex:outputPanel>
+                </apex:column>
+                <apex:column headerValue="Subject"> 
+                    <apex:variable value="{!taskIncr+1}" var="taskIncr" />                 
+                    <apex:outputText >{!taskk.subject}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Status">                  
+                    <apex:outputText >{!taskk.status}</apex:outputText>
+                </apex:column>
+                <apex:column headerValue="Start Date">                  
+                    <apex:outputField value="{!taskk.GEMS_Start_Date__c}"/>
+                </apex:column>
+                <apex:column headerValue="End Date">                  
+                    <apex:outputField value="{!taskk.GEMS_End_Date__c}"/>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageBlock>
+        
+        
+    
+    </apex:form>
+</apex:page>

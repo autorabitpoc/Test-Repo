@@ -1,0 +1,8 @@
+Hi ,
+Account submission has been completed and SBC is Checked,
+
+Account Name : {!Case.Account}
+Case Number : {!Case.CaseNumber}
+Case Details : {!Case.Link}
+
+Thanks

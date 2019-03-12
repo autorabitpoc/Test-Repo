@@ -1,0 +1,19 @@
+<!-- This VF page is a container for showing the EIN transmission confirmation Lightning component (LGNA_EIN_Confirm.cmp) in Classic UI. 
+This page is initiated from Request Hub in Account Page. -->
+
+<apex:page standardController="Account">
+   <apex:includeScript value="/lightning/lightning.out.js" />
+	<div id="einlight" />
+    <script>
+    	var myUserContext = "{!$User.UITheme}";
+        $Lightning.use("c:LGNA_EIN_ConfirmApp", function() {
+          $Lightning.createComponent("C:LGNA_EIN_Confirm",
+                                     {recordId : '{!Account.id}',UserContext: myUserContext },
+          "einlight",
+          function(cmp) {
+            // do some stuff
+            //console.log("value of v.recordId is:" + component.get("v.recordId"));
+          });
+        });
+    </script>
+</apex:page>

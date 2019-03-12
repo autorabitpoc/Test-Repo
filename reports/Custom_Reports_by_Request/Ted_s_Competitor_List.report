@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_ACC_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.External_ID__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Competitor_Account__c</field>
+    </columns>
+    <columns>
+        <field>CUST_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Competitor_Relationship__c.Producer_Consultant_Firm__c</field>
+    </columns>
+    <description>Competitors for Ted&apos;s region.  Need to match to Cognos report &quot;IY16 Sales and Prospects&quot;</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Account.HCSC_Division__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Account.Owner_s_Manager_Name__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Ted Holden,Holly Herin,Donna Tucker,Kory Aoyama,Melissa Sanden</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Ted&apos;s Competitor List</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Competitor_Relationship__c@Competitor_Relationship__c.Group_Account__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>FK_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Competitor_Relationship__c.Contract_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

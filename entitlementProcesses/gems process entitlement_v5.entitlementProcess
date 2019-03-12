@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <businessHours>GEMS SLA Business Hours</businessHours>
+    <entryStartDateField>Case.GEMS_Last_BA_Completed_Date__c</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>false</isVersionDefault>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Medical Benefit Coding</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS Medical Benefit Coding</milestoneName>
+        <minutesToComplete>50400</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_2ndNotification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Dental Benefit Coding</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS Dental Benefit Coding</milestoneName>
+        <minutesToComplete>4320</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_2ndNotification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Pharmacy Coding</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS Pharmacy Coding</milestoneName>
+        <minutesToComplete>14400</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_2ndNotification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS SBC</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS SBC</milestoneName>
+        <minutesToComplete>37440</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Case_Escalation_2ndNotification</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Account Setup</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS Account Setup</milestoneName>
+        <minutesToComplete>10080</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Setup_Case_1st_Notice</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Setup_Case_2nd_Notice</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>GEMS SLA Business Hours</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GEMS Account Setup Maintenance</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>GEMS Account Setup Maintenance</milestoneName>
+        <minutesToComplete>10080</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Account_Setup_Maintenance_Case_1st_Notice</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>GEMS_Account_Setup_Maintenance_Case_2nd_Notice</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1441</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <name>GEMS Process Entitlement</name>
+    <versionMaster>55233000000Goq3</versionMaster>
+    <versionNumber>5</versionNumber>
+</EntitlementProcess>

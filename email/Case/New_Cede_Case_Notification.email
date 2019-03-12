@@ -1,0 +1,8 @@
+New Cede Case Renewal created.
+
+The following case needs your review, update, and submission: 
+Company: {!Account.Name} 
+Case: {!Case.CaseNumber}: {!Case.Subject} 
+Owner: {!Case.OwnerFullName} 
+
+Click on the link to access the case: {!Case.Link}

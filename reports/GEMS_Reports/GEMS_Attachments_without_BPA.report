@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.GEMS_Submission_Type__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Case.Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Account.Active_Health_Members__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>GEMS_Attachment__c.Type__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>GEMS_Attachment__c.Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>BPA,BPA - ASO,BPA - DENTAL,BPA - HCA,BPA - HEALTH,SIGNED BPA</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Case.Account_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>GEMS Attachments without BPA</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$GEMS_Attachment__c@GEMS_Attachment__c.Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>FK_$Case.GEMS_Case_Effective_Date__c</dateColumn>
+        <endDate>2017-01-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>this is Heron Premium rates data within Quote Response Association</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AssoRecordIdentifier__c</fullName>
+        <description>this data is used in the apex code to map to the associated Association record.</description>
+        <externalId>false</externalId>
+        <label>AssoRecordIdentifier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Count_Final__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Enrollment [final]</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Count_Initial__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Enrollment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Count_Sold__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Enrollment [sold]</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Final_Requested_Premium__c</fullName>
+        <externalId>false</externalId>
+        <label>Final Premium</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Requested_Premium__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Premium</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Projected_Rates_Final__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Rates [final]</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Projected_Rates_Initial__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Rates</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Projected_Rates_sold__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Rates [sold]</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Association_Initial__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quote Association</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Rate_Version__c</field>
+                <operation>equals</operation>
+                <value>Initial</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Quote_Response_Association__c</referenceTo>
+        <relationshipLabel>Initial Premium Rate</relationshipLabel>
+        <relationshipName>Initial_Premium_Rates</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Association_sold__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quote Association [sold]</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Rate_Version__c</field>
+                <operation>equals</operation>
+                <value>Sold</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Quote_Response_Association__c</referenceTo>
+        <relationshipLabel>Sold Premium Rates</relationshipLabel>
+        <relationshipName>Sold_Premium_Rates</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Response_Association__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quote Association [final]</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Rate_Version__c</field>
+                <operation>equals</operation>
+                <value>Final</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Quote_Response_Association__c</referenceTo>
+        <relationshipLabel>Final Premium Rates</relationshipLabel>
+        <relationshipName>Heron_Premium_Rates</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rate_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Tier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2 Tier</fullName>
+                    <default>false</default>
+                    <label>2 Tier</label>
+                </value>
+                <value>
+                    <fullName>3 Tier</fullName>
+                    <default>false</default>
+                    <label>3 Tier</label>
+                </value>
+                <value>
+                    <fullName>4 Tier</fullName>
+                    <default>false</default>
+                    <label>4 Tier</label>
+                </value>
+                <value>
+                    <fullName>5 Tier</fullName>
+                    <default>false</default>
+                    <label>5 Tier</label>
+                </value>
+                <value>
+                    <fullName>Comp Tier</fullName>
+                    <default>false</default>
+                    <label>Comp Tier</label>
+                </value>
+                <value>
+                    <fullName>Curr Tier</fullName>
+                    <default>false</default>
+                    <label>Curr Tier</label>
+                </value>
+                <value>
+                    <fullName>Sold Tier</fullName>
+                    <default>false</default>
+                    <label>Sold Tier</label>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                    <label>Student</label>
+                </value>
+                <value>
+                    <fullName>Student 2 Child Cap</fullName>
+                    <default>false</default>
+                    <label>Student 2 Child Cap</label>
+                </value>
+                <value>
+                    <fullName>Student 3 Child Cap</fullName>
+                    <default>false</default>
+                    <label>Student 3 Child Cap</label>
+                </value>
+                <value>
+                    <fullName>Student All Children</fullName>
+                    <default>false</default>
+                    <label>Student All Children</label>
+                </value>
+                <value>
+                    <fullName>Student Athlete</fullName>
+                    <default>false</default>
+                    <label>Student Athlete</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rate_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Version</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Initial</fullName>
+                    <default>false</default>
+                    <label>Initial</label>
+                </value>
+                <value>
+                    <fullName>Final</fullName>
+                    <default>false</default>
+                    <label>Final</label>
+                </value>
+                <value>
+                    <fullName>Sold</fullName>
+                    <default>false</default>
+                    <label>Sold</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sold_Premium__c</fullName>
+        <externalId>false</externalId>
+        <label>Sold Premium</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Tier_Final__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier [final]</label>
+        <length>125</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Initial__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier</label>
+        <length>125</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Order_final__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>this number is the Order number from the custom setting &quot;Heron Prem Rate Tier Order Mapping&quot;. The order is used to sort the order in display from the related list. not showing on UI.</description>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Order_initial__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Order_sold__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_sold__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier [sold]</label>
+        <length>125</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Quote Premium Rate</label>
+    <nameField>
+        <label>Rates Tier (Name)</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Quote Premium Rates</pluralLabel>
+    <recordTypes>
+        <fullName>Premium</fullName>
+        <active>true</active>
+        <label>Premium</label>
+        <picklistValues>
+            <picklist>Rate_Tier__c</picklist>
+            <values>
+                <fullName>2 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comp Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curr Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student 2 Child Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student 3 Child Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student All Children</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student Athlete</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rate_Version__c</picklist>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Initial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Premium_Initial</fullName>
+        <active>true</active>
+        <label>Premium-Initial</label>
+        <picklistValues>
+            <picklist>Rate_Tier__c</picklist>
+            <values>
+                <fullName>2 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comp Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curr Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold Tier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student 2 Child Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student 3 Child Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student All Children</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Student Athlete</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rate_Version__c</picklist>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Initial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

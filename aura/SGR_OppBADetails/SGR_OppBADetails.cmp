@@ -1,0 +1,98 @@
+<aura:component
+        implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+        access="global">
+    <aura:attribute name="baRec" type="Object"/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    <!--Detail panel-->
+    <div class="slds-p-around--none slds-panel__section slds-theme_default">
+        <div class="slds-section slds-is-open">
+            <div class="slds-grid slds-grid slds-wrap slds-grid--pull-padded">
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Marketing Plan ID-7 </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputText class="slds-text-title_bold" value="{!v.baRec.Marketing_Plan_ID_7__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Marketing Plan ID-13 </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputText class="slds-text-title_bold" value="{!v.baRec.Marketing_Plan_ID_13__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Renewal Date </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputDate class="slds-text-title_bold" format="MM/DD/YYYY"
+                                           value="{!v.baRec.Renewal_Date__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Effective Date </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputDate class="slds-text-title_bold" format="MM/DD/YYYY"
+                                           value="{!v.baRec.Effective_Date__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Funding Type </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputText class="slds-text-title_bold" value="{!v.baRec.Funding_Type__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--2-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Marketing Plan Name </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputText class="slds-text-title_bold" value="{!v.baRec.Marketing_Plan_Name__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Rate Effective Date </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputDate class="slds-text-title_bold" format="MM/DD/YYYY"
+                                           value="{!v.baRec.Rate_Effective_Date__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--2-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> End Date </label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputDate class="slds-text-title_bold" format="MM/DD/YYYY"
+                                           value="{!v.baRec.Rate_End_Date__c}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Last Modified By</label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputText class="slds-text-title_bold" value="{!v.baRec.LastModifiedBy.Name}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-p-horizontal--small slds-size--1-of-5">
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                        <label class="slds-form-element__label"> Last Modified Date</label>
+                        <div class="slds-form-element__control" style="min-height: 18px;">
+                            <ui:outputDate class="slds-text-title_bold" format="MM/DD/YYYY h:mm a"
+                                           value="{!v.baRec.LastModifiedDate}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

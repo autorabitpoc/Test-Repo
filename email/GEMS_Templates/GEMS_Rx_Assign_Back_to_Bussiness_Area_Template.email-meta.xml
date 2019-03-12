@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Pharmacy coding cases, return back to business area notification</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Rx Assign Back to Bussiness Area Template</name>
+    <style>none</style>
+    <subject>{!Case.Account} - {!Case.Account_Number__c} - Case assigned to your Business Area</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

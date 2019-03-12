@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Tracking table for GEMS Reporting Milestone on Submission cases</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Check_Dental_Coding__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Check Dental Coding</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Check_Medical_Coding__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Check Medical Coding</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Check_Rx_Coding__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Check Rx Coding</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Setup_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Setup Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Setup_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Setup Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Structure_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Structure Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Structure_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Structure Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Submission_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Submission Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Account_Submission_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Account Submission Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Additional_Underwriting_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Additional Underwriting Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Additional_Underwriting_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Additional Underwriting Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Dental_Benefit_Coding_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Dental Benefit Coding Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Dental_Benefit_Coding_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Dental Benefit Coding Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Dental_Underwriting_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Dental Underwriting Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Dental_Underwriting_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Dental Underwriting Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Eligibility_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Eligibility Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Eligibility_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Eligibility Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_ID_Card_Mailed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS ID Card Mailed Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_ID_Card_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS ID Card Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_ID_Card_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS ID Card Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Manual_Eligibility_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Manual Eligibility Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Manual_Eligibility_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Manual Eligibility Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Medical_Benefit_Coding_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Medical Benefit Coding Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Medical_Benefit_Coding_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Medical Benefit Coding Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Medical_Underwriting_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Medical Underwriting Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Medical_Underwriting_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Medical Underwriting Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Membership_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Membership Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Membership_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Membership Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GEMS_Pharmacy_Coding_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Pharmacy Coding Status Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GEMS_Pharmacy_Coding_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>GEMS Pharmacy Coding Status</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Milestone_Member_Ready_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone - Member Ready Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Milestone_Member_Ready_ID_Cards_Mailed__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone - Member Ready ID Cards Mailed</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Milestone_Service_Ready_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone - Service Ready Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Milestone__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Member Ready</fullName>
+                    <default>false</default>
+                    <label>Member Ready</label>
+                </value>
+                <value>
+                    <fullName>Member Ready + ID Cards Mailed</fullName>
+                    <default>false</default>
+                    <label>Member Ready + ID Cards Mailed</label>
+                </value>
+                <value>
+                    <fullName>Service Ready</fullName>
+                    <default>false</default>
+                    <label>Service Ready</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Submission_Case__r.GEMS_StdCust_Product__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submission_Case_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Submission_Case__r.CaseNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Case Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submission_Case__c</fullName>
+        <deleteConstraint>Cascade</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submission Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>GEMS ReportingMilestone Trackings</relationshipLabel>
+        <relationshipName>GEMS_ReportingMilestone_Trackings</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Submission_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( INCLUDES ( Submission_Case__r.GEMS_Submission_Sub_Type__c , &quot;Account Structure Change&quot; ), &quot;Account Structure Change; &quot;,null ) &amp; 
+IF ( INCLUDES ( Submission_Case__r.GEMS_Submission_Sub_Type__c , &quot;Funding Change&quot; ), &quot;Funding Change; &quot;,null ) &amp; 
+IF ( INCLUDES ( Submission_Case__r.GEMS_Submission_Sub_Type__c , &quot;No Changes&quot; ), &quot;No Changes; &quot;,null ) &amp; 
+IF ( INCLUDES ( Submission_Case__r.GEMS_Submission_Sub_Type__c , &quot;Benefit Change&quot; ), &quot;Benefit Change; &quot;,null ) &amp; 
+IF ( INCLUDES ( Submission_Case__r.GEMS_Submission_Sub_Type__c , &quot;Eligibility Change&quot; ), &quot;Eligibility Change; &quot;,null )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Sub Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submission_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Submission_Case__r.GEMS_Submission_Type__c)</formula>
+        <label>Submission Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>hasDental__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>hasDental</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hasMedical__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>hasMedical</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hasRx__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>hasRx</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hasTeamAdditionalUWer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>hasTeamAdditionalUWer</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isReleased__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>isReleased</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>GEMS ReportingMilestone Tracking</label>
+    <nameField>
+        <label>GEMS ReportingMilestone Tracking Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>GEMS ReportingMilestone Trackings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

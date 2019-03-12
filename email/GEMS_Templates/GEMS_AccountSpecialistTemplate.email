@@ -1,0 +1,8 @@
+Account Specialist {!Case.GEMS_Assign_Resource__c} has been assigned for : 
+
+Account Name : {!Case.Account}     
+Submission Case Details :   {!Case.baseURL__c}{!Case.GEMS_Account_Submission_InfoId__c}
+Request Resource Case Details : {!Case.Link}    
+
+
+Thank you.

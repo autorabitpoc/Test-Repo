@@ -1,0 +1,60 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global"
+                controller="SGR_OpportunitySuppressionClass">
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="err" type="Boolean" default="false"/>
+    <aura:attribute name="errMsg" type="String" default=""/>
+    <aura:attribute name="ShowPopup" type="boolean" default="false"/>
+    <aura:attribute name="confirmLabel" type="String" default="Close"/>
+    <aura:attribute name="StatusForLabel" type="String" default=""/>
+    <aura:attribute name="RatingStatus" type="String" default=""/>
+    <aura:attribute name="recordId" type="Id" default=""/>
+    <aura:attribute name="disableButton" type="boolean" default="false"/>
+    <aura:attribute name="selectedIds" type="List"/>
+    <aura:attribute name="selectedopty" type="Opportunity[]"/>
+    <aura:attribute name="selectedRecords" type="List"/>
+    <aura:attribute name="buttonName" type="String"/>
+    <aura:attribute name="buttonLabel" type="String" default="Update Plan Change Needed to "/>
+    <aura:attribute name="opportunityUpdateRequired" type="boolean" default="false"/>
+    <aura:attribute name="planStatus" type="String"/>
+    <aura:attribute name="gatestatus1" type="Boolean" default="false"/>
+    <aura:attribute name="headerTxt" type="String"/>
+
+    <aura:handler name="change" value="{!v.opportunityUpdateRequired}" action="{!c.updateOpportunity}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:SGR_CancelButton" action="{!c.UpdateShowPopup}"/>
+
+
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-1">
+            <aura:if isTrue="{!v.err}">
+                <span>{!v.errMsg}</span>
+
+                <aura:set attribute="else">
+                    <div width="50%">
+                        <!-- {!v.StatusForLabel}... -->
+                        <lightning:button variant="brand" label="{!v.buttonLabel + v.StatusForLabel}"
+                                          class="slds-float_right slds-m-right_xx-small"
+                                          disabled="{!v.disableButton}" onclick="{!c.handlePlanUpdate}"/>
+
+                    </div>
+                    <br/><br/>
+
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    <div style="{!v.ShowPopup?'display:block':'display:none'}">
+
+        <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                           confirmLabel="Confirm"
+                           isOpen="{!v.ShowPopup}"
+                           buttonName="{!v.buttonName}"
+                           PlanChangeNeededStatus="{!v.planStatus}"
+                           StatusForLabel="{!v.StatusForLabel}"
+                           opportunityUpdateRequired="{!v.opportunityUpdateRequired}"
+        />
+    </div>
+
+
+</aura:component>

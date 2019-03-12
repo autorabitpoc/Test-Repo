@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplicationComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buttonIconUrl>https://na2.salesforce.com/resource/1418063311000/ConsoleQuickAccessIcon</buttonIconUrl>
+    <buttonText>Quick Access</buttonText>
+    <buttonWidth>175</buttonWidth>
+    <height>350</height>
+    <isHeightFixed>false</isHeightFixed>
+    <isHidden>false</isHidden>
+    <isWidthFixed>false</isWidthFixed>
+    <visualforcePage>ConsoleMenu</visualforcePage>
+    <width>250</width>
+</CustomApplicationComponent>

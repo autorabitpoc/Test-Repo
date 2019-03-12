@@ -1,0 +1,11 @@
+<aura:component access="global" implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes">
+	<aura:dependency resource="markup://force:navigateToURL" type="EVENT" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="param" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.gotoURL}" />
+  
+   <!--
+     <aura:attribute name="Redirection" type="String" default="0" />     
+    <iframe id="GanttFrame" name="cc" src="{!v.Redirection}" width="100%" height="420px" />
+    -->
+</aura:component>

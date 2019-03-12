@@ -1,0 +1,527 @@
+<aura:component>
+
+    <aura:attribute name="isOpen" type="boolean" default="True"/>
+    <aura:attribute name="cancelLabel" type="String" default="Cancel"/>
+    <aura:attribute name="actionLabel" type="String" default="Confirm"/>
+    <aura:attribute name="headerTxt" type="String" default=""/>
+    <aura:attribute name="PlanChangeNeededStatus" type="String" default="Null"/>
+    <aura:attribute name="confirmLabel" type="String" default="Close"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="buttonName" type="String"/>
+    <aura:registerEvent name="appEvent" type="c:SGR_SelectedOptyEvent"/>
+    <aura:registerEvent name="ShowPopupEvent" type="c:SGR_CancelButton"/>
+    <aura:registerEvent name="DeleteHealthCensus" type="c:SGR_DeleteHealthCensus"/>
+    <aura:registerEvent name="DeleteDentalCensus" type="c:SGR_DeleteDentalCensus"/>
+    <aura:registerEvent name="CensusAgeCheck" type="c:SGR_CensusAgeCheckEvent"/>
+    <aura:registerEvent name="CensusRetireecheck" type="c:SGR_CensusSubRetireeTrue"/>
+    <aura:registerEvent name="DependentCensusAgeCheck" type="c:SGR_DependentCensusAgeCheckEvent"/>
+    <aura:registerEvent name="HandleAgeCobraCheck" type="c:SGR_CensusAgeCheckEvent"/>
+    <aura:registerEvent name="DependentHandleAgeCobraCheck" type="c:SGR_DependentCensusAgeCobraCheckEvent"/>
+    <aura:registerEvent name="SGR_LiftGateOpty" type="c:SGR_LiftGateOpty"/>
+    <aura:registerEvent name="SGR_OpportunitySuppressionEvent" type="c:SGR_OpportunitySuppressionEvent"/>
+    <aura:registerEvent name="SGR_CensusPlan" type="c:SGR_CensusPlan"/><!-- Ravi -->
+    <aura:attribute name="StatusForLabel" type="String" default=""/>
+    <aura:attribute name="opportunityUpdateRequired" type="boolean" default="false"/>
+    <aura:method name="closeModalBox" action="{!c.closeModel}"/>
+    <aura:attribute name="Likedisable" type="Boolean" default="false"/>
+
+    <!--Use "slds-m-around_xx-large" class to add standard X-Large padding to the component-->
+    <div class="slds-m-around_xx-large">
+
+        <aura:if isTrue="{!v.isOpen}">
+
+            <!--###### MODAL BOX Start######-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <!--Need to add button condition here since we have cancelmodel close here-->
+                        <aura:if isTrue="{!v.buttonName == 'Release'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01"
+                                class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'AgeCheck'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><strong>Subscriber
+                                    Age Check</strong></h2>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'DependentAgeCheck'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><strong>Dependent
+                                    Age Check</strong></h2>
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'AgeCobraCheck'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><strong>Subscriber
+                                    Age/Cobra Check</strong></h2>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'DependentAgeCobraCheck'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><strong>Dependent
+                                    Age/Cobra Check</strong></h2>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'HealthDelete'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Do you wish to
+                                Delete?</h2>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'HandleDental'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Do you wish to
+                                Delete?</h2>
+                        </aura:if>
+                        <!--  Ravi code -->
+                        <aura:if isTrue="{!v.buttonName == 'UpdatePlanChange'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel1}"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01"
+                                class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                        </aura:if>
+
+                        <aura:if
+                                isTrue="{!v.buttonName == 'Retireedsubscriber'|| v.buttonName == 'RetireedsubscriberOK'|| v.buttonName == 'RetireedsubscriberMT'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><strong>Retired
+                                    Subscriber Division Check</strong></h2>
+                        </aura:if>
+
+                        <!--  Ravi code End-->
+
+                        <aura:if isTrue="{!v.buttonName == 'Lift'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01"
+                                class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'Refresh' || v.buttonName == 'RefreshCensus'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.cancelModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01"
+                                class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'BAExclude' || v.buttonName == 'BAInclude'}">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{!c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01"
+                                class="slds-text-heading_medium slds-hyphenate">{!v.headerTxt}</h2>
+                        </aura:if>
+
+
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <aura:if isTrue="{!v.buttonName == 'Lift'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+
+                                <aura:if isTrue="{!v.buttonName == 'Lift'}">
+                                    <strong><p>Are you sure you want to lift the Gate record.</p></strong>
+
+                                    <aura:set attribute="else">
+                                        <strong>Are you sure you want to lift the Gate record.</strong>
+
+                                    </aura:set>
+                                </aura:if>
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.buttonName == 'Release'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <aura:if isTrue="{!v.buttonName == 'Release'}">
+                                    <strong>Are you sure you want to process the selected records</strong>
+                                    <aura:set attribute="else">
+                                        <strong>Are you sure you want to process the selected records</strong>
+
+                                    </aura:set>
+                                </aura:if>
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.buttonName == 'AgeCheck' || v.buttonName == 'DependentAgeCheck' }">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <strong><p>Subscriber or dependent over the age of 99.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+
+                            </div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.buttonName == 'Retireedsubscriber'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <strong><p>A Retired subscriber cannot exist in an Opportunity within a Regulated Market
+                                        Segment.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.buttonName == 'RetireedsubscriberOK'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <strong><p>A Retired subscriber cannot exist in an Opportunity located within a
+                                        Non-Public Entity account.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.buttonName == 'RetireedsubscriberMT'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <strong><p>A Retired subscriber cannot exist in an Opportunity located within a
+                                        Non-Municipality account.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.buttonName == 'AgeCobraCheck' || v.buttonName == 'DependentAgeCobraCheck'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+
+                                <strong><p>Subscriber/spouse/domestic partner census under the age of 16 for a non-cobra
+                                        subscriber.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+
+
+                            </div>
+                        </div>
+                    </aura:if>
+
+                    <!-- Added by Ravi-->
+
+                    <aura:if isTrue="{!v.buttonName == 'UpdatePlanChange'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center"
+                                 style="{!v.selectedRowsCount==0?'display:Block':'display:none'}">
+                                <aura:if isTrue="{!v.buttonName == 'UpdatePlanChange'}">
+                                    <strong>{!'Do you Want to update Plan Status needed to '+v.StatusForLabel}</strong>
+                                    <aura:set attribute="else">
+                                        <strong>{!'Do you Want to update Plan Status needed to '+v.StatusForLabel}</strong>
+
+                                    </aura:set>
+                                </aura:if>
+
+                            </div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.buttonName == 'Refresh'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center">
+                                <aura:if isTrue="{!v.buttonName == 'Refresh'}">
+                                    <strong><p>All benefit agreements and group section information on the opportunity
+                                            will be refreshed(wipeout and recreate)from account level.</p>
+                                        <p>Do you wish to proceed?</p></strong>
+                                    <aura:set attribute="else">
+                                        <strong>Are You sure you want to refresh Opportunity benefit
+                                            Agrrements?</strong>
+
+                                    </aura:set>
+                                </aura:if>
+
+                            </div>
+
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.buttonName == 'RefreshCensus'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center">
+                                <aura:if isTrue="{!v.buttonName == 'RefreshCensus'}">
+                                    <strong><p>All existing census information on the Opportunity will be Refreshed.</p>
+                                        <p>Do you wish to proceed?</p></strong>
+                                </aura:if>
+
+                            </div>
+
+                        </div>
+                    </aura:if>
+                    <!--User story:13071-->
+                    <aura:if isTrue="{!v.buttonName == 'BAExclude'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center">
+                                <strong><p>Excluding a BA will also remove all associated census and plan information
+                                        from the opportunity.</p>
+                                    <p>Do you wish to proceed?</p></strong>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.buttonName == 'BAInclude'}">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-text-align_center">
+                                <strong><p>Including BA will also include all associated census and plan information on
+                                        the opportunity. </p>
+                                    <p>Do you wish to proceed?</p></strong>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+
+                        <!--Santosh Changed cancel button based on the buttonName  checked because I have different event for my cancel-->
+
+                        <aura:if isTrue="{!v.buttonName == 'Release'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.closeModel }"/>
+                            <lightning:button variant="brand"
+                                              label="OK"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.UpdateStatus }"
+                            />
+
+
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'HealthDelete'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.cancelModel }"/>
+                            <lightning:button variant="brand"
+                                              label="Confirm"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HealthDelete }"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'AgeCheck'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleAgeCheck}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'Retireedsubscriber'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleRetireeCheck}"/>
+                        </aura:if>
+
+
+                        <aura:if isTrue="{!v.buttonName == 'RetireedsubscriberOK'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleRetireeCheck}"/>
+                        </aura:if>
+
+
+                        <aura:if isTrue="{!v.buttonName == 'RetireedsubscriberMT'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleRetireeCheck}"/>
+                        </aura:if>
+
+
+                        <aura:if isTrue="{!v.buttonName == 'DependentAgeCheck'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.DependentHandleAgeCheck}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'DependentAgeCobraCheck'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.DependentHandleAgeCobraCheck}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'AgeCobraCheck'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.AgeCancel }"/>
+                            <lightning:button variant="brand"
+                                              label="Ok"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleAgeCobraCheck}"
+                                              disabled="{!v.Likedisable}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'HandleDental'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.cancelModel }"/>
+                            <lightning:button variant="brand"
+                                              label="Confirm"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.HandleDental }"/>
+                        </aura:if>
+
+                        <!-- Added by Ravi -->
+                        <aura:if isTrue="{!v.buttonName == 'UpdatePlanChange'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.closeModel1}"/>
+                            <lightning:button variant="brand"
+                                              label="{!v.actionLabel}"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.PlanChangeNeeded }"
+                            />
+
+
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'Lift'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.closeModel }"/>
+                            <lightning:button variant="brand"
+                                              label="Confirm"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.UpdateLiftStatus }"/>
+
+                            <!--disabled="{!v.selectedRowsCount==0?true:false}"-->
+
+
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.buttonName == 'Refresh' || v.buttonName == 'RefreshCensus'}">
+                            <lightning:button variant="neutral"
+                                              label="{!v.cancelLabel}"
+                                              title="{!v.cancelLabel}"
+                                              onclick="{!c.cancelModel }"/>
+                            <lightning:button variant="brand"
+                                              label="Confirm"
+                                              title="{!v.actionLabel}"
+                                              onclick="{!c.UpdateRefresh }"/>
+                            <!--disabled="{!v.selectedRowsCount==0?true:false}"-->
+
+                        </aura:if>
+                        <!--Userstory:13071-->
+                        <aura:if isTrue="{!v.buttonName == 'BAExclude'}">
+                            <lightning:button variant="brand"
+                                              label="YES"
+                                              title="YES"
+                                              onclick="{!c.UpdateBA }"/>
+                            <lightning:button variant="neutral"
+                                              label="NO"
+                                              title="NO"
+                                              onclick="{!c.closeModel }"
+                            />
+                        </aura:if>
+                        <aura:if isTrue="{!v.buttonName == 'BAInclude'}">
+                            <lightning:button variant="brand"
+                                              label="YES"
+                                              title="YES"
+                                              onclick="{!c.UpdateBA }"/>
+                            <lightning:button variant="neutral"
+                                              label="NO"
+                                              title="NO"
+                                              onclick="{!c.closeModel }"
+                            />
+                        </aura:if>
+
+
+                        <!--  <aura:if isTrue="{!v.buttonName == 'Release'}">
+                          <lightning:button variant="brand"
+                                           label="{!v.actionLabel}"
+                                            title="{!v.actionLabel}"
+                                            onclick="{! c.likenClose }"
+                                            disabled="{!v.selectedRowsCount>=0?true:false}"/>
+                          </aura:if> -->
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+
+        </aura:if>
+    </div>
+</aura:component>

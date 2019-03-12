@@ -1,0 +1,36 @@
+<aura:component controller="QuoteRequestWebServiceHelper" implements="force:appHostable,force:hasSObjectName,force:lightningQuickAction,lightning:actionOverride,force:hasRecordId,flexipage:availableForAllPageTypes" access="global" >
+
+    <aura:attribute name="recordId" type="String" access="public"/>
+    <aura:attribute name="message" type="String" access="public"/>
+    <aura:attribute name="hasError" type="Boolean" access="public" />
+    <aura:attribute name="diplayResult" type="Boolean" access="public" />
+    <aura:attribute name="loading" type="Boolean" default="false"/>
+
+    <aura:attribute name="currentRecord" type="Quote_Request_Summary__c" access="public"/>
+
+   <aura:handler name="init" value="{!this}" action="{!c.CallHeronWS}" /> 
+        <center> please wait....</center>
+ 
+   <!-- <lightning:button label="Send To Heron" onclick="{c.CallHeronWS}" />-->
+    <!--
+    <div class="slds customBackground">
+    <aura:if isTrue="{!v.diplayResult}">
+
+    <div role="dialog" style="padding-top:120px;" tabindex="-1" class="slds-modal slds-fade-in-open" aura:id="Modalbox">
+		<div class="slds-modal__container" style="width:90%;height:300px max-width:90rem;">
+			
+			<div class="slds-modal__header slds-theme**success">				
+				<h2 class="slds-text-heading**medium slds-truncate" title="success">{!v.message}</h2>
+               
+			</div>				
+			<div class="slds-modal__footer mobileViewHeader">
+				<lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.Finish}" />
+				
+			</div>
+		
+		</div>
+	</div>
+     <div class="slds-backdrop " aura:id="MB-Back"></div>
+        </aura:if>
+    </div>-->
+</aura:component>

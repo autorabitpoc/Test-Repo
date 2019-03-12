@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>OK MSR 904</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>OK MSR 904</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>OK_Sr_Director_Sales_904</parentRole>
+</Role>

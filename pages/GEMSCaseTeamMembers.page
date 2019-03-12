@@ -1,0 +1,61 @@
+<apex:page standardController="case" extensions="GEMS_CaseTeamMembersController" sidebar="false" showHeader="false" showChat="false" id="thePage" >  
+<apex:form id="frm">
+<script>
+    function validate(roleName,roleId) {
+        if(roleName=='Implementer') {
+            alert('Implementer cannot be removed');
+        } else {
+            var ret = confirm("Are you sure you want to remove this team member?");
+            if(ret) {
+                removeRoleFtn(roleName,roleId);
+            } 
+        }
+    }
+    
+    function refreshPage() {
+        var currentURL = "/{!caseID}";
+        top.location.href = currentURL;
+    } 
+    
+    
+   
+    
+</script>
+    <apex:pageBlock id="pb">
+       <apex:pageBlockButtons location="top">
+            <apex:commandButton value="Update Case Team Members" id="updateButton" action="{!Redirect}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockTable value="{!case.TeamMembers}" var="t" id="pbt">
+            <apex:column headerValue="Action">
+                <apex:commandLink onclick="validate('{!t.TeamRole.Name}','{!t.Id}');" value="Remove" oncomplete="refreshPage()"  rendered="{!if(t.TeamRole.Name != 'Implementer',true,false)}" /> 
+            </apex:column>
+            <apex:column headerValue="Team Member">
+                <apex:outputLink value="/{!t.MemberId}" target="_blank" id="tmLink">{!t.Member.Name}</apex:outputLink> 
+             </apex:column>
+            <apex:column headerValue="Member Role" >
+                <apex:outputLink value="/{!t.TeamRoleId}" target="_blank" id="trLink">
+                    <apex:outputText id="teamRole"  value="{!t.TeamRole.Name}" />
+                </apex:outputLink> 
+             </apex:column>
+            <apex:column headerValue="Case Access" value="{!t.TeamRole.AccessLevel}"/>
+            <!-- <apex:column headerValue="Visible in Customer Portal" value="{!t.TeamRole.PreferencesVisibleInCSP}"/> -->
+            <apex:column headerValue="Last Modified By">
+                <apex:outputLink value="/{!t.LastModifiedBy.id}" target="_blank">{!t.LastModifiedBy.name}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Last Modified Date">
+                <apex:outputText value="{0,date,MM/dd/yyyy hh:mm a}" >   
+                    <apex:param value="{!t.LastModifiedDate + offset}" /> 
+                </apex:outputText>
+            </apex:column>
+            <apex:column headerValue="Member Active?">
+                <apex:outputText rendered="{!if(t.Member.isActive == true,true,false)}" value="Yes" /> 
+                <apex:outputText rendered="{!if(t.Member.isActive == false,true,false)}" value="No" /> 
+            </apex:column>
+        </apex:pageBlockTable>        
+    </apex:pageBlock>
+    <apex:actionFunction name="removeRoleFtn" action="{!RemoveRole}" reRender="thePage">     
+        <apex:param name="firstParam" assignTo="{!roleName}" value="" />
+        <apex:param name="secondParam" assignTo="{!roleId}" value="" />
+    </apex:actionFunction>
+</apex:form>
+</apex:page>

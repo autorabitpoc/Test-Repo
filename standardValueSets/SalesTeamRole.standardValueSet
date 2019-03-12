@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Accountant</fullName>
+        <default>false</default>
+        <label>Accountant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Executive</fullName>
+        <default>false</default>
+        <label>Account Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Management Support</fullName>
+        <default>false</default>
+        <label>Account Management Support</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Manager</fullName>
+        <default>false</default>
+        <label>Account Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Specialist</fullName>
+        <default>false</default>
+        <label>Account Specialist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Accounts Receivable</fullName>
+        <default>false</default>
+        <label>Accounts Receivable</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Additional Underwriter</fullName>
+        <default>false</default>
+        <label>Additional Underwriter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>AEP Processor</fullName>
+        <default>false</default>
+        <label>AEP Processor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Analytics</fullName>
+        <default>false</default>
+        <label>Analytics</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Behavioral Health CAC</fullName>
+        <default>false</default>
+        <label>Behavioral Health CAC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Benefit Coder</fullName>
+        <default>false</default>
+        <label>Benefit Coder</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Billing</fullName>
+        <default>false</default>
+        <label>Billing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Consulting Contact</fullName>
+        <default>false</default>
+        <label>Client Consulting Contact</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Implementation Consultant</fullName>
+        <default>false</default>
+        <label>Client Implementation Consultant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Client Service Specialist.</fullName>
+        <default>false</default>
+        <label>Client Service Specialist.</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Clinical Account Consultant</fullName>
+        <default>false</default>
+        <label>Clinical Account Consultant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cobra</fullName>
+        <default>false</default>
+        <label>Cobra</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Dearborn Sales Executive</fullName>
+        <default>false</default>
+        <label>Dearborn Sales Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Director Account Management</fullName>
+        <default>false</default>
+        <label>Director Account Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Director Sales</fullName>
+        <default>false</default>
+        <label>Director Sales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DVP Account Management</fullName>
+        <default>false</default>
+        <label>DVP Account Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DVP Sales</fullName>
+        <default>false</default>
+        <label>DVP Sales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>EHCM Presenter</fullName>
+        <default>false</default>
+        <label>EHCM Presenter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>EHCM RFP SME</fullName>
+        <default>false</default>
+        <label>EHCM RFP SME</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Electronic Eligibility Specialist</fullName>
+        <default>false</default>
+        <label>Electronic Eligibility Specialist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ENA Strategic Account Executive</fullName>
+        <default>false</default>
+        <label>ENA Strategic Account Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Exchange Management</fullName>
+        <default>false</default>
+        <label>Exchange Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Full Service Unit</fullName>
+        <default>false</default>
+        <label>Full Service Unit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GPD Director</fullName>
+        <default>false</default>
+        <label>GPD Director</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GPD Group Benefit Specialist</fullName>
+        <default>false</default>
+        <label>GPD Group Benefit Specialist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GPD Marketing Service Representative</fullName>
+        <default>false</default>
+        <label>GPD Marketing Service Representative</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GPD Sales Executive/AE</fullName>
+        <default>false</default>
+        <label>GPD Sales Executive/AE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Group Benefit Specialist</fullName>
+        <default>false</default>
+        <label>Group Benefit Specialist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Implementation Manager</fullName>
+        <default>false</default>
+        <label>Implementation Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Manager Account Management</fullName>
+        <default>false</default>
+        <label>Manager Account Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Manager Sales</fullName>
+        <default>false</default>
+        <label>Manager Sales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing Communications</fullName>
+        <default>false</default>
+        <label>Marketing Communications</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing Operations</fullName>
+        <default>false</default>
+        <label>Marketing Operations</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing Service Rep</fullName>
+        <default>false</default>
+        <label>Marketing Service Rep</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Director</fullName>
+        <default>false</default>
+        <label>Medical Director</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Membership Specialist</fullName>
+        <default>false</default>
+        <label>Membership Specialist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>New Business Coordinator</fullName>
+        <default>false</default>
+        <label>New Business Coordinator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>On Site CSR</fullName>
+        <default>false</default>
+        <label>On Site CSR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Proposal Manager</fullName>
+        <default>false</default>
+        <label>Proposal Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Proposal Writer</fullName>
+        <default>false</default>
+        <label>Proposal Writer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Executive</fullName>
+        <default>false</default>
+        <label>Sales Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Strategist</fullName>
+        <default>false</default>
+        <label>Sales Strategist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Senior Director Subscriber Services</fullName>
+        <default>false</default>
+        <label>Senior Director Subscriber Services</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Senior Manager Subscriber Services</fullName>
+        <default>false</default>
+        <label>Senior Manager Subscriber Services</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Account Executive</fullName>
+        <default>false</default>
+        <label>Strategic Account Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Underwriter</fullName>
+        <default>false</default>
+        <label>Underwriter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VP Account Management</fullName>
+        <default>false</default>
+        <label>VP Account Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VP Sales</fullName>
+        <default>false</default>
+        <label>VP Sales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Wellness Consultant</fullName>
+        <default>false</default>
+        <label>Wellness Consultant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SGR Underwriter Manager</fullName>
+        <default>false</default>
+        <label>SGR Underwriter Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SGR Underwriter User</fullName>
+        <default>false</default>
+        <label>SGR Underwriter User</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,5 @@
+<aura:event type="Component" description="to handle PlanId event">
+    <aura:attribute name="HplanID" type="String"/>
+    <aura:attribute name="DplanID" type="String"/>
+    <aura:attribute name="VplanID" type="String"/>
+</aura:event>

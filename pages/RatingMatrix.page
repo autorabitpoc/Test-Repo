@@ -1,0 +1,342 @@
+<apex:page showHeader="true" sidebar="false" doctype="html-5.0" standardController="Rate__c" extensions="RatingMatrixController">
+
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTables_1_10_2, '/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/external/jquery/jquery.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.11.4.custom/jquery-ui.min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.DataTables_1_10_2, '/js/jquery.dataTables.min.js')}"/>
+
+    <style>
+
+    #firstColumn{
+        display:inline-block;
+        float:left;
+    }
+    #secondColumn{
+        display:inline-block;
+        float:right;
+    }   
+    #wrap{
+        height:150px;
+    }
+    @media (max-width: 976px) {
+        #wrap{
+            height:325px;
+        }
+        #secondColumn{   
+      
+            float:left;
+        }   
+    }
+    #firstColumn td{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+    #firstColumn th{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+    #secondColumn td{
+        padding-bottom: 5px;
+    }   
+    #secondColumn th{
+        padding-bottom: 5px;
+    }   
+    input[type="text"] {
+        width:95px;
+        height:18px;
+    }
+    .tab-title{
+        margin:10px 0;
+        font-size:16px; 
+    }  
+    .data-table thead th {
+        background-color:#72A9D3 !important;
+        color:#fff;
+        font-weight:bold;
+    }
+    .accordion-row {
+        background-color:#EAF5FE !important;
+        cursor:pointer;
+        font-weight:bold;   
+    }
+    table.dataTable tbody th, table.dataTable tbody td {
+      
+      border-bottom: 1px solid #CFEEF8 !important;
+      padding: 10px !important;
+    }
+    .dataTables_filter {
+        display: none; 
+    }
+
+    .errorRate {
+
+        color:red;  
+        font-size:12px;     
+    }
+  
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#yearOne').DataTable({
+                   "paging": false
+
+            });
+
+            $('#yearTwo').DataTable({
+                   "paging": false
+
+            });
+
+            $('#yearThree').DataTable({
+                   "paging": false
+
+            });
+
+        });
+
+        function validateRateStructure(){
+            var callMethod = true;
+            var rateStructure = $('.multiSelect').val();
+           
+            if(rateStructure == null || rateStructure == ''){
+                callMethod = false;
+                $('.errorRate').html('Please enter a value');
+            }
+
+            if(callMethod == true){
+                saveRateBackground();
+            }
+        }
+
+    </script>
+
+    <apex:form >
+        <apex:pagemessages />
+        <apex:outputpanel rendered="{!hasAccess}">
+            <apex:pageblock id="rateBackground" title="{!$Label.Rate_Matrix_Rate_Background}">
+                <div id="wrap">
+                    <table id="firstColumn">
+                        <tr>
+                            <th>{!$Label.Rate_Matrix_Number_of_Years}</th>
+                            <td><apex:inputfield value="{!rate.Number_of_Years__c}" id="year" required="true"/></td>
+                        </tr>
+                        <tr>
+                            <th>{!$Label.Rate_Matrix_Select_State}</th>
+                            <td><apex:inputfield value="{!rate.HCSC_Division__c}" id="state" required="true" /></td>
+                        </tr>
+                    </table>
+                    <table id="secondColumn">
+                        <tr>
+                            <th>{!$Label.Rate_Matrix_Rate_Structure}</th>
+                            <td><apex:inputfield value="{!rate.Rate_Structure_Fully__c}" styleclass="multiSelect" id="rate"/><div class="errorRate"></div></td>
+                        </tr>
+                        <tr>
+                            <th>{!$Label.Rate_Matrix_Other_Rate}</th>
+                            <td><apex:inputfield value="{!rate.Other_Rate__c}" id="other" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <center>
+                    <apex:commandbutton value="Generate Rate Chart" onclick="validateRateStructure();return false;" rerender="year, state, rate, other"/>
+                    <apex:actionfunction name="saveRateBackground" action="{!saveRateBackground}" />
+                    <apex:commandbutton value="Cancel" action="{!cancel}" />
+                </center>
+            </apex:pageblock>
+
+            <apex:pagemessage title="Warning" strength="3" severity="warning" rendered="{!IF(AND(opportunityProds.size < 1, rateProds.size < 1), True, False)}">{!$Label.Rate_Matrix_No_Opportuntiy_Products}</apex:pagemessage>       
+            <apex:outputpanel rendered="{!IF(OR(opportunityProds.size > 0, rateProds.size > 0), True, False)}">        
+                <apex:pageblock id="rateChart" title="{!$Label.Rate_Matrix_Rate_Chart_Detail}">
+                    <apex:outputpanel rendered="{!renderRateChart}">
+                        <apex:outputpanel rendered="{!OR(numberOfYears = 'One Year', numberOfYears = 'Two Years', numberOfYears = 'Three Years')}">
+                            <div class="tab-title">{!$Label.Rate_Matrix_Year_One}</div>
+                            <table id="yearOne" class="data-table">                             
+                                <thead>
+                                    <tr>
+                                        <th>{!$Label.Rate_Matrix_Product_Coverage}</th>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Only}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Spouse}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Child_ren}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                            <th>{!$Label.Rate_Matrix_Family}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_One_Dependent}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Two_or_More_Dependents}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                            <th>{!otherRate}</th>
+                                        </apex:outputpanel>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!rateProds}" var="prod">                                      
+                                        <tr>
+                                           <td>{!prod.Product__c}</td>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                                <td><apex:inputField value="{!prod.Employee_Only1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Spouse1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Child_ren1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                                <td><apex:inputfield value="{!prod.Family1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                                <td><apex:inputfield value="{!prod.Employee_One_Dependent1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Two_or_More_Dependents1__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                                <td><apex:inputfield value="{!prod.Other1__c}" /></td>
+                                            </apex:outputpanel>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputpanel>
+                        <br />
+                        <apex:outputpanel rendered="{!OR(numberOfYears = 'Two Years', numberOfYears = 'Three Years')}">
+                            <div class="tab-title">{!$Label.Rate_Matrix_Year_Two}</div>
+                            <table id="yearTwo" class="data-table">                             
+                                <thead>
+                                    <tr>
+                                        <th>{!$Label.Rate_Matrix_Product_Coverage}</th>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Only}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Spouse}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Child_ren}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                            <th>{!$Label.Rate_Matrix_Family}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_One_Dependent}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Two_or_More_Dependents}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                            <th>{!otherRate}</th>
+                                        </apex:outputpanel>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!rateProds}" var="prod">                                     
+                                        <tr>
+                                            <td>{!prod.Product__c}</td>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Only2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Spouse2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Child_ren2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                                <td><apex:inputfield value="{!prod.Family2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                                <td><apex:inputfield value="{!prod.Employee_One_Dependent2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Two_or_More_Dependents2__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                                <td><apex:inputfield value="{!prod.Other2__c}" /></td>
+                                            </apex:outputpanel>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputpanel>
+                        <br />
+                        <apex:outputpanel rendered="{!numberOfYears = 'Three Years'}">
+                            <div class="tab-title">{!$Label.Rate_Matrix_Year_Three}</div>
+                            <table id="yearThree" class="data-table">                             
+                                <thead>
+                                    <tr>
+                                        <th>{!$Label.Rate_Matrix_Product_Coverage}</th>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Only}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Spouse}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Child_ren}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                            <th>{!$Label.Rate_Matrix_Family}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_One_Dependent}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                            <th>{!$Label.Rate_Matrix_Employee_Two_or_More_Dependents}</th>
+                                        </apex:outputpanel>
+                                        <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                            <th>{!otherRate}</th>
+                                        </apex:outputpanel>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!rateProds}" var="prod">                                     
+                                        <tr>
+                                            <td>{!prod.Product__c}</td>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee Only')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Only3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Spouse')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Spouse3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Child(ren)')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Child_ren3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Family')}">
+                                                <td><apex:inputfield value="{!prod.Family3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + One Dependent')}">
+                                                <td><apex:inputfield value="{!prod.Employee_One_Dependent3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!CONTAINS(rateStructure, 'Employee + Two or More Dependents')}">
+                                                <td><apex:inputfield value="{!prod.Employee_Two_or_More_Dependents3__c}" /></td>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!IF(otherRate != null, true, false)}">
+                                                <td><apex:inputfield value="{!prod.Other3__c}" /></td>
+                                            </apex:outputpanel>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputpanel>
+                        <center>
+                            <apex:commandbutton value="Save" action="{!saveNewRateRecord}" />
+                            <apex:commandbutton value="Cancel" action="{!cancel}" />
+                        </center>
+                    </apex:outputpanel>
+                </apex:pageblock>
+            </apex:outputpanel>       
+        </apex:outputpanel>
+    </apex:form>
+</apex:page>

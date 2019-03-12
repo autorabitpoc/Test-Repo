@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://myfyi.sharepoint.com/teams/phi_UWquotes/_layouts/15/OauthAuthorize.aspx</authorizeUrl>
+    <consumerKey>4b9e76e8-c8ab-47bb-822a-42090817c457</consumerKey>
+    <consumerSecret>lR5njcbl1AkRJln9hO1/RpAH/WRzi7sn11aDfgWikl31hJOm9y4HibzQOhuEJ7EL</consumerSecret>
+    <friendlyName>HeronSharePointProd</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>MicrosoftACS</providerType>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <tokenUrl>https://accounts.accesscontrol.windows.net/myfyi.onmicrosoft.com/tokens/OAuth/2?resource=00000003-0000-0ff1-ce00-000000000000/myfyi.sharepoint.com@myfyi.onmicrosoft.com</tokenUrl>
+</AuthProvider>

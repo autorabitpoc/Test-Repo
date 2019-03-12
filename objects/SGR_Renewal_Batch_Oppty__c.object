@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Id</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>SGR_Renewal_Batch_Opptys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Number</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BatchId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>BatchId</label>
+        <referenceTo>SGRRenewalBatch__c</referenceTo>
+        <relationshipName>SGR_Renewal_Batch_Opptys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Batch_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Batch ID</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Id</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>SGR_Renewal_Batch_Opptys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Processing_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Processing Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Intiated Rating</fullName>
+                    <default>false</default>
+                    <label>Intiated Rating</label>
+                </value>
+                <value>
+                    <fullName>Intiated Validation</fullName>
+                    <default>false</default>
+                    <label>Intiated Validation</label>
+                </value>
+                <value>
+                    <fullName>Opportunity created</fullName>
+                    <default>false</default>
+                    <label>Opportunity created</label>
+                </value>
+                <value>
+                    <fullName>Rated</fullName>
+                    <default>false</default>
+                    <label>Rated</label>
+                </value>
+                <value>
+                    <fullName>Renewal Document Generated</fullName>
+                    <default>false</default>
+                    <label>Renewal Document Generated</label>
+                </value>
+                <value>
+                    <fullName>Send for Email Dsitrubution</fullName>
+                    <default>false</default>
+                    <label>Send for Email Dsitrubution</label>
+                </value>
+                <value>
+                    <fullName>Send for Postal Distribution</fullName>
+                    <default>false</default>
+                    <label>Send for Postal Distribution</label>
+                </value>
+                <value>
+                    <fullName>Send to Documnet Generaion</fullName>
+                    <default>false</default>
+                    <label>Send to Documnet Generaion</label>
+                </value>
+                <value>
+                    <fullName>Transferred to Bluestar</fullName>
+                    <default>false</default>
+                    <label>Transferred to Bluestar</label>
+                </value>
+                <value>
+                    <fullName>Triggered</fullName>
+                    <default>false</default>
+                    <label>Triggered</label>
+                </value>
+                <value>
+                    <fullName>Validated</fullName>
+                    <default>false</default>
+                    <label>Validated</label>
+                </value>
+                <value>
+                    <fullName>Bluestar transfer initiated</fullName>
+                    <default>false</default>
+                    <label>Bluestar transfer initiated</label>
+                </value>
+                <value>
+                    <fullName>Validation Failed</fullName>
+                    <default>false</default>
+                    <label>Validation Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Renewal Batch Opportunity</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Batch_ID__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Processing_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>SGR_Renewal Batch Oppty Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Renewal Batch Opportunities</pluralLabel>
+    <recordTypes>
+        <fullName>SGRRenewal_Batch_Oppty</fullName>
+        <active>true</active>
+        <label>SGRRenewal Batch Oppty</label>
+        <picklistValues>
+            <picklist>Processing_Status__c</picklist>
+            <values>
+                <fullName>Bluestar transfer initiated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intiated Rating</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intiated Validation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opportunity created</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal Document Generated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send for Email Dsitrubution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send for Postal Distribution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Documnet Generaion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transferred to Bluestar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Triggered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Validated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Validation Failed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>SGR_Rated_Status_change</fullName>
+        <active>false</active>
+        <description>This validation is used to check for workflow status change.</description>
+        <errorConditionFormula>AND(ISPICKVAL(00N4D000000sCMl.00N4D000000s7D5,&quot;Down&quot;) ,$RecordType.Id =&quot;0124D0000004bjN&quot;,ISPICKVAL( Opportunity__r.SGR_Workflow_Status__c, &quot;Rated&quot;))</errorConditionFormula>
+        <errorMessage>You cannot change the workflow status when gate is down on an opportunity</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

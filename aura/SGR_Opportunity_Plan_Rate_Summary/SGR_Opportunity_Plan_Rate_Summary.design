@@ -1,0 +1,3 @@
+<design:component>
+	<design:attribute name='TypesOfPlans' label='Type Of Plan' datasource='Health, Vision, Dental'></design:attribute>
+</design:component>

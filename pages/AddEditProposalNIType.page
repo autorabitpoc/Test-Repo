@@ -1,0 +1,25 @@
+<apex:page standardController="Case" extensions="AddEditProposalNITypeController">
+    <apex:form >
+        <apex:pageBlock title="Add/Edit Proposal/NI Types" id="pb">
+            <apex:pageMessages />
+            <apex:variable var="rowNumber" value="{!0}"/>
+            <apex:pageblockSection columns="1">
+                <apex:pageBlockTable title="Proposal Types" var="pt" value="{!proposalNIWrappers}"> 
+                    <apex:column headerValue="Number requested" >
+                        <apex:inputText value="{!pt.Requested}"/>
+                    </apex:column> 
+                    <apex:column headerValue="Proposal/NI Type" >
+                        <apex:OutputText value="{!pt.requestTypeObj.Proposal_NI_Type__c}"/>
+                    </apex:column> 
+                    <apex:column headerValue="Description" >
+                        <apex:OutputText value="{!pt.requestTypeObj.Description__c}"/>
+                    </apex:column> 
+                </apex:pageBlockTable>
+            </apex:pageblockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" onclick="this.onclick=function(){return false;}" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

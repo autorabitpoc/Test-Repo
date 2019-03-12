@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="sobjectType" type="String" required="true"/>
+    <aura:attribute name="recordId" type="String" required="true"/>
+</aura:event>

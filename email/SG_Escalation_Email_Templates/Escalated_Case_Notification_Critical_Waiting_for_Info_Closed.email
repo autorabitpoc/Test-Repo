@@ -1,0 +1,8 @@
+The following case status has been "{!Case.Status}" for 5 Business Days and will be automatically changed to "Closed - No Response" in 30 minutes.
+
+Company: {!Account.Name} 
+Case #: {!Case.CaseNumber} 
+Case Subject: {!Case.Subject}
+Owner: {!Case.OwnerFullName} 
+
+Click on the link to access the case: {!Case.Link}

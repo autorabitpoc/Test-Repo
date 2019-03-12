@@ -1,0 +1,9 @@
+The Pharmacy Coding Case has been assigned back to you. Please take action.
+
+Account Name: {!Case.Account}
+
+Case Number : {!Case.CaseNumber}
+
+Case Details : {!Case.Link}
+
+Thanks

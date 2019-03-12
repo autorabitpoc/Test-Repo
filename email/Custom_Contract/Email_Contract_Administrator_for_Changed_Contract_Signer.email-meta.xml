@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notifies Contract Admins when a Contract Signer is changed on an active contract</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Email Contract Administrator for Changed Contract Signer</name>
+    <style>none</style>
+    <subject>{!Case.Account_Name__c} - {!Case.RecordType} Case #{!Case.CaseNumber} Updated Contract Signer</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

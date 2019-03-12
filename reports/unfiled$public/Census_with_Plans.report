@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Opportunity</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Member_Policy_Tier__c</field>
+        </columns>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Composite_Rates__c</field>
+        </columns>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Employee_Only__c</field>
+        </columns>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Employee_Child__c</field>
+        </columns>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Employee_Family__c</field>
+        </columns>
+        <columns>
+            <field>Opportunity.Opportunity_Census__r.Opportunity_Member_Benefits__r$Employee_Spouse__c</field>
+        </columns>
+        <format>Tabular</format>
+        <name>Opportunity with Census block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Opportunity_with_Census__c</reportType>
+        <scope>user</scope>
+        <timeFrameFilter>
+            <dateColumn>Opportunity$Account_Setup_Screening_Creation__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Opportunity</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Opportunity.Opportunity_Plan_Rates__r$Marketing_Sales_Plan_ID__c</field>
+        </columns>
+        <format>Tabular</format>
+        <name>Oppty with Plan Rate block 2</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Oppty_with_Plan_Rate__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Opportunity$Account_Setup_Screening_Creation__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Opportunity</joinTable>
+    </blockInfo>
+    <description>Census with Plans</description>
+    <format>MultiBlock</format>
+    <name>Census with Plans</name>
+    <reportType>Opportunity_with_Census__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

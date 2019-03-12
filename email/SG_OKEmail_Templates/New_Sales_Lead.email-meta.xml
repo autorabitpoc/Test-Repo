@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template for New Sales Leads via phone or email.  This can be sent to Penny Sullivan at Penny_Sullivan@hcsc.net or Lynne Baldwin at Lynne_Baldwin@bcbsok.com, if Penny is out of the office.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>New Sales Lead</name>
+    <style>none</style>
+    <subject>New Sales Lead  Case#: {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

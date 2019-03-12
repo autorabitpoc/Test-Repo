@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CollaborationGroup$Name</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$MemberCount</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup$LastFeedModifiedDate</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$LikeCount</field>
+    </columns>
+    <columns>
+        <field>CollaborationGroup.FeedItems$CommentCount</field>
+    </columns>
+    <description>Micah</description>
+    <format>Tabular</format>
+    <name>Chatter Groups Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ch_dashboards__Chatter_Groups_Activity_1_0__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CollaborationGroup$LastFeedModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

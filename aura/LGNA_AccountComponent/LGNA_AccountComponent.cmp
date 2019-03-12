@@ -1,0 +1,81 @@
+<aura:component access="global" Controller="LGNA_AccountComponentCntlr" implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes">
+  <!--use boolean attribute for Store true/false value,
+    make default to "false" so modal box are not display on the load of component-->
+   <aura:attribute name="isOpenBuyer" type="boolean" default="false"/>
+  <aura:attribute name="recordId" type="String" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="Redirection" type="String" default="0" />
+     <aura:attribute name="splanDetailsList" type="Strategic_Plan__c"/> 
+  <!--Use "slds-m-around- -xx-large" class to add standard Large padding to the component--> 
+  <div class="slds customBackground">
+      <!-- Start Dispalying the Buyer Hierarchy and Strategic Plan/No Strategic Plan -->		 
+      <table>
+          <tr>
+              <td style="padding-left:3cm;">
+              	<a onclick="{!c.openModelBuyer}" style="cursor: hand;"> <img  src="{!$Resource.LGNA_LexResource + '/Images/Hierarchy.png'}" style="width:38px; height:38px; cursor: hand;"/> </a>
+              </td>
+              <td>
+                  <aura:if isTrue="{!v.splanDetailsList.length > 0}">     
+           <a href="" target="_blank" style="cursor: hand;" onclick="{!c.openModelPlan}"> <img  src="{!$Resource.LGNA_LexResource + '/Images/strategicPlan.png'}" style="width:38px; height:38px; cursor: hand;"/> </a>
+                    
+             <aura:set attribute="else" >
+            <img  src="{!$Resource.LGNA_LexResource + '/Images/strategicPlan.png'}" style="width:38px; height:38px; cursor: hand;"/>
+                  </aura:set>
+              </aura:if>
+              	
+              </td>
+  
+          </tr>
+          <tr>
+          	<td style="padding-left:2.5cm; font-size:10px;">
+                View Buyer Hierarchy 	
+            </td>
+             
+            <aura:if isTrue="{!v.splanDetailsList.length > 0}">     
+            <td style="padding-right:2cm; font-size:10px;">
+                Strategic Plan	
+            </td>
+                    
+             <aura:set attribute="else" >
+            <td style="padding-right:0.5cm; font-size:10px;">
+                No Strategic Plan Available
+            </td>
+                  </aura:set>
+              </aura:if>
+          </tr>
+      </table>
+      <!-- End Dispalying the Buyer Hierarchy and Strategic Plan/No Strategic Plan -->
+      
+      
+    
+  <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpenbuyer boolean attribute] -->   
+    <aura:if isTrue="{!v.isOpenBuyer}">
+      
+   <!--###### MODAL BOX Start From Here ######--> 
+      <div role="dialog" style="padding-top:120px;" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+        <div class="slds-modal__container" style="width:85%;max-width:90rem;" >
+          <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+          <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+            X
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="header99" class="slds-text-heading--medium">Buyer Hierarchy</h2>
+          </div>
+          <!--###### MODAL BOX BODY Part Start From Here ######-->
+          <div class="slds-modal__content slds-p-around--medium">
+              <p>
+               <iframe id="buyerheirarchy" name="cc" src="{!v.Redirection}" width="100%" height="500px" frameBorder="0" />
+              </p>
+          </div>
+          <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button--neutral" onclick="{!c.closeModel}" >Close</button>
+          </div>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop--open"></div>
+      <!--###### MODAL BOX Part END Here ######-->
+ </aura:if>
+</div>
+</aura:component>

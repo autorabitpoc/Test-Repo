@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCategoryGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <dataCategory>
+        <dataCategory>
+            <label>51+NRSG</label>
+            <name>X51_NRSG</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Essential Health Benefit</label>
+                <name>Essential_Health_Benefit</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Product Information</label>
+                <name>Product_Information</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Taxes &amp; Fees</label>
+                <name>Taxes_Fees</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Waiting Period</label>
+                <name>Waiting_Period</name>
+            </dataCategory>
+            <dataCategory>
+                <label>MLR</label>
+                <name>MLR</name>
+            </dataCategory>
+            <dataCategory>
+                <label>W2 Reporting</label>
+                <name>W2_Reporting</name>
+            </dataCategory>
+            <label>ACA</label>
+            <name>ACA</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Commissions</label>
+                <name>Commissions</name>
+            </dataCategory>
+            <dataCategory>
+                <label>BOR</label>
+                <name>BOR</name>
+            </dataCategory>
+            <label>Agents</label>
+            <name>Agents</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>ACA Dental</label>
+                <name>ACA_Dental</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Dental Benefit Book</label>
+                <name>Dental_Benefit_Book</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Pediatric Vision</label>
+                <name>Pediatric_Vision</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Dearborn</label>
+                <name>Dearborn</name>
+            </dataCategory>
+            <dataCategory>
+                <label>BlueCare Dental</label>
+                <name>BlueCare_Dental</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Pediatric Dental</label>
+                <name>Pediatric_Dental</name>
+            </dataCategory>
+            <label>Ancillary</label>
+            <name>Ancillary</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Delinquency</label>
+                <name>Delinquency</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Wash Rule</label>
+                <name>Wash_Rule</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Payment Plan</label>
+                <name>Payment_Plan</name>
+            </dataCategory>
+            <dataCategory>
+                <label>List Bill Medicare</label>
+                <name>List_Bill_Medicare</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Reinstatements</label>
+                <name>Reinstatements</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Auto Pay</label>
+                <name>Auto_Pay</name>
+            </dataCategory>
+            <label>Billing</label>
+            <name>Billing</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Blue Access</label>
+            <name>BlueAccess</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Blue Directions</label>
+            <name>BlueDirections</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Cancellations</label>
+            <name>Cancellations</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>HCA</label>
+                <name>HCA</name>
+            </dataCategory>
+            <dataCategory>
+                <label>HSA</label>
+                <name>HSA</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Benefit Wallet</label>
+                <name>Benefit_Wallet</name>
+            </dataCategory>
+            <label>CDHP</label>
+            <name>CDHP</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Client Reporting</label>
+            <name>Client_Reporting</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Appeals Information</label>
+                <name>Appeals_Information</name>
+            </dataCategory>
+            <label>Claims</label>
+            <name>Claims</name>
+        </dataCategory>
+        <dataCategory>
+            <label>COBRA</label>
+            <name>COBRA</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Discount Programs</label>
+            <name>Discount_Programs</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Fliers</label>
+            <name>Fliers</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <dataCategory>
+                    <label>Membership</label>
+                    <name>Membership</name>
+                </dataCategory>
+                <label>5500</label>
+                <name>X5500</name>
+            </dataCategory>
+            <label>Forms</label>
+            <name>Forms</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Grandfathering</label>
+            <name>Grandfathering</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>PHI</label>
+                <name>PHI</name>
+            </dataCategory>
+            <label>HIPAA</label>
+            <name>HIPAA</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Individual Products</label>
+            <name>Individual_Products</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Insure Oklahoma</label>
+            <name>Insure_Oklahoma</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Licensing and Continuing Education</label>
+            <name>Licensing_and_Continuing_Education</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Medicare</label>
+            <name>Medicare</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Workers Compensation</label>
+                <name>Workers_Compensation</name>
+            </dataCategory>
+            <dataCategory>
+                <label>AEP</label>
+                <name>AEP</name>
+            </dataCategory>
+            <label>Membership Info</label>
+            <name>Membership_Info</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Must Knows</label>
+                <name>Must_Knows</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Tasks</label>
+                <name>Tasks</name>
+            </dataCategory>
+            <dataCategory>
+                <label>NGOP</label>
+                <name>NGOP</name>
+            </dataCategory>
+            <dataCategory>
+                <label>GF Recon</label>
+                <name>GF_Recon</name>
+            </dataCategory>
+            <label>MOSU Tasks and Info</label>
+            <name>MOSU_Tasks_and_Info</name>
+        </dataCategory>
+        <dataCategory>
+            <label>New Business/ Sales</label>
+            <name>New_Business_Sales</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Phone Info</label>
+                <name>Phone_Info</name>
+            </dataCategory>
+            <dataCategory>
+                <label>PHI Info</label>
+                <name>PHI_Info</name>
+            </dataCategory>
+            <label>New Hire</label>
+            <name>New_Hire</name>
+        </dataCategory>
+        <dataCategory>
+            <label>OPERS</label>
+            <name>OPERS</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Other</label>
+            <name>Other</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Paperwork</label>
+            <name>Paperwork</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Pharmacy</label>
+            <name>Pharmacy</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>BlueLeaders</label>
+                <name>BlueLeaders</name>
+            </dataCategory>
+            <label>Producer Service Center</label>
+            <name>Producer_Service_Center</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Medical Benefit Book</label>
+                <name>Medical_Benefit_Book</name>
+            </dataCategory>
+            <dataCategory>
+                <label>BlueAdvantage</label>
+                <name>BlueAdvantage</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Wellness</label>
+                <name>Wellness</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Vision</label>
+                <name>Vision</name>
+            </dataCategory>
+            <label>Product Info</label>
+            <name>Product_Info</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Rates</label>
+            <name>Rates</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Renewal</label>
+            <name>Renewal</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Reports</label>
+            <name>Reports</name>
+        </dataCategory>
+        <dataCategory>
+            <label>SBC</label>
+            <name>SBC</name>
+        </dataCategory>
+        <dataCategory>
+            <label>SHOP</label>
+            <name>SHOP</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Southwest Service Center</label>
+            <name>Southwest_Service_Center</name>
+        </dataCategory>
+        <dataCategory>
+            <label>TP2</label>
+            <name>TP2</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Underwriting</label>
+            <name>Underwriting</name>
+        </dataCategory>
+        <label>All</label>
+        <name>All</name>
+    </dataCategory>
+    <label>Small Group</label>
+    <objectUsage>
+        <object>KnowledgeArticleVersion</object>
+    </objectUsage>
+</DataCategoryGroup>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$HCSC_Division__c</field>
+    </columns>
+    <columns>
+        <field>Account$External_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account$Market_Segment__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account$HCSC_Division__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TX,IL,NM,OK,MT</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>SalesForce Account List</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

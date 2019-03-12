@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>New_Sale_Default_Playbook__c</fullName>
+        <description>Name of the default playbook for &quot;New Sale&quot; opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the default playbook for &quot;New Sale&quot; opportunity.</inlineHelpText>
+        <label>New Sale Default Playbook</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RFP_Renewal_Default_Playbook__c</fullName>
+        <description>Name of the default playbook for &quot;RFP Renewal&quot; opportunity.</description>
+        <externalId>false</externalId>
+        <label>RFP Renewal Default Playbook</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Default_Playbook__c</fullName>
+        <description>Name of the default playbook for &quot;Renewal&quot; opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the default playbook for &quot;Renewal&quot; opportunity.</inlineHelpText>
+        <label>Renewal Default Playbook</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Playbook Settings</label>
+    <visibility>Protected</visibility>
+</CustomObject>

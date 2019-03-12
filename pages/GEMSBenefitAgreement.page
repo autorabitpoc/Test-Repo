@@ -1,0 +1,219 @@
+<!--
+/**************************************************************************************
+  Visulaforce Page Name : GEMSBenefitAgreement
+  Version               : 1.0
+  Function              : This Page is on Account Submission Case for Benefit agreement logic(For GEMS Project).
+  Modification Log      :
+* Developer           Date                   Description
+* ----------------------------------------------------------------------------   
+* Ranjit Gandhi       5/29/2017               SFDC-2776 Shared Accums - Need to capture behavioral vendor information if behavioral health is selected in Products field in Benefit agreement section of Account submission process                           
+* Offshore            03/31/2016             Original Version
+* Luke Chen           04/13/2017             Remove Save button at the bottom
+* Shankar             07/27/2017             SFDC-5155 Removed "2017 ASO BPA w/PBM (rev date 9/16 or later) attached?" and "Signed 2017 ASA and prior 2017 ASO BPA (rev date 6/16) attached?" checkboxes
+* Vijay               09/14/2017             4288-GEMS Limit users from making changes to active Acct Submission case/BAs
+* Malathi.K           09/22/2017             SFDC-5584 Display MHA when BCC is selected in the products list.
+* Phani. K            01/18/2018             SFDC-6933 GEMS: Acct Sub - Indicate which products trigger new workflows/cases on Account Submission
+* Phani. K            02/06/2018             SFDC-7445 GEMS: Acct Sub - Update language in 'Standard Products Only' pop-up for Releasing case
+*************************************************************************************/
+-->
+<apex:page standardController="case" extensions="GEMS_BenefitAgreementController" sidebar="false" showHeader="false" showChat="false" id="pageid">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+                    <script>
+                    window.onload = readOnly;
+                   
+                    function readOnly(){
+                       if('{!Case.GEMS_Ready_to_release_to_screening__c}'=='Released' && '{!$Profile.Name}'!='System Administrator')
+                         {
+                            $(":input").prop("disabled",true);
+                         }
+                          
+                       } 
+                  
+                    $('iframe').load(function() {
+                        this.style.height =
+                        this.contentWindow.document.body.offsetHeight + 'px';
+                       
+                    });
+                    
+                   
+                     function inputLimiter(e,allow) {
+                      var AllowableCharacters = '';
+    
+                       if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                       if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                       if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                       if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                          var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                          if (k!=13 && k!=8 && k!=0){
+                          if ((e.ctrlKey==false) && (e.altKey==false)) {
+                               return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                           } else {
+                           return true;
+                           }
+                          } else {
+                           return true;
+                        }
+                       }
+                    
+                    </script>
+
+    <apex:form id="formid">
+    <apex:messages style="color:red" />
+    <apex:pageblock id="pb">
+    <apex:pageblockSection columns="2"  id="pbs">
+        <apex:inputfield value="{!caseRec.GEMS_StdCust_Product__c}" id="standProdInputId" />
+        <!--SFDC-6933 Added pageBlockSection and links and labels --> 
+        <apex:pageBlockSection columns="1">
+            <apex:outputLink target="_blank" value="{!$Label.CaseTriggerMatrixLink}" title="GEMS Case Triggers" Style="color: Red;">{!$Label.GEMS_SharedAccumsBenefitAgreementInfo1}</apex:outputLink>
+            <apex:outputLink target="_blank" value="{!$Label.CaseTriggerMatrixLink}" title="GEMS Case Triggers" Style="color: Red;">{!$Label.GEMS_SharedAccumsBenefitAgreementInfo2}</apex:outputLink>
+        </apex:pageBlockSection>
+
+         <apex:inputField value="{!caseRec.Funding_Type_Multiselect__c}" onchange="changeProduct();" />
+         <apex:inputField value="{!caseRec.GEMS_Products__c}" onchange="changeProduct();"  style="height:100"/> 
+         <apex:inputField value="{!caseRec.GEMS_Private_Exchange__c}"/>                  
+         <apex:inputField value="{!caseRec.GEMS_Private_Exchange_Values__c}" /> 
+    
+         <apex:pageblockSectionitem rendered="{!integrated}" id="pbsi1">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Integrated__c.label}" />
+         <apex:outputpanel id="Integrated1">                 
+         <apex:Inputfield value="{!caseRec.GEMS_Integrated__c}" onchange="changeProduct();" Id="integrated"/> 
+         <apex:outputText id="firstName_anIdError1" style="color:red;"/>
+         </apex:outputpanel>
+         </apex:pageblockSectionitem> 
+         
+        <apex:pageblockSectionitem rendered="{!vendor}" id="pbsi2">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Vendor__c.label}"  />
+         <apex:outputpanel id="Integrated2">        
+         <apex:Inputfield value="{!caseRec.GEMS_Vendor__c}" Id="fsaVendor" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');"  />
+         <apex:outputText id="firstName_anIdError" style="color:red;"/>
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+         
+        <apex:pageblockSectionitem rendered="{!bank}" id="pbsi3">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Bank__c.label}" />
+         <apex:outputpanel id="Integrated3">        
+         <apex:Inputfield value="{!caseRec.GEMS_Bank__c}" id="bankvendor" /> 
+         <apex:outputText id="bankvendor_anIdError" style="color:red;"/>
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+         
+         <apex:pageblockSectionitem rendered="{!rxVendor}" id="pbsi4">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Rx_Vendor__c.label}" />
+         <apex:outputpanel id="Integrated">        
+         <apex:Inputfield value="{!caseRec.GEMS_Rx_Vendor__c}" onchange="changeProduct();"/> 
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem>
+        
+        <apex:pageblockSectionitem rendered="{!BehavioralHealthVendor}" id="pbsi10">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Behavioral_Health_Vendor__c.label}" />
+         <apex:outputpanel id="Integrated">        
+         <apex:Inputfield value="{!caseRec.GEMS_Behavioral_Health_Vendor__c}" onchange="changeProduct();"/> 
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem>
+         
+         <apex:pageblockSectionitem rendered="{!BCC_Product}" id="pbsi5">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_BCC_Products__c.label}" />
+         <apex:outputpanel id="Integrated">        
+         <apex:Inputfield value="{!caseRec.GEMS_BCC_Products__c}" /> 
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+         
+         <!--SFDC-5584 Display MHA when BCC Product is selected   -->
+         <apex:pageblockSectionitem rendered="{!MHA_Product}" id="pbsi11">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_MHA__c.label}" />
+         <apex:outputpanel id="Integrated">        
+         <apex:Inputfield value="{!caseRec.GEMS_MHA__c}" /> 
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+         
+         <apex:pageblockSectionitem rendered="{!displayCobra}" id="pbsi6">
+         <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Is_HCSC_Administering_COBRA__c.label}" />
+         <apex:outputpanel id="cobraCheck">        
+         <apex:Inputfield value="{!caseRec.GEMS_Is_HCSC_Administering_COBRA__c}" /> 
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+
+        <!-- 5155 - Removed "2017 ASO BPA w/PBM (rev date 9/16 or later) attached?" and "Signed 2017 ASA and prior 2017 ASO BPA (rev date 6/16) attached?" fields -->
+
+         <apex:pageblockSectionitem rendered="{!ILBPAAttach}" id="pbsi9">
+         <!--<apex:outputLabel value="2017 IL Unified BPA (revision date 9/16 or later) attached?" />-->
+         <apex:outputLabel value="2017 IL Unified HMO/Non-HMO BPA (revision date 8/16 or later) attached?" />
+         <apex:outputpanel id="ILBPAAttach">        
+         <apex:Inputfield value="{!caseRec.GEMS_X2017_IL_Unified_BPA_attached__c}" />
+         </apex:outputpanel>  
+         </apex:pageblockSectionitem> 
+         
+       <!-- Shared Accum With field commented as per the defect comment that it should not be in Benefit Aggrement sction. --> 
+       <!-- <apex:pageblockSectionitem rendered="{!displaySharedAcc}" id="pbsi7">
+            <apex:outputLabel value="{!$ObjectType.case.fields.GEMS_Shared_Accums_Shared_With__c.label}" />
+            <apex:outputpanel id="sharedAcc">
+                <apex:Inputfield value="{!caseRec.GEMS_Shared_Accums_Shared_With__c}"/>
+            </apex:outputpanel>
+        </apex:pageblockSectionitem> -->
+        
+     </apex:pageblockSection>
+   
+
+     <apex:pageblockButtons location="top">
+     
+   <!--<apex:commandButton onclick="return checkRequired();" value="Save" oncomplete="refreshPage()"/>-->
+   <apex:commandButton onclick="checkRequired();" value="Save" oncomplete="refreshPage()" />
+   
+        <apex:actionfunction name="save" action="{!Save1}"/>
+        <!--
+        <apex:actionfunction name="cancelCase" action="{!CancelAccSubCase}" oncomplete="refreshPage({!isError})"/>
+        -->
+     </apex:pageblockButtons>
+     </apex:pageblock>
+
+     <apex:actionFunction name="productCategory" action="{!checkProductCategory}" />
+     <style>
+    .labelfont{
+      display: inline-block;
+    }
+  </style>
+    </apex:form>
+    <Script>
+    function changeProduct()
+    {
+       if('{!Case.GEMS_Ready_to_release_to_screening__c}'!='Released' || '{!$Profile.Name}'=='System Administrator')
+       {
+       
+        productCategory();  
+       }
+        
+    }
+  function refreshPage()
+  { 
+      if({!isError}==false)
+      {
+          alert('Case details updated successfully');
+          var currentURL = "/{!caserec.id}"; 
+          //location.reload(true);
+          top.location.href = currentURL;
+      }
+    } 
+        
+    function checkRequired() {
+        var standardProdCheck = document.getElementById('pageid:formid:pb:pbs:standProdInputId').value;
+        if(standardProdCheck=='Standard Products only') {
+            //SFDC-7445 GEMS: Acct Sub - Update language in 'Standard Products Only' pop-up for Releasing case
+            if(confirm("By selecting 'Standard Products Only' for your product type, GEMS will skip all Screening, Pharmacy Coding and Medical Benefit Coding cases. If your case needs to be screened or coded for any reason, do not select 'Standard Products Only.' Click OK to proceed.")==true) {
+                save();
+            } else {
+                var element=document.getElementById('pageid:formid:pb:pbs:standProdInputId');
+                element.value="{!caseRec.GEMS_StdCust_Product__c}"; 
+                save();
+            }
+        }
+        else if(standardProdCheck!='Standard Products only') {
+            save();
+        }
+    }  
+    
+                  
+    </Script>
+    
+   
+</apex:page>

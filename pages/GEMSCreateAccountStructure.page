@@ -1,0 +1,187 @@
+<apex:page standardController="GEMS_Benefit_Agreement__c" extensions="GEMS_CreateAccountStructureController" recordSetVar="v" sidebar="False">
+
+
+    <script type='text/javascript'>
+    
+    function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+    </script>
+    
+    <apex:form >   
+         <apex:pageMessages id="pgMsgId"/>
+            <apex:pageBlock id="thePageBlock" title="Account Structure Case">
+            <apex:pageBlockSection >
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.Account.Name}" />
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.Account.External_ID__c}"/>  
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.HCSC_Division__c}"/>                
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.Market_Segment__c}"/>                               
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.Status}"/>
+                <apex:outputField value="{!accStr.benefitAgreements[0].BA.AccountStructureCase__r.GEMS_Account_Submission_Info__c}"/>
+            </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+        
+        <!--<apex:repeat value="{!accStr.benefitAgreements}" var="pbRecord">
+           <apex:pageBlocktable >
+                
+                <apex:column headerValue="BA No.">
+                    <apex:outputText value="{!pbRecord.ba.Name}"></apex:outputText>
+                </apex:column>
+                 <apex:repeat value="{!pbRecord.categories}" var="categoryVal">
+                        <table width="100%">
+                            <tr>
+                                <td width="40%">
+                                    <b>Category No:</b><br/>
+                                    <apex:outputText value="{!categoryVal.cat.name}"/>
+                                </td>
+                                <td width="40%">
+                                    <b>Category Description:</b><br/>
+                                    <apex:outputText value="{!categoryVal.cat.Category_Description__c}"/>
+                                </td>
+                                <td width="40%">
+                                    <b>Group Number:</b><br/>
+                                    <apex:inputtext value="{!categoryVal.groupNumber}"/>
+                                </td>
+                                <td width="40%">
+                                    <b>Group Section:</b><br/>
+                                    <apex:inputtext value="{!categoryVal.groupSection}"/> 
+                                </td>
+                                <td width="40%">
+                                    <b>Section Description:</b><br/>
+                                    <apex:inputtext value="{!categoryVal.groupSection.Section_Description__c}"/> 
+                                </td>
+                                <!--
+                                <td>
+                                    <apex:repeat value="{!categoryVal.groupSection}" var="groupSectionRec">
+                                        <apex:inputText value="{!groupSectionRec.Section_No__c}"/>
+                                        <apex:inputText value="{!groupSectionRec.Section_Description__c}"/>
+                                    </apex:repeat>
+                                </td>
+                               
+                            </tr>
+                        </table>
+                    </apex:repeat>
+                -->
+                <apex:pageblock title="Account Structure">
+                <apex:repeat value="{!accStr.benefitAgreements}" var="pbRecord">
+                    
+                    <apex:pageBlockSection title="BA# : {!pbRecord.ba.Name}       Product : {!pbRecord.ba.Product__r.Name}      Desc : {!pbRecord.ba.BA_Description__c}    Fund Type : {!pbRecord.ba.BA_Fund_Type__c}" columns="1">
+                                
+                                <!--<apex:outputText value="{!pbRecord.ba.Product__r.Name} " label="BA Product"/>
+                                <apex:outputText value="{!pbRecord.ba.BA_Description__c} "/>                 
+                                <apex:outputText value="{!pbRecord.ba.BA_Fund_Type__c} "/>-->          
+
+                    <apex:pageBlockTable id="AssociationTable" value="{!pbRecord.categories}" var="categoryVal">
+                        <apex:column headerValue="Category#" width="35px">
+                        <apex:outputField value="{!categoryVal.cat.name}"/>
+                        </apex:column>
+                        <apex:column headerValue="Description" width="80px">
+                        <apex:outputField value="{!categoryVal.cat.Category_Description__c}"/>
+                        </apex:column>
+                        
+                        <apex:column headerValue="Billing" width="10px">
+                        <apex:outputField value="{!categoryVal.cat.Usage_Billing__c}"/>
+                        </apex:column>
+                        <apex:column headerValue="Report" width="10px">
+                        <apex:outputField value="{!categoryVal.cat.Usage_Reporting__c}"/>
+                        </apex:column>
+                        
+                        <!--
+                        
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.groupSection.Account__c}"/>
+                        </apex:column>
+                        
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.catGSAssign.Category__c}"/>
+                        </apex:column>
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.catGSAssign.Group_Section__c}"/>
+                        </apex:column>
+                        
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.baGSAssign.Benefit_Agreement__c}"/>
+                        </apex:column>
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.baGSAssign.Group_Section__c}"/>
+                        </apex:column>
+                        
+                        <apex:column >
+                        <apex:outputText value="{!categoryVal.groupSection.Name}"/>
+                        </apex:column>
+                        
+                        -->
+                        
+                        <apex:column headerValue="Group Number"  width="50px">
+                        <apex:actionRegion >
+                            <apex:selectList id="countries" value="{!categoryVal.groupSection.Group_No__c}" size="1" required="true">
+                                <!--<apex:actionSupport event="onchange" rerender="AssociationTable" immediate="true" />-->
+                                <apex:selectOptions value="{!accStr.GroupNumbers}">
+                                </apex:selectOptions>
+                            </apex:selectList>   
+                            </apex:actionRegion>  
+                        </apex:column>       
+                        <apex:column headerValue="Section#" width="35px">
+                        <apex:inputField value="{!categoryVal.groupSection.Section_No__c}" OnkeyPress="return inputLimiter(event, 'Numbers');" style="width: 35px"/> 
+                        </apex:column>
+                        <apex:column headerValue="Section Description" width="60px">
+                        <apex:inputField value="{!categoryVal.groupSection.Section_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" /> 
+                        </apex:column>
+                        
+                        <apex:column headerValue="Section Eff Date" width="60px">
+                        <apex:inputField value="{!categoryVal.groupSection.Section_Eff_Date__c}" style="width: 60px"/> 
+                        </apex:column>
+                        
+                        <apex:column headerValue="Section Can Date" width="60px">
+                        <apex:inputField value="{!categoryVal.groupSection.Section_Can_Date__c}" style="width: 60px"/> 
+                        </apex:column>
+                        
+                        <apex:column headerValue="Alpha Prefix" width="60px" rendered="{!If(accStr.benefitAgreements[0].BA.AccountStructureCase__r.HCSC_Division__c == 'IL',true,false)}">
+                        <apex:inputField value="{!categoryVal.groupSection.Alpha_Prefix__c}" style="width:50px"/> 
+                        </apex:column>
+                        
+                        <apex:column headerValue="SPI Codes" width="60px" rendered="{!If(accStr.benefitAgreements[0].BA.AccountStructureCase__r.HCSC_Division__c == 'IL',true,false)}">
+                        <apex:inputField value="{!categoryVal.groupSection.SPI_Codes__c}" style="width:100px"/> 
+                        </apex:column>
+                        
+                        <apex:column headerValue="Par Plan Codes" width="60px" rendered="{!If(accStr.benefitAgreements[0].BA.AccountStructureCase__r.HCSC_Division__c == 'IL',true,false)}">
+                        <apex:inputField value="{!categoryVal.groupSection.Par_Plan_Codes__c}" style="width:100px"/> 
+                        </apex:column>
+                        
+                    </apex:pageBlockTable>
+                    
+                    </apex:pageBlockSection> 
+                    
+            </apex:repeat>
+            
+            <apex:outputPanel id="ErrorMessagePanel">
+                <apex:pageMessages id="errorMessage" />
+            </apex:outputPanel>
+           <apex:pageBlockButtons styleClass="align:center">
+            <apex:commandButton value="Save" action="{!saveAccountStructure}"  /> 
+            <apex:commandButton value="Cancel" action="{!gotoCase}" immediate="true"/> 
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

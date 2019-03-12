@@ -1,0 +1,7 @@
+Please review the {!GEMS_SBC_BB_Form__c.Form_Id__c} Request Form and take necessary action 
+
+Account Name : {!GEMS_SBC_BB_Form__c.Account_Name_Text__c}
+Form Number : {!GEMS_SBC_BB_Form__c.Form_Id__c} 
+Form Details : {!GEMS_SBC_BB_Form__c.Link} 
+
+Thanks

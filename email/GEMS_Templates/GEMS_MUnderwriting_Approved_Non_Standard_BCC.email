@@ -1,0 +1,14 @@
+Medical Underwriting has been approved for account   {!Case.Account}  - {!Case.Account_Number__c}   and Non-standard BCC product  was selected. 
+
+Please access applicable documents using the below SharePoint link and search using the Case Number.
+
+Account Name : {!Case.Account} - {!Case.Account_Number__c}
+
+Case Owner : {!Case.OwnerFullName}
+
+Case Number : {!Case.GEMS_Account_Submission_Info__c} 
+
+Document Location: https://myfyi.sharepoint.com/teams/phi_GrpSFDocs/default.aspx 
+
+
+Thank you.

@@ -1,0 +1,12 @@
+***Account Notification*** 
+
+Account Receivable, 
+The twelve month claims runout period for {!Account.Name} Group is about to expire.
+Please take the action of adding the claim stop code for this group in BlueStar when the claim runout is cancelled. 
+
+Account Details 
+Group: {!Account.Name}
+Salesforce Account Owner: {!Account.OwnerFullName}
+Cancellation Date: {!Account.Cancellation_Date__c}
+HCSC Division: {!Account.HCSC_Division__c}
+Billing Address: {!Account.BillingAddress}

@@ -1,0 +1,8 @@
+Hi 
+
+The SBC has been returned. Please review and re-send an updated SBC for approval
+
+Case Number:{!Case.CaseNumber}
+Account number: {!Case.Account}
+Case Details : {!Case.Link}
+Thanks

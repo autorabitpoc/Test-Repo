@@ -1,0 +1,7 @@
+Hi ,
+ The client has approved the account structure with cosmetic changes that do not impact the structure per se. Please update GEMS with the following changes.
+
+Account Name: {!Case.Account}
+Case Link : {!Case.Link}
+
+Thanks

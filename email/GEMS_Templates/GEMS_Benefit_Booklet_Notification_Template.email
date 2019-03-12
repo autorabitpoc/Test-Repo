@@ -1,0 +1,7 @@
+Underwriting has approved screening for the account in GEMS. This account has requested Benefit Booklet.
+
+Account Name : {!Case.Account} 
+Case Number   : {!Case.CaseNumber} 
+Case Details     : {!Case.Link}
+
+Thanks

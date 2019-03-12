@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Account</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Account.Opportunities$Owner</field>
+        </columns>
+        <columns>
+            <field>Account.Opportunities$Requested_Effective_Date__c</field>
+        </columns>
+        <columns>
+            <field>Account.Opportunities$Name</field>
+        </columns>
+        <columns>
+            <field>Account.Opportunities$CreatedDate</field>
+        </columns>
+        <columns>
+            <field>Account$Status__c</field>
+        </columns>
+        <columns>
+            <field>Account.Opportunities$Expected_Health_Contracts__c</field>
+        </columns>
+        <columns>
+            <field>Account.Opportunities$Expected_Health_Members__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Account.Opportunities$Owner</column>
+                <isUnlocked>false</isUnlocked>
+                <operator>equals</operator>
+                <value>Dan Kennedy,Rodrigo Castilleja,Rudy Sotelo,Stephen Schimmel,Nora Rodriguez,Gina Stidham,Nancy Donovan,Julie McAlister (Dieter)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Account.Opportunities$Expected_Health_Members__c</column>
+                <isUnlocked>false</isUnlocked>
+                <operator>greaterOrEqual</operator>
+                <value>500</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Account.Opportunities$Expected_Health_Contracts__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>greaterOrEqual</operator>
+                <value>500</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Accounts with Opportunities cont block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Accounts_with_Opportunities_containing_Cases__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Account.Opportunities$Requested_Effective_Date__c</dateColumn>
+            <endDate>2018-01-01</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2017-02-01</startDate>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Account</joinTable>
+    </blockInfo>
+    <description>Listing of opportunities with or without a Strategic Plan</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>SW Sales Strategic Plans</name>
+    <reportType>Accounts_with_Opportunities_containing_Cases__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

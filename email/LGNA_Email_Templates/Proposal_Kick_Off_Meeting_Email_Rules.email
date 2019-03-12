@@ -1,0 +1,25 @@
+Description: The more complex or high profile your proposal is, the more people will want to attend. Many think that sending out a kick-off meeting invitation helps set the stage and rules for the kick-off meeting – NOT TRUE. You need to set the tone before that call/meeting starts. To help do this, send out an email that goes over how the meeting will go and logistics. Include in your message when the meeting with start, putting your phone on mute and other details on what they need to be prepared for before they come. Best practices would also encourage you to NOT take attendance as it will take too much time. This isn’t school – it is a team of professionals. Leverage technology. Use tools such as WebEx so you can see the participants listed and take attendance as the meeting is progressing. 
+
+Sample Email
+Hello, and Happy %%xtdayofweek%% –
+
+I don't know about you, but I can't think of a better way to end a work week or kick start my weekend than having a proposal kick off meeting for our largest national account opportunity! First off, a special thanks to ALL of you for your commitment and support to this proposal. I know with your help and support we are going to create a winning proposal that will tell a strategy and story that will convince {!Account.Name} that there is no other solution but BLUE! 
+
+The following list represents all of the individuals that have been invited to our meeting. As you can see, if everyone attends the meeting (either in person or WebEx), we will have a large crowd. In order to maximize the {# of hours of meeting} hours scheduled and ensure we stay on track, the meeting will begin promptly at {!Activity.StartTime}. In addition, I will NOT be taking attendance as that alone could take over 10 minutes of the meeting to get through. So, to ensure that everyone has time to ask questions, part of the Agenda will include time for each area to speak/ask questions. I will organize the list based on the areas identified below. This way, once you have had time to ask questions, you will have the option to drop off the call or choose to stay for the entire meeting time. Please see attached agenda for details.
+
+In addition, to ensure no disruption during the meeting, if you are dialing in via WebEx, please make sure to put your phone on mute AND, if you receive another call, please do NOT put our line on hold. This will ensure that there isn't any unnecessary music playing during our discussion.
+
+A friendly reminder – all questions are due to the consultant by DAY, MMM DD. Please send any questions you may have to Sandi and me no later than 9:00 a.m. on DAY.
+
+Once again, thank you for your help. If you have any questions or need any additional information, please let me know. Otherwise, I will talk to you all tomorrow!
+
+Name	Area	Status
+XXX	InterPlan	TBD
+XXX	Product Development	Yes
+XXX	SDO	Yes
+XXX	Underwriting	Yes
+XXX	ITG	Tentative
+XXX	Communications	TBD
+
+{!Case.Owner}
+Phone:

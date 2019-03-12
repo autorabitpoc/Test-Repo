@@ -1,0 +1,20 @@
+<apex:page controller="SGR_LiftGateStatus">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Lift Gate" action="{!liftGate}" rerender="table"/>
+            </apex:pageBlockButtons>
+            <!-- In our table we are displaying the opportunity records -->
+            <apex:pageBlockTable value="{!Opportunity}" var="c" id="table">
+                <apex:column >
+                    <!-- This is our selected Boolean property in our wrapper class -->
+                    <apex:inputCheckbox value="{!c.selected}"/>
+                </apex:column>
+                <!-- This is how we access the contact values within our cContact container/wrapper -->
+                <apex:column value="{!c.opp.Name}" />
+                <apex:column value="{!c.opp.HCSC_Division__c}" />
+                <apex:column value="{!c.opp.SGR_Workflow_Status__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

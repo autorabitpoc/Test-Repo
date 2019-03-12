@@ -1,0 +1,48 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="SGR_GateOptyStatusChangeController">
+    <!--Declare Event Handlers--> 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <!--Declare Attributes-->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="disableButton" type="Boolean"  default="false"/>
+    <aura:attribute name="optyList" type="SGR_GateOptyStatusChangeController.OptyWrapper[]" />   
+    <aura:attribute name="isSelectAll" type="boolean" default="false"/>
+    <aura:attribute name="SelectedOptys" type="List" />
+    <aura:attribute name="SelectedOptyIds" type="List" />
+    <!--Showoing Results-->
+    <aura:handler event="c:SGR_SelectedOptyEvent" action="{!c.HandleSelOpty}"/> 
+    <div class="slds-m-around_xx-large">
+        <h1 class="slds-text-heading--medium">Opportunities</h1>
+        <div class="slds-grid slds-grid--align-center"> 
+            <button class="slds-button slds-button--brand" onclick="{!c.handleSelectedOptys}" disabled="{!v.disableButton}">Change Status</button> <!-- disabled="{!v.disableButton}" -->
+        </div><br/>
+        <!--Opportunities List Table-->
+        <aura:if isTrue="{!not(empty(v.SelectedOptys))}">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            	<thead>
+                    <th>Name</th>
+                    <th>Opportunity ID</th>
+                    <th>Account Name</th>
+                    <th>Rating Status</th>
+                    <th>SGR Workflow Status</th>
+                    <th>Gate Status</th>                    
+                </thead>
+                
+                    <aura:iteration items="{!v.SelectedOptys}" var="opty">
+                        <tbody>
+                        <td>{!opty.Name}</td>
+                        <td>{!opty.Id}</td>
+                        <td>{!opty.Account.Name}</td>
+                        <td>{!opty.Rating_Status__c}</td>
+                        <td>{!opty.SGR_Workflow_Status__c}</td>
+                        <td>{!opty.Gate__r.status__c}</td>
+                            </tbody>
+                    </aura:iteration>
+                
+            </table>
+        </aura:if>
+        <aura:if isTrue="{!empty(v.optyList)}">
+                <b>No Opportunities found.</b>
+            </aura:if><br/>
+    </div>
+    
+</aura:component>

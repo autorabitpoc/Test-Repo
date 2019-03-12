@@ -1,0 +1,182 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global" controller="SGR_ViewOppBAController">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="opportunity" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="BAId" type="String"/>
+    <aura:attribute name="userinfo" type="user"/>
+
+    <aura:attribute name="userProfileName" type="String"/>
+    <aura:attribute name="Opp" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="err" type="Boolean"/>
+    <aura:attribute name="errMsg" type="String"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="OpptyRec" type="Object"/>
+    <aura:attribute name="baList" type="List"/>
+    <aura:attribute name="baRec" type="SGR_Opportunity_Benefit_Agreement__c"/>
+    <aura:attribute name="baSortBy" type="String" required="true"
+                    default="Name"/>
+    <aura:attribute name="baSortOrder" type="String" required="true"
+                    default="ASC"/>
+
+    <aura:attribute name="ratingstatus" type="String"/>
+    <aura:attribute name="confirmLabel" type="String" default="Close"/>
+
+    <aura:attribute name="ShowPopup" type="boolean" default="false"/>
+    <aura:attribute name="headerTxt" type="String"/>
+    <aura:attribute name="buttonName" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="spinner" type="Boolean" default="false"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:handler event="c:SGR_RefreshOpty" action="{!c.updateRefresh}"/>
+    <aura:handler event="c:SGR_CancelButton" action="{!c.updateShowPopup}"/>
+    <aura:handler event="c:SGR_SelectedOptyEvent" action="{!c.defaultCloseAction}"/>
+    <!--<aura:handler event="c:SGR_RefreshBA" value="{!v.baList}" action="{!c.UpdateBA}"/> -->
+    <aura:handler event="c:SGR_CensusPlan" value="{!v.baList}" action="{!c.updateBA}"/>
+    <aura:attribute name="map1" type="map"/>
+    <aura:attribute name="key" type="id"/>
+    <aura:attribute name="value" type="list"/>
+    <aura:attribute name="customers" type="object"/>
+    <aura:attribute name="err1" type="Boolean"/>
+    <aura:attribute name="errMsg1" type="String"/>
+    <aura:attribute name="conditionCheck" type="Boolean"/>
+
+    <aura:registerEvent name="RatingStatusRefresh" type="c:RatingStatusRefresh"/>
+    <!--Added by Ravi - start-->
+    <aura:registerEvent name="IncludeExcludeBAEvent" type="c:SGR_ModifyCensusOnIncludeBAEvent"/>
+    <aura:method name="changeCensusData" action="{!c.modifyCensusData}"/>
+    <aura:method name="updateCensusInfo" action="{!c.updateCensusData}"/>
+    <aura:attribute name="selectedRecordId" type="SGR_Opportunity_Benefit_Agreement__c"
+                    default="{'sObjectType':'SGR_Opportunity_Benefit_Agreement__c'}"/>
+    <!--Added by Ravi - end-->
+
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div
+                    class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative"
+                    role="alert">
+                <div class="slds-spinner__dot-a"></div>
+
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+
+    </aura:if>
+
+
+    <aura:if isTrue="{!v.err}">
+        <span>{!v.errMsg}</span>
+        <aura:set attribute="else">
+            <!-- Placeholder for refresh button section -->
+            <force:recordData aura:id="recordLoader"
+                              recordId="{!v.recordId}"
+                              targetFields="{!v.opportunity}"
+                              targetError="{!v.recordError}"
+                              fields="Id,External_ID__c,Renewal_Date__c,Funding_Type__c,HCSC_Division__c,
+                                      Account_Market_Segment__c,sgrAccountHoldReason__c,Rating_Status__c,
+                                      SGR_Workflow_Activity__c,RecordType.Name"/>
+
+
+            <div class="slds-float_right" width="100%">
+                <aura:if isTrue="{!v.userinfo.Profile.Name == 'System Administrator' ||  
+                                 v.userinfo.Profile.Name == 'SGR UW User' ||  
+                                 v.userinfo.Profile.Name == 'SGR Actuary User'}">
+                    <lightning:button variant="brand" label="" iconName="action:refresh" iconPosition="left"
+                                      disabled="{!or(or(v.opportunity.Rating_Status__c=='Underwriting-Released',v.opportunity.Rating_Status__c=='Finalized'),or(v.opportunity.Rating_Status__c=='Marketing Release',or(v.opportunity.Rating_Status__c=='Sold',v.opportunity.Rating_Status__c=='Closed')))?true:false}"
+                                      onclick="{!c.handleRefresh}"/>
+                    <!--<lightning:button variant="brand" label="" iconName="action:refresh"  iconPosition="left" disabled="{!or(or(v.ratingstatus=='Underwriting-Released',v.ratingstatus=='Finalized'),or(v.ratingstatus=='Marketing Release',or(v.ratingstatus=='Sold',v.ratingstatus=='Closed')))?true:false}" onclick="{!c.handleRefresh}"/>-->
+
+                </aura:if>
+            </div>
+            <div class="slds-clearfix">
+                <div class="slds-clearfix">
+                    <!-- <div class="slds-float_right" width="100%" >-->
+
+                    <!-- <lightning:button variant="brand" label="" iconName="action:refresh"  iconPosition="left" disabled="{!or(or(v.opportunity.Rating_Status__c=='Underwriting-Released',v.opportunity.Rating_Status__c=='Finalized'),or(v.opportunity.Rating_Status__c=='Marketing Release',or(v.opportunity.Rating_Status__c=='Sold',v.opportunity.Rating_Status__c=='Closed')))?true:false}" onclick="{!c.handleRefresh}"/>-->
+                    <!--<lightning:button variant="brand" label="" iconName="action:refresh"  iconPosition="left" disabled="{!or(or(v.ratingstatus=='Underwriting-Released',v.ratingstatus=='Finalized'),or(v.ratingstatus=='Marketing Release',or(v.ratingstatus=='Sold',v.ratingstatus=='Closed')))?true:false}" onclick="{!c.handleRefresh}"/>-->
+                    <!-- </div>-->
+
+                </div>
+            </div>
+
+
+            <aura:iteration items="{!v.baList}" var="ba" indexVar="position">
+                <lightning:accordion aura:id="accordion"
+                                     activeSectionName="{!ba.Id}" allowMultipleSectionsOpen="true">
+                    <lightning:accordionSection class="slds-theme_shade" name="{!ba.Id}">
+
+
+                        <aura:set attribute="actions">
+                            <div class="ba-title ">
+                                <a href="{!'/one/one.app?#/sObject/'+ ba.Id + '/view'}"
+                                   target="_blank">{!'Benefit Agreeement #' +ba.Benefit_Agreement_Number__c}</a>
+                            </div>
+
+                            <span class="iba-text">Include BA?</span>
+                            <aura:if isTrue="{!ba.Include_BA__c}">
+
+                                <aura:set attribute="else">
+                                    <lightning:input aura:id="checkbox1" id="{!position}" variant="label-hidden"
+                                                     type="checkbox" checked="{!ba.Include_BA__c}"
+                                                     disabled="{!or(or(or(v.opportunity.Rating_Status__c=='Underwriting-Released',v.opportunity.Rating_Status__c=='Finalized'),or(v.opportunity.Rating_Status__c=='Marketing Release',or(v.opportunity.Rating_Status__c=='Sold',v.opportunity.Rating_Status__c=='Closed'))),and(v.userProfileName != 'System Administrator',and(v.userProfileName != 'SGR Actuary User',v.userProfileName != 'SGR UW User')))?true:false}"
+                                                     onchange="{!c.handleBAInclude}"/>
+                                </aura:set>
+
+                                <lightning:input aura:id="checkbox" id="{!position}" variant="label-hidden" label="test"
+                                                 type="checkbox" checked="{!ba.Include_BA__c}"
+                                                 disabled="{!or(or(or(v.opportunity.Rating_Status__c=='Underwriting-Released',v.opportunity.Rating_Status__c=='Finalized'),or(v.opportunity.Rating_Status__c=='Marketing Release',or(v.opportunity.Rating_Status__c=='Sold',v.opportunity.Rating_Status__c=='Closed'))),and(v.userProfileName != 'System Administrator',and(v.userProfileName != 'SGR Actuary User',v.userProfileName != 'SGR UW User')))?true:false}"
+                                                 onchange="{!c.handleBAExclude}"/>
+
+                            </aura:if>
+                        </aura:set>
+
+
+                        <!--new method-->
+                        <aura:set attribute="body">
+                            <div width="100%">
+                                <c:SGR_OppBADetails baRec="{!ba}"/>
+                                <!-- Placeholder for Group section -->
+                                <!--<aura:if isTrue="{!(v.customers==null)}"-->
+                                <aura:if isTrue="{!v.err1}">
+                                    <span>{!v.errMsg1}</span>
+                                    <aura:set attribute="else">
+                                        <aura:iteration items="{!v.customers}" var="cus" indexVar="key">
+
+                                            <aura:if isTrue="{!(cus.key == ba.Id[0])}">
+                                                <aura:if isTrue="{!not(empty(cus.value))}">
+
+                                                    <c:SGR_GetGroupSection gsRec="{!cus.value}"/>
+                                                    <aura:set attribute="else">
+                                                        No group section found for this benefit agreement.
+                                                    </aura:set>
+                                                </aura:if>
+
+                                            </aura:if>
+
+                                        </aura:iteration>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </aura:set>
+
+                        <!--new-->
+
+                    </lightning:accordionSection>
+
+                </lightning:accordion>
+            </aura:iteration>
+        </aura:set>
+    </aura:if>
+
+    <div>
+        <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                           confirmLabel="Cancel"
+                           actionLabel="Change Status"
+                           isOpen="{!v.ShowPopup}"
+                           buttonName="{!v.buttonName}"/>
+    </div>
+</aura:component>

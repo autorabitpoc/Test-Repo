@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>SGR_AccountRenewalBatch_test</testClassName>
+    <testClassName>SGR_AccountRenewalsHelper_test</testClassName>
+    <testClassName>SGR_RenewalProcessor_Test</testClassName>
+    <testClassName>SGR_ViewGateControllerTest</testClassName>
+</ApexTestSuite>

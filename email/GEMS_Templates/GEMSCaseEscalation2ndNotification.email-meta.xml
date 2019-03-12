@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>GEMS SLA 2nd email notification when case is escalated.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Case escalation 2nd notification</name>
+    <style>none</style>
+    <subject>{!Case.Account} - {!Case.Account_Number__c} - {!Case.GEMS_Case_Effective_Date__c} - {!Case.GEMS_Process_Name__c} - 2nd SLA escalation</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

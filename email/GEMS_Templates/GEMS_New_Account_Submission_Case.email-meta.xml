@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification Template created for New Account Submission Case</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS New Account Submission Case</name>
+    <style>none</style>
+    <subject>New Account Submission Case has been created</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

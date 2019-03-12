@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SR - Enrollment Unstaffed Events</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SR - Enrollment Unstaffed Events</name>
+    <style>none</style>
+    <subject>Enrollment Specialist not assigned for this event.</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

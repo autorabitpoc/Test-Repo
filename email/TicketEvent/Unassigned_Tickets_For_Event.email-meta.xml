@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>email template to notify the ticket requester of unassigned tickets</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Unassigned Tickets For Event</name>
+    <style>none</style>
+    <subject>Unassigned Tickets for {!Ticket__c.Ticket_Event__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

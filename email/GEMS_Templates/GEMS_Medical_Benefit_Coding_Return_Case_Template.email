@@ -1,0 +1,7 @@
+The Medical Benefit Coder has returned the case for clarification. Please provide a response. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

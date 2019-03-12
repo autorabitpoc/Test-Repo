@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email Template: AR Cancellation - Group Section</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>AR Cancellation - Group Section</name>
+    <style>none</style>
+    <subject>{!Case.Group_Account_Number__c} - {!Case.Account}: Group Section Cancellation Effective [as of Date]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

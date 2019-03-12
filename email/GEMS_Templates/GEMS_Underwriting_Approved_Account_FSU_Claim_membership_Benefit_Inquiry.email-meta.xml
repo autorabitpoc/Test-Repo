@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>related to UW worksheet last requirement</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>GEMS Underwriting Approved Account (FSU Claim.membership,Benefit Inquiry)</name>
+    <style>none</style>
+    <subject>Underwriting has approved the account - {!Case.Account}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

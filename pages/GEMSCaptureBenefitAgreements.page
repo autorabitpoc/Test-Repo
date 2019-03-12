@@ -1,0 +1,170 @@
+<apex:page standardController="GEMS_Benefit_Agreement__c" extensions="GEMS_CaptureBenefitAgreementsController" recordSetVar="v" sidebar="False">
+
+    <script type='text/javascript'>
+    
+    function inputLimiter(e,allow) {
+                var AllowableCharacters = '';
+    
+                if (allow == 'Letters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';}
+                if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+                if (allow == 'NameCharacters'){AllowableCharacters=' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-.\'';}
+                if (allow == 'NameCharactersAndNumbers'){AllowableCharacters='1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'';}
+    
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                    return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+                    } else {
+                    return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+            
+                        
+            function validate() {
+             var word = document.getElementById('{!$Component.TheForm.BA.newBATable.BANos.BANo}').value;
+             alert('value is ');
+             if (word.length > 4) {
+                 alert('BA No. length');
+               return false; // keep form from submitting
+             }
+             return true;
+            }
+    </script>
+    
+  <apex:form id="TheForm">        
+        <apex:pageMessages id="pgMsgId"/>
+        <apex:pageBlock id="thePageBlock" title="Account Structure Case">
+            <apex:pageBlockSection >
+                <apex:outputField value="{!ParCase.Account.Name}" />
+                <apex:outputField value="{!ParCase.Account.External_ID__c}"/>  
+                <apex:outputField value="{!ParCase.GEMS_Case_Effective_Date__c}"/>
+                <apex:outputField value="{!ParCase.HCSC_Division__c}"/>                
+                <apex:outputField value="{!ParCase.GEMS_Submission_Type__c}"/>
+                <apex:outputField value="{!ParCase.GEMS_Submission_Sub_Type__c}"/> 
+                <apex:outputField value="{!ParCase.Market_Segment__c}"/>                               
+                <apex:outputField value="{!ParCase.GEMS_Line_of_Business__c}"/>                
+                <apex:outputField value="{!ParCase.Status}"/>
+                <apex:outputField value="{!ParCase.GEMS_Account_Submission_Info__c}"/>
+            </apex:pageBlockSection>
+      </apex:pageBlock>
+     
+      <apex:pageBlock id="BA" title="Benefit Agreement Details">
+            <apex:variable value="{!0}" var="rowNumber" />          
+            <apex:outputPanel id="panelWithVar">
+                <apex:variable value="{!0}" var="rowNumber" />
+            </apex:outputPanel>
+        
+            <apex:pageBlockTable id="newBATable" value="{!listOfBAs}" var="c">
+            
+                <apex:column headerValue="Select" width="10px">
+                    <apex:inputCheckbox value="{!c.isSelected}"/>
+                </apex:column>
+                
+                <apex:column headerValue="Action" width="10px">
+                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                    <apex:commandLink action="{!removeRow}" value="Del" style="color: #015BA7;font-weight:bold" reRender="newBATable,panelWithVar" immediate="true" >
+                        <apex:param name="p1" value="{!rowNumber}" assignTo="{!numberOfRowToRemove}"/>
+                        <apex:param name="p2" value="{!c.BA.Id}" assignTo="{!recordToDelete}"/>
+                    </apex:commandLink>
+                </apex:column>
+            
+                <apex:column id="BANos" headerValue="BA No." width="10px">
+                    <apex:inputField id="BANo" value="{!c.BA.Name}" OnkeyPress="return inputLimiter(event, 'Numbers');" onkeydown="return validate();" style="width:30px"/>
+                </apex:column>
+                
+                <apex:column headerValue="Product Type" width="35px">
+                    <apex:inputField value="{!c.BA.Product__c}" style="width:100px"/>
+                </apex:column>
+                
+                                
+                <apex:column headerValue="BA Product" width="20px">
+                    <apex:inputField value="{!c.BA.Plan__c}" style="width:100px"/>
+                </apex:column>
+                                 
+                                                                        
+                <apex:column headerValue="BA Fund Type" width="15px">
+                    <apex:inputField value="{!c.BA.BA_Fund_Type__c}" style="width:70px">
+                    <apex:actionSupport event="onchange" rerender="newBATable" status="status"/>
+                    </apex:inputField>
+                </apex:column>
+ 
+                <apex:column headerValue="BA Description" width="30px">
+                    <apex:inputField value="{!c.BA.BA_Description__c}" OnkeyPress="return inputLimiter(event, 'NameCharactersAndNumbers');" style="width:100px"/>
+                </apex:column>
+                
+                <!--
+                <apex:column headerValue="ID Card Type" width="3%" rendered="{!ParCase.GEMS_Is_Account_Derivated__c == true}">
+                    <apex:inputField value="{!c.BA.Schedule__c}" />
+                </apex:column>
+                
+                -->
+
+                
+                <!--<apex:column headerValue="Billing Profile" width="3%" rendered="{!IF(renderMe == 0, true, false)}">-->
+                    
+               <apex:column headerValue="Billing Profile" width="3%">
+                    <apex:inputField value="{!c.BA.Billing_Profile__c}" style="width:100px" rendered="{!IF(c.BA.BA_Fund_Type__c == 'PREM', true, false)}"/>
+                </apex:column>
+                
+                <!--<apex:column headerValue="Billing Association" width="3%" rendered="{!IF(renderMe == 1, true, false)}">-->
+                <apex:column headerValue="Billing Association" width="3%">
+                    <apex:inputField value="{!c.BA.Billing_Assoc__c}" style="width:100px" rendered="{!IF(c.BA.BA_Fund_Type__c == 'ASO', true, false)}"/>
+                </apex:column>               
+                
+                <apex:column headerValue="ID Card Type" width="3%" rendered="{!If(ParCase.HCSC_Division__c == 'IL',true,false)}">
+                    <apex:inputField value="{!c.BA.ID_Card_Type__c}" style="width:70px" />
+                </apex:column>
+                
+                <!--
+                <apex:column headerValue="Prescription Drug Type" width="3%" rendered="{!If(ParCase.HCSC_Division__c == 'IL',true,false)}">
+                    <apex:inputField value="{!c.BA.Prescription_Drug_Type__c}" style="width:50px"/>
+                </apex:column>
+            
+                <apex:column headerValue="Copays" width="3%" rendered="{!If(ParCase.HCSC_Division__c == 'IL',true,false)}">
+                    <apex:inputField value="{!c.BA.Copays__c}" style="width:50px"/>
+                </apex:column>
+                
+                                <apex:column headerValue="Dental Product Type" width="3%" rendered="{!If(ParCase.HCSC_Division__c == 'IL',true,false)}">
+                    <apex:inputField value="{!c.BA.Dental_Product_Type__c}" style="width:70px"/>
+                </apex:column>
+                
+                -->
+                <apex:column headerValue="Schedule" width="3%" rendered="{!ParCase.HCSC_Division__c == 'TX'}">
+                    <apex:inputField value="{!c.BA.Schedule__c}" style="width:50px"/>
+                </apex:column>
+                
+                
+                
+                <!--<apex:column headerValue="Product">
+                    <apex:inputField value="{!c.BA.BA_Product__c}" />
+                </apex:column>-->
+
+                
+                 <!--<apex:column headerValue="Usage - Reporting">
+                    <apex:inputField value="{!c.category.Usage_Mailing__c}" />
+                </apex:column>
+                
+                 <apex:column headerValue="Usage - Reporting">
+                    <apex:inputField value="{!c.category.Usage_Product__c}" />
+                </apex:column>-->
+                
+            </apex:pageBlockTable>
+                        
+            <div id="AddNewButton">
+                    <apex:commandButton value="Add New" action="{!addBA}" reRender="newBATable,panelWithVar" />
+            </div>
+            
+            <center>
+                <!--<apex:commandButton value="Save" action="{!saveBAs}"  reRender="newBATable,panelWithVar" />-->
+                <apex:commandButton value="Cancel" action="{!gotoCase}" immediate="true"/>
+                <apex:commandButton value="Save & Assign Category" action="{!saveBAs}" />
+
+            </center>
+           
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

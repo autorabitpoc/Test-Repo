@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use if UW advises that a group cannot renew in a BBF plan</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BBF - Decline to Renew - Broker</name>
+    <style>none</style>
+    <subject>Blue Balance Funded Renewal Information for {!Case.Group_Account_Number__c} - {!Case.Account} {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

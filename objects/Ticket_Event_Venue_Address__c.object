@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Holds data for Ticket Event  Street and City. Referenced in Ticket Distribution class.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Venue_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Venue City</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Venue_Street__c</fullName>
+        <externalId>false</externalId>
+        <label>Venue Street</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Venue_ZipCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Venue ZipCode</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Ticket Event Venue Address</label>
+    <visibility>Public</visibility>
+</CustomObject>

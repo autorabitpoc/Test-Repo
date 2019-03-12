@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Controls SGR Triggers</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Trigger_Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checking indicates that Trigger will execute</description>
+        <externalId>false</externalId>
+        <label>Trigger Is Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Trigger_Name__c</fullName>
+        <description>Name of the Trigger Class</description>
+        <externalId>false</externalId>
+        <label>Trigger Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trigger_SubMethod__c</fullName>
+        <description>Method inside the Trigger to be controlled.</description>
+        <externalId>false</externalId>
+        <label>Trigger SubMethod</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>SGR Trigger Settings</label>
+    <listViews>
+        <fullName>Values_and_Details</fullName>
+        <columns>NAME</columns>
+        <columns>Trigger_Name__c</columns>
+        <columns>Trigger_SubMethod__c</columns>
+        <columns>Trigger_Is_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Values and Details</label>
+    </listViews>
+    <visibility>Public</visibility>
+</CustomObject>

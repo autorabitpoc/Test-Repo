@@ -1,0 +1,266 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasSObjectName" access="global" controller="Sgr_displayCensus" >
+    <aura:attribute name="enableAddRow" type="boolean" default="false"/>
+    <aura:attribute name= "CurrentTabName" type = "String" default = "Health"/>
+    <aura:attribute type="SGR_Opportunity_Census__c[]" name="data"/>
+    <aura:attribute name="CensusList" type="SGR_Opportunity_Census__c[]"/>
+    <aura:attribute name="CensusListHealth" type="SGR_Opportunity_Census__c[]"/>
+    <aura:attribute name="CensusListVision" type="SGR_Opportunity_Census__c[]"/>
+    
+    <aura:attribute name="Opportunity" type="Object"/>
+    <!--Ravi Start-->
+    <aura:attribute name="CensusListBackUp" type="SGR_Opportunity_Census__c[]"/>
+    <aura:attribute name="CensusListHealthBackUp" type="SGR_Opportunity_Census__c[]"/>
+    <aura:attribute name="CensusListVisionBackUp" type="SGR_Opportunity_Census__c[]"/>
+    <!--Ravi End -->
+    <aura:attribute name="newRecord" type="object"/>
+    <aura:attribute name="Headers" type="List"/>
+    <aura:attribute name="Healthfilter" type="Boolean" default="false"/>
+    <aura:attribute name="TabfilterHealth" type="Boolean" default="false"/>
+    <aura:attribute name="TabfilterDental" type="Boolean" default="false"/>
+    <aura:attribute name="TabfilterVision" type="Boolean" default="false"/>
+    <aura:attribute name="HealthHeaders" type="List"/>
+    <aura:attribute name="DentalHeaders" type="List"/>
+    <aura:attribute name="VisionHeaders" type="List"/>
+    <aura:attribute name="userinfo" type="user" />
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="showRowNumberColumn" type="Boolean" default="false"/>
+    <aura:attribute name="totalSubscribers" type="Integer"/>
+    <aura:attribute name="totalMembers" type="Integer"/>
+    <aura:attribute name="errors" type="Object" default="[]"/>
+    <aura:attribute name="openPopup" type="boolean" default="false"/>
+    <aura:attribute name="Deletecen" type="boolean" default="false"/>
+    <aura:attribute name="addSubscriberModal" type="boolean" default="false"/>
+    <aura:attribute name="isDisabled" type="boolean" default="false"/>
+    <aura:attribute name="draftValues" type="SGR_Opportunity_Census__c[]" default="[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:SGR_SelectedOptyEvent" action="{!c.CloseEventHandler}"/> 
+    <aura:registerEvent name="CensusGetRow" type="c:SGR_DisplayCensusGetRow"/>
+    
+    <aura:registerEvent name="editRow" type="c:Sgr_DisplayCensusEditRow"/>
+    <aura:attribute name="ShowPopup" type="boolean" default="false" />
+    <aura:attribute name="headerTxt" type="String"/>
+    <aura:attribute name="buttonName" type="String"/>
+   
+    <!--vijaya-->
+    <aura:attribute name="selectedRows" type="List" /> <!-- The rows to be displayed. -->
+    <aura:attribute name="rowsSelected" type="List" /> <!-- The rows to be saved and displayed latter. -->
+    <aura:attribute name="disableDelete" type="boolean" default="false" />
+    <aura:attribute name="booleanVar" type="boolean" default="false"/>
+    <aura:handler event="force:refreshView" action="{!c.isRefreshed}" />
+    <aura:handler event="c:SGR_RefreshOpty" action="{!c.UpdateRefresh}"/>
+    <aura:attribute name="baCheckResults" type="Object" />
+    
+   <!-- <aura:attribute name="spinner" type="Boolean" default="false" />
+    
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}" />
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}" /> -->
+    <aura:attribute name="HealthIsChecked" type="boolean" default="true"/>
+    <aura:attribute name="DentalIsChecked" type="boolean" default="true"/>
+    <aura:attribute name="VisionIsChecked" type="boolean" default="true"/>
+    <aura:attribute name="displayHealthTab" type="boolean" default="false" />
+    <aura:attribute name="displayDentalTab" type="boolean" default="false" />
+    <aura:attribute name="displayVisionTab" type="boolean" default="false" />
+    <aura:attribute name="DOB" type="date" />
+    <aura:attribute name="showSaveCancelBtn" type="boolean" default="false"/>
+    <aura:handler event="c:SGR_DeleteHealthCensus" action="{!c.deleteHealthCensus}"/>
+    <aura:handler event="c:SGR_DeleteDentalCensus" action="{!c.deleteDentalCensus}"/>    
+    <aura:registerEvent name="lightningEvent" type="c:refreshOptyRatingStatus"/>
+    <aura:registerEvent name="RatingStatusRefresh" type="c:RatingStatusRefresh"/>
+    <aura:handler event="c:SGR_Census_Tab" action="{!c.handlesubscriberfilter}"/> 
+    <aura:handler event="c:SGR_CensusDependent_Tab" action="{!c.handlesubscriberfilter}"/>
+    <aura:registerEvent name="Censussubtab" type="c:SGR_CensusDependent_Tab"/>
+    <!-- Ravi Clone -->
+    <aura:attribute name="marketingPlanNumber" type="List"  />
+    
+    <!-- Ravi Clone -->
+    <!--Added by Ravi-->
+    <aura:handler event="c:SGR_ModifyCensusOnIncludeBAEvent" action="{!c.handleIncludeExcludeBAModification}"/>
+    <!--Roopa added the condition -->
+    
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div
+                 class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative"
+                 role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        
+    </aura:if>
+    
+    <div class="slds-float_right" width="100%">
+        <lightning:button variant="brand" label="" iconName="action:refresh"  iconPosition="left" disabled="{!v.disableDelete}" onclick="{!c.handleRefresh}"/>
+    </div>
+    <lightning:tabset>
+        <aura:if isTrue="{!v.displayHealthTab}"> 
+        <lightning:tab label="Health" onactive="{!c.HealthHeaders}" > 
+            
+            <!--Nidhi: links to show subscribers and dependents data-->
+            <div align="right">
+                <a href="javascript:void(0)" onclick="{!c.handleSubLink}" font-size="100px" id="sub">
+                    View Subscribers only 
+                </a><a>|</a>
+                <a href="javascript:void(0)" onclick="{!c.handleSubDepLink}" id="subdep">
+                    View Subscribers + Dependents 
+                </a>
+                <lightning:button label="Add Subscriber" onclick="{!c.addSubscriber}"  disabled="{!v.disableDelete}"/>
+                <!--Vijaya - button to delete dependents-->
+                <lightning:button label="Delete" onclick="{!c.handleDelete}"  disabled="{!v.disableDelete}"/>
+                
+                
+            </div>
+            
+            <lightning:accordion activeSectionName="A">
+                <lightning:accordionSection label="Health Census Information" name="A">
+                    <!-- <lightning:button label="Add Row" class="{!v.enableAddRow==true?'slds-show':'slds-hide'}" variant="brand" onclick="{!c.addRowHealth}"></lightning:button> -->
+                    <aura:if isTrue="{!v.CensusListHealth.length>0}"> 
+                        
+                        <lightning:datatable  
+                                             columns="{! v.HealthHeaders }"
+                                             data="{! v.CensusListHealth }"                                 
+                                             keyField="Id"
+                                             draftValues="{! v.draftValues }"
+                                             class="slds-scrollable--x slds-table slds-table_striped row-style"
+                                             onsave="{! c.handleSaveEdition }"
+                                             minColumnWidth="50"
+                                             maxColumnWidth="150"
+                                             showRowNumberColumn="false"
+                                             onrowaction="{!c.handleNewRow}"
+                                             selectedRows="{!v.selectedRows}"
+                                             onrowselection="{!c.getSelectedRows}"
+                                             />
+                        <div class="slds-grid" >
+                            <div class="slds-col slds-size_2-of-12">
+                                Total # of Subscribers <br/>
+                                {!v.totalSubscribers}
+                            </div>
+                            <div class="slds-col slds-size_10-of-12">
+                                Total # of Members <br/>
+                                {!v.totalMembers}
+                            </div>              
+                        </div>
+                        <aura:set attribute="else">
+                            <b>There are no records to display</b>
+                        </aura:set>
+                    </aura:if>
+                </lightning:accordionSection></lightning:accordion>
+            
+            
+        </lightning:tab>
+        <!-- <lightning:tab label="Census" onactive="{!c.handleSubLink}" > </lightning:tab> -->
+        </aura:if> 
+        <aura:if isTrue="{!v.displayDentalTab}">
+        <lightning:tab label="Dental" onactive="{!c.DentalHeaders}">
+            <div align="right">
+                <a href="javascript:void(0)" onclick="{!c.handleSubLink}" font-size="100px" id="sub">
+                    View Subscribers only 
+                </a><a>|</a>
+                <a href="javascript:void(0)" onclick="{!c.handleSubDepLink}" id="subdep">
+                    View Subscribers + Dependents 
+                </a>
+                <lightning:button label="Add Subscriber" onclick="{!c.addSubscriber}"  disabled="{!v.disableDelete}"/>
+                <lightning:button label="Delete" onclick="{!c.handleDental}"  disabled="{!v.disableDelete}"/> 
+            </div>
+            
+            <lightning:accordion activeSectionName="A">
+                <lightning:accordionSection label="Dental Census Information" name="A">
+                    <!-- <lightning:button label="Add Row" class="{!v.enableAddRow==true?'slds-show':'slds-hide'}" variant="brand" onclick="{!c.addRowDental}"></lightning:button> -->
+                    <aura:if isTrue="{!v.CensusList.length>0}" >
+                        <lightning:datatable data="{!v.CensusList}"
+                                             columns="{!v.DentalHeaders}"
+                                             keyField="Id"
+                                             errors="{! v.errors }"
+                                             draftValues="{! v.draftValues }"
+                                             minColumnWidth="70"
+                                             maxColumnWidth="200"
+                                             showRowNumberColumn="false"
+                                             class="slds-scrollable--x slds-table_striped row-style"
+                                             onsave="{! c.handleSaveEdition }"
+                                             onrowaction="{!c.handleNewRow}"
+                                             selectedRows="{!v.selectedRows}"
+                                             onrowselection="{!c.getSelectedRows}"
+                                             />
+                        
+                        <div class="slds-grid" >
+                            <div class="slds-col slds-size_2-of-12">
+                                Total # of Subscribers <br/>
+                                {!v.totalSubscribers}
+                            </div>
+                            <div class="slds-col slds-size_10-of-12">
+                                Total # of Members <br/>
+                                {!v.totalMembers}
+                            </div>              
+                        </div>
+                        <aura:set attribute="else">
+                            <b>There are no records to display</b>
+                        </aura:set>
+                    </aura:if>
+                </lightning:accordionSection></lightning:accordion>
+        </lightning:tab>
+        </aura:if>
+        <aura:if isTrue="{!v.displayVisionTab}">
+        <lightning:tab label="Vision" onactive="{!c.VisionHeaders}">
+            <!--  <lightning:tab label="Vision" > -->
+            <div align="right">
+                <a href="javascript:void(0)" onclick="{!c.handleSubLink}" font-size="100px" id="sub">
+                    View Subscribers only 
+                </a><a>|</a>
+                <a href="javascript:void(0)" onclick="{!c.handleSubDepLink}" id="subdep">
+                    View Subscribers + Dependents 
+                </a>
+            </div>
+            <lightning:accordion activeSectionName="A">
+                <lightning:accordionSection label="Vision Census Information" name="A">
+                    <!-- <lightning:button label="Add Row" class="{!v.enableAddRow==true?'slds-show':'slds-hide'}" variant="brand" onclick="{!c.addRowVision}"></lightning:button> -->
+                    <aura:if isTrue="{!v.CensusListVision.length>0}">
+                        <div>
+                            <p style="color:red">Vision Coverage can not be deleted without deleting Health Coverage.  If you delete the Health Coverage, Vision Coverage (if it exist) will also be deleted.</p>
+                        </div>
+                        <lightning:datatable data="{! v.CensusListVision }"
+                                             columns="{!v.VisionHeaders }"
+                                             keyField="Id"
+                                             errors="{! v.errors }"
+                                             draftValues="{! v.draftValues }"
+                                             minColumnWidth="70"
+                                             maxColumnWidth="200"
+                                             showRowNumberColumn="false"
+                                             class="slds-scrollable--x slds-table_striped row-style"
+                                             onsave="{! c.handleSaveEdition }"
+                                             onrowaction="{!c.handleNewRow}"
+                                             hideCheckboxColumn="true"
+                                             
+                                             />
+                        
+                        <div class="slds-grid label-style">
+                            <div class="slds-col slds-size_2-of-12 label-style">
+                                Total # of Subscribers <br/>
+                                {!v.totalSubscribers}
+                            </div>
+                            <div class="slds-col slds-size_10-of-12 label-style">
+                                Total # of Members <br/>
+                                {!v.totalMembers}
+                            </div>              
+                        </div>
+                        <aura:set attribute="else">
+                            <b>There are no records to display</b>
+                        </aura:set>
+                    </aura:if>
+                </lightning:accordionSection></lightning:accordion>
+        </lightning:tab>
+        </aura:if>
+    </lightning:tabset>
+    <div class="{!v.openPopup==true?'slds-show':'slds-hide'}">
+        <c:SGR_DisplayCensusPopup />
+    </div>
+    <div > 
+        <c:SGR_DialogPopup headerTxt="{!v.headerTxt}"
+                           confirmLabel="Cancel" 
+                           actionLabel="Change Status"
+                           isOpen = "{!v.ShowPopup}"
+                           buttonName="{!v.buttonName}"/>
+    </div>
+    
+    
+</aura:component>

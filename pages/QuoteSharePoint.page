@@ -1,0 +1,39 @@
+<apex:page showHeader="false" standardController="Quote" extensions="QuoteFilesConnect" sidebar="false">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <apex:form >
+    
+        <style>
+            .space{
+                height:7px;
+            }
+            
+            .errorStyling{
+                line-height: 20px;
+                border-color: #ececec;
+                border-style: solid;
+                border-width: .5px;
+            }            
+                       
+        </style>
+          <apex:actionFunction action="{!verifySharePointButton}" name="verifyButton" reRender="pageMessages,sharepointLink"/>
+            <script>
+            $( document ).ready(function() {
+                verifyButton();
+            });
+        </script>
+        <apex:outputPanel id="pageMessages">
+            <apex:pageMessages id="messages" />
+        </apex:outputPanel>
+        <apex:pageBlock id="sharepointPage" title="View QuoteRequest Folders" >   
+            <apex:pageBlockButtons location="top">
+                <apex:outputPanel id="sharepointLink">
+                    <apex:outputLink target="_blank" value="{!folderlink}" styleClass="btn">Link to Sharepoint-View QuoteRequests </apex:outputLink>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>        
+            <apex:outputPanel >
+                    <p class="errorStyling">&nbsp;No records to display</p>        
+            </apex:outputPanel>
+           
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

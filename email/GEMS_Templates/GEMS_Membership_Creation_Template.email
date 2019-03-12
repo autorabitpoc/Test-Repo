@@ -1,0 +1,7 @@
+Please proceed with the Membership process for the following account:
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link}
+
+Thanks

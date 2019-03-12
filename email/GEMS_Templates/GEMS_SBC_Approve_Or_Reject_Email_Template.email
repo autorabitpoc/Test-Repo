@@ -1,0 +1,7 @@
+Submitter has reviewed the SBC. Please take action based on the disposition on the SBC case. 
+
+Account Name: {!Case.Account} 
+Case Number: {!Case.CaseNumber} 
+Case Details: {!Case.Link} 
+
+Thanks

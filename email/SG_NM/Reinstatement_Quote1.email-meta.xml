@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This is to be used when sending reinstatement quotes and remit to information when groups become cancelled due to delinquency.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Reinstatement Quote</name>
+    <style>none</style>
+    <subject>Reinstatement Quote {!Case.Group_Account_Number__c} - {!Case.Account} Case #: {!Case.Id}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

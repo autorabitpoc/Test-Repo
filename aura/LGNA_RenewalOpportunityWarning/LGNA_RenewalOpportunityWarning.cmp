@@ -1,0 +1,36 @@
+<!-- Ranjit Gandhi       03/27/2018    SFDC-8771 Group Account - Renewal Opportunity Button-->
+<aura:component controller="LGNA_RenewalWarningMessageCntlr" implements="force:lightningQuickActionWithoutHeader,force:appHostable,force:hasRecordId"> 
+<aura:attribute name="recordId" type="String" />
+<aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+<aura:attribute name="errorFlag" type="Boolean" default="false"/>
+<aura:attribute name="errorFlagdef" type="Boolean" default="false"/>
+<aura:attribute name="opphasRecordsList" type="Opportunity[]" />
+
+<div class="" style="height:640px;">
+	<div role="dialog" tabindex="-1" class="slds-modal--form slds-modal slds-fade-in-open">
+		<div class="slds-modal__container">
+			<aura:if isTrue="{!v.errorFlag}">
+			<div class="slds-modal__header slds-theme--warning">				
+				<h2 class="slds-text-heading--medium slds-truncate" title="Warning">Warning</h2>
+			</div>
+			</aura:if>
+				<div class="slds-modal__content slds-p-around--medium"><br/><br/>
+					<aura:if isTrue="{!v.errorFlag}">
+                        <b>"An Opportunity already exists for this Account, for this year. <br/>Proceed only if you intend to create a new Opportunity." </b>
+					</aura:if>
+                    <br/><br/>
+					<aura:if isTrue="{!v.errorFlagdef}">                  
+						 <c:LGNA_CreateNewOffCycleChange recordId="{!v.recordId}" recordTypeid="01233000000QMPD"/>
+					</aura:if>	
+				</div>   
+			<aura:if isTrue="{!v.errorFlag}">
+			<div class="slds-modal__footer mobileViewHeader">
+				<lightning:button class="slds-button" variant="neutral" label="Cancel" onclick="{!c.cancel}" />
+				<lightning:button class="slds-button" variant="brand" label="Proceed" onclick="{!c.createOpp}" />
+			</div>
+			</aura:if>
+		</div>
+	</div>
+</div>
+ <div aura:id="requestopp"/>
+</aura:component>

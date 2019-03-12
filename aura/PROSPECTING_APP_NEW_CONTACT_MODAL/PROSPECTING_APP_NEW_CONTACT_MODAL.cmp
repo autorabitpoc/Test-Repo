@@ -1,0 +1,71 @@
+<aura:component controller="ProspectingAppNewContactModalController">
+    <aura:attribute name="newContact" type="Contact" default="{'sobjectType':'Contact', 'AccountId':'', 'RecordTypeId':''}"/>
+    <aura:attribute name="curAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    <aura:registerEvent name="updateContactList" type="c:PROSPECTING_APP_UPDATE_CONTACT_LIST_EVT"/>
+
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" onclick="{!c.closeComp}" title="Close">
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">New Contact</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div>
+                    <div class="slds-scrollable--y" style="max-height: 50vh;">
+                        <div class="slds-grid slds-grid--vertical">
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-m-right--xx-small slds-size--1-of-2">
+                                    	<lightning:select class="slds-size--2-of-3" name="contactRecordType" label="Record Type" aura:id="contactRecordType"/>
+                                    </div>
+                                    <div class="slds-col slds-size--1-of-2">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-m-top--small">
+                                <h1 style="font-size: 130%">Information</h1>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-m-right--xx-small slds-size--1-of-2">
+                                        <lightning:input type="text" name="firstName" label="First Name" required="true" value="{!v.newContact.FirstName}"/>
+                                        <lightning:input type="text" name="title" label="Title" value="{!v.newContact.Title}"/>
+                                        <lightning:input aura:id="inputEmail" type="email" name="email" label="Email" required="true" value="{!v.newContact.Email}"/>
+                                    </div>
+                                    <div class="slds-col slds-size--1-of-2">
+                                        <lightning:input type="text" name="lastName" label="Last Name" required="true" value="{!v.newContact.LastName}"/>
+                                        <ui:inputPhone class="slds-input" label="Phone" value="{!v.newContact.MobilePhone}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-m-top--small">
+                                <h1 style="font-size: 130%">Address</h1>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-m-right--xx-small slds-size--1-of-2">
+                                        <lightning:input type="text" name="street" label="Street" value="{!v.newContact.MailingStreet}"/>
+                                        <lightning:input type="text" name="state" label="State" value="{!v.newContact.MailingState}"/>
+                                    </div>
+                                    <div class="slds-col slds-size--1-of-2">
+                                        <lightning:input type="text" name="city" label="City" value="{!v.newContact.MailingCity}"/>
+                                        <lightning:input type="text" name="postalCode" label="Postal Code" value="{!v.newContact.MailingPostalCode}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeComp}">Close</button>
+                <button class="slds-button slds-button--brand" onclick="{!c.saveContact}">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop--open"></div>
+    
+    <div><lightning:spinner aura:id="contactModalSpinner" variant="brand" size="medium" class="slds-hide spinnerStyling"/></div>
+</aura:component>

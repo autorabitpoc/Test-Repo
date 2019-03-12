@@ -1,0 +1,776 @@
+<aura:component controller="LGNA_OperationTabDataEdit" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="curView" type="String" /> 
+    <aura:attribute name="objInfo" type="account" default="{sobjectType : 'Account'}" />
+    <aura:attribute name="accountCRUDMap" type="Map"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="editRecord" type="Object"/>
+    <aura:attribute name="recordEditError" type="String"/>
+    <aura:attribute name="hasModifyAll" type="Boolean" default="false"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- Lightning Data Service Interface for Edit --> 
+    <force:recordData aura:id="recordHandlerEdit"
+                      recordId="{!v.recordId}"
+                      fields="Id,
+                              Name,
+                              Effective_Date__c,
+                              Group_Anniversary_Date__c,
+                              Contract_End__c,
+                              Contract_Signer__c,
+                              Contract_Signer__r.Name,                              
+                              Open_Enrollment_End_Date__c,
+                              Open_Enrollment_Date__c,
+                              Renewal_Date__c,
+                              Ceded_From_ICL__c,
+                              Ceded_To_ACL__c,
+                              Ceded__c,
+                              HCSC_as_Fiduciary__c,
+                              Critical_Account__c,
+                              Funding_Type__c,
+                              Grandfathered_Account__c,
+                              Grandfathered_Date__c,
+                              Premium_Type__c,
+                              COBRA_Administration_Type__c,
+                              BillingStreet,
+                              BillingCity,
+                              BillingState,
+                              BillingPostalCode,
+                              BillingCountry,
+                              Billing_County__c,								                              
+                              ShippingStreet,
+                              ShippingCity,
+                              ShippingState,
+                              ShippingPostalCode,
+                              ShippingCountry,                              
+                              Key_Locations__c,
+                              Sales_Team__c,
+                              Account_Cluster_Effective_Date__c,
+                              Account_Cluster_Number__c,
+                              Account_Cluster_User_Identification__c,
+                              Account_Cluster_Name__c,
+                              Account_Executive_2__c,
+                              Sales_Cluster_Number__c,
+                              Underwriter_Effective_Date__c,
+                              Underwriter_End_Date__c,
+                              Underwriter__c,
+                              Underwriter__r.Name,
+                              Underwriter_Name__c,
+                              Underwriter_Team_Code__c,
+                              Underwriter_User_ID__c,
+                              Cancellation_Code__c,
+                              Cancellation_Date__c,
+                              Cancellation_Explanation__c,
+                              Cancellation_Reason__c,
+                              Cancellation_Submitted_Date__c,
+                              Cancelled_Health_Contracts__c,
+                              Cancelled_Health_Members__c,
+                              Claim_Stop_Date__c,
+                              Integration_Status__c,
+                              Requested_Cancellation_Date__c,
+                               Line_of_business__c"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.editRecord}"
+                      targetError="{!v.recordEditError}"
+                      mode="EDIT"
+                      recordUpdated="{!c.handleRecordUpdated}"
+                      />      
+    
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.recordEditError))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+              "loading error:::" + {!v.recordEditError}
+            </ui:message>
+        </div>
+    </aura:if>
+    
+    <!--loading spinner start... style=Brand Medium (blue dots)-->
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Working</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>    
+    
+    <div class="slds">  
+        <div class="slds-form slds-form_compound">
+            <!--Starts Display Renewal Information-->             
+            <div class="slds-is-open slds-section" onclick="{!c.RenewalInformationSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="RenewalInformationSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="RenewalInformationSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">Renewal Information</span>
+                    </button>
+                </h3>                                   
+            </div>               
+            <div class="slds-show" aura:id="RenewalInformationSection" >                
+                <lightning:layout horizontalAlign="space" verticalAlign="start"  pullToBoundary="large" multipleRows="false">
+                     <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<lightning:input readonly="true" type="date" label="Original Effective Date" name="OriginalEffectiveDate"  value="{!v.editRecord.Effective_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Original Effective Date</label>
+                                 <ui:inputDate class="slds-input" disabled ="{!!v.hasModifyAll}" value="{!v.editRecord.Effective_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>  
+                            </div>                                        
+                        </div>                                                         
+                        
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <lightning:input label="Anniversary Date" name="AnniversaryDate" disabled="{!!v.accountCRUDMap.Group_Anniversary_Date__c}"  value="{!v.editRecord.Group_Anniversary_Date__c}" />                              
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                              <!-- <lightning:input type="date" label="Contract End" disabled="{!!v.accountCRUDMap.Contract_End__c}" name="ContractEnd" value="{!v.editRecord.Contract_End__c}" />-->
+                                <label class="slds-form-element__label" for="date">Contract End</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Contract_End__c}" value="{!v.editRecord.Contract_End__c}" format="MM/dd/yyyy" displayDatePicker="true"/>                                                                                
+                               
+                              </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <c:LightningLookup startingName="{!v.editRecord.Contract_Signer__r.Name}" sObjectName="Contact" sObjectField="Account.Contract_Signer__c" displayedFieldName="Name" valueFieldName="Id" cmpId="ContractRecipient" label="Contract Recipient" selectedValue="{!v.editRecord.Contract_Signer__c}" whereClause="{!'RecordType.Name = \'Group Contact\' AND AccountId = ' + '\'' +  v.recordId + '\''}" showHelp="true" helpText="This Contact must be related to this Account."/>                                                        
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                               <!-- <lightning:input type="date" label="Open Enrollment End Date" name="OpenEnrollmentEndDate" value="{!v.editRecord.Open_Enrollment_End_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Open Enrollment End Date</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Open_Enrollment_End_Date__c}" value="{!v.editRecord.Open_Enrollment_End_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>
+                                
+                              </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                               <!-- <lightning:input type="date" label="Open Enrollment Start Date" disabled="{!!v.accountCRUDMap.Open_Enrollment_Date__c}"  value="{!v.editRecord.Open_Enrollment_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Open Enrollment Start Date</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Open_Enrollment_Date__c}" value="{!v.editRecord.Open_Enrollment_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>								
+                               
+                              </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<lightning:input type="date" label="Renewal Date" name="RenewalDate" value="{!v.editRecord.Renewal_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Renewal Date</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Renewal_Date__c}" value="{!v.editRecord.Renewal_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>								
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                     <label class="slds-form-element__label">Line of Business</label><br/>
+                                    <ui:inputselect multiple="false" aura:id="lineOfBusiness" class="slds-select" disabled="{!!v.hasModifyAll}" value="{!v.editRecord.Line_of_business__c}"/>
+                                     
+                                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>					
+                </lightning:layout>
+            </div> 
+            
+            <!--Starts Display Group Type -->             
+            <div class="slds-is-open slds-section" onclick="{!c.GroupTypeSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="GroupTypeSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="GroupTypeSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">Group Type</span>
+                    </button>
+                </h3>                                   
+            </div> 
+            <div class="slds-show" aura:id="GroupTypeSection">                
+                
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input type="checkbox" label="Critical Account" name="CriticalAccount" checked="{!v.editRecord.Critical_Account__c}"/>
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <lightning:input type="checkbox" label="HCSC as Fiduciary" name="HCSCAsFiduciary" disabled="{!!v.accountCRUDMap.HCSC_as_Fiduciary__c}" checked="{!v.editRecord.HCSC_as_Fiduciary__c}"/>
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout> 
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input type="checkbox" label="Grandfathered Account?" name="GrandfatheredAccount" disabled="{!!v.accountCRUDMap.Grandfathered_Account__c}" checked="{!v.editRecord.Grandfathered_Account__c}"/>
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+  <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">                        <div class="slds-col">
+                         <div class="slds-truncate slds-input_bare">
+                                
+                           </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<lightning:input label="COBRA Administration Type" name="COBRAAdministrationType" disabled="{!!v.accountCRUDMap.COBRA_Administration_Type__c}" value="{!v.editRecord.COBRA_Administration_Type__c}" />-->
+                                <label class="slds-form-element__label">COBRA Administration Type</label><br/>                            
+                                <ui:inputselect multiple="false" aura:id="cobratype" class="slds-select" disabled="{!!v.accountCRUDMap.COBRA_Administration_Type__c}" value="{!v.editRecord.COBRA_Administration_Type__c}"/>
+                                
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>
+                                    <!--<lightning:input type="date" label="Grandfathered Date" name="GrandfatheredDate" value="{!v.editRecord.Grandfathered_Date__c}" />-->
+                                    <label class="slds-form-element__label" for="date">Grandfathered Date</label>
+                                    <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Grandfathered_Date__c}" value="{!v.editRecord.Grandfathered_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>								
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                
+                                <label class="slds-form-element__label">Premium Type</label><br/>   
+                                <!-- <ui:inputselect multiple="true" aura:id="Premtype" class="slds-select" disabled="{!!v.accountCRUDMap.Premium_Type__c}" value="{!v.editRecord.Premium_Type__c}"/>-->
+                                
+                                <ui:inputselect multiple="true" aura:id="Premtype" class="slds-select" disabled="{!!v.hasModifyAll}" value="{!v.editRecord.Premium_Type__c}"/>
+                                
+                               <!-- <lightning:select name="Premtype" label="Premium Type" aura:id="Premtype" value="{!v.editRecord.Premium_Type__c}">
+                                       <aura:iteration items="{!v.editRecord.Premium_Type__c}" var="option">
+                                       <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                                      </aura:iteration>
+                                  </lightning:select>  -->
+                                <!--
+                               <aura:if isTrue="{!v.hasModifyAll}" >
+                                    <ui:inputselect multiple="true" aura:id="Premtype" class="slds-select" disabled="false" value="{!v.editRecord.Premium_Type__c}"/>
+                                     <aura:set attribute="else"> 
+                                       <lightning:input label="Premium Type" name="PremiumType" disabled="true" value="{!v.editRecord.Premium_Type__c}"/>
+                                    </aura:set>
+                                </aura:if>-->
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                     <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<div>
+                                    <lightning:input multiple="false" label="Funding Type" name="FundingType" value="{!v.editRecord.Funding_Type__c}" />                                    
+                                </div>-->
+                                
+                              <label class="slds-form-element__label">Funding Type</label><br/>
+                              <ui:inputselect multiple="true" aura:id="fundtype" class="slds-select" disabled="{!!v.hasModifyAll}" value="{!v.editRecord.Funding_Type__c}"/>
+                           
+                            </div>
+                        </div>
+                    </lightning:layoutItem>      
+                </lightning:layout>
+            </div>
+            <!--Starts Display Address Information -->             
+            <div class="slds-is-open slds-section" onclick="{!c.AddressInformationSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="AddressInformationSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="AddressInformationSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">Address Information</span>
+                    </button>
+                </h3>                                   
+            </div> 
+            <div class="slds-show" aura:id="AddressInformationSection">                                    
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <aura:if isTrue="{!v.hasModifyAll}" >
+                                  <div style="max-width: 400px;">
+        								<lightning:inputAddress
+            								addressLabel="Billing Address"
+            									streetLabel="Street"
+            									cityLabel="City"
+            									countryLabel="Country"
+            									provinceLabel="Privince"
+            									postalCodeLabel="Postal Code"
+            									street="{!v.editRecord.BillingStreet}"
+            									city="{!v.editRecord.BillingCity}"
+           									    country="{!v.editRecord.BillingCountry}"
+            									province="{!v.editRecord.BillingState}"
+            									postalCode="{!v.editRecord.BillingPostalCode}"
+            									
+            									
+                                         />
+                                      <br/>
+                                   </div>
+                                 <aura:set attribute="else">
+                                       <label class="slds-form-element__label" for="input-04">Billing Address</label><br/>
+                                
+                                        <lightning:formattedAddress street="{!v.editRecord.BillingStreet}"
+                                                            city="{!v.editRecord.BillingCity}"
+                                                            country="{!v.editRecord.BillingCountry}"
+                                                            province="{!v.editRecord.BillingState}"
+                                                            postalCode="{!v.editRecord.BillingPostalCode}"
+                                                            />      
+                                  </aura:set>
+                                </aura:if>                                                       
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                  <lightning:input label="Billing County" name="BillingCounty" disabled="{!!v.hasModifyAll}"  value="{!v.editRecord.Billing_County__c}" />                                                        
+                                 
+                                    <!--
+                                   <aura:if isTrue="{!v.hasModifyAll}" >
+                                     <lightning:input label="Billing County" name="BillingCounty" disabled="false"  value="{!v.editRecord.Billing_County__c}" />                                                        
+                                        <aura:set attribute="else">
+                                         <lightning:input label="Billing County" name="BillingCounty" disabled="true" value="{!v.editRecord.Billing_County__c}" />                                                        
+                                       </aura:set>
+                                    </aura:if>-->
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                 <aura:if isTrue="{!v.hasModifyAll}" >
+                                  <div style="max-width: 400px;">
+        								<lightning:inputAddress
+            								addressLabel="HQ Address"
+            									streetLabel="Street"
+            									cityLabel="City"
+            									countryLabel="Country"
+            									provinceLabel="Privince"
+            									postalCodeLabel="Postal Code"
+            									street="{!v.editRecord.BillingStreet}"
+            									city="{!v.editRecord.BillingCity}"
+           									    country="{!v.editRecord.BillingCountry}"
+            									province="{!v.editRecord.BillingState}"
+            									postalCode="{!v.editRecord.BillingPostalCode}"
+            									
+            									
+                                         />
+                                   </div>
+                                 <aura:set attribute="else">
+                                     <label class="slds-form-element__label" for="input-04">HQ Address</label><br/>
+                                     <lightning:formattedAddress street="{!v.editRecord.ShippingStreet}"
+                                                            city="{!v.editRecord.ShippingCity}"
+                                                            country="{!v.editRecord.ShippingCountry}"
+                                                            province="{!v.editRecord.ShippingState}"
+                                                            postalCode="{!v.editRecord.ShippingPostalCode}"
+                                                            />   
+                                    </aura:set>
+                                </aura:if>
+
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                 <aura:if isTrue="{!v.hasModifyAll}" >
+                                    <lightning:input label="Key Locations" name="KeyLocations" disabled="false" value="{!v.editRecord.Key_Locations__c}" />                                                                                                            
+                                    <aura:set attribute="else">
+                                        <lightning:input label="Key Locations" name="KeyLocations" disabled="true" value="{!v.editRecord.Key_Locations__c}" />                                                                                                            
+
+                                     </aura:set>
+                                      
+                                  </aura:if>
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+            </div>
+            
+            <!--Starts BlueSTAR Team Information -->             
+            <div class="slds-is-open slds-section" onclick="{!c.BlueSTARTeamInformationSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="BlueSTARTeamInformationSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="BlueSTARTeamInformationSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">BlueSTAR Team Information</span>
+                    </button>
+                </h3>                                   
+            </div> 
+            <div class="slds-show" aura:id="BlueSTARTeamInformationSection">                
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                               <!-- <lightning:textarea label="Sales Executive" name="SalesExecutive" disabled="{!!v.accountCRUDMap.Sales_Team__c}" value="{!v.editRecord.Sales_Team__c}" />-->
+                               <lightning:textarea label="Sales Executive" name="SalesExecutive" disabled="{!!v.hasModifyAll}" value="{!v.editRecord.Sales_Team__c}" />
+
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>
+                                    <!--<lightning:input readonly="true" type="date" label="Account Cluster Effective Date" name="AccountClusterEffectiveDate" value="{!v.editRecord.Account_Cluster_Effective_Date__c}" />-->
+                                    <label class="slds-form-element__label" for="date">Account Cluster Effective Date</label>
+                                    <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Account_Cluster_Effective_Date__c}" value="{!v.editRecord.Account_Cluster_Effective_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>																	
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <lightning:input type="number" label="Account Cluster Number" name="AccountClusterEffectiveDate" disabled="{!!v.accountCRUDMap.Account_Cluster_Number__c}" value="{!v.editRecord.Account_Cluster_Number__c}" />                                                                      
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <lightning:input label="Account Cluster User Identification" name="AccountClusterUserIdentification" disabled="{!!v.accountCRUDMap.Account_Cluster_User_Identification__c}" value="{!v.editRecord.Account_Cluster_User_Identification__c}" />                                                                       
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input label="Account Executive 1" name="AccountExecutive1" disabled="{!!v.accountCRUDMap.Account_Cluster_Name__c}" value="{!v.editRecord.Account_Cluster_Name__c}" />                                    
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <lightning:input label="Account Executive 2" name="AccountExecutive2" disabled="{!!v.accountCRUDMap.Account_Executive_2__c}" value="{!v.editRecord.Account_Executive_2__c}" />                                                                                                           
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input label="Sales Cluster Number" name="SalesClusterNumber" disabled="{!!v.accountCRUDMap.Sales_Cluster_Number__c}" value="{!v.editRecord.Sales_Cluster_Number__c}" />                                    
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>
+                                    <!--<lightning:input readonly="true" type="date" label="Underwriter Effective Date" name="UnderwriterEffectiveDate" value="{!v.editRecord.Underwriter_Effective_Date__c}" />-->
+                                    <label class="slds-form-element__label" for="date">Underwriter Effective Date</label>
+                                    <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Underwriter_Effective_Date__c}" value="{!v.editRecord.Underwriter_Effective_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>			
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<lightning:input readonly="true" type="date" label="Underwriter End Date" name="UnderwriterEndDate" value="{!v.editRecord.Underwriter_End_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Underwriter End Date</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Underwriter_End_Date__c}" value="{!v.editRecord.Underwriter_End_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>											
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                
+                               <!--    <lightning:input label="Underwriter" name="Underwriter" disabled="{!!v.accountCRUDMap.Underwriter__c}" value="{!v.editRecord.Underwriter__c}" /> -->    <!-- {!v.editRecord.Underwriter__r.Name} -->                              
+                              <aura:if isTrue="{!v.hasModifyAll}">
+                                 <c:LightningLookup startingName="{!v.editRecord.Underwriter__r.Name}" sObjectName="User" sObjectField="Account.Underwriter__c" displayedFieldName="Name" valueFieldName="Id" cmpId="UnderwriterLookUp" label="Underwriter" selectedValue="{!v.editRecord.Underwriter__c}" whereClause=""  showHelp="true" helpText="Search Underwriter User."/>                                                        
+                               <aura:set attribute="else">
+                                  <lightning:input label="Underwriter" name="Underwriter" disabled="true" value="{!v.editRecord.Underwriter__r.Name}" />                                
+                                 </aura:set> 
+                                
+                                </aura:if>
+                                            
+                            </div>
+                        </div>
+                        
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input label="Underwriter Name" name="UnderwriterName" disabled="{!!v.accountCRUDMap.Underwriter_Name__c}" value="{!v.editRecord.Underwriter_Name__c}" />                                    
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <lightning:input label="Underwriter Team Code" name="UnderwriterTeamCode" disabled="{!!v.accountCRUDMap.Underwriter_Team_Code__c}" value="{!v.editRecord.Underwriter_Team_Code__c}" />                                   
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input label="Underwriter User ID" name="UnderwriterUserID" disabled="{!!v.accountCRUDMap.Underwriter_User_ID__c}" value="{!v.editRecord.Underwriter_User_ID__c}" />                                    
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>                                   
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+            </div>
+            
+            <!--Starts Cancellation Information -->             
+            <div class="slds-is-open slds-section" onclick="{!c.CancellationInformationSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="CancellationInformationSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="CancellationInformationSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">Cancellation Information</span>
+                    </button>
+                </h3>                                   
+            </div> 
+            <div class="slds-show" aura:id="CancellationInformationSection">    
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                               <!--   <lightning:input label="Cancellation/Reinstatement Code" name="CancellationReinstatementCode" disabled="{!!v.accountCRUDMap.Cancellation_Code__c}" value="{!v.editRecord.Cancellation_Code__c}" />  -->
+                               <lightning:input label="Cancellation/Reinstatement Code" name="CancellationReinstatementCode" disabled="{!!v.hasModifyAll}"  value="{!v.editRecord.Cancellation_Code__c}" /> 
+                                                                
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>                                   
+                                    <!--<lightning:input readonly="true" type="date" label="Cancellation/Reinstatement Date" name="CancellationReinstatementDate" value="{!v.editRecord.Cancellation_Date__c}" />-->  
+                                    <label class="slds-form-element__label" for="date">Cancellation/Reinstatement Date</label>
+                                     <ui:inputDate class="slds-input"  disabled="{!!v.accountCRUDMap.Cancellation_Date__c}" value="{!v.editRecord.Cancellation_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/> 
+                                                                                                
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:textarea label="Cancellation/Reinstatement Explanation" name="CancellationReinstatementExplanation" disabled="{!!v.accountCRUDMap.Cancellation_Explanation__c}" value="{!v.editRecord.Cancellation_Explanation__c}" />
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>                                
+                                  <!--    <lightning:input label="Cancellation/Reinstatement Reason" name="CancellationReinstatementReason" disabled="{!!v.accountCRUDMap.Cancellation_Reason__c}" value="{!v.editRecord.Cancellation_Reason__c}" />  -->
+                                    <lightning:input label="Cancellation/Reinstatement Reason" name="CancellationReinstatementReason" disabled="{!!v.hasModifyAll}" value="{!v.editRecord.Cancellation_Reason__c}" />                           
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input type="number" label="Cancelled Health Members" name="CancelledHealthMembers"  disabled="{!!v.accountCRUDMap.Cancelled_Health_Members__c}" value="{!v.editRecord.Cancelled_Health_Members__c}" />
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>                                   
+                                    <lightning:input type="number" label="Cancelled Health Contracts" name="CancelledHealthContracts"  disabled="{!!v.accountCRUDMap.Cancelled_Health_Contracts__c}" value="{!v.editRecord.Cancelled_Health_Contracts__c}" />
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <!--<lightning:input readonly="true" type="date" label="Cancellation/Reinstatement Submitted Dt" name="CancellationReinstatementSubmittedDt" value="{!v.editRecord.Cancellation_Submitted_Date__c}" />-->
+                                <label class="slds-form-element__label" for="date">Cancellation/Reinstatement Submitted Dt</label>
+                                <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Cancellation_Submitted_Date__c}" value="{!v.editRecord.Cancellation_Submitted_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>                                        								
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>                                   
+                                    <!--<lightning:input readonly="true" type="date" label="Claim Stop Date" name="ClaimStopDate" value="{!v.editRecord.Claim_Stop_Date__c}" />-->
+                                    <label class="slds-form-element__label" for="date">Claim Stop Date</label>                                  
+                                    <ui:inputDate class="slds-input" disabled="{!!v.accountCRUDMap.Claim_Stop_Date__c}" value="{!v.editRecord.Claim_Stop_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>									
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input label="Integration Status" name="IntegrationStatus" disabled="{!!v.accountCRUDMap.Integration_Status__c}" value="{!v.editRecord.Integration_Status__c}" />                                   
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-input_bare">
+                                <div>                                   
+                                    <!--<lightning:input type="date" label="Requested Cancellation Date" name="RequestedCancellationDate" value="{!v.editRecord.Requested_Cancellation_Date__c}" />-->
+                                    <label class="slds-form-element__label" for="date">Requested Cancellation Date</label>
+                                    <ui:inputDate class="slds-input"  disabled="{!!v.accountCRUDMap.Requested_Cancellation_Date__c}" value="{!v.editRecord.Requested_Cancellation_Date__c}" format="MM/dd/yyyy" displayDatePicker="true"/>  																		
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem>                            
+                </lightning:layout>               
+            </div> 
+            <!--Starts Cede Information -->      
+            <div class="slds-is-open slds-section" onclick="{!c.CedeInformationSectionClick}">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action">                        
+                        <lightning:icon class="slds-show" aura:id="CedeInformationSection" iconName="utility:chevrondown" size="x-small"/>                        
+                        <lightning:icon class="slds-hide" aura:id="CedeInformationSection" iconName="utility:chevronright" size="x-small"/>
+                        <span class="slds-truncate" title="Section Title">Cede Information</span>
+                    </button>
+                </h3>                                   
+            </div> 
+            <div class="slds-show" aura:id="CedeInformationSection">    
+                
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <label class="slds-form-element__label">Ceded From (ICL)</label><br/>                            
+                                    <ui:inputselect multiple="false" aura:id="CededFromICL" class="slds-select"  disabled="{!!v.accountCRUDMap.Ceded_From_ICL__c}" value="{!v.editRecord.Ceded_From_ICL__c}"/>
+                                </div>                                
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem> 
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    <div>
+                                        <label class="slds-form-element__label">Ceded To (ACL)</label><br/>                            
+                                        <ui:inputselect multiple="false" aura:id="CededToACL" class="slds-select" disabled="{!!v.accountCRUDMap.Ceded_To_ACL__c}" value="{!v.editRecord.Ceded_To_ACL__c}"/>
+                                    </div>                                
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem> 
+                </lightning:layout>
+                
+                <lightning:layout horizontalAlign="space" verticalAlign="start" pullToBoundary="large" multipleRows="false">
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <lightning:input type="checkbox" label="Ceded?" name="Ceded"  disabled="{!!v.accountCRUDMap.Ceded__c}" checked="{!v.editRecord.Ceded__c}"/>                                    
+                            </div>                                        
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium" largeDeviceSize="6" mediumDeviceSize="4" smallDeviceSize="3" size="12">
+                        <div class="slds-col">
+                            <div class="slds-truncate slds-input_bare">
+                                <div>
+                                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </lightning:layoutItem> 					
+                </lightning:layout>
+                -            </div>              			
+            
+            <div  aura:id="SaveCancelFooterSection" class="footer active" id="stickyFooterSaveCancel">
+                <div class="slds-text-align_center forceRecordEditActions" data-aura-rendered-by="17:526;a" data-aura-class="forceRecordEditActions">
+                    <div class="actionsContainer">                        
+                        <button class="slds-button slds-button--neutral uiButton--neutral uiButton forceActionButton" aria-live="off" type="button" title="Cancel" onclick="{!c.cancelSaveRecord}">
+                            <span class=" label bBody truncate" dir="ltr">
+                                Cancel
+                            </span>                            
+                        </button>
+                        <button class="slds-button slds-button--neutral uiButton--brand uiButton forceActionButton" aria-live="off" type="button" title="Save" data-aura-class="uiButton forceActionButton" onclick="{!c.handleSaveRecord}">
+                            <span class=" label bBody truncate" dir="ltr">
+                                Save
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>                                                                     
+        </div>   
+    </div>       
+</aura:component>

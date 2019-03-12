@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When you receive a BBF renewal to deliver to the Broker</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Blue Balanced Funded Renewal Message To The Broker</name>
+    <style>none</style>
+    <subject>[Group Name, Account Number - AD:  BBF Renewal ]</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

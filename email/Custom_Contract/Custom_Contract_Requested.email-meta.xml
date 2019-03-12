@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification when a case is assigned or picked up</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Custom Contract Requested</name>
+    <style>none</style>
+    <subject>{!Case.Account_Name__c} - {!Case.RecordType} Case #{!Case.CaseNumber} Has Been Assigned to {!Case.Owner}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,7 @@
+The Dental Benefit Coding is ready for peer review and approval. 
+
+Account Name : {!Case.Account} 
+Case Number : {!Case.CaseNumber} 
+Case Details : {!Case.Link} 
+
+Thanks

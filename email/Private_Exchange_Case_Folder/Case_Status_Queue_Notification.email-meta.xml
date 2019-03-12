@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification to the Queue whenever a Parent Case&apos;s or Sub Case&apos;s Status has changed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CASE: Notification to the Queue Whenever a Parent or Subcase Status has changed</name>
+    <style>none</style>
+    <subject>{!Account.Name} - Private Exchange Case # {!Case.CaseNumber} Status Has Been Changed</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

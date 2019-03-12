@@ -1,0 +1,1 @@
+<aura:event type="COMPONENT" description="Dummy event fired by file uploader to trigger upload of remaining chunks if there are any" />

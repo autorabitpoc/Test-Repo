@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>APXTConga4__Conga_Email_Letterhead</letterhead>
+    <name>SGR Email Template</name>
+    <style>formalLetter</style>
+    <subject>SFDC Renewal &lt;Production/Analytical&gt; Batch Submitted</subject>
+    <textOnly>A SFDC &lt;Production/Analytical&gt; Batch was submitted for {!Account.HCSC_Division__c} for {!Account.CreatedDate}. Please contact if you have any concerns about the batch being submitted
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;table&gt;
+&lt;p&gt;
+&lt;tr&gt;
+&lt;th&gt;{!Opportunity.Batch_Id__c}&lt;/th&gt;&lt;th&gt;{!Opportunity.HCSC_Division__c}&lt;/th&gt;
+&lt;th&gt;{!Opportunity.Funding_Type__c}&lt;/th&gt;&lt;th&gt;{!Opportunity.Account_Market_Segment__c}&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

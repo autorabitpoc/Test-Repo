@@ -1,0 +1,36 @@
+<apex:page controller="SharePointTokenManager">
+<apex:includeScript value="{!$Resource.jquery_1_11_1}" />
+ <script>
+    (function(w,$)
+    {
+        w.accessAndRefresh = function(e){
+            console.log('auth{!authURLPath}');
+            console.log('{!authURLPath}?client_id={!clientId}&scope=Web.Write&response_type=code&redirect_uri={!redirectURI}');
+           window.open("{!authURLPath}?client_id={!clientId}&scope=Web.Write&response_type=code&redirect_uri={!redirectURI}",null,
+             "height=500,width=500,status=yes,toolbar=no,menubar=no,location=no");
+        },
+        w.refreshToken = function(e){
+           window.open("{!teamSharePointURL}/_layouts/15/appredirect.aspx?client_id={!clientId}&redirect_uri={!redirectURI}",null,
+             "height=500,width=500,status=yes,toolbar=no,menubar=no,location=no");
+        }
+    }(window, jQuery));
+</script>
+<apex:form >
+    <table style="width:500px">
+        <tr>
+            <td>
+                <p>
+                Click the "Token Initialization" button below for setting the Sharepoint Access and Refresh Tokens.  A popup window will appear prompting you to trust the Sharepoint site.  Click the "Trust it" button to continue.  After clicking the trust it button wait for success message to appear then close the window.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Token Initialization" class="btn btn-sm btn-primary" style="height:40px;width:150px" onclick="accessAndRefresh()"  /><br />
+                <a target="_blank" href="/setup/ui/listCustomSettings.apexp?retURL=%2Fui%2Fsetup%2FSetup%3Fsetupid%3DDevToolsIntegrate&setupid=CustomSettings" value="Open custom setting"  style="height:40px;width:150px" >Open Custom Settings</a>
+            </td>
+        </tr>
+    </table>
+</apex:form>
+
+</apex:page>

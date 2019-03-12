@@ -1,0 +1,55 @@
+<aura:component description="SGR_CensusTable">
+    <aura:attribute name="data" type="Object" required="true"/>
+    <aura:attribute name="columns" type="List" required="true"/>
+    <aura:attribute name="showActionButtons" type="Boolean" required="true"/>
+    <aura:attribute name="deleteDisabled" type="Boolean" required="true"/>
+    <aura:attribute name="tableMsg" type="String" default=""/>
+    <aura:attribute name="displayData" type="Object"/>
+    <aura:attribute name="minColWidth" type="Integer" default="50"/>
+    <aura:attribute name="maxColWidth" type="Integer" default="150"/>
+    <aura:attribute name="showRowNumberCol" type="Boolean" default="false"/>
+    <aura:attribute name="hideCheckboxCol" type="Boolean" default="false"/>
+    <aura:attribute name="selectedRows" type="List"/>
+    <aura:attribute name="totalSubscribers" type="Integer"/>
+    <aura:attribute name="totalMembers" type="Integer"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:registerEvent name="censusTableEvent" type="c:SGR_CensusTableEvent"/>
+    <div align="right">
+        <a href="javascript:void(0)" onclick="{!c.showSubOnly}" font-size="100px">
+            View Subscribers only
+        </a><a>|</a>
+        <a href="javascript:void(0)" onclick="{!c.showAll}">
+            View Subscribers + Dependents
+        </a>
+        <aura:if isTrue="{!v.showActionButtons}">
+            <lightning:button label="Add Subscriber" onclick="{!c.addSubscriber}" />
+            <!--Vijaya - button to delete dependents-->
+            <lightning:button label="Delete" onclick="{!c.deleteRows}" disabled="{!v.deleteDisabled}"/>
+        </aura:if>
+    </div>
+    <div>
+        <p style="color:red">{!v.tableMsg}</p>
+    </div>
+    <lightning:datatable
+            columns="{!v.columns}"
+            data="{!v.displayData}"
+            keyField="Id"
+            class="slds-scrollable--x slds-table slds-table_striped row-style"
+            minColumnWidth="{!v.minColWidth}"
+            maxColumnWidth="{!v.maxColWidth}"
+            showRowNumberColumn="{!v.showRowNumberCol}"
+            hideCheckboxColumn="{!v.hideCheckboxCol}"
+            selectedRows="{!v.selectedRows}"
+            onrowaction="{!c.handleRowAction}"
+            onrowselection="{!c.handleRowSelection}"/>
+    <div class="slds-grid" >
+        <div class="slds-col slds-size_2-of-12 header-style">
+            Total # of Subscribers <br/>
+            {!v.totalSubscribers}
+        </div>
+        <div class="slds-col slds-size_10-of-12 header-style">
+            Total # of Members <br/>
+            {!v.totalMembers}
+        </div>
+    </div>
+</aura:component>

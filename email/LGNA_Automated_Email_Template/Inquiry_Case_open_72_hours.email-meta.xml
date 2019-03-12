@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notify Case Owner when an Inquiry case has been open for 72 hours</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Inquiry Case open 72 hours</name>
+    <style>none</style>
+    <subject>{!Case.RecordType} Case # {!Case.CaseNumber} open more than 72 hours</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

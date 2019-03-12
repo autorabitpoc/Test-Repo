@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="{!relatedTo.Account_Name_Text__c} - {!relatedTo.Account_Number__c} - {!relatedTo.Effective_Date__c} - Pending Booklet Approval" recipientType="User" relatedToType="GEMS_SBC_BB_Form__c">
+
+<messaging:HtmlEmailBody >
+<html>
+<body>
+Hi, 
+<br/><br/>
+Account Name : {!relatedTo.Account_Name_Text__c} 
+<br/><br/>
+The booklet for {!IF(relatedTo.GEMS_Benefit_Booklet_Request__r.Case__c == NULL,'opportunity','submission case')} <a href="{!LEFT($Api.Partner_Server_URL_260, FIND( '/services', $Api.Partner_Server_URL_260))}{!IF(relatedTo.GEMS_Benefit_Booklet_Request__r.Case__c == NULL,relatedTo.GEMS_Benefit_Booklet_Request__r.Opportunity_Link__r.Id,relatedTo.GEMS_Benefit_Booklet_Request__r.Case__r.Id)}">{!IF(relatedTo.GEMS_Benefit_Booklet_Request__r.Case__c == NULL,relatedTo.GEMS_Benefit_Booklet_Request__r.Opportunity_Link__r.Name,relatedTo.GEMS_Benefit_Booklet_Request__r.Case__r.CaseNumber)}</a> for BAs {!relatedTo.Associated_Benefit_Agreements__c}  was sent for your review 60 days ago and we have not received a response.This booklet has been considered approved and final as of today and will automatically publish to BAM/BAE. If revisions are found after this date it will need to be submitted as a new request. 
+
+<br/><br/>
+Thanks for your attention, Contract Administration.
+</body>
+</html>
+</messaging:HtmlEmailBody>
+
+</messaging:emailTemplate>

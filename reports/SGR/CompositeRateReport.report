@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SGR_Opportunity_Plan_Rate__c$Marketing_Sales_Plan_ID__c</field>
+    </columns>
+    <columns>
+        <field>SGR_Opportunity_Plan_Rate__c.Opportunity_Plan_Composite_Rate__r$Tier_Code__c</field>
+    </columns>
+    <columns>
+        <field>SGR_Opportunity_Plan_Rate__c.Opportunity_Plan_Composite_Rate__r$Volume__c</field>
+    </columns>
+    <columns>
+        <field>SGR_Opportunity_Plan_Rate__c.Opportunity_Plan_Composite_Rate__r$Gross_Premium__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>SGR_Opportunity_Plan_Rate__c$Id</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Composite Rate Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>plan_rate_with_composite_plans__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>SGR_Opportunity_Plan_Rate__c$Benefit_Agreement_Cancel_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

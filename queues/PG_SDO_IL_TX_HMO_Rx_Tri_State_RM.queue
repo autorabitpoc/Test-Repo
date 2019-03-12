@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>tristatesrma@hcsc.net</email>
+    <name>PG - SDO - IL/ TX HMO, Rx &amp; Tri State RM</name>
+    <queueSobject>
+        <sobjectType>Line_Item_Review__c</sobjectType>
+    </queueSobject>
+</Queue>

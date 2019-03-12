@@ -1,0 +1,5 @@
+<apex:page standardController="GEMS_SBC_BB_Form__c">
+
+<c:GEMS_ReturnStatusComponent ></c:GEMS_ReturnStatusComponent>
+
+</apex:page>

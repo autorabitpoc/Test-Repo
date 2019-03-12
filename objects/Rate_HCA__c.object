@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Add_l_Spend_Account_s_paired_w_product__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Add&apos;l Spend Account(s) paired w/ product</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Additional_Provisions_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Additonal Provisions</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Applicable_Group_Number_s__c</fullName>
+        <description>used to track the applicable group numbers for a Rate HCA</description>
+        <externalId>false</externalId>
+        <label>Applicable Group Number(s)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_Direct_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Health Care Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For ASO HCA this excludes BCBSTX, BCBSMT</inlineHelpText>
+        <label>BlueEdge Direct HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_FSAFirst__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Health Care Account</description>
+        <externalId>false</externalId>
+        <label>BlueEdge FSAFirst</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_HCA_PPO_Plan_A__c</fullName>
+        <externalId>false</externalId>
+        <label>BlueEdge HCA (PPO) Plan A</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_HCA_PPO_Plan_B__c</fullName>
+        <externalId>false</externalId>
+        <label>BlueEdge HCA (PPO) Plan B</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_HCA_PPO__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>BlueEdge HCA (PPO)</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Healthcare Account</description>
+        <externalId>false</externalId>
+        <label>BlueEdge HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_Limited_Purpose_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Health Care Account</description>
+        <externalId>false</externalId>
+        <label>BlueEdge Limited Purpose HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_Vitality_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Health Care Account</description>
+        <externalId>false</externalId>
+        <label>BlueEdge Vitality HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BlueEdge_Wellness_Rewards_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Type of Health Care Account</description>
+        <externalId>false</externalId>
+        <label>BlueEdge Wellness Rewards HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Blue_Edge_HSA_Plus__c</fullName>
+        <externalId>false</externalId>
+        <label>Blue Edge HSA Plus</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PPO</fullName>
+                    <default>false</default>
+                    <label>PPO</label>
+                </value>
+                <value>
+                    <fullName>Traditional</fullName>
+                    <default>false</default>
+                    <label>Traditional</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Blue_Edge_HSA_Standard_Plan_A__c</fullName>
+        <externalId>false</externalId>
+        <label>Blue Edge HSA Standard Plan A</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blue_Edge_HSA_Standard_Plan_B__c</fullName>
+        <externalId>false</externalId>
+        <label>Blue Edge HSA Standard Plan B</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blue_Edge_HSA_Standard__c</fullName>
+        <externalId>false</externalId>
+        <label>Blue Edge HSA Standard</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PPO</fullName>
+                    <default>false</default>
+                    <label>PPO</label>
+                </value>
+                <value>
+                    <fullName>Traditional</fullName>
+                    <default>false</default>
+                    <label>Traditional</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Date_prior_to_carrier_credit__c</fullName>
+        <externalId>false</externalId>
+        <label>Date prior to carrier credit</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Employee_1_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 1 Dependent</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_1_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 1 Dependent</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_1_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 1 Dependent</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_2_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 2 or more depends</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_2_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 2 or more depends</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_2_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + 2 or more depends</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Child_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Child(ren)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Child_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Child(ren)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Child_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Child(ren)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Spouse_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Spouse</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Spouse_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Spouse</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Spouse_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee + Spouse</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Existing_HCA_HRA_needing_ending_credit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Existing HCA (HRA) needing ending credit</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_HCA__c</fullName>
+        <externalId>false</externalId>
+        <label>Family</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Family_Max__c</fullName>
+        <externalId>false</externalId>
+        <label>Family</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Family_Only__c</fullName>
+        <externalId>false</externalId>
+        <label>Family</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Full_Retention_Terms__c</fullName>
+        <externalId>false</externalId>
+        <label>Full Retention Terms</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Full_Retention__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Full Retention</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Funds_will_be_removed_on_Cancelation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Funds will be removed on Cancelation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HCA_Account_Structure__c</fullName>
+        <description>Populates rates section of ASO HCA with the HCA Account Structure</description>
+        <externalId>false</externalId>
+        <label>HCA Account Structure</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Employee, Family</fullName>
+                    <default>false</default>
+                    <label>Employee, Family</label>
+                </value>
+                <value>
+                    <fullName>Employee, Employee + 1 Dependent, Employee + 2 or more Dependents</fullName>
+                    <default>false</default>
+                    <label>Employee, Employee + 1 Dependent, Employee + 2 or more Dependents</label>
+                </value>
+                <value>
+                    <fullName>Employee, Employee + Spouse, Employee + Child(ren), Family</fullName>
+                    <default>false</default>
+                    <label>Employee, Employee + Spouse, Employee + Child(ren), Family</label>
+                </value>
+                <value>
+                    <fullName>Employee, Employee + Spouse, Employee + Child(ren)</fullName>
+                    <default>false</default>
+                    <label>Employee, Employee + Spouse, Employee + Child(ren)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HCA_Account_Yearly_Claim_Options__c</fullName>
+        <externalId>false</externalId>
+        <label>HCA Account Yearly Claim Options</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Multiple - recommended</fullName>
+                    <default>false</default>
+                    <label>Multiple - recommended</label>
+                </value>
+                <value>
+                    <fullName>Single - current funding/rollover</fullName>
+                    <default>false</default>
+                    <label>Single - current funding/rollover</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HCA_Annual_Contribution_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>HCA Annual Contribution Frequency</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Annual (recommended)</fullName>
+                    <default>false</default>
+                    <label>Annual (recommended)</label>
+                </value>
+                <value>
+                    <fullName>Semi-Annual</fullName>
+                    <default>false</default>
+                    <label>Semi-Annual</label>
+                </value>
+                <value>
+                    <fullName>Quarterly</fullName>
+                    <default>false</default>
+                    <label>Quarterly</label>
+                </value>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                    <label>Monthly</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HCA_Roll_Over_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>HCA Roll Over Amount</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>100% (recommended)</fullName>
+                    <default>false</default>
+                    <label>100% (recommended)</label>
+                </value>
+                <value>
+                    <fullName>0%</fullName>
+                    <default>false</default>
+                    <label>0%</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Incentives_applied_to_HCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Incentives applied to HCA</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>New_Changed_Subscriber_HCA_Proration__c</fullName>
+        <externalId>false</externalId>
+        <label>New/Changed Subscriber HCA Proration</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Semi-Annual</fullName>
+                    <default>false</default>
+                    <label>Semi-Annual</label>
+                </value>
+                <value>
+                    <fullName>Quarterly</fullName>
+                    <default>false</default>
+                    <label>Quarterly</label>
+                </value>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                    <label>Monthly</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Priority 1</fullName>
+                    <default>false</default>
+                    <label>Priority 1</label>
+                </value>
+                <value>
+                    <fullName>Priority 2</fullName>
+                    <default>false</default>
+                    <label>Priority 2</label>
+                </value>
+                <value>
+                    <fullName>Priority 3</fullName>
+                    <default>false</default>
+                    <label>Priority 3</label>
+                </value>
+                <value>
+                    <fullName>Priority 4</fullName>
+                    <default>false</default>
+                    <label>Priority 4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Other_Roll_over__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Roll over %</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Premium_Period_15th_Day_thru_14th_Day__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Premium Period: 15th Day thru 14th Day</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Premium_Period_First_through_Last_Day__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Premium Period: First through Last Day</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Rate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Rate</label>
+        <referenceTo>Rate__c</referenceTo>
+        <relationshipLabel>Rate HCAs</relationshipLabel>
+        <relationshipName>Rate_HCAs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Secure_Information__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Secure Information</label>
+        <referenceTo>Secure_Information__c</referenceTo>
+        <relationshipLabel>Rate HCAs</relationshipLabel>
+        <relationshipName>Rate_HCAs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Rate HCA</label>
+    <nameField>
+        <label>Rate HCA Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Rate HCAs</pluralLabel>
+    <recordTypes>
+        <fullName>Rate_HCA</fullName>
+        <active>true</active>
+        <label>Rate HCA</label>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Plus__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Standard__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Structure__c</picklist>
+            <values>
+                <fullName>Employee%2C Employee %2B 1 Dependent%2C Employee %2B 2 or more Dependents</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Employee %2B Spouse%2C Employee %2B Child%28ren%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Family</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Yearly_Claim_Options__c</picklist>
+            <values>
+                <fullName>Multiple - recommended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single - current funding%2Frollover</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Annual_Contribution_Frequency__c</picklist>
+            <values>
+                <fullName>Annual %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Roll_Over_Amount__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25 %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Changed_Subscriber_HCA_Proration__c</picklist>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Order__c</picklist>
+            <values>
+                <fullName>Priority 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Rate_HCA_MT</fullName>
+        <active>true</active>
+        <label>Rate HCA MT</label>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Plus__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Standard__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Structure__c</picklist>
+            <values>
+                <fullName>Employee%2C Employee %2B 1 Dependent%2C Employee %2B 2 or more Dependents</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Employee %2B Spouse%2C Employee %2B Child%28ren%29%2C Family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Family</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Yearly_Claim_Options__c</picklist>
+            <values>
+                <fullName>Multiple - recommended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single - current funding%2Frollover</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Annual_Contribution_Frequency__c</picklist>
+            <values>
+                <fullName>Annual %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Roll_Over_Amount__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25 %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Changed_Subscriber_HCA_Proration__c</picklist>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Order__c</picklist>
+            <values>
+                <fullName>Priority 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Rate_HCA_NM</fullName>
+        <active>true</active>
+        <label>Rate HCA NM</label>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Plus__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Blue_Edge_HSA_Standard__c</picklist>
+            <values>
+                <fullName>PPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Structure__c</picklist>
+            <values>
+                <fullName>Employee%2C Employee %2B 1 Dependent%2C Employee %2B 2 or more Dependents</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Employee %2B Spouse%2C Employee %2B Child%28ren%29%2C Family</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee%2C Family</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Account_Yearly_Claim_Options__c</picklist>
+            <values>
+                <fullName>Multiple - recommended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Single - current funding%2Frollover</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Annual_Contribution_Frequency__c</picklist>
+            <values>
+                <fullName>Annual %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HCA_Roll_Over_Amount__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25 %28recommended%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Changed_Subscriber_HCA_Proration__c</picklist>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Annual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Order__c</picklist>
+            <values>
+                <fullName>Priority 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Priority 4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>New_Rate_HCAs</fullName>
+        <availability>online</availability>
+        <description>Used on HCA type Rate records</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Rate HCAs</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a0s/e?&amp;RecordType=012190000008oIr</url>
+    </webLinks>
+</CustomObject>

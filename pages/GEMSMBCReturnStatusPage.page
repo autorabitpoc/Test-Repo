@@ -1,0 +1,57 @@
+<apex:page standardController="Case" extensions="GEMS_MBCReturnStatusPageController" >
+   <script>
+       function checkStatus(selectedStatus) {
+           if(selectedStatus != '--None--') {               
+               showReturnReasonBlock(selectedStatus);
+           }/*else {
+               setSelectedStatus();
+           }*/
+       }
+   </script>
+  <apex:form id="formId">
+  
+   <apex:actionFunction immediate="true" action="{!showReturnReasonBlock}" name="showReturnReasonBlock" rerender="returnReasonBlock"  >
+       <apex:param name="selectedStatus" assignTo="{!selectedStatus}" value="" />
+   </apex:actionFunction>
+   <!--<apex:actionFunction immediate="true" action="{!setSelectedStatus}" name="setSelectedStatus" rerender="returnReasonBlock"  >
+       <apex:param name="selectedStatus" assignTo="{!selectedStatus}" value="" />
+   </apex:actionFunction>-->
+        <apex:messages style="color:red;font-weight:bold;" />
+      <apex:pageBlock title="Status" id="statusPB">
+          <apex:pageBlockButtons id="pButtons" >
+                <apex:commandButton id="Save"  action="{!saveStatus}" value="Save"  title="Save" />
+                <apex:commandButton id="Cancel"  action="{!Cancel}" value="Back to Case" />
+         </apex:pageBlockButtons> 
+          <b><apex:outputText >Status :&nbsp; </apex:outputText></b>
+          <apex:selectList id="Status" value="{!selectedStatus}" size="1" onchange="checkStatus(this.value)" >
+              <apex:selectOptions value="{!statusPickList}"></apex:selectOptions>  
+          </apex:selectList>
+      
+         <apex:outputPanel id="returnReasonBlock" >
+          <br/><br/>          
+            <apex:pageblocktable value="{!returnReasonList}" var="returnReasonRecord" rendered="{!displayReturnReason == true}" >
+                <apex:column headerValue="Returned Document Type">
+                    <apex:inputfield value="{!returnReasonRecord.GEMS_Type__c}" rendered="{!ISNULL(returnReasonRecord.name)}" required="true"/>
+                    <apex:outputfield value="{!returnReasonRecord.GEMS_Type__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+                <apex:column headerValue="ABS/Matirx Sub Document Type">
+                    <apex:inputfield value="{!returnReasonRecord.GEMS_Sub_Type__c}" rendered="{!ISNULL(returnReasonRecord.name)}"/>
+                    <apex:outputfield value="{!returnReasonRecord.GEMS_Sub_Type__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+                <apex:column headerValue="Return Reason">
+                    <apex:inputfield value="{!returnReasonRecord.Return_Reason__c}" rendered="{!ISNULL(returnReasonRecord.name)}"/>
+                    <apex:outputfield value="{!returnReasonRecord.Return_Reason__c}" rendered="{!NOT(ISNULL(returnReasonRecord.name))}"/>
+                </apex:column>
+            </apex:pageblocktable>
+            <br/>
+            <apex:commandButton action="{!addRow}" value="Add Reason" immediate="true" reRender="returnReasonBlock" rendered="{!displayReturnReason == true}"/> 
+            <!--US 4943 GEMS: Add validation for Return Reasons on BA Level Cases - Medical Benefit Coding and Pharmacy Coding-->
+             <br/><br/>
+               <apex:outputLabel rendered="{!displayReturnReason == true}"><b>Comments :</b></apex:outputLabel>
+               <br/>
+              <apex:inputTextarea value="{!childComments}" rows="4" cols="60" rendered="{!displayReturnReason == true}" title="Comments" />
+             <!--US 4943 End-->
+         </apex:outputPanel>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

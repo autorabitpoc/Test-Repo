@@ -1,0 +1,219 @@
+<aura:component controller="LGNA_ProductTabDataController" access="global" implements="force:appHostable,force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes">
+   <aura:attribute name="recordId" type="String" />
+   <aura:attribute name="msegmentList" type="List" default=""/>
+    <aura:attribute name="catlist" type="List" default=""/>
+    <aura:attribute name="postpelist" type="List" default=""/>
+    <aura:attribute name="pre65list" type="List" default=""/>
+    <aura:attribute name="exchanegnamelist" type="List" default=""/>
+    <aura:attribute name="hcmprogramlist" type="List" default=""/>
+    <aura:attribute name="bccprogramlist" type="List" default=""/>
+    <aura:attribute name="hcmclientlist" type="List" default=""/>
+    <aura:attribute name="wellnesslist" type="List" default=""/>
+    <aura:attribute name="recordTypelist" type="string"/> 
+ 
+   <aura:attribute name="accDetails" type="Account"/>
+   <aura:handler name="init" value="{!this}" action="{!c.compInit}" />
+    
+       
+<div class="slds">
+    <div class="slds-form slds-form_compound">
+         <!-- Starts Display Group type -->
+        <div style="font-size:20px">Group type 
+            <div class="slds-form-element__row">
+                <div class="slds-form-element slds-size_1-of-2">
+                    <aura:if isTrue="{!v.recordTypelist == 'Group Account'}">
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">HCSC as Fiduciary</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.HCSC_as_Fiduciary__c}"/> 	
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.recordTypelist == 'Prospect'}">
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Out of business</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Out_of_Business__c}"/> 	
+                        </div>
+                    </aura:if>
+                </div>
+                <div class="slds-form-element slds-size_1-of-2">	
+                    <label class="slds-form-element__label" for="input-04">COBRA Administration Type</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="cat" value="{!v.accDetails.COBRA_Administration_Type__c}"/>
+                </div>	 
+            </div> 
+        </div>
+         <!-- Ends Display Group type -->
+         <!-- Starts Display Exchange Information -->
+        <div style="font-size:20px">Exchange Information 
+            
+            <div class="slds-form-element__row">
+                <div class="slds-form-element slds-size_1-of-2">
+                    <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                        <label class="uiLabel slds-form-element__label" for="input-04">Exchange Account?</label><br/>
+                        <ui:inputcheckbox value="{!v.accDetails.Exchange_Account__c}"/> 	
+                    </div>
+
+                    <label class="slds-form-element__label" for="input-04">Group Private exchange</label>
+                    <ui:inputselect class="slds-input slds-form-element__label"  multiple="false" aura:id="ename" value="{!v.accDetails.Exchange_Name__c}"/> 
+                    
+                    <label class="slds-form-element__label" for="input-05">Group exchange effective date</label>
+                    <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Group_Exchange_Effective_Date__c}" />
+                    
+                    <label class="slds-form-element__label" for="input-05">pre-65 individual private exchange</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="pre65" value="{!v.accDetails.Pre_65_Individual_Private_Exchange__c}" />
+                </div>
+                <div class="slds-form-element slds-size_1-of-2">
+                    
+                    <label class="slds-form-element__label" for="input-05">pre-65 exchange effective date</label>
+                    <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Pre_65_Exchange_Effective_Date__c}"/>
+                    
+                    <label class="slds-form-element__label" for="input-04">post-65 individual private exchange</label>
+                    <ui:inputselect class="slds-input slds-form-element__label"  multiple="false" aura:id="posti" value="{!v.accDetails.Post_65_Individual_Private_Exchange__c}" /> 
+                    
+                    <label class="slds-form-element__label" for="input-04">post-65 exchange effective date</label>
+                    <ui:inputDate format="MMM dd, yyyy" displayDatePicker="true" class="slds-input slds-form-element__label" value="{!v.accDetails.Post_65_Exchange_Effective_Date__c}"/>
+                </div>    
+            </div>
+        </div>
+         <!-- Ends Display Exchange Information -->
+	    <!-- Starts Display HCM Section -->
+        <div style="font-size:20px">HCM Section
+            <div class="slds-form-element__row">
+                <div class="slds-form-element slds-size_1-of-2">
+                    <label class="slds-form-element__label" for="input-04">HCM  program model</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="hcm" value="{!v.accDetails.HCM_Program_Model__c}" />
+                    
+                    <label class="slds-form-element__label" for="input-04">BCC Program(s)</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="bpgm" value="{!v.accDetails.BCC_Program_s__c}"/> 	
+                    
+                    <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                        <label class="uiLabel slds-form-element__label" for="input-04">Wellness Consulting</label><br/>
+                        <ui:inputcheckbox value="{!v.accDetails.Wellness_Consulting__c}"/> 	
+                    </div>
+                    
+                    
+                </div>
+                <div class="slds-form-element slds-size_1-of-2">
+                    
+                    
+                    <label class="slds-form-element__label" for="input-04">other HCM information</label>
+                    <ui:inputText class="slds-input slds-form-element__label" value="{!v.accDetails.Other_HCM_Information__c}"/>
+                    
+                    <label class="slds-form-element__label" for="input-04">HCM  client intensity</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="hci" value="{!v.accDetails.HCM_Client_Intensity__c}" />
+   
+                    <div class="slds-form-element slds-size_1-of-2">	
+                    <label class="slds-form-element__label" for="input-04">Wellness Consulting Coordinator</label>
+                    <ui:inputselect class="slds-input slds-form-element__label" multiple="false" aura:id="wc" value="{!v.accDetails.Wellness_Consulting_Coordinator__c}"/>
+                </div>	
+                </div>
+            </div>
+        </div>
+        <!-- Ends Display HCM Section -->
+        <!-- Starts Display Account Credits -->
+        <aura:if isTrue="{!v.recordTypelist == 'Group Account'}">
+            <div style="font-size:20px">Account Credits
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Enrollment Credits?</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Enrollment_Credits__c}"/></div> 	
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Implementation Credits?</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Implementation_Credits__c}"/></div>
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04"> Wellness Credits?</label><br/>
+                            <ui:inputcheckbox value="{!v.accDetails.Wellness_Credits__c}"/></div>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <label class="slds-form-element__label" for="input-04">Enrollment Credit Amount Available</label>
+                        <ui:inputcurrency class="slds-input slds-form-element__label" value="{!v.accDetails.Enrollment_Credit_Allowance__c}"/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Implementation credit amount availablee</label>
+                        <ui:inputcurrency class="slds-input slds-form-element__label" value="{!v.accDetails.Implementation_Credit_Allowance__c}"/>
+                        
+                        <label class="slds-form-element__label" for="input-04">Wellness credit amount available</label>
+                        <ui:inputcurrency class="slds-input slds-form-element__label" value="{!v.accDetails.Wellness_Credit_Allowance__c}" />
+                    </div>    
+                </div>
+            </div>
+        </aura:if>
+        <!-- Ends Display Account Credits -->
+        <!-- Starts Display Interested Products or Services -->
+        <aura:if isTrue="{!v.recordTypelist == 'Prospect'}">
+            <div style="font-size:20px">Interested Products or Services
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Medical</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Medical__c}"/></div> 	
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Dental</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Dental__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Vision</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Vision__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Rx</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Rx__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Life</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Life__c}"/></div>
+                        
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Short term disability</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Short_Term_Disability__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Wellness Program</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Wellness_Program__c}"/></div>
+                        
+                    </div>
+                    
+                    <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Long term disability</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Long_Term_Disability__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Accidental Death and Dismemberment</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Accidental_Death_Dismemberment__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Employee Assistance Program</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Employee_Assistance_Program__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Travel Resource</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Travel_Resource__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Beneficiary Admin Tool</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Beneficiary_Admin_Tool__c}"/></div>
+                        
+                        <div class="uiInput uiInputCheckbox uiInput--default uiInput--checkbox">
+                            <label class="uiLabel slds-form-element__label" for="input-04">Critical Illness</label><br/>
+                            <ui:outputcheckbox value="{!v.accDetails.Critical_Illness__c}"/></div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </aura:if>
+        <!-- Ends Display Interested Products or Services -->
+   </div>
+    <!-- Starts Display Save Button -->
+     <div class="slds-x-small-buttons--horizontal slds-align_absolute-center" >   
+         <lightning:button onclick="{!c.saveproduct}" >Save</lightning:button>
+     </div>
+    <!-- Ends Display Save Button -->
+</div>
+</aura:component>

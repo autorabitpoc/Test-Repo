@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="uniqueName" type="String" required="true"/>
+    <aura:attribute name="sobjectType" type="String" required="true"/>
+    <aura:attribute name="recordId" type="String" required="true"/>
+</aura:event>

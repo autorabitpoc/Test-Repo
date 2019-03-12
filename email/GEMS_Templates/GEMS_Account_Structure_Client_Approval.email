@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Dear&nbsp;{!Account.Name},<div><br></div><div>Please review the attached account structure data and approve.&nbsp;</div><div><br></div><div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: 'Times New Roman'; font-size: medium;">Thanks,&nbsp;</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: 'Times New Roman'; font-size: medium;">{!Case.OwnerFullName}&nbsp;</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: 'Times New Roman'; font-size: medium;">{!Case.Account}</span></div></div>]]></td>
+</tr>
+</table>

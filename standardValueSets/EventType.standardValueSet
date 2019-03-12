@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Appointment</fullName>
+        <default>false</default>
+        <label>Appointment</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In Person Meeting</fullName>
+        <default>false</default>
+        <label>In Person Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Business Review Meeting</fullName>
+        <default>false</default>
+        <label>Business Review Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Open Enrollment Meeting</fullName>
+        <default>false</default>
+        <label>Open Enrollment Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Planning Meeting</fullName>
+        <default>false</default>
+        <label>Strategic Planning Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Health Fair</fullName>
+        <default>false</default>
+        <label>Health Fair</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Conference Call</fullName>
+        <default>false</default>
+        <label>Conference Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Lunch and Learn</fullName>
+        <default>false</default>
+        <label>Lunch and Learn</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social</fullName>
+        <default>false</default>
+        <label>Social</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Well on Target Overview with Client</fullName>
+        <default>false</default>
+        <label>Well on Target Overview with Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Well on Target Overview with Broker</fullName>
+        <default>false</default>
+        <label>Well on Target Overview with Broker</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Healthy Worksite Consultation w/ Client</fullName>
+        <default>false</default>
+        <label>Healthy Worksite Consultation w/ Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Healthy Worksite Consultation w/ Broker</fullName>
+        <default>false</default>
+        <label>Healthy Worksite Consultation w/ Broker</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BCC Overview with Client</fullName>
+        <default>false</default>
+        <label>BCC Overview with Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BCC Overview with Broker (Brkr Brfng)</fullName>
+        <default>false</default>
+        <label>BCC Overview with Broker (Brkr Brfng)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reporting Client Annual</fullName>
+        <default>false</default>
+        <label>Reporting Client Annual</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reporting Client Quarterly</fullName>
+        <default>false</default>
+        <label>Reporting Client Quarterly</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reporting Meeting w Internal Staff</fullName>
+        <default>false</default>
+        <label>Reporting Meeting w Internal Staff</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reporting Client Other</fullName>
+        <default>false</default>
+        <label>Reporting Client Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prep Meeting Internal Staff</fullName>
+        <default>false</default>
+        <label>Prep Meeting Internal Staff</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Quarterly AE Touchbase</fullName>
+        <default>false</default>
+        <label>Quarterly AE Touchbase</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Finalist Meeting Prospective</fullName>
+        <default>false</default>
+        <label>Finalist Meeting Prospective</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Finalist Meeting Incumbent</fullName>
+        <default>false</default>
+        <label>Finalist Meeting Incumbent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Ad Hoc Client Meeting</fullName>
+        <default>false</default>
+        <label>Ad Hoc Client Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Case Summary Inquiry &lt;5</fullName>
+        <default>false</default>
+        <label>Case Summary Inquiry &lt;5</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Implmnt / Internal Call/Mtg</fullName>
+        <default>false</default>
+        <label>Implmnt / Internal Call/Mtg</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Implmnt / Consultant Call/Mtg</fullName>
+        <default>false</default>
+        <label>Implmnt / Consultant Call/Mtg</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Implmnt / Client Call/Mtg</fullName>
+        <default>false</default>
+        <label>Implmnt / Client Call/Mtg</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Health Fair / Open Enrollment</fullName>
+        <default>false</default>
+        <label>Health Fair / Open Enrollment</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Lunch &apos;n Learn with Client</fullName>
+        <default>false</default>
+        <label>Lunch &apos;n Learn with Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Employer Webinar</fullName>
+        <default>false</default>
+        <label>Employer Webinar</label>
+    </standardValue>
+    <standardValue>
+        <fullName>WalkingWorks Overview with Client</fullName>
+        <default>false</default>
+        <label>WalkingWorks Overview with Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RFP</fullName>
+        <default>false</default>
+        <label>RFP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Medical Policy Review</fullName>
+        <default>false</default>
+        <label>Medical Policy Review</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Unassigned Group – CAC Support</fullName>
+        <default>false</default>
+        <label>Unassigned Group – CAC Support</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Onthemark On site Assessment</fullName>
+        <default>false</default>
+        <label>Onthemark On site Assessment</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Onthemark Report Delivery with Client</fullName>
+        <default>false</default>
+        <label>Onthemark Report Delivery with Client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Face to Face Meeting-Non Annual Review</fullName>
+        <default>false</default>
+        <label>Face to Face Meeting-Non Annual Review</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Face to Face Finalist or Formal Meeting</fullName>
+        <default>false</default>
+        <label>Face to Face Finalist or Formal Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Direct Face to Face Prospects Meetings</fullName>
+        <default>false</default>
+        <label>Direct Face to Face Prospects Meetings</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Annual Review Meeting</fullName>
+        <default>false</default>
+        <label>Annual Review Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Debrief with Director for finalist/formal presentation or meeting</fullName>
+        <default>false</default>
+        <label>Debrief with Director for Customer/Prospect Presentation or Formal Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Debrief with Director for broker/consultant formal meeting</fullName>
+        <default>false</default>
+        <label>Debrief with Director for Broker/Consultant Presentation or Formal Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Rehearsal for Finalist Meeting</fullName>
+        <default>false</default>
+        <label>Dress Rehearsal for Finalist Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Joint RSE/AE Participation Meeting</fullName>
+        <default>false</default>
+        <label>Joint RSE/AE Participation Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strategic Plan</fullName>
+        <default>false</default>
+        <label>Strategic Plan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account</fullName>
+        <default>false</default>
+        <label>Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Broker Contact (Prospects &amp; Opportunities 1 /day /consulting house)</fullName>
+        <default>false</default>
+        <label>Broker Contact (Prospects &amp; Opportunities 1 /day /consulting house)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Call</fullName>
+        <default>false</default>
+        <label>Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal</fullName>
+        <default>false</default>
+        <label>Renewal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow Up Call</fullName>
+        <default>false</default>
+        <label>Follow Up Call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In Person Visit</fullName>
+        <default>false</default>
+        <label>In Person Visit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meeting</fullName>
+        <default>false</default>
+        <label>Meeting</label>
+    </standardValue>
+</StandardValueSet>

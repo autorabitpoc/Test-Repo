@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>New cede case notification sent to Account Executive</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>New Cede Case Notification</name>
+    <style>none</style>
+    <subject>Action needed on new Cede Case Renewal</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

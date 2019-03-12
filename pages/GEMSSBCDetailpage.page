@@ -1,0 +1,454 @@
+<apex:page standardController="Case" extensions="GEMS_SBCSectionController" sidebar="false" showChat="false" showHeader="false" id="pageId">
+    
+    <apex:form id="frmId" >
+        <apex:pageBlock title="Account Submission - SBC" id="pbId">
+            <apex:pageBlockSection id="pbsId" columns="2">
+                <apex:outputText value="{!caserec.caseNumber}" label="Request ID" />
+                <apex:outputText value="{!caserec.createdby.name}" label="Created By" />
+                <apex:outputField value="{!caserec.status}" />
+                <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="Created On" ><apex:param value="{!caserec.createdDate}" /></apex:outputText>
+                <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="Effective Date" ><apex:param value="{!caserec.GEMS_Case_Effective_Date__c}" /></apex:outputText>
+                <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="Open Enrollment Date" ><apex:param value="{!caserec.GEMS_Open_Enrollment_Start__c}" /></apex:outputText>
+                <apex:outputText value="{!caserec.HCSC_Division__c}" label="Plan" />
+                <apex:outputText value="{!RIGHT(caserec.Account.External_ID__c,6)}" label="BlueStar Account Number" />                
+                <apex:outputField value="{!caserec.Account.Name}" />  
+                <apex:outputField value="{!caserec.Market_Segment__c}"/>
+                <!-- <apex:inputField value="{!caserec.Account.HCSC_Division__c}"/>
+<apex:inputField value="{!caserec.Account.Region__c}"/>
+<apex:inputField value="{!caserec.Account.District__c}"/>   
+<apex:inputfield value="{!caserec.Account.Cluster__c}" />  
+<apex:inputfield value="{!caserec.GEMS_Grandfathered_benefits__c}"/> -->
+                <apex:outputText label="Affected Funding Types" value="{!caserec.Funding_Type_Multiselect__c}" />
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+        <apex:pageBlock id="thePageBlock" rendered="{!sbcRequestForm.Id == null ||  ( sbcRequestForm.Id != null && !sbcCase) }" >
+            <apex:pageBlockSection id="Section" columns="2"  collapsible="false"  >
+                <apex:messages style="color:red" />
+                <apex:PageBlockSectionItem >
+                </apex:PageBlockSectionItem>
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Cluster" />
+                    <apex:outputPanel styleClass="requiredInput" layout="block" >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Cluster__c}" />
+                    </apex:outputPanel>
+                </apex:PageBlockSectionItem>
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Cluster" />
+                    <apex:outputPanel layout="block" >
+                        <apex:outputPanel layout="block"/>
+                        <apex:outputField value="{!sbcRequestForm.GEMS_Cluster__c}" />  
+                    </apex:outputPanel>             
+                </apex:PageBlockSectionItem>
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="District" />
+                    <apex:outputPanel styleClass="requiredInput" layout="block" >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Sbc_District__c}"/>   
+                    </apex:outputPanel>                 
+                </apex:PageBlockSectionItem>
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="District" />
+                    <apex:outputPanel layout="block" >
+                        <apex:outputPanel layout="block"/>
+                        <apex:outputField value="{!sbcRequestForm.GEMS_Sbc_District__c}" />  
+                    </apex:outputPanel>             
+                </apex:PageBlockSectionItem> 
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Grandfathered benefit(s)?" />
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Grandfathered_benefit_s__c}" />   
+                    </apex:outputPanel>                 
+                </apex:PageBlockSectionItem>
+                   
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Grandfathered benefit(s)?" />
+                    <apex:outputPanel layout="block" >
+                        <apex:outputPanel layout="block"/>
+                        <apex:outputField value="{!sbcRequestForm.GEMS_Grandfathered_benefit_s__c}" />  
+                    </apex:outputPanel>             
+                </apex:PageBlockSectionItem>    
+                
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Number of SBCs Being Requested"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Number_of_SBCs_Being_Requested__c}" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Number of SBCs Being Requested" />
+                    <apex:outputPanel layout="block" >
+                        <apex:outputPanel layout="block"/>
+                        <apex:outputField value="{!sbcRequestForm.GEMS_Number_of_SBCs_Being_Requested__c}" />  
+                    </apex:outputPanel>             
+                </apex:PageBlockSectionItem>
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Minimum Essential Coverage/MEC"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Minimum_Essential_Coverage_MEC__c}" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Minimum Essential Coverage/MEC"/>
+                    <apex:outputField value="{!sbcRequestForm.GEMS_Minimum_Essential_Coverage_MEC__c}" >
+                            </apex:outputField>
+                      </apex:PageBlockSectionItem> 
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Current # of Subscribers"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Current_No_of_Subscribers__c}" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Current # of Subscribers"/>
+                    <apex:outputField value="{!sbcRequestForm.GEMS_Current_No_of_Subscribers__c}" >
+                            </apex:outputField>
+                </apex:PageBlockSectionItem> 
+                
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Minimum Value Standard/MV"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Minimum_Value_Standard_MV__c }" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem>
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Minimum Value Standard/MV"/>
+                    <apex:outputField value="{!sbcRequestForm.GEMS_Minimum_Value_Standard_MV__c }" >
+                            </apex:outputField>
+                </apex:PageBlockSectionItem> 
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Current # of Members"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Current_No_of_Members__c}">
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Current # of Members"/>
+                    <apex:outputField value="{!sbcRequestForm.GEMS_Current_No_of_Members__c}">
+                            </apex:outputField>
+                </apex:PageBlockSectionItem>
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Affected Benefit Agreements"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Affected_Benefit_Agreements__c}" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Affected Benefit Agreements"/>
+                            <apex:outputField value="{!sbcRequestForm.GEMS_Affected_Benefit_Agreements__c}" >
+                            </apex:outputField>
+                </apex:PageBlockSectionItem>
+                
+                
+                <apex:inputField value="{!sbcRequestForm.GEMS_Additional_Comments__c}" rendered="{!ssspage=='AccSub'}"/>
+                <apex:outputField value="{!sbcRequestForm.GEMS_Additional_Comments__c}" rendered="{!ssspage==''}"/>
+                
+                
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Number of BAs"/>
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!sbcRequestForm.GEMS_Number_of_BAs__c}" >
+                            </apex:inputField>
+                        </apex:outputPanel>
+                    </apex:actionRegion>
+                </apex:PageBlockSectionItem> 
+                <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Number of BAs"/>
+                            <apex:outputField value="{!sbcRequestForm.GEMS_Number_of_BAs__c}" >
+                            </apex:outputField>
+                </apex:PageBlockSectionItem> 
+                
+                <apex:inputField value="{!sbcRequestForm.GEMS_Additional_Notifications__c}" rendered="{!ssspage=='AccSub'}"/>
+                <apex:outputField value="{!sbcRequestForm.GEMS_Additional_Notifications__c}" rendered="{!ssspage==''}"/>
+            </apex:pageBlockSection>
+            
+            
+
+            
+            <apex:pageBlockSection > 
+                <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                    <apex:outputLabel value="Rush"/>
+                    <apex:actionRegion >
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Rush__c}">   
+                            <br></br>         
+                        <apex:actionStatus startText="Loading..." id="status"/>
+                        <apex:actionSupport event="onchange" reRender="Section4" status="status" />
+                    </apex:inputField> 
+                </apex:actionRegion>
+            </apex:PageBlockSectionItem> 
+            <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                    <apex:outputLabel value="Rush"/>
+                    <apex:actionRegion >
+                        <apex:outputField value="{!sbcRequestForm.GEMS_Rush__c}">   
+                            <br></br>         
+                        <apex:actionStatus startText="Loading..." id="status"/>
+                        <apex:actionSupport event="onchange" reRender="Section4" status="status" />
+                    </apex:outputField> 
+                </apex:actionRegion>
+            </apex:PageBlockSectionItem> 
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection id="Section4">
+            <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                <apex:outputLabel value="Reason for Rush" rendered="{!(sbcRequestForm.GEMS_Rush__c == 'Yes')}" />
+                <apex:actionRegion >
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Reason_for_Rush__c}" rendered="{!(sbcRequestForm.GEMS_Rush__c == 'Yes')}" />
+                    </apex:outputPanel>
+                </apex:actionRegion>
+            </apex:PageBlockSectionItem>
+            <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                <apex:outputLabel value="Reason for Rush" rendered="{!(sbcRequestForm.GEMS_Rush__c == 'Yes')}" />
+                <apex:actionRegion ><apex:outputField value="{!sbcRequestForm.GEMS_Reason_for_Rush__c}" rendered="{!(sbcRequestForm.GEMS_Rush__c == 'Yes')}" />
+                 </apex:actionRegion>
+            </apex:PageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection id="Section5" columns="2"  collapsible="false"  >
+            <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+                <apex:outputLabel value="Carved Out Benefits From Other Vendors"/>
+                <apex:actionRegion >
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputField value="{!sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c}" >
+                            <br></br>         
+                        <apex:actionStatus startText="Loading..." id="status"/>
+                        <apex:actionSupport event="onchange" reRender="Section6,SectionOther" status="status" />
+                    </apex:inputField>
+                </apex:outputPanel>
+            </apex:actionRegion>
+        </apex:PageBlockSectionItem>
+        <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+                <apex:outputLabel value="Carved Out Benefits From Other Vendors"/>
+                <apex:actionRegion >
+                    <apex:outputField value="{!sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c}" >
+                            <br></br>         
+                        <apex:actionStatus startText="Loading..." id="status"/>
+                        <apex:actionSupport event="onchange" reRender="Section6,SectionOther" status="status" />
+                    </apex:outputField>
+                </apex:actionRegion>
+        </apex:PageBlockSectionItem>
+        
+    </apex:pageBlockSection>                                
+    
+    <apex:pageBlockSection id="Section6" columns="2" >
+        
+        <apex:inputField value="{!sbcRequestForm.GEMS_Mental_Health__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes' && ssspage=='AccSub'}"/>
+        <apex:inputField value="{!sbcRequestForm.Rx__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes' && ssspage=='AccSub'}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Mental_Health__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes' &&ssspage==''}"/>
+        <apex:outputField value="{!sbcRequestForm.Rx__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes' && ssspage==''}"/>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection id="SectionOther" columns="2"  collapsible="false"  >
+        <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+            <apex:outputLabel value="Other" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}" />
+            <apex:actionRegion >
+                <apex:inputField value="{!sbcRequestForm.GEMS_Other_Checkbox__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="SectionOtherReson" status="status" />
+            </apex:inputField>
+        </apex:actionRegion>
+    </apex:PageBlockSectionItem>
+    <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+            <apex:outputLabel value="Other" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}" />
+            <apex:actionRegion >
+                <apex:outputField value="{!sbcRequestForm.GEMS_Other_Checkbox__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="SectionOtherReson" status="status" />
+            </apex:outputField>
+        </apex:actionRegion>
+    </apex:PageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="SectionOtherReson" columns="2"  collapsible="false"  >
+    <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+        <apex:outputLabel value=""  />                
+        <apex:actionRegion >
+            <apex:inputField value="{!sbcRequestForm.Other_Reason__c}" rendered="{! sbcRequestForm.GEMS_Other_Checkbox__c}" ></apex:inputField>
+        </apex:actionRegion>
+    </apex:PageBlockSectionItem>
+    <apex:PageBlockSectionItem rendered="{!ssspage==''}">
+        <apex:outputLabel value="Other Reason"  />                
+        <apex:actionRegion >
+            <apex:outputField value="{!sbcRequestForm.Other_Reason__c}" rendered="{! sbcRequestForm.GEMS_Other_Checkbox__c}" ></apex:outputField>
+        </apex:actionRegion>
+    </apex:PageBlockSectionItem>
+</apex:pageBlockSection>
+
+
+
+<apex:pageBlockSection id="Section12" columns="2"  collapsible="false"  >
+    <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+        <apex:outputLabel value="Did HCSC Create the SBC Last Year?"/>
+        <apex:actionRegion >
+            <apex:outputPanel styleClass="requiredInput" layout="block">
+                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                <apex:inputField value="{!sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="Section13,Section8,Section9,Section10" status="status" />
+            </apex:inputField>
+        </apex:outputPanel>
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+<apex:PageBlockSectionItem rendered="{!ssspage==''}">
+        <apex:outputLabel value="Did HCSC Create the SBC Last Year?"/>
+        <apex:actionRegion >
+            
+                <apex:outputField value="{!sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="Section13,Section8,Section9,Section10" status="status" />
+            </apex:outputField>
+        
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="Section13" columns="1"  collapsible="false"  >
+    <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+        <apex:outputLabel value="Reason" rendered="{!(sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '')}"/>
+        <apex:actionRegion >
+            <apex:outputPanel styleClass="requiredInput" layout="block">
+                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                <apex:inputField value="{!sbcRequestForm.GEMS_Reason__c}" rendered="{!(sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '')}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="Section8,Section9" status="status" />
+            </apex:inputField>
+        </apex:outputPanel>
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+<apex:PageBlockSectionItem rendered="{!ssspage==''}">
+        <apex:outputLabel value="Reason" rendered="{!(sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '')}"/>
+        <apex:actionRegion >
+            
+                <apex:outputField value="{!sbcRequestForm.GEMS_Reason__c}" rendered="{!(sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '')}" >
+                    <br></br>         
+                <apex:actionStatus startText="Loading..." id="status"/>
+                <apex:actionSupport event="onchange" reRender="Section8,Section9" status="status" />
+            </apex:outputField>
+        
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="Section8" columns="2"  collapsible="false"  >
+    <apex:inputField value="{!sbcRequestForm.GEMS_Revision_Request__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub'}"   />
+    <apex:inputField value="{!sbcRequestForm.GEMS_Print_Mail__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub'}"  />
+    <apex:outputField value="{!sbcRequestForm.GEMS_Revision_Request__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage==''}"   />
+    <apex:outputField value="{!sbcRequestForm.GEMS_Print_Mail__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage==''}" />
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="Section9" columns="2"  collapsible="false"  >
+    <apex:PageBlockSectionItem rendered="{!ssspage=='AccSub'}">
+        <apex:outputLabel value="Translations" rendered="{!sbcRequestForm.GEMS_Reason__c == 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= ''}" />
+        <apex:actionRegion >
+            <apex:inputField value="{!sbcRequestForm.GEMS_Translations__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' }"  >                
+                <br></br>         
+            <apex:actionStatus startText="Loading..." id="status"/>
+            <apex:actionSupport event="onchange" reRender="Section10" status="status"  />
+        </apex:inputField>
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+<apex:PageBlockSectionItem rendered="{!ssspage==''}">
+        <apex:outputLabel value="Translations" rendered="{!sbcRequestForm.GEMS_Reason__c == 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= ''}" />
+        <apex:actionRegion >
+            <apex:outputField value="{!sbcRequestForm.GEMS_Translations__c}" rendered="{!sbcRequestForm.GEMS_Reason__c== 'Miscellaneous - Post Finalization' && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' }"  >                
+                <br></br>         
+            <apex:actionStatus startText="Loading..." id="status"/>
+            <apex:actionSupport event="onchange" reRender="Section10" status="status"  />
+        </apex:outputField>
+    </apex:actionRegion>
+</apex:PageBlockSectionItem>
+</apex:pageBlockSection>
+<apex:pageBlockSection id="Section10" columns="2"  collapsible="false"  >
+    <apex:inputField value="{!sbcRequestForm.GEMS_Tagalog_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub' }" />
+    <apex:inputField value="{!sbcRequestForm.GEMS_Chinese_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub'}" />
+    <apex:inputField value="{!sbcRequestForm.GEMS_Navajo_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub'}" />
+    <apex:inputField value="{!sbcRequestForm.GEMS_Spanish_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='AccSub'}" />
+    
+    <apex:outputField value="{!sbcRequestForm.GEMS_Tagalog_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage=='' }" />
+    <apex:outputField value="{!sbcRequestForm.GEMS_Chinese_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage==''}" />
+    <apex:outputField value="{!sbcRequestForm.GEMS_Navajo_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage==''}" />
+    <apex:outputField value="{!sbcRequestForm.GEMS_Spanish_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes') && sbcRequestForm.GEMS_Did_HCSC_Create_the_SBC_Last_Year__c!= '' && ssspage==''}" />
+</apex:pageBlockSection>  
+<apex:pageBlockButtons rendered="{!ssspage=='AccSub'}">
+    <apex:commandButton action="{!saveSBCCaseDetails}" value="Save" rendered="{! sbcRequestForm.Id == null ||  (sbcRequestForm.Id != null && !sbcCase) }" />
+    <apex:CommandButton action="{!back}" value="Cancel"/>
+</apex:pageBlockButtons>          
+</apex:pageBlock>
+<apex:pageBlock id="pageBlock3" rendered="{!sbcRequestForm.Id != null && sbcCase }">
+    <apex:pageBlockSection id="Section23" columns="3"  collapsible="false"  > 
+        <apex:outputField value="{!sbcRequestForm.GEMS_Number_of_SBCs_Being_Requested__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Minimum_Essential_Coverage_MEC__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Current_No_of_Subscribers__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Minimum_Value_Standard_MV__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Current_No_of_Members__c}" />
+        <!--<apex:outputField value="{!sbcRequestForm.GEMS_Affected_Funding_Types__c}" />-->
+        <apex:outputField value="{!sbcRequestForm.GEMS_Affected_Benefit_Agreements__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Additional_Comments__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Number_of_BAs__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Additional_Notifications__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Cluster__c}" rendered="{!caserec.Account.Cluster__c== null}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Sbc_District__c}" rendered="{!caserec.Account.District__c == null}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Grandfathered_benefit_s__c}" rendered="{! !caserec.GEMS_Grandfathered_benefits__c}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Rush__c}" />                
+        <apex:outputField value="{!sbcRequestForm.GEMS_Reason_for_Rush__c}" rendered="{!(sbcRequestForm.GEMS_Rush__c == 'Yes')}" />                
+        <apex:outputField value="{!sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c}" ></apex:outputField>
+        <apex:outputField value="{!sbcRequestForm.GEMS_Other__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}"/>
+        <apex:outputField value="{!sbcRequestForm.GEMS_Mental_Health__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}"/>
+        <apex:outputField value="{!sbcRequestForm.Rx__c}" rendered="{! sbcRequestForm.GEMS_Carved_Out_Benefits_From_Vendors__c == 'Yes'}"/>                
+        <apex:outputField value="{!sbcRequestForm.GEMS_SBC_Request_Type__c}" ></apex:outputField>
+        <apex:outputField value="{!sbcRequestForm.GEMS_Revision_Request__c}" rendered="{!(sbcRequestForm.GEMS_SBC_Request_Type__c == 'Miscellaneous - Post Finalization')}"  />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Print_Mail__c}" rendered="{!(sbcRequestForm.GEMS_SBC_Request_Type__c == 'Miscellaneous - Post Finalization')}"  />                
+        <apex:outputField value="{!sbcRequestForm.GEMS_Translations__c}" rendered="{!(sbcRequestForm.GEMS_SBC_Request_Type__c == 'Miscellaneous - Post Finalization')}" > </apex:outputField>
+        <apex:outputField value="{!sbcRequestForm.GEMS_Tagalog_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes')}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Chinese_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes')}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Navajo_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes')}" />
+        <apex:outputField value="{!sbcRequestForm.GEMS_Spanish_specify_BAs__c}" rendered="{! (sbcRequestForm.GEMS_Translations__c == 'Yes')}" />
+    </apex:pageBlockSection>  
+</apex:pageBlock>
+
+</apex:form>
+
+</apex:page>
