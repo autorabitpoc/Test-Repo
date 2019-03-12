@@ -3,7 +3,7 @@ public class EinsteinVisionControllerTest {
     
     static testMethod void testPredict() {
         insert new Dreamhouse_Settings__c(Einstein_Vision_Email__c = 'user@host.com');
-        Boolean success = false;
+        Boolean success = true;
         try {
             ContentVersion cv = new ContentVersion(Title='einstein_platform', PathOnClient='/', VersionData=Blob.valueof('some key'));
             insert cv;
