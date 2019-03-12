@@ -391,6 +391,12 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Test_Validation_1</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNULL(BillingCity)</errorConditionFormula>
+        <errorMessage>Billing City cannot be null</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Billing</fullName>
         <availability>online</availability>
