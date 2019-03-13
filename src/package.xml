@@ -814,6 +814,7 @@
         <members>UserProvisioningRequest.SalesforceUserId</members>
         <members>UserProvisioningRequest.State</members>
         <members>UserProvisioningRequest.UserProvAccountId</members>
+        <members>Deployment_History__c.Build_Name__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -888,6 +889,7 @@
         <members>TopicAssignment</members>
         <members>User</members>
         <members>UserProvisioningRequest</members>
+        <members>Deployment_History__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -896,6 +898,7 @@
         <members>Dreamhouse_Settings__c-en_US</members>
         <members>Favorite__c-en_US</members>
         <members>Property__c-en_US</members>
+        <members>Deployment_History__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>
@@ -1034,6 +1037,7 @@
         <members>UserProvAccount-User Provisioning Account Layout</members>
         <members>UserProvisioningLog-User Provisioning Log Layout</members>
         <members>UserProvisioningRequest-User Provisioning Request Layout</members>
+        <members>Deployment_History__c-Deployment History Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -1255,6 +1259,7 @@
         <members>Order</members>
         <members>Property__c</members>
         <members>User</members>
+        <members>Deployment_History__c</members>
         <name>SharingRules</name>
     </types>
     <types>
@@ -1329,6 +1334,7 @@
         <members>Property__c</members>
         <members>Solution</members>
         <members>Task</members>
+        <members>Deployment_History__c</members>
         <name>TopicsForObjects</name>
     </types>
     <types>
