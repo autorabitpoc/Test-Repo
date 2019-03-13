@@ -1,5 +1,5 @@
 public with sharing class BotController {
-
+    //dummy line
     class HandlerMapping {
         
         public String handlerClassName;
