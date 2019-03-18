@@ -2,7 +2,7 @@
 private class ImageFilesLtngControllerTest{
 
     @IsTest
-    static String testGetHostUrl(){
+    static void testGetHostUrl(){
         Test.startTest();
         String testStr = ImageFilesLtngController.getHostUrl();
         Test.stopTest();
