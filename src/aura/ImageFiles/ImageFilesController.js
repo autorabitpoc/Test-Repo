@@ -2,11 +2,9 @@
     init : function(component, event, helper) {
         console.log("ImageFilesController:init:ENTER ");
         helper.retrieveVfHostUrl(component).then(
-
             $A.getCallback(function(result) {
                 console.log("DealerImageFilesController:init: result 1 = " + JSON.stringify(result));
                 component.set("v.vfHost", result);
-                return helper.retrieveInitialImages(component);
             }),
 
             $A.getCallback(function(error) {

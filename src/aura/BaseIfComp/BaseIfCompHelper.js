@@ -3,6 +3,7 @@
         return new Promise(function(resolve, reject){
             action.setCallback(this, function(response){
                 var state = response.getState();
+                console.log("apexPromise response = " + JSON.stringify(response));
                 if(state === "SUCCESS"){
                     resolve(response.getReturnValue());
                 }else{
