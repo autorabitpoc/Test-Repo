@@ -1,6 +1,19 @@
 ({
     init : function(component, event, helper) {
         console.log("ImageFilesController:init:ENTER ");
+        helper.retrieveVfHostUrl(component).then(
+
+            $A.getCallback(function(result) {
+                console.log("DealerImageFilesController:init: result 1 = " + JSON.stringify(result));
+                component.set("v.vfHost", result);
+                return helper.retrieveInitialImages(component);
+            }),
+
+            $A.getCallback(function(error) {
+                console.log("DealerImageFilesController:init: 1st Promise was rejected: ", error);
+
+            })
+        );
         //window.name = "DealerImageFiles";
         //DELETE THIS RECORD ID CLAUSE
         /*var recordId = component.get("v.recordId");
