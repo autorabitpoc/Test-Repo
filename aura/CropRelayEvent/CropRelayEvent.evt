@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="CropRelayEvent">
+    <aura:attribute name="baseEncodedData" type="String"/>
+</aura:event>

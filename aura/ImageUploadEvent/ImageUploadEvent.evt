@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="ImageUploadEvent">
+    <aura:attribute name="fileName" type="String" required="true"/>
+    <aura:attribute name="contentId" type="String" required="true"/>
+</aura:event>

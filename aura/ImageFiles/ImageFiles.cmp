@@ -1,0 +1,29 @@
+<aura:component controller="ImageFilesLtngController" extends="c:BaseIfComp" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" description="ImageFiles">
+    <aura:attribute name="vfHost" type="String" />
+    <aura:attribute name="imageInfoMap" type="Object"/>
+    <aura:attribute name="finalContentId" type="String"/>
+    <aura:attribute name="imgSrc" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler event="c:ImagePreviewClickEvent" action="{!c.handleIpClickEvent}"/>
+    <aura:handler event="c:ImageUploadEvent" action="{!c.handleUploadEvent}"/>
+    <aura:handler event="c:CropRelayEvent" action="{!c.handleCropEvent}"/>
+    <aura:registerEvent name="fcEvent" type="c:FinishCropEvent"/>
+    <aura:dependency resource="markup://c:ImageFileWidget"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <div aura:id="mainContent">
+        <div class="slds-grid slds-grid_vertical-align-end">
+            <div aura:id="subContent1" class="slds-col slds-size--1-of-4">
+
+            </div>
+            <div class="slds-col slds-size--1-of-4">
+
+            </div>
+            <div class="slds-coll slds-size--1-of-4">
+
+            </div>
+            <div aura:id="subContent2" class="slds-col slds-size--1-of-4">
+
+            </div>
+        </div>
+    </div>
+</aura:component>
