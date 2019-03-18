@@ -75,39 +75,7 @@
         <name>AssignmentRules</name>
     </types>
     <types>
-        <members>Bot</members>
-        <members>DaysOnMarketEstimator</members>
-        <members>EinsteinVision</members>
-        <members>EinsteinVisionCard</members>
-        <members>EinsteinVisionDashboard</members>
-        <members>EinsteinVisionDataset</members>
-        <members>EinsteinVisionDatasetEvent</members>
-        <members>EinsteinVisionEvent</members>
-        <members>FormattedDate</members>
-        <members>Map</members>
-        <members>MapCard</members>
-        <members>MortgageAmortizationChart</members>
-        <members>MortgageCalculator</members>
-        <members>MortgageCalculatorCard</members>
-        <members>MortgageChange</members>
-        <members>PictureCarousel</members>
-        <members>PictureGalleryCard</members>
-        <members>PriceRange</members>
-        <members>PropertyDaysOnMarketChart</members>
-        <members>PropertyListDaysOnMarketChart</members>
-        <members>PropertyPageChange</members>
-        <members>PropertyPaginator</members>
-        <members>PropertySummary</members>
-        <members>PropertyTile</members>
-        <members>PropertyTileList</members>
-        <members>RangeChange</members>
-        <members>SimilarProperties</members>
-        <members>SmartHome</members>
-        <members>SmartHomeCard</members>
-        <members>SmartLights</members>
-        <members>SmartLocks</members>
-        <members>SmartPriceCalculator</members>
-        <members>SmartThermostat</members>
+        <members>src</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
@@ -504,6 +472,7 @@
         <members>DandBCompany.UsTaxId</members>
         <members>DandBCompany.WomenOwned</members>
         <members>DandBCompany.YearStarted</members>
+        <members>Deployment_History__c.Build_Name__c</members>
         <members>Dreamhouse_Settings__c.Einstein_Vision_Email__c</members>
         <members>Dreamhouse_Settings__c.LIFX_Token__c</members>
         <members>Dreamhouse_Settings__c.LIFX_URL__c</members>
@@ -814,7 +783,6 @@
         <members>UserProvisioningRequest.SalesforceUserId</members>
         <members>UserProvisioningRequest.State</members>
         <members>UserProvisioningRequest.UserProvAccountId</members>
-        <members>Deployment_History__c.Build_Name__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -843,6 +811,7 @@
         <members>Contract</members>
         <members>ContractContactRole</members>
         <members>DandBCompany</members>
+        <members>Deployment_History__c</members>
         <members>Dreamhouse_Settings__c</members>
         <members>DuplicateRecordItem</members>
         <members>DuplicateRecordSet</members>
@@ -889,7 +858,6 @@
         <members>TopicAssignment</members>
         <members>User</members>
         <members>UserProvisioningRequest</members>
-        <members>Deployment_History__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -898,7 +866,6 @@
         <members>Dreamhouse_Settings__c-en_US</members>
         <members>Favorite__c-en_US</members>
         <members>Property__c-en_US</members>
-        <members>Deployment_History__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>
@@ -915,31 +882,10 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>DreamHouse_Dashboards</members>
-        <members>DreamHouse_Dashboards/PwhxKrnFNjvWCIHRklHhRcEIEyIIBm</members>
-        <name>Dashboard</name>
-    </types>
-    <types>
-        <members>Account.Standard_Account_Duplicate_Rule</members>
-        <members>Contact.Standard_Contact_Duplicate_Rule</members>
-        <members>Lead.Standard_Lead_Duplicate_Rule</members>
+        <members>src/Account.Standard_Account_Duplicate_Rule</members>
+        <members>src/Contact.Standard_Contact_Duplicate_Rule</members>
+        <members>src/Lead.Standard_Lead_Duplicate_Rule</members>
         <name>DuplicateRule</name>
-    </types>
-    <types>
-        <members>unfiled$public/MarketingProductInquiryResponse</members>
-        <members>unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE</members>
-        <members>unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE</members>
-        <members>unfiled$public/SUPPORTSelfServiceResetPasswordSAMPLE</members>
-        <members>unfiled$public/SalesNewCustomerEmail</members>
-        <members>unfiled$public/SupportCaseAssignmentNotification</members>
-        <members>unfiled$public/SupportCaseCreatedPhoneInquiries</members>
-        <members>unfiled$public/SupportCaseCreatedWebInquiries</members>
-        <members>unfiled$public/SupportCaseResponse</members>
-        <members>unfiled$public/SupportEscalatedCaseNotification</members>
-        <members>unfiled$public/SupportEscalatedCaseReassignment</members>
-        <members>unfiled$public/SupportSelfServiceNewLoginandPassword</members>
-        <members>unfiled$public/SupportSelfServiceResetPassword</members>
-        <name>EmailTemplate</name>
     </types>
     <types>
         <members>Case.Standard</members>
@@ -1037,7 +983,6 @@
         <members>UserProvAccount-User Provisioning Account Layout</members>
         <members>UserProvisioningLog-User Provisioning Log Layout</members>
         <members>UserProvisioningRequest-User Provisioning Request Layout</members>
-        <members>Deployment_History__c-Deployment History Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -1147,11 +1092,6 @@
         <name>Profile</name>
     </types>
     <types>
-        <members>Case.LogACall</members>
-        <members>Case.NewChildCase</members>
-        <members>CollaborationGroup.NewGroupMember</members>
-        <members>CollaborationGroup.NewGroupRecord</members>
-        <members>FeedItem.NewTaskFromFeedItem</members>
         <members>LogACall</members>
         <members>NewAccount</members>
         <members>NewCase</members>
@@ -1162,16 +1102,21 @@
         <members>NewNote</members>
         <members>NewOpportunity</members>
         <members>NewTask</members>
-        <members>Property__c.Smart_Home</members>
         <members>SendEmail</members>
-        <members>Task.Defer</members>
-        <members>Task.Defer_0</members>
-        <members>Task.EditDescription</members>
-        <members>Task.EditDescription_0</members>
-        <members>Task.UpdatePriority</members>
-        <members>Task.UpdatePriority_0</members>
-        <members>Task.UpdateStatus</members>
-        <members>Task.UpdateStatus_0</members>
+        <members>src/Case.LogACall</members>
+        <members>src/Case.NewChildCase</members>
+        <members>src/CollaborationGroup.NewGroupMember</members>
+        <members>src/CollaborationGroup.NewGroupRecord</members>
+        <members>src/FeedItem.NewTaskFromFeedItem</members>
+        <members>src/Property__c.Smart_Home</members>
+        <members>src/Task.Defer</members>
+        <members>src/Task.Defer_0</members>
+        <members>src/Task.EditDescription</members>
+        <members>src/Task.EditDescription_0</members>
+        <members>src/Task.UpdatePriority</members>
+        <members>src/Task.UpdatePriority_0</members>
+        <members>src/Task.UpdateStatus</members>
+        <members>src/Task.UpdateStatus_0</members>
         <name>QuickAction</name>
     </types>
     <types>
@@ -1185,13 +1130,6 @@
         <members>PushServer</members>
         <members>Slack</members>
         <name>RemoteSiteSetting</name>
-    </types>
-    <types>
-        <members>DreamHouse_Reports</members>
-        <members>DreamHouse_Reports/Days_on_Market</members>
-        <members>DreamHouse_Reports/Portfolio_Health</members>
-        <members>DreamHouse_Reports/Properties_by_Broker</members>
-        <name>Report</name>
     </types>
     <types>
         <members>CEO</members>
@@ -1243,23 +1181,22 @@
         <name>Settings</name>
     </types>
     <types>
-        <members>Account</members>
-        <members>Asset</members>
-        <members>Bot_Command__c</members>
-        <members>Broker__c</members>
-        <members>Campaign</members>
-        <members>Case</members>
-        <members>Contact</members>
-        <members>Dreamhouse_Settings__c</members>
-        <members>Favorite__c</members>
-        <members>FlowInterview</members>
-        <members>Lead</members>
-        <members>ListEmail</members>
-        <members>Opportunity</members>
-        <members>Order</members>
-        <members>Property__c</members>
-        <members>User</members>
-        <members>Deployment_History__c</members>
+        <members>src/Account</members>
+        <members>src/Asset</members>
+        <members>src/Bot_Command__c</members>
+        <members>src/Broker__c</members>
+        <members>src/Campaign</members>
+        <members>src/Case</members>
+        <members>src/Contact</members>
+        <members>src/Dreamhouse_Settings__c</members>
+        <members>src/Favorite__c</members>
+        <members>src/FlowInterview</members>
+        <members>src/Lead</members>
+        <members>src/ListEmail</members>
+        <members>src/Opportunity</members>
+        <members>src/Order</members>
+        <members>src/Property__c</members>
+        <members>src/User</members>
         <name>SharingRules</name>
     </types>
     <types>
@@ -1334,7 +1271,6 @@
         <members>Property__c</members>
         <members>Solution</members>
         <members>Task</members>
-        <members>Deployment_History__c</members>
         <name>TopicsForObjects</name>
     </types>
     <types>
