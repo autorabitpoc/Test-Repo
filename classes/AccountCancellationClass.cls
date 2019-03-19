@@ -1,5 +1,5 @@
 /*****************************************************************************************************
-*TEEST EDIT 1 Apex Class Name     : AccountCancellationClass
+*TEEST EDIT 2 Apex Class Name     : AccountCancellationClass
 * Version             : 1.0
 
 * Function            : This is the controlling class for page AccountCompleteCancellation.
