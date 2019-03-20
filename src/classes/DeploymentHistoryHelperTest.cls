@@ -7,6 +7,6 @@ public class DeploymentHistoryHelperTest{
 		Test.startTest();
 		DeploymentHistoryHelper.createRecordEntry('dummyRec');
 		Test.stopTest();
-		System.assertEquals(11, [SELECT COUNT() FROM Deployment_History__c WHERE Build_Name__c = 'dummyRec']);
+		System.assertEquals(1, [SELECT COUNT() FROM Deployment_History__c WHERE Build_Name__c = 'dummyRec']);
 	}
 }
