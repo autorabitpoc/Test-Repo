@@ -1,4 +1,5 @@
 public class AccountDAO implements IAccountDAO {
+    //TEST
     public interface IAccountDAO {
         List<Account> getAccountsForProduct360(Id userId, Set<Id> accountIds);
         void updateAccounts(List<Account> accountsToUpdate);
